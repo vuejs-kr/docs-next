@@ -1,8 +1,8 @@
-# Render Functions
+# Render 함수
 
-Vue recommends using templates to build applications in the vast majority of cases. However, there are situations where we need the full programmatic power of JavaScript. That's where we can use the **render function**.
+Vue는 대부분의 경우 템플릿을 사용하여 애플리케이션을 구축할 것을 권장합니다. 그러나 JavaScript가 완전히 필요한 상황이 있습니다. 그럴 땐 **render 함수**를 사용할 수 있습니다.
 
-Let's dive into an example where a `render()` function would be practical. Say we want to generate anchored headings:
+어디에서 `render()` 함수가 실용적일 수 있는지 예제를 봅시다. 우리는 Anchored Heading 을 만들고 싶다고 가정하세요.
 
 ```html
 <h1>
@@ -12,18 +12,16 @@ Let's dive into an example where a `render()` function would be practical. Say w
 </h1>
 ```
 
-Anchored headings are used very frequently, we should create a component:
+Anchored Heading 는 매우 자주 사용되므로, 컴포넌트를 만들어야 합니다.
 
 ```vue-html
 <anchored-heading :level="1">Hello world!</anchored-heading>
 ```
 
-The component must generate a heading based on the `level` prop, and we quickly arrive at this:
+`level` 이 컴포넌트는 level prop 기반으로 제목을 생성해야 합니다. 우리는 빠르게 이렇게 만들었습니다.
 
 ```js
-const { createApp } = Vue
-
-const app = createApp({})
+const app = Vue.createApp({})
 
 app.component('anchored-heading', {
   template: `
@@ -55,17 +53,17 @@ app.component('anchored-heading', {
 })
 ```
 
-This template doesn't feel great. It's not only verbose, but we're duplicating `<slot></slot>` for every heading level. And when we add the anchor element, we have to again duplicate it in every `v-if/v-else-if` branch.
+이 템플릿은 좋지 못합니다. 장황할 뿐만 아니라, 모든 heading level 에서 `<slot></slot>`을 중복으로 사용합니다. 그리고 Anchor 를 추가한다면, 우리는 또 다시 `v-if/v-else-if`를 모든 분기에 반복 해야합니다.
 
-While templates work great for most components, it's clear that this isn't one of them. So let's try rewriting it with a `render()` function:
+템플릿은 대부분의 컴포넌트에서 잘 작동하지만, 이것은 잘 작동하는 것이 아닙니다. `render()` 함수로 다시 작성해봅시다.
 
 ```js
-const { createApp, h } = Vue
-
-const app = createApp({})
+const app = Vue.createApp({})
 
 app.component('anchored-heading', {
   render() {
+    const { h } = Vue
+
     return h(
       'h' + this.level, // tag name
       {}, // props/attributes
@@ -81,11 +79,11 @@ app.component('anchored-heading', {
 })
 ```
 
-The `render()` function implementation is much simpler, but also requires greater familiarity with component instance properties. In this case, you have to know that when you pass children without a `v-slot` directive into a component, like the `Hello world!` inside of `anchored-heading`, those children are stored on the component instance at `$slots.default()`. If you haven't already, **it's recommended to read through the [instance properties API](../api/instance-properties.html) before diving into render functions.**
+`render()` 함수 구현은 훨씬 간단하지만 컴포넌트 인스턴트 프로퍼티에 대해 더 잘 알고 있어야 합니다. 이경우 `v-slot` 디렉티브가 없는 자식을 `anchored-heading` 내부에 `Hello world!`를  컴포넌트에 전달할 때 해당 자식은 `$slots.default()` 컴포넌트 인스턴트에 위치하는 것을 알아야 합니다. 잘모르 겠다면, **[instance properties API](../api/instance-properties.html) 를 render 함수를 살펴보기 전에 읽어 보는 것이 좋습니다.**
 
-## The DOM tree
+## DOM 트리
 
-Before we dive into render functions, it’s important to know a little about how browsers work. Take this HTML for example:
+렌더 기능에 대해 알아보기 전에, 조금은 브라우저가 어떻게 작동하는지 알아 보는 것이 중요합니다. 아래 HTML 예제를 봅시다.
 
 ```html
 <div>
@@ -95,43 +93,43 @@ Before we dive into render functions, it’s important to know a little about ho
 </div>
 ```
 
-When a browser reads this code, it builds a [tree of "DOM nodes"](https://javascript.info/dom-nodes) to help it keep track of everything.
+브라우저가 이 코드를 읽게 되면, 모든 내용을 추적하기 위해 ["DOM 노드" 트리](https://javascript.info/dom-nodes) 를 만듭니다.
 
-The tree of DOM nodes for the HTML above looks like this:
+위 HTML의 DOM 노드 트리는 아래와 같습니다.
 
 ![DOM Tree Visualization](/images/dom-tree.png)
 
-Every element is a node. Every piece of text is a node. Even comments are nodes! Each node can have children (i.e. each node can contain other nodes).
+모든 element는 하나의 node입니다. 모든 텍스트도 하나의 노드입니다. 심지어 주석도 노드입니다! 각 노드는 자식을 가질 수 있습니다. (즉, 각 노드는 다른 노드를 포함할 수 있습니다).
 
-Updating all these nodes efficiently can be difficult, but thankfully, we never have to do it manually. Instead, we tell Vue what HTML we want on the page, in a template:
+모든 노드를 효율적으로 갱신하는 것은 어려울 수 있으나, 다행히 우리는 수동으로 업데이트할 필요가 없습니다. 페이지에서 수정하고 싶은 HTML을 템플릿에 작성하면 Vue가 대신 해줍니다.
 
 ```html
 <h1>{{ blogTitle }}</h1>
 ```
 
-Or in a render function:
+또는 렌더 함수에서 아래와 같이 작성합니다.
 
 ```js
 render() {
-  return h('h1', {}, this.blogTitle)
+  return Vue.h('h1', {}, this.blogTitle)
 }
 ```
 
-And in both cases, Vue automatically keeps the page updated, even when `blogTitle` changes.
+두가지 경우 모두, Vue는 블로그Title이 바뀌면 자동으로 페이지를 갱신합니다.
 
-## The Virtual DOM tree
+## 가상 DOM 트리
 
-Vue keeps the page updated by building a **virtual DOM** to keep track of the changes it needs to make to the real DOM. Taking a closer look at this line:
+Vue는 실제 DOM에서의 변경사항을 추적하기 위해 **가상(Virtual) DOM**을 만들어 페이지를 갱신합니다. 이를 자세히 살펴보면 아래와 같습니다.
 
 ```js
-return h('h1', {}, this.blogTitle)
+return Vue.h('h1', {}, this.blogTitle)
 ```
 
-What is the `h()` function returning? It's not _exactly_ a real DOM element. It returns a plain object which contains information describing to Vue what kind of node it should render on the page, including descriptions of any child nodes. We call this node description a "virtual node", usually abbreviated to **VNode**. "Virtual DOM" is what we call the entire tree of VNodes, built by a tree of Vue components.
+`h()`함수가 반환하는것이 무엇일까요? DOM 같은 것을 반환하는 것으로 보이지만 *정확히*  실제의 DOM은 아닙니다. 여기에서 반환되는 객체는  모든 하위 노드의 설명을 포함하여, 페이지에 렌더링해야하는 노드의 정보를 Vue에 설명하는 정보를 가집니다. 우리는 이 노드 기술(Description)을 "가상노드(Virtual node)"라고 부르며, 약어로써 **VNode** 를 사용합니다. 가상 DOM"은 Vue 컴포넌트의 트리로 구축된 VNodes 전체트리를 말합니다.
 
-## `h()` Arguments
+## `h()` 전달인자
 
-The `h()` function is a utility to create VNodes. It could perhaps more accurately be named `createVNode()`, but it's called `h()` due to frequent use and for brevity. It accepts three arguments:
+`h()`는  VNode를 생성하는 유틸리티 함수입니다. 아마 더 정확한 이름은 `createVNode()` 이 맞겠지만, 아주 자주 사용되기 때문에 간결하게 하기 위해 `h()`  라고 이름 지었습니다.  이 함수는 3개의 인자를 받습니다.
 
 ```js
 // @returns {VNode}
@@ -166,16 +164,12 @@ h(
 )
 ```
 
-If there are no props then the children can usually be passed as the second argument. In cases where that would be ambiguous, `null` can be passed as the second argument to keep the children as the third argument.
+## 완전한 예제
 
-## Complete Example
-
-With this knowledge, we can now finish the component we started:
+이상의 지식을 바탕으로 우리 컴포넌트를 완전히 만들어 봅시다:
 
 ```js
-const { createApp, h } = Vue
-
-const app = createApp({})
+const app = Vue.createApp({})
 
 /** Recursively get text from children nodes */
 function getChildrenTextContent(children) {
@@ -198,8 +192,8 @@ app.component('anchored-heading', {
       .replace(/\W+/g, '-') // replace non-word characters with dash
       .replace(/(^-|-$)/g, '') // remove leading and trailing dashes
 
-    return h('h' + this.level, [
-      h(
+    return Vue.h('h' + this.level, [
+      Vue.h(
         'a',
         {
           name: headingId,
@@ -218,84 +212,39 @@ app.component('anchored-heading', {
 })
 ```
 
-## Constraints
+## 제약 사항
 
-### VNodes Must Be Unique
+### VNodes는 고유해야 합니다.
 
-All VNodes in the component tree must be unique. That means the following render function is invalid:
+컴포넌트 트리의 모든 VNode는 고유해야 합니다. 아래 예제는 다음 렌더 함수가 잘못된 경우입니다.
 
 ```js
 render() {
-  const myParagraphVNode = h('p', 'hi')
-  return h('div', [
+  const myParagraphVNode = Vue.h('p', 'hi')
+  return Vue.h('div', [
     // Yikes - duplicate VNodes!
     myParagraphVNode, myParagraphVNode
   ])
 }
 ```
 
-If you really want to duplicate the same element/component many times, you can do so with a factory function. For example, the following render function is a perfectly valid way of rendering 20 identical paragraphs:
+같은 엘리먼트/컴포넌트를 여러 번 만들려면 팩토리 함수를 사용해서 복제할 수 있습니다. 예를 들어, 다음의 렌더 함수는 20개의 동일한 p태그를 렌더링하는 완벽한 방법입니다.
 
 ```js
 render() {
-  return h('div',
-    Array.from({ length: 20 }).map(() => {
-      return h('p', 'hi')
+  return Vue.h('div',
+    Array.apply(null, { length: 20 }).map(() => {
+      return Vue.h('p', 'hi')
     })
   )
 }
 ```
 
-## Creating Component VNodes
+## Template기능을 일반 JavaScript로 변경하기
 
-To create a VNode for a component, the first argument passed to `h` should be the component itself:
+### `v-if` 와 `v-for`
 
-```js
-render() {
-  return h(ButtonCounter)
-}
-```
-
-If we need to resolve a component by name then we can call `resolveComponent`:
-
-```js
-const { h, resolveComponent } = Vue
-
-// ...
-
-render() {
-  const ButtonCounter = resolveComponent('ButtonCounter')
-  return h(ButtonCounter)
-}
-```
-
-`resolveComponent` is the same function that templates use internally to resolve components by name.
-
-A `render` function will normally only need to use `resolveComponent` for components that are [registered globally](/guide/component-registration.html#global-registration). [Local component registration](/guide/component-registration.html#local-registration) can usually be skipped altogether. Consider the following example:
-
-```js
-// We can simplify this
-components: {
-  ButtonCounter
-},
-render() {
-  return h(resolveComponent('ButtonCounter'))
-}
-```
-
-Rather than registering a component by name and then looking it up we can use it directly instead:
-
-```js
-render() {
-  return h(ButtonCounter)
-}
-```
-
-## Replacing Template Features with Plain JavaScript
-
-### `v-if` and `v-for`
-
-Wherever something can be easily accomplished in plain JavaScript, Vue render functions do not provide a proprietary alternative. For example, in a template using `v-if` and `v-for`:
+if든, for든 자바스크립트에서 쉽게 해낼수 있는 것이기 때문에 vue 렌더 함수가 별다른것을 제공하지는 않습니다. `v-if`와  `v-for`를 사용하는 템플릿을 예로 들어보겠습니다:
 
 ```html
 <ul v-if="items.length">
@@ -304,32 +253,29 @@ Wherever something can be easily accomplished in plain JavaScript, Vue render fu
 <p v-else>No items found.</p>
 ```
 
-This could be rewritten with JavaScript's `if`/`else` and `map()` in a render function:
+위 내용을 JS의 `if`/`else`과 `map()`를 사용하는 렌더 함수로 만들어 보겠습니다:
 
 ```js
 props: ['items'],
 render() {
   if (this.items.length) {
-    return h('ul', this.items.map((item) => {
-      return h('li', item.name)
+    return Vue.h('ul', this.items.map((item) => {
+      return Vue.h('li', item.name)
     }))
   } else {
-    return h('p', 'No items found.')
+    return Vue.h('p', 'No items found.')
   }
 }
 ```
 
-In a template it can be useful to use a `<template>` tag to hold a `v-if` or `v-for` directive. When migrating to a `render` function, the `<template>` tag is no longer required and can be discarded.
-
 ### `v-model`
 
-The `v-model` directive is expanded to `modelValue` and `onUpdate:modelValue` props during template compilation—we will have to provide these props ourselves:
+`v-model` 디렉티브는 `modelValue`로 확장되고, 템플릿 컴파일 과정에 필요한  `onUpdate:modelValue` props는 우리가 직접 제공해주어야 합니다.
 
 ```js
 props: ['modelValue'],
-emits: ['update:modelValue'],
 render() {
-  return h(SomeComponent, {
+  return Vue.h(SomeComponent, {
     modelValue: this.modelValue,
     'onUpdate:modelValue': value => this.$emit('update:modelValue', value)
   })
@@ -338,47 +284,47 @@ render() {
 
 ### `v-on`
 
-We have to provide a proper prop name for the event handler, e.g., to handle `click` events, the prop name would be `onClick`.
+이벤트 핸들러를 위해 적절한 prop 이름을  주어야 합니다. 예. `click` 이벤트를 처리하기 위해서는 `onClick`을 prop 명으로 사용해야 합니다.
 
 ```js
 render() {
-  return h('div', {
+  return Vue.h('div', {
     onClick: $event => console.log('clicked', $event.target)
   })
 }
 ```
 
-#### Event Modifiers
+#### 이벤트 수식어
 
-For the `.passive`, `.capture`, and `.once` event modifiers, they can be concatenated after the event name using camel case.
+`.passive`, `.capture`와 `.once`  이벤트 수식어의 경우, 카멜케이스(camelCase)를 사용하여 이벤트명 뒤에 연결할 수 있습니다.
 
-For example:
+예시:
 
 ```javascript
 render() {
-  return h('input', {
+  return Vue.h('input', {
     onClickCapture: this.doThisInCapturingMode,
     onKeyupOnce: this.doThisOnce,
-    onMouseoverOnceCapture: this.doThisOnceInCapturingMode
+    onMouseoverOnceCapture: this.doThisOnceInCapturingMode,
   })
 }
 ```
 
-For all other event and key modifiers, no special API is necessary, because we can use event methods in the handler:
+모든 이벤트와 키 수식어를 처리하기 위한 별도의 API가 필요하지 않습니다. 그저 이벤트 처리를 위한 메소드를 사용하시면 됩니다.
 
-| Modifier(s)                                           | Equivalent in Handler                                                                                                |
-| ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `.stop`                                               | `event.stopPropagation()`                                                                                            |
-| `.prevent`                                            | `event.preventDefault()`                                                                                             |
-| `.self`                                               | `if (event.target !== event.currentTarget) return`                                                                   |
-| Keys:<br>`.enter`, `.13`                              | `if (event.keyCode !== 13) return` (change `13` to [another key code](http://keycode.info/) for other key modifiers) |
-| Modifiers Keys:<br>`.ctrl`, `.alt`, `.shift`, `.meta` | `if (!event.ctrlKey) return` (change `ctrlKey` to `altKey`, `shiftKey`, or `metaKey`, respectively)                  |
+수식어 | 핸들러와 동일
+--- | ---
+`.stop` | `event.stopPropagation()`
+`.prevent` | `event.preventDefault()`
+`.self` | `if (event.target !== event.currentTarget) return`
+Keys:<br>`.enter`, `.13` | `if (event.keyCode !== 13) return` (다른 키 수정자를 위해 <br> `13`을 [또 다른 키 코드](http://keycode.info/)로 변경하십시오.)
+Modifiers Keys:<br>`.ctrl`, `.alt`, `.shift`, `.meta` | `if (!event.ctrlKey) return` (`ctrlKey`를 각각 `altKey`, `shiftKey`, 또는 `metaKey`로 변경합니다.)
 
-Here's an example with all of these modifiers used together:
+다음은 이러한 모든 수식어를 함께 사용하는 예입니다:
 
 ```js
 render() {
-  return h('input', {
+  return Vue.h('input', {
     onKeyUp: event => {
       // Abort if the element emitting the event is not
       // the element the event is bound to
@@ -399,12 +345,12 @@ render() {
 
 ### Slots
 
-We can access slot contents as arrays of VNodes from [`this.$slots`](../api/instance-properties.html#slots):
+You can access slot contents as Arrays of VNodes from [`this.$slots`](../api/instance-properties.html#slots):
 
 ```js
 render() {
   // `<div><slot></slot></div>`
-  return h('div', this.$slots.default())
+  return Vue.h('div', {}, this.$slots.default())
 }
 ```
 
@@ -412,147 +358,48 @@ render() {
 props: ['message'],
 render() {
   // `<div><slot :text="message"></slot></div>`
-  return h('div', this.$slots.default({
+  return Vue.h('div', {}, this.$slots.default({
     text: this.message
   }))
 }
 ```
 
-For component VNodes, we need to pass the children to `h` as an object rather than an array. Each property is used to populate the slot of the same name:
+렌더 함수를 사용해서 슬롯을 하위 컴포넌트로 전달하려면
 
 ```js
 render() {
   // `<div><child v-slot="props"><span>{{ props.text }}</span></child></div>`
-  return h('div', [
-    h(
-      resolveComponent('child'),
-      null,
+  return Vue.h('div', [
+    Vue.h('child', {}, {
       // pass `slots` as the children object
       // in the form of { name: props => VNode | Array<VNode> }
-      {
-        default: (props) => h('span', props.text)
-      }
-    )
+      default: (props) => Vue.h('span', props.text)
+    })
   ])
 }
 ```
 
-The slots are passed as functions, allowing the child component to control the creation of each slot's contents. Any reactive data should be accessed within the slot function to ensure that it's registered as a dependency of the child component and not the parent. Conversely, calls to `resolveComponent` should be made outside the slot function, otherwise they'll resolve relative to the wrong component:
-
-```js
-// `<MyButton><MyIcon :name="icon" />{{ text }}</MyButton>`
-render() {
-  // Calls to resolveComponent should be outside the slot function
-  const Button = resolveComponent('MyButton')
-  const Icon = resolveComponent('MyIcon')
-
-  return h(
-    Button,
-    null,
-    {
-      // Use an arrow function to preserve the `this` value
-      default: (props) => {
-        // Reactive properties should be read inside the slot function
-        // so that they become dependencies of the child's rendering
-        return [
-          h(Icon, { name: this.icon }),
-          this.text
-        ]
-      }
-    }
-  )
-}
-```
-
-If a component receives slots from its parent, they can be passed on directly to a child component:
-
-```js
-render() {
-  return h(Panel, null, this.$slots)
-}
-```
-
-They can also be passed individually or wrapped as appropriate:
-
-```js
-render() {
-  return h(
-    Panel,
-    null,
-    {
-      // If we want to pass on a slot function we can
-      header: this.$slots.header,
-
-      // If we need to manipulate the slot in some way
-      // then we need to wrap it in a new function
-      default: (props) => {
-        const children = this.$slots.default ? this.$slots.default(props) : []
-
-        return children.concat(h('div', 'Extra child'))
-      }
-    }
-  )
-}
-```
-
-### `<component>` and `is`
-
-Behind the scenes, templates use `resolveDynamicComponent` to implement the `is` attribute. We can use the same function if we need all the flexibility provided by `is` in our `render` function:
-
-```js
-const { h, resolveDynamicComponent } = Vue
-
-// ...
-
-// `<component :is="name"></component>`
-render() {
-  const Component = resolveDynamicComponent(this.name)
-  return h(Component)
-}
-```
-
-Just like `is`, `resolveDynamicComponent` supports passing a component name, an HTML element name, or a component options object.
-
-However, that level of flexibility is usually not required. It's often possible to replace `resolveDynamicComponent` with a more direct alternative.
-
-For example, if we only need to support component names then `resolveComponent` can be used instead.
-
-If the VNode is always an HTML element then we can pass its name directly to `h`:
-
-```js
-// `<component :is="bold ? 'strong' : 'em'"></component>`
-render() {
-  return h(this.bold ? 'strong' : 'em')
-}
-```
-
-Similarly, if the value passed to `is` is a component options object then there's no need to resolve anything, it can be passed directly as the first argument of `h`.
-
-Much like a `<template>` tag, a `<component>` tag is only required in templates as a syntactical placeholder and should be discarded when migrating to a `render` function.
-
 ## JSX
 
-If we're writing a lot of `render` functions, it might feel painful to write something like this:
+`render` 함수 안에서 많은 코드를 작성해야 한다면 좀 고통스러울수 있습니다.
 
 ```js
-h(
-  resolveComponent('anchored-heading'),
+Vue.h(
+  Vue.resolveComponent('anchored-heading'),
   {
     level: 1
   },
-  {
-    default: () => [h('span', 'Hello'), ' world!']
-  }
+  [Vue.h('span', 'Hello'), ' world!']
 )
 ```
 
-Especially when the template version is so concise in comparison:
+특히, 템플릿으로 이 기능을 만들었을때 너무 간결해서 비교가 심하게 되면 더더욱 그럴겁니다.
 
 ```vue-html
 <anchored-heading :level="1"> <span>Hello</span> world! </anchored-heading>
 ```
 
-That's why there's a [Babel plugin](https://github.com/vuejs/jsx-next) to use JSX with Vue, getting us back to a syntax that's closer to templates:
+바로 이런 경우를 위해 JSX를 뷰와 함게 사용하기 위해 [Babel plugin](https://github.com/vuejs/jsx-next) 를 적용해서, 좀더 템플릿 코드와 비슷하게 만들수 있게됩니다.
 
 ```jsx
 import AnchoredHeading from './AnchoredHeading.vue'
@@ -570,10 +417,11 @@ const app = createApp({
 app.mount('#demo')
 ```
 
-For more on how JSX maps to JavaScript, see the [usage docs](https://github.com/vuejs/jsx-next#installation).
+JSX가 JavaScript에 매핑하는 방법에 대한 자세한 내용은 [사용 문서](https://github.com/vuejs/jsx-next#installation) 를 참조하십시오.
 
-## Template Compilation
+## 템플릿 컴파일
 
-You may be interested to know that Vue's templates actually compile to render functions. This is an implementation detail you usually don't need to know about, but if you'd like to see how specific template features are compiled, you may find it interesting. Below is a little demo using `Vue.compile` to live-compile a template string:
+Vue의 템플릿이 실제로 render 함수로 컴파일 되는지 알고 싶을 것입니다. 이는 일반적으로 알 필요가 없는 내부 구현 사항이지만, 특정 템플릿 기능이 어떻게 컴파일 되는지 알고 싶다면, 흥미로울 수 있습니다. 다음은 `Vue.compile` 을 사용하여 템플릿 문자열을 라이브 컴파일하는 데모입니다.
 
-<iframe src="https://vue-next-template-explorer.netlify.app/" width="100%" height="420"></iframe>
+
+<iframe src="https://vue-next-template-explorer.netlify.app/" width="100%" height="420"></iframe> 

@@ -1,468 +1,475 @@
-# Directives
+# 디렉티브(Directives)
 
 ## v-text
 
-- **Expects:** `string`
+- **요구값:** `string`
 
-- **Details:**
+- **설명:**
 
-  Updates the element's [textContent](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent). If you need to update the part of `textContent`, you should use [mustache interpolations](/guide/template-syntax.html#text) instead
+    엘리먼트의 [textContent](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) 를 업데이트합니다. `textContent` 의 일부를 업데이트해야하는 경우 [머스태시 보간법(mustache interpolations)](/ko-KR/guide/template-syntax.html#text)을 사용해야합니다.
 
-- **Example:**
+- **예시:**
 
-  ```html
-  <span v-text="msg"></span>
-  <!-- same as -->
-  <span>{{msg}}</span>
-  ```
+    ```html
+    <span v-text="msg"></span>
+    <!-- 같은 방법 -->
+    <span>{{msg}}</span>
+    ```
 
-- **See also:** [Data Binding Syntax - Interpolations](../guide/template-syntax.html#text)
+- [데이터 바인딩 구문(Data Binding Syntax) - 보간법(Interpolations)](../guide/template-syntax.html#text)
 
 ## v-html
 
-- **Expects:** `string`
+- **요구값:** `string`
 
-- **Details:**
+- **설명:**
 
-  Updates the element's [innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML). **Note that the contents are inserted as plain HTML - they will not be compiled as Vue templates**. If you find yourself trying to compose templates using `v-html`, try to rethink the solution by using components instead.
+    요소의 [innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) 을 업데이트 합니다. **컨텐츠는 일반 HTML 로 삽입됩니다 - Vue 템플릿으로 컴파일 되지 않습니다.** `v-html` 을 사용하여 템플릿을 작성하려는 경우에, 컴포넌트를 사용하는 해결법으로 다시 생각해보세요.
 
-  ::: warning
-  Dynamically rendering arbitrary HTML on your website can be very dangerous because it can easily lead to [XSS attacks](https://en.wikipedia.org/wiki/Cross-site_scripting). Only use `v-html` on trusted content and **never** on user-provided content.
-  :::
+::: warning 
+웹 사이트에서 임의의 HTML 을 동적으로 렌더링 하면 [XSS 공격](https://en.wikipedia.org/wiki/Cross-site_scripting) 을 쉽게 발생시킬 수 있으므로 매우 위험합니다. 신뢰할 수 있는 컨텐츠에는 `v-html` 을 사용하고 사용자가 제공한 컨텐츠에는 **절대로 사용하지 마세요.** 
+:::
 
-  In [single-file components](../guide/single-file-component.html), `scoped` styles will not apply to content inside `v-html`, because that HTML is not processed by Vue's template compiler. If you want to target `v-html` content with scoped CSS, you can instead use [CSS modules](https://vue-loader.vuejs.org/en/features/css-modules.html) or an additional, global `<style>` element with a manual scoping strategy such as BEM.
+    [싱글파일컴포넌트(SFC)](../guide/single-file-component.html) 에서, `scoped` 스타일은 `v-html` 내부의 컨텐츠에 적용되지 않습니다. 해당 HTML 은 Vue 의 템플릿 컴파일러에서 처리되지 않기 때문입니다. scoped CSS 를 사용하여 `v-html` 컨테츠를 대상으로 지정하려면, [CSS modeuls](https://vue-loader.vuejs.org/en/features/css-modules.html) 또는 BEM 과 같은 수동 범위 지정 전략과 함께 추가 글로벌 `<style>` 요소를 사용해야 합니다.
 
-- **Example:**
+- **예시:**
 
-  ```html
-  <div v-html="html"></div>
-  ```
+    ```html
+    <div v-html="html"></div>
+    ```
 
-- **See also:** [Data Binding Syntax - Interpolations](../guide/template-syntax.html#raw-html)
+- [데이터 바인딩 구문(Data Binding Syntax) - 보간법(Interpolations)](../guide/template-syntax.html#raw-html)
 
 ## v-show
 
-- **Expects:** `any`
+- **요구값:** `any`
 
-- **Usage:**
+- **사용방법:**
 
-  Toggles the element's `display` CSS property based on the truthy-ness of the expression value.
+    표현식 값의 참-거짓을 기반으로 엘리먼트의 `display` CSS 속성을 전환합니다.
 
-  This directive triggers transitions when its condition changes.
+    이 디렉티브는 조건이 변경 될 때 transition 을 전환합니다.
 
-- **See also:** [Conditional Rendering - v-show](../guide/conditional.html#v-show)
+- [조건부 렌더링(Conditional Rendering) - v-show](../guide/conditional.html#v-show)
 
 ## v-if
 
-- **Expects:** `any`
+- **요구값:** `any`
 
-- **Usage:**
+- **사용방법:**
 
-  Conditionally render the element based on the truthy-ness of the expression value. The element and its contained directives / components are destroyed and re-constructed during toggles. If the element is a `<template>` element, its content will be extracted as the conditional block.
+    표현식 값의 참-거짓에 따라 엘리먼트를 조건부로 렌더링 합니다. 엘리먼트와 포함된 디렉티브 / 컴포넌트는 전환하는 동안 파괴되고 재구성 됩니다. 엘리먼트가 `<template>` 엘리먼트인 경우 해당 컨텐츠가 조건부 블록으로 추출됩니다.
 
-  This directive triggers transitions when its condition changes.
+    이 디렉티브는 조건이 변경 될 때 transition 을 전환합니다.
 
-  When used together, `v-if` has a higher priority than `v-for`. We don't recommend using these two directives together on one element — see the [list rendering guide](../guide/list.html#v-for-with-v-if) for details.
+    `v-if` 와 함께 사용할 경우 `v-for`의 우선 순위가 v-if 보다 높습니다. 자세한 내용은 [list rendering guide](../guide/list.html#v-for-with-v-if) 를 참고해주세요.
 
-- **See also:** [Conditional Rendering - v-if](../guide/conditional.html#v-if)
+- [조건부 렌더링(Conditional Rendering) - v-if](../guide/conditional.html#v-if)
 
 ## v-else
 
-- **Does not expect expression**
+- **표현식을 요구하지 않습니다.**
 
-- **Restriction:** previous sibling element must have `v-if` or `v-else-if`.
+- **제약조건:** 이전 형제 엘리먼트에는 `v-if` 또는 `v-else-if` 가 있어야 합니다.
 
-- **Usage:**
+- **사용방법:**
 
-  Denote the "else block" for `v-if` or a `v-if`/`v-else-if` chain.
+    `v-if` 또는 `v-if` / `v-else-if` 체인의 "else block"을 나타냅니다.
 
-  ```html
-  <div v-if="Math.random() > 0.5">
-    Now you see me
-  </div>
-  <div v-else>
-    Now you don't
-  </div>
-  ```
+    ```html
+    <div v-if="Math.random() > 0.5">
+      Now you see me
+    </div>
+    <div v-else>
+      Now you don't
+    </div>
+    ```
 
-- **See also:** [Conditional Rendering - v-else](../guide/conditional.html#v-else)
+- [조건부 렌더링(Conditional Rendering) - v-else](../guide/conditional.html#v-else)
 
 ## v-else-if
 
-- **Expects:** `any`
+- **요구값:** `any`
 
-- **Restriction:** previous sibling element must have `v-if` or `v-else-if`.
+- **제약조건:** 이전 형제 엘리먼트에는 `v-if` 또는 `v-else-if` 가 있어야 합니다.
 
-- **Usage:**
+- **사용방법:**
 
-  Denote the "else if block" for `v-if`. Can be chained.
+    `v-if` 의 "else if block"을 나타냅니다. 연결될 수 있습니다.
 
-  ```html
-  <div v-if="type === 'A'">
-    A
-  </div>
-  <div v-else-if="type === 'B'">
-    B
-  </div>
-  <div v-else-if="type === 'C'">
-    C
-  </div>
-  <div v-else>
-    Not A/B/C
-  </div>
-  ```
+    ```html
+    <div v-if="type === 'A'">
+      A
+    </div>
+    <div v-else-if="type === 'B'">
+      B
+    </div>
+    <div v-else-if="type === 'C'">
+      C
+    </div>
+    <div v-else>
+      Not A/B/C
+    </div>
+    ```
 
-- **See also:** [Conditional Rendering - v-else-if](../guide/conditional.html#v-else-if)
+- [조건부 렌더링(Conditional Rendering) - v-else-if](../guide/conditional.html#v-else-if)
 
 ## v-for
 
-- **Expects:** `Array | Object | number | string | Iterable`
+- **요구값:** `Array | Object | number | string | Iterable`
 
-- **Usage:**
+- **사용방법:**
 
-  Render the element or template block multiple times based on the source data. The directive's value must use the special syntax `alias in expression` to provide an alias for the current element being iterated on:
+    원본 데이터를 기준으로 엘리먼트 또는 템플릿 블록을 여러번 렌더링 합니다. 디렉티브의 값은 반복되는 현재 엘리먼트의 별칭을 제공하기 위해 특수 구문인 `alias in expression` 을 사용해야 합니다.
 
-  ```html
-  <div v-for="item in items">
-    {{ item.text }}
-  </div>
-  ```
+    ```html
+    <div v-for="item in items">
+      {{ item.text }}
+    </div>
+    ```
 
-  Alternatively, you can also specify an alias for the index (or the key if used on an Object):
+    또는, 인덱스의 별칭 (또는 객체에서 사용되는 경우 키)을 지정할 수도 있습니다:
 
-  ```html
-  <div v-for="(item, index) in items"></div>
-  <div v-for="(value, key) in object"></div>
-  <div v-for="(value, name, index) in object"></div>
-  ```
+    ```html
+    <div v-for="(item, index) in items"></div>
+    <div v-for="(value, key) in object"></div>
+    <div v-for="(value, name, index) in object"></div>
+    ```
 
-  The default behavior of `v-for` will try to patch the elements in-place without moving them. To force it to reorder elements, you should provide an ordering hint with the `key` special attribute:
+    `v-for` 의 기본동작은 엘리먼트를 이동하지 않고 인플레이스(in-place) 패치를 시도합니다. 엘리먼트를 강제로 재정렬하면, `key` 특수 속성과 함께 정렬힌트를 제공해야 합니다.
 
-  ```html
-  <div v-for="item in items" :key="item.id">
-    {{ item.text }}
-  </div>
-  ```
+    ```html
+    <div v-for="item in items" :key="item.id">
+      {{ item.text }}
+    </div>
+    ```
 
-  `v-for` can also work on values that implement the [Iterable Protocol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#The_iterable_protocol), including native `Map` and `Set`.
+    `v-for` 는 기본 `Map` 및 `Set` 을 포함하여 [반복 가능한 프로토콜(Iterable Protocol)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#The_iterable_protocol)을 구현하는 값에서도 동작이 가능합니다.
 
-  The detailed usage for `v-for` is explained in the guide section linked below.
+    `v-for` 의 자세한 사용법은 아래 링크 된 가이드 섹션에 설명되어 있습니다.
 
-- **See also:**
-  - [List Rendering](../guide/list.html)
+- **참고:**
+
+    - [리스트 렌더링(List Rendering)](../guide/list.html)
 
 ## v-on
 
-- **Shorthand:** `@`
+- **약칭:** `@`
 
-- **Expects:** `Function | Inline Statement | Object`
+- **요구값:** `Function | Inline Statement | Object`
 
-- **Argument:** `event`
+- **전달인자:** `event`
 
-- **Modifiers:**
+- **수식어:**
 
-  - `.stop` - call `event.stopPropagation()`.
-  - `.prevent` - call `event.preventDefault()`.
-  - `.capture` - add event listener in capture mode.
-  - `.self` - only trigger handler if event was dispatched from this element.
-  - `.{keyAlias}` - only trigger handler on certain keys.
-  - `.once` - trigger handler at most once.
-  - `.left` - only trigger handler for left button mouse events.
-  - `.right` - only trigger handler for right button mouse events.
-  - `.middle` - only trigger handler for middle button mouse events.
-  - `.passive` - attaches a DOM event with `{ passive: true }`.
+    - `.stop` - `event.stopPropagation()` 메서드를 호출.
+    - `.prevent` - `event.preventDefault()` 메서드를 호출.
+    - `.capture` - 이벤트 리스너에 캡쳐모드를 추가.
+    - `.self` - 해당 엘리먼트에서 이벤트가 전달된 경우에만 동작.
+    - `.{keyAlias}` - 특정 키에 대해서만 동작.
+    - `.once` - 한번만 핸들러가 동작.
+    - `.left` - 마우스 왼쪽 버튼 이벤트에만 핸들러 동작.
+    - `.right` - 마우스 오른쪽 버튼 이벤트에만 핸들러 동작.
+    - `.middle` - 마우스 가운데 버튼 이벤트에만 핸들러 동작.
+    - `.passive` - `{ passive: true }` 속성을 DOM 이벤트에 추가.
 
-- **Usage:**
+- **사용방법:**
 
-  Attaches an event listener to the element. The event type is denoted by the argument. The expression can be a method name, an inline statement, or omitted if there are modifiers present.
+    엘리먼트에 이벤트 리스너를 연결합니다. 이벤트 유형은 인자로 표시됩니다. 표현식은 메서드명, 인라인 구문이거나 수식어가있는 경우 생략 될 수 있습니다.
 
-  When used on a normal element, it listens to [**native DOM events**](https://developer.mozilla.org/en-US/docs/Web/Events) only. When used on a custom element component, it listens to **custom events** emitted on that child component.
+    일반 엘리먼트에서 사용되는 경우 [**native DOM events**](https://developer.mozilla.org/en-US/docs/Web/Events) 만 수신합니다. 커스텀 엘리먼트 컴포넌트에서  사용되는 경우 해당 자식 컴포넌트에서 내보낸 **custom events** 를 수신합니다.
 
-  When listening to native DOM events, the method receives the native event as the only argument. If using inline statement, the statement has access to the special `$event` property: `v-on:click="handle('ok', $event)"`.
+    네이티브 DOM 이벤트를 수신 할 때, 메서드는 유일한 인자로 네이티브 이벤트를 받습니다. 인라인 구문을 사용하는 경우, 구문은 특별한 `$event` 속성인 `v-on:click="handle('ok', $event)"` 에 접근 할 수 있습니다.
 
-  `v-on` also supports binding to an object of event/listener pairs without an argument. Note when using the object syntax, it does not support any modifiers.
+    `v-on` 은 인자없이 이벤트/리스너 쌍의 객체에 대한 바인딩도 지원합니다. 오브젝트 구문을 사용할 때 수식어를 지원하지 않습니다.
 
-- **Example:**
+- **예시:**
 
-  ```html
-  <!-- method handler -->
-  <button v-on:click="doThis"></button>
+    ```html
+    <!-- 메서드 핸들러 -->
+    <button v-on:click="doThis"></button>
 
-  <!-- dynamic event -->
-  <button v-on:[event]="doThis"></button>
+    <!-- 동적 이벤트 -->
+    <button v-on:[event]="doThis"></button>
 
-  <!-- inline statement -->
-  <button v-on:click="doThat('hello', $event)"></button>
+    <!-- 인라인 구문 -->
+    <button v-on:click="doThat('hello', $event)"></button>
 
-  <!-- shorthand -->
-  <button @click="doThis"></button>
+    <!-- 약칭 -->
+    <button @click="doThis"></button>
 
-  <!-- shorthand dynamic event -->
-  <button @[event]="doThis"></button>
+    <!-- 약칭 동적 이벤트 (2.6.0+) -->
+    <button @[event]="doThis"></button>
 
-  <!-- stop propagation -->
-  <button @click.stop="doThis"></button>
+    <!-- 전파 중지(stop propagation) -->
+    <button @click.stop="doThis"></button>
 
-  <!-- prevent default -->
-  <button @click.prevent="doThis"></button>
+    <!-- 전파 방지(prevent default) -->
+    <button @click.prevent="doThis"></button>
 
-  <!-- prevent default without expression -->
-  <form @submit.prevent></form>
+    <!-- 표현식이 없는 전파 방지 -->
+    <form @submit.prevent></form>
 
-  <!-- chain modifiers -->
-  <button @click.stop.prevent="doThis"></button>
+    <!-- 체이닝 수식어 -->
+    <button @click.stop.prevent="doThis"></button>
 
-  <!-- key modifier using keyAlias -->
-  <input @keyup.enter="onEnter" />
+    <!-- 키 수식어(키 별칭) -->
+    <input @keyup.enter="onEnter" />
 
-  <!-- the click event will be triggered at most once -->
-  <button v-on:click.once="doThis"></button>
+    <!-- 클릭 이벤트는 단 한번 동작 -->
+    <button v-on:click.once="doThis"></button>
 
-  <!-- object syntax -->
-  <button v-on="{ mousedown: doThis, mouseup: doThat }"></button>
-  ```
+    <!-- 오브젝트 구문 -->
+    <button v-on="{ mousedown: doThis, mouseup: doThat }"></button>
+    ```
 
-  Listening to custom events on a child component (the handler is called when "my-event" is emitted on the child):
+    자식 컴포넌트에서 커스텀 이벤트 수신 ( "my-event"가 자식 컴포넌트에서 내보낼 때 핸들러가 호출됨):
 
-  ```html
-  <my-component @my-event="handleThis"></my-component>
+    ```html
+    <my-component @my-event="handleThis"></my-component>
 
-  <!-- inline statement -->
-  <my-component @my-event="handleThis(123, $event)"></my-component>
-  ```
+    <!-- 인라인 구문 -->
+    <my-component @my-event="handleThis(123, $event)"></my-component>
+    ```
 
-- **See also:**
-  - [Event Handling](../guide/events.html)
-  - [Components - Custom Events](../guide/component-basics.html#listening-to-child-components-events)
+- **참고:**
+
+    - [이벤트 핸들링(Event Handling)](../guide/events.html)
+    - [컴포넌트(Components) - 커스텀 이벤트(Custom Events)](../guide/component-basics.html#listening-to-child-components-events)
 
 ## v-bind
 
-- **Shorthand:** `:`
+- **약칭:** `:`
 
-- **Expects:** `any (with argument) | Object (without argument)`
+- **요구값:** `any (with argument) | Object (without argument)`
 
-- **Argument:** `attrOrProp (optional)`
+- **전달인자:** `attrOrProp (optional)`
 
-- **Modifiers:**
+- **수식어:**
 
-  - `.camel` - transform the kebab-case attribute name into camelCase.
+    - `.camel` - 케밥 케이스(kebab-case) 속성 이름을 카멜 케이스(camelCase) 로 변환.
 
-- **Usage:**
+- **사용방법:**
 
-  Dynamically bind one or more attributes, or a component prop to an expression.
+    하나 이상의 속성 또는 컴포넌트 prop을 표현식에 동적으로 바인딩합니다.
 
-  When used to bind the `class` or `style` attribute, it supports additional value types such as Array or Objects. See linked guide section below for more details.
+    `class` 또는 `style` 속성을 바인딩하는 데 사용되는 경우 Array 또는 Objects 와 같은 추가 값 유형을 지원합니다. 자세한 내용은 아래 링크된 가이드 섹션을 참조하세요.
 
-  When used for prop binding, the prop must be properly declared in the child component.
+    prop 바인딩에 사용되는 경우 prop 은 자식 컴포넌트에서 올바르게 선언 되어야합니다.
 
-  When used without an argument, can be used to bind an object containing attribute name-value pairs. Note in this mode `class` and `style` does not support Array or Objects.
+    인자없이 사용하면 속성 이름-값 쌍을 포함하는 객체를 바인딩하는 데 사용할 수 있습니다. 이 모드에서는 `class` 및 `style` 이 배열 또는 객체를 지원하지 않습니다.
 
-- **Example:**
+- **예시:**
 
-  ```html
-  <!-- bind an attribute -->
-  <img v-bind:src="imageSrc" />
+    ```html
+    <!-- 속성 바인드 -->
+    <img v-bind:src="imageSrc" />
 
-  <!-- dynamic attribute name -->
-  <button v-bind:[key]="value"></button>
+    <!-- 동적 속성 이름 -->
+    <button v-bind:[key]="value"></button>
 
-  <!-- shorthand -->
-  <img :src="imageSrc" />
+    <!-- 약어 -->
+    <img :src="imageSrc" />
 
-  <!-- shorthand dynamic attribute name -->
-  <button :[key]="value"></button>
+    <!-- 약어를 적용한 동적 속성 이름 -->
+    <button :[key]="value"></button>
 
-  <!-- with inline string concatenation -->
-  <img :src="'/path/to/images/' + fileName" />
+    <!-- 인라인 문자열 연결 -->
+    <img :src="'/path/to/images/' + fileName" />
 
-  <!-- class binding -->
-  <div :class="{ red: isRed }"></div>
-  <div :class="[classA, classB]"></div>
-  <div :class="[classA, { classB: isB, classC: isC }]">
-    <!-- style binding -->
+    <!-- CSS 클래스 바인딩 -->
+    <div :class="{ red: isRed }"></div>
+    <div :class="[classA, classB]"></div>
+    <div :class="[classA, { classB: isB, classC: isC }]">
+
+    <!-- CSS 스타일 바인딩 -->
     <div :style="{ fontSize: size + 'px' }"></div>
     <div :style="[styleObjectA, styleObjectB]"></div>
 
-    <!-- binding an object of attributes -->
+    <!-- 속성 객체 바인딩 -->
     <div v-bind="{ id: someProp, 'other-attr': otherProp }"></div>
 
-    <!-- prop binding. "prop" must be declared in my-component. -->
+    <!-- prop 바인딩. "prop" 은 my-component 에서 선언되어야 합니다. -->
     <my-component :prop="someThing"></my-component>
 
-    <!-- pass down parent props in common with a child component -->
+    <!-- 자식 컴포넌트와 공통으로 부모 props 전달 -->
     <child-component v-bind="$props"></child-component>
 
     <!-- XLink -->
     <svg><a :xlink:special="foo"></a></svg>
-  </div>
-  ```
+    </div>
+    ```
 
-  The `.camel` modifier allows camelizing a `v-bind` attribute name when using in-DOM templates, e.g. the SVG `viewBox` attribute:
+    `.camel` 수식어를 사용하면 내부 DOM 템플릿을 사용할 때 `v-bind` 속성 이름을 camelizing 할 수 있습니다.(예: SVG `viewBox` 속성)
 
-  ```html
-  <svg :view-box.camel="viewBox"></svg>
-  ```
+    ```html
+    <svg :view-box.camel="viewBox"></svg>
+    ```
 
-  `.camel` is not needed if you are using string templates, or compiling with `vue-loader`/`vueify`.
+    문자열 템플릿을 사용하거나 `vue-loader`/`vueify` 로 컴파일하는 경우 `.camel` 이 필요하지 않습니다.
 
-- **See also:**
-  - [Class and Style Bindings](../guide/class-and-style.html)
-  - [Components - Props](../guide/component-basics.html#passing-data-to-child-components-with-props)
+- **참고:**
+
+    - [클래스와 스타일 바인딩(Class and Style Binding)](../guide/class-and-style.html)
+    - [컴포넌트(Components) - Props](../guide/component-basics.html#passing-data-to-child-components-with-props)
 
 ## v-model
 
-- **Expects:** varies based on value of form inputs element or output of components
+- **요구값:** 폼 입력 엘리먼트의 값 또는 컴포넌트의 출력에 따라 다릅니다.
 
-- **Limited to:**
+- **제약조건:**
 
-  - `<input>`
-  - `<select>`
-  - `<textarea>`
-  - components
+    - `<input>`
+    - `<select>`
+    - `<textarea>`
+    - components
 
-- **Modifiers:**
+- **수식어:**
 
-  - [`.lazy`](../guide/forms.html#lazy) - listen to `change` events instead of `input`
-  - [`.number`](../guide/forms.html#number) - cast valid input string to numbers
-  - [`.trim`](../guide/forms.html#trim) - trim input
+    - [`.lazy`](../guide/forms.html#lazy) - `input` 대신에 `change` 이벤트를 수신
+    - [`.number`](../guide/forms.html#number) - 유효한 입력 문자열을 숫자로 캐스팅
+    - [`.trim`](../guide/forms.html#trim) - 입력값을 트림(trim)처리
 
-- **Usage:**
+- **사용방법:**
 
-  Create a two-way binding on a form input element or a component. For detailed usage and other notes, see the Guide section linked below.
+    폼 입력 엘리먼트 또는 컴포넌트에 양방향 바인딩을 생성합니다. 자세한 사용법 및 기타 참고사항은 아래 링크된 가이드 섹션을 참조하세요.
 
-- **See also:**
-  - [Form Input Bindings](../guide/forms.html)
-  - [Components - Form Input Components using Custom Events](../guide/component-custom-events.html#v-model-arguments)
+- **참고:**
+
+    - [입력 폼 바인딩(Form Input Bindings)](../guide/forms.html)
+    - [컴포넌트(Components) - 커스텀 이벤트를 사용한 폼 입력 컴포넌트(Form Input Components using Custom Events)](../guide/component-custom-events.html#v-model-arguments)
 
 ## v-slot
 
-- **Shorthand:** `#`
+- **약칭:** `#`
 
-- **Expects:** JavaScript expression that is valid in a function argument position (supports destructuring in [supported environments](../guide/component-slots.html#destructuring-slot-props)). Optional - only needed if expecting props to be passed to the slot.
+- **요구값:** 함수 인자 위치에서 유효한 자바 스크립트 표현식입니다 ([supported environments](../guide/component-slots.html#destructuring-slot-props) 에서 구조분해지원). 선택사항-props 가 슬롯에 전달 될 것으로 예상하는 경우에만 필요합니다.
 
-- **Argument:** slot name (optional, defaults to `default`)
+- **전달인자:** slot name (optional, defaults to `default`)
 
-- **Limited to:**
+- **제약조건:**
 
-  - `<template>`
-  - [components](../guide/component-slots.html#abbreviated-syntax-for-lone-default-slots) (for a lone default slot with props)
+    - `<template>`
+    - [components](../guide/component-slots.html#abbreviated-syntax-for-lone-default-slots) (props 가 있는 단일 기본 슬롯)
 
-- **Usage:**
+- **사용방법:**
 
-  Denote named slots or slots that expect to receive props.
+    props 를 받을것으로 예상되는 named slot 또는 slot 을 나타냅니다.
 
-- **Example:**
+- **예시:**
 
-  ```html
-  <!-- Named slots -->
-  <base-layout>
-    <template v-slot:header>
-      Header content
-    </template>
+    ```html
+    <!-- 이름있는 슬롯(Named slots) -->
+    <base-layout>
+      <template v-slot:header>
+        Header content
+      </template>
 
-    <template v-slot:default>
-      Default slot content
-    </template>
+      <template v-slot:default>
+        Default slot content
+      </template>
 
-    <template v-slot:footer>
-      Footer content
-    </template>
-  </base-layout>
+      <template v-slot:footer>
+        Footer content
+      </template>
+    </base-layout>
 
-  <!-- Named slot that receives props -->
-  <infinite-scroll>
-    <template v-slot:item="slotProps">
-      <div class="item">
-        {{ slotProps.item.text }}
-      </div>
-    </template>
-  </infinite-scroll>
+    <!-- 이름있는 슬롯(Named slot) 에서 props 를 받는 경우 -->
+    <infinite-scroll>
+      <template v-slot:item="slotProps">
+        <div class="item">
+          {{ slotProps.item.text }}
+        </div>
+      </template>
+    </infinite-scroll>
 
-  <!-- Default slot that receive props, with destructuring -->
-  <mouse-position v-slot="{ x, y }">
-    Mouse position: {{ x }}, {{ y }}
-  </mouse-position>
-  ```
+    <!-- 기본 슬롯(default slot) 에서 props 를 받는경우(구조분해할당) -->
+    <mouse-position v-slot="{ x, y }">
+      Mouse position: {{ x }}, {{ y }}
+    </mouse-position>
+    ```
 
-  For more details, see the links below.
+    자세한 내용은 아래 링크를 참조해주세요.
 
-- **See also:**
-  - [Components - Slots](../guide/component-slots.html)
+- **참고:**
+
+    - [컴포넌트(Components) - 슬롯(Slots)](../guide/component-slots.html)
 
 ## v-pre
 
-- **Does not expect expression**
+- **표현식을 요구하지 않습니다.**
 
-- **Usage:**
+- **사용방법:**
 
-  Skip compilation for this element and all its children. You can use this for displaying raw mustache tags. Skipping large numbers of nodes with no directives on them can also speed up compilation.
+    이 엘리먼트와 모든 하위 엘리먼트에 대한 컴파일을 건너 뜁니다. 원시 mustache 태그를 표시하는데 사용할 수 있습니다. 디렉티브가 없는 많은 노드를 건너 뛰면 컴파일 속도가 빨라질 수 있습니다.
 
-- **Example:**
+- **예시:**
 
-  ```html
-  <span v-pre>{{ this will not be compiled }}</span>
-  ```
+    ```html
+    <span v-pre>{{ this will not be compiled }}</span>
+    ```
 
 ## v-cloak
 
-- **Does not expect expression**
+- **표현식을 요구하지 않습니다.**
 
-- **Usage:**
+- **사용방법:**
 
-  This directive will remain on the element until the associated component instance finishes compilation. Combined with CSS rules such as `[v-cloak] { display: none }`, this directive can be used to hide un-compiled mustache bindings until the component instance is ready.
+    이 디렉티브는 연결된 컴포넌트 인스턴스가 컴파일을 완료 할 때 까지 엘리먼트에 남아있습니다. `[v-cloak] { display: none }` 과 같은 CSS 규칙들이 합쳐진, 이 디렉티브는 컴포넌트 인스턴스가 준비될 때 까지 컴파일 되지 않은 mustache 바인딩을 숨기는데 사용할 수 있습니다.
 
-- **Example:**
+- **예시:**
 
-  ```css
-  [v-cloak] {
-    display: none;
-  }
-  ```
+    ```css
+    [v-cloak] {
+      display: none;
+    }
+    ```
 
-  ```html
-  <div v-cloak>
-    {{ message }}
-  </div>
-  ```
+    ```html
+    <div v-cloak>
+      {{ message }}
+    </div>
+    ```
 
-  The `<div>` will not be visible until the compilation is done.
+    `<div>`은 컴파일이 완료 될 때까지 표시되지 않습니다.
 
 ## v-once
 
-- **Does not expect expression**
+- **표현식을 요구하지 않습니다.**
 
-- **Details:**
+- **설명:**
 
-  Render the element and component **once** only. On subsequent re-renders, the element/component and all its children will be treated as static content and skipped. This can be used to optimize update performance.
+    엘리먼트와 컴포넌트를 **한번(once)** 만 렌더링합니다. 이후에 재렌더링 할 때 엘러먼트/컴포넌트 및 모든 하위 엘리먼트는 정적 컨텐츠로 처리되고 건너 뜁니다. 업데이트 성능을 최적화하는데 사용할 수 있습니다.
 
-  ```html
-  <!-- single element -->
-  <span v-once>This will never change: {{msg}}</span>
-  <!-- the element have children -->
-  <div v-once>
-    <h1>comment</h1>
-    <p>{{msg}}</p>
-  </div>
-  <!-- component -->
-  <my-component v-once :comment="msg"></my-component>
-  <!-- `v-for` directive -->
-  <ul>
-    <li v-for="i in list" v-once>{{i}}</li>
-  </ul>
-  ```
+    ```html
+    <!-- 단일 엘리먼트 -->
+    <span v-once>This will never change: {{msg}}</span>
+    <!-- 엘리먼트가 자식 엘리먼트를 가진 경우 -->
+    <div v-once>
+      <h1>comment</h1>
+      <p>{{msg}}</p>
+    </div>
+    <!-- 컴포넌트 -->
+    <my-component v-once :comment="msg"></my-component>
+    <!-- `v-for` 디렉티브 -->
+    <ul>
+      <li v-for="i in list" v-once>{{i}}</li>
+    </ul>
+    ```
 
-- **See also:**
-  - [Data Binding Syntax - interpolations](../guide/template-syntax.html#text)
+- **참고:**
+
+    - [데이터 바인딩 구문(Data Binding Syntax) - 보간법(Interpolations)](../guide/template-syntax.html#text)
 
 ## v-is
 
-> Note: this section only affects cases where Vue templates are directly written in the page's HTML.
+> 참고: 이 섹션은 Vue 템플릿이 페이지의 HTML 에 직접 작성된 경우에만 영향을줍니다.
 
-- **Expects:** string literal
+- **요구값:** 문자열 리터럴
 
-- **Limited to:** native HTML elements
+- **제약조건:** 기본 HTML 엘리먼트
 
-- **Usage:** When using in-DOM templates, the template is subject to native HTML parsing rules. Some HTML elements, such as `<ul>`, `<ol>`, `<table>` and `<select>` have restrictions on what elements can appear inside them, and some elements such as `<li>`, `<tr>`, and `<option>` can only appear inside certain other elements. As a workaround, we can use `v-is` directive on these elements:
+- **사용방법:** When using in-DOM templates, the template is subject to native HTML parsing rules. Some HTML elements, such as `<ul>`, `<ol>`, `<table>` and `<select>` have restrictions on what elements can appear inside them, and some elements such as `<li>`, `<tr>`, and `<option>` can only appear inside certain other elements. As a workaround, we can use `v-is` directive on these elements:
 
 ```html
 <table>
@@ -470,14 +477,14 @@
 </table>
 ```
 
-:::warning
-`v-is` functions like a dynamic 2.x `:is` binding - so to render a component by its registered name, its value should be a JavaScript string literal:
+::: warning 
+`v-is` 는 동적 2.x `:is` 바인딩과 같은 기능을 합니다. 따라서 등록된 이름으로 컴포넌트를 렌더링하려면 해당 값이 자바스크립트 문자열 리터럴이어야합니다. :
 
 ```html
-<!-- Incorrect, nothing will be rendered -->
+<!-- 올바르지 않은 사용법, 아무것도 렌더링 되지 않습니다. -->
 <tr v-is="blog-post-row"></tr>
 
-<!-- Correct -->
+<!-- 올바른 사용법 -->
 <tr v-is="'blog-post-row'"></tr>
 ```
 

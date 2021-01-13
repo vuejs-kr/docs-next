@@ -1,17 +1,17 @@
 ---
 badges:
-  - breaking
+- breaking
 ---
 
-# Events API <MigrationBadges :badges="$frontmatter.badges" />
+# 이벤트 API <migrationbadges badges="$frontmatter.badges"></migrationbadges>
 
-## Overview
+## 개요
 
-`$on`, `$off` and `$once` instance methods are removed. Application instances no longer implement the event emitter interface.
+`$on`, `$off` 그리고 `$once` 인스턴스 메소드가 제거되었습니다. 애플리케이션 인스턴스는 더이상 이벤트 방출 인터페이스(Event emitter interface)를 구현하지 않습니다.
 
-## 2.x Syntax
+## 2.x 구문
 
-In 2.x, Vue instance could be used to trigger handlers attached imperatively via the event emitter API (`$on`, `$off` and `$once`). This was used to create _event hubs_ to create global event listeners used across the whole application:
+2.x에서는 Vue 인스턴스가 이벤트 emitter API(`$on`, `$off`, `$once`)를 통해 명령적으로 연결된 핸들러를 트리거할 수 있었습니다. 이는 전체 애플리케이션에서 접근 가능한 전역 이벤트 리스너를 만들도록 *이벤트 허브*를 생성하는 데 사용되었습니다.
 
 ```js
 // eventHub.js
@@ -27,13 +27,13 @@ import eventHub from './eventHub'
 
 export default {
   mounted() {
-    // adding eventHub listener
-    eventHub.$on('custom-event', () => {
+    // eventHub listener 등록
+    eventHub.$on('custom-event', () =&gt; {
       console.log('Custom event triggered!')
     })
   },
   beforeDestroy() {
-    // removing eventHub listener
+    // eventHub listener 제거
     eventHub.$off('custom-event')
   }
 }
@@ -46,18 +46,18 @@ import eventHub from './eventHub'
 export default {
   methods: {
     callGlobalCustomEvent() {
-      eventHub.$emit('custom-event') // if ChildComponent is mounted, we will have a message in the console
+      eventHub.$emit('custom-event') // ChildComponent가 마운트 되면, 콘솔에서 message에 접근할 수 있습니다.
     }
   }
 }
 ```
 
-## 3.x Update
+## 3.x 변경점
 
-We removed `$on`, `$off` and `$once` methods from the instance completely. `$emit` is still a part of the existing API as it's used to trigger event handlers declaratively attached by a parent component
+인스턴스에서 `$on`, `$off` 그리고 `$once` 메소드를 완전히 제거했습니다. `$emit`은 부모 컴포넌트에 의해 선언적으로 연결된 이벤트 핸들러를 트리거하는데 사용되므로 여전히 API의 일부로 존재합니다.
 
-## Migration Strategy
+## 마이그레이션 방법
 
-Existing event hubs can be replaced by using an external library implementing the event emitter interface, for example [mitt](https://github.com/developit/mitt) or [tiny-emitter](https://github.com/scottcorgan/tiny-emitter).
+[mitt](https://github.com/developit/mitt)나 [tiny-emitter](https://github.com/scottcorgan/tiny-emitter)와 같은 이벤트 방출 인터페이스(Event emitter interface) 구현 외부 라이브러리를 이용하여 기존 이벤트 허브를 대체할 수 있습니다.
 
-These methods can also be supported in compatibility builds.
+이 메서드들은 호환성 빌드에서도 지원될 수 있습니다.

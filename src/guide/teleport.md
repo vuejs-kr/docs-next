@@ -2,13 +2,13 @@
 
 <VideoLesson href="https://vueschool.io/lessons/vue-3-teleport?friend=vuejs" title="Learn how to use teleport with Vue School">Learn how to use teleport with a free lesson on Vue School</VideoLesson>
 
-Vue encourages us to build our UIs by encapsulating UI and related behavior into components. We can nest them inside one another to build a tree that makes up an application UI.
+Vue는 UI 및 관련 동작을 컴포넌트로 캡슐화하여 UI를 구축하도록 권장합니다. 우리는 애플리케이션 UI 구성 트리를 만들기 위해 컴포넌트를 서로 중첩할 수 있습니다.
 
-However, sometimes a part of a component's template belongs to this component logically, while from a technical point of view, it would be preferable to move this part of the template somewhere else in the DOM, outside of the Vue app. 
+그러나, 논리적으로 컴포넌트에 속하는 템플릿의 일부라도 기술적인 관점에서 보면 Vue 앱 범위를 벗어나 DOM의 다른 곳으로 템플릿의 일부를 옮기는 게 더 바람직할 때도 있습니다.
 
-A common scenario for this is creating a component that includes a full-screen modal. In most cases, you'd want the modal's logic to live within the component, but the positioning of the modal quickly becomes difficult to solve through CSS, or requires a change in component composition.
+이에 대한 일반적인 사례는 전체 화면 모달이 포함된 컴포넌트를 만드는 것입니다. 대부분의 경우 컴포넌트 내에 모달 로직이 존재하기를 원하지만, 모달의 신속한 위치 조정에 있어 CSS를 통한 해결이 어려워지거나 컴포넌트 구조를 변경해야 합니다.
 
-Consider the following HTML structure.
+다음 HTML 구조를 생각해 봅시다.
 
 ```html
 <body>
@@ -21,9 +21,9 @@ Consider the following HTML structure.
 </body>
 ```
 
-Let's take a look at `modal-button`. 
+`modal-button`을 살펴보겠습니다.
 
-The component will have a `button` element to trigger the opening of the modal, and a `div` element with a class of `.modal`, which will contain the modal's content and a button to self-close.
+<code>modal-button</code> 컴포넌트는 모달 열기 기능을 작동시키는 `button` 엘리먼트와 `.modal` 클래스의 `div` 엘리먼트를 갖게 될 것입니다. `div` 엘리먼트는 모달 컨텐츠와 모달 닫기 버튼을 포함합니다.
 
 ```js
 const app = Vue.createApp({});
@@ -36,7 +36,7 @@ app.component('modal-button', {
 
     <div v-if="modalOpen" class="modal">
       <div>
-        I'm a modal! 
+        I'm a modal!
         <button @click="modalOpen = false">
           Close
         </button>
@@ -44,32 +44,32 @@ app.component('modal-button', {
     </div>
   `,
   data() {
-    return { 
+    return {
       modalOpen: false
     }
   }
 })
 ```
 
-When using this component inside the initial HTML structure, we can see a problem - the modal is being rendered inside the deeply nested `div` and the `position: absolute` of the modal takes the parent relatively positioned `div` as reference.
+초기 HTML 구조에서 이 컴포넌트를 사용하면 모달이 깊게 중첩된 `div` 내부에 렌더링 되고, 모달의 `position: absolute` 속성은 상대적으로 배치된 부모 `div`를 기준으로 동작하는 문제를 볼 수 있습니다.
 
-Teleport provides a clean way to allow us to control under which parent in our DOM we want a piece of HTML to be rendered, without having to resort to global state or splitting this into two components.
+Teleport는 전역 상태에 의존하거나 <code>modal-button</code>을 두 개의 컴포넌트로 분리하지 않고도 DOM에서 HTML 조각을 렌더링할 부모 엘리먼트를 제어할 수 있는 깔끔한 방법을 제공합니다.
 
-Let's modify our `modal-button` to use `<teleport>` and tell Vue "**teleport** this HTML **to** the "**body**" tag". 
+`modal-button`을 `<teleport>`를 사용하도록 수정하고 Vue에게 "이 HTML을 "**body**" 태그로 **teleport** 해라."라고 전합니다.
 
 ```js
 app.component('modal-button', {
   template: `
-    <button @click="modalOpen = true">
+    <button true>
         Open full screen modal! (With teleport!)
     </button>
 
     <teleport to="body">
       <div v-if="modalOpen" class="modal">
         <div>
-          I'm a teleported modal! 
+          I'm a teleported modal!
           (My parent is "body")
-          <button @click="modalOpen = false">
+          <button false>
             Close
           </button>
         </div>
@@ -77,20 +77,21 @@ app.component('modal-button', {
     </teleport>
   `,
   data() {
-    return { 
+    return {
       modalOpen: false
     }
   }
 })
 ```
 
-As a result, once we click the button to open the modal, Vue will correctly render the modal's content as a child of the `body` tag.
+결과적으로, 모달을 열기 위해 버튼을 클릭하면 Vue는 `body` 태그의 자식으로 모달 컨텐츠를 올바르게 렌더링할 것입니다.
+
 
 <common-codepen-snippet title="Vue 3 Teleport" slug="gOPNvjR" tab="js,result" />
 
-## Using with Vue components
+## Vue 컴포넌트와 함께 사용
 
-If `<teleport>` contains a Vue component, it will remain a logical child component of the `<teleport>`'s parent:
+`<teleport>`가 Vue 컴포넌트를 포함하는 경우, 해당 컴포넌트는 `<teleport>` 부모의 논리적 자식 컴포넌트로 유지됩니다.
 
 ```js
 const app = Vue.createApp({
@@ -117,13 +118,13 @@ app.component('child-component', {
 })
 ```
 
-In this case, even when `child-component` is rendered in the different place, it will remain a child of `parent-component` and will receive a `name` prop from it.
+이처럼 `child-component`가 다른 위치에 렌더링 되더라도 `parent-component`의 자식으로 유지되고 `name` prop을 전달받습니다.
 
-This also means that injections from a parent component work as expected, and that the child component will be nested below the parent component in the Vue Devtools, instead of being placed where the actual content moved to.
+이는 부모 컴포넌트로부터의 주입이 예상대로 동작하며 Vue Devtools에서 자식 컴포넌트가 실제 내부 컨텐츠의 이동 위치 대신 부모 컴포넌트 아래에 중첩될 것임을 의미하기도 합니다.
 
-## Using multiple teleports on the same target
+## 동일한 대상에 다중 Teleport 사용
 
-A common use case scenario would be a reusable `<Modal>` component of which there might be multiple instances active at the same time. For this kind of scenario, multiple `<teleport>` components can mount their content to the same target element. The order will be a simple append - later mounts will be located after earlier ones within the target element.
+일반적인 사례는 동시에 여러 인스턴스가 활성화될 수 있는 재사용 가능 `<Modal>` 컴포넌트일 것입니다. 이런 상황에서는 복수의 `<teleport>` 컴포넌트가 각기 다른 내부 컨텐츠를 동일한 엘리먼트에 마운트할 수 있습니다. 순서는 단순히 추가하는 대로 정해집니다. 이후 마운트는 대상 엘리먼트 내 직전 마운트 바로 뒤에 위치할 것입니다.
 
 ```html
 <teleport to="#modals">
@@ -140,4 +141,4 @@ A common use case scenario would be a reusable `<Modal>` component of which ther
 </div>
 ```
 
-You can check `<teleport>` component options in the [API reference](../api/built-in-components.html#teleport).
+[API reference](../api/built-in-components.html#teleport)에서 `<teleport>` 컴포넌트 옵션을 확인할 수 있습니다.

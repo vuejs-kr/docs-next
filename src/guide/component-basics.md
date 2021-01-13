@@ -1,14 +1,14 @@
-# Components Basics
+# 컴포넌트 기초
 
-## Base Example
+## 기본 예제
 
-Here's an example of a Vue component:
+뷰 컴포넌트 예제를 살펴봅시다:
 
 ```js
-// Create a Vue application
+// Vue 애플리케이션 생성
 const app = Vue.createApp({})
 
-// Define a new global component called button-counter
+// button-counter라는 새로운 전역 컴포넌트 정의
 app.component('button-counter', {
   data() {
     return {
@@ -16,17 +16,17 @@ app.component('button-counter', {
     }
   },
   template: `
-    <button @click="count++">
+    <button>
       You clicked me {{ count }} times.
     </button>`
 })
 ```
 
 ::: info
-We're showing you a simple example here, but in a typical Vue application we use Single File Components instead of a string template. You can find more information about them [in this section](single-file-component.html).
+여기에서는 간단한 예제를 보여드리지만, 일반적인 Vue 애플리케이션은 문자열 템플릿 대신 단일 파일 컴포넌트를 사용하고 있습니다. 단일 파일 컴포넌트에 대한 자세한 내용은 [이 섹션](single-file-component.html)에서 확인할 수 있습니다. 
 :::
 
-Components are reusable instances with a name: in this case, `<button-counter>`. We can use this component as a custom element inside a root instance:
+컴포넌트는 이름이 있는 재사용 가능한 인스턴스입니다(이 경우에서는 `<button-counter>`). 이 컴포넌트를 루트 인스턴스 안에서 커스텀 엘리먼트처럼 사용할 수 있습니다:
 
 ```html
 <div id="components-demo">
@@ -40,11 +40,12 @@ app.mount('#components-demo')
 
 <common-codepen-snippet title="Component basics" slug="abORVEJ" tab="js,result" :preview="false" />
 
-Since components are reusable instances, they accept the same options as a root instance, such as `data`, `computed`, `watch`, `methods`, and lifecycle hooks.
 
-## Reusing Components
+컴포넌트는 재사용 가능한 인스턴스이므로, `data`, `computed`, `watch`, `methods`와 라이프사이클 훅과 같은 루트 인스턴스와 같은 옵션을 허용합니다. 유일한 예외는 `el`과 같은 몇 가지 루트만의 옵션(root-specific options)입니다.
 
-Components can be reused as many times as you want:
+## 컴포넌트 재사용
+
+컴포넌트는 얼마든지 반복해서 재사용할수 있습니다:
 
 ```html
 <div id="components-demo">
@@ -56,35 +57,35 @@ Components can be reused as many times as you want:
 
 <common-codepen-snippet title="Component basics: reusing components" slug="rNVqYvM" tab="html,result" :preview="false" />
 
-Notice that when clicking on the buttons, each one maintains its own, separate `count`. That's because each time you use a component, a new **instance** of it is created.
+버튼을 클릭할 때 각 버튼은 별도의 `count`를 유지합니다. 컴포넌트를 사용할 때 마다 새로운 **인스턴스**가 만들어지기 때문입니다.
 
-## Organizing Components
+## 컴포넌트 구성하기
 
-It's common for an app to be organized into a tree of nested components:
+애플리케이션이 중첩된 컴포넌트 트리로 구성되는 것은 일반적입니다.
 
 ![Component Tree](/images/components.png)
 
-For example, you might have components for a header, sidebar, and content area, each typically containing other components for navigation links, blog posts, etc.
+예를 들어 헤더, 사이드바, 컨텐츠 영역에 대한 컴포넌트가 있을 수 있으며, 각각 일반적으로 네비게이션 링크, 블로그 글 등에 대한 다른 컴포넌트를 포함합니다.
 
-To use these components in templates, they must be registered so that Vue knows about them. There are two types of component registration: **global** and **local**. So far, we've only registered components globally, using the `component` method of our app:
+템플릿에서 이러한 컴포넌트를 사용하려면, Vue가 해당 컴포넌트에 대해 알 수 있도록 등록해야 합니다. 컴포넌트 등록에는 **전역(global) 등록** 과 **지역(local) 등록**의 2가지 유형이 있습니다. 지금까지 생성된 앱의   `component` 메소드를 사용해서 컴포넌트를 전역으로만 등록했습니다.
 
 ```js
 const app = Vue.createApp({})
 
 app.component('my-component-name', {
-  // ... options ...
+  // ... 옵션들 ...
 })
 ```
 
-Globally registered components can be used in the template of any component within the app.
+전역적으로 등록된 컴포넌트는 나중에 생성된 `app` 인스턴스의 템플릿에서 사용할 수 있으며, 해당 루트 인스턴스의 컴포넌트 트리의 모든 하위 컴포넌트에서도 사용할 수 있습니다.
 
-That's all you need to know about registration for now, but once you've finished reading this page and feel comfortable with its content, we recommend coming back later to read the full guide on [Component Registration](component-registration.md).
+지금은 등록에 대해 알아야할 모든 것이지만, 이 페이지를 읽고 내용에 익숙해지면 나중에 다시 돌아와 [Component Registration](component-registration.md)에 대한 전체 가이드를 읽어보는 것이 좋습니다.
 
-## Passing Data to Child Components with Props
+## Props를 이용해 자식 컴포넌트에게 데이터 전달하기
 
-Earlier, we mentioned creating a component for blog posts. The problem is, that component won't be useful unless you can pass data to it, such as the title and content of the specific post we want to display. That's where props come in.
+앞서서 블로그 포스팅을 위한 컴포넌트 생성에 대해 언급했습니다. 문제는 화면에 보여줄 특정 게시문의 제목, 내용과 같은 데이터를 전달할 수 없으면, 해당 컴포넌트가 유용하지 않다는 것입니다. 이렇게 컴포넌트에 데이터를 넘기기 위해 props가 등장합니다.
 
-Props are custom attributes you can register on a component. To pass a title to our blog post component, we can include it in the list of props this component accepts, using the `props` option:
+Props는 컴포넌트에 등록할 수 있는 커스텀 속성입니다. 값이 prop 속성에 전달되면, 그 값은 해당 컴포넌트 인스턴스의 속성이 됩니다. blog-post 컴포넌트에 제목을 전달하기 위해 `props`옵션을 사용하여 이 컴포넌트가 허용하는 prop목록에 제목을 포함할 수 있습니다.
 
 ```js
 const app = Vue.createApp({})
@@ -97,11 +98,9 @@ app.component('blog-post', {
 app.mount('#blog-post-demo')
 ```
 
-When a value is passed to a prop attribute, it becomes a property on that component instance. The value of that property is accessible within the template, just like any other component property.
+컴포넌트는 원하는 만큼 props를 가질 수 있으며 기본적으로는 어떤 종류의 값이라도 넘길 수 있습니다. `data` 속성과 마찬가지로 컴포넌트 인스턴스에서 prop 값에 접근할 수 있음을 할 수 있습니다.
 
-A component can have as many props as you like and, by default, any value can be passed to any prop.
-
-Once a prop is registered, you can pass data to it as a custom attribute, like this:
+일단 prop이 등록되면 다음과 같이 커스텀 속성으로 데이터를 전달할 수 있습니다:
 
 ```html
 <div id="blog-post-demo" class="demo">
@@ -113,7 +112,7 @@ Once a prop is registered, you can pass data to it as a custom attribute, like t
 
 <common-codepen-snippet title="Component basics: passing props" slug="PoqyOaX" tab="html,result" :preview="false" />
 
-In a typical app, however, you'll likely have an array of posts in `data`:
+그러나 일반적인 앱에서는 `data`에 posts 배열이 있을 수 있습니다.
 
 ```js
 const App = {
@@ -138,7 +137,7 @@ app.component('blog-post', {
 app.mount('#blog-posts-demo')
 ```
 
-Then want to render a component for each one:
+그런다음 각 컴포넌트를 렌더링하려고 합니다.
 
 ```html
 <div id="blog-posts-demo">
@@ -150,15 +149,15 @@ Then want to render a component for each one:
 </div>
 ```
 
-Above, you'll see that we can use `v-bind` to dynamically pass props. This is especially useful when you don't know the exact content you're going to render ahead of time.
+위에서 `v-bind`를 사용해서 props를 동적으로 전달할 수 있음을 알 수 있습니다. 이는 미리 렌더링할 정확한 컨텐츠를 모르는 경우 특히 유용합니다.
 
-That's all you need to know about props for now, but once you've finished reading this page and feel comfortable with its content, we recommend coming back later to read the full guide on [Props](component-props.html).
+지금까지 prop에 대해 알아야할 모든 것입니다. 하지만 이 페이지를 읽고 내용이 익숙해지만 나중에 다시 돌아와 [Props](component-props.html)에 대한 전체 가이드를 읽어보는 것이 좋습니다.
 
-## Listening to Child Components Events
+## 하위 컴포넌트 이벤트 수신
 
-As we develop our `<blog-post>` component, some features may require communicating back up to the parent. For example, we may decide to include an accessibility feature to enlarge the text of blog posts, while leaving the rest of the page its default size.
+`<blog-post>` 컴포넌트를 개발할 때, 일부 기능은 상위와 다시 통신해야 할 수 있습니다. 예를 들어, 블로그 게시물의 텍스트를 확대하고 나머지 페이지는 기본 크기로 유지하는 접근성 기능을 포함할 수 있습니다.
 
-In the parent, we can support this feature by adding a `postFontSize` data property:
+상위 컴포넌트의 data 속성에 `postFontSize`를 추가하여 이 기능을 지원할 수 있습니다:
 
 ```js
 const App = {
@@ -173,21 +172,17 @@ const App = {
 }
 ```
 
-Which can be used in the template to control the font size of all blog posts:
+이 속성은 모든 블로그 포스트의 폰트 크기를 제어하기 위해 템플릿에서 사용할 수 있습니다:
 
 ```html
 <div id="blog-posts-events-demo">
-  <div :style="{ fontSize: postFontSize + 'em' }">
-    <blog-post
-      v-for="post in posts"
-      :key="post.id"
-      :title="post.title"
-    ></blog-post>
+  <div v-bind:style="{ fontSize: postFontSize + 'em' }">
+    <blog-post v-for="post in posts" :key="post.id" :title="title"></blog-post>
   </div>
 </div>
 ```
 
-Now let's add a button to enlarge the text right before the content of every post:
+이제 모든 포스트의 내용의 글자를 키우는 버튼을 추가해봅시다:
 
 ```js
 app.component('blog-post', {
@@ -203,7 +198,7 @@ app.component('blog-post', {
 })
 ```
 
-The problem is, this button doesn't do anything:
+문제는 이 버튼이 아무런 일울 하지 못한다는 거죠:
 
 ```html
 <button>
@@ -211,58 +206,58 @@ The problem is, this button doesn't do anything:
 </button>
 ```
 
-When we click on the button, we need to communicate to the parent that it should enlarge the text of all posts. To solve this problem, component instances provide a custom events system. The parent can choose to listen to any event on the child component instance with `v-on` or `@`, just as we would with a native DOM event:
+버튼을 클릭할 때 부모 컴포넌트와 통신하여 모든 글자의 크기를 키워야 합니다. 다행히 컴포넌트 인스턴스는 이 문제를 해결하기위한 커스텀 이벤트 시스템을 제공합니다. 부모 컴포넌트는 기본 DOM 이벤트의 경우와 마찬가지로 `v-on` 또는 `@`을 사용하여 하위 컴포넌트 인스턴스의 모든 이벤트를 수신하도록 선택할 수 있습니다.
 
 ```html
 <blog-post ... @enlarge-text="postFontSize += 0.1"></blog-post>
 ```
 
-Then the child component can emit an event on itself by calling the built-in [**`$emit`** method](../api/instance-methods.html#emit), passing the name of the event:
+이렇게 하면 자식 컴포넌트는 내장된 [**`$emit`** 메소드](../api/instance-methods.html#emit)에 이벤트 이름을 넘겨서 이벤트를 발송할수 있습니다:
 
 ```html
-<button @click="$emit('enlargeText')">
+<button @click="$emit('enlarge-text')">
   Enlarge text
 </button>
 ```
 
-Thanks to the `@enlarge-text="postFontSize += 0.1"` listener, the parent will receive the event and update the value of `postFontSize`.
+`@enlarge-text="postFontSize += 0.1"` 리스너 덕분에, 부모는 이벤트를 받아 `postFontSize`의 값을 업데이트합니다.
 
 <common-codepen-snippet title="Component basics: emitting events" slug="KKpGyrp" tab="html,result" :preview="false" />
 
-We can list emitted events in the component's `emits` option:
+컴포넌트의 `emits`옵션에서 생성된 이벤트를 나열할 수 있습니다.
 
 ```js
 app.component('blog-post', {
   props: ['title'],
-  emits: ['enlargeText']
+  emits: ['enlarge-text']
 })
 ```
 
-This will allow you to check all the events that a component emits and optionally [validate them](component-custom-events.html#validate-emitted-events).
+이렇게하면 컴포넌트에서 생성된 모든 이벤트를 확인하고, 선택적으로 그들을 [검증(validate)](component-custom-events.html#validate-emitted-events)할 수 있습니다
 
-### Emitting a Value With an Event
+### 이벤트와 함께 값 emit하기
 
-It's sometimes useful to emit a specific value with an event. For example, we may want the `<blog-post>` component to be in charge of how much to enlarge the text by. In those cases, we can pass a second parameter to `$emit` to provide this value:
+이벤트와 함께 특정 값을 emit하는 것이 유용할 때도 있습니다. 예를 들어, `<blog-post>` 컴포넌트가 글자 크기를 얼마나 확대할지를 담당하도록 할 수 있습니다. 이 경우 `$emit`의 두번째 파라미터를 사용하여, 이 값을 제공할 수 있습니다.
 
 ```html
-<button @click="$emit('enlargeText', 0.1)">
+<button @click="$emit('enlarge-text', 0.1)">
   Enlarge text
 </button>
 ```
 
-Then when we listen to the event in the parent, we can access the emitted event's value with `$event`:
+그런 다음 부모의 이벤트를 수신할 때, `$event`를 사용하여 emit한 이벤트의 값에 접근할 수 있습니다:
 
 ```html
 <blog-post ... @enlarge-text="postFontSize += $event"></blog-post>
 ```
 
-Or, if the event handler is a method:
+또는 이벤트 핸들러가 메소드인 경우:
 
 ```html
 <blog-post ... @enlarge-text="onEnlargeText"></blog-post>
 ```
 
-Then the value will be passed as the first parameter of that method:
+그런다음 값이 해당 메소드의 첫 번째 파라미터로 전달됩니다:
 
 ```js
 methods: {
@@ -272,21 +267,21 @@ methods: {
 }
 ```
 
-### Using `v-model` on Components
+### 컴포넌트에서 `v-model` 사용하기
 
-Custom events can also be used to create custom inputs that work with `v-model`. Remember that:
+커스텀 이벤트를 사용하여, `v-model`과 함께 작동되는 커스텀 입력(input)을 만들 수도 있습니다. 다음을 기억하십시오:
 
 ```html
 <input v-model="searchText" />
 ```
 
-does the same thing as:
+위 코드는 다음 코드와 동일한 코드 입니다:
 
 ```html
 <input :value="searchText" @input="searchText = $event.target.value" />
 ```
 
-When used on a component, `v-model` instead does this:
+컴포넌트에서 사용되는 경우 `v-model` 대신에 다음과 같이 수행할 수 있습니다:
 
 ```html
 <custom-input
@@ -295,21 +290,20 @@ When used on a component, `v-model` instead does this:
 ></custom-input>
 ```
 
-::: warning
-Please note we used `model-value` with kebab-case here because we are working with in-DOM templates. You can find a detailed explanation on kebab-cased vs camelCased attributes in the [DOM Template Parsing Caveats](#dom-template-parsing-caveats) section
+::: warning 
+in-DOM 템플릿으로 작업하고 있기 때문에, 여기서는 kebab-case와 함께 `model-value`를 사용했습니다. [DOM Template Parsing Caveats](#dom-template-parsing-caveats) 섹션에서 kebab-case와 camelCase 속성에 대한 자세한 설명을 볼 수 있습니다. 
 :::
 
-For this to actually work though, the `<input>` inside the component must:
+v-model이 실제로 작동하려면 컴포넌트 내의 `<input>`이 반드시 다음 규칙을 따라야 합니다:
 
-- Bind the `value` attribute to the `modelValue` prop
-- On `input`, emit an `update:modelValue` event with the new value
+- `value`라는 속성을 `modelValue` prop에 바인딩합니다.
+- `input`에서 새로운 값과 `update:modelValue`이벤트를 emit해야 합니다.
 
-Here's that in action:
+다음과 같이 되어야 합니다:
 
 ```js
 app.component('custom-input', {
   props: ['modelValue'],
-  emits: ['update:modelValue'],
   template: `
     <input
       :value="modelValue"
@@ -319,18 +313,21 @@ app.component('custom-input', {
 })
 ```
 
-Now `v-model` should work perfectly with this component:
+이제 `v-model`는 컴포넌트에서 완벽히 동작합니다.
 
 ```html
 <custom-input v-model="searchText"></custom-input>
 ```
 
-Another way of implementing `v-model` within this component is to use the ability of `computed` properties to define a getter and setter. The `get` method should return the `modelValue` property and the `set` method should emit the corresponding event:
+커스텀 컴포넌트에서 `v-model` 기능을 만드는 또 다른 방법은 `computed` 속성의 기능을 사용하여 getter와 setter를 정의하는 것입니다
+
+다음 예제에서는 computed 속성을 사용하여 `custom-input` 컴포넌트를 리팩토링합니다.
+
+`get` 메소드는 `modelValue` 속성 또는 바인딩에 사용 중인 속성을 반환해야 합니다. `set` 메소드는 해당 속성에 해당하는 `$emit`를 호출해야 합니다.
 
 ```js
 app.component('custom-input', {
   props: ['modelValue'],
-  emits: ['update:modelValue'],
   template: `
     <input v-model="value">
   `,
@@ -339,19 +336,18 @@ app.component('custom-input', {
       get() {
         return this.modelValue
       },
-      set(value) {
-        this.$emit('update:modelValue', value)
+      set(value) { this.$emit('update:modelValue', value)
       }
     }
   }
 })
 ```
 
-That's all you need to know about custom component events for now, but once you've finished reading this page and feel comfortable with its content, we recommend coming back later to read the full guide on [Custom Events](component-custom-events.md).
+지금은 커스텀 엘리먼트 이벤트에 대해 알아야할 모든 것입니다. 하지만 이 페이지를 읽고 컨텐츠에 익숙해지면 나중에 다시 돌아와 [Custom Events](component-custom-events.md)에 대한 전체 가이드를 읽어보는 것이 좋습니다.
 
-## Content Distribution with Slots
+## 슬롯(Slot)을 이용한 컨텐츠 제공
 
-Just like with HTML elements, it's often useful to be able to pass content to a component, like this:
+HTML 엘리먼트와 마찬가지로 다음과 같이 컨텐츠를 컴포넌트에 전달할 수 있으면 유용합니다.
 
 ```html
 <alert-box>
@@ -359,11 +355,11 @@ Just like with HTML elements, it's often useful to be able to pass content to a 
 </alert-box>
 ```
 
-Which might render something like:
+다음처럼 렌더링 될겁니다:
 
 <common-codepen-snippet title="Component basics: slots" slug="jOPeaob" :preview="false" />
 
-This can be achieved using Vue's custom `<slot>` element:
+다행히 이 작업은 Vue의 커스텀 `<slot>` 엘리먼트로 매우 간단하게 만들 수 있습니다.
 
 ```js
 app.component('alert-box', {
@@ -376,39 +372,37 @@ app.component('alert-box', {
 })
 ```
 
-As you'll see above, we use the `<slot>` as a placeholder where we want the content to go – and that's it. We're done!
+위에서 볼 수 있듯이 원하는 위치에 slot을 추가하기만 하면 됩니다. 끝났습니다!
 
-That's all you need to know about slots for now, but once you've finished reading this page and feel comfortable with its content, we recommend coming back later to read the full guide on [Slots](component-slots.md).
+지금은 slot에 대해 알아야 할 모든 것이지만, 이 페이지를 다 읽고 내용에 익숙해지면 다시 돌아와 [Slots](component-slots.md)에 대한 전체 가이드를 읽어보는 것이 좋습니다.
 
-## Dynamic Components
+## 동적 컴포넌트
 
-Sometimes, it's useful to dynamically switch between components, like in a tabbed interface:
+때로는 탭 인터페이스에서와 같이 컴포넌트 간의 동적으로 전환하는 것이 유용합니다:
 
 <common-codepen-snippet title="Component basics: dynamic components" slug="oNXaoKy" :preview="false" />
 
-The above is made possible by Vue's `<component>` element with the special `is` attribute:
+위는 Vue의 `is`라는 특별한 속성을 가진 `<component>` 엘리먼트에 의해 만들 수 있습니다.
 
 ```html
-<!-- Component changes when currentTabComponent changes -->
+<!-- currentTabComponent가 변하면 컴포넌트가 바뀝니다.  -->
 <component :is="currentTabComponent"></component>
 ```
 
-In the example above, `currentTabComponent` can contain either:
+위 예제에서 `currentTabComponent`는 다음 중 하나를 포함할 수 있습니다:
 
-- the name of a registered component, or
-- a component's options object
+- 이미 등록된 컴포넌트의 이름
+- 컴포넌트의 옵션 객체
 
-See [this sandbox](https://codepen.io/team/Vue/pen/oNXaoKy) to experiment with the full code, or [this version](https://codepen.io/team/Vue/pen/oNXapXM) for an example binding to a component's options object, instead of its registered name.
+전체 코드를 실험하려면 [이 샌드박스](https://codepen.io/team/Vue/pen/oNXaoKy)를 참조하고, 등록된 컴포넌트명 대신에 컴포넌트의 옵션 객체에 바인딩하는 예제는 [이 버전](https://codepen.io/team/Vue/pen/oNXapXM)을 참조하세요.
 
-You can also use the `is` attribute to create regular HTML elements.
+이 속성은 일반 HTML 엘리먼트와 함께 사용할 수 있지만, 컴포넌트로 취급되므로 모든 속성이 **DOM 속성으로 바인딩됩니다**. <code>value</code>와 같이 일부 속성이 예상대로 작동하려면 [`.prop` 수식어](../api/directives.html#v-bind)를 사용하여 바인딩해야 합니다.
 
-That's all you need to know about dynamic components for now, but once you've finished reading this page and feel comfortable with its content, we recommend coming back later to read the full guide on [Dynamic & Async Components](./component-dynamic-async.html).
+지금은 동적 컴포넌트에 대해 알아야할 전부입니다. 하지만 이 페이지를 읽고 내용이 익숙해지면 나중에 다시 돌아와 [Dynamic & Async Components](./component-dynamic-async.html)에 대한 전체 가이드를 읽어 보는 것이 좋습니다.
 
-## DOM Template Parsing Caveats
+## DOM 템플릿 파싱 주의사항
 
-Some HTML elements, such as `<ul>`, `<ol>`, `<table>` and `<select>` have restrictions on what elements can appear inside them, and some elements such as `<li>`, `<tr>`, and `<option>` can only appear inside certain other elements.
-
-This will lead to issues when using components with elements that have such restrictions. For example:
+`<ul>`, `<ol>`, `<table>` 및 `<select>`와 같은 일부 HTML 엘리먼트에는 내부에 표시할 수 있는 엘리먼트에 대한 제한 사항과 `<li>`, `<tr>`, `<option>`과 같은 일부 엘리먼트만 표시될 수 있습니다. 이러한 제한이 있는 엘리먼트가 있는 컴포넌트를 사용할 때 문제가 발생합니다. 예를 들면:
 
 ```html
 <table>
@@ -416,7 +410,7 @@ This will lead to issues when using components with elements that have such rest
 </table>
 ```
 
-The custom component `<blog-post-row>` will be hoisted out as invalid content, causing errors in the eventual rendered output. We can use the special `v-is` directive as a workaround:
+커스텀 컴포넌트 `<blog-post-row>`가 잘못된 컨텐츠로 표시되어 최종 렌더링된 출력에서 오류가 발생합니다. 다행히 `v-is` 특수 디렉티브를 사용하여 문제를 해결할 수 있습니다:
 
 ```html
 <table>
@@ -424,23 +418,23 @@ The custom component `<blog-post-row>` will be hoisted out as invalid content, c
 </table>
 ```
 
-:::warning
-The `v-is` value is treated as a JavaScript expression, so we need to wrap the component name in quotes:
+:::warning 
+`v-is` 값은 자바스크립트 문자열 리터럴이어야 합니다:
 
 ```html
-<!-- Incorrect, nothing will be rendered -->
+<!-- 잘못됨. 아무것도 렌더링 되지 않음 -->
 <tr v-is="blog-post-row"></tr>
 
-<!-- Correct -->
+<!-- 올바름-->
 <tr v-is="'blog-post-row'"></tr>
 ```
 
-:::
+::: 
 
-Also, HTML attribute names are case-insensitive, so browsers will interpret any uppercase characters as lowercase. That means when you’re using in-DOM templates, camelCased prop names and event handler parameters need to use their kebab-cased (hyphen-delimited) equivalents:
+또한, HTML 속성명은 대소문자를 구분하지 않으므로, 브라우저는 모든 대문자를 소문자로 해석합니다. 즉, DOM내 템플릿을 사용할 때 camelCase된 prop명과 이벤트 핸들러 파라미터는 kebab-case(하이픈으로 구분)된 해당 항목을 사용해야 합니다:
 
 ```js
-// camelCase in JavaScript
+// 자바스크립트 내 camelCase
 
 app.component('blog-post', {
   props: ['postTitle'],
@@ -451,17 +445,13 @@ app.component('blog-post', {
 ```
 
 ```html
-<!-- kebab-case in HTML -->
+<!-- HTML 내 kebab-case -->
 
 <blog-post post-title="hello!"></blog-post>
 ```
 
-It should be noted that **these limitations do _not_ apply if you are using string templates from one of the following sources**:
+**다음 중 하나의 문자열 템플릿을 사용하는 경우 이러한 제한이 적용*되지 않는다***는 점에 유의해야 합니다:
 
-- String templates (e.g. `template: '...'`)
-- [Single-file (`.vue`) components](single-file-component.html)
-- `<script type="text/x-template">`
-
-That's all you need to know about DOM template parsing caveats for now - and actually, the end of Vue's _Essentials_. Congratulations! There's still more to learn, but first, we recommend taking a break to play with Vue yourself and build something fun.
-
-Once you feel comfortable with the knowledge you've just digested, we recommend coming back to read the full guide on [Dynamic & Async Components](component-dynamic-async.html), as well as the other pages in the Components In-Depth section of the sidebar.
+- 문자열 템플릿 (예: `template: '...'`)
+- [싱글 파일(`.vue`) 컴포넌트](single-file-component.html)
+- `<script type="text/x-template">` 지금까지 DOM 템플릿 파싱 경고에 대해 알아야 할 모든 것입니다. 실제로 Vue의 *Essentials*의 끝입니다. 축하합니다! 아직 배울 것이 더 많지만 먼저 Vue를 직접 이용하고 재미있는 것을 구축하기 위해 휴식을 취하는 것이 좋습니다. 방금 소화한 지식에 익숙해지면 다시 돌아와서 [Dynamic & Async Components](component-dynamic-async.html)에 대한 전체 가이드와 사이드 바의 컴포넌트 심층 섹션에 있는 다른 페이지를 읽어보는 것이 좋습니다.

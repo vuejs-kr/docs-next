@@ -1,34 +1,29 @@
 ---
-title: v-if vs. v-for Precedence
+title: v-if와 v-for의 우선순위
 badges:
-  - breaking
+- breaking
 ---
 
-# {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
+# {{ $frontmatter.title }} <migrationbadges badges="$frontmatter.badges"></migrationbadges>
 
-## Overview
+## 개요
 
-- **BREAKING**: If used on the same element, `v-if` will have higher precedence than `v-for`
+- **BREAKING**: 동일한 엘리먼트에 `v-if`와 `v-for`를 함께 사용할 때, `v-if`가 더 높은 우선순위를 갖습니다.
 
-## Introduction
+## 서론
 
-Two of the most commonly used directives in Vue.js are `v-if` and `v-for`. So it's no surprise that there comes a time when developers want to use both together. While this is not a recommended practice, there may be times when this is necessary, so we wanted to provide guidance for how it works.
+Vue.js에서 가장 일반적으로 사용되는 두 가지 디렉티브는 `v-if`와 `v-for`입니다. 따라서 개발자 여러분이 두 디렉티브를 함께 사용하고자 하는 시기가 온 것은 놀랄 일이 아닙니다. 권장하는 방법은 아니지만, 필요한 경우가 있을 수 있기에, 두 디렉티브를 함께 사용할 때 어떻게 동작하는지에 대한 지침을 제공하고자 합니다.
 
-## 2.x Syntax
+## 2.x 구문
 
-In 2.x, when using `v-if` and `v-for` on the same element, `v-for` would take precedence.
+2.x에서는 동일한 엘리먼트에 `v-if`와 `v-for`를 함께 사용할 때, `v-for`가 더 높은 우선순위를 갖습니다.
 
-## 3.x Syntax
+## 3.x 구문
 
-In 3.x, `v-if` will always have the higher precedence than `v-for`.
+3.x에서는 `v-if`가 항상 `v-for` 보다 더 높은 우선순위를 갖습니다.
 
-## Migration Strategy
+## 마이그레이션 방법
 
-It is recommended to avoid using both on the same element due to the syntax ambiguity.
+구문이 모호해지기 때문에 동일한 엘리먼트에 두 디렉티브를 함께 사용하지 않는 것이 좋습니다.
 
-Rather than managing this at the template level, one method for accomplishing this is to create a computed property that filters out a list for the visible elements.
-
-## See also
-
-- [List Rendering - Displaying Filtered/Sorted Results](/guide/list.html#displaying-filtered-sorted-results)
-- [List Rendering - `v-for` with `v-if`](/guide/list.html#v-for-with-v-if)
+작업 수행을 위한 한 가지 방법은 두 디렉티브를 템플릿 수준에서 관리하는 대신, 표시할 엘리먼트 목록을 필터링하는 computed 속성을 만드는 것입니다.

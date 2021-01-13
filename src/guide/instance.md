@@ -1,16 +1,14 @@
-# Application & Component Instances
+# 어플리케이션 & 컴포넌트 인스턴스
 
-## Creating an Application Instance
+## 어플리케이션 인스턴스 생성하기
 
-Every Vue application starts by creating a new **application instance** with the `createApp` function:
+모든 Vue 어플리케이션은 `createApp` 함수를 사용하여 새로운 **어플리케이션 인스턴스**를 생성하여 시작합니다 :
 
 ```js
-const app = Vue.createApp({
-  /* options */
-})
+const app = Vue.createApp({ /* options */ })
 ```
 
-The application instance is used to register 'globals' that can then be used by components within that application. We'll discuss that in detail later in the guide but as a quick example:
+인스턴스가 생성되면, `mount` 메소드에 컨테이너를 전달하여 *mount* 할 수 있습니다. 예를들어, `<div id="app"></div>`에 Vue 어플리케이션을 마운트 시키고 싶다면, `#app`을 전달해야합니다:
 
 ```js
 const app = Vue.createApp({})
@@ -19,7 +17,7 @@ app.directive('focus', FocusDirective)
 app.use(LocalePlugin)
 ```
 
-Most of the methods exposed by the application instance return that same instance, allowing for chaining:
+어플리케이션 인스턴스에 의해 노출된 대부분의 메소드들은 동일한 인스턴스를 반환하여 연결(chaining)을 허용합니다:
 
 ```js
 Vue.createApp({})
@@ -28,30 +26,28 @@ Vue.createApp({})
   .use(LocalePlugin)
 ```
 
-You can browse the full application API in the [API reference](../api/application-api.html).
+[API 참조](../api/application-api.html)에서 전체 어플리케이션 API를 찾아볼 수 있습니다.
 
-## The Root Component
+## 최상위(Root) 컴포넌트
 
-The options passed to `createApp` are used to configure the **root component**. That component is used as the starting point for rendering when we **mount** the application.
+`createApp`에 전달된 옵션은 **루트 컴포넌트**를 구성하는데 사용됩니다. 이 컴포넌트는 어플리케이션을 **mount**할 때, 렌더링의 시작점으로 사용됩니다.
 
-An application needs to be mounted into a DOM element. For example, if we want to mount a Vue application into `<div id="app"></div>`, we should pass `#app`:
+어플리케이션을 DOM 요소에 마운트되어야합니다. 예를들어, Vue 어플리케이션을 `<div id="app"></div>`에 마운트하려면 `#app`을 전달해야 합니다.
 
 ```js
-const RootComponent = {
-  /* options */
-}
+const RootComponent = { /* options */ }
 const app = Vue.createApp(RootComponent)
 const vm = app.mount('#app')
 ```
 
-Unlike most of the application methods, `mount` does not return the application. Instead it returns the root component instance.
+대부분의 어플리케이션 메소드와 달리, `mount`는 어플리케이션을 반환하지 않습니다. 대신 루트 컴포넌트 인스턴스를 반환합니다.
 
-Although not strictly associated with the [MVVM pattern](https://en.wikipedia.org/wiki/Model_View_ViewModel), Vue's design was partly inspired by it. As a convention, we often use the variable `vm` (short for ViewModel) to refer to a component instance.
+[MVVM 패턴](https://en.wikipedia.org/wiki/Model_View_ViewModel)과 밀접하게 관련있지는 않지만, Vue의 디자인은 MVVM 패턴에 의해 부분적으로 영감을 받았습니다. 종종 인스턴스를 참조하기 위해서 변수 `vm` (ViewModel의 줄임말)를 종종 사용합니다 .
 
-While all the examples on this page only need a single component, most real applications are organized into a tree of nested, reusable components. For example, a Todo application's component tree might look like this:
+인스턴스를 생성할 때, **options 객체**를 전달합니다. 이 가이드의 대부분은 원하는 동작을 만드는 이러한 옵션들을 사용할 수 있는 방법에 대해 기술합니다. 참고로, [API 레퍼런스](../api/options-data.html)에서 전체 옵션 목록을 찾아볼 수 있습니다.
 
 ```
-Root Component
+Root Instance
 └─ TodoList
    ├─ TodoItem
    │  ├─ DeleteTodoButton
@@ -61,13 +57,13 @@ Root Component
       └─ TodoListStatistics
 ```
 
-Each component will have its own component instance, `vm`. For some components, such as `TodoItem`, there will likely be multiple instances rendered at any one time. All of the component instances in this application will share the same application instance.
+각 컴포넌트에는 고유한 컴포넌트 인스턴스 `vm`이 있습니다. `TodoItem`과 같은 일부 컴포넌트의 경우 한 번에 여러 인스턴스가 렌더링 될 수 있습니다. 이 어플리케이션의 모든 컴포넌트 인스턴스는 동일한 어플리케이션 인스턴스를 공유합니다.
 
-We'll talk about [the component system](component-basics.html) in detail later. For now, just be aware that the root component isn't really any different from any other component. The configuration options are the same, as is the behavior of the corresponding component instance.
+[컴포넌트 시스템](component-basics.html)에 대해서는 나중에 자세히 설명하겠습니다. 지금은 루트 컴포넌트가 다른 컴포넌트와 실제로 다르지 않다는 점에 유의하십시오. 구성 옵션은 해당 컴포넌트 인스턴스의 동작과 동일합니다.
 
-## Component Instance Properties
+## 컴포넌트 인스턴스 속성들
 
-Earlier in the guide we met `data` properties. Properties defined in `data` are exposed via the component instance:
+가이드 앞부분에서 `data` 속성을 만났습니다. `data`에 정의된 속성은 컴포넌트 인스턴스를 통해 노출됩니다:
 
 ```js
 const app = Vue.createApp({
@@ -81,15 +77,15 @@ const vm = app.mount('#app')
 console.log(vm.count) // => 4
 ```
 
-There are various other component options that add user-defined properties to the component instance, such as `methods`, `props`, `computed`, `inject` and `setup`. We'll discuss each of these in depth later in the guide. All of the properties of the component instance, no matter how they are defined, will be accessible in the component's template.
+`methods`, `props`, `computed`, `inject` 및`setup`과 같은 사용자 정의 속성을 컴포넌트 인스턴스에 추가하는 다양한 다른 컴포넌트 옵션들이 있습니다. 가이드의 뒷부분에서 각각에 대해 자세히 설명하겠습니다. 컴포넌트 인스턴스의 모든 속성은 정의된 방법에 관계없이 컴포넌트의 템플릿에서 접근할 수 있습니다.
 
-Vue also exposes some built-in properties via the component instance, such as `$attrs` and `$emit`. These properties all have a `$` prefix to avoid conflicting with user-defined property names.
+Vue는 또한 컴포넌트 인스턴스를 통해 `$attrs`와 `$emit`과 같은 몇몇 빌트인(built-in) 속성을 노출합니다. 이러한 속성을 모두 사용자 정의 속성명과 충돌하지 않도록 `$` 접두사(prefix)를 가지고 있습니다.
 
-## Lifecycle Hooks
+## 라이프사이클 훅
 
-Each component instance goes through a series of initialization steps when it's created - for example, it needs to set up data observation, compile the template, mount the instance to the DOM, and update the DOM when data changes. Along the way, it also runs functions called **lifecycle hooks**, giving users the opportunity to add their own code at specific stages.
+각 컴포넌트는 생성될 때 일련의 초기화 단계를 거칩니다. 예를들어 데이터 관찰, 템플릿 컴파일, 인스턴스를 DOM에 마운트, 데이터 변경 시 DOM을 업데이트해야합니다. 그 과정에서 **라이프사이클 훅**이라 불리우는 함수도 실행하여, 사용자가 특정 단계에서 자신의 코드를 추가할 수 있는 기회를 제공합니다.
 
-For example, the [created](../api/options-lifecycle-hooks.html#created) hook can be used to run code after an instance is created:
+예를들어, [created](../api/options-lifecycle-hooks.html#created) 훅은 인스턴스가 생성된 후에 코드를 실행하는데 사용됩니다:
 
 ```js
 Vue.createApp({
@@ -103,14 +99,15 @@ Vue.createApp({
 })
 ```
 
-There are also other hooks which will be called at different stages of the instance's lifecycle, such as [mounted](../api/options-lifecycle-hooks.html#mounted), [updated](../api/options-lifecycle-hooks.html#updated), and [unmounted](../api/options-lifecycle-hooks.html#unmounted). All lifecycle hooks are called with their `this` context pointing to the current active instance invoking it.
+인스턴스 라이프사이클에는 [mounted](../api/options-lifecycle-hooks.html#mounted), [updated](../api/options-lifecycle-hooks.html#updated), [unmounted](../api/options-lifecycle-hooks.html#unmounted) 과 같은 다른 훅도 존재합니다. 모든 라이프사이클 훅에서는 Vue인스턴스를 가리키는 `this` 컨텍스트와 함께 호출됩니다.
 
-::: tip
-Don't use [arrow functions](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions) on an options property or callback, such as `created: () => console.log(this.a)` or `vm.$watch('a', newValue => this.myMethod())`. Since an arrow function doesn't have a `this`, `this` will be treated as any other variable and lexically looked up through parent scopes until found, often resulting in errors such as `Uncaught TypeError: Cannot read property of undefined` or `Uncaught TypeError: this.myMethod is not a function`.
+::: tip 
+options 속성이나 콜백에서 `created: () => console.log(this.a)`이나 `vm.$watch('a', newValue => this.myMethod())` 과 같은 [화살표 함수](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions)를 사용하지 마세요. 화살표함수는 `this`가 없기 때문에, `this`는 다른 변수로 취급되거나 호출한 변수를 발견할 때까지 부모 스코프에서 해당 변수를 찾을것입니다. 이 때문에 `Uncaught TypeError: Cannot read property of undefined` 또는  `Uncaught TypeError: this.myMethod is not a function`와 같은 오류가 발생하게 됩니다. 
 :::
 
-## Lifecycle Diagram
+## 라이프사이클 다이어그램
 
-Below is a diagram for the instance lifecycle. You don't need to fully understand everything going on right now, but as you learn and build more, it will be a useful reference.
+아래는 인스턴스 라이프사이클에 대한 다이어그램입니다. 지금 당장 모든 것을 완전히 이해할 필요는 없지만 다이어그램은 앞으로 도움이 될 것입니다.
 
-<img src="/images/lifecycle.svg" width="840" height="auto" style="margin: 0px auto; display: block; max-width: 100%;" loading="lazy" alt="Instance lifecycle hooks">
+
+<img width="840" height="auto" style="margin: 0px auto; display: block; max-width: 100%;" loading="lazy" alt="Instance lifecycle hooks" src="/images/lifecycle.png"> 

@@ -1,12 +1,12 @@
 # Slots
 
-> This page assumes you've already read the [Components Basics](component-basics.md). Read that first if you are new to components.
+> 이 페이지는 여러분이 이미 [컴포넌트 기초](component-basics.md)를 읽었다고 가정하고 쓴 내용입니다. 컴포넌트가 처음이라면 기초 문서를 먼저 읽어주시기 바랍니다.
 
-## Slot Content
+## Slot 컨텐츠
 
-Vue implements a content distribution API inspired by the [Web Components spec draft](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md), using the `<slot>` element to serve as distribution outlets for content.
+Vue는 [Web Components spec draft](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md)에서 영감을 받아 만든 컨텐츠 배포 API인 `<slot>`을 이용해 컨텐츠를 각 요소에 배포할 수 있도록 했습니다.
 
-This allows you to compose components like this:
+이를 이용하면 아래와 같이 컴포넌트를 구성할 수 있습니다.
 
 ```html
 <todo-button>
@@ -14,48 +14,48 @@ This allows you to compose components like this:
 </todo-button>
 ```
 
-Then in the template for `<todo-button>`, you might have:
+이 경우, `<todo-button>`의 템플릿 안에는 아래와 같은 코드가 필요합니다.
 
 ```html
-<!-- todo-button component template -->
+<!-- todo-button 컴포넌트 템플릿 -->
 <button class="btn-primary">
   <slot></slot>
 </button>
 ```
 
-When the component renders, `<slot></slot>` will be replaced by "Add Todo".
+이제 컴포넌트가 렌더될 때 `<slot></slot>` 부분이 "Add Todo"로 대체됩니다.
 
 ```html
-<!-- rendered HTML -->
+<!-- HTML 렌더링 -->
 <button class="btn-primary">
   Add todo
 </button>
 ```
 
-Strings are just the beginning though! Slots can also contain any template code, including HTML:
+문자열은 시작일 뿐입니다! 슬롯은 HTML을 포함한 어떠한 템플릿 코드라도 포함할 수 있습니다.
 
 ```html
 <todo-button>
-  <!-- Add a Font Awesome icon -->
+  <!-- 폰트어썸 아이콘 추가 -->
   <i class="fas fa-plus"></i>
   Add todo
 </todo-button>
 ```
 
-Or even other components:
+심지어는 컴포넌트를 포함시킬 수도 있습니다.
 
 ```html
 <todo-button>
-  <!-- Use a component to add an icon -->
+  <!-- 아이콘을 추가하기 위해 컴포넌트를 사용 -->
   <font-awesome-icon name="plus"></font-awesome-icon>
   Add todo
 </todo-button>
 ```
 
-If `<todo-button>`'s template did **not** contain a `<slot>` element, any content provided between its opening and closing tag would be discarded.
+만약 `<todo-button>` 컴포넌트의 템플릿이 `<slot>` 코드를 가지고 있지 **않다면**, 태그 내부에 위치한 모든 컨텐츠는 무시됩니다.
 
 ```html
-<!-- todo-button component template -->
+<!-- todo-button 컴포넌트 템플릿 -->
 
 <button class="btn-primary">
   Create a new item
@@ -64,14 +64,14 @@ If `<todo-button>`'s template did **not** contain a `<slot>` element, any conten
 
 ```html
 <todo-button>
-  <!-- Following text won't be rendered -->
+  <!-- 아래의 텍스트는 렌더링되지 않습니다 -->
   Add todo
 </todo-button>
 ```
 
-## Render Scope
+## 렌더 스코프
 
-When you want to use data inside a slot, such as in:
+다음과 같이 slot 내부에 데이터를 사용하고 싶은 경우
 
 ```html
 <todo-button>
@@ -79,11 +79,11 @@ When you want to use data inside a slot, such as in:
 </todo-button>
 ```
 
-That slot has access to the same instance properties (i.e. the same "scope") as the rest of the template.
+해당 slot은 나머지 템플릿과 같은 인스턴스의 속성과 같은 접근 권한을 갖습니다. (즉, 같은 "스코프"를 갖습니다.)
 
-<img src="/images/slot.png" width="447" height="auto" style="display: block; margin: 0 auto; max-width: 100%" loading="lazy" alt="Slot explanation diagram">
+ <img src="https://github.com/narusas/docs-next/blob/master/images/slot.png?raw=true" alt="Slot explanation diagram" class="">
 
-The slot does **not** have access to `<todo-button>`'s scope. For example, trying to access `action` would not work:
+이 slot은 `<todo-button>` 의 스코프에 접근할 수 **없습니다**. 예를 들어, 아래와 같이 `action`에 접근하고자 하는 경우, 코드가 정상적으로 동작하지 않습니다.
 
 ```html
 <todo-button action="delete">
@@ -96,13 +96,13 @@ The slot does **not** have access to `<todo-button>`'s scope. For example, tryin
 </todo-button>
 ```
 
-As a rule, remember that:
+아래와 같은 규칙을 기억하세요.
 
-> Everything in the parent template is compiled in parent scope; everything in the child template is compiled in the child scope.
+> 부모 템플릿에 있는 모든 요소는 부모 스코프에서 컴파일되고, 자식 템플릿에 있는 모든 요소는 자식 스코프에서 컴파일됩니다.
 
-## Fallback Content
+## Fallback 컨텐츠
 
-There are cases when it's useful to specify fallback (i.e. default) content for a slot, to be rendered only when no content is provided. For example, in a `<submit-button>` component:
+Slot에 컨텐츠가 주어지지 않는 경우, (default 같은) fallback을 특정하는 것이 유용한 경우가 있습니다. 예를 들어,  `<submit-button>`라는 컴포넌트가 있을 때
 
 ```html
 <button type="submit">
@@ -110,7 +110,7 @@ There are cases when it's useful to specify fallback (i.e. default) content for 
 </button>
 ```
 
-We might want the text "Submit" to be rendered inside the `<button>` most of the time. To make "Submit" the fallback content, we can place it in between the `<slot>` tags:
+일반적으로 "Submit"이라는 텍스트가 `<button>` 내부에 있기를 원할 수 있습니다. "Submit" 텍스트를 fallback 컨텐츠로 만들기 위해서 `<slot>`  태그 내부에 텍스트를 위치할 수 있습니다.
 
 ```html
 <button type="submit">
@@ -118,13 +118,13 @@ We might want the text "Submit" to be rendered inside the `<button>` most of the
 </button>
 ```
 
-Now when we use `<submit-button>` in a parent component, providing no content for the slot:
+이제 `<submit-button>` 내부의 slot에 아무런 컨텐츠도 제공하지 않는 경우에
 
 ```html
 <submit-button></submit-button>
 ```
 
-will render the fallback content, "Submit":
+아래와 같이 fallback 컨텐츠로써 "Submit"을 렌더합니다.
 
 ```html
 <button type="submit">
@@ -132,7 +132,7 @@ will render the fallback content, "Submit":
 </button>
 ```
 
-But if we provide content:
+하지만 컨텐츠를 제공하는 경우에는
 
 ```html
 <submit-button>
@@ -140,7 +140,7 @@ But if we provide content:
 </submit-button>
 ```
 
-Then the provided content will be rendered instead:
+Fallback 컨텐츠 대신 입력한 컴포넌트가 들어갑니다.
 
 ```html
 <button type="submit">
@@ -148,43 +148,43 @@ Then the provided content will be rendered instead:
 </button>
 ```
 
-## Named Slots
+## 이름을 갖는 Slot
 
-There are times when it's useful to have multiple slots. For example, in a `<base-layout>` component with the following template:
-
-```html
-<div class="container">
-  <header>
-    <!-- We want header content here -->
-  </header>
-  <main>
-    <!-- We want main content here -->
-  </main>
-  <footer>
-    <!-- We want footer content here -->
-  </footer>
-</div>
-```
-
-For these cases, the `<slot>` element has a special attribute, `name`, which can be used to assign a unique ID to different slots so you can determine where content should be rendered:
+여러 개의 슬롯을 사용하는 것이 유용한 경우가 있습니다. 예를 들어, 아래와 같은 템플릿을 가진 `<base-layout>` 컴포넌트가 있다고  해 봅시다.
 
 ```html
 <div class="container">
   <header>
-    <slot name="header"></slot>
+    <!-- header 컨텐츠를 두고 싶은 곳 -->
   </header>
   <main>
-    <slot></slot>
+    <!-- main 컨텐츠를 두고 싶은 곳 -->
   </main>
   <footer>
-    <slot name="footer"></slot>
+    <!-- footer 컨텐츠를 두고 싶은 곳 -->
   </footer>
 </div>
 ```
 
-A `<slot>` outlet without `name` implicitly has the name "default".
+이 경우, `<slot>` 엘리먼트가 특별한 attribute인 `name`을 갖도록 할 수 있습니다. 이는 각 slot의 특정한 ID로써, 각각의 컨텐츠가 원하는 곳에 렌더링되도록 하는데 사용될 수 있습니다.
 
-To provide content to named slots, we need to use the `v-slot` directive on a `<template>` element, providing the name of the slot as `v-slot`'s argument:
+```html
+<div class="container">
+  <header>
+    <slot name="header">
+  </header>
+  <main>
+    <slot>
+  </main>
+  <footer>
+    <slot name="footer">
+  </footer>
+</div>
+```
+
+`name` 을 갖지 않는 `<slot>`은 묵시적으로 "default"라는 name을 갖습니다.
+
+이름을 가진 slot에 컨텐츠를 제공하기 위해서는 `<template>` 엘리먼트에 `v-slot` 지시자를 사용합니다. <br>`v-slot`의 매개변수로는 각 slot의 이름을 전달합니다.
 
 ```html
 <base-layout>
@@ -203,9 +203,9 @@ To provide content to named slots, we need to use the `v-slot` directive on a `<
 </base-layout>
 ```
 
-Now everything inside the `<template>` elements will be passed to the corresponding slots.
+이제 각 `<template>` 안의 요소들은 대응되는 slot으로 전달됩니다.
 
-The rendered HTML will be:
+렌더링된 HTML은 다음과 같습니다.
 
 ```html
 <div class="container">
@@ -222,13 +222,13 @@ The rendered HTML will be:
 </div>
 ```
 
-Note that **`v-slot` can only be added to a `<template>`** (with [one exception](#abbreviated-syntax-for-lone-default-slots))
+**`v-slot` 은 `<template>`에만 사용할 수 있음을 참고하세요.** (제외 된 [한가지 경우](#abbreviated-syntax-for-lone-default-slots))
 
-## Scoped Slots
+## 스코프를 갖는 Slot
 
-Sometimes, it's useful for slot content to have access to data only available in the child component. It's a common case when a component is used to render an array of items, and we want to be able to customize the way each item is rendered.
+간혹 슬롯 컨텐츠가 자식 컴포넌트에서만 접근할 수 있는 데이터에 접근하는 것이 유용한 경우가 있습니다. 이러한 경우는 컴포넌트가 array의 요소들을 렌더링하고 각 요소들이 렌더링되는 방식을 커스터마이징 하는 경우에 주로 발생합니다.
 
-For example, we have a component, containing a list of todo-items.
+예를 들어, todo-item들을 갖는 컴포넌트를 생각해 봅시다.
 
 ```js
 app.component('todo-list', {
@@ -247,7 +247,7 @@ app.component('todo-list', {
 })
 ```
 
-We might want to replace the <span v-pre>`{{ item }}`</span> with a `<slot>` to customize it on parent component:
+이 때, 부모 컴포넌트에서 slot을 변경하길 원할 수 있습니다.
 
 ```html
 <todo-list>
@@ -256,9 +256,9 @@ We might want to replace the <span v-pre>`{{ item }}`</span> with a `<slot>` to 
 </todo-list>
 ```
 
-That won't work, however, because only the `<todo-list>` component has access to the `item` and we are providing the slot content from its parent.
+하지만 `<todo-list>` 컴포넌트만이`item` 요소에 대한 접근이 가능하며 부모요소에는 slot만을 제공하므로 위 코드는 정상적으로 동작하지 않습니다.
 
-To make `item` available to the slot content provided by the parent, we can add a `<slot>` element and bind it as an attribute:
+이 경우, `item`을 부모 요소로부터 제공받는 slot 컨텐츠에 사용 가능하도록 하기 위해서 `<slot>` 요소에 매개변수로써 bind 시킬 수 있습니다.
 
 ```html
 <ul>
@@ -268,17 +268,7 @@ To make `item` available to the slot content provided by the parent, we can add 
 </ul>
 ```
 
-You can bind as many attributes to the `slot` as you need:
-
-```html
-<ul>
-  <li v-for="( item, index ) in items">
-    <slot :item="item" :index="index" :another-attribute="anotherAttribute"></slot>
-  </li>
-</ul>
-```
-
-Attributes bound to a `<slot>` element are called **slot props**. Now, in the parent scope, we can use `v-slot` with a value to define a name for the slot props we've been provided:
+`<slot>` 엘리먼트에 연결된 매개변수를 **slot props**라고 부릅니다. 이제 부모 스코프에서 `v-slot`를 정의한 이름을 이용해 사용할 수 있습니다.
 
 ```html
 <todo-list>
@@ -291,11 +281,11 @@ Attributes bound to a `<slot>` element are called **slot props**. Now, in the pa
 
 <img src="/images/scoped-slot.png" width="611" height="auto" style="display: block; margin: 0 auto; max-width: 100%;" loading="lazy" alt="Scoped slot diagram">
 
-In this example, we've chosen to name the object containing all our slot props `slotProps`, but you can use any name you like.
+이 예제에서는 모든 slot props를 포함하는 오브젝트의 이름을 `slotProps`로 사용한 것이며, 이름은 원하는 대로 변경할 수 있습니다.
 
-### Abbreviated Syntax for Lone Default Slots
+### 단일 기본 slot에 대한 축약된 문법
 
-In cases like above, when _only_ the default slot is provided content, the component's tags can be used as the slot's template. This allows us to use `v-slot` directly on the component:
+위와 같은 경우에, 만약 기본 slot이 *유일하게* 전달되는 컨텐츠라면 컴포넌트의 태그가 slot의 템플릿처럼 사용될 수 있습니다. <br>이는 `v-slot`을 컴포넌트에 직접 사용할 수 있게 해 줍니다.
 
 ```html
 <todo-list v-slot:default="slotProps">
@@ -304,7 +294,7 @@ In cases like above, when _only_ the default slot is provided content, the compo
 </todo-list>
 ```
 
-This can be shortened even further. Just as non-specified content is assumed to be for the default slot, `v-slot` without an argument is assumed to refer to the default slot:
+즉, 위 코드를 좀 더 줄여 쓸 수 있습니다. 특정되지 않은 컨텐츠가 기본 슬롯에 할당된 경우, 매개변수가 없는 `v-slot`은 기본 슬롯을 참조합니다.
 
 ```html
 <todo-list v-slot="slotProps">
@@ -313,21 +303,21 @@ This can be shortened even further. Just as non-specified content is assumed to 
 </todo-list>
 ```
 
-Note that the abbreviated syntax for default slot **cannot** be mixed with named slots, as it would lead to scope ambiguity:
+이러한 축약형 문법은 이름을 갖는 슬롯과 함께 **사용할 수 없음을** 기억하세요. 이름을 갖는 슬롯과 혼용되는 경우 스코프가 모호해지게 됩니다.
 
 ```html
-<!-- INVALID, will result in warning -->
+<!-- 유효하지 않음, 경고가 발생합니다 -->
 <todo-list v-slot="slotProps">
   <i class="fas fa-check"></i>
   <span class="green">{{ slotProps.item }}</span>
-
+  
   <template v-slot:other="otherSlotProps">
     slotProps is NOT available here
   </template>
 </todo-list>
 ```
 
-Whenever there are multiple slots, use the full `<template>` based syntax for _all_ slots:
+여러 개의 slot이 존재하는 경우에는 *모든* slot에 대해 `<template>` 코드를 전부 작성하세요.
 
 ```html
 <todo-list>
@@ -342,17 +332,17 @@ Whenever there are multiple slots, use the full `<template>` based syntax for _a
 </todo-list>
 ```
 
-### Destructuring Slot Props
+### Slot Props 비구조화 할당
 
-Internally, scoped slots work by wrapping your slot content in a function passed a single argument:
+내부적으로 스코프를 갖는 slot은 slot의 컨텐츠를 하나로 감싸 함수의 매개변수로 전달합니다.
 
 ```js
 function (slotProps) {
-  // ... slot content ...
+  // ... slot 컨텐츠 ...
 }
 ```
 
-That means the value of `v-slot` can actually accept any valid JavaScript expression that can appear in the argument position of a function definition. So you can also use [ES2015 destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) to pull out specific slot props, like so:
+이는 곧 <code>v-slot</code>의 값이 함수 정의에 들어갈 수 있는 모든 유효한 JavaScript 표현식을 수용할 수 있음을 뜻합니다. 따라서 <a>ES2015의 비구조화 할당</a>을 활용해 특정 slot props를 사용하는 것이 가능합니다.
 
 ```html
 <todo-list v-slot="{ item }">
@@ -361,7 +351,7 @@ That means the value of `v-slot` can actually accept any valid JavaScript expres
 </todo-list>
 ```
 
-This can make the template much cleaner, especially when the slot provides many props. It also opens other possibilities, such as renaming props, e.g. `item` to `todo`:
+이것은 특히 슬롯이 많은 소품을 제공 할 때 템플릿을 훨씬 더 깔끔하게 만들 수 있습니다. 또한 소품 이름 변경과 같은 다른 가능성을 엽니다. 예를 들어 <code>todo</code>의 `item`:
 
 ```html
 <todo-list v-slot="{ item: todo }">
@@ -370,7 +360,7 @@ This can make the template much cleaner, especially when the slot provides many 
 </todo-list>
 ```
 
-You can even define fallbacks, to be used in case a slot prop is undefined:
+추가로, fallback을 정의하고 slot prop이 undefined일 때 활용하도록 할 수도 있습니다.
 
 ```html
 <todo-list v-slot="{ item = 'Placeholder' }">
@@ -379,9 +369,9 @@ You can even define fallbacks, to be used in case a slot prop is undefined:
 </todo-list>
 ```
 
-## Dynamic Slot Names
+## 동적인 이름을 갖는 Slot
 
-[Dynamic directive arguments](template-syntax.md#dynamic-arguments) also work on `v-slot`, allowing the definition of dynamic slot names:
+[Dynamic directive arguments](template-syntax.md#dynamic-arguments)는 `v-slot`, 에서도 활용이 가능하며, slot이 동적으로 이름을 갖도록 할 수 있습니다.
 
 ```html
 <base-layout>
@@ -391,9 +381,9 @@ You can even define fallbacks, to be used in case a slot prop is undefined:
 </base-layout>
 ```
 
-## Named Slots Shorthand
+## 이름을 갖는 Slot의 축약형
 
-Similar to `v-on` and `v-bind`, `v-slot` also has a shorthand, replacing everything before the argument (`v-slot:`) with the special symbol `#`. For example, `v-slot:header` can be rewritten as `#header`:
+`v-on`나 `v-bind`처럼, `v-slot`도 매개변수 앞에 오는 것(`v-slot:`)을 `#`을 이용해 축약할 수 있습니다. 예를 들어, `v-slot:header`는 `#header`로 작성할 수 있습니다.
 
 ```html
 <base-layout>
@@ -402,20 +392,20 @@ Similar to `v-on` and `v-bind`, `v-slot` also has a shorthand, replacing everyth
   </template>
 
   <template #default>
-    <p>A paragraph for the main content.</p>
-    <p>And another one.</p>
+    A paragraph for the main content.</p>
+    And another one.</p>
   </template>
 
   <template #footer>
-    <p>Here's some contact info</p>
+    Here's some contact info</p>
   </template>
 </base-layout>
 ```
 
-However, just as with other directives, the shorthand is only available when an argument is provided. That means the following syntax is invalid:
+하지만 다른 지시자들과 같이 축약형은 매개변수가 주어진 경우에만 유효합니다. 즉, 다음과 같은 문법은 유효하지 않습니다.
 
 ```html
-<!-- This will trigger a warning -->
+<!-- 이것은 경고를 발생시킵니다. -->
 
 <todo-list #="{ item }">
   <i class="fas fa-check"></i>
@@ -423,7 +413,7 @@ However, just as with other directives, the shorthand is only available when an 
 </todo-list>
 ```
 
-Instead, you must always specify the name of the slot if you wish to use the shorthand:
+축약형의 경우 위와 같이 작성하는 대신 항상 다음과 같이 이름을 명시해 주어야 합니다:
 
 ```html
 <todo-list #default="{ item }">

@@ -1,138 +1,137 @@
 ---
 badges:
-  - breaking
+- breaking
 ---
 
-# Attribute Coercion Behavior <MigrationBadges :badges="$frontmatter.badges" />
+# 속성 강제 규칙(Attribute Coercion Behavior)<migrationbadges badges="$frontmatter.badges"></migrationbadges>
 
-::: info Info
-This is a low-level internal API change and does not affect most developers.
+::: info Info 
+낮은 수준의 API 변경으로 개발자 대부분에게 영향을 주지 않습니다. 
 :::
 
-## Overview
+## 개요
 
-Here is a high level summary of the changes:
+변경내용:
 
-- Drop the internal concept of enumerated attributes and treat those attributes the same as normal non-boolean attributes
-- **BREAKING**: No longer removes attribute if value is boolean `false`. Instead, it's set as attr="false" instead. To remove the attribute, use `null` or `undefined`.
+- 열거형 속성(enumerated attributes)의 내부 개념을 삭제하고 해당 속성을 일반 non-boolean 속성과 동일하게 처리합니다
+- **BREAKING**: 값이 boolean  `false`인 경우, 더이상 속성을 제거하지 않습니다. 대신 attr="false"로 설정되며, 속성을 삭제하려면 `null` 또는 `undefined`를 사용합니다.
 
-For more information, read on!
+더 자세한 설명은 계속 읽으십시오!
 
-## 2.x Syntax
+## 2.x 구문
 
-In 2.x, we had the following strategies for coercing `v-bind` values:
+2.x에서 `v-bind` 값을 제어하는 방법:
 
-- For some attribute/element pairs, Vue is always using the corresponding IDL attribute (property): [like `value` of `<input>`, `<select>`, `<progress>`, etc](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L11-L18).
+- 일부 속성과 일부 엘리먼트는 Vue에서 항상 쌍으로 대응하는 IDL 속성을 사용합니다: [`<input>`, `<select>`, `<progress>`등의 `value`과 같습니다](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L11-L18).
 
-- For "[boolean attributes](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L33-L40)" and [xlinks](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L44-L46), Vue removes them if they are "falsy" ([`undefined`, `null` or `false`](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L52-L54)) and adds them otherwise (see [here](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/runtime/modules/attrs.js#L66-L77) and [here](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/runtime/modules/attrs.js#L81-L85)).
+- "[boolean 속성](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L33-L40)" 및 [xlinks](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L44-L46)의 경우, Vue에서 "거짓(falsy)"([`undefined`, `null`, `false`](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L52-L54))인 경우는 삭제하고 그렇지 않으면 추가합니다. ([여기](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/runtime/modules/attrs.js#L66-L77)와 [여기](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/runtime/modules/attrs.js#L81-L85)를 참조)
 
-- For "[enumerated attributes](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L20)" (currently `contenteditable`, `draggable` and `spellcheck`), Vue tries to [coerce](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L24-L31) them to string (with special treatment for `contenteditable` for now, to fix [vuejs/vue#9397](https://github.com/vuejs/vue/issues/9397)).
+- "[열거형 속성(enumerated attributes)](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L20)"(현재 `contenteditable`, `draggable`, `spellcheck`)의 경우 Vue에서 속성을 문자열로 [강제](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L24-L31) 변환하려고 합니다. ([vuejs/vue#9397](https://github.com/vuejs/vue/issues/9397) 이슈를 통해 수정되어 `contenteditable`로 특수하게 처리합니다)
 
-- For other attributes, we remove "falsy" values (`undefined`, `null`, or `false`) and set other values as-is (see [here](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/runtime/modules/attrs.js#L92-L113)).
+- 다른 속성의 경우 "거짓(falsy)" 값(`undefined`, `null`, `false`)을 제거하고 다른 값을 그대로 설정합니다. ([여기](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/runtime/modules/attrs.js#L92-L113) 참조)
 
-The following table describes how Vue coerce "enumerated attributes" differently with normal non-boolean attributes:
+다음 표에서는 Vue가 "열거형 속성(enumerated attributes)"을 어떻게 일반 non-boolean 속성으로 변환하는지 설명합니다.
 
-| Binding expression  | `foo` <sup>normal</sup> | `draggable` <sup>enumerated</sup> |
-| ------------------- | ----------------------- | --------------------------------- |
-| `:attr="null"`      | /                       | `draggable="false"`               |
-| `:attr="undefined"` | /                       | /                                 |
-| `:attr="true"`      | `foo="true"`            | `draggable="true"`                |
-| `:attr="false"`     | /                       | `draggable="false"`               |
-| `:attr="0"`         | `foo="0"`               | `draggable="true"`                |
-| `attr=""`           | `foo=""`                | `draggable="true"`                |
-| `attr="foo"`        | `foo="foo"`             | `draggable="true"`                |
-| `attr`              | `foo=""`                | `draggable="true"`                |
+표현식 | `foo` <sup>일반</sup> | `draggable` <sup>열거형(enumerated)</sup>
+--- | --- | ---
+`:attr="null"` | / | `draggable="false"`
+`:attr="undefined"` | / | /
+`:attr="true"` | `foo="true"` | `draggable="true"`
+`:attr="false"` | / | `draggable="false"`
+`:attr="0"` | `foo="0"` | `draggable="true"`
+`attr=""` | `foo=""` | `draggable="true"`
+`attr="foo"` | `foo="foo"` | `draggable="true"`
+`attr` | `foo=""` | `draggable="true"`
 
-We can see from the table above, current implementation coerces `true` to `'true'` but removes the attribute if it's `false`. This also led to inconsistency and required users to manually coerce boolean values to string in very common use cases like `aria-*` attributes like `aria-selected`, `aria-hidden`, etc.
+위의 표에서 볼 수 있듯이 현재 구현(2.x)에서는 `true`에서 `'true'`로 변환되지만, `false`의 경우는 속성을 제거합니다. 이로 인해 불일치가 발생하였으며, 사용자는 `aria-*`, `aria-selected`, `aria-hidden`등의 속성과 같은 매우 일반적인 사용 사례에서 boolean 값을 수동으로 문자열로 강제 변환해야 했습니다.
 
-## 3.x Syntax
+## 3.x 구문
 
-We intend to drop this internal concept of "enumerated attributes" and treat them as normal non-boolean HTML attributes.
+우리는 "열거형 속성(enumerated attributes)"의 내부 개념을 삭제하고 일반적인 non-boolean HTML 속성으로 취급하려고 합니다.
 
-- This solves the inconsistency between normal non-boolean attributes and “enumerated attributes”
-- It also makes it possible to use values other than `'true'` and `'false'`, or even keywords yet to come, for attributes like `contenteditable`
+- 일반적인 non-boolean 속성과 "열거형 속성(enumerated attributes)"의 불일치를 해결합니다
+- `contenteditable`과 같은 속성에 `'true'`, `'false'`이외의 값과 향후 추가되는 키워드를 사용할 수 있습니다.
 
-For non-boolean attributes, Vue will stop removing them if they are `false` and coerce them to `'false'` instead.
+non-boolean 속성의 경우 Vue는 속성이 `false`인 경우 삭제를 중단하고 대신 `'false'`를 강제합니다.
 
-- This solves the inconsistency between `true` and `false` and makes outputting `aria-*` attributes easier
+- 이렇게 하면 `true`와 `false`의 불일치가 해결되고 `aria-*` 속성의 출력이 쉬워집니다
 
-The following table describes the new behavior:
+다음 표는 새로운 동작을 설명합니다.
 
-| Binding expression  | `foo` <sup>normal</sup>    | `draggable` <sup>enumerated</sup> |
-| ------------------- | -------------------------- | --------------------------------- |
-| `:attr="null"`      | /                          | / <sup>†</sup>                    |
-| `:attr="undefined"` | /                          | /                                 |
-| `:attr="true"`      | `foo="true"`               | `draggable="true"`                |
-| `:attr="false"`     | `foo="false"` <sup>†</sup> | `draggable="false"`               |
-| `:attr="0"`         | `foo="0"`                  | `draggable="0"` <sup>†</sup>      |
-| `attr=""`           | `foo=""`                   | `draggable=""` <sup>†</sup>       |
-| `attr="foo"`        | `foo="foo"`                | `draggable="foo"` <sup>†</sup>    |
-| `attr`              | `foo=""`                   | `draggable=""` <sup>†</sup>       |
+표현식 | `foo` <sup>일반</sup> | `draggable` <sup>열거형(*enumerated)</sup>
+--- | --- | ---
+`:attr="null"` | / | / <sup>†</sup>
+`:attr="undefined"` | / | /
+`:attr="true"` | `foo="true"` | `draggable="true"`
+`:attr="false"` | `foo="false"` <sup>†</sup> | `draggable="false"`
+`:attr="0"` | `foo="0"` | `draggable="0"` <sup>†</sup>
+`attr=""` | `foo=""` | `draggable=""` <sup>†</sup>
+`attr="foo"` | `foo="foo"` | `draggable="foo"` <sup>†</sup>
+`attr` | `foo=""` | `draggable=""` <sup>†</sup>
 
-<small>†: changed</small>
+<small>†: 변경점</small>
 
-Coercion for boolean attributes is left untouched.
+boolean 속성에 대한 강제는 그대로 유지됩니다.
 
-## Migration Strategy
+## 마이그레이션 방법
 
-### Enumerated attributes
+### 열거형 속성(Enumerated attributes)
 
-The absence of an enumerated attribute and `attr="false"` may produce different IDL attribute values (which will reflect the actual state), described as follows:
+열거된 속성이 없고 `attr="false"`는 다음과 같이 다른 IDL 속성값 (실제 상태를 반영함)을 생성할 수 있습니다.
 
-| Absent enumerated attr | IDL attr & value                     |
-| ---------------------- | ------------------------------------ |
-| `contenteditable`      | `contentEditable` &rarr; `'inherit'` |
-| `draggable`            | `draggable` &rarr; `false`           |
-| `spellcheck`           | `spellcheck` &rarr; `true`           |
+열거된 속성 없음(Absent enumerated attr) | IDL 속성 & 값
+--- | ---
+`contenteditable` | `contentEditable` → `'inherit'`
+`draggable` | `draggable` → `false`
+`spellcheck` | `spellcheck` → `true`
 
-To keep the old behavior work, and as we will be coercing `false` to `'false'`, in 3.x Vue developers need to make `v-bind` expression resolve to `false` or `'false'` for `contenteditable` and `spellcheck`.
+마이그레이션을 하면서 `false`는 `'false'`로 강제변경되므로, 이전 동작(2.x)을 유지하기 위해서 Vue 3.x에서는 `contenteditable`, `spellcheck`를 위해 `false`와 `'false'`를 확인하는 `v-bind`표현식을 만들어야합니다.
 
-In 2.x, invalid values were coerced to `'true'` for enumerated attributes. This was usually unintended and unlikely to be relied upon on a large scale. In 3.x `true` or `'true'` should be explicitly specified.
+2.x에서 열거된 속성(enumerated attributes)에 대해 유효하지 않은 값이 `'true'` 로 강제 변환되었습니다. 이것은 일반적으로 의도하지 않았으며, 대규모로 의존 할 가능성은 작습니다. 3.x에서는 `true` 또는 `'true'`를 명시적으로 지정해야 합니다.
 
-### Coercing `false` to `'false'` instead of removing the attribute
+### 속성을 삭제하는 대신 `false`를 `'false'`로 강제
 
-In 3.x, `null` or `undefined` should be used to explicitly remove an attribute.
+3.x에서는 `null` 또는 `undefined` 를 사용하여 속성을 제거합니다.
 
-### Comparison between 2.x & 3.x behavior
+### 2.x & 3.x 동작 비교
 
 <table>
   <thead>
     <tr>
-      <th>Attribute</th>
-      <th><code>v-bind</code> value <sup>2.x</sup></th>
-      <th><code>v-bind</code> value <sup>3.x</sup></th>
-      <th>HTML output</th>
+      <th>속성</th>
+      <th> <code>v-bind</code> 값 <sup>2.x</sup> </th>
+      <th> <code>v-bind</code> 값 <sup>3.x</sup> </th>
+      <th>HTML 출력</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td rowspan="3">2.x “Enumerated attrs”<br><small>i.e. <code>contenteditable</code>, <code>draggable</code> and <code>spellcheck</code>.</small></td>
-      <td><code>undefined</code>, <code>false</code></td>
-      <td><code>undefined</code>, <code>null</code></td>
-      <td><i>removed</i></td>
+      <td rowspan="3">2.x "열거된 속성(Enumerated attrs)"<br><small><code>contenteditable</code>, <code>draggable</code>, <code>spellcheck</code></small>
+</td>
+      <td> <code>undefined</code>, <code>false</code> </td>
+      <td> <code>undefined</code>, <code>null</code> </td>
+      <td><i>제거</i></td>
     </tr>
     <tr>
-      <td>
-        <code>true</code>, <code>'true'</code>, <code>''</code>, <code>1</code>,
-        <code>'foo'</code>
-      </td>
-      <td><code>true</code>, <code>'true'</code></td>
+      <td>         <code>true</code>, <code>'true'</code>, <code>''</code>, <code>1</code>,         <code>'foo'</code> </td>
+      <td> <code>true</code>, <code>'true'</code> </td>
       <td><code>"true"</code></td>
     </tr>
     <tr>
-      <td><code>null</code>, <code>'false'</code></td>
-      <td><code>false</code>, <code>'false'</code></td>
+      <td> <code>null</code>, <code>'false'</code> </td>
+      <td> <code>false</code>, <code>'false'</code> </td>
       <td><code>"false"</code></td>
     </tr>
     <tr>
-      <td rowspan="2">Other non-boolean attrs<br><small>eg. <code>aria-checked</code>, <code>tabindex</code>, <code>alt</code>, etc.</small></td>
-      <td><code>undefined</code>, <code>null</code>, <code>false</code></td>
-      <td><code>undefined</code>, <code>null</code></td>
-      <td><i>removed</i></td>
+      <td rowspan="2">기타 non-boolean 속성(Other non-boolean attrs)<br><small>예. <code>aria-checked</code>, <code>tabindex</code>, <code>alt</code>, 등.</small>
+</td>
+      <td> <code>undefined</code>, <code>null</code>, <code>false</code> </td>
+      <td> <code>undefined</code>, <code>null</code> </td>
+      <td><i>제거</i></td>
     </tr>
     <tr>
       <td><code>'false'</code></td>
-      <td><code>false</code>, <code>'false'</code></td>
+      <td> <code>false</code>, <code>'false'</code> </td>
       <td><code>"false"</code></td>
     </tr>
   </tbody>

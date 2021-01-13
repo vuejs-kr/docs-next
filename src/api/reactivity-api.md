@@ -1,7 +1,7 @@
-# Reactivity API
+# 반응형 API(Reactivity API)
 
-The Reactivity API contains the following sections:
+반응형 API(Reactivity API)에는 다음 섹션이 포함되어 있습니다:
 
-- [Basic Reactivity APIs](/api/basic-reactivity.html)
-- [Refs](/api/refs-api.html)
-- [Computed and watch](/api/computed-watch-api.html)
+- [기본적인 반응형 APIs(Basic Reactivity APIs)](/ko-KR/api/basic-reactivity.html)
+- [Refs](/ko-KR/api/refs-api.html)
+- [Computed와 watch](/ko-KR/api/computed-watch-api.html)

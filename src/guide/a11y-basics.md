@@ -1,28 +1,28 @@
-# Basics
+# 기초
 
-Web accessibility (also known as a11y) refers to the practice of creating websites that can be used by anyone — be that a person with a disability, a slow connection, outdated or broken hardware or simply someone in an unfavorable environment. For example, adding subtitles to a video would help both your deaf and hard-of-hearing users and your users who are in a loud environment and can't hear their phone. Similarly, making sure your text isn't too low contrast will help both your low-vision users and your users who are trying to use their phone in bright sunlight.
+웹 접근성(a11y 라고도 함)는 장애인, 느린 연결, 노후되거나 손상된 하드웨어 등 불리한 환경에 있는 사람 등 누구나 사용할 수 있는 웹사이트를 만드는 것을 말합니다. 예를 들어, 비디오에 자막을 추가하면 청각 장애인과 난청인 사람 그리고 시끄러운 환경에서 전화를 할 수 없는 사용자에게 도움이 됩니다. 마찬가지로 텍스트의 대비가 너무 낮지 않은 지 확인하면 시력이 좋지 않은 사용자와 밝은 햇빛에서 휴대전화를 사용하려는 사용자 모두에게 도움이 됩니다.
 
-Ready start but aren’t sure where?
+준비는 되었지만 어떻게 시작해야 할지 모르시나요?
 
-Checkout the [Planning and managing web accessibility guide](https://www.w3.org/WAI/planning-and-managing/) provided by [World Wide Web Consortium (W3C)](https://www.w3.org/)
+[World Wide Web Consortium (W3C)](https://www.w3.org/)에서 제공하는 [웹 접근성 계획과 관리 가이드](https://www.w3.org/WAI/planning-and-managing/)를 참조하세요.
 
 ## Skip link
 
-You should add a link at the top of each page that goes directly to the main content area so users can skip content that is repeated on multiple Web pages.
+사용자가 여러 웹 페이지에서 반복되는 콘텐츠를 건너뛸 수 있도록 기본 콘텐츠 영역으로 직접 이동하는 링크를 각 페이지 상단에 추가해야 합니다.
 
-Typically this is done on the top of `App.vue` as it will be the first focusable element on all your pages:
+일반적으로 `App.vue` 상단에서 수행되며, 모든 페이지에 첫 포커스 가능한 요소가 됩니다.
 
-``` html
+```html
 <ul class="skip-links">
   <li>
-    <a href="#main" ref="skipLink">Skip to main content</a>
+    <a href="#main" ref="skipLink">본문으로 건너띄기</a>
   </li>
 </ul>
 ```
 
-To hide the link unless it is focused, you can add the following style:
+포커스가 되지 않았을 때 이 링크를 숨기려면 다음과 같은 스타일을 추가할 수 있습니다.
 
-``` css
+```css
 .skipLink {
   white-space: nowrap;
   margin: 1em auto;
@@ -40,9 +40,9 @@ To hide the link unless it is focused, you can add the following style:
 }
 ```
 
-Once a user changes route, bring focus back to the skip link. This can be achieved by calling focus to the `ref` provided below:
+사용자가 경로를 변경하면 포커스를 건너뛰기 링크(skip link)로 되돌립니다. 아래에 제공된 `ref`에 포커스를 호출하면 됩니다.
 
-``` vue
+```vue
 <script>
 export default {
   watch: {
@@ -54,23 +54,23 @@ export default {
 </script>
 ```
 
-<common-codepen-snippet title="Skip to Main" slug="VwepxJa" :height="350" tab="js,result" :team="false" user="mlama007" name="Maria" theme="light" :preview="false" :editable="false" />
+<p class="codepen" data-height="350" data-theme-id="light" data-default-tab="js,result" data-user="mlama007" data-slug-hash="VwepxJa" style="height: 350px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Skip to Main">   <span>See the Pen <a href="https://codepen.io/mlama007/pen/VwepxJa">   Skip to Main</a> by Maria (<a href="https://codepen.io/mlama007">@mlama007</a>)   on <a href="https://codepen.io">CodePen</a>.</span> </p> <script async="" src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-[Read documentation on skip link to main content](https://www.w3.org/WAI/WCAG21/Techniques/general/G1.html)
+[주 내용으로 링크 건너뛰기 관련 문서 보기](https://www.w3.org/WAI/WCAG21/Techniques/general/G1.html)
 
-## Structure Your Content
+## 콘텐츠 구성
 
-One of the most important pieces of accessibility is making sure that design can support accessible implementation. Design should consider not only color contrast, font selection, text sizing, and language, but also how the content is structured in the application.
+접근성의 가장 중요한 부분 중 하나는 디자인이 접근성 구현을 지원할 수 있는지 확인하는 것 입니다. 디자인은 색상 대비, 글 꼴선택, 글자의 크기 및 언어뿐만 아니라 응용 프로그램에서 콘텐츠가 어떻게 구성되는지를 고려해야 합니다.
 
-### Headings
+### 제목(Headings)
 
-Users can navigate an application through headings. Having descriptive headings for every section of your application makes it easier for users to predict the content of each section. When it comes to headings, there are a couple of recommended accessibility practices:
+사용자는 제목(heading)을 통해 애플리케이션을 탐색할 수 있습니다. 애플리케이션의 모든 부분에 설명이 포함된 제목을 사용하면, 사용자는 각 섹션의 내용을 쉽게 예측할 수 있습니다. 제목과 관련하여 권장되는 몇 가지 접근성 사례가 있습니다.
 
-- Nest headings in their ranking order: `<h1>` - `<h6>`
-- Don’t skip headings within a section
-- Use actual heading tags instead of styling text to give the visual appearance of headings
+- 랭킹 순서 중첩제목: `<h1>` - `<h6>`
+- 섹션내에서 제목을 건너뛰지 마십시오.
+- 텍스트에 스타일을 설정하는 대신 실제 제목태그를 사용하여 제목을 제공해야 합니다.
 
-[Read more about headings](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-descriptive.html)
+[제목(Headings)에 대해 더 읽어보기](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-descriptive.html)
 
 ```html
 <main role="main" aria-labelledby="main-title">
@@ -78,35 +78,35 @@ Users can navigate an application through headings. Having descriptive headings 
   <section aria-labelledby="section-title">
     <h2 id="section-title"> Section Title </h2>
     <h3>Section Subtitle</h3>
-    <!-- Content -->
+    <!-- 내용 -->
   </section>
   <section aria-labelledby="section-title">
     <h2 id="section-title"> Section Title </h2>
     <h3>Section Subtitle</h3>
-    <!-- Content -->
+    <!-- 내용 -->
     <h3>Section Subtitle</h3>
-    <!-- Content -->
+    <!-- 내용 -->
   </section>
 </main>
 ```
 
-### Landmarks
+### 랜드마크(Landmarks)
 
-Landmarks provide programmatic access to sections within an application. Users who rely on assistive technology can navigate to each section of the application and skip over content. You can use [ARIA roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles) to help you achieve this.
+랜드마크는 애플리케이션 내의 섹션에 대한 프로그래밍 방식 접근을 제공합니다. 보조 기술에 의존하는 사용자는 애플리케이션의 각 섹션을 탐색하고 콘텐츠를 건너뛸 수 있습니다. [ARIA 역할](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles)을 사용하여 이를 달성할 수 있습니다.
 
-| HTML            | ARIA Role                                                         | Landmark Purpose                                                                       |
-| --------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| header          | role="banner"                                                     | Prime heading: title of the page                                                       |
-| nav             | role="navigation"                                                 | Collection of links suitable for use when navigating the document or related documents |
-| main            | role="main"                                                       | The main or central content of the document.                                           |
-| footer          | role="contentinfo"                                                | Information about the parent document: footnotes/copyrights/links to privacy statement |
-| aside           | role="complementary"                                              | Supports the main content, yet is separated and meaningful on its own content            |
-| _Not available_ | role="search"                                                     | This section contains the search functionality for the application                     |
-| form            | role="form"                                                       | Collection of form-associated elements                                                 |
-| section         | role="region"  | Content that is relevant and that users will likely want to navigate to. Label must be provided for this element                |
+HTML | ARIA 역할 | 랜드마크 목적
+--- | --- | ---
+header | role="banner" | 주요제목 : 페이지 제목
+nav | role="navigation" | 문서 또는 관련 문서를 탐색 할 때 사용하기에 적합한 링크 모음
+main | role="main" | 문서의 기본 또는 핵심 콘텐츠입니다.
+footer | role="contentinfo" | 상위 문서에 대한 정보 : 각주/저작권/개인 정보 보호 정책 링크
+aside | role="complementary" | 주요 콘텐츠를 지원하지만 자체 콘텐츠로 구분되고 의미가 있습니다.
+*사용불가* | role="search" | 이 섹션에는 응용 프로그램의 검색 기능이 포함되어 있습니다
+form | role="form" | 양식 관련 요소 모음
+section | role="region" | 관련성이 있고 사용자가 탐색하기를 원하는 콘텐츠입니다. 이 요소에 대한 레이블을 제공해야합니다.
 
-:::tip Tip:
-It is recommended to use landmark HTML elements with redundant landmark role attributes in order to maximize compatibility with legacy [browsers that don’t support HTML5 semantic elements](https://caniuse.com/#feat=html5semantic).
+:::tip Tip: 
+레거시한 [ HTML5 시멘틱 엘리멘트를 지원하지 않는 브라우저](https://caniuse.com/#feat=html5semantic)와의 호환성을 최대화하려면 중복된 랜드마크 역할 속성이 있는 랜드마크 HTML 엘리멘트를 사용하는 것이 좋습니다. 
 :::
 
-[Read more about landmarks](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)
+[랜드마크에 대해 자세히 알아보기](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)

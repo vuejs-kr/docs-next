@@ -1,32 +1,30 @@
-# Lifecycle Hooks
+# 라이프사이클 훅
 
-> This guide assumes that you have already read the [Composition API Introduction](composition-api-introduction.html) and [Reactivity Fundamentals](reactivity-fundamentals.html). Read that first if you are new to Composition API.
+> 이 가이드는 이미 [Composition API Introduction](composition-api-introduction.html)와 [Reactivity Fundamentals](reactivity-fundamentals.html)를 읽었다고 가정합니다. Composition API를 처음 사용하는 경우 먼저 읽어보십시오.
 
-<VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/lifecycle-hooks" title="Learn about how Lifecycle Hooks work with Vue Mastery">Watch a free video about Lifecycle Hooks on Vue Mastery</VideoLesson>
+라이프사이클 훅에 접두사 "on"을 추가함으로서 컴포넌트의 라이프사이클 훅에 접근할 수 있습니다.
 
-You can access a component's lifecycle hook by prefixing the lifecycle hook with "on".
+다음 표에는 [setup()](composition-api-setup.html) 내에 라이프사이클 훅이 호출되는 방법이 포함되어 있습니다:
 
-The following table contains how the lifecycle hooks are invoked inside of [setup()](composition-api-setup.html):
+Options API | `setup` 내부의 훅
+--- | ---
+`beforeCreate` | 필요하지 않음*
+`created` | 필요하지 않음*
+`beforeMount` | `onBeforeMount`
+`mounted` | `onMounted`
+`beforeUpdate` | `onBeforeUpdate`
+`updated` | `onUpdated`
+`beforeUnmount` | `onBeforeUnmount`
+`unmounted` | `onUnmounted`
+`errorCaptured` | `onErrorCaptured`
+`renderTracked` | `onRenderTracked`
+`renderTriggered` | `onRenderTriggered`
 
-| Options API       | Hook inside `setup` |
-| ----------------- | -------------------------- |
-| `beforeCreate`    | Not needed\*               |
-| `created`         | Not needed\*               |
-| `beforeMount`     | `onBeforeMount`            |
-| `mounted`         | `onMounted`                |
-| `beforeUpdate`    | `onBeforeUpdate`           |
-| `updated`         | `onUpdated`                |
-| `beforeUnmount`   | `onBeforeUnmount`          |
-| `unmounted`       | `onUnmounted`              |
-| `errorCaptured`   | `onErrorCaptured`          |
-| `renderTracked`   | `onRenderTracked`          |
-| `renderTriggered` | `onRenderTriggered`        |
-
-:::tip
-Because `setup` is run around the `beforeCreate` and `created` lifecycle hooks, you do not need to explicitly define them. In other words, any code that would be written inside those hooks should be written directly in the `setup` function.
+:::tip 
+`setup`은 `beforeCreate`, `created` 라이프사이클 훅 사이에 실행되는 시점이므로([역주]beforeCreate()가 setup() 직전에 호출되고 created()가 setup() 직후에 호출되는 타이밍을 가짐), 명시적으로 정의할 필요가 없습니다. 다시말해, 위 두 훅에서 작성되는 모든 코드는 `setup`펑션 내부에 직접 작성해야합니다. 
 :::
 
-These functions accept a callback that will be executed when the hook is called by the component:
+이 펑션은 컴포넌트에 의해 훅이 호출될 때, 실행될 콜백을 받습니다:
 
 ```js
 // MyBook.vue
@@ -35,7 +33,7 @@ export default {
   setup() {
     // mounted
     onMounted(() => {
-      console.log('Component is mounted!')
+      console.log('컴포넌트가 mounted 되었습니다!')
     })
   }
 }

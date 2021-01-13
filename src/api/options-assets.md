@@ -2,50 +2,52 @@
 
 ## directives
 
-- **Type:** `Object`
+- **유형:** `Object`
 
-- **Details:**
+- **설명:**
 
-  A hash of directives to be made available to the component instance.
+    컴포넌트 인스턴스에서 사용할 수 있는 디렉티브들의 해시(hash)입니다.
 
-- **Usage:**
-  ```js
-  const app = Vue.createApp({})
-  
-  app.component('focused-input', {
-    directives: {
-      focus: {
-        mounted(el) {
-          el.focus()
+- **사용방법:**
+
+    ```js
+    const app = Vue.createApp({})
+
+    app.component('focused-input', {
+      directives: {
+        focus: {
+          mounted(el) {
+            el.focus()
+          }
         }
-      }
-    },
-    template: `<input v-focus>`
-  })
-  ```
+      },
+      template: ``
+    })
+    ```
 
-- **See also:** [Custom Directives](../guide/custom-directive.html)
+- [커스텀 디렉티브(Custom Directives)](../guide/custom-directive.html)
 
 ## components
 
-- **Type:** `Object`
+- **유형:** `Object`
 
-- **Details:**
+- **설명:**
 
-  A hash of components to be made available to the component instance.
+    컴포넌트 인스턴스에서 사용할 수 있는 컴포넌트의 해시(hash)입니다.
 
-- **Usage:**
-  ```js
-  const Foo = {
-    template: `<div>Foo</div>`
-  }
-  
-  const app = Vue.createApp({
-    components: {
-      Foo
-    },
-    template: `<Foo />`
-  })
-  ```
+- **사용방법:**
 
-- **See also:** [Components](../guide/component-basics.html)
+    ```js
+    const Foo = {
+      template: `Foo`
+    }
+
+    const app = Vue.createApp({
+      components: {
+        Foo
+      },
+      template: ``
+    })
+    ```
+
+- [컴포넌트(Components)](../guide/component-basics.html)

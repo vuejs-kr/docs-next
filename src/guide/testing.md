@@ -1,165 +1,165 @@
-# Testing
+# 테스팅
 
-## Introduction
+## 소개
 
-When it comes to building reliable applications, tests can play a critical role in an individual or team's ability to build new features, refactor code, fix bugs, etc. While there are many schools of thought with testing, there are three categories often discussed in the context of web applications:
+테스트는 신뢰할 수 있는 애플리케이션을 구축 하거나, 개인 또는 팀이 새로운 기능 빌드, 코드 리팩토링, 버그 수정 등의 작업에 중요한 역할을 할 수 있습니다. 테스팅에는 많은 의견들이 있지만, 웹 애플리케이션의 측면에서 종종 논의되는 세 가지 카테고리를 소개해드립니다.
 
-- Unit Testing
-- Component Testing
-- End-To-End (E2E) Testing
+- 단위 테스팅
+- 컴포넌트 테스팅
+- 종단간 (E2E) 테스팅
 
-This section aims to provide guidance to navigating the testing ecosystem and choosing the right tools for your Vue application or component library.
+이번 섹션은 테스팅의 생태계를 알아보고, Vue 애플리케이션 또는 컴포넌트 라이브러리를 위한 적절한 도구를 찾는 가이드를 제공합니다.
 
-## Unit Testing
+## 단위 테스팅
 
-### Introduction
+### 소개
 
-Unit tests allow you to test individual units of code in isolation. The purpose of unit testing is to provide developers with confidence in their code. By writing thorough, meaningful tests, you achieve the confidence that as new features are built or your code is refactored your application will remain functional and stable.
+단위 테스트를 통해 코드 단위를 독립적으로 테스트 할 수 있습니다. 단위 테스팅은 개발자에게 코드에 대한 자신감을 줍니다. 철저하고 의미있는 테스트를 작성하면, 새로운 기능이 빌드되거나 코드를 리팩토링 할 때 애플리케이션이 기능적이고 안정적으로 유지 될 것이라는 확신을 할 수 있습니다.
 
-Unit testing a Vue application does not significantly differ from testing other types of applications.
+Vue 애플리케이션을 단위 테스트 하는 것은 다른 애플리케이션을 단위 테스트 하는 것과 크게 다르지 않습니다.
 
-### Choosing Your Framework
+### 프레임워크 선택
 
-Since unit testing advice is often framework-agnostic, here are some basic guidelines to keep in mind when evaluating which unit testing tool is best for your application.
+단위 테스팅에 대한 조언은 종종 프레임워크에 구애받지 않는(framwork-agnostic)경우가 많기 떄문에, 애플리케이션에 가장 적합한 단위 테스팅 도구인지 평가할 때 염두해야 할 몇 가지 기본 가이드가 있습니다.
 
-#### First-class error reporting
+#### 최고의 오류 보고
 
-When tests fail, it is critical that your unit testing framework provides useful errors. This is the job of the assertion library. An assertion with high-quality error messages helps minimize the amount of time it takes to debug the problem. In addition to simply telling you what test is failing, assertion libraries provide context for why a test fails, e.g., what is expected vs what was received.
+테스트에 실패 했을 때, 단위 테스팅 프레임워크는 유용한 에러 메세지를 제공하는 것이 중요합니다. 유용한 에러 메세지를 제공하는 기능은 assertion 라이브러리의 역할 입니다. 고품질의 오류 메시지가 포함 된 assertion 라이브러리는 디버깅 시간을 줄일 때 도움이 됩니다. 단순히 어떤 테스트가 실패했는지 알려주는 것 외에도, assertion 라이브러리는 테스트가 실패한 이유에 대한 컨텍스트를 제공합니다. (예 : 예상하는 것과 전달받은 것).
 
-Some unit testing frameworks, like Jest, include assertion libraries. Others, like Mocha, require you to install assertion libraries separately (usually Chai).
+Jest와 같은 단위 테스팅 프레임워크는 assertion 라이브러리를 포함합니다. 그와 다르게 Mocha등의 단위 테스팅 프레임워크의 경우 assertion 라이브러리를 별도로 설치해야합니다. (일반적으로 Chai 라이브러리)
 
-#### Active community and team
+#### 활성화된 커뮤니티와 팀
 
-Since the majority of unit testing frameworks are open-source, having a community that is active can be critical to some teams that will be maintaining their tests for a long period of time and needs to ensure that a project will be actively maintained. In addition, having an active community has the benefit of providing more support whenever you run into issues.
+대부분의 단위 테스팅 프레임워크는 오픈 소스이기 때문에 활발한 커뮤니티가 있는 것이 테스트와 프로젝트를 장기간 유지해야하는 일부 팀에게는 중요합니다. 또한 활발한 커뮤니티가 있다면 문제가 발생할 때마다 더 많은 도움을 받을 수 있는 이점이 있습니다.
 
-### Frameworks
+### 프레임워크
 
-While there are many tools in the ecosystem, here are some common unit testing tools that are being used in the Vue.js ecosystem.
+생태계에는 많은 도구들이 있지만, 다음은 Vue.js 생태계에서 사용되는 일반적인 단위 테스팅 도구들입니다.
 
 #### Jest
 
-Jest is a JavaScript test framework that is focused on simplicity. One of its unique features is the ability to take snapshots of tests in order to provide an alternative means of verifying units of your application. 
+Jest는 단순성에 초점을 맞춘 JavaScript 테스트 프레임워크입니다. 특징 중 하나는 애플리케이션의 단위를 확인하는 기능을 제공하기 위해 테스트의 스냅 샷을 찍습니다.
 
-**Resources:**
+**자료:**
 
-- [Official Jest Website](https://jestjs.io)
-- [Official Vue 2 CLI Plugin - Jest](https://cli.vuejs.org/core-plugins/unit-jest.html)
+- <a class="" href="https://jestjs.io/">Jest 공식 웹사이트</a>
+- <a class="" href="https://cli.vuejs.org/core-plugins/unit-jest.html">공식 Vue2 CLI Plugin - Jest</a>
 
 #### Mocha
 
-Mocha is a JavaScript test framework that is focused on being flexible. Because of this flexibility, it allows you to choose different libraries to fulfill other common features such as spying (e.g., Sinon) and assertions (e.g., Chai). Another unique feature of Mocha is that it can also execute tests in the browser in addition to Node.js.
+Mocha는 유연성에 중점을 둔 JavaScript 테스트 프레임워크입니다. 그래서 spying (예 : Sinon) 또는 assertion (예 : Chai)과 같은 어떠한 기능을 수행하기 위해 별도의 라이브러리를 선택해야 합니다. Mocha의 또 다른 특징은 Node.js 외에도 브라우저에서 테스트를 실행할 수 있다는 것입니다.
 
-**Resources:**
+**자료:**
 
-- [Official Mocha Website](https://mochajs.org)
-- [Official Vue CLI Plugin - Mocha](https://cli.vuejs.org/core-plugins/unit-mocha.html)
+- <a class="" href="https://mochajs.org">Mocha 공식 웹사이트</a>
+- <a class="" href="https://cli.vuejs.org/core-plugins/unit-mocha.html">공식 Vue CLI Plugin - Mocha</a>
 
-## Component Testing
+## 컴포넌트 테스팅
 
-### Introduction
+### 소개
 
-To test most Vue components, they must be mounted to the DOM (either virtual or real) in order to fully assert that they are working. This is another framework-agnostic concept. As a result, component testing frameworks were created to give users the ability to do this in a reliable way while also providing Vue-specific conveniences such as integrations for Vuex, Vue Router, and other Vue plugins.
+대부분의 Vue 컴포넌트를 테스트하려면, 컴포넌트가 작동 중인지 확인하기 위해 DOM (가상 또는 실제)에 마운트해야합니다. 이것은 프레임워크에 구애받지 않는(framwork-agnostic) 또 다른 개념입니다. 결과적으로 컴포넌트 테스팅 프레임워크는 사용자에게 안정적인 방식으로 이를 수행 할 수있는 기능을 제공하는 동시에 Vuex, Vue Router 및 기타 Vue 플러그인에 대한 호환과 같은 Vue 고유의 편의성을 제공하기 위해 만들어졌습니다.
 
-### Choosing Your Framework
+### 프레임워크 선택
 
-The following section provides guidelines on things to keep in mind when evaluating which component testing framework is best for your application.
+이번 섹션은 애플리케이션에 가장 적합한 컴포넌트 테스팅 프레임워크를 선택할 때 유의해야 할 사항에 대한 가이드를 제공합니다.
 
-#### Optimal compatibility with the Vue ecosystem
+#### Vue 생태계와의 최적 호환성
 
-It should be no surprise that one of the first criteria is that a component testing library should have is being as compatible with the Vue ecosystem as possible. While this may seem comprehensive, some key integration areas to keep in mind include single file components (SFCs), Vuex, Vue Router, and any other Vue specific plugins that your application relies on. 
+첫 번째 기준 중 하나는 Vue 생태계와 컴포넌트 테스팅 라이브러리가 최대한 호환되어야 한다는 것입니다. 포괄적인 것처럼 보일 수 있지만, 염두에 두어야 할 주요 호환 영역에는 단일 파일 컴포넌트 (SFCs), Vuex, Vue Router 및 애플리케이션이 의존하는 기타 Vue 특정 플러그인이 있습니다.
 
-#### First-class error reporting
+#### 최고의 오류 보고
 
-When tests fail, it is critical that your component testing framework provides useful error logs that help to minimize the amount of time it takes to debug the problem. In addition to simply telling you what test fails, they should also provides context for why a test fails, e.g., what is expected vs what was received.
+테스트가 실패하면, 컴포넌트 테스팅 프레임워크는 문제를 디버깅할 때 소요되는 시간을 줄이는 데 도움이되는 유용한 오류 로그를 제공하는지가 중요합니다. 단순히 어떤 테스트가 실패했는지 알려주는 것 외에도 테스트가 실패한 이유에 대한 컨텍스트도 제공해야합니다.(예 : 예상하는 것과 전달받은 것)
 
-### Recommendations
+### 추천
 
-#### Vue Testing Library (@testing-library/vue)
+#### Vue 테스팅 라이브러리 (@testing-library/vue)
 
-Vue Testing Library is a set of tools focused on testing components without relying on implementation details. Built with accessibility in mind, its approach also makes refactoring a breeze.
+Vue 테스팅 라이브러리는 구현 세부사항에 의존하지 않고 테스팅 컴포넌트에 초점을 맞춘 도구 모음입니다.
 
-Its guiding principle is that the more tests resemble the way software is used, the more confidence they can provide.
+기본 원칙은 소프트웨어를 사용하는 방식과 유사한 테스트가 많을수록 더 많은 신뢰를 줄 수 있습니다.
 
-**Resources:**
+**자료:**
 
-- [Official Vue Testing Library Website](https://testing-library.com/docs/vue-testing-library/intro)
+- <a class="" href="https://testing-library.com/docs/vue-testing-library/intro">공식 Vue 테스팅 라이브러리 웹사이트</a>
 
 #### Vue Test Utils
 
-Vue Test Utils is the official low-level component testing library that was written to provide users access to Vue specific APIs. If you are new to testing Vue applications, we would recommend using Vue Testing Library, which is an abstraction over Vue Test Utils. 
+Vue Test Utils는 사용자에게 Vue 특정 API에 대한 액세스를 제공하기 위해 작성된 공식 저수준 컴포넌트 테스트 라이브러리입니다. Vue 응용 프로그램을 처음 테스트하는 경우 Vue Test Utils를 추상화한 Vue Testing Library를 사용하는 것이 좋습니다.
 
-**Resources:**
+**자료:**
 
-- [Official Vue Test Utils Documentation](https://vue-test-utils.vuejs.org)
-- [Vue Testing Handbook](https://lmiller1990.github.io/vue-testing-handbook/v3/#what-is-this-guide) by Lachlan Miller
+- <a class="" href="https://vue-test-utils.vuejs.org/">공식 Vue Test Utils 문서</a>
+- <a class="" href="https://lmiller1990.github.io/vue-testing-handbook/#what-is-this-guide">Vue 테스팅 핸드북</a> by Lachlan Miller
 
-## End-to-End (E2E) Testing
+## 종단간 (E2E) 테스팅
 
-### Introduction
+### 소개
 
-While unit tests provide developers with some degree of confidence, unit and component tests are limited in their abilities to provide holistic coverage of an application when deployed to production. As a result, end-to-end (E2E) tests provide coverage on what is arguably the most important aspect of an application: what happens when users actually use your applications.
+단위 테스트 및 컴포넌트 테스트는 개발자에게 어느 정도의 확신을 제공하지만, 프로덕션에 배포 될 때, 애플리케이션의 전체적인 범위에 대한 기능의 확신을 제공하진 못 합니다. 그래서, E2E 테스트는 애플리케이션의 가장 중요한 측면, 즉 사용자가 실제로 애플리케이션을 사용할 때 일어나는 범위에 대한 기능의 확신을 제공합니다.
 
-In other words, E2E tests validate all of the layers in your application. This not only includes your frontend code, but all associated backend services and infrastructure that are more representative of the environment that your users will be in. By testing how user actions impact your application, E2E tests are often the key to higher confidence in whether an application is functioning properly or not.
+즉, E2E 테스트는 애플리케이션의 모든 계층을 검증합니다. 검증에는 프론드엔드 코드뿐 아니라 사용자가 있을 환경을 잘 나타내는 모든 백엔드 서비스 및 인프라가 포함됩니다. 사용자의 동작이 애플리케이션에 미치는 영향을 테스팅함으로써 E2E 테스트는 애플리케이션이 제대로 작동하는지에 대한 신뢰도를 높이는 열쇠가됩니다.
 
-### Choosing Your Framework
+### 프레임워크 선택
 
-While end-to-end (E2E) testing on the web has gained a negative reputation for unreliable (flaky) tests and slowing down development processes, modern E2E tools have made strides forward to create more reliable, interactive, and useful tests. When choosing an E2E testing framework, the following sections provide some guidance on things to keep in mind when choosing a testing framework for your application.
+웹에서 종단간 (E2E) 테스팅은 개발 프로세스 속도 저하와 낮은 신뢰도로 부정적인 평판을 갖고 있었지만, 최신 E2E 도구는 보다 안정적이고 대화형이며 유용한 테스트를 만드는 진전을 이루었습니다. 이번 섹션에서는 애플리케이션에 맞는 E2E 테스팅 프레임워크를 선택할 때 유의해야 할 몇 가지 가이드를 제공합니다.
 
-#### Cross-browser testing
+#### 크로스-브라우저 테스팅
 
-One of the primary benefits that end-to-end (E2E) testing is known for is its ability to test your application across multiple browsers. While it may seem desirable to have 100% cross-browser coverage, it is important to note that cross browser testing has diminishing returns on a team's resources due the additional time and machine power required to run them consistently. As a result, it is important to be mindful of this trade-off when choosing the amount of cross-browser testing your application needs. 
+종단간 (E2E) 테스팅의 주요 이점 중 하나는 여러 브라우저에서 애플리케이션을 테스트 할 수 있다는 것입니다. 브라우저 간 100% 적용 범위를 갖는 것이 바람직해 보일 수 있지만, 브라우저 간 테스팅은 일관적인 실행을 위한 추가 시간과 기계 성능으로 인한 팀의 리소스에 대한 수익이 감소한다는 점에 유의해야합니다. 따라서 응용 프로그램에 필요한 크로스 브라우저 테스팅의 양을 선택할 때 이러한 절충점을 염두에 두는 것이 중요합니다.
 
-::: tip
-A recent development in for catching browser-specific issues is using application monitoring and error reporting tools (e.g., Sentry, LogRocket, etc.)  for browsers that are not as commonly used (e.g., < IE11, older Safari versions, etc.).
+::: tip 
+브라우저 관련 문제를 포착하기 위해 최근 개발은 일반적으로 사용되지 않는 브라우저(예 : <IE11>, 이전 Safari 버전 등)에 대한 애플리케이션 모니터링 및 오류보고 도구(예 : Sentry, LogRocket 등)를 사용하는 것입니다. 
 :::
 
-#### Faster feedback loops
+#### 빠른 피드백 주기
 
-One of the primary problems with end-to-end (E2E) tests and development is that running the entire suite takes a long time. Typically, this is only done in continuous integration and deployment (CI/CD) pipelines. Modern E2E testing frameworks have helped to solve this by adding features like parallelization, which allows for CI/CD pipelines to often run magnitudes faster than before. In addition, when developing locally, the ability to selectively run a single test for the page you are working on while also providing hot reloading of tests can help to boost a developer's workflow and productivity.
+E2E 테스트 및 개발은 전체 제품을 실행하는데 오랜 시간이 걸립니다. 일반적으로 E2E 테스트는 CI/CD (지속적 통합 및 배포) 파이프라인에서 수행됩니다. 최신 E2E 테스팅 프레임워크는 병렬화 같은 기능을 추가하여 이 문제를 해결하는 데 도움을 주고, 이를 통해 CI/CD 파이프라인이 더 빠르게 실행됩니다. 또한 로컬에서 개발할 때, 작업중인 페이지에 대해 단일 테스트를 선택적으로 실행하는 동시에 테스트의 핫 리로딩을 제공하는 기능은 개발자의 작업흐름과 생산성을 높이는 데 도움이 될 수 있습니다.
 
-#### First class debugging experience
+#### 최고의 디버깅 경험
 
-While developers have traditionally relied on scanning logs in a terminal window to help determine what went wrong in a test, modern end-to-end (E2E) test frameworks allow developers to leverage tools that they are already familiar with, e.g. browser developer tools. 
+개발자는 전통적으로 테스트에서 무엇이 잘못되었는지 확인하기 위해 터미널 창에서 로그를 스캔하는 데 의존해 왔지만, 현대 종단간 (E2E) 테스트 프레임워크를 사용하면 개발자가 익숙한 도구를 활용할 수 있습니다. (예 브라우저 개발자 도구)
 
-#### Visibility in headless mode
+#### 헤드리스 모드의 가시성
 
-When end-to-end (E2E) tests are run in continuous integration / deployment pipelines, they are often run in headless browsers (i.e., no visible browser is opened for the user to watch). As a result, when errors occur, a critical feature that modern E2E testing frameworks provide 1st class support for is the ability to see snapshots and/or videos of your applications during various testing stages in order to provide insight into why errors are happening. Historically, it was tedious to maintain these integrations.
+지속적 통합/배포 파이프라인에서 계속 종단간 (E2E) 테스트를 실행하려면 헤드리스 브라우저에서 실행되는 경우가 많습니다 (즉, 사용자가 볼 수있는 브라우저가 열리지 않음). 결과적으로 오류가 발생할 때, E2E 테스팅 프레임워크가 오류 발생 원인에 대한 통찰력 제공을 위해 지원하는 기능은 다양한 테스팅 단계에서 애플리케이션의 스냅샷 또는 비디오를 볼 수 있는 기능입니다. 과거, 이러한 통합을 유지하는 것은 지루한 작업입니다.
 
-### Recommendations
+### 추천
 
-While there are many tools in the ecosystem, here are some common end-to-end (E2E) testing frameworks that are being used in the Vue.js ecosystem.
+생태계에는 많은 도구가 있지만, 다음은 Vue.js생태계에서 사용되는 일반적인 종단간 (E2E) 테스팅 프레임 워크입니다.
 
 #### Cypress.io
 
-Cypress.io is a testing framework that aims to enhance developer productivity by enabling developers to reliably test their applications while providing a first class developer experience.
+Cypress.io는 개발자가 애플리케이션을 안정적으로 테스트하는 동시에 최고의 개발 경험을 제공함으로써 개발자 생산성을 높이는 것을 목표로하는 테스팅 프레임워크입니다.
 
-**Resources:**
+**자료**
 
-- [Cypress' Official Website](https://www.cypress.io)
-- [Official Vue CLI Cypress Plugin](https://cli.vuejs.org/core-plugins/e2e-cypress.html)
-- [Cypress Testing Library](https://github.com/testing-library/cypress-testing-library)
+- <a class="" href="https://www.cypress.io/">Cypress 공식 웹사이트</a>
+- <a class="" href="https://cli.vuejs.org/core-plugins/e2e-cypress.html">공식 Vue CLI Cypress Plugin</a>
+- <a class="" href="https://github.com/testing-library/cypress-testing-library">Cypress 테스팅 라이브러리</a>
 
 #### Nightwatch.js
 
-Nightwatch.js is an end-to-end testing framework that can be used to test web applications and websites, as well as Node.js unit and integration testing.
+Nightwatch.js는 Node.js의 단위, 통합 테스팅은 물론 웹 애플리케이션과 웹 사이트를 테스트하는 데 사용할 수 있는 종단간 테스팅 프레임워크입니다.
 
-**Resources:**
+**자료:**
 
-- [Nightwatch's Official Website](https://nightwatchjs.org)
-- [Official Vue CLI Nightwatch Plugin](https://cli.vuejs.org/core-plugins/e2e-nightwatch.html)
+- <a class="" href="https://nightwatchjs.org/">Nightwatch 공식 웹사이트</a>
+- <a class="" href="https://cli.vuejs.org/core-plugins/e2e-nightwatch.html">공식 Vue CLI Nightwatch Plugin</a>
 
 #### Puppeteer
 
-Puppeteer is a Node library that provides a high-level API to control the browser and can pair with other test runners (e.g., Jest) to test your application.
+Puppeteer는 브라우저를 제어하기 위한 고급 API를 제공하고 다른 테스트 실행기 (예 : Jest)와 연동하여 애플리케이션을 테스트할 수 있는 노드 라이브러리입니다.
 
-**Resources:**
+**자료:**
 
-- [Puppeteer's Official Website](https://pptr.dev)
+- <a class="" href="https://pptr.dev/">Puppeteer 공식 웹사이트</a>
 
 #### TestCafe
 
-TestCafe is a Node.js based end-to-end framework that aims to provide easy setup so that developers can focus on creating tests that are easy to write and reliable.
+TestCafe는 Node.js 기반의 단순한 프레임워크로, 개발자가 작성하기 쉽고 안정적인 테스트 작성에 집중할 수 있도록 손쉬운 설정을 제공합니다.
 
-**Resources:**
+**자료:**
 
-- [TestCafe's Official Website](https://devexpress.github.io/testcafe/)
+- [TestCafe 공식 웹사이트](https://devexpress.github.io/testcafe/)

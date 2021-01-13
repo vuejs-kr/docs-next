@@ -1,16 +1,16 @@
 # Props
 
-> This page assumes you've already read the [Components Basics](component-basics.md). Read that first if you are new to components.
+> 이 페이지는 여러분이 이미 [컴포넌트 기초](component-basics.md)를 읽었다고 가정하고 쓴 내용입니다. 컴포넌트가 처음이라면 기초 문서를 먼저 읽으시기 바랍니다.
 
-## Prop Types
+## Prop 타입
 
-So far, we've only seen props listed as an array of strings:
+이제까지는 문자열 배열로 나열 된 prop만 보았습니다:
 
 ```js
 props: ['title', 'likes', 'isPublished', 'commentIds', 'author']
 ```
 
-Usually though, you'll want every prop to be a specific type of value. In these cases, you can list props as an object, where the properties' names and values contain the prop names and types, respectively:
+일반적으로 모든 prop가 특정 유형의 값이 되기를 원할 것입니다. 이 경우 속성의 이름과 값에 각각 prop 이름과 타입이 포함된 객체로 prop를 나열할 수 있습니다.
 
 ```js
 props: {
@@ -20,73 +20,73 @@ props: {
   commentIds: Array,
   author: Object,
   callback: Function,
-  contactsPromise: Promise // or any other constructor
+  contactsPromise: Promise // 또는 다른 생성자
 }
 ```
 
-This not only documents your component, but will also warn users in the browser's JavaScript console if they pass the wrong type. You'll learn much more about [type checks and other prop validations](#prop-validation) further down this page.
+이는 컴포넌트를 문서화할 뿐만 아니라, 잘못된 타입이 전달하는 경우 브라우저의 자바스크립트 콘솔에서 사용자에게 경고합니다. 아래에서 [타입 체크와 기타 prop 검증](#prop-validation)에 대해 자세히 알아볼 수 있습니다.
 
-## Passing Static or Dynamic Props
+## 정적/동적 Prop 전달
 
-So far, you've seen props passed a static value, like in:
+지금까지 다음과 같이 prop가 정적 값을 전달하는 것을 확인했습니다:
 
 ```html
-<blog-post title="My journey with Vue"></blog-post>
+<blog-post title="Vue와 떠나는 여행"></blog-post>
 ```
 
-You've also seen props assigned dynamically with `v-bind` or its shortcut, the `:` character, such as in:
+또는 다음과 같이 `v-bind`나 약어인 `:` 문자를 사용하여 prop에 동적인 값을 전달하였습니다.
 
 ```html
-<!-- Dynamically assign the value of a variable -->
+<!-- 변수의 값을 동적으로 할당 -->
 <blog-post :title="post.title"></blog-post>
 
-<!-- Dynamically assign the value of a complex expression -->
+<!-- 복잡한 표현을 포함한 동적 값 할당 -->
 <blog-post :title="post.title + ' by ' + post.author.name"></blog-post>
 ```
 
-In the two examples above, we happen to pass string values, but _any_ type of value can actually be passed to a prop.
+위의 두 가지 예시에서 문자열 값을 전달하지만 실제로 *어떤(any)* 타입의 값도 prop에 전달할 수 있습니다.
 
-### Passing a Number
+### 숫자형(Number) 전달
 
 ```html
-<!-- Even though `42` is static, we need v-bind to tell Vue that -->
-<!-- this is a JavaScript expression rather than a string.       -->
+<!-- `42`는 정적이지만 Vue에게 이 값이 문자열이 아니라 -->
+<!-- 자바스크립트 표현식임을 알리기위해 v-bind가 필요합니다. -->
 <blog-post :likes="42"></blog-post>
 
-<!-- Dynamically assign to the value of a variable. -->
+<!-- 변수 값에 동적으로 할당합니다. -->
 <blog-post :likes="post.likes"></blog-post>
 ```
 
-### Passing a Boolean
+### 논리 자료형(Boolean) 전달
 
 ```html
-<!-- Including the prop with no value will imply `true`. -->
+<!-- 값이 없는 prop를 포함하면 `true`를 의미합니다. -->
 <blog-post is-published></blog-post>
 
-<!-- Even though `false` is static, we need v-bind to tell Vue that -->
-<!-- this is a JavaScript expression rather than a string.          -->
+<!-- `false`는 정적이지만 Vue에게 이 값이 문자열이 아닌 -->
+<!-- 자바스크립트 표현식임을 알리려면 v-bind가 필요합니다. -->
 <blog-post :is-published="false"></blog-post>
 
-<!-- Dynamically assign to the value of a variable. -->
+<!-- 변수 값에 동적으로 할당합니다. -->
 <blog-post :is-published="post.isPublished"></blog-post>
 ```
 
-### Passing an Array
+### 배열 전달
 
 ```html
-<!-- Even though the array is static, we need v-bind to tell Vue that -->
-<!-- this is a JavaScript expression rather than a string.            -->
+<!-- 배열이 정적이지만 Vue에게 이 값이 문자열이 아닌 -->
+<!-- 자바스크립트 표현식임을 알리려면 v-bind가 필요합니다. -->
 <blog-post :comment-ids="[234, 266, 273]"></blog-post>
 
-<!-- Dynamically assign to the value of a variable. -->
+<!-- 변수 값에 동적으로 할당합니다. -->
 <blog-post :comment-ids="post.commentIds"></blog-post>
 ```
 
-### Passing an Object
+### 객체 전달
 
 ```html
-<!-- Even though the object is static, we need v-bind to tell Vue that -->
-<!-- this is a JavaScript expression rather than a string.             -->
+<!-- 객체가 정적이지만 Vue에게 이 값이 문자열이 아니라 -->
+<!-- 자바스크립트 표현식임을 알리려면 v-bind가 필요합니다. -->
 <blog-post
   :author="{
     name: 'Veronica',
@@ -94,42 +94,42 @@ In the two examples above, we happen to pass string values, but _any_ type of va
   }"
 ></blog-post>
 
-<!-- Dynamically assign to the value of a variable. -->
+<!-- 변수 값에 동적으로 할당합니다. -->
 <blog-post :author="post.author"></blog-post>
 ```
 
-### Passing the Properties of an Object
+### 객체의 속성 전달
 
-If you want to pass all the properties of an object as props, you can use `v-bind` without an argument (`v-bind` instead of `:prop-name`). For example, given a `post` object:
+객체의 모든 속성을 prop로 전달하려면 전달인자없이 `v-bind`를 사용할 수 있습니다(`:prop-name` 대신 `v-bind`를 사용). 예를들어 `post`객체가 주어지면:
 
 ```js
 post: {
   id: 1,
-  title: 'My Journey with Vue'
+  title: 'Vue와 떠나는 여행'
 }
 ```
 
-The following template:
+아래와 같이 작성하는 것은:
 
 ```html
 <blog-post v-bind="post"></blog-post>
 ```
 
-Will be equivalent to:
+다음과 동일합니다:
 
 ```html
 <blog-post v-bind:id="post.id" v-bind:title="post.title"></blog-post>
 ```
 
-## One-Way Data Flow
+## 단방향 데이터 흐름
 
-All props form a **one-way-down binding** between the child property and the parent one: when the parent property updates, it will flow down to the child, but not the other way around. This prevents child components from accidentally mutating the parent's state, which can make your app's data flow harder to understand.
+모든 props는 자식 속성과 부모 속성 사이에 **아래로 단방향 바인딩(one-way-down binding)**을 형성합니다. 부모 속성이 업데이트되면 자식으로 흐르지만 반대 방향은 아닙니다. 이렇게하면 하위 컴포넌트가 실수로 앱의 데이터 흐름을 이해하기 힘들게 만드는 상위 컴포넌트 상태 변경을 방지할 수 있습니다.
 
-In addition, every time the parent component is updated, all props in the child component will be refreshed with the latest value. This means you should **not** attempt to mutate a prop inside a child component. If you do, Vue will warn you in the console.
+또한, 부모 컴포넌트가 업데이트될 때마다 자식 컴포넌트의 모든 prop들이 최신 값으로 새로고침됩니다. 즉, 하위 컴포넌트에서 prop를 변경하려고 시도해서는 **안됩니다**. 그렇게하면 Vue는 콘솔에서 경고합니다.
 
-There are usually two cases where it's tempting to mutate a prop:
+일반적으로 prop를 변경하려는 2가지 경우가 있습니다:
 
-1. **The prop is used to pass in an initial value; the child component wants to use it as a local data property afterwards.** In this case, it's best to define a local data property that uses the prop as its initial value:
+1. **prop는 초기 값을 전달하는데 사용됩니다. 하위 컴포넌트는 나중에 prop값을 로컬 data속성으로 사용하려고 합니다**. 이 경우 prop를 초기 값으로 사용하는 로컬 data 속성을 정의하는 것이 가장 좋습니다.
 
 ```js
 props: ['initialCounter'],
@@ -140,7 +140,7 @@ data() {
 }
 ```
 
-2. **The prop is passed in as a raw value that needs to be transformed.** In this case, it's best to define a computed property using the prop's value:
+1. **prop는 변환해야 하는 원시 값으로 전달됩니다.** 이 경우 prop의 값을 사용하여 computed 속성을 정의하는 것이 가장 좋습니다.
 
 ```js
 props: ['size'],
@@ -151,53 +151,52 @@ computed: {
 }
 ```
 
-::: tip Note
-Note that objects and arrays in JavaScript are passed by reference, so if the prop is an array or object, mutating the object or array itself inside the child component **will** affect parent state.
+::: tip Note 
+자바스크립트의 객체와 배열은 참조로 전달되므로 prop가 배열 또는 객체인 경우 하위 컴포넌트 내부의 객체 또는 배열 자체를 변경하면 상위 상태에 영향을 **줄 것입니다**. 
 :::
 
-## Prop Validation
+## Prop 유효성 검사
 
-Components can specify requirements for their props, such as the types you've already seen. If a requirement isn't met, Vue will warn you in the browser's JavaScript console. This is especially useful when developing a component that's intended to be used by others.
+컴포넌트는 이미 보아왔던 타입과 같은 prop에 대한 요구사항을 지정할 수 있습니다. 요구사항이 충족되지 않으면, Vue는 브라우저의 자바스크립트 콘솔에서 경고합니다. 이는 다른 사람이 사용하도록 의도된 컴포넌트를 개발할 때 특히 유용합니다.
 
-To specify prop validations, you can provide an object with validation requirements to the value of `props`, instead of an array of strings. For example:
+prop 유효성 검사를 지정하려면 문자열 배열 대신 `props`값에 대한 유효성 검사가 있는 객체를 제공할 수 있습니다. 예를 들어:
 
 ```js
 app.component('my-component', {
   props: {
-    // Basic type check (`null` and `undefined` values will pass any type validation)
+    // 기본 타입 체크 (`null`과 `undefined`는 모든 타입 유효성 검사를 통과합니다.)
     propA: Number,
-    // Multiple possible types
+    // 여러 타입 허용
     propB: [String, Number],
-    // Required string
+    // 문자열 필수
     propC: {
       type: String,
       required: true
     },
-    // Number with a default value
+    // 기본 값을 갖는 숫자형
     propD: {
       type: Number,
       default: 100
     },
-    // Object with a default value
+    // 기본 값을 갖는 객체 타입
     propE: {
       type: Object,
-      // Object or array defaults must be returned from
-      // a factory function
+      // 객체나 배열의 기본 값은 항상 팩토리 함수로부터 반환되어야 합니다.
       default: function() {
         return { message: 'hello' }
       }
     },
-    // Custom validator function
+    // 커스텀 유효성 검사 함수
     propF: {
       validator: function(value) {
-        // The value must match one of these strings
+        // 값이 꼭 아래 세 문자열 중 하나와 일치해야 합니다.
         return ['success', 'warning', 'danger'].indexOf(value) !== -1
       }
     },
-    // Function with a default value
+    // 기본 값을 갖는 함수
     propG: {
       type: Function,
-      // Unlike object or array default, this is not a factory function - this is a function to serve as a default value
+      // 객체나 배열과 달리 아래 표현은 팩토리 함수가 아닙니다. 기본 값으로 사용되는 함수입니다.
       default: function() {
         return 'Default function'
       }
@@ -206,15 +205,15 @@ app.component('my-component', {
 })
 ```
 
-When prop validation fails, Vue will produce a console warning (if using the development build).
+prop 유효성 검사가 실패하면 Vue는 콘솔에 경고를 출력합니다 (개발 빌드를 사용하는 경우).
 
-::: tip Note
-Note that props are validated **before** a component instance is created, so instance properties (e.g. `data`, `computed`, etc) will not be available inside `default` or `validator` functions.
+::: tip Note 
+props는 컴포넌트 인스턴스가 생성되기 **전에** 유효성 검사를 하므로 인스턴스 속성(예: `data`, `computed` 등)은 `default`나 `validator` 함수 내에서 사용할 수 없습니다. 
 :::
 
-### Type Checks
+### 타입 체크
 
-The `type` can be one of the following native constructors:
+`type`은 다음 기본 생성자(native constructor) 중 하나일 수 있습니다:
 
 - String
 - Number
@@ -225,7 +224,7 @@ The `type` can be one of the following native constructors:
 - Function
 - Symbol
 
-In addition, `type` can also be a custom constructor function and the assertion will be made with an `instanceof` check. For example, given the following constructor function exists:
+또한, `type`에는 커스텀 생성자가 될 수도 있으며, assertion은 `instanceof` 확인으로 수행됩니다. 예를 들어 다음과 같이 생성자 함수가 존재하는 경우:
 
 ```js
 function Person(firstName, lastName) {
@@ -234,7 +233,7 @@ function Person(firstName, lastName) {
 }
 ```
 
-You could use:
+아래와 같이 작성하면:
 
 ```js
 app.component('blog-post', {
@@ -244,25 +243,25 @@ app.component('blog-post', {
 })
 ```
 
-to validate that the value of the `author` prop was created with `new Person`.
+`author` prop의 값이 `new Person`으로 생성되었는지 확인합니다.
 
-## Prop Casing (camelCase vs kebab-case)
+## Prop 대소문자 구분 (camelCase vs kebab-case)
 
-HTML attribute names are case-insensitive, so browsers will interpret any uppercase characters as lowercase. That means when you're using in-DOM templates, camelCased prop names need to use their kebab-cased (hyphen-delimited) equivalents:
+HTML 속성명은 대소문자를 구분하지 않으므로, 브라우저는 모든 대문자를 소문자로 해석합니다. 즉, DOM내 템플릿을 사용할 때 camelCase된 prop명은 kebab-case(하이픈으로 구분)된 해당 항목을 사용해야 합니다:
 
 ```js
 const app = Vue.createApp({})
 
 app.component('blog-post', {
-  // camelCase in JavaScript
+  // JavaScript에서의 camelCase
   props: ['postTitle'],
   template: '<h3>{{ postTitle }}</h3>'
 })
 ```
 
 ```html
-<!-- kebab-case in HTML -->
+<!-- HTML에서의 kebab-case -->
 <blog-post post-title="hello!"></blog-post>
 ```
 
-Again, if you're using string templates, this limitation does not apply.
+다시 말하지만, 문자열 리터럴을 사용하는 경우 이 제한이 적용되지 않습니다.

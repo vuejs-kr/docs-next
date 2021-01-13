@@ -1,10 +1,10 @@
-# Event Handling
+# 이벤트 핸들링
 
-## Listening to Events
+## 이벤트 청취
 
-We can use the `v-on` directive, which we typically shorten to the `@` symbol, to listen to DOM events and run some JavaScript when they're triggered. The usage would be `v-on:click="methodName"` or with the shortcut, `@click="methodName"`
+`v-on`디렉티브는 `@`기호로, DOM 이벤트를 듣고 트리거 될 때와 JavaScript를 실행할 때 사용합니다. <br>`v-on:click="methodName"` 나 줄여서 `@click="methodName"`으로 사용합니다.
 
-For example:
+예시:
 
 ```html
 <div id="basic-event">
@@ -17,25 +17,25 @@ For example:
 Vue.createApp({
   data() {
     return {
-      counter: 0
+      counter: 1
     }
   }
 }).mount('#basic-event')
 ```
 
-Result:
+결과:
 
 <common-codepen-snippet title="Event handling: basic" slug="xxGadPZ" tab="html,result" :preview="false" />
 
-## Method Event Handlers
+## 메소드 이벤트 핸들러
 
-The logic for many event handlers will be more complex though, so keeping your JavaScript in the value of the `v-on` attribute isn't feasible. That's why `v-on` can also accept the name of a method you'd like to call.
+많은 이벤트 핸들러의 로직은 더 복잡할 것이므로, JavaScript를`v-on`  속성 값으로 보관하는 것은 간단하지 않습니다. 그게 `v-on`이 호출하고자 하는 메소드의 이름을 받는 이유입니다.
 
-For example:
+예시:
 
 ```html
 <div id="event-with-method">
-  <!-- `greet` is the name of a method defined below -->
+  <!-- `greet`는 메소드 이름으로 아래에 정의되어 있습니다 -->
   <button @click="greet">Greet</button>
 </div>
 ```
@@ -49,9 +49,9 @@ Vue.createApp({
   },
   methods: {
     greet(event) {
-      // `this` inside methods points to the current active instance
+      // 메소드 안에서 사용하는 `this` 는 Vue 인스턴스를 가리킵니다.
       alert('Hello ' + this.name + '!')
-      // `event` is the native DOM event
+      // `event` 는 네이티브 DOM 이벤트입니다
       if (event) {
         alert(event.target.tagName)
       }
@@ -60,13 +60,14 @@ Vue.createApp({
 }).mount('#event-with-method')
 ```
 
-Result:
+결과:
 
 <common-codepen-snippet title="Event handling: with a method" slug="jOPvmaX" tab="js,result" :preview="false" />
 
-## Methods in Inline Handlers
 
-Instead of binding directly to a method name, we can also use methods in an inline JavaScript statement:
+## 인라인 메소드 핸들러
+
+메소드 이름을 직접 바인딩 하는 대신에, 인라인 JavaScript 구문에 메소드를 사용할 수도 있습니다:
 
 ```html
 <div id="inline-handler">
@@ -85,11 +86,11 @@ Vue.createApp({
 }).mount('#inline-handler')
 ```
 
-Result:
+결과:
 
 <common-codepen-snippet title="Event handling: with an inline handler" slug="WNvgjda" tab="html,result" :preview="false" />
 
-Sometimes we also need to access the original DOM event in an inline statement handler. You can pass it into a method using the special `$event` variable:
+때로 인라인 명령문 핸들러에서 원본 DOM 이벤트에 액세스 해야할 수도 있습니다.  특별한 `$event`를 사용해 메소드에 전달할 수 있습니다:
 
 ```html
 <button @click="warn('Form cannot be submitted yet.', $event)">
@@ -101,7 +102,7 @@ Sometimes we also need to access the original DOM event in an inline statement h
 // ...
 methods: {
   warn(message, event) {
-    // now we have access to the native event
+    // 네이티브 이벤트에 접근 할 수 있습니다.
     if (event) {
       event.preventDefault()
     }
@@ -110,12 +111,12 @@ methods: {
 }
 ```
 
-## Multiple Event Handlers
+## 복합 이벤트 핸들러
 
-You can have multiple methods in an event handler separated by a comma operator like this:
+다음 예시처럼 ,연산자를 사용하여 이벤트 핸들러 안에서 복합 메소드를 지정할 수 있습니다:
 
 ```html
-<!-- both one() and two() will execute on button click -->
+<!-- one()과 two() 둘다 버튼 클릭 이벤트를 실행할 수 있습니다.-->
 <button @click="one($event), two($event)">
   Submit
 </button>
@@ -125,19 +126,19 @@ You can have multiple methods in an event handler separated by a comma operator 
 // ...
 methods: {
   one(event) {
-    // first handler logic...
+    // 첫번째 핸들러 로직...
   },
   two(event) {
-    // second handler logic...
+    // 두번째 핸들러 로직...
   }
 }
 ```
 
-## Event Modifiers
+## 이벤트 수식어
 
-It is a very common need to call `event.preventDefault()` or `event.stopPropagation()` inside event handlers. Although we can do this easily inside methods, it would be better if the methods can be purely about data logic rather than having to deal with DOM event details.
+이벤트 핸들러 내부에서 <code>event.preventDefault()</code> 또는 <code>event.stopPropagation()</code>를 호출하는 것은 매우 보편적인 일입니다. 메소드 내에서 쉽게 이 작업을 할 수 있지만, DOM 이벤트 세부 사항을 처리하는 대신 데이터 로직에 대한 메소드만 사용할 수 있으면 더 좋습니다.
 
-To address this problem, Vue provides **event modifiers** for `v-on`. Recall that modifiers are directive postfixes denoted by a dot.
+이 문제를 해결하기 위하여, Vue는 `v-on`이벤트에 <strong>이벤트 수식어</strong>를 제공합니다. 수식어는 점으로 된 접미사 입니다.
 
 - `.stop`
 - `.prevent`
@@ -147,77 +148,73 @@ To address this problem, Vue provides **event modifiers** for `v-on`. Recall tha
 - `.passive`
 
 ```html
-<!-- the click event's propagation will be stopped -->
+<!-- 클릭 이벤트 전파가 중단되었습니다. -->
 <a @click.stop="doThis"></a>
 
-<!-- the submit event will no longer reload the page -->
+<!-- 제출 이벤트가 페이지를 다시 로드하지 않습니다. -->
 <form @submit.prevent="onSubmit"></form>
 
-<!-- modifiers can be chained -->
+<!-- 수정자는 체이닝이 가능합니다. -->
 <a @click.stop.prevent="doThat"></a>
 
-<!-- just the modifier -->
+<!-- 단순히 수식어만 사용이 가능합니다. -->
 <form @submit.prevent></form>
 
-<!-- use capture mode when adding the event listener -->
-<!-- i.e. an event targeting an inner element is handled here before being handled by that element -->
+<!-- 캡처 모드를 사용할 때 이벤트 리스너를 사용 가능합니다.-->
+<!--즉, 내부 엘리먼트를 대상으로 하는 이벤트가 해당 엘리먼트에서 처리되기 전에 여기서 처리합니다. -->
 <div @click.capture="doThis">...</div>
 
-<!-- only trigger handler if event.target is the element itself -->
-<!-- i.e. not from a child element -->
+<!-- event.target이 엘리먼트 자체인 경우에만 트리거를 처리합니다.-->
+<!-- 자식 엘리먼트에서는 처리되지 않습니다.-->
 <div @click.self="doThat">...</div>
 ```
 
-::: tip
-Order matters when using modifiers because the relevant code is generated in the same order. Therefore using `@click.prevent.self` will prevent **all clicks** while `@click.self.prevent` will only prevent clicks on the element itself.
-:::
+관련 코드가 동일한 순서로 생성되므로 수식어를 사용할 때 순서를 지정하세요. 다시 말하여 `v-on:click.prevent.self`를 사용하면 <strong>모든 클릭</strong>을 막을 수 있으며 `v-on:click.self.prevent`는 엘리먼트 자체에 대한 클릭만 방지합니다.
 
 ```html
-<!-- the click event will be triggered at most once -->
+<!-- 클릭 이벤트는 최대한 한번에 트리거 됩니다.-->
 <a @click.once="doThis"></a>
 ```
 
-Unlike the other modifiers, which are exclusive to native DOM events, the `.once` modifier can also be used on [component events](component-custom-events.html). If you haven't read about components yet, don't worry about this for now.
+네이티브 DOM이벤트에 독점적인 다른 수식어들과  달리, `.once` 수식어는  [component events](component-custom-events.html)에서도 사용될 수 있습니다. 아직 컴포넌트에 대해서 읽지 않았더라도 걱정하시마십시오.
 
-Vue also offers the `.passive` modifier, corresponding to [`addEventListener`'s `passive` option](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Parameters).
+또한 Vue는 [`addEventListener`의  `passive` option](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Parameters)에 해당하는 `.passive` 수식어도  제공합니다.
 
 ```html
-<!-- the scroll event's default behavior (scrolling) will happen -->
-<!-- immediately, instead of waiting for `onScroll` to complete  -->
-<!-- in case it contains `event.preventDefault()`                -->
+<!-- 스크롤의 기본 이벤트를 취소할 수 없습니다. -->
+<!-- 바로, `onScroll`완료되는 것을 기다리는 것을 대신합니다.  -->
+<!-- 이 경우에`event.preventDefault()`를 포함하고 있습니다. -->
 <div @scroll.passive="onScroll">...</div>
 ```
 
-The `.passive` modifier is especially useful for improving performance on mobile devices.
+ 특히 `.passive` 수식어는 모바일 환경에서 성능향상에 도움이 됩니다.
 
-::: tip
-Don't use `.passive` and `.prevent` together, because `.prevent` will be ignored and your browser will probably show you a warning. Remember, `.passive` communicates to the browser that you _don't_ want to prevent the event's default behavior.
-:::
+`.prevent` 수식어는 무시되고 브라우저에서 오류를 발생시키기 때문에, `.passive` 수식어와 `.prevent` 수식어를 함께 사용하지 마십시오. `.passive` 수식어는 당신이 이벤트의 기본 행동을 무시하지 *않기를*  원하는 브라우저와 상호작용한다는 사실을 기억하십시오.
 
-## Key Modifiers
+## 키 수식어
 
-When listening for keyboard events, we often need to check for specific keys. Vue allows adding key modifiers for `v-on` or `@` when listening for key events:
+키보드 이벤트를 청취할 때, 종종 공동 키 코드를 확인해야 합니다.<br>Vue에서 키 이벤트를 청취할 때 키 수식어로 `v-on` 또는 `@`를 더할 수 있습니다.
 
 ```html
-<!-- only call `vm.submit()` when the `key` is `Enter` -->
+<!-- 키가 'Enter'일때만 `vm.submit()`을 호출할 수 있습니다.-->
 <input @keyup.enter="submit" />
 ```
 
-You can directly use any valid key names exposed via [`KeyboardEvent.key`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values) as modifiers by converting them to kebab-case.
+[`KeyboardEvent.key`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values)를 통해 노출된 유효 키 이름을 케밥 케이스로 변환하여 수식어로 사용할 수 있습니다.
 
 ```html
 <input @keyup.page-down="onPageDown" />
 ```
 
-In the above example, the handler will only be called if `$event.key` is equal to `'PageDown'`.
+위의 예제에서, 핸들러는 `$event.key`  ===  <code>PageDown </code>일 때만 호출됩니다.
 
-### Key Aliases
+### 키 명령어
 
-Vue provides aliases for the most commonly used keys:
+Vue는 가장흔히 사용되는 키에서 명령어를 제공합니다:
 
 - `.enter`
 - `.tab`
-- `.delete` (captures both "Delete" and "Backspace" keys)
+- `.delete`  (“Delete” 와 “Backspace” 키 모두를 캡처합니다)
 - `.esc`
 - `.space`
 - `.up`
@@ -225,9 +222,9 @@ Vue provides aliases for the most commonly used keys:
 - `.left`
 - `.right`
 
-## System Modifier Keys
+## 시스템 수식어 키목록
 
-You can use the following modifiers to trigger mouse or keyboard event listeners only when the corresponding modifier key is pressed:
+다음 수식어를 사용해 해당 수식어 키가 눌러진 경우에만 마우스 또는 키보드 이벤트 리스너를 트리거 할 수 있습니다:
 
 - `.ctrl`
 - `.alt`
@@ -235,52 +232,52 @@ You can use the following modifiers to trigger mouse or keyboard event listeners
 - `.meta`
 
 ::: tip Note
-On Macintosh keyboards, meta is the command key (⌘). On Windows keyboards, meta is the Windows key (⊞). On Sun Microsystems keyboards, meta is marked as a solid diamond (◆). On certain keyboards, specifically MIT and Lisp machine keyboards and successors, such as the Knight keyboard, space-cadet keyboard, meta is labeled “META”. On Symbolics keyboards, meta is labeled “META” or “Meta”.
+참고<br>메칸토시 키보드에서, meta는 command key(⌘)입니다. 윈도우 키보드에서, meta는 윈도우키 (⊞)입니다. 마이크로시스템 키보드에서 meta는 단색의 다이아몬드(◆)로 표시됩니다. 특정 키보드의 경우,특히 MIT와 Lisp 시스템 키보드와 후속작들,Knight 키보드, space-cadet 키보드와 같은 제품에는 Meta레이블이 지정됩니다. Symbolics 키보드에서 메타는 “META” 또는 “Meta”로 표시됩니다. 
 :::
 
-For example:
+예시:
 
 ```html
-<!-- Alt + Enter -->
+<!-- 알트 + 엔터 -->
 <input @keyup.alt.enter="clear" />
 
-<!-- Ctrl + Click -->
+<!-- 컨트롤 + 클릭 -->
 <div @click.ctrl="doSomething">Do something</div>
 ```
 
 ::: tip
-Note that modifier keys are different from regular keys and when used with `keyup` events, they have to be pressed when the event is emitted. In other words, `keyup.ctrl` will only trigger if you release a key while holding down `ctrl`. It won't trigger if you release the `ctrl` key alone
+수식어 키는 일반 키와 다르며 `keyup` 이벤트와 함께 사용되면 이벤트가 발생할 때 수식어 키가 눌려있어야 합니다. 즉,`keyup.ctrl`은 `ctrl`을 누른 상태에서 키를 놓으면 트리거됩니다. `ctrl`키만 놓으면 트리거되지 않습니다.
 :::
 
-### `.exact` Modifier
+### `.exact`수식어
 
-The `.exact` modifier allows control of the exact combination of system modifiers needed to trigger an event.
+`.exact` 수식어는 다른 시스템 수식어와 조합해 그 핸들러가 실행되기 위해 정확한 조합이 눌러야하는 것을 요구합니다.
 
 ```html
-<!-- this will fire even if Alt or Shift is also pressed -->
+<!-- 아래코드는 Alt 또는 Shift와 함께 눌렀을 때도 실행됩니다.-->
 <button @click.ctrl="onClick">A</button>
 
-<!-- this will only fire when Ctrl and no other keys are pressed -->
+<!-- 아래코드는 Cntl키만 눌려져 있을 때 실행됩니다.-->
 <button @click.ctrl.exact="onCtrlClick">A</button>
 
-<!-- this will only fire when no system modifiers are pressed -->
+<!-- 아래 코드는 시스템 키가 눌리지 않은 상태인 경우에만 작동합니다.-->
 <button @click.exact="onClick">A</button>
 ```
 
-### Mouse Button Modifiers
+### 마우스 버튼 수식어
 
 - `.left`
 - `.right`
 - `.middle`
 
-These modifiers restrict the handler to events triggered by a specific mouse button.
+위 수식어는 특정 마우스 버튼에 의해 트리거 된 이벤트로 핸들러를 제한합니다.
 
-## Why Listeners in HTML?
+## 왜 HTML로 된 리스너를 사용하는가?
 
-You might be concerned that this whole event listening approach violates the good old rules about "separation of concerns". Rest assured - since all Vue handler functions and expressions are strictly bound to the ViewModel that's handling the current view, it won't cause any maintenance difficulty. In fact, there are several benefits in using `v-on` or `@`:
+이 모든 이벤트 청취 접근 방법이 관심사의 분리(“separation of concerns”)에 대한 오래된 규칙을 어긴다고 생각할 수 있습니다. 모든 뷰 핸들러 함수와 표현식은 현재 뷰 처리 하는 ViewModel에 엄격히 바인딩 되기 때문에 유지보수가 어렵지 않습니다. 실제로 `v-on`이나 `@`를 사용하면 몇가지 이점이 있습니다:
 
-1. It's easier to locate the handler function implementations within your JS code by skimming the HTML template.
+1. HTML 템플릿을 간단히 하여 JavaScript 코드 내에서 핸들러 함수 구현을 찾는 것이 더 쉽습니다.
 
-2. Since you don't have to manually attach event listeners in JS, your ViewModel code can be pure logic and DOM-free. This makes it easier to test.
+2. JavaScript에서 이벤트 리스너를 수동으로 연결할 필요가 없으므로 ViewModel 코드는 순수 로직과 DOM이 필요하지 않습니다. 이렇게 하면 테스트가 쉬워집니다.
 
-3. When a ViewModel is destroyed, all event listeners are automatically removed. You don't need to worry about cleaning it up yourself.
+3. ViewModel이 파기되면 모든 이벤트 리스너가 자동으로 제거 됩니다. 이벤트 제거에 대한 걱정이 필요없어집니다.

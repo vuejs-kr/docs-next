@@ -1,25 +1,25 @@
-# List Transitions
+# 리스트 트랜지션
 
-So far, we've managed transitions for:
+지금까지 다음과 같은 트랜지션을 다루었습니다.
 
-- Individual nodes
-- Multiple nodes where only 1 is rendered at a time
+- 개별 노드들
+- 한번에 하나만 렌더링 되는 여러 노드
 
-So what about for when we have a whole list of items we want to render simultaneously, for example with `v-for`? In this case, we'll use the `<transition-group>` component. Before we dive into an example though, there are a few things that are important to know about this component:
+그렇다면 `v-for`를 사용하여 동시에 렌더링 하고자 하는 항목의 전체 목록이 있는 경우는 어떨까요? 이 경우 우리는 `<transition-group>` 컴포넌트를 사용합니다. 예를 들어보기 전에 이 컴포넌트에 대해 알아야 할 몇 가지 중요한 사항이 있습니다.
 
-- By default, it doesn't render a wrapper element, but you can specify an element to be rendered with the `tag` attribute.
-- [Transition modes](/guide/transitions-enterleave#transition-modes) are not available, because we are no longer alternating between mutually exclusive elements.
-- Elements inside are **always required** to have a unique `key` attribute.
-- CSS transition classes will be applied to inner elements and not to the group/container itself.
+- `<transition>`, 과 달리, 실제 요소인 `<span>`을 렌더링합니다. `tag` 속성으로 렌더링 된 요소를 변경할 수 있습니다.
+- [트랜지션 모드](/ko-KR/guide/transitions-enterleave#transition-modes)를 사용할 수 없습니다. 더 이상 상호 배타적인 엘리먼트를 번갈아 사용하지 않습니다.
+- 내부의 엘리먼트는  고유한 `key` 속성을 **항상 가져야 합니다 **
+- CSS 트랜지션 클래스는 그룹 / 컨테이너 자체가 아닌 내부 엘리먼트에 적용됩니다.
 
-## List Entering/Leaving Transitions
+### 리스트의 진입 / 진출 트랜지션
 
-Now let's dive into an example, transitioning entering and leaving using the same CSS classes we've used previously:
+이제 이전에 사용한 것과 같은 CSS 클래스를 사용하여 진입 / 진출의 간단한 예제를 살펴 보겠습니다.
 
 ```html
 <div id="list-demo">
-  <button @click="add">Add</button>
-  <button @click="remove">Remove</button>
+  <button @click="add">추가</button>
+  <button @click="remove">삭제</button>
   <transition-group name="list" tag="p">
     <span v-for="item in items" :key="item" class="list-item">
       {{ item }}
@@ -70,19 +70,19 @@ Vue.createApp(Demo).mount('#list-demo')
 
 <common-codepen-snippet title="Transition List" slug="e1cea580e91d6952eb0ae17bfb7c379d" tab="js,result" :editable="false" :preview="false" />
 
-There's one problem with this example. When you add or remove an item, the ones around it instantly snap into their new place instead of smoothly transitioning. We'll fix that later.
+이 예제에는 한 가지 문제점이 있습니다. 항목을 추가하거나 제거 할 때 항목이 원활하게 트랜지션되는 대신 새 위치에 즉시 변경됩니다. 나중에 해결할 것입니다.
 
-## List Move Transitions
+### 리스트 이동 트랜지션
 
-The `<transition-group>` component has another trick up its sleeve. It can not only animate entering and leaving, but also changes in position. The only new concept you need to know to use this feature is the addition of **the `v-move` class**, which is added when items are changing positions. Like the other classes, its prefix will match the value of a provided `name` attribute and you can also manually specify a class with the `move-class` attribute.
+`<transition-group>` 컴포넌트는 멋진 기능을 제공합니다. 리스트에 항목이 추가 제어될때의  진입과 진출 트랜지션 뿐만이 아니라, 목록상에서 위치가 변경될때에도 트랜지션을 제공합니다. 단지 아이템이 이동할때 사용될 **&nbsp;`v-move`클래스**만  추가하면 됩니다. 다른 클래스와 마찬가지로 접두어는 제공된 `name` 속성 값과 일치하며 `move-class` 속성을 사용하여 클래스를 수동으로 지정할 수도 있습니다.
 
-This class is mostly useful for specifying the transition timing and easing curve, as you'll see below:
+이 클래스는 다음과 같이 트랜지션 타이밍과 easing curve을 지정하는 데 유용합니다.
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
 
 <div id="flip-list-demo">
-  <button @click="shuffle">Shuffle</button>
+  <button @click="shuffle">셔플</button>
   <transition-group name="flip-list" tag="ul">
     <li v-for="item in items" :key="item">
       {{ item }}
@@ -116,17 +116,17 @@ Vue.createApp(Demo).mount('#flip-list-demo')
 
 <common-codepen-snippet title="Transition-group example" slug="049211673d3c185fde6b6eceb8baebec" tab="html,result" :editable="false" :preview="false" />
 
-This might seem like magic, but under the hood, Vue is using an animation technique called [FLIP](https://aerotwist.com/blog/flip-your-animations/) to smoothly transition elements from their old position to their new position using transforms.
+이것은 마술처럼 보일지 모르겠지만 Vue는 [FLIP](https://aerotwist.com/blog/flip-your-animations/)이라는 간단한 애니메이션 기법을 사용하여 변형을 사용하여 이전 위치에서 새로운 위치로 요소를 부드럽게 트랜지션합니다.
 
-We can combine this technique with our previous implementation to animate every possible change to our list!
+이 기술을 이전 구현과 결합하여 가능한 모든 변경 사항을 목록에 적용 할 수 있습니다!
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js"></script>
 
 <div id="list-complete-demo" class="demo">
-  <button @click="shuffle">Shuffle</button>
-  <button @click="add">Add</button>
-  <button @click="remove">Remove</button>
+  <button @click="shuffle">셔플</button>
+  <button @click="add">추가</button>
+  <button @click="remove">삭제</button>
   <transition-group name="list-complete" tag="p">
     <span v-for="item in items" :key="item" class="list-complete-item">
       {{ item }}
@@ -182,17 +182,17 @@ Vue.createApp(Demo).mount('#list-complete-demo')
 
 <common-codepen-snippet title="Transition-group example" slug="373b4429eb5769ae2e6d097fd954fd08" tab="js,result" :editable="false" :preview="false" />
 
-::: tip
-One important note is that these FLIP transitions do not work with elements set to `display: inline`. As an alternative, you can use `display: inline-block` or place elements in a flex context.
+::: tip 
+한 가지 중요한 사실은 이러한 FLIP 트랜지션은 `display: inline` 으로 설정된 요소로는 작동하지 않는다는 것입니다. 또는 `display: inline-block` 을 사용하거나 flex 컨텍스트에 요소를 배치 할 수 있습니다. 
 :::
 
-These FLIP animations are also not limited to a single axis. Items in a multidimensional grid can be [transitioned too](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-list-move-transitions):
+이러한 FLIP 애니메이션은 단일 축으로 제한되지 않습니다. 다차원 그리드의 항목을 [매우 쉽게](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-list-move-transitions) 트랜지션 할 수 있습니다.
 
 TODO: example
 
-## Staggering List Transitions
+### 스태거링 목록 트랜지션
 
-By communicating with JavaScript transitions through data attributes, it's also possible to stagger transitions in a list:
+JavaScript 트랜지션과 통신함으로써 목록 내 각 항목의 데이터 속성을 이용해 트랜지션을 스태거(stagger) 되도록 할 수 있습니다.
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/gsap.min.js"></script>
@@ -224,11 +224,11 @@ const Demo = {
     return {
       query: '',
       list: [
-        { msg: 'Bruce Lee' },
-        { msg: 'Jackie Chan' },
-        { msg: 'Chuck Norris' },
-        { msg: 'Jet Li' },
-        { msg: 'Kung Fury' }
+        { msg: '세종대왕' },
+        { msg: '이순신' },
+        { msg: '정약용' },
+        { msg: '김구' },
+        { msg: '유관순' }
       ]
     }
   },
@@ -269,13 +269,13 @@ Vue.createApp(Demo).mount('#demo')
 
 <common-codepen-snippet title="Staggered Lists" slug="c2fc5107bd3025ceadea049b3ee44ec0" tab="js,result" :editable="false" :preview="false" />
 
-## Reusable Transitions
+## 트랜지션 재사용
 
-Transitions can be reused through Vue's component system. To create a reusable transition, all you have to do is place a `<transition>` or `<transition-group>` component at the root, then pass any children into the transition component.
+트랜지션은 Vue의 컴포넌트 시스템을 통해 재사용 할 수 있습니다. 재사용 할 수있는 트랜지션을 만드려면 루트에 `<transition>` 또는 `<transition-group>` 컴포넌트를 놓은 다음 자식을 트랜지션 컴포넌트에 전달하면됩니다.
 
 TODO: refactor to Vue 3
 
-Here's an example using a template component:
+다음은 템플릿 컴포넌트를 사용하는 예입니다.
 
 ```js
 Vue.component('my-special-transition', {
@@ -300,7 +300,7 @@ Vue.component('my-special-transition', {
 })
 ```
 
-And [functional components](render-function.html#Functional-Components) are especially well-suited to this task:
+[함수형 컴포넌트](render-function.html#Functional-Components)는 특히 이 작업에 적합합니다.
 
 ```js
 Vue.component('my-special-transition', {
@@ -325,9 +325,9 @@ Vue.component('my-special-transition', {
 })
 ```
 
-## Dynamic Transitions
+## 동적 트랜지션
 
-Yes, even transitions in Vue are data-driven! The most basic example of a dynamic transition binds the `name` attribute to a dynamic property.
+맞습니다, Vue의 트랜지션도 데이터 기반입니다! 동적 변환의 가장 기본적인 예제는 `name` 속성을 동적 속성에 바인딩합니다.
 
 ```html
 <transition :name="transitionName">
@@ -335,17 +335,17 @@ Yes, even transitions in Vue are data-driven! The most basic example of a dynami
 </transition>
 ```
 
-This can be useful when you've defined CSS transitions/animations using Vue's transition class conventions and want to switch between them.
+이것은 Vue의 트랜지션 클래스 규칙을 사용하여 CSS 트랜지션 / 애니메이션을 정의하고 트랜지션하려는 경우에 유용 할 수 있습니다.
 
-Really though, any transition attribute can be dynamically bound. And it's not only attributes. Since event hooks are methods, they have access to any data in the context. That means depending on the state of your component, your JavaScript transitions can behave differently.
+실제로 모든 트랜지션 속성은 동적으로 바인딩 될 수 있습니다. 그리고 그것은 단순한 속성이 아닙니다. 이벤트 훅은 메소드이기 때문에 컨텍스트의 모든 데이터에 접근 할 수 있습니다. 즉, 컴포넌트의 상태에 따라 JavaScript 트랜지션이 다르게 동작 할 수 있습니다.
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
 
 <div id="dynamic-fade-demo" class="demo">
-  Fade In:
+  사라지기:
   <input type="range" v-model="fadeInDuration" min="0" :max="maxFadeDuration" />
-  Fade Out:
+  나타나기:
   <input
     type="range"
     v-model="fadeOutDuration"
@@ -361,9 +361,9 @@ Really though, any transition attribute can be dynamically bound. And it's not o
     <p v-if="show">hello</p>
   </transition>
   <button v-if="stop" @click="stop = false; show = false">
-    Start animating
+    애니메이션 시작
   </button>
-  <button v-else @click="stop = true">Stop it!</button>
+  <button v-else @click="stop = true">멈춰!</button>
 </div>
 ```
 
@@ -421,4 +421,4 @@ app.mount('#dynamic-fade-demo')
 
 TODO: example
 
-Finally, the ultimate way of creating dynamic transitions is through components that accept props to change the nature of the transition(s) to be used. It may sound cheesy, but the only limit really is your imagination.
+마지막으로, 동적 트랜지션을 만드는 궁극적인 방법은 사용되는 트랜지션의 특성을 변경하기 위해 props을 받는 컴포넌트를 사용하는 것입니다. 별로인 것 처럼 들리지만, 실제로 유일한 한계는 당신의 상상력에 있습니다.

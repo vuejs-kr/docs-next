@@ -1287,6 +1287,11 @@
   dependencies:
     lodash.debounce "^4.0.8"
 
+"@vuepress/plugin-html-redirect@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@vuepress/plugin-html-redirect/-/plugin-html-redirect-0.1.2.tgz#ed68245a4e59ac6d314141e7bbdb56ed196cf157"
+  integrity sha512-5UIWO6+s/pAXysauYDbLAJg1Jv9eSYjRsQqVPZaLmS666R1ExPmfYiCjsD4vqju+jjlPCngJ8yB7zcHrCTqXEQ==
+
 "@vuepress/plugin-last-updated@1.7.1":
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/@vuepress/plugin-last-updated/-/plugin-last-updated-1.7.1.tgz#668c55daa6b8bc1d8ee42cdb4169cf67c01b6e97"

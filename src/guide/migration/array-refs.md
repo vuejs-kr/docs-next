@@ -4,17 +4,17 @@ badges:
 - breaking
 ---
 
-# {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
+# {{ $frontmatter.title }} <migrationbadges badges="$frontmatter.badges"></migrationbadges>
 
-In Vue 2, using the `ref` attribute inside `v-for` will populate the corresponding `$refs` property with an array of refs. This behavior becomes ambiguous and inefficient when there are nested `v-for`s present.
+Vue 2에서 `v-for`에 `ref` 속성을 사용하면 해당 `$refs` 프로퍼티는 참조 배열을 갖게 됩니다. 중첩된 <code>v-for</code>가 있는 경우, 이 동작은 모호하고 비효율적입니다.
 
-In Vue 3, such usage will no longer automatically create an array in `$refs`. To retrieve multiple refs from a single binding, bind `ref` to a function which provides more flexibility (this is a new feature):
+Vue 3에서는 더이상 Vue 2와 같이 `$refs`에 배열을 자동으로 생성하지 않습니다. 단일 바인딩에서 여러 참조를 다루려면, `ref`를 함수에 바인딩 하세요. 함수는 더 많은 유연성을 제공합니다. (이는 새로운 기능으로 아래 내용을 살펴 봅시다.)
 
 ```html
 <div v-for="item in list" :ref="setItemRef"></div>
 ```
 
-With Options API:
+Options API:
 
 ```js
 export default {
@@ -25,9 +25,7 @@ export default {
   },
   methods: {
     setItemRef(el) {
-      if (el) {
-        this.itemRefs.push(el)
-      }
+      this.itemRefs.push(el)
     }
   },
   beforeUpdate() {
@@ -39,18 +37,16 @@ export default {
 }
 ```
 
-With Composition API:
+Composition API:
 
 ```js
-import { onBeforeUpdate, onUpdated } from 'vue'
+import { ref, onBeforeUpdate, onUpdated } from 'vue'
 
 export default {
   setup() {
     let itemRefs = []
     const setItemRef = el => {
-      if (el) {
-        itemRefs.push(el)
-      }
+      itemRefs.push(el)
     }
     onBeforeUpdate(() => {
       itemRefs = []
@@ -59,14 +55,15 @@ export default {
       console.log(itemRefs)
     })
     return {
+      itemRefs,
       setItemRef
     }
   }
 }
 ```
 
-Note that:
+유의 사항
 
-- `itemRefs` doesn't have to be an array: it can also be an object where the refs are set by their iteration keys.
+- `itemRefs`는 꼭 배열이 아니어도 됩니다. 반복 key로 참조가 설정된 객체일 수도 있습니다.
 
-- This also allows `itemRefs` to be made reactive and watched, if needed.
+- 필요한 경우, `itemRefs`를 반응형으로 만들고 변경을 감지할 수 있습니다.

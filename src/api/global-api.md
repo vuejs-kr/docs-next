@@ -1,22 +1,18 @@
----
-sidebarDepth: 1
----
-
-# Global API
+# 전역 API
 
 ## createApp
 
-Returns an application instance which provides an application context. The entire component tree mounted by the application instance share the same context.
+애플리케이션 컨텍스트를 제공하는 애플리케이션 인스턴스를 반환합니다. 애플리케이션 인스턴스에 의해 마운트된 컴포넌트 트리 전체가 동일한 컨텍스트를 공유합니다.
 
 ```js
 const app = Vue.createApp({})
 ```
 
-You can chain other methods after `createApp`, they can be found in [Application API](./application-api.html)
+`createApp` 이후에 다른 메서드를 연결할 수 있으며 [Application API](./application-api.html)에서 찾을 수 있습니다.
 
-### Arguments
+### 전달인자
 
-The function receives a root component options object as a first parameter:
+이 함수는 첫 번째 매개변수로 루트 컴포넌트 옵션 객체를 받습니다.
 
 ```js
 const app = Vue.createApp({
@@ -31,7 +27,7 @@ const app = Vue.createApp({
 })
 ```
 
-With the second parameter, we can pass root props to the application:
+두 번째 매개 변수를 사용하면 루트 props를 애플리케이션에 전달할 수 있습니다.
 
 ```js
 const app = Vue.createApp(
@@ -44,12 +40,12 @@ const app = Vue.createApp(
 
 ```html
 <div id="app">
-  <!-- Will display 'Evan' -->
+  <!-- 'Evan'이 표시됩니다. -->
   {{ username }}
 </div>
 ```
 
-### Typing
+### 작성법
 
 ```ts
 interface Data {
@@ -64,7 +60,7 @@ export type CreateAppFunction<HostElement> = (
 
 ## h
 
-Returns a returns "virtual node", usually abbreviated to **VNode**: a plain object which contains information describing to Vue what kind of node it should render on the page, including descriptions of any child nodes. It is intended for manually written [render functions](../guide/render-function.md):
+일반적으로 **VNode**로 축약되는 "가상 노드(virtual node)"를 반환합니다. 이는 모든 하위 노드에 대한 설명을 포함하여 페이지에서 어떤 종류의 노드를 렌더링해야 하는지 Vue에 설명하는 정보가 포함된 일반 객체입니다. 수동으로 작성된 [렌더 함수](../guide/render-function.md)를 위한 것입니다.
 
 ```js
 render() {
@@ -72,17 +68,17 @@ render() {
 }
 ```
 
-### Arguments
+### 전달인자
 
-Accepts three arguments: `type`, `props` and `children`
+허용된 세 가지 인자: `tag`, `props`, `children`
 
-#### type
+#### tag
 
 - **Type:** `String | Object | Function`
 
 - **Details:**
 
-  An HTML tag name, a component or an async component. Using function returning null would render a comment. This parameter is required
+    HTML 태그 이름, 컴포넌트, 비동기 컴포넌트입니다. null을 반환하는 함수를 사용하면 주석이 렌더링됩니다. 이 매개변수는 필수입니다.
 
 #### props
 
@@ -90,7 +86,7 @@ Accepts three arguments: `type`, `props` and `children`
 
 - **Details:**
 
-  An object corresponding to the attributes, props and events we would use in a template. Optional
+    템플릿에서 사용하는 attributes, props, events에 해당하는 객체입니다. (선택사항)
 
 #### children
 
@@ -98,25 +94,25 @@ Accepts three arguments: `type`, `props` and `children`
 
 - **Details:**
 
-  Children VNodes, built using `h()`, or using strings to get "text VNodes" or an object with slots. Optional
+    `h()`를 사용하여 빌드하거나 문자열을 사용하여 "text VNodes"나 슬롯이 있는 객체를 가져오는 하위 VNode입니다. (선택사항)
 
-  ```js
-  h('div', {}, [
-    'Some text comes first.',
-    h('h1', 'A headline'),
-    h(MyComponent, {
-      someProp: 'foobar'
-    })
-  ])
-  ```
+    ```js
+    h('div', {}, [
+      'Some text comes first.',
+      h('h1', 'A headline'),
+      h(MyComponent, {
+        someProp: 'foobar'
+      })
+    ])
+    ```
 
 ## defineComponent
 
-Implementation-wise `defineComponent` does nothing but return the object passed to it. However, in terms of typing, the returned value has a synthetic type of a constructor for manual render function, TSX and IDE tooling support.
+구현 측면에서 `defineComponent`는 전달된 객체를 반환하는 것 외에는 아무것도 하지 않습니다. 그러나 입력에 관해서는, 반환된 값에는 수동 렌더링 함수, TSX 및 IDE 도구의 지원을 위한 생성자의 합성 유형(synthetic type)이 있습니다.
 
-### Arguments
+### 전달인자
 
-An object with component options
+컴포넌트 옵션이 있는 객체
 
 ```js
 import { defineComponent } from 'vue'
@@ -133,7 +129,7 @@ const MyComponent = defineComponent({
 })
 ```
 
-Or a `setup` function, function name will be used as component name
+또는 `setup` 함수 사용 시에는 함수명이 컴포넌트명으로 사용됩니다.
 
 ```js
 import { defineComponent, ref } from 'vue'
@@ -146,11 +142,11 @@ const HelloWorld = defineComponent(function HelloWorld() {
 
 ## defineAsyncComponent
 
-Creates an async component that will be loaded only when it's necessary.
+필요한 경우에만 로드되는 비동기 컴포넌트를 만듭니다.
 
-### Arguments
+### 전달인자
 
-For basic usage, `defineAsyncComponent` can accept a factory function returning a `Promise`. Promise's `resolve` callback should be called when you have retrieved your component definition from the server. You can also call `reject(reason)` to indicate the load has failed.
+기본적인 사용법을 위해 `defineAsyncComponent`는 `Promise`를 반환하는 팩토리 함수를 허용할 수 있습니다. Promise의 `resolve` 콜백은 서버에서 컴포넌트 정의를 검색할 때 호출되어야 합니다. 또한 `reject(reason)`를 호출하여 로드가 실패했음을 나타낼 수도 있습니다.
 
 ```js
 import { defineAsyncComponent } from 'vue'
@@ -162,7 +158,7 @@ const AsyncComp = defineAsyncComponent(() =>
 app.component('async-component', AsyncComp)
 ```
 
-When using [local registration](../guide/component-registration.html#local-registration), you can also directly provide a function that returns a `Promise`:
+[로컬 등록](../guide/component-registration.html#local-registration)을 사용하는 경우 `Promise`를 반환하는 함수를 직접 제공 할 수 있습니다.
 
 ```js
 import { createApp, defineAsyncComponent } from 'vue'
@@ -177,58 +173,58 @@ createApp({
 })
 ```
 
-For advanced usage, `defineAsyncComponent` can accept an object:
+고급 사용을 위해 `defineAsyncComponent`는 객체를 허용할 수 있습니다.
 
-The `defineAsyncComponent` method can also return an object of the following format:
+`defineAsyncComponent` 메서드는 다음과 같은 형식의 객체를 반환할 수 있습니다.
 
 ```js
 import { defineAsyncComponent } from 'vue'
 
 const AsyncComp = defineAsyncComponent({
-  // The factory function
+  // 팩토리 함수
   loader: () => import('./Foo.vue')
-  // A component to use while the async component is loading
+  // 비동기 컴포넌트가 로드되는 동안 사용할 컴포넌트
   loadingComponent: LoadingComponent,
-  // A component to use if the load fails
+  // 로드가 실패할 경우 사용할 컴포넌트
   errorComponent: ErrorComponent,
-  // Delay before showing the loading component. Default: 200ms.
+  // 로딩 컴포넌트가 보여지기 전 지연시간. 기본값: 200ms.
   delay: 200,
-  // The error component will be displayed if a timeout is
-  // provided and exceeded. Default: Infinity.
+  // 주어진 시간이 초과되면 오류 컴포넌트가 표시됩니다.
+  // 기본값: Infinity.
   timeout: 3000,
-  // Defining if component is suspensible. Default: true.
+  // 컴포넌트가 사용 가능한지 정의합니다. 기본값: true.
   suspensible: false,
   /**
    *
-   * @param {*} error Error message object
-   * @param {*} retry A function that indicating whether the async component should retry when the loader promise rejects
-   * @param {*} fail  End of failure
-   * @param {*} attempts Maximum allowed retries number
+   * @param {*} error 에러 메시지 객체
+   * @param {*} retry 로더 프로미스가 reject될 때, 비동기 컴포넌트가 재시도하는지에 대한 여부를 나타내는 함수
+   * @param {*} fail  실패의 끝
+   * @param {*} attempts 허용되는 최대 재시도 수
    */
   onError(error, retry, fail, attempts) {
     if (error.message.match(/fetch/) && attempts <= 3) {
-      // retry on fetch errors, 3 max attempts
+      // fetch 에러시 재시도, 최대 3회 시도
       retry()
     } else {
-      // Note that retry/fail are like resolve/reject of a promise:
-      // one of them must be called for the error handling to continue.
+      // retry/fail는 promise의 resolve/reject와 같습니다:
+      // 오류 처리를 계속하려면 그 중 하나를 호출해야 합니다.
       fail()
     }
   },
 })
 ```
 
-**See also**: [Dynamic and Async components](../guide/component-dynamic-async.html)
+**참조**: [동적 & 비동기 컴포넌트](../guide/component-dynamic-async.html)
 
 ## resolveComponent
 
-:::warning
-`resolveComponent` can only be used within `render` or `setup` functions.
+:::warning 
+`resolveComponent`는 `render`나 `setup` 함수 내에서만 사용할 수 있습니다. 
 :::
 
-Allows resolving a `component` by its name, if it is available in the current application instance.
+현재 애플리케이션 인스턴스에서 사용 가능한 경우 이름으로 `component`를 확인할 수 있습니다.
 
-Returns a `Component` or `undefined` when not found.
+찾을 수 없는 경우 `Component` 또는 `undefined`를 반환합니다.
 
 ```js
 const app = Vue.createApp({})
@@ -244,9 +240,9 @@ render() {
 }
 ```
 
-### Arguments
+### 전달인자
 
-Accepts one argument: `name`
+허용되는 인자: `name`
 
 #### name
 
@@ -254,17 +250,17 @@ Accepts one argument: `name`
 
 - **Details:**
 
-  The name of a loaded component.
+    로드된 component 이름입니다.
 
 ## resolveDynamicComponent
 
-:::warning
-`resolveDynamicComponent` can only be used within `render` or `setup` functions.
+:::warning 
+`resolveDynamicComponent`는 `render` 또는 `setup` 함수 내에서만 사용할 수 있습니다. 
 :::
 
-Allows resolving a `component` by the same mechanism that `<component :is="">` employs.
+`<component :is="">`로 사용하는 것과 동일한 메커니즘으로 `component`를 resolve할 수 있습니다.
 
-Returns the resolved `Component` or a newly created `VNode` with the component name as the node tag. Will raise a warning if the `Component` was not found.
+resolve된 `Component` 또는 컴포넌트 이름을 노드 태그로 사용하여 새로 생성된 `VNode`를 반환합니다. `Component`를 찾을 수 없는 경우 경고를 발생시킵니다.
 
 ```js
 import { resolveDynamicComponent } from 'vue'
@@ -273,9 +269,9 @@ render () {
 }
 ```
 
-### Arguments
+### 전달인자
 
-Accepts one argument: `component`
+허용되는 인자: `component`
 
 #### component
 
@@ -283,17 +279,17 @@ Accepts one argument: `component`
 
 - **Details:**
 
-  For more details, refer to the documentation on [Dynamic Components](../guide/component-dynamic-async.html).
+    자세한 내용은 [동적 컴포넌트](../guide/component-dynamic-async.html) 문서를 참조하세요.
 
 ## resolveDirective
 
-:::warning
-`resolveDirective` can only be used within `render` or `setup` functions.
+:::warning 
+`resolveDirective`는 `render` 또는 `setup` 함수 내에서만 사용할 수 있습니다. 
 :::
 
-Allows resolving a `directive` by its name, if it is available in the current application instance.
+현재 애플리케이션 인스턴스에서 사용가능한 경우 해당 이름으로 `directive`를 확인할 수 있습니다.
 
-Returns a `Directive` or `undefined` when not found.
+찾을 수 없는 경우 `Directive` 또는 `undefined`를 반환합니다.
 
 ```js
 const app = Vue.createApp({})
@@ -307,9 +303,9 @@ render () {
 }
 ```
 
-### Arguments
+### 전달인자
 
-Accepts one argument: `name`
+허용되는 인자: `name`
 
 #### name
 
@@ -317,15 +313,15 @@ Accepts one argument: `name`
 
 - **Details:**
 
-  The name of a loaded directive.
+    로드된 directive 이름입니다.
 
 ## withDirectives
 
-:::warning
-`withDirectives` can only be used within `render` or `setup` functions.
+
+warning `withDirectives`는 `render` 또는 `setup` 함수 내에서만 사용할 수 있습니다. 
 :::
 
-Allows applying directives to a **VNode**. Returns a VNode with the applied directives.
+디렉티브를 **VNode**에 적용할 수 있습니다. 적용된 디렉티브를 가진 VNode를 돌려줍니다.
 
 ```js
 import { withDirectives, resolveDirective } from 'vue'
@@ -338,9 +334,9 @@ return withDirectives(h('div'), [
 ])
 ```
 
-### Arguments
+### 전달인자
 
-Accepts two arguments: `vnode` and `directives`.
+허용되는 인자: `vnode`, `directives`.
 
 #### vnode
 
@@ -348,7 +344,7 @@ Accepts two arguments: `vnode` and `directives`.
 
 - **Details:**
 
-  A virtual node, usually created with `h()`.
+    일반적으로 `h()`로 생성되는 가상노드
 
 #### directives
 
@@ -356,54 +352,54 @@ Accepts two arguments: `vnode` and `directives`.
 
 - **Details:**
 
-  An array of directives.
+    디렉티브의 배열입니다.
 
-  Each directive itself is an array, which allows for up to 4 indexes to be defined as seen in the following examples.
+    각각의 디렉티브 자체는 배열이며, 다음의 예제와 같이 최대 4 개의 인덱스를 정의 할 수 있습니다.
 
-  - `[directive]` - The directive by itself. Required.
+    - `[directive]` - 디렉티브 자체 (필수)
 
-  ```js
-  const MyDirective = resolveDirective('MyDirective')
-  const nodeWithDirectives = withDirectives(h('div'), [[MyDirective]])
-  ```
+    ```js
+    const MyDirective = resolveDirective('MyDirective')
+    const nodeWithDirectives = withDirectives(
+      h('div'),
+      [ [MyDirective] ]
+    )
+    ```
 
-  - `[directive, value]` - The above, plus a value of type `any` to be assigned to the directive
+    - `[directive, value]` - 디렉티브에 할당 할 `any` 유형의 값
 
-  ```js
-  const MyDirective = resolveDirective('MyDirective')
-  const nodeWithDirectives = withDirectives(h('div'), [[MyDirective, 100]])
-  ```
+    ```js
+    const MyDirective = resolveDirective('MyDirective')
+    const nodeWithDirectives = withDirectives(h('div'), [[MyDirective, 100]])
+    ```
 
-  - `[directive, value, arg]` - The above, plus a `String` argument, ie. `click` in `v-on:click`
+    - `[directive, value, arg]` - `문자열` 인수, `v-on:click`에서 `click`
 
-  ```js
-  const MyDirective = resolveDirective('MyDirective')
-  const nodeWithDirectives = withDirectives(h('div'), [
-    [MyDirective, 100, 'click']
-  ])
-  ```
+    ```js
+    const MyDirective = resolveDirective('MyDirective')
+    const nodeWithDirectives = withDirectives(h('div'), [
+      [MyDirective, 100, 'click']
+    ])
+    ```
 
-  - `[directive, value, arg, modifiers]` - The above, plus a `key: value` pair `Object` defining any modifiers.
+    - `[directive, value, arg, modifiers]` - 모든 수식어를 정의하는 `key: value`형태의 `객체(Object)`
 
-  ```js
-  const MyDirective = resolveDirective('MyDirective')
-  const nodeWithDirectives = withDirectives(h('div'), [
-    [MyDirective, 100, 'click', { prevent: true }]
-  ])
-  ```
+    ```js
+    const MyDirective = resolveDirective('MyDirective')
+    const nodeWithDirectives = withDirectives(h('div'), [
+      [MyDirective, 100, 'click', { prevent: true }]
+    ])
+    ```
 
 ## createRenderer
 
-The createRenderer function accepts two generic arguments:
-`HostNode` and `HostElement`, corresponding to Node and Element types in the
-host environment.
+createRenderer 함수는 호스트 환경의 노드 및 엘레멘트 타입에 해당하는 두가지 일반 전달인자인 `HostNode`과 `HostElement`를 허용합니다.
 
-For example, for runtime-dom, HostNode would be the DOM
-`Node` interface and HostElement would be the DOM `Element` interface.
+예를 들어, runtime-dom의 경우 HostNode는 DOM `Node` 인터페이스가 되고, HostElement는 DOM `Element` 인터페이스가 됩니다.
 
-Custom renderers can pass in the platform specific types like this:
+커스텀 렌더러는 다음과 같은 플랫폼 특정 유형을 전달할 수 있습니다.
 
-```ts
+```js
 import { createRenderer } from 'vue'
 const { render, createApp } = createRenderer<Node, Element>({
   patchProp,
@@ -411,9 +407,9 @@ const { render, createApp } = createRenderer<Node, Element>({
 })
 ```
 
-### Arguments
+### 전달인자
 
-Accepts two arguments: `HostNode` and `HostElement`
+허용되는 인자: `HostNode`, `HostElement`
 
 #### HostNode
 
@@ -421,7 +417,7 @@ Accepts two arguments: `HostNode` and `HostElement`
 
 - **Details:**
 
-  The node in the host environment.
+    호스트 환경의 노드입니다.
 
 #### HostElement
 
@@ -429,11 +425,11 @@ Accepts two arguments: `HostNode` and `HostElement`
 
 - **Details:**
 
-  The element in the host environment.
+    호스트 환경의 요소입니다.
 
 ## nextTick
 
-Defer the callback to be executed after the next DOM update cycle. Use it immediately after you’ve changed some data to wait for the DOM update.
+다음 DOM 업데이트 주기 후에 콜백이 실행되도록 연기합니다. DOM 업데이트를 기다리는 위해 일부 데이터를 변경한 후에 즉시 사용합니다.
 
 ```js
 import { createApp, nextTick } from 'vue'
@@ -450,4 +446,4 @@ const app = createApp({
 })
 ```
 
-**See also**: [`$nextTick` instance method](instance-methods.html#nexttick)
+**참조**: [`$nextTick` 인스턴스 메서드](instance-methods.html#nexttick)

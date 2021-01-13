@@ -1,44 +1,44 @@
 ---
 badges:
-  - breaking
+- breaking
 ---
 
-# `v-model` <MigrationBadges :badges="$frontmatter.badges" />
+# `v-model` <migrationbadges :badges="$frontmatter.badges"></migrationbadges>
 
-## Overview
+## 개요
 
-In terms of what has changed, at a high level:
+변경내용:
 
-- **BREAKING:** When used on custom components, `v-model` prop and event default names are changed:
-  - prop: `value` -> `modelValue`;
-  - event: `input` -> `update:modelValue`;
-- **BREAKING:** `v-bind`'s `.sync` modifier and component `model` option are removed and replaced with an argument on `v-model`;
-- **NEW:** Multiple `v-model` bindings on the same component are possible now;
-- **NEW:** Added the ability to create custom `v-model` modifiers.
+- **BREAKING:** 커스텀 컴포넌트를 사용할때, `v-model` prop 와 event 기본 명칭이 변경 되었습니다:
+    - prop: `value` -> `modelValue`;
+    - event: `input` -> `update:modelValue`;
+- **BREAKING:** `v-bind`의 `.sync` 수식어와 컴포넌트의 `model` 옵션이 제거되고 `v-model` 전달인자로 대체 되었습니다;
+- **NEW:** 이제 동일 컴포넌트에서 다중의 `v-model` 바인딩이 가능합니다.
+- **NEW:** 사용자 지정 `v-model` 수식어 를 생성하는 기능이 추가되었습니다.
 
-For more information, read on!
+더 자세한 설명은 계속 읽으십시오!
 
-## Introduction
+## 서론
 
-When Vue 2.0 was released, the `v-model` directive required developers to always use the `value` prop. And if developers required different props for different purposes, they would have to resort to using `v-bind.sync`. In addition, this hard-coded relationship between `v-model` and `value` led to issues with how native elements and custom elements were handled.
+Vue 2.0이 출시되었을때, `v-model` 디렉티브는 개발자들에게  `value` prop로 사용하도록 하였습니다. 개발자들이 다른 목적을 위해 다른 prop가 필요할 때는 `v-bind.sync`를 사용해야만 했습니다. 또한 `v-model`과 `value` 사이에 하드코딩된(hard-coded) 관계는 네이티브 엘리먼트와 커스텀 엘리먼트의 처리 방식에 문제가 발생했습니다.
 
-In 2.2 we introduced the `model` component option that allows the component to customize the prop and event to use for `v-model`. However, this still only allowed a single `v-model` to be used on the component.
+2.2버전에서는 컴포넌트가 `v-model`에 사용할 prop와 이벤트를 사용자가 설정할 수 있도록 `model` 컴포넌트 옵션이 도입되었습니다. 그러나 여전히 컴포넌트에 단일`v-model`만 사용가능 합니다.
 
-With Vue 3, the API for two-way data binding is being standardized in order to reduce confusion and to allow developers more flexibility with the `v-model` directive.
+Vue 3에서는 혼동을 줄이고 개발자가 `v-model` 디렉티브를 보다 유연하게 사용할 수 있도록 양방향 데이터 바인딩을 위한 API가 표준화되고 있습니다.
 
-## 2.x Syntax
+## 2.x 문법
 
-In 2.x, using a `v-model` on a component was an equivalent of passing a `value` prop and emitting an `input` event:
+2.x에서 컴포넌트에 `v-model`을 사용하는 것은 `value` prop를 전달하고 <code>input</code> 이벤트를 emit 하는 것과 같습니다.
 
 ```html
 <ChildComponent v-model="pageTitle" />
 
-<!-- would be shorthand for: -->
+<!-- 축약된 방식은 아래와 같습니다: -->
 
 <ChildComponent :value="pageTitle" @input="pageTitle = $event" />
 ```
 
-If we wanted to change prop or event names to something different, we would need to add a `model` option to `ChildComponent` component:
+prop 또는 이벤트명을 다른 이름으로 변경하려면 `ChildComponent` 컴포넌트에 `model` 옵션 추가가 필요 합니다:
 
 ```html
 <!-- ParentComponent.vue -->
@@ -55,9 +55,9 @@ export default {
     event: 'change'
   },
   props: {
-    // this allows using the `value` prop for a different purpose
+    // 다른 목적을 위해 'value' 사용이 가능 합니다
     value: String,
-    // use `title` as the prop which take the place of `value`
+    // 'value'를 대신하는 사용자 지정 속성으로 'title' 사용 합니다
     title: {
       type: String,
       default: 'Default title'
@@ -66,40 +66,40 @@ export default {
 }
 ```
 
-So, `v-model` in this case would be a shorthand to
+또한, 아래처럼 `v-model`를 축약할 수 있습니다.
 
 ```html
 <ChildComponent :title="pageTitle" @change="pageTitle = $event" />
 ```
 
-### Using `v-bind.sync`
+### `v-bind.sync` 사용
 
-In some cases, we might need "two-way binding" for a prop (sometimes in addition to existing `v-model` for the different prop). To do so, we recommended emitting events in the pattern of `update:myPropName`. For example, for `ChildComponent` from the previous example with the `title` prop, we could communicate the intent of assigning a new value with:
+경우에 따라서 prop에 양방향 바인딩이 필요할 수 있습니다다. (가끔은 `v-model` 외에 추가적으로 다른 prop에 양방향 바인딩을 사용할 수 있습니다). 이를 위해, `update:myPropName` 패턴으로 이벤트를 emit 하는 것이 좋습니다. 예를 들면, 이전 예제에서 `title` prop를 사용한 `ChildComponent`의 경우, 새로운 값을 할당 하려는 의도를 다음과 같이 전달할 수 있습니다:
 
 ```js
 this.$emit('update:title', newValue)
 ```
 
-Then the parent could listen to that event and update a local data property, if it wants to. For example:
+그런 다음 부모가 원한다면, 해당 이벤트를 수신하고 로컬 데이터 속성을 업데이트 할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```html
 <ChildComponent :title="pageTitle" @update:title="pageTitle = $event" />
 ```
 
-For convenience, we had a shorthand for this pattern with the .sync modifier:
+편의를 위해 .sync 수식어를 이용하여 다음과 같이 축약할 수 있습니다.
 
 ```html
 <ChildComponent :title.sync="pageTitle" />
 ```
 
-## 3.x Syntax
+## 3.x 문법
 
-In 3.x `v-model` on the custom component is an equivalent of passing a `modelValue` prop and emitting an `update:modelValue` event:
+3.x에서 커스텀 컴포넌트의 `v-model`은 `modelValue` prop를 전달하고 `update:modelValue` 이벤트를 emit 하는 것과 같습니다:
 
 ```html
 <ChildComponent v-model="pageTitle" />
 
-<!-- would be shorthand for: -->
+<!-- 축약된 방식은 아래와 같습니다: -->
 
 <ChildComponent
   :modelValue="pageTitle"
@@ -107,26 +107,26 @@ In 3.x `v-model` on the custom component is an equivalent of passing a `modelVal
 />
 ```
 
-### `v-model` arguments
+### `v-model` 인자
 
-To change a model name, instead of a `model` component option, now we can pass an _argument_ to `v-model`:
+모델명을 변경하려면 `model` 컴포넌트 옵션 대신에 이제 *전달인자*를 `v-model`에 전달할 수 있습니다:
 
 ```html
 <ChildComponent v-model:title="pageTitle" />
 
-<!-- would be shorthand for: -->
+<!-- 축약된 방식은 아래와 같습니다: -->
 
 <ChildComponent :title="pageTitle" @update:title="pageTitle = $event" />
 ```
 
-![v-bind anatomy](/images/v-bind-instead-of-sync.png)
+![v-bind anatomy](https://github.com/narusas/docs-next/blob/master/images/v-bind-instead-of-sync.png?raw=true)
 
-This also serves as a replacement to `.sync` modifier and allows us to have multiple `v-model`s on the custom component.
+또한 `.sync` 수식어를 대체하는 역할을 하며, 커스텀 컴포넌트에 여러 개의 `v-model`를 가질 수 있습니다.
 
 ```html
 <ChildComponent v-model:title="pageTitle" v-model:content="pageContent" />
 
-<!-- would be shorthand for: -->
+<!-- 축약된 방식은 아래와 같습니다: -->
 
 <ChildComponent
   :title="pageTitle"
@@ -136,55 +136,54 @@ This also serves as a replacement to `.sync` modifier and allows us to have mult
 />
 ```
 
-### `v-model` modifiers
+### `v-model` 수식어
 
-In addition to 2.x hard-coded `v-model` modifiers like `.trim`, now 3.x supports custom modifiers:
+2.x에서 하드 코딩된 `v-model` 수식어 (예:`.trim`) 외에도 이제 3.x에서 커스텀 수식어를 지원합니다:
 
 ```html
 <ChildComponent v-model.capitalize="pageTitle" />
 ```
 
-Read more about custom `v-model` modifiers in the [Custom Events](../component-custom-events.html#handling-v-model-modifiers) section.
+[Custom Events](../component-custom-events.html#handling-v-model-modifiers)에서 커스텀 `v-model` 수식어들에 대해 자세히 알아볼 수 있습니다.
 
-## Migration Strategy
+## 마이그레이션 방법
 
-We recommend:
+다음을 권장합니다:
 
-- checking your codebase for `.sync` usage and replace it with `v-model`:
+- 코드베이스에서 `.sync` 사용을 확인하고 `v-model`로 변경하십시오:
 
-  ```html
-  <ChildComponent :title.sync="pageTitle" />
+    ```html
+    <ChildComponent :title.sync="pageTitle" />
 
-  <!-- to be replaced with -->
+    <!-- 변경하면 아래와 같습니다. -->
 
-  <ChildComponent v-model:title="pageTitle" />
-  ```
+    <ChildComponent v-model:title="pageTitle" />
+    ```
 
-- for all `v-model`s without arguments, make sure to change props and events name to `modelValue` and `update:modelValue` respectively
+- 전달인자가 없는 모든 `v-model`의 경우, prop와 이벤트명을 각각 `modelValue` 와 `update:modelValue`로 변경해야 합니다.
 
-  ```html
-  <ChildComponent v-model="pageTitle" />
-  ```
+    ```html
+    <ChildComponent v-model="pageTitle" />
+    ```
 
-  ```js
-  // ChildComponent.vue
+    ```js
+    // ChildComponent.vue
 
-  export default {
-    props: {
-      modelValue: String // previously was `value: String`
-    },
-    emits: ['update:modelValue'],
-    methods: {
-      changePageTitle(title) {
-        this.$emit('update:modelValue', title) // previously was `this.$emit('input', title)`
+    export default {
+      props: {
+        modelValue: String // 이전에는 `value: String`
+      },
+      methods: {
+        changePageTitle(title) {
+          this.$emit('update:modelValue', title) // 이전에는 `this.$emit('input', title)`
+        }
       }
     }
-  }
-  ```
+    ```
 
-## Next Steps
+## 다음 단계
 
-For more information on the new `v-model` syntax, see:
+새로운 `v-model` 문법에 대한 자세한 내용은 아래를 참고하세요:
 
 - [Using `v-model` on Components](../component-basics.html#using-v-model-on-components)
 - [`v-model` arguments](../component-custom-events.html#v-model-arguments)

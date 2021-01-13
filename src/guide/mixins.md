@@ -1,13 +1,13 @@
-# Mixins
+# 믹스인
 
-## Basics
+## 기초
 
-Mixins distribute reusable functionalities for Vue components. A mixin object can contain any component options. When a component uses a mixin, all options in the mixin will be "mixed" into the component's own options.
+믹스인(Mixins)은 Vue 컴포넌트에 재사용 가능한 기능을 배포합니다. 믹스인 객체는 모든 컴포넌트의 옵션을 포함할 수 있습니다. 컴포넌트가 믹스인을 사용하면, 믹스인의 모든 옵션이 컴포넌트의 자체 옵션으로 "혼합"됩니다.
 
-Example:
+예시:
 
 ```js
-// define a mixin object
+// mixin 객체 정의
 const myMixin = {
   created() {
     this.hello()
@@ -19,7 +19,7 @@ const myMixin = {
   }
 }
 
-// define an app that uses this mixin
+// mixin을 사용할 어플리케이션 정의
 const app = Vue.createApp({
   mixins: [myMixin]
 })
@@ -27,11 +27,11 @@ const app = Vue.createApp({
 app.mount('#mixins-basic') // => "hello from mixin!"
 ```
 
-## Option Merging
+## 옵션 병합
 
-When a mixin and the component itself contain overlapping options, they will be "merged" using appropriate strategies.
+믹스인과 컴포넌트 자신은 중복되는 옵션을 가지고 있는 경우에는 적절한 방법을 사용해서 "병합"됩니다.
 
-For example, data objects undergo a recursive merge, with the component's data taking priority in cases of conflicts.
+예를 들어 data 객체가 충돌하는 경우에는 컴포넌트의 data 객체가 우선순위를 갖으면서 재귀적으로 병합됩니다.
 
 ```js
 const myMixin = {
@@ -57,7 +57,7 @@ const app = Vue.createApp({
 })
 ```
 
-Hook functions with the same name are merged into an array so that all of them will be called. Mixin hooks will be called **before** the component's own hooks.
+같은 이름의 훅 함수는 모두 호출될 수 있게 배열에 병합됩니다. 믹스인 훅은 컴포넌트 자체의 훅이 호출되기 **전에** 호출됩니다.
 
 ```js
 const myMixin = {
@@ -77,7 +77,7 @@ const app = Vue.createApp({
 // => "component hook called"
 ```
 
-Options that expect object values, for example `methods`, `components` and `directives`, will be merged into the same object. The component's options will take priority when there are conflicting keys in these objects:
+`methods`, `components`, `directives`같은 객체 값을 요구하는 옵션은 같은 객체에 병합됩니다. 이러한 객체에 충돌하는 키가 있을 경우에는 컴포넌트의 옵션이 우선순위를 갖습니다.
 
 ```js
 const myMixin = {
@@ -110,16 +110,16 @@ vm.bar() // => "bar"
 vm.conflicting() // => "from self"
 ```
 
-## Global Mixin
+## 전역 믹스인
 
-You can also apply a mixin globally for a Vue application:
+믹스인을 Vue 어플리케이션에 전역으로 적용할 수도 있습니다.
 
 ```js
 const app = Vue.createApp({
   myOption: 'hello!'
 })
 
-// inject a handler for `myOption` custom option
+// `myOption` 사용자 정의 옵션을 위한 핸들러 주입
 app.mixin({
   created() {
     const myOption = this.$options.myOption
@@ -132,14 +132,14 @@ app.mixin({
 app.mount('#mixins-global') // => "hello!"
 ```
 
-Use with caution! Once you apply a mixin globally, it will affect **every** component instance created afterwards in the given app (for example, child components):
+사용에 주의하세요! 믹스인을 전역으로 적용하면, 이후에 해당 어플리케이션에서 만드는 자식 컴포넌트와 같은 **모든** 컴포넌트 인스턴스에 영향을 끼칩니다.
 
 ```js
 const app = Vue.createApp({
   myOption: 'hello!'
 })
 
-// inject a handler for `myOption` custom option
+// `myOption` 사용자 정의 옵션을 위한 핸들러 주입
 app.mixin({
   created() {
     const myOption = this.$options.myOption
@@ -149,7 +149,7 @@ app.mixin({
   }
 })
 
-// add myOption also to child component
+// `myOption`을 자식 컴포넌트에도 삽입
 app.component('test-component', {
   myOption: 'hello from component!'
 })
@@ -160,21 +160,21 @@ app.mount('#mixins-global')
 // => "hello from component!"
 ```
 
-In most cases, you should only use it for custom option handling like demonstrated in the example above. It's also a good idea to ship them as [Plugins](plugins.html) to avoid duplicate application.
+대부분의 경우에는 위 예제같이 사용자 정의 옵션 병합 방법에만 이용하는 게 좋습니다. 중복 적용을 피하기 위해 [플러그인](plugins.html)으로 제공하는 것도 좋은 방법입니다.
 
-## Custom Option Merge Strategies
+## 사용자 정의 옵션 병합 방법
 
-When custom options are merged, they use the default strategy which overwrites the existing value. If you want a custom option to be merged using custom logic, you need to attach a function to `app.config.optionMergeStrategies`:
+사용자 정의 옵션이 병합될 때 기존 값을 덮어쓰는 기본 방법을 사용합니다. 사용자 정의 로직을 사용해 사용자 정의 옵션을 병합하려면, `app.config.optionMergeStrategies`에 함수에 추가해야 합니다.
 
 ```js
 const app = Vue.createApp({})
 
 app.config.optionMergeStrategies.customOption = (toVal, fromVal) => {
-  // return mergedVal
+  // return 병합된 값
 }
 ```
 
-The merge strategy receives the value of that option defined on the parent and child instances as the first and second arguments, respectively. Let's try to check what do we have in these parameters when we use a mixin:
+해당 함수는 첫 번째와 두 번째 인자로 각각 부모와 자식 인스턴스에 정의한 옵션의 값을 전달받습니다. 믹스인을 사용할 때 매개변수에 무엇이 있는지 확인해보겠습니다.
 
 ```js
 const app = Vue.createApp({
@@ -196,7 +196,7 @@ app.mixin({
 })
 ```
 
-As you can see, in the console we have `toVal` and `fromVal` printed first from the mixin and then from the `app`. We always return `fromVal` if it exists, that's why `this.$options.custom` is set to `hello!` in the end. Let's try to change a strategy to _always return a value from the child instance_:
+보시다시피, 콘솔에는 먼저 믹스인에서 `toVal`와 `fromVal`이 출력되고 그 다음 `app`에서 출력됩니다. `fromVal`는 존재한다면 항상 반환되는데, 그래서 `this.$options.custom`가 마지막으로 `hello!`설정되는 것입니다. 이번에는 *항상 자식 인스턴스의 값을 반환*하는 방법으로 변경해봅시다.
 
 ```js
 const app = Vue.createApp({
@@ -213,12 +213,12 @@ app.mixin({
 })
 ```
 
-## Precautions
+## 지침
 
-In Vue 2, mixins were the primary tool to abstract parts of component logic into reusable chunks. However, they have a few issues:
+Vue 2에서는 믹스인은 컴포넌트 로직을 재사용할 수 있게 만드는 주 도구였습니다. 하지만, 몇 가지 문제가 있었습니다.
 
-- Mixins are conflict-prone: Since properties from each feature are merged into the same component, you still have to know about every other feature to avoid property name conflicts and for debugging.
+- 믹스인은 충돌이 잘 발생했습니다. 각 기능의 속성이 같은 컴포넌트에 병합되었기 때문에, 속성 이름 충돌을 피하고 디버깅을 하기 위해 다른 모든 기능에 대해 알아야 했습니다.
 
-- Reusability is limited: we cannot pass any parameters to the mixin to change its logic which reduces their flexibility in terms of abstracting logic
+- 재사용성이 제한됐었습니다. 논리를 변경하기 위해 매개 변수를 믹스 인에 전달할 수 없으므로 논리를 추상화할 때 유연성이 떨어졌습니다.
 
-To address these issues, we added a new way to organize code by logical concerns: the [Composition API](composition-api-introduction.html).
+이 문제를 해결하기 위해서 우리는 논리적인 우려를 바탕으로 코드를 정리하는 새로운 방법인 [Composition API](composition-api-introduction.html)를 추가했습니다.

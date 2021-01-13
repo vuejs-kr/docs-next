@@ -1,17 +1,17 @@
-# State Transitions
+# 상태 트랜지션
 
-Vue's transition system offers many simple ways to animate entering, leaving, and lists, but what about animating your data itself? For example:
+Vue의 트랜지션 시스템은 진입, 진출 및 목록을 애니메이션으로 만드는 많은 간단한 방법을 제공하지만 데이터 자체에 대한 애니메이션은 어떻게 해야할까요?
 
-- numbers and calculations
-- colors displayed
-- the positions of SVG nodes
-- the sizes and other properties of elements
+- 숫자와 계산
+- 색 표시
+- SVG노드 위치
+- 엘리먼트들의 크기 및 기타 속성
 
-All of these are either already stored as raw numbers or can be converted into numbers. Once we do that, we can animate these state changes using 3rd-party libraries to tween state, in combination with Vue's reactivity and component systems.
+이들 모두는 이미 원시 숫자로 저장되었거나, 숫자로 변환 될 수 있습니다. 그렇게 하면, Vue의 반응형 및 컴포넌트 시스템을 결합하여, 상태변화를 써드파티 라이브러리를 사용해 트윈 상태로 애니메이션화 할 수 있습니다.
 
-## Animating State with Watchers
+## Watchers를 이용한 상태 애니메이션
 
-Watchers allow us to animate changes of any numerical property into another property. That may sound complicated in the abstract, so let's dive into an example using [GreenSock](https://greensock.com/):
+Watchers는 아무런 숫자 타입에서 다른 타입으로의 변화를 애니메이션화 하는 것을 허용합니다. 처음에는 꽤 복잡해 보일 수 있으니 [GreenSock](https://greensock.com/) 예제를 사용하여 살펴 보겠습니다.
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
@@ -47,17 +47,17 @@ Vue.createApp(Demo).mount('#animated-number-demo')
 
 <common-codepen-snippet title="Transitioning State 1" slug="22903bc3b53eb5b7817378ecb985ce96" tab="js,result" :editable="false" :preview="false" />
 
-When you update the number, the change is animated below the input.
+숫자를 변경할 때, input 아래에 변경되는 애니메이션이 보여집니다.
 
-## Dynamic State Transitions
+## 동적 상태 트랜지션
 
-As with Vue's transition components, the data backing state transitions can be updated in real time, which is especially useful for prototyping! Even using a simple SVG polygon, you can achieve many effects that would be difficult to conceive of until you've played with the variables a little.
+Vue의 트랜지션 컴포넌트와 마찬가지로 데이터 백업 상태 트랜지션을 실시간으로 업데이트 할 수 있으므로 프로토 타이핑에 특히 유용합니다! 간단한 SVG 폴리곤을 사용해도, 변수를 조금씩 사용하기 전까지는 생각하기 어려운 많은 효과를 얻을 수 있습니다.
 
 <common-codepen-snippet title="Updating SVG" slug="a8e00648d4df6baa1b19fb6c31c8d17e" :height="500" tab="js,result" :editable="false" />
 
-## Organizing Transitions into Components
+## 컴포넌트를 이용한 트랜지션 구성
 
-Managing many state transitions can quickly increase the complexity of a component instance. Fortunately, many animations can be extracted out into dedicated child components. Let's do this with the animated integer from our earlier example:
+여러 상태 트랜지션을 관리하면 Vue 인스턴스 또는 컴포넌트의 복잡성을 빠르게 높일 수 있습니다. 다행히도 많은 애니메이션을 전용 하위 컴포넌트로 추출 할 수 있습니다. 이전 예제의 숫자를 이용하는 애니메이션을 사용해 보겠습니다.
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
@@ -130,16 +130,17 @@ app.mount('#app')
 
 <common-codepen-snippet title="State Transition Components" slug="e9ef8ac7e32e0d0337e03d20949b4d17" tab="js,result" :editable="false" />
 
-Now we can compose multiple states with these child components. It's exciting- we can use any combination of transition strategies that have been covered on this page, along with those offered by Vue's [built-in transition system](transitions-enterleave.html). Together, there are very few limits to what can be accomplished.
+이제 자식 컴포넌트들과 함께 다양한 상태를 구성 할 수 있습니다. Vue의 [기본 제공 트랜지션 시스템](transitions.html)에서 제공하는 트랜지션 방법과 함께 이 페이지에서 다룬 트랜지션 방법을 조합하여 사용 할 수 있습니다. 두 방법을 함께 사용하는 것에는 거의 제한사항이 없습니다.
 
-You can see how we could use this for data visualization, for physics effects, for character animations and interactions, the sky's the limit.
+데이터 시각화, 물리 효과, 캐릭터 애니메이션 및 상호작용에 어떻게 무궁무진 하게 사용 할 수 있는지 알 수 있습니다.
 
-## Bringing Designs to Life
+## 디자인에 생명을 불어넣기
 
-To animate, by one definition, means to bring to life. Unfortunately, when designers create icons, logos, and mascots, they're usually delivered as images or static SVGs. So although GitHub's octocat, Twitter's bird, and many other logos resemble living creatures, they don't really seem alive.
+애니메이션을 추가하는 것은 생명을 불어 넣는 일 입니다. 불행하게도 디자이너가 만든 아이콘, 로고 및 마스코트들은 이미지나 정적 SVG입니다. 그래서 Github의 octocat, Twitter의 새 및 기타 로고들은 살아있는 것들과 유사하지만 살아 움직이지는 못합니다.
 
-Vue can help. Since SVGs are just data, we only need examples of what these creatures look like when excited, thinking, or alarmed. Then Vue can help transition between these states, making your welcome pages, loading indicators, and notifications more emotionally compelling.
+Vue가 도와줄 수 있습니다. SVG는 단순한 데이터일 뿐이므로 놀라거나, 생각할 때, 경고할때 어떻게 할 지 예시가 필요합니다. 그 다음 Vue는 데이터들을 트랜지션하여 환영페이지, 로딩 표시기, 알림을 감정적이고 매력적으로 만들 수 있습니다.
 
-Sarah Drasner demonstrates this in the demo below, using a combination of timed and interactivity-driven state changes:
+Sarah Drasner는 타이밍과 인터랙션 중심의 상태 변화를 조합하여 아래의 데모를 만들었습니다.
+
 
 <common-codepen-snippet title="Vue-controlled Wall-E" slug="YZBGNp" :height="400" :team="false" user="sdras" name="Sarah Drasner" :editable="false" :preview="false" version="2" theme="light" />

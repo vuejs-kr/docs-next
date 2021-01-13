@@ -1,149 +1,147 @@
-# Instance Properties
+# 인스턴스 속성(Instance Properties)
 
 ## $data
 
-- **Type:** `Object`
+- **타입:** `Object`
 
-- **Details:**
+- **상세:**
 
-  The data object that the component instance is observing. The component instance proxies access to the properties on its data object.
+    컴포넌트 인스턴스의 데이터 객체는 감시됩니다. 컴포넌트 인스턴트 프록시는 데이터 객체안에 있는 프로퍼티에 접근할 수 있습니다.
 
-- **See also:** [Options / Data - data](./options-data.html#data-2)
+- [Options / Data - data](./options-data.html#data-2)
 
 ## $props
 
-- **Type:** `Object`
+- **타입:** `Object`
 
-- **Details:**
+- **상세:**
 
-  An object representing the current props a component has received. The component instance proxies access to the properties on its props object.
+    객체는 컴포넌트가 받은 현재 props을 나타냅니다. vue 인스턴스 프록시는 props 객체의 속성에 접근할 수 있습니다.
 
 ## $el
 
-- **Type:** `any`
+- **타입:** `any`
 
-- **Read only**
+- **읽기 전용**
 
-- **Details:**
+- **상세:**
 
-  The root DOM element that the component instance is managing.
-
-  For components using [fragments](../guide/migration/fragments), `$el` will be the placeholder DOM node that Vue uses to keep track of the component's position in the DOM. It is recommended to use [template refs](../guide/component-template-refs.html) for direct access to DOM elements instead of relying on `$el`.
+    Vue 인스턴스가 관리하는 루트 DOM 요소입니다.
 
 ## $options
 
-- **Type:** `Object`
+- **타입:** `Object`
 
-- **Read only**
+- **읽기 전용**
 
-- **Details:**
+- **상세:**
 
-  The instantiation options used for the current component instance. This is useful when you want to include custom properties in the options:
+    현재 Vue 인스턴스에 사용되는 인스턴스화 옵션입니다. 옵션에 사용자 정의 속성을 포함하려는 경우 유용합니다:
 
-  ```js
-  const app = Vue.createApp({
-    customOption: 'foo',
-    created() {
-      console.log(this.$options.customOption) // => 'foo'
-    }
-  })
-  ```
+    ```js
+    const app = Vue.createApp({
+      customOption: 'foo',
+      created() {
+        console.log(this.$options.customOption) // => 'foo'
+      }
+    })
+    ```
 
 ## $parent
 
-- **Type:** `Component instance`
+- **타입:** `Component instance`
 
-- **Read only**
+- **읽기 전용**
 
-- **Details:**
+- **상세:**
 
-  The parent instance, if the current instance has one.
+    현재 인스턴스에 상위 인스턴스가 있는 경우, 부모 인스턴스 입니다.
 
 ## $root
 
-- **Type:** `Component instance`
+- **타입:** `Component instance`
 
-- **Read only**
+- **읽기 전용**
 
-- **Details:**
+- **상세:**
 
-  The root component instance of the current component tree. If the current instance has no parents this value will be itself.
+    현재 컴포넌트 트리의 루트 Vue 인스턴스입니다. 인스턴스에 부모가 없다면 이 값이 그 자체로 사용됩니다.
 
 ## $slots
 
-- **Type:** `{ [name: string]: (...args: any[]) => Array<VNode> | undefined }`
+- **타입:** `{ [name: string]: (...args: any[]) => Array<VNode> | undefined }`
 
-- **Read only**
+- **읽기 전용**
 
-- **Details:**
+- **상세:**
 
-  Used to programmatically access content [distributed by slots](../guide/component-basics.html#content-distribution-with-slots). Each [named slot](../guide/component-slots.html#named-slots) has its own corresponding property (e.g. the contents of `v-slot:foo` will be found at `this.$slots.foo()`). The `default` property contains either nodes not included in a named slot or contents of `v-slot:default`.
+    프로그래밍으로 접근이 가능한 [슬롯을 사용한 컨텐츠를 배포할 때](../guide/component-basics.html#content-distribution-with-slots) 사용합니다. 각  [명명된 슬롯](../guide/component-slots.html#named-slots)은 고유한 속성을 가지고 있습니다(예. `v-slot:foo`는 `this.$slots.foo()`에서 찾을 수 있습니다).`default` 속성은 명명된 슬롯에 포함되지 않은 노드, 또는 `v-slot:default`의 컨텐츠를 포함합니다.
 
-  Accessing `this.$slots` is most useful when writing a component with a [render function](../guide/render-function.html).
+    `this.$slots`에 접근하는 것은 [렌더 함수](../guide/render-function.html)로 컴포넌트를 작성할 때 가장 유용합니다.
 
-- **Example:**
+- **예시:**
 
-  ```html
-  <blog-post>
-    <template v-slot:header>
-      <h1>About Me</h1>
-    </template>
+    ```html
+    <blog-post>
+      <template v-slot:header>
+        <h1>About Me</h1>
+      </template>
 
-    <template v-slot:default>
-      <p>
-        Here's some page content, which will be included in $slots.default.
-      </p>
-    </template>
+      <template v-slot:default>
+        <p>
+          Here's some page content, which will be included in $slots.default.
+        </p>
+      </template>
 
-    <template v-slot:footer>
-      <p>Copyright 2020 Evan You</p>
-    </template>
-  </blog-post>
-  ```
+      <template v-slot:footer>
+        <p>Copyright 2020 Evan You</p>
+      </template>
+    </blog-post>
+    ```
 
-  ```js
-  const app = Vue.createApp({})
+    ```js
+    const app = Vue.createApp({})
 
-  app.component('blog-post', {
-    render() {
-      return Vue.h('div', [
-        Vue.h('header', this.$slots.header()),
-        Vue.h('main', this.$slots.default()),
-        Vue.h('footer', this.$slots.footer())
-      ])
-    }
-  })
-  ```
+    app.component('blog-post', {
+      render() {
+        return Vue.h('div', [
+          Vue.h('header', this.$slots.header()),
+          Vue.h('main', this.$slots.default()),
+          Vue.h('footer', this.$slots.footer())
+        ])
+      }
+    })
+    ```
 
-- **See also:**
-  - [`<slot>` Component](built-in-components.html#slot)
-  - [Content Distribution with Slots](../guide/component-basics.html#content-distribution-with-slots)
-  - [Render Functions - Slots](../guide/render-function.html#slots)
+- **참고:**
+
+    - `<a href="built-in-components.html#slot"data-md-type="link"><슬롯></a>` 컴포넌트
+    - [슬롯을 사용한 컨텐츠 배포](../guide/component-basics.html#content-distribution-with-slots)
+    - [렌더함수- 슬롯](../guide/render-function.html#slots)
 
 ## $refs
 
-- **Type:** `Object`
+- **타입:** `Object`
 
-- **Read only**
+- **읽기 전용**
 
-- **Details:**
+- **상세:**
 
-An object of DOM elements and component instances, registered with [`ref` attributes](../guide/component-template-refs.html).
+[`ref` 속성](../guide/component-template-refs.html)이 등록된 자식 컴포넌트와 DOM 엘리먼트 객체입니다.
 
-- **See also:**
-  - [Template refs](../guide/component-template-refs.html)
-  - [Special Attributes - ref](./special-attributes.md#ref)
+- **참고:**
+    - [Template refs](../guide/component-template-refs.html)
+    - [특수 속성 - ref](./special-attributes.md#ref)
 
 ## $attrs
 
 - **Type:** `Object`
 
-- **Read only**
+- **읽기 전용**
 
-- **Details:**
+- **상세:**
 
-Contains parent-scope attribute bindings and events that are not recognized (and extracted) as component [props](./options-data.html#props) or [custom events](./options-data.html#emits). When a component doesn't have any declared props or custom events, this essentially contains all parent-scope bindings, and can be passed down to an inner component via `v-bind="$attrs"` - useful when creating higher-order components.
+[props](./options-data.html#props) 또는 [custom events](./options-data.html#emits)로 인식(및 추출)되지 않는 부모 범위 속성 바인딩입니다. 컴포넌트에 선언된 props나 custom events가 없을 때, 모든 부모 범위 바인딩을 기본적으로 포함하며 `v-bind="$attrs"`를 통해 내부 컴포넌트로 전달할 수 있습니다 - 하이 오더 컴포넌트(HOC)를 작성할 때 유용합니다.
 
-- **See also:**
-  - [Non-Prop Attributes](../guide/component-attrs.html)
-  - [Options / Misc - inheritAttrs](./options-misc.html#inheritattrs)
+- **참고:**
+    - [Non-Prop 속성](../guide/component-attrs.html)

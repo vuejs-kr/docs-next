@@ -1,12 +1,12 @@
-# Routing
+# 라우팅
 
-## Official Router
+## 공식 라우터
 
-For most Single Page Applications, it's recommended to use the officially-supported [vue-router library](https://github.com/vuejs/vue-router). For more details, see vue-router's [documentation](https://next.router.vuejs.org/).
+대부분의 단일 페이지 애플리케이션의 경우, 공식적으로 지원되는 [vue-router 라이브러리](https://github.com/vuejs/vue-router)를 사용하는 것이 좋습니다. 자세한 내용은 vue-router의 [문서](https://router.vuejs.org/)를 참조하십시오.
 
-## Simple Routing from Scratch
+## 단순한 라우팅 시작하기
 
-If you only need very simple routing and do not wish to involve a full-featured router library, you can do so by dynamically rendering a page-level component like this:
+매우 단순한 라우팅만 필요하고 완전한 기능을 갖춘 라우터 라이브러리를 사용하지 않으려면 다음과 같이 페이지 수준 컴포넌트를 동적으로 렌더링하면 됩니다.
 
 ```js
 const NotFoundComponent = { template: '<p>Page not found</p>' }
@@ -37,8 +37,8 @@ const SimpleRouter = {
 Vue.createApp(SimpleRouter).mount('#app')
 ```
 
-Combined with the [History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API/Working_with_the_History_API), you can build a very basic but fully-functional client-side router. To see that in practice, check out [this example app](https://github.com/phanan/vue-3.0-simple-routing-example).
+[History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API/Working_with_the_History_API)와 결합하면 매우 기본적이면서도 완전한 기능을 갖춘 클라이언트측 라우터를 구축할 수 있습니다. 실제로 이를 확인하려면, [예제 앱](https://github.com/phanan/vue-3.0-simple-routing-example)을 확인하십시오.
 
-## Integrating 3rd-Party Routers
+## 써드파티 라우터 목록
 
-If there's a 3rd-party router you prefer to use, such as [Page.js](https://github.com/visionmedia/page.js) or [Director](https://github.com/flatiron/director), integration is [similarly straightforward](https://github.com/phanan/vue-3.0-simple-routing-example/compare/master...pagejs). Here's a [complete example](https://github.com/phanan/vue-3.0-simple-routing-example/tree/pagejs) using Page.js.
+만약 [Page.js](https://github.com/visionmedia/page.js)나 [Director](https://github.com/flatiron/director)같은 써드파티 라우터를 사용하는 것을 선호한다면, 통합하는 것도 [쉽습니다](https://github.com/phanan/vue-3.0-simple-routing-example/compare/master...pagejs). Page.js를 사용한 [완벽한 예제](https://github.com/phanan/vue-3.0-simple-routing-example/tree/pagejs)를 소개합니다.

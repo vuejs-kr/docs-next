@@ -1,19 +1,19 @@
 ---
 badges:
-  - removed
+- 제거됨
 ---
 
-# Filters <MigrationBadges :badges="$frontmatter.badges" />
+# Filters <migrationbadges badges="$frontmatter.badges"></migrationbadges>
 
-## Overview
+## 개요
 
-Filters are removed from Vue 3.0 and no longer supported.
+Filters는 Vue 3.0에서 제거되며 더 이상 지원되지 않습니다.
 
-## 2.x Syntax
+## 2.x 구문
 
-In 2.x, developers could use filters in order to apply common text formatting.
+2.x 버전에서는 텍스트 형식화(common text formatting)을 할 수 있는 filters를 사용할 수 있었습니다.
 
-For example:
+예시:
 
 ```html
 <template>
@@ -38,13 +38,13 @@ For example:
 </script>
 ```
 
-While this seems like a convenience, it requires a custom syntax that breaks the assumption of expressions inside of curly braces being "just JavaScript," which has both learning and implementation costs.
+위의 방식은 편리해 보이지만, 중괄호 보간법 안의 표현식이 "그냥 자바스크립트"라는 전제를 깨는 커스텀 구문이 필요하고, 이는 filters를 배우고 적용하는데에 비용이 들게 합니다.
 
-## 3.x Update
+## 3.x 변경점
 
-In 3.x, filters are removed and no longer supported. Instead, we recommend replacing them with method calls or computed properties.
+3.x 버전에서는 filter는 삭제되었고 더 이상 지원되지 않습니다. 대신에 method 호출이나 computed 속성으로 대체하도록 권장합니다.
 
-Using the example above, here is one example of how it could be implemented.
+다음은 filters대신에 computed 속성을 적용해 구현한 예시입니다.
 
 ```html
 <template>
@@ -69,15 +69,15 @@ Using the example above, here is one example of how it could be implemented.
 </script>
 ```
 
-## Migration Strategy
+## 마이그레이션 방법
 
-Instead of using filters, we recommend replacing them with computed properties or methods.
+filters 대신 methods나 computed 속성 사용을 권장합니다.
 
-### Global Filters
+### 전역 Filters
 
-If you are using filters that were globally registered and then used throughout your app, it's likely not convenient to replace them with computed properties or methods in each individual component.
+애플리케이션에 filters를 전역적으로 등록하고 사용하는 경우, 각각의 컴포넌트에서 computed 속성이나 methods로 대체하는 것은 불편할 수 있습니다.
 
-Instead, you can make your global filters available to all components through [globalProperties](../../api/application-config.html#globalproperties):
+대신, [globalProperties](../../api/application-config.html#globalproperties)를 통해 모든 컴포넌트에 전역 filters를 사용할 수 있습니다:
 
 ```javascript
 // main.js
@@ -90,7 +90,7 @@ app.config.globalProperties.$filters = {
 }
 ```
 
-Then you can fix all templates using this `$filters` object like this:
+그런다음에 다음과 같이 `$filters`객체를 사용하여 모든 템플릿을 수정할 수 있습니다:
 
 ```html
 <template>
@@ -99,4 +99,4 @@ Then you can fix all templates using this `$filters` object like this:
 </template>
 ```
 
-Note that with this approach, you can only use methods, not computed properties, as the latter only make sense when defined in the context of an individual component.
+이 접근방식에서는 computed 속성이 아닌 methods만 사용할 수 있습니다. 후자는 개별 컴포넌트의 컨텍스트에서 정의된 경우에만 의미가 있습니다.
