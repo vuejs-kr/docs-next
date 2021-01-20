@@ -9,7 +9,7 @@ actionButtons:
     extraClass: vuemastery-trigger primary
     icon: fa fa-play-circle
   - text: 시작하기
-    link: /ko-kR/guide/introduction
+    link: /guide/introduction
   - text: GitHub
     link: https://github.com/vuejs/vue-next
     extraClass: github grey
