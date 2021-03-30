@@ -8,6 +8,12 @@ Vue는 전 세계에 퍼져 있으며, 핵심 팀은 최소한 6개의 다른 �
 
 ## 번역에 참여하려면 어떻게 해야합니까?
 
-번역을 시작하는 가장 좋은 방법은 커뮤니티에서 일어나고 있는 다양한 initiatives에 대한 활발한 토론이 포함된 [여기 고정된 문제](https://github.com/vuejs/docs-next/issues/478)를 확인하는 것입니다.
+Vue.js Korean Team에서 변역 했습니다. 
+
+https://github.com/vuejs-kr/docs-next 
+
+자유롭게 이슈를 올려주시고, 포크받아서 번역하신후 PR 보내주시면 적극 반영하겠습니다!!
+
+
 
 

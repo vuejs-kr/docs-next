@@ -18,6 +18,46 @@ const obj = reactive({ count: 0 })
 function reactive<T extends object>(target: T): UnwrapNestedRefs<T>
 ```
 
+
+::: tip 노트
+`reactive` 함수는 [refs](./refs-api.html#ref)를 깊게 래핑 해제 하지만,ref의 반응성은 유지합니다. 
+
+```ts
+const count = ref(1)
+const obj = reactive({ count })
+
+// ref 가 풀림(unwrap)
+console.log(obj.count === count.value) // true
+
+// `obj.count`를 갱신함
+count.value++
+console.log(count.value) // 2
+console.log(obj.count) // 2
+
+// `count` ref를 갱신함
+obj.count++
+console.log(obj.count) // 3
+console.log(count.value) // 3
+```
+
+:::
+
+::: warning 중요
+`reactive` 속성에 [ref](./refs-api.html#ref)를 할당 하면,  ref는 자동으로 래핑 해제됩니다. 
+
+```ts
+const count = ref(1)
+const obj = reactive({})
+
+obj.count = count
+
+console.log(obj.count) // 1
+console.log(obj.count === count.value) // true
+```
+
+:::
+
+
 ## `readonly`
 
 객체(반응형 또는 일반객체) 또는 [ref](./refs-api.html#ref) 를 가져와서 원본에 대한 읽기전용 프록시를 반환합니다. 읽기전용 프록시는 깊게(deep) 적용되어 모든 중첩된 속성도 읽기전용으로 접근하게 됩니다.
@@ -37,6 +77,19 @@ original.count++
 
 // 복사본은 변경이 되지 않고, 경고가 발생합니다
 copy.count++ // 경고!
+```
+
+[`reactive`] (# reactive)와 마찬가지로 속성이 `ref`를 사용하는 경우,  프록시를 통해 액세스 할 때 자동으로 래핑 해제됩니다.
+
+```js
+const raw = {
+  count: ref(123)
+}
+
+const copy = readonly(raw)
+
+console.log(raw.count.value) // 123
+console.log(copy.count) // 123
 ```
 
 ## `isProxy`
@@ -154,6 +207,9 @@ isReactive(state.nested) // false
 state.nested.bar++ // 무반응
 ```
 
+
+[`reactive`](#reactive)와 달리 [`ref`](/api/refs-api.html#ref)를 사용하는 모든 속성은 프록시에 의해 자동으로 래핑 해제되지 **않습니다**.
+
 ## `shallowReadonly`
 
 고유한 속성을 읽기 전용으로 만들지만 중첩된 객체의 깊은 읽기전용 변환을 수행하지 않는 프록시를 생성합니다 (원시 값(raw values) 노출).
@@ -172,3 +228,6 @@ state.foo++
 isReadonly(state.nested) // false
 state.nested.bar++ // 반응
 ```
+
+
+[`readonly`](#readonly)와 달리 [`ref`](/api/refs-api.html#ref)를 사용하는 모든 속성은 프록시에 의해 자동으로 래핑 해제되지 **않습니다**.

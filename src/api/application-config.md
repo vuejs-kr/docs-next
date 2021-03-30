@@ -3,7 +3,7 @@
 `config` 는 Vue 애플리케이션 전역 설정을 포함하는 객체입니다. 애플리케이션을 마운트하기 전에 아래 나열된 속성을 수정할 수 있습니다:
 
 ```js
-const app = Vue.createApp({})
+const app = createApp({})
 
 app.config = {...}
 ```
@@ -71,7 +71,7 @@ app.component('child-component', {
 Vue.prototype.$http = () => {}
 
 // 후
-const app = Vue.createApp({})
+const app = createApp({})
 app.config.globalProperties.$http = () => {}
 ```
 
@@ -101,7 +101,7 @@ Vue 외부에서 정의된 커스텀 엘리먼트를 인식하는 방법을 지�
 - **사용방법:**
 
 ```js
-const app = Vue.createApp({
+const app = createApp({
   mounted() {
     console.log(this.$options.hello)
   }

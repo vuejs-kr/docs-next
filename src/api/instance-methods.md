@@ -20,7 +20,7 @@
 - **예시:**
 
     ```js
-    const app = Vue.createApp({
+    const app = createApp({
       data() {
         return {
           a: 1,
@@ -62,7 +62,7 @@
     watch된 값이 객체 또는 배열인 경우, 속성 또는 요소에 대한 변경사항은 동일한 객체/배열을 참조하기 때문에 감시자(watcher)를 트리거하지 않습니다:
 
     ```js
-    const app = Vue.createApp({
+    const app = createApp({
       data() {
         return {
           article: {
@@ -104,7 +104,7 @@
     `$watch`는 콜백을 호출하지 않는 unwatch 함수를 반환합니다:
 
     ```js
-    const app = Vue.createApp({
+    const app = createApp({
       data() {
         return {
           a: 1
@@ -122,6 +122,11 @@
 - **Option: deep**
 
     Objects 내부의 중첩된 값 변경을 감지하려면 options 인자에`deep: true`를 전달해야 합니다. Array 변이를 수신하기 위해 그렇게 할 필요는 없습니다.
+
+    > 노트: 객체나 배열을 (교체하는 대신) 변경할때, deep 옵션을 사용한 watch를 적용했다면 이전 값은 동일한 Object / Array를 참조하기 때문에 새 값과 동일합니다. Vue는 변경 이전의 값의 복사본을 보관하지 않습니다.
+
+  
+
 
     ```js
     vm.$watch('someObject', callback, {
@@ -213,7 +218,7 @@
     ```
 
     ```js
-    const app = Vue.createApp({
+    const app = createApp({
       methods: {
         sayHi() {
           console.log('Hi!')
@@ -241,7 +246,7 @@
     ```
 
     ```js
-    const app = Vue.createApp({
+    const app = createApp({
       methods: {
         showAdvice(advice) {
           alert(advice)
@@ -290,7 +295,7 @@
 - **예시:**
 
     ```js
-    Vue.createApp({
+    createApp({
       // ...
       methods: {
         // ...

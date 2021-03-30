@@ -1,11 +1,28 @@
 # 전역 API
 
+CDN 빌드를 사용하는 경우 전역 `Vue` 개체를 통해 전역 API의 함수에 접근 할 수 있습니다. 
+
+예 :
+
+```js
+const { createApp, h, nextTick } = Vue
+```
+
+ES 모듈을 사용하는 경우 바로가져올 수 있습니다:
+
+```js
+import { createApp, h, nextTick } from 'vue'
+```
+
+`reactive`및 `ref`와 같이 반응성을 처리하는 전역 함수는 별도 문서에서 설명합니다.  해당 기능은 [Reactivity API](/api/reactivity-api.html)를 참조하세요.
+
+
 ## createApp
 
 애플리케이션 컨텍스트를 제공하는 애플리케이션 인스턴스를 반환합니다. 애플리케이션 인스턴스에 의해 마운트된 컴포넌트 트리 전체가 동일한 컨텍스트를 공유합니다.
 
 ```js
-const app = Vue.createApp({})
+const app = createApp({})
 ```
 
 `createApp` 이후에 다른 메서드를 연결할 수 있으며 [Application API](./application-api.html)에서 찾을 수 있습니다.
@@ -15,7 +32,7 @@ const app = Vue.createApp({})
 이 함수는 첫 번째 매개변수로 루트 컴포넌트 옵션 객체를 받습니다.
 
 ```js
-const app = Vue.createApp({
+const app = createApp({
   data() {
     return {
       ...
@@ -30,7 +47,7 @@ const app = Vue.createApp({
 두 번째 매개 변수를 사용하면 루트 props를 애플리케이션에 전달할 수 있습니다.
 
 ```js
-const app = Vue.createApp(
+const app = createApp(
   {
     props: ['username']
   },
@@ -64,7 +81,7 @@ export type CreateAppFunction<HostElement> = (
 
 ```js
 render() {
-  return Vue.h('h1', {}, 'Some title')
+  return h('h1', {}, 'Some title')
 }
 ```
 
@@ -222,12 +239,12 @@ const AsyncComp = defineAsyncComponent({
 `resolveComponent`는 `render`나 `setup` 함수 내에서만 사용할 수 있습니다. 
 :::
 
-현재 애플리케이션 인스턴스에서 사용 가능한 경우 이름으로 `component`를 확인할 수 있습니다.
+현재 애플리케이션 인스턴스에서 접근 가능한 경우, 컴포넌트의 이름으로 `component`를 리졸빙(Resolving) 할수 있습니다.
 
-찾을 수 없는 경우 `Component` 또는 `undefined`를 반환합니다.
+찾을 수 없는 경우 `Component` 또는 인자로 주어진 `name`를 반환합니다. 
 
 ```js
-const app = Vue.createApp({})
+const app = createApp({})
 app.component('MyComponent', {
   /* ... */
 })
@@ -292,7 +309,7 @@ render () {
 찾을 수 없는 경우 `Directive` 또는 `undefined`를 반환합니다.
 
 ```js
-const app = Vue.createApp({})
+const app = createApp({})
 app.directive('highlight', {})
 ```
 
@@ -447,3 +464,78 @@ const app = createApp({
 ```
 
 **참조**: [`$nextTick` 인스턴스 메서드](instance-methods.html#nexttick)
+
+
+## mergeProps
+
+
+VNode props를 포함하는 다수의 객체 가져와, 단일 개체로 병합합니다. 새로 생성 된 객체가 반환되며, 인자로 전달 된 객체는 변경되지 않습니다.
+
+Any number of objects can be passed, with properties from later arguments taking precedence. Event listeners are handled specially, as are `class` and `style`, with the values of these properties being merged rather than overwritten.
+
+갯수에 상관없이 객체를 넘길수 있으며, 뒤에 넘겨진 객체가 우선권을 가집니다.  이벤트 리스너는 `class` 및 `style` 과 같이 특별히 처리되며 이러한 속성의 값은 덮어 쓰지 않고 병합됩니다.
+
+```js
+import { h, mergeProps } from 'vue'
+
+export default {
+  inheritAttrs: false,
+
+  render() {
+    const props = mergeProps({
+      // `class` $attrs의 모든 `class`와 병합됩니다.
+
+      class: 'active'
+    }, this.$attrs)
+
+    return h('div', props)
+  }
+}
+```
+
+## useCssModule
+
+:::warning
+`useCssModule` can only be used within `render` or `setup` functions.
+`useCssModule` 함수는 `render`와 `setup` 함수 내에서만 사용할수 있습니다. 
+:::
+
+
+[싱글 파일 컴포넌트](/guide/single-file-component.html)의 [`setup`] (/api/composition-api.html#setup) 함수 내에서 CSS 모듈에 액세스 할 수 있습니다.
+
+```vue
+<script>
+import { h, useCssModule } from 'vue'
+
+export default {
+  setup () {
+    const style = useCssModule()
+
+    return () => h('div', {
+      class: style.success
+    }, 'Task complete!')
+  }
+}
+</script>
+
+<style module>
+.success {
+  color: #090;
+}
+</style>
+```
+
+CSS 모듈 사용에 대한 자세한 내용은 [Vue Loader - CSS Modules](https://vue-loader.vuejs.org/guide/css-modules.html)을 참조하세요.
+
+### 인자
+
+단 하나의 인자만 받습니다: `name`
+
+
+#### name
+
+- **Type:** `String`
+
+- **Details:**
+
+  CSS 모듈의 이름. 기본값은  `'$style'`.

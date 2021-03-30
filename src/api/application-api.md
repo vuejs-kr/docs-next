@@ -196,8 +196,7 @@ app.directive('focus', {
     - 루트 컴포넌트 인스턴스 반환
 
 - **사용방법:**
-
-    제공된 DOM 엘리먼트에 애플리케이션 인스턴스의 루트 컴포넌트를 마운트합니다.
+  애플리케이션 루트 컴포넌트의 템플릿을 렌더링하여, 제시된  DOM 앨리먼트의 `innerHTML` 를 치환합니다. 
 
 - **예시:**
 
@@ -312,5 +311,18 @@ setTimeout(() => app.unmount('#my-app'), 5000)
     애플리케이션을 첫 번째 인자로 사용하여 install 메소드가 호출됩니다. `use` 에 전달된 모든 `options`는 후속 인자로 전달됩니다.
 
     동일한 플러그인에서 이 메소드를 여러번 호출되면 플러그인은 한 번만 설치됩니다.
+
+- **예제:**
+
+  ```js
+  import { createApp } from 'vue'
+  import MyPlugin from './plugins/MyPlugin'
+
+  const app = createApp({})
+
+  app.use(MyPlugin)
+  app.mount('#app')
+  ```
+
 
 - [플러그인(Plugins)](../guide/plugins.html)
