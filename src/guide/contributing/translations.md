@@ -8,9 +8,10 @@ Vue는 전 세계에 퍼져 있으며, 핵심 팀은 최소한 6개의 다른 �
 
 ## 번역에 참여하려면 어떻게 해야합니까?
 
-Vue.js Korean Team에서 변역 했습니다. 
+[Vue.js Korean Team](https://github.com/vuejs-kr/docs-next )에서 번역 했습니다. 
 
-https://github.com/vuejs-kr/docs-next 
+Github: https://github.com/vuejs-kr/docs-next 
+
 
 자유롭게 이슈를 올려주시고, 포크받아서 번역하신후 PR 보내주시면 적극 반영하겠습니다!!
 
