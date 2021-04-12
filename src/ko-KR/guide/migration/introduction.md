@@ -4,7 +4,7 @@
 Vue.js의 새로운 기능에 대한 정보가 필요하신가요? 그렇다면 [필수가이드](/ko-KR/guide/introduction.html)를 확인하세요. 
 :::
 
- 이번 가이드는 Vue 2 경험이 있으면서, Vue 3 변경사항 및 새로운 기능을 배우고 싶은 사용자를 주요 독자로 삼았습니다.**&nbsp;이 문서는 Vue 3를 시도하기 전 꼭 읽어야 하는 것은 아닙니다. ** 변한 것이 많아 보이지만, Vue에 관해서 알고 좋아하던 것들은 여전히 같습니다.; 그렇지만 우리는 문서화 된 변경 점에 대한 예제들과 자세한 설명을 가능한 철저하게 제공하고 싶었습니다.
+ 이번 가이드는 Vue 2 경험이 있으면서, Vue 3 변경사항 및 새로운 기능을 배우고 싶은 사용자를 주요 독자로 삼았습니다. **이 문서는 Vue 3를 시도하기 전 꼭 읽어야 하는 것은 아닙니다.** 변한 것이 많아 보이지만, Vue에 관해서 알고 좋아하던 것들은 여전히 같습니다. 그렇지만 우리는 문서화 된 변경 점에 대한 예제들과 자세한 설명을 가능한 철저하게 제공하고 싶었습니다.
 
 - [시작하기](#quickstart)
 - [주목할 만한 새로운 기능들](#notable-new-features)
@@ -19,7 +19,7 @@ Vue.js의 새로운 기능에 대한 정보가 필요하신가요? 그렇다면 
 
 ## <a>시작하기</a>
 
-- CDN을 통해 시작: <code><script src="https://unpkg.com/vue@next"></script></code>
+- CDN을 통해 시작: `<script src="https://unpkg.com/vue@next"></script>`
 
 - [Codepen](https://codepen.io/yyx990803/pen/OJNoaZL)의 인브라우저 플레이그라운드에서 시작
 
@@ -157,31 +157,36 @@ Vuex 4.0는 3.x와 거의 동일한 API로 Vue3 지원합니다. 유일하게 �
 
 ### 다른 프로젝트들
 
-프로젝트 | npm | Repo
---- | --- | ---
-@vue/babel-plugin-jsx | []![rc] | [[GitHub]]
-eslint-plugin-vue | []![beta] | [[GitHub]]
-@vue/test-utils | []![beta] | [[GitHub]]
-vue-class-component | []![beta] | [[GitHub]]
-vue-loader | []![beta] | [[GitHub]]
-rollup-plugin-vue | []![beta] | [[GitHub]]
+| 프로젝트                | npm                           | Repo                 |
+| --------------------- | ----------------------------- | -------------------- |
+| @vue/babel-plugin-jsx | [![rc][jsx-badge]][jsx-npm]   | [[GitHub][jsx-code]] |
+| eslint-plugin-vue     | [![ga][epv-badge]][epv-npm]   | [[GitHub][epv-code]] |
+| @vue/test-utils       | [![beta][vtu-badge]][vtu-npm] | [[GitHub][vtu-code]] |
+| vue-class-component   | [![beta][vcc-badge]][vcc-npm] | [[GitHub][vcc-code]] |
+| vue-loader            | [![rc][vl-badge]][vl-npm]     | [[GitHub][vl-code]]  |
+| rollup-plugin-vue     | [![beta][rpv-badge]][rpv-npm] | [[GitHub][rpv-code]] |
 
-
-[rc]: https://img.shields.io/npm/v/@vue/babel-plugin-jsx.svg
-[]: https://www.npmjs.com/package/@vue/babel-plugin-jsx
-[GitHub]: https://github.com/vuejs/jsx-next
-[beta]: https://img.shields.io/npm/v/@vue/devtools/beta.svg
-[]: https://www.npmjs.com/package/@vue/devtools/v/beta
-[GitHub]: https://github.com/vuejs/vue-devtools/tree/next
-[beta]: https://img.shields.io/npm/v/eslint-plugin-vue.svg
-[]: https://www.npmjs.com/package/eslint-plugin-vue
-[GitHub]: https://github.com/vuejs/eslint-plugin-vue
-[beta]: https://img.shields.io/npm/v/@vue/test-utils/next.svg
-[]: https://www.npmjs.com/package/@vue/test-utils/v/next
-[GitHub]: https://github.com/vuejs/vue-test-utils-next
-[beta]: https://img.shields.io/npm/v/@ant-design-vue/babel-plugin-jsx.svg
-[]: https://www.npmjs.com/package/@ant-design-vue/babel-plugin-jsx
-[GitHub]: https://github.com/vueComponent/jsx
-[beta]: https://img.shields.io/npm/v/vue-class-component/next.svg
-[]: https://www.npmjs.com/package/vue-class-component/v/next
-[GitHub]: https://github.com/vuejs/vue-class-component/tree/next
+[jsx-badge]: https://img.shields.io/npm/v/@vue/babel-plugin-jsx.svg
+[jsx-npm]: https://www.npmjs.com/package/@vue/babel-plugin-jsx
+[jsx-code]: https://github.com/vuejs/jsx-next
+[vd-badge]: https://img.shields.io/npm/v/@vue/devtools/beta.svg
+[vd-npm]: https://www.npmjs.com/package/@vue/devtools/v/beta
+[vd-code]: https://github.com/vuejs/vue-devtools/tree/next
+[epv-badge]: https://img.shields.io/npm/v/eslint-plugin-vue.svg
+[epv-npm]: https://www.npmjs.com/package/eslint-plugin-vue
+[epv-code]: https://github.com/vuejs/eslint-plugin-vue
+[vtu-badge]: https://img.shields.io/npm/v/@vue/test-utils/next.svg
+[vtu-npm]: https://www.npmjs.com/package/@vue/test-utils/v/next
+[vtu-code]: https://github.com/vuejs/vue-test-utils-next
+[jsx-badge]: https://img.shields.io/npm/v/@ant-design-vue/babel-plugin-jsx.svg
+[jsx-npm]: https://www.npmjs.com/package/@ant-design-vue/babel-plugin-jsx
+[jsx-code]: https://github.com/vueComponent/jsx
+[vcc-badge]: https://img.shields.io/npm/v/vue-class-component/next.svg
+[vcc-npm]: https://www.npmjs.com/package/vue-class-component/v/next
+[vcc-code]: https://github.com/vuejs/vue-class-component/tree/next
+[vl-badge]: https://img.shields.io/npm/v/vue-loader/next.svg
+[vl-npm]: https://www.npmjs.com/package/vue-loader/v/next
+[vl-code]: https://github.com/vuejs/vue-loader/tree/next
+[rpv-badge]: https://img.shields.io/npm/v/rollup-plugin-vue/next.svg
+[rpv-npm]: https://www.npmjs.com/package/rollup-plugin-vue/v/next
+[rpv-code]: https://github.com/vuejs/rollup-plugin-vue/tree/next
