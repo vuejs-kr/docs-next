@@ -15,7 +15,7 @@
 
 - **사용방법:**
 
-    컴포넌트 인스턴스의 반응 속성(reactive property) 또는 계산 된 함수(computed function)에서 변경 사항을 확인합니다. 콜백은 주어진 속성에 대한 새 값과 이전 값으로 호출됩니다. 최상위 `data`, `prop` 또는 `computed` 속성 이름만 문자열로 전달할 수 있습니다. 더 복잡한 표현식이나 중첩 된 속성의 경우 함수를 사용하세요.
+    컴포넌트 인스턴스의 반응형 속성(reactive property)이나 계산된 함수(computed function)를 감시합니다. 콜백은 지정된 속성의 새로운 값과 이전 값으로 호출됩니다. 최상위(top-level)의 `data`, `props` 또는 `computed` 속성 이름만 문자열로 전달할 수 있습니다. 더 복잡한 표현식이나 중첩된 속성의 경우 함수를 사용하세요.
 
 - **예시:**
 
@@ -32,12 +32,12 @@
         }
       },
       created() {
-        // top-level property name
+        // 최상위(top-level) 속성 이름
         this.$watch('a', (newVal, oldVal) => {
           // do something
         })
 
-        // function for watching a single nested property
+        // 단일 중첩 속성을 감시하기 위한 함수
         this.$watch(
           () => this.c.d,
           (newVal, oldVal) => {
@@ -45,11 +45,11 @@
           }
         )
 
-        // function for watching a complex expression
+        // 복잡한 표현식을 감시하기 위한 함수
         this.$watch(
-          // every time the expression `this.a + this.b` yields a different result,
-          // the handler will be called. It's as if we were watching a computed
-          // property without defining the computed property itself
+          // 표현식 `this.a + this.b` 이 다른 결과를 산출할 때마다, 핸들러가 호출됩니다. 
+          // 계산된 속성 자체를 정의하지 않고, 계산된 속성을 감시하는 것 과 같습니다.
+          // (It's as if we were watching a computed property without defining the computed property itself)
           () => this.a + this.b,
           (newVal, oldVal) => {
             // do something
@@ -59,7 +59,7 @@
     })
     ```
 
-    watch된 값이 객체 또는 배열인 경우, 속성 또는 요소에 대한 변경사항은 동일한 객체/배열을 참조하기 때문에 감시자(watcher)를 트리거하지 않습니다:
+    감시되는 값이 객체 또는 배열인 경우, 속성이나 요소의 변경은 동일한 객체/배열을 참조하기 때문에 감시자(watcher)를 트리거하지 않습니다:
 
     ```js
     const app = createApp({
@@ -81,8 +81,9 @@
         })
       },
       methods: {
-        // These methods won't trigger a watcher because we changed only a property of Object/Array,
-        // not the Object/Array itself
+        // 이 함수는 객체/배열 자체가 아닌 
+        // 객체/배열의 속성만을 변경하기 때문에
+        // 감시자를 트리거하지 않습니다.
         changeArticleText() {
           this.article.text = 'Vue 3 is awesome'
         },
@@ -90,7 +91,7 @@
           this.comments.push('New comment')
         },
 
-        // These methods will trigger a watcher because we replaced Object/Array completely
+        // 이 함수는 객체/배열을 완전히 대체했기 때문에 감시자를 트리거합니다.
         changeWholeArticle() {
           this.article = { text: 'Vue 3 is awesome' }
         },
@@ -101,7 +102,7 @@
     })
     ```
 
-    `$watch`는 콜백을 호출하지 않는 unwatch 함수를 반환합니다:
+    `$watch`는 콜백 호출을 멈추는 unwatch 함수를 반환합니다:
 
     ```js
     const app = createApp({
@@ -115,15 +116,15 @@
     const vm = app.mount('#app')
 
     const unwatch = vm.$watch('a', cb)
-    // later, teardown the watcher
+    // 나중에, 감시자를 없앱니다(teardown).
     unwatch()
     ```
 
 - **Option: deep**
 
-    Objects 내부의 중첩된 값 변경을 감지하려면 options 인자에`deep: true`를 전달해야 합니다. Array 변이를 수신하기 위해 그렇게 할 필요는 없습니다.
+    객체 내부의 중첩된 값의 변경을 감지하려면 options 인자에 `deep: true`를 전달해야 합니다. 이 옵션은 배열의 변경을 감시하기 위해서도 사용할 수 있습니다.
 
-    > 노트: 객체나 배열을 (교체하는 대신) 변경할때, deep 옵션을 사용한 watch를 적용했다면 이전 값은 동일한 Object / Array를 참조하기 때문에 새 값과 동일합니다. Vue는 변경 이전의 값의 복사본을 보관하지 않습니다.
+    > 노트: 객체나 배열을 (교체하는 대신) 변경할때, deep 옵션을 사용한 watch를 적용했다면 이전 값은 동일한 객체/배열을 참조하기 때문에 새로운 값과 동일합니다. Vue는 변경 이전의 값의 복사본을 보관하지 않습니다.
 
   
 
@@ -133,21 +134,21 @@
       deep: true
     })
     vm.someObject.nestedValue = 123
-    // callback is fired
+    // 콜백이 발생합니다(fired).
     ```
 
 - **Option: immediate**
 
-    옵션에서 `immediate: true`를 전달하면 표현식의 현재 값으로 즉시 콜백을 호출합니다:
+    옵션에서 `immediate: true`를 전달하면, 표현식의 현재 값으로 즉시 콜백을 호출합니다:
 
     ```js
     vm.$watch('a', callback, {
       immediate: true
     })
-    // `callback` is fired immediately with current value of `a`
+    // `a`의 현재 값으로 즉시 `callback`이 발생합니다(fired).
     ```
 
-    옵션에서 `immediate`는 주어진 프로퍼티에서 콜백을 처음 호출할 때 unwatch함수를 사용할 수 없습니다.
+    `immediate` 옵션을 사용하면, 처음 콜백을 호출할 때, 지정된 속성에 대한 감시를 해제할 수 없습니다.
 
     ```js
     // This will cause an error
@@ -161,7 +162,7 @@
     )
     ```
 
-    unwatch 함수를 콜백에 사용한다면, 유효성부터 체크하십시오:
+    만약 unwatch 함수를 호출하려면, 먼저 유효성부터 체크하십시오:
 
     ```js
     let unwatch = null
@@ -180,7 +181,7 @@
 
 - **Option: flush**
 
-    `flush`옵션을 사용하면, 콜백 타이밍을 더 잘 제어할 수 있습니다. `'pre'`, `'post'` 또는 `'sync'`로 설정할 수 있습니다.
+    `flush` 옵션을 사용하면, 콜백 타이밍을 더 잘 제어할 수 있습니다. `'pre'`, `'post'` 또는 `'sync'`로 설정할 수 있습니다.
 
     기본 값은 `'pre'`이며, 렌더링 전에 콜백을 호출해야 함을 지정합니다. 이렇게하면 템플릿이 실행되기 전에 콜백이 다른 값을 업데이트 할 수 있습니다.
 
@@ -209,7 +210,7 @@
 
 - **예시:**
 
-    이벤트 이름으로 `$emit`이 사용될 때:
+    이벤트 이름만 사용한 `$emit`:
 
     ```html
     <div id="emit-example-simple">
@@ -237,7 +238,7 @@
     app.mount('#emit-example-simple')
     ```
 
-    `$emit` 부가인자로 사용될 때:
+    인자를 사용한 `$emit`:
 
     ```html
     <div id="emit-example-argument">
@@ -280,7 +281,7 @@
 
 - **사용방법:**
 
-    컴포넌트 인스턴스를 강제로 재랜더링(re-render) 합니다. 모든 자식 컴포넌트가 아닌, 현재 인스턴스 그리고 슬롯 컨텐츠가 있는 자식 컴포넌트를 재랜더링(re-render) 합니다.
+    컴포넌트 인스턴스를 강제로 리랜더링(re-render)합니다. 모든 자식 컴포넌트가 아닌, 해당 인스턴스와 슬롯 컨텐츠가 삽입된 자식 컴포넌트를 리랜더링(re-render) 합니다.
 
 ## $nextTick
 
@@ -290,7 +291,7 @@
 
 - **사용방법:**
 
-    다음 DOM 업데이트 사이클 이후 실행될 콜백을 연기합니다. DOM 업데이트를 기다리기 위해 일부 데이터를 변경한 직후 사용하십시오. 이것은 콜백의 `this` 컨텍스트가 이 메소드를 호출하는 인스턴스에 자동으로 바인딩 되는 점을 제외하고 전역 `nextTick`과 같습니다.
+    다음 DOM 업데이트 주기 이후 실행될 콜백을 연기합니다. DOM 업데이트를 기다리기 위해 일부 데이터를 변경한 직후 사용하십시오. 이것은 콜백의 `this` 컨텍스트가 이 메소드를 호출하는 인스턴스에 자동으로 바인딩 되는 점을 제외하고 전역 `nextTick`과 같습니다.
 
 - **예시:**
 
