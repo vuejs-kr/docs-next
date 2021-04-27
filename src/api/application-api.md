@@ -326,3 +326,27 @@ setTimeout(() => app.unmount('#my-app'), 5000)
 
 
 - [플러그인(Plugins)](../guide/plugins.html)
+
+## version
+
+- **사용방법:**
+
+  설치된 Vue의 버전을 문자열로 제공합니다. 제공된 문자열은 특히 커뮤니티 [플러그인](/guide/plugins.html)에 유용하며, 이를 활용하여 버전마다 다른 처리를 할 수 있습니다.
+
+- **예제:**
+
+  ```js
+  export default {
+    install(app) {
+      const version = Number(app.version.split('.')[0])
+      
+      if (version < 3) {
+        console.warn('This plugin requires Vue 3')
+      }
+      
+      // ...
+    }
+  }
+  ```
+  
+- **참고**: [Global API - version](/api/global-api.html#version)
