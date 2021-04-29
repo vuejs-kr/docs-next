@@ -202,15 +202,32 @@ const obj = reactive({
 }) // no reference to original
 ```
 
-## 감시자(Watchers)
+This ensures that both equality comparisons and reactivity behave as expected.
 
-모든 컴포넌트 인스턴스는 해당 감시자 인스턴스가 있으며, 이는 컴포넌트가 종속적으로 렌더링되는 동안 "영향을 받은(touched)" 모든 속성을 기록합니다. 나중에 종속성의 setter가 트리거되면, 감시자에게 알리고 컴포넌트는 다시 렌더링됩니다.
+Note that Vue does not wrap primitive values such as numbers or strings in a Proxy, so you can still use `===` directly with those values:
 
-<div class="reactivecontent">   <iframe height="500" style="width: 100%;" scrolling="no" title="Second Reactivity with Proxies in Vue 3 Explainer" src="https://codepen.io/sdras/embed/GRJZddR?height=500&theme-id=light&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true"><br>    See the Pen &lt;a href="https://codepen.io/sdras/pen/GRJZddR"&gt;Second Reactivity with Proxies in Vue 3 Explainer&lt;/a&gt; by Sarah Drasner<br>    (&lt;a href="https://codepen.io/sdras"&gt;@sdras&lt;/a&gt;) on &lt;a href="https://codepen.io"&gt;CodePen&lt;/a&gt;.<br>  </iframe></div>
+```js
+const obj = reactive({
+  count: 0
+})
 
-객체를 컴포넌트 인스턴스에 data(option)로 전달하면, Vue는 이것을 proxy로 변환합니다. 이 proxy를 사용하면, Vue가 속성에 접근하거나 수정할 때 종속성 추적 및 변경 알림을 수행할 수 있습니다. 각 속성은 종속성으로 간주됩니다.
+console.log(obj.count === 0) // true
+```
 
-첫번째 렌더링 이후, 컴포넌트는 종속성 목록(렌더링 중에 접근한 속성들)을 추적했을 것입니다. 반대로, 컴포넌트는 이러한 각 속성들에 대한 구독자(subscriber)가 됩니다. proxy가 set operation을 가로채면, 속성은 구독된 모든 컴포넌트에 다시 렌더링하도록 알립니다.
+## 어떻게 변경에 대응하여 렌더링 되는가
+
+컴포넌트의 템플릿은 컴파일 되어 [`render`](/guide/render-function.html) 함수로 만들어 집니다. `render` 함수는 [VNodes](/guide/render-function.html#the-virtual-dom-tree) 를 만들어 내고, VNNodes들은 컴포넌트가 어떻게 렌더링 될지를 기술합니다. Vue는 실행중에 "영향을 받은(touched)" 속성이 변경되는 것을 추적하여 반영하게 됩니다. 
+
+`render` 함수는 개념적으로 `computed` 속성과 유사합니다. Vue는 의존성을 정확하게 추적하는게 아니라, 해당 함수들이 실행하며 접근했던 의존성만을 추적하게 됩니다. 이렇게 추적된 의존하는 속성들이 변경되면 `render` 함수도 다시 실행되어 새로운 VNodes 를 만들어 냅니다. 
+
+The template for a component is compiled down into a [`render`](/guide/render-function.html) function. The `render` function creates the [VNodes](/guide/render-function.html#the-virtual-dom-tree) that describe how the component should be rendered. It is wrapped in an effect, allowing Vue to track the properties that are 'touched' while it is running.
+
+A `render` function is conceptually very similar to a `computed` property. Vue doesn't track exactly how dependencies are used, it only knows that they were used at some point while the function was running. If any of those properties subsequently changes, it will trigger the effect to run again, re-running the `render` function to generate new VNodes. These are then used to make the necessary changes to the DOM.
+
+<div class="reactivecontent">
+  <common-codepen-snippet title="Second Reactivity with Proxies in Vue 3 Explainer" slug="wvgqyJK" tab="result" theme="light" :height="500" :editable="false" :preview="false" />
+</div>
+
 
 > Vue 2.x 이하를 사용하는 경우 해당 버전에 존재하는 변경 감지 주의사항 중 일부에 관심이 있을 수 있습니다. [여기에서 자세히 살펴보겠습니다](change-detection.md).
 

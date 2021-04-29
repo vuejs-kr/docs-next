@@ -21,7 +21,8 @@ label 엘리먼트는 일반적으로 form 필드의 상단 또는 왼쪽에 배
 </form>
 ```
 
-<p class="codepen" data-height="368" data-theme-id="light" data-default-tab="js,result" data-user="mlama007" data-slug-hash="YzwpPYZ" style="height: 368px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Simple Form">   <span>See the Pen <a href="https://codepen.io/mlama007/pen/YzwpPYZ">   Simple Form</a> by Maria (<a href="https://codepen.io/mlama007">@mlama007</a>)   on <a href="https://codepen.io">CodePen</a>.</span> </p> <script async="" src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Simple Form" slug="dyNzzWZ" :height="368" tab="js,result" theme="light" :preview="false" :editable="false" />
+
 
 form 엘리먼트에 `autocomplete='on'`을 포함할 수 있으며, form의 모든 input에 적용되는 방법에 유의하십시오. 각 input에 서로 다른 [자동 완성 속성 값](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete)을 설정할 수도 있습니다.
 
@@ -34,7 +35,8 @@ form 엘리먼트에 `autocomplete='on'`을 포함할 수 있으며, form의 모
 <input type="text" name="name" id="name" v-model="name" />
 ```
 
-<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="js,result" data-user="mlama007" data-slug-hash="wvMrGqz" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Form Label">   <span>See the Pen <a href="https://codepen.io/mlama007/pen/wvMrGqz">   Form Label</a> by Maria (<a href="https://codepen.io/mlama007">@mlama007</a>)   on <a href="https://codepen.io">CodePen</a>.</span> </p> <script async="" src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Form Label" slug="XWpaaaj" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" />
+
 
 크롬 개발자 도구에서 이 엘리먼트를 검사하고 Elements 탭 내부의 접근성 탭을 열면, input이 label에서 이름을 가져오는 방법을 볼 수 있습니다.
 
@@ -68,9 +70,11 @@ form 엘리먼트에 `autocomplete='on'`을 포함할 수 있으며, form의 모
 />
 ```
 
-See the Pen <a href="https://codepen.io/mlama007/pen/jOWGqgz">   Form ARIA label</a> by Maria (<a href="https://codepen.io/mlama007">@mlama007</a>)   on <a href="https://codepen.io">CodePen</a>.
+<common-codepen-snippet title="Form ARIA label" slug="NWdvvYQ" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" />
 
-크롬 개발자 도구에서 이 엘리먼트를 검사하여 <a><code>aria-label</code></a>이 어떻게 변경되었는지 확인해보세요:
+
+크롬 개발자 도구에서 이 엘리먼트를 검사하여 [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-labelledby_attribute) 이 어떻게 변경되었는지 확인해보세요:
+
 
 ![Chrome Developer Tools showing input accessible name from aria-label](/images/AccessibleARIAlabelDevTools.png)
 
@@ -101,7 +105,8 @@ See the Pen <a href="https://codepen.io/mlama007/pen/jOWGqgz">   Form ARIA label
 ```
 
 
-<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="js,result" data-user="mlama007" data-slug-hash="ZEQXOLP" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Form ARIA labelledby">   <span>See the Pen <a href="https://codepen.io/mlama007/pen/ZEQXOLP">   Form ARIA labelledby</a> by Maria (<a href="https://codepen.io/mlama007">@mlama007</a>)   on <a href="https://codepen.io">CodePen</a>.</span> </p> <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Form ARIA labelledby" slug="MWJvvBe" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" />
+
 
 ![Chrome Developer Tools showing input accessible name from aria-label](/images/AccessibleARIAlabelDevTools.png)
 
@@ -134,7 +139,8 @@ See the Pen <a href="https://codepen.io/mlama007/pen/jOWGqgz">   Form ARIA label
 ```
 
 
-<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="js,result" data-user="mlama007" data-slug-hash="JjGrKyY" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Form ARIA describedby">   <span>See the Pen <a href="https://codepen.io/mlama007/pen/JjGrKyY">   Form ARIA describedby</a> by Maria (<a href="https://codepen.io/mlama007">@mlama007</a>)   on <a href="https://codepen.io">CodePen</a>.</span> </p> <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Form ARIA describedby" slug="gOgxxQE" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" />
+
 
 크롬 개발자 도구 검사를 통해서 해당 설명을 확인할 수 있습니다:
 
@@ -147,7 +153,8 @@ placeholder는 많은 사용자에게 혼란을 줄 수 있으므로 사용을 �
 placeholder의 문제 중 하나는 기본적인 [색 대비 기준](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)을 충족하지 못한다는 것입니다. 색 대비를 수정하면 placehoder가 input 필드에 미리 입력된 데이터처럼 보이게 됩니다. 다음 예제를 살펴 보면, 색 대비 기준을 충족하는 Last Name placeholder는 미리 입력된 데이터처럼 보이는 것을 확인할 수 있습니다.
 
 
-<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="js,result" data-user="mlama007" data-slug-hash="PoZJzeQ" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Form Placeholder">   <span>See the Pen <a href="https://codepen.io/mlama007/pen/PoZJzeQ">   Form Placeholder</a> by Maria (<a href="https://codepen.io/mlama007">@mlama007</a>)   on <a href="https://codepen.io">CodePen</a>.</span> </p> <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Form Placeholder" slug="ExZvvMw" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" />
+
 
 사용자가 입력 외부에서 form을 작성하는데 필요한 모든 정보를 제공하는 것이 가장 좋은 방법입니다.
 
@@ -181,7 +188,8 @@ input 필드에 대한 instruction을 추가할 때는, input에 올바르게 �
 ```
 
 
-<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="js,result" data-user="mlama007" data-slug-hash="GRoMqYy" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Form Instructions">   <span>See the Pen <a href="https://codepen.io/mlama007/pen/GRoMqYy">   Form Instructions</a> by Maria (<a href="https://codepen.io/mlama007">@mlama007</a>)   on <a href="https://codepen.io">CodePen</a>.</span> </p> <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Form Instructions" slug="WNREEqv" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" />
+
 
 ### 내용 감추기(Hiding Content)
 
@@ -215,8 +223,8 @@ CSS를 사용하여 엘리먼트를 시각적으로 숨기지만, 보조 기술�
 }
 ```
 
+<common-codepen-snippet title="Form Search" slug="QWdMqWy" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" />
 
-<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="js,result" data-user="mlama007" data-slug-hash="qBbpQwB" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Form Search">   <span>See the Pen <a href="https://codepen.io/mlama007/pen/qBbpQwB">   Form Search</a> by Maria (<a href="https://codepen.io/mlama007">@mlama007</a>)   on <a href="https://codepen.io">CodePen</a>.</span> </p> <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 #### aria-hidden="true"
 
@@ -243,8 +251,8 @@ form 내에서 button을 사용할 때, form submit을 방지하기 위해 type�
 </form>
 ```
 
+<common-codepen-snippet title="Form Buttons" slug="JjEyrYZ" :height="467" tab="js,result" theme="light" :preview="false" :editable="false" />
 
-<p class="codepen" data-height="467" data-theme-id="light" data-default-tab="js,result" data-user="mlama007" data-slug-hash="PoZEXoj" style="height: 467px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Form Buttons">   <span>See the Pen <a href="https://codepen.io/mlama007/pen/PoZEXoj">   Form Buttons</a> by Maria (<a href="https://codepen.io/mlama007">@mlama007</a>)   on <a href="https://codepen.io">CodePen</a>.</span> </p> <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 #### 기능적인 이미지(Functional Images)
 
@@ -280,5 +288,4 @@ form 내에서 button을 사용할 때, form submit을 방지하기 위해 type�
 </form>
 ```
 
-
-<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="js,result" data-user="mlama007" data-slug-hash="NWxXeqY" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Functional Images">   <span>See the Pen <a href="https://codepen.io/mlama007/pen/NWxXeqY">   Functional Images</a> by Maria (<a href="https://codepen.io/mlama007">@mlama007</a>)   on <a href="https://codepen.io">CodePen</a>.</span> </p> <script async src="https://static.codepen.io/assets/embed/ei.js"></script>  
+<common-codepen-snippet title="Functional Images" slug="jOyLGqM" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" />

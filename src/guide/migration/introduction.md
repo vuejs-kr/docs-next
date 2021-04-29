@@ -47,8 +47,8 @@ Vue 3에서 주목할 만한 새로운 기능 중 일부는 다음과 같습니�
 - [Teleport](/ko-KR/guide/teleport.html)
 - [Fragments](/ko-KR/guide/migration/fragments.html)
 - [Emits 컴포넌트 옵션](/ko-KR/guide/component-custom-events.html)
-- 커스텀 렌더들(custom renderers)을 생성하기 위한 [`@vue/runtime-core`의 `createRenderer` API ](https://github.com/vuejs/vue-next/tree/master/packages/runtime-core)
-- [SFC Composition API의 더 쉬운 표현 (`<script setup>`)](https://github.com/vuejs/rfcs/blob/sfc-improvements/active-rfcs/0000-sfc-script-setup.md) <badge text="experimental" type="warning"></badge>
+- [커스텀 렌더들(custom renderers)을 생성하기 위한 `@vue/runtime-core`의 `createRenderer` API ](https://github.com/vuejs/vue-next/tree/master/packages/runtime-core)
+- [SFC Composition API의 더 쉬운 표현 (`<script setup>`)](https://github.com/vuejs/rfcs/blob/script-setup-2/active-rfcs/0000-script-setup.md)  <badge text="experimental" type="warning"></badge>
 - [SFC State-driven CSS 변수 (`<style vars>`)](https://github.com/vuejs/rfcs/blob/sfc-improvements/active-rfcs/0000-sfc-style-variables.md) <badge text="experimental" type="warning"></badge>
 - [SFC의 `<style scoped>`는 전역 규칙으로 사용하거나 특정 slot의 규칙으로 사용가능합니다. ](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0023-scoped-styles-changes.md)
 

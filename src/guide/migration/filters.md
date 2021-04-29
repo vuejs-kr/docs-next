@@ -79,7 +79,7 @@ filters 대신 methods나 computed 속성 사용을 권장합니다.
 
 대신, [globalProperties](../../api/application-config.html#globalproperties)를 통해 모든 컴포넌트에 전역 filters를 사용할 수 있습니다:
 
-```javascript
+```js
 // main.js
 const app = createApp(App)
 

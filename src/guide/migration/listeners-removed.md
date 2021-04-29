@@ -10,7 +10,7 @@ badges:
 
 Vue 3에서 `$listeners` 객체가 제거되었습니다. 모든 리스너는 이제 `$attrs`의 일부가 되었습니다:
 
-```javascript
+```js
 {
   text: 'this is an attribute',
   onClose: () => console.log('close Event triggered')
@@ -54,7 +54,7 @@ export default {
 
 이 컴포넌트가 `id` 속성과 `v-on:close` 리스너를 수신하는 경우에는 `$attrs` 객체는 다음과 같습니다:
 
-```javascript
+```js
 {
   id: 'my-input',
   onClose: () => console.log('close Event triggered')

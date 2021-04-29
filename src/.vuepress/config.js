@@ -207,6 +207,10 @@ const sidebar = {
       ]
     }
   ],
+  ssr: [
+    ['/guide/ssr/introduction', 'Introduction'],
+    '/guide/ssr/getting-started'
+  ],
   contributing: [
     {
       title: '문서에 기여하기',

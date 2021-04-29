@@ -539,3 +539,21 @@ CSS 모듈 사용에 대한 자세한 내용은 [Vue Loader - CSS Modules](https
 - **Details:**
 
   CSS 모듈의 이름. 기본값은  `'$style'`.
+
+## version
+
+설치된 Vue의 버전을 문자열로 반환합니다. 
+
+```js
+const version = Number(Vue.version.split('.')[0])
+
+if (version === 3) {
+  // Vue 3
+} else if (version === 2) {
+  // Vue 2
+} else {
+  // Unsupported versions of Vue
+}
+```
+
+**See also**: [Application API - version](/api/application-api.html#version)

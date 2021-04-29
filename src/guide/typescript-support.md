@@ -130,10 +130,10 @@ const Component = defineComponent({
     // in a computed with a setter, getter needs to be annotated
     greetingUppercased: {
       get(): string {
-        return this.greeting.toUpperCase();
+        return this.greeting.toUpperCase()
       },
       set(newValue: string) {
-        this.message = newValue.toUpperCase();
+        this.message = newValue.toUpperCase()
       },
     },
   }
@@ -221,6 +221,80 @@ year.value = 2020 // ok!
 ::: tip 
 제너릭 타입을 알 수 없는 경우,  `ref`를 `Ref<T>`으로 캐스팅 하는 것을 권장합니다 
 :::
+
+
+
+### 템플릿 Refs 작성
+
+
+Sometimes you might need to annotate a template ref for a child component in order to call its public method. For example, we have a `MyModal` child component with a method that opens the modal:
+
+```ts
+import { defineComponent, ref } from 'vue'
+
+export default defineComponent({
+  setup() {
+    const isContentShown = ref(false)
+    const open = () => (isContentShown.value = true)
+
+    return {
+      isContentShown,
+      open
+    }
+  }
+})
+```
+
+We want to call this method via a template ref from the parent component:
+
+```html
+<template>
+  <div id="app">
+    <button @click="openModal">Open from parent</button>
+    <my-modal ref="modal" />
+  </div>
+</template>
+```
+
+```ts
+import { defineComponent, ref } from 'vue'
+import MyModal from './components/MyModal.vue'
+
+export default defineComponent({
+  name: 'App',
+  components: {
+    MyModal
+  },
+  setup() {
+    const modal = ref()
+    const openModal = () => {
+      modal.value.open()
+    }
+
+    return { modal, openModal }
+  }
+})
+```
+
+While this will work, there is no type information about `MyModal` and its available methods. To fix this, you should use `InstanceType` when creating a ref:
+
+```ts
+import MyModal from './components/MyModal.vue'
+
+export default defineComponent({
+  setup() {
+    const modal = ref<InstanceType<typeof MyModal>>()
+    const openModal = () => {
+      modal.value?.open()
+    }
+
+    return { modal, openModal }
+  }
+})
+```
+
+Please note that you would also need to use [optional chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining) or any other way to check that `modal.value` is not undefined.
+
 
 ### `reactive` 작성
 

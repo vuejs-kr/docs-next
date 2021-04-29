@@ -20,14 +20,14 @@ badges:
 이전에는 다음과 같이 promise를 반환하는 함수로 컴포넌트를 정의하여 비동기 컴포넌트를 만들었습니다.
 
 ```js
-const asyncPage = () => import('./NextPage.vue')
+const asyncModal = () => import('./Modal.vue')
 ```
 
 또는, 옵션을 통하여 컴포넌트 구문을 설정합니다.
 
 ```js
-const asyncPage = {
-  component: () => import('./NextPage.vue'),
+const asyncModal = {
+  component: () => import('./Modal.vue'),
   delay: 200,
   timeout: 3000,
   error: ErrorComponent,
@@ -45,11 +45,11 @@ import ErrorComponent from './components/ErrorComponent.vue'
 import LoadingComponent from './components/LoadingComponent.vue'
 
 // 옵션이 없는 비동기 컴포넌트
-const asyncPage = defineAsyncComponent(() => import('./NextPage.vue'))
+const asyncModal = defineAsyncComponent(() => import('./Modal.vue'))
 
 // 옵션이 있는 비동기 컴포넌트
-const asyncPageWithOptions = defineAsyncComponent({
-  loader: () => import('./NextPage.vue'),
+const asyncModalWithOptions = defineAsyncComponent({
+  loader: () => import('./Modal.vue'),
   delay: 200,
   timeout: 3000,
   errorComponent: ErrorComponent,
@@ -57,13 +57,19 @@ const asyncPageWithOptions = defineAsyncComponent({
 })
 ```
 
+
+::: tip NOTE
+Vue Router 는 라우팅 대상 컴포넌트를 비동기적으로 읽어 오는 유사한 메커니즘인 *지연된 로딩* 을 제공합니다. 이런 유사성은 있지만 Vue의 비동기 컴포넌트와는 차이가 있습니다. Vue Router에서는 `defineAsyncComponent` 함수를 사용할수 **없습니다**. 더 자세한 내용은 [Lazy Loading Routes](https://next.router.vuejs.org/guide/advanced/lazy-loading.html)을 읽어 보세요.
+:::
+
+
 2.x에서 추가된 또 하나의 변화는 컴포넌트(`component`)를 직접 제공 할 수 없는 것을 정확하게 전달하기 위해 컴포넌트 옵션의 이름이 로더(`loader`)로 변경된 것입니다.
 
 ```js{4}
 import { defineAsyncComponent } from 'vue'
 
-const asyncPageWithOptions = defineAsyncComponent({
-  loader: () => import('./NextPage.vue'),
+const asyncModalWithOptions = defineAsyncComponent({
+  loader: () => import('./Modal.vue'),
   delay: 200,
   timeout: 3000,
   error: ErrorComponent,

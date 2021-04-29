@@ -300,7 +300,7 @@ Vue.component('my-special-transition', {
 })
 ```
 
-[함수형 컴포넌트](render-function.html#Functional-Components)는 특히 이 작업에 적합합니다.
+[함수형 컴포넌트](render-function.html#functional-components)는 특히 이 작업에 적합합니다.
 
 ```js
 Vue.component('my-special-transition', {

@@ -134,9 +134,9 @@ return Vue.h('h1', {}, this.blogTitle)
 ```js
 // @returns {VNode}
 h(
-  // {String | Object | Function } tag
-  // An HTML tag name, a component or an async component.
-  // Using function returning null would render a comment.
+  // {String | Object | Function} tag
+  // An HTML tag name, a component, an async component, or a
+  // functional component.
   //
   // Required.
   'div',
@@ -300,7 +300,7 @@ render() {
 
 예시:
 
-```javascript
+```js
 render() {
   return Vue.h('input', {
     onClickCapture: this.doThisInCapturingMode,
@@ -379,6 +379,33 @@ render() {
 }
 ```
 
+## 렌더 함수의 리턴 값들
+지금까지 예제에서 `render`함수는 단일 루트를 가지는 VNode를 반환해 왔습니다. 하지만 다른 대안이 있습니다. 
+
+문자열을 반환하면 엘리먼트로 감싸지 않고 그냥 텍스트 노드를 생성합니다. 
+
+```js
+render() {
+  return 'Hello world!'
+}
+```
+
+여러 자식 요소를 가지는 배열을 반환하면, 단일 루트 노드가 아닌 프래그먼트를 만들어 냅니다. 
+
+```js
+// Equivalent to a template of `Hello<br>world!`
+render() {
+  return [
+    'Hello',
+    h('br'),
+    'world!'
+  ]
+}
+```
+
+컴포넌트가 아무것도 만들지는 않지만, 다른 작업(데이터 로딩등)을 해야한다면, `null`을 반환하면 됩니다. 그러면 DOM 상에서 주석으로 렌더링됩니다. de in the DOM.
+
+
 ## JSX
 
 `render` 함수 안에서 많은 코드를 작성해야 한다면 좀 고통스러울수 있습니다.
@@ -418,6 +445,35 @@ app.mount('#demo')
 ```
 
 JSX가 JavaScript에 매핑하는 방법에 대한 자세한 내용은 [사용 문서](https://github.com/vuejs/jsx-next#installation) 를 참조하십시오.
+
+
+
+## 함수 컴포넌트(Functional Components)
+
+함수 컴포넌트는 어떤 상태(State)도 가지지 않는 컴포넌트 유형입니다. 컴포넌트 인스턴스를 생성하지 않고 단지 렌더링만 수행합니다. 따라서 컴포넌트 생명주기를 무시합니다. 
+
+함수 컴포넌트를 만들기 위해서는 객체가 아닌 함수를 사용하면 됩니다. 이렇게 제공된 함수는 컴포넌트를 위한 `render` 함수로 사용됩니다. 함수형 컴포넌트에는  `this`가 없기 때문에 Vue는 `props` 을 첫번째 인자로 넘겨줍니다. 
+
+```js
+const FunctionalComponent = (props, context) => {
+  // ...
+}
+```
+
+두번쨰 인자 `context`는 `attrs`, `emit`,  `slots` 속성을 가집니다. 각각 컴포넌트 인스턴스의  [`$attrs`](/api/instance-properties.html#attrs), [`$emit`](/api/instance-methods.html#emit),  [`$slots`](/api/instance-properties.html#slots) 와 동일합니다. 
+
+대부분의 설정 옵션을 함수형 컴포넌트에 제공되지 않습니다. 하지만 [`props`](/api/options-data.html#props)나 [`emits`](/api/options-data.html#emits)를 속성으로 지정하는 것은 가능합니다. 
+
+```js
+FunctionalComponent.props = ['value']
+FunctionalComponent.emits = ['click']
+```
+
+만약 `props` 옵션이 지정되지 않으면, `attrs` 처점  모든 속성을 가직 `props` 객체가 넘겨집니다. `props`옵션이 지정되지 않으면 속성명을 카멜 케이스로 노말라이즈 하지 않습니다. 
+
+함수형 컴포넌트는 일반 컴포넌트처럼 등록되고 사용할수 있습니다. If you pass a function as the first argument to `h`, it will be treated as a functional component.
+
+
 
 ## 템플릿 컴파일
 
