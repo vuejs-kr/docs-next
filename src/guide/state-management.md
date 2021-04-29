@@ -13,17 +13,19 @@
 때때로 Vue 애플리케이션에서 가장 근본이 되는 것은 반응형 `data` 객체임을 지나치곤 합니다. 컴포넌트 인스턴스는 단지 해당 객체로의 접근을 프록시 처리할 뿐입니다. 그러므로 여러 인스턴스에서 상태를 공유해야 하는 경우, 아래와 같이 [reactive](/ko-KR/guide/reactivity-fundamentals.html#declaring-reactive-state) 메서드를 사용하여 객체를 반응형으로 만들 수 있습니다.
 
 ```js
-const sourceOfTruth = Vue.reactive({
+const { createApp, reactive } = Vue
+
+const sourceOfTruth = reactive({
   message: 'Hello'
 })
 
-const appA = Vue.createApp({
+const appA = createApp({
   data() {
     return sourceOfTruth
   }
 }).mount('#app-a')
 
-const appB = Vue.createApp({
+const appB = createApp({
   data() {
     return sourceOfTruth
   }
@@ -39,7 +41,7 @@ const appB = Vue.createApp({
 이제 `sourceOfTruth`가 변경될 때마다 `appA`와 `appB` 모두 자동으로 화면을 갱신합니다. 우리는 지금 단일 소스를 갖고 있지만, 디버깅은 악몽 같을 것입니다. 언제든지 앱의 일부에서 흔적을 남기지 않은 채로 데이터를 변경할 수 있기 때문입니다.
 
 ```js
-const appB = Vue.createApp({
+const appB = createApp({
   data() {
     return sourceOfTruth
   },
@@ -55,7 +57,7 @@ const appB = Vue.createApp({
 const store = {
   debug: true,
 
-  state: Vue.reactive({
+  state: reactive({
     message: 'Hello!'
   }),
 
@@ -88,7 +90,7 @@ const store = {
 ```
 
 ```js
-const appA = Vue.createApp({
+const appA = createApp({
   data() {
     return {
       privateState: {},
@@ -100,7 +102,7 @@ const appA = Vue.createApp({
   }
 }).mount('#app-a')
 
-const appB = Vue.createApp({
+const appB = createApp({
   data() {
     return {
       privateState: {},

@@ -39,9 +39,10 @@
 대규모 애플리케이션에서는 앱을 더 작은 청크로 나누고 필요할 때만 서버에서 컴포넌트를 로드하도록 할 수 있습니다. 이러한 작업을 위해서 Vue에는 `defineAsyncComponent`메소드가 있습니다:
 
 ```js
-const app = Vue.createApp({})
+const { createApp, defineAsyncComponent } = Vue
+const app = createApp({})
 
-const AsyncComp = Vue.defineAsyncComponent(
+const AsyncComp = defineAsyncComponent(
   () =>
     new Promise((resolve, reject) => {
       resolve({

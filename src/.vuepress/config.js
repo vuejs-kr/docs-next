@@ -58,6 +58,16 @@ const sidebar = {
       title: '재사용성 & 컴포지션',
       collapsable: false,
       children: [
+        {
+          title: '컴포지션 API',
+          children: [
+            '/guide/composition-api-introduction',
+            '/guide/composition-api-setup',
+            '/guide/composition-api-lifecycle-hooks',
+            '/guide/composition-api-provide-inject',
+            '/guide/composition-api-template-refs'
+          ]
+        },
         '/guide/mixins',
         '/guide/custom-directive',
         '/guide/teleport',
@@ -194,15 +204,19 @@ const sidebar = {
         '/guide/migration/key-attribute',
         '/guide/migration/keycode-modifiers',
         '/guide/migration/listeners-removed',
+        '/guide/migration/mount-changes',
+        '/guide/migration/props-data',
         '/guide/migration/props-default-this',
         '/guide/migration/render-function-api',
         '/guide/migration/slots-unification',
+        '/guide/migration/suspense',
         '/guide/migration/transition',
         '/guide/migration/transition-group',
         '/guide/migration/v-on-native-modifier-removed',
         '/guide/migration/v-model',
         '/guide/migration/v-if-v-for',
         '/guide/migration/v-bind',
+        '/guide/migration/vnode-lifecycle-events',
         '/guide/migration/watch'
       ]
     }
@@ -405,8 +419,8 @@ module.exports = {
             ]
           }
         ],
-        
-        repo: 'narusas/docs-next',
+
+        repo: 'vuejs-kr/docs-next',
         editLinks: false,
         editLinkText: 'Edit this on GitHub!',
         lastUpdated: 'Last updated',
@@ -547,9 +561,9 @@ module.exports = {
               }
             ]
           },
-          
+
         ],
-        repo: 'narusas/docs-next',
+        repo: 'vuejs-kr/docs-next',
         editLinks: false,
         editLinkText: 'Edit this on GitHub!',
         lastUpdated: 'Last updated',
@@ -573,9 +587,25 @@ module.exports = {
 
     },
 
+    topBanner: true
 
   },
   plugins: [
+    [
+      '@vuepress/last-updated',
+      {
+        transformer(timestamp) {
+          const date = new Date(timestamp)
+
+          const digits = [
+            date.getUTCFullYear(), date.getUTCMonth() + 1, date.getUTCDate(),
+            date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds()
+          ].map(num => String(num).padStart(2, '0'))
+
+          return '{0}-{1}-{2}, {3}:{4}:{5} UTC'.replace(/{(\d)}/g, (_, num) => digits[num])
+        }
+      }
+    ],
     [
       '@vuepress/pwa',
       {
@@ -596,8 +626,7 @@ module.exports = {
           `<div class="custom-block info"><p class="custom-block-title">${info}</p>`,
         after: '</div>'
       }
-    ],
-    '@vuepress/html-redirect' 
+    ]
   ],
   markdown: {
     lineNumbers: true,

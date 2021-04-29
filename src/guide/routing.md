@@ -9,6 +9,8 @@
 매우 단순한 라우팅만 필요하고 완전한 기능을 갖춘 라우터 라이브러리를 사용하지 않으려면 다음과 같이 페이지 수준 컴포넌트를 동적으로 렌더링하면 됩니다.
 
 ```js
+const { createApp, h } = Vue
+
 const NotFoundComponent = { template: '<p>Page not found</p>' }
 const HomeComponent = { template: '<p>Home page</p>' }
 const AboutComponent = { template: '<p>About page</p>' }
@@ -30,11 +32,11 @@ const SimpleRouter = {
   },
 
   render() {
-    return Vue.h(this.CurrentComponent)
+    return h(this.CurrentComponent)
   }
 }
 
-Vue.createApp(SimpleRouter).mount('#app')
+createApp(SimpleRouter).mount('#app')
 ```
 
 [History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API/Working_with_the_History_API)와 결합하면 매우 기본적이면서도 완전한 기능을 갖춘 클라이언트측 라우터를 구축할 수 있습니다. 실제로 이를 확인하려면, [예제 앱](https://github.com/phanan/vue-3.0-simple-routing-example)을 확인하십시오.

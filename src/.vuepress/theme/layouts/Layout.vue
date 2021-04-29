@@ -5,11 +5,8 @@
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
   >
-    <VueMasteryBanner
-      v-if="isBannerOpen"
-      @close-banner="closeBanner"
-      ref="vueMasteryBanner"
-    />
+    <BannerTop v-if="showTopBanner" @close="closeBannerTop" />
+
     <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar" />
 
     <div class="sidebar-mask" @click="toggleSidebar(false)" />
@@ -53,9 +50,9 @@ import Home from '@theme/components/Home.vue'
 import Navbar from '@theme/components/Navbar.vue'
 import Page from '@theme/components/Page.vue'
 import Sidebar from '@theme/components/Sidebar.vue'
-import VueMasteryBanner from '@theme/components/sponsors/VueMasteryBanner.vue'
 import BuySellAds from '@theme/components/BuySellAds.vue'
 import CarbonAds from '@theme/components/CarbonAds.vue'
+import BannerTop from '@theme/components/BannerTop.vue'
 import { resolveSidebarItems } from '../util'
 
 export default {
@@ -66,18 +63,15 @@ export default {
     Page,
     Sidebar,
     Navbar,
-    VueMasteryBanner,
+    BannerTop,
     BuySellAds,
     CarbonAds
   },
 
   data() {
     return {
-      isSidebarOpen: false,
-      isBannerOpen: false,
-      isMenuFixed: false,
-      nameStorage: 'vuemastery-free-weekend-2021-banner',
-      menuPosition: 0
+      showTopBanner: false,
+      isSidebarOpen: false
     }
   },
 
@@ -122,8 +116,7 @@ export default {
           'no-navbar': !this.shouldShowNavbar,
           'sidebar-open': this.isSidebarOpen,
           'no-sidebar': !this.shouldShowSidebar,
-          'vuemastery-menu-fixed': this.isMenuFixed,
-          'vuemastery-promo': this.isBannerOpen
+          'has-top-banner': this.showTopBanner
         },
         userPageClass
       ]
@@ -139,15 +132,15 @@ export default {
       this.isSidebarOpen = false
     })
 
-    this.isBannerOpen = !localStorage.getItem(this.nameStorage)
-
-    // Load component according to user preferences
-    if (this.isBannerOpen) {
-      this.$nextTick(this.initBanner)
-    }
+    this.showTopBanner = !localStorage.getItem('VS_OFFER_BANNER_CLOSED')
   },
 
   methods: {
+    closeBannerTop () {
+      this.showTopBanner = false
+      localStorage.setItem('VS_OFFER_BANNER_CLOSED', 1)
+    },
+
     toggleSidebar(to) {
       this.isSidebarOpen = typeof to === 'boolean' ? to : !this.isSidebarOpen
       this.$emit('toggle-sidebar', this.isSidebarOpen)
@@ -171,52 +164,6 @@ export default {
           this.toggleSidebar(false)
         }
       }
-    },
-
-    //  Vue Mastery Banner
-    initBanner() {
-      // Add event listeners
-      this.toggleBannerEvents(true)
-      // Get the menu position
-      this.getMenuPosition()
-      // Check current page offset position
-      this.isMenuFixed = this.isUnderBanner()
-    },
-
-    closeBanner(e) {
-      // Remove events
-      this.toggleBannerEvents(false)
-      // Hide the banner
-      this.isBannerOpen = false
-      // Save action in the local storage
-      localStorage.setItem(this.nameStorage, true)
-    },
-
-    getMenuPosition() {
-      this.menuPosition = this.$refs.vueMasteryBanner.$el.clientHeight
-    },
-
-    isUnderBanner() {
-      return window.pageYOffset > this.menuPosition
-    },
-
-    fixMenuAfterBanner() {
-      if (this.isUnderBanner()) {
-        if (!this.isMenuFixed) {
-          // The menu will be fixed
-          this.isMenuFixed = true
-        }
-      } else if (this.isMenuFixed) {
-        // The menu stay under the banner
-        this.isMenuFixed = false
-      }
-    },
-
-    toggleBannerEvents(on) {
-      // Add or remove event listerners attached to the DOM
-      let method = on ? 'addEventListener' : 'removeEventListener'
-      window[method]('resize', this.getMenuPosition)
-      window[method]('scroll', this.fixMenuAfterBanner)
     }
   }
 }
