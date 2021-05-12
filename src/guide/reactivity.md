@@ -5,12 +5,10 @@
 ## 반응성(reactivity)이란?
 반응성은 최근 프로그래밍 트렌드에서 주요하게 다루어지는 용어입니다. 그럼 이 반응성이란 무엇을 의미할까요? 반응성이란 "변경"에 대한 제어를 선언적으로 수행하는 프로그래밍 패러다임입니다. 이 반응성을 잘 보여주는 사례는 여러분도 잘 알고 계실 Excel 스프레드 시트입니다.
 
-```html
 <video width="550" height="400" controls>
   <source src="/images/reactivity-spreadsheet.mp4" type="video/mp4">
-  Your browser does not support the video tag.
+  Video 태그를 지원하지 않는 브라우저입니다.
 </video>
-```
 
 비디오를 보시면, 첫 번째 셀에 숫자 2를, 두 번째 셀에 숫자 3을 입력하고 SUM을 요청하면, 스프레드시트가 결과를 제공합니다. 계산기 프로그램이니 당연하겠지요. 그러나 첫 번째 숫자를 변경하면, SUM 결과 값도 자동적으로 변경됩니다.
 
