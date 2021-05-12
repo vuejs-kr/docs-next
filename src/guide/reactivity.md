@@ -181,7 +181,7 @@ const handler = {
 
 ### Proxy vs. original identity
 
-Proxy를 사용하면 다음 사항에 유의해야할 새로운 주의사항이 있습니다: proxy된 객체는 identity 비교(`===`)측면에서 원래의 객체와 동일하지 않습니다. 예를들면:
+Proxy를 사용하면 다음 사항에 유의해야할 새로운 주의사항이 있습니다: proxy된 객체는 identity comparisons(`===`)측면에서 원래의 객체와 동일하지 않습니다. 예를들면:
 
 ```js
 const obj = {}
@@ -190,9 +190,9 @@ const wrapped = new Proxy(obj, handlers)
 console.log(obj === wrapped) // false
 ```
 
-원본 버전과 래핑(wrap)된 버전은 대부분의 경우 동일하게 작동하지만, 강력한 identity comparisions에 의존하는 `.filter()` or `.map()`같은 작업은 실패할 것입니다. 모든 반응형 상태가 `this`에서 접근되고, 이미 Proxy임을 보장하기 때문에, 옵션 API를 사용할 때는 이 경고가 나타나지 않을 것입니다.
+원본 버전과 래핑(wrap)된 버전은 대부분의 경우 동일하게 작동하지만, 강력한 identity comparisons에 의존하는 `.filter()` or `.map()`같은 작업은 실패할 것입니다. 모든 반응형 상태가 `this`에서 접근되고, 이미 Proxy임을 보장하기 때문에, 옵션 API를 사용할 때는 이 경고가 나타나지 않을 것입니다.
 
-그러나 Composition API를 사용하여 반응성 객체를 명시적으로 만들 때 가장 좋은 방법은 원래 원시 객체에 대한 참조를 가지지 않고 반응형 버전으로만 작업하는 것입니다:
+따라서 반응성 객체를 명시적으로 만들 때 가장 좋은 방법은 원래 원시 객체에 대한 참조를 가지지 않고 Composition API를 사용하여 반응형 버전으로만 작업하는 것입니다:
 
 ```js
 const obj = reactive({
