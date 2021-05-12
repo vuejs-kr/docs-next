@@ -87,16 +87,6 @@ const sidebar = {
             '/guide/reactivity-computed-watchers'
           ]
         },
-        {
-          title: '컴포지션 API',
-          children: [
-            '/guide/composition-api-introduction',
-            '/guide/composition-api-setup',
-            '/guide/composition-api-lifecycle-hooks',
-            '/guide/composition-api-provide-inject',
-            '/guide/composition-api-template-refs'
-          ]
-        },
         '/guide/optimizations',
         '/guide/change-detection'
       ]
