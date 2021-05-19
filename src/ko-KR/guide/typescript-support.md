@@ -1,10 +1,10 @@
 # TypeScript 지원
 
-> [Vue CLI](https://cli.vuejs.org)는 TypeScript 도구화 지원을 포함하여 제공됩니다.
+> [Vue CLI](https://cli.vuejs.org)는 TypeScript 도구화 지원을 기본으로 제공합니다
 
-## NPM 패키지 공식 선언
+## NPM 패키지의 공식 선언
 
-정적 타입 시스템은 어플리케이션이 증가함에 따라 잠재적인 런타임 오류를 방지하는데 도움이 될 수 있습니다. 이것이 바로 Vue 3이 TypeScript로 작성된 이유입니다. 이것은 Vue와 함께 TypeScript를 사용하기 위해 추가 도구가 필요하지 않다는 것을 의미합니다.
+Vue 3가 TypeScript로 작성된 이유는 정적 타입 시스템은 애플리케이션의 규모가 커지면서 발생하는 잠재적인 런타임 오류를 예방 할 수 있습니다. TypeScript는 일급 객체를 지원하고, Vue에서 TypeScript를 사용하기 위해 추가적인 툴은 필요하지 않습니다.
 
 ## 권장 설정
 
@@ -22,7 +22,7 @@
 }
 ```
 
-component 메소드에서 `this`의 타입 체크를 활용하려면 `strict: true` (또는 최소한 `strict` 플래그의 일부인 `noImplicitThis: true`)를 포함해야합니다. 그렇지 않으면 항상 `any`  타입으로 처리됩니다.
+컴포넌트 메소드에서 `this`의 타입 체크를 활용하려면 `strict: true` (또는 최소한 `strict` 플래그의 일부인 `noImplicitThis: true`)를 포함해야합니다. 그렇지 않으면 항상 `any` 타입으로 처리됩니다.
 
 [TypeScript compiler options docs](https://www.typescriptlang.org/docs/handbook/compiler-options.html)에서 자세한 내용을 확인하세요
 
@@ -33,13 +33,13 @@ component 메소드에서 `this`의 타입 체크를 활용하려면 `strict: tr
 [Vue CLI](https://github.com/vuejs/vue-cli)는 TypeScript를 사용하여 새로운 프로젝트를 생성할 수 있습니다. 시작하려면:
 
 ```bash
-# 1. Install Vue CLI, if it's not already installed
+# 1. CLI가 설치되어 있지 않다면, 설치해주세요
 npm install --global @vue/cli
 
-# 2. Create a new project, then choose the "Manually select features" option
+# 2. "Manually select features" 옵션을 선택하여 새로운 프로젝트를 생성해주세요
 vue create my-project-name
 
-# If you already have a Vue CLI project without TypeScript, please add a proper Vue CLI plugin:
+# 이미 TypeScript가 설치되어 있지 않은 Vue CLI 프로젝트가 있다면 다음과 같은 플러그인을 추가해주세요
 vue add typescript
 ```
 
@@ -53,13 +53,13 @@ vue add typescript
 
 ### 에디터 서포트
 
-TypeScript를 이용해 Vue를 개발한다면, TypeScript를 위한 기본적인 기능을 지원하는 [Visual Studio Code](https://code.visualstudio.com/)를 강력하게 권장합니다. [싱글 파일 컴포넌트](./single-file-components.html)(SFCs)를 사용하는 경우  [Vetur extension](https://github.com/vuejs/vetur)를 사용해보세요. 싱글 파일 컴포넌트 내부 및 기타 여러가지 기능에서 TypeScript 추론을 제공합니다.
+TypeScript를 이용해 Vue를 개발한다면, TypeScript를 위한 기본적인 기능을 지원하는 [Visual Studio Code](https://code.visualstudio.com/)를 권장합니다. [싱글 파일 컴포넌트](./single-file-components.html)(SFCs)를 사용하는 경우  [Vetur extension](https://github.com/vuejs/vetur)를 사용해보세요. 싱글 파일 컴포넌트 내부 및 기타 여러가지 기능에서 TypeScript 추론을 제공합니다.
 
 또한 [WebStorm](https://www.jetbrains.com/webstorm/)도 TypeScript와 Vue를 위한 기본적인 기능을 제공합니다.
 
 ## Vue components 정의
 
-TypeScript에서 Vue component내의 타입을 올바르게 추론하려면, 전역 메서드 `defineComponent`를 통해 component를 정의 해야합니다:
+TypeScript에서 Vue component내의 타입을 올바르게 추론하려면, 전역 메소드 `defineComponent`를 통해 component를 정의 해야합니다:
 
 ```ts
 import { defineComponent } from 'vue'
@@ -71,7 +71,7 @@ const Component = defineComponent({
 
 ## Options API와 함께 사용하기
 
-TypeScript는 타입을 명시적으로 정의하지 않고도 대부분의 타입을 추론할 수 있어야 합니다. 예를들어, `count` 프로퍼티를 가진 component가 있는 경우, 문자열 관련 메서드를 호출하려고 하면 에러가 발생합니다:
+TypeScript는 타입을 명시적으로 정의하지 않고도 대부분의 타입을 추론할 수 있어야 합니다. 예를들어, `count` 프로퍼티를 가진 컴포넌트가 있는 경우, 문자열 관련 메소드를 호출하려고 하면 에러가 발생합니다:
 
 ```ts
 const Component = defineComponent({
@@ -110,7 +110,7 @@ const Component = defineComponent({
 
 ### 반환 타입 어노테이팅
 
-Vue의 선언 파일의 순환 특성(circular nature)때문에 TypeScript는 computed를 추론하는데 어려움을 겪을 수 있습니다. 이러한 이유로 computed 속성의 반환 유형에 주석을 추가해야합니다.
+Vue의 선언 파일의 순환 특성(circular nature)때문에 TypeScript는 computed를 추론하는데 어려움을 겪을 수 있습니다. 이러한 이유로 computed 속성의 반환 타입에 어노테이팅을 추가해야 합니다.
 
 ```ts
 import { defineComponent } from 'vue'
@@ -170,11 +170,11 @@ const Component = defineComponent({
 })
 ```
 
-validator가 타입 추론을 하지 못하거나 멤버 자동완성이 효과가 없는 경우, 전달인자에 예상되는 타입을 어노테이팅 하는 것이 문제를 해결하는 데 도움이 될 수 있습니다.
+validator가 타입 추론을 하지 못하거나 멤버 자동완성이 효과가 없는 경우, 전달인자에 예상되는 타입을 어노테이팅 하는 것은 문제를 해결하는 데 도움이 될 수 있습니다.
 
 ## Composition API와 함께 사용하기
 
-`setup()` 함수에서 `props` component 옵션의 타입을 추론 하기 때문에 `props` 파라미터에 입력 할 필요가 없습니다.
+`setup()` 함수에서 컴포넌트 옵션 `props`의 타입을 추론 하기 때문에 `props` 파라미터에 타입을 입력 할 필요가 없습니다.
 
 ```ts
 import { defineComponent } from 'vue'
@@ -194,9 +194,9 @@ const Component = defineComponent({
 })
 ```
 
-### `ref`s 작성
+### `refs` 작성
 
-Refs는 초기 값에서 타입을 추론합니다:
+Refs는 초기 값에서 다음과 같이 타입을 추론합니다.
 
 ```ts
 import { defineComponent, ref } from 'vue'
@@ -210,7 +210,7 @@ const Component = defineComponent({
 })
 ```
 
-때때로 우리는 ref의 내부 값을 복잡한 유형을 정해야할 수도 있습니다. ref를 호출하여 기본적인 추론을 재정의할 때, 단순히 일반적인 전달인자를 전달하여 이를 수행할 수 있습니다.
+가끔 ref's의 내부 값을 복잡한 타입으로 정해야할 수도 있습니다. 기본 추론을 재정의를 위해 ref를 호출할 때 제너릭 전달인자를 사용하면 간단합니다.
 
 ```ts
 const year = ref<string | number>('2020') // year's type: Ref<string | number>
@@ -248,7 +248,7 @@ export default defineComponent({
 
 ### `computed` 작성
 
-Computed 값들은 반환된 값에서 자동으로 타입을 추론합니다.
+computed 값들은 반환된 값에서 자동으로 타입을 추론합니다.
 
 ```ts
 import { defineComponent, ref, computed } from 'vue'
