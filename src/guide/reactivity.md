@@ -5,12 +5,10 @@
 ## 반응성(reactivity)이란?
 반응성은 최근 프로그래밍 트렌드에서 주요하게 다루어지는 용어입니다. 그럼 이 반응성이란 무엇을 의미할까요? 반응성이란 "변경"에 대한 제어를 선언적으로 수행하는 프로그래밍 패러다임입니다. 이 반응성을 잘 보여주는 사례는 여러분도 잘 알고 계실 Excel 스프레드 시트입니다.
 
-```html
 <video width="550" height="400" controls>
   <source src="/images/reactivity-spreadsheet.mp4" type="video/mp4">
-  Your browser does not support the video tag.
+  Video 태그를 지원하지 않는 브라우저입니다.
 </video>
-```
 
 비디오를 보시면, 첫 번째 셀에 숫자 2를, 두 번째 셀에 숫자 3을 입력하고 SUM을 요청하면, 스프레드시트가 결과를 제공합니다. 계산기 프로그램이니 당연하겠지요. 그러나 첫 번째 숫자를 변경하면, SUM 결과 값도 자동적으로 변경됩니다.
 
@@ -154,7 +152,7 @@ console.log(proxy.meal)
 
 몇 단락 전의 이 목록을 기억하십니까? 이제 Vue가 이러한 변경 사항을 처리하는 방법에 대한 답변이 있습니다:
 
-- <strike>다음 값 중 하나에 변화가 있는지 감지합니다</strike>: Proxy가 이를 가로챌 수 있도록 허용하므로, 더 이상이 작업을 수행할 필요가 없습니다.
+- **다음 값 중 하나에 변화가 있는지 감지합니다**: Proxy가 이를 가로챌 수 있도록 허용하므로, 더 이상이 작업을 수행할 필요가 없습니다.
 - **변경하는 함수 추적하기**(현재 effect를 track합니다): proxy 내 getter에서 이 `effect`라 불리우는 작업을 수행합니다.<br>([역주] Get 속성에서는 현재의 effect를 track합니다.)
 - **최종 값을 업데이트할 수 있도록 함수를 트리거합니다**: proxy 내 setter에서 `trigger`라 불리우는 작업을 수행합니다.<br>([역주] Set 속성에서는 이 속성에서 추적되고있는 종속성 즉, effect들을 trigger합니다.)
 
@@ -183,7 +181,7 @@ const handler = {
 
 ### Proxy vs. original identity
 
-Proxy를 사용하면 다음 사항에 유의해야할 새로운 주의사항이 있습니다: proxy된 객체는 identity 비교(`===`)측면에서 원래의 객체와 동일하지 않습니다. 예를들면:
+Proxy를 사용하면 다음 사항에 유의해야할 새로운 주의사항이 있습니다: proxy된 객체는 identity comparisons(`===`)측면에서 원래의 객체와 동일하지 않습니다. 예를들면:
 
 ```js
 const obj = {}
@@ -192,9 +190,9 @@ const wrapped = new Proxy(obj, handlers)
 console.log(obj === wrapped) // false
 ```
 
-원본 버전과 래핑(wrap)된 버전은 대부분의 경우 동일하게 작동하지만, 강력한 identity comparisions에 의존하는 `.filter()` or `.map()`같은 작업은 실패할 것입니다. 모든 반응형 상태가 `this`에서 접근되고, 이미 Proxy임을 보장하기 때문에, 옵션 API를 사용할 때는 이 경고가 나타나지 않을 것입니다.
+원본 버전과 래핑(wrap)된 버전은 대부분의 경우 동일하게 작동하지만, 강력한 identity comparisons에 의존하는 `.filter()` or `.map()`같은 작업은 실패할 것입니다. 모든 반응형 상태가 `this`에서 접근되고, 이미 Proxy임을 보장하기 때문에, 옵션 API를 사용할 때는 이 경고가 나타나지 않을 것입니다.
 
-그러나 Composition API를 사용하여 반응성 객체를 명시적으로 만들 때 가장 좋은 방법은 원래 원시 객체에 대한 참조를 가지지 않고 반응형 버전으로만 작업하는 것입니다:
+따라서 반응성 객체를 명시적으로 만들 때 가장 좋은 방법은 원래 원시 객체에 대한 참조를 가지지 않고 Composition API를 사용하여 반응형 버전으로만 작업하는 것입니다:
 
 ```js
 const obj = reactive({
@@ -202,9 +200,9 @@ const obj = reactive({
 }) // no reference to original
 ```
 
-This ensures that both equality comparisons and reactivity behave as expected.
+이렇게 하면 identity comparisons 및 반응형 모두 예상대로 작동하게 됩니다.
 
-Note that Vue does not wrap primitive values such as numbers or strings in a Proxy, so you can still use `===` directly with those values:
+참고로 Vue는 Proxy를 이용해 숫자나 문자열과 같은 원시 값(primitive values)을 래핑하지 않으므로, `===` 를 직접 사용할 수 있습니다:
 
 ```js
 const obj = reactive({
@@ -216,19 +214,12 @@ console.log(obj.count === 0) // true
 
 ## 어떻게 변경에 대응하여 렌더링 되는가
 
-컴포넌트의 템플릿은 컴파일 되어 [`render`](/guide/render-function.html) 함수로 만들어 집니다. `render` 함수는 [VNodes](/guide/render-function.html#the-virtual-dom-tree) 를 만들어 내고, VNNodes들은 컴포넌트가 어떻게 렌더링 될지를 기술합니다. Vue는 실행중에 "영향을 받은(touched)" 속성이 변경되는 것을 추적하여 반영하게 됩니다. 
+컴포넌트의 템플릿은 컴파일 되어 [`render`](/guide/render-function.html) 함수로 만들어 집니다. `render` 함수는 [VNodes](/guide/render-function.html#가상-dom-트리) 를 만들어 내고, VNNodes들은 컴포넌트가 어떻게 렌더링 될지를 기술합니다. Vue는 실행중에 "영향을 받은(touched)" 속성이 변경되는 것을 추적하여 반영하게 됩니다.
 
-`render` 함수는 개념적으로 `computed` 속성과 유사합니다. Vue는 의존성을 정확하게 추적하는게 아니라, 해당 함수들이 실행하며 접근했던 의존성만을 추적하게 됩니다. 이렇게 추적된 의존하는 속성들이 변경되면 `render` 함수도 다시 실행되어 새로운 VNodes 를 만들어 냅니다. 
-
-The template for a component is compiled down into a [`render`](/guide/render-function.html) function. The `render` function creates the [VNodes](/guide/render-function.html#the-virtual-dom-tree) that describe how the component should be rendered. It is wrapped in an effect, allowing Vue to track the properties that are 'touched' while it is running.
-
-A `render` function is conceptually very similar to a `computed` property. Vue doesn't track exactly how dependencies are used, it only knows that they were used at some point while the function was running. If any of those properties subsequently changes, it will trigger the effect to run again, re-running the `render` function to generate new VNodes. These are then used to make the necessary changes to the DOM.
+`render` 함수는 개념적으로 `computed` 속성과 유사합니다. Vue는 의존성을 정확하게 추적하는게 아니라, 해당 함수들이 실행하며 접근했던 의존성만을 추적하게 됩니다. 이렇게 추적된 의존하는 속성들이 변경되면 `render` 함수도 다시 실행되어 새로운 VNodes 를 만들어 냅니다. 이렇게 만들어진 새로운 VNodes는 변경 사항들을 DOM에 업데이트 하는 데 사용됩니다.
 
 <div class="reactivecontent">
   <common-codepen-snippet title="Second Reactivity with Proxies in Vue 3 Explainer" slug="wvgqyJK" tab="result" theme="light" :height="500" :editable="false" :preview="false" />
 </div>
 
-
 > Vue 2.x 이하를 사용하는 경우 해당 버전에 존재하는 변경 감지 주의사항 중 일부에 관심이 있을 수 있습니다. [여기에서 자세히 살펴보겠습니다](change-detection.md).
-
-
