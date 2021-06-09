@@ -280,7 +280,7 @@ vm.selected.number // => 123
 
 ### `.trim`
 
-사용자 입력이 자동으로 숫자로 형변환 되기를 원하면, `v-model`이 관리하는 input에 `number` 수식어를 추가하면 됩니다.
+사용자가 입력한 내용에서 자동으로 앞뒤 공백을 제거하는 트림처리가 되길 바란다면, `v-model`이 관리하는 input에 `trim` 수식어를 추가하면 됩니다.
 
 ```html
 <input v-model.trim="msg" />
@@ -288,6 +288,6 @@ vm.selected.number // => 123
 
 ## 컴포넌트에서의 `v-model`
 
-> 아직 Vue의 구성 요소에 익숙하지 않다면 지금은 넘어가도 됩니다.
+> 아직 Vue 컴포넌트에 익숙하지 않다면 지금은 넘어가도 됩니다.
 
 HTML의 기본 제공(built-in) input type은 항상 사용자의 요구를 만족시킬 수는 없습니다. 다행히, Vue 컴포넌트는 완전히 사용자 정의된 동작의 재사용 가능한 input을 만들 수 있습니다. 이 input은 `v-model`에도 작동합니다! 자세한 내용은 컴포넌트 가이드의 [사용자 정의 입력](./component-basics.html#using-v-model-on-components)을 참조하십시오.
