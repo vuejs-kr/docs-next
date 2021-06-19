@@ -119,7 +119,7 @@ this.$emit('update:title', newValue)
 <ChildComponent :title="pageTitle" @update:title="pageTitle = $event" />
 ```
 
-![v-bind anatomy](https://github.com/narusas/docs-next/blob/master/images/v-bind-instead-of-sync.png?raw=true)
+![v-bind anatomy](https://v3.vuejs.org/images/v-bind-instead-of-sync.png)
 
 또한 `.sync` 수식어를 대체하는 역할을 하며, 커스텀 컴포넌트에 여러 개의 `v-model`를 가질 수 있습니다.
 
