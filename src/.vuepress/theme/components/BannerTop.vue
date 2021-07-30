@@ -9,10 +9,10 @@
     <div class="vs-core">
       <div class="vs-slogan">
         <div class="vs-slogan-up">
-          LEARN VUE AT VUE SCHOOL
+          VUE SCHOOL에서 VUE를 학습하세요
         </div>
         <div class="vs-slogan-down">
-          Register today and get <strong>20% OFF</strong>
+          오늘 등록하고 <strong>20% 할인</strong> 혜택을 받으세요
         </div>
       </div>
       <div class="vs-button">
