@@ -7,10 +7,10 @@ export default {
   ],
   "special_sponsors": [
     {
-      "url": "https://autocode.com",
-      "img": "autocode.svg",
-      "name": "Autocode",
-      "description": "Build app-to-app workflows and connect APIs"
+      "url": "https://www.dcloud.io/hbuilderx.html?hmsr=vue-en&hmpl=&hmcu=&hmkw=&hmci=",
+      "img": "hbuilder.png",
+      "name": "HBuilder",
+      "description": "An IDE for Vue"
     }
   ],
   "platinum_sponsors": [
@@ -36,8 +36,13 @@ export default {
     },
     {
       "url": "https://www.storyblok.com",
-      "img": "storyblok.png",
+      "img": "storyblok.svg",
       "name": "Storyblok"
+    },
+    {
+      "url": "https://ionicframework.com/vue?utm_source=partner&utm_medium=referral&utm_campaign=vuesponsorship&utm_content=vuedocs",
+      "img": "ionic.png",
+      "name": "Ionic"
     }
   ],
   "gold_sponsors": [

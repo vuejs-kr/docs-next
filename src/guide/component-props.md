@@ -61,6 +61,7 @@ In the two examples above, we happen to pass string values, but _any_ type of va
 
 ```html
 <!-- Including the prop with no value will imply `true`. -->
+<!-- If you don't set is-published's type to Boolean in props, it will be an empty string instead of "true" value. -->
 <blog-post is-published></blog-post>
 
 <!-- Even though `false` is static, we need v-bind to tell Vue that -->
@@ -145,7 +146,7 @@ data() {
 ```js
 props: ['size'],
 computed: {
-  normalizedSize: function () {
+  normalizedSize() {
     return this.size.trim().toLowerCase()
   }
 }
@@ -183,22 +184,22 @@ app.component('my-component', {
       type: Object,
       // Object or array defaults must be returned from
       // a factory function
-      default: function() {
+      default() {
         return { message: 'hello' }
       }
     },
     // Custom validator function
     propF: {
-      validator: function(value) {
+      validator(value) {
         // The value must match one of these strings
-        return ['success', 'warning', 'danger'].indexOf(value) !== -1
+        return ['success', 'warning', 'danger'].includes(value)
       }
     },
     // Function with a default value
     propG: {
       type: Function,
       // Unlike object or array default, this is not a factory function - this is a function to serve as a default value
-      default: function() {
+      default() {
         return 'Default function'
       }
     }

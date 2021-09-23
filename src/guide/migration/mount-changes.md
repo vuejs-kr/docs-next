@@ -89,6 +89,10 @@ app.mount('#app')
 </body>
 ```
 
-## See also
+## Migration Strategy
+
+[Migration build flag: `GLOBAL_MOUNT_CONTAINER`](migration-build.html#compat-configuration)
+
+## See Also
 
 - [`mount` API](/api/application-api.html#mount)

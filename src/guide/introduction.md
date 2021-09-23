@@ -55,7 +55,7 @@ Vue.createApp(Counter).mount('#counter')
 We have already created our very first Vue app! This looks pretty similar to rendering a string template, but Vue has done a lot of work under the hood. The data and the DOM are now linked, and everything is now **reactive**. How do we know? Take a look at the example below where `counter` property increments every second and you will see how rendered DOM changes:
 
 ```js{8-10}
-const CounterApp = {
+const Counter = {
   data() {
     return {
       counter: 0
@@ -300,7 +300,7 @@ app.mount('#todo-list-app')
 
 This is a contrived example, but we have managed to separate our app into two smaller units, and the child is reasonably well-decoupled from the parent via the props interface. We can now further improve our `<todo-item>` component with more complex template and logic without affecting the parent app.
 
-In a large application, it is necessary to divide the whole app into components to make development manageable. We will talk a lot more about components [later in the guide](component-basics.md), but here's an (imaginary) example of what an app's template might look like with components:
+In a large application, it is necessary to divide the whole app into components to make development manageable. We will talk a lot more about components [later in the guide](component-basics.html), but here's an (imaginary) example of what an app's template might look like with components:
 
 ```html
 <div id="app">
@@ -314,15 +314,11 @@ In a large application, it is necessary to divide the whole app into components 
 
 ### Relation to Custom Elements
 
-You may have noticed that Vue components are very similar to **Custom Elements**, which are part of the [Web Components Spec](https://www.w3.org/wiki/WebComponents/). That's because Vue's component syntax is loosely modeled after the spec. For example, Vue components implement the [Slot API](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md) and the `is` special attribute. However, there are a few key differences:
+You may have noticed that Vue components look similar to **Custom Elements**, which are part of the [Web Components Spec](https://www.w3.org/wiki/WebComponents/). Indeed, parts of Vue's component design (for example the slot API) were influenced by the spec before it was natively implemented in browsers.
 
-1. The Web Components Spec has been finalized but is not natively implemented in every browser. Safari 10.1+, Chrome 54+ and Firefox 63+ natively support web components. In comparison, Vue components work consistently in all supported browsers (IE11 with compatibility build and above). When needed, Vue components can also be wrapped inside a native custom element.
+The main difference is that Vue's component model is designed as a part of a coherent framework that provides many additional features necessary for building non-trivial applications, for example reactive templating and state management - both of which the spec does not cover.
 
-[//]: # 'TODO: link to compatibility build'
-
-2. Vue components provide important features that are not available in plain custom elements, most notably cross-component data flow, custom event communication and build tool integrations.
-
-Although Vue doesn't use custom elements internally, it has [great interoperability](https://custom-elements-everywhere.com/#vue) when it comes to consuming or distributing as custom elements. Vue CLI also supports building Vue components that register themselves as native custom elements.
+Vue also provides great support for both consuming and creating custom elements. For more details, check out the [Vue and Web Components](/guide/web-components.html) section.
 
 ## Ready for More?
 

@@ -60,6 +60,8 @@ const app = createApp(
 </div>
 ```
 
+The root props are raw props, much like those passed to [`h`](#h) to create a VNode. In addition to component props, they can also include attributes and event listeners to be applied to the root component.
+
 ### Typing
 
 ```ts
@@ -75,7 +77,7 @@ export type CreateAppFunction<HostElement> = (
 
 ## h
 
-Returns a returns "virtual node", usually abbreviated to **VNode**: a plain object which contains information describing to Vue what kind of node it should render on the page, including descriptions of any child nodes. It is intended for manually written [render functions](../guide/render-function.md):
+Returns a "virtual node", usually abbreviated to **VNode**: a plain object which contains information describing to Vue what kind of node it should render on the page, including descriptions of any child nodes. It is intended for manually written [render functions](../guide/render-function.md):
 
 ```js
 render() {
@@ -93,7 +95,7 @@ Accepts three arguments: `type`, `props` and `children`
 
 - **Details:**
 
-  An HTML tag name, a component or an async component. Using function returning null would render a comment. This parameter is required
+  An HTML tag name, a component, an async component, or a functional component. Using function returning null would render a comment. This parameter is required
 
 #### props
 
@@ -197,7 +199,7 @@ import { defineAsyncComponent } from 'vue'
 
 const AsyncComp = defineAsyncComponent({
   // The factory function
-  loader: () => import('./Foo.vue')
+  loader: () => import('./Foo.vue'),
   // A component to use while the async component is loading
   loadingComponent: LoadingComponent,
   // A component to use if the load fails
@@ -230,6 +232,44 @@ const AsyncComp = defineAsyncComponent({
 ```
 
 **See also**: [Dynamic and Async components](../guide/component-dynamic-async.html)
+
+## defineCustomElement <Badge text="3.2+" />
+
+This method accepts the same argument as [`defineComponent`](#definecomponent), but instead returns a native [Custom Element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) that can be used within any framework, or with no frameworks at all.
+
+Usage example:
+
+```html
+<my-vue-element></my-vue-element>
+```
+
+```js
+import { defineCustomElement } from 'vue'
+
+const MyVueElement = defineCustomElement({
+  // normal Vue component options here
+  props: {},
+  emits: {},
+  template: `...`,
+
+  // defineCustomElement only: CSS to be injected into shadow root
+  styles: [`/* inlined css */`]
+})
+
+// Register the custom element.
+// After registration, all `<my-vue-element>` tags on the page will be upgraded.
+customElements.define('my-vue-element', MyVueElement)
+
+// You can also programmatically instantiate the element:
+// (can only be done after registration)
+document.body.appendChild(
+  new MyVueElement({
+    // initial props (optional)
+  })
+)
+```
+
+For more details on building Web Components with Vue, especially with Single File Components, see [Vue and Web Components](/guide/web-components.html#building-custom-elements-with-vue).
 
 ## resolveComponent
 
@@ -476,10 +516,13 @@ export default {
   inheritAttrs: false,
 
   render() {
-    const props = mergeProps({
-      // The class will be merged with any class from $attrs
-      class: 'active'
-    }, this.$attrs)
+    const props = mergeProps(
+      {
+        // The class will be merged with any class from $attrs
+        class: 'active'
+      },
+      this.$attrs
+    )
 
     return h('div', props)
   }
@@ -499,12 +542,17 @@ Allows CSS modules to be accessed within the [`setup`](/api/composition-api.html
 import { h, useCssModule } from 'vue'
 
 export default {
-  setup () {
+  setup() {
     const style = useCssModule()
 
-    return () => h('div', {
-      class: style.success
-    }, 'Task complete!')
+    return () =>
+      h(
+        'div',
+        {
+          class: style.success
+        },
+        'Task complete!'
+      )
   }
 }
 </script>
@@ -516,7 +564,7 @@ export default {
 </style>
 ```
 
-For more information about using CSS modules, see [Vue Loader - CSS Modules](https://vue-loader.vuejs.org/guide/css-modules.html).
+For more information about using CSS modules, see [SFC Style Features: `<style module>`](/api/sfc-style.html#style-module).
 
 ### Arguments
 
@@ -529,3 +577,21 @@ Accepts one argument: `name`
 - **Details:**
 
   The name of the CSS module. Defaults to `'$style'`.
+
+## version
+
+Provides the installed version of Vue as a string.
+
+```js
+const version = Number(Vue.version.split('.')[0])
+
+if (version === 3) {
+  // Vue 3
+} else if (version === 2) {
+  // Vue 2
+} else {
+  // Unsupported versions of Vue
+}
+```
+
+**See also**: [Application API - version](/api/application-api.html#version)

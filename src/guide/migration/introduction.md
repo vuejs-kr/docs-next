@@ -7,6 +7,7 @@ New to Vue.js? Check out our [Essentials Guide](/guide/introduction.html) to get
 This guide is primarily for users with prior Vue 2 experience who want to learn about the new features and changes in Vue 3. **This is not something you have to read from top to bottom before trying out Vue 3.** While it looks like a lot has changed, a lot of what you know and love about Vue is still the same; but we wanted to be as thorough as possible and provide detailed explanations and examples for every documented change.
 
 - [Quickstart](#quickstart)
+- [Migration Build](#migration-build)
 - [Notable New Features](#notable-new-features)
 - [Breaking Changes](#breaking-changes)
 - [Supporting Libraries](#supporting-libraries)
@@ -20,13 +21,15 @@ Start learning Vue 3 at [Vue Mastery](https://www.vuemastery.com/courses-path/vu
 
 ## Quickstart
 
+If you want to quickly try out Vue 3 in a new project:
+
 - Via CDN: `<script src="https://unpkg.com/vue@next"></script>`
 - In-browser playground on [Codepen](https://codepen.io/yyx990803/pen/OJNoaZL)
 - In-browser Sandbox on [CodeSandbox](https://v3.vue.new)
 - Scaffold via [Vite](https://github.com/vitejs/vite):
 
   ```bash
-  npm init @vitejs/app hello-vue3 # OR yarn create @vitejs/app hello-vue3
+  npm init vite hello-vue3 -- --template vue # OR yarn create vite hello-vue3 --template vue
   ```
 
 - Scaffold via [vue-cli](https://cli.vuejs.org/):
@@ -37,6 +40,10 @@ Start learning Vue 3 at [Vue Mastery](https://www.vuemastery.com/courses-path/vu
   # select vue 3 preset
   ```
 
+## Migration Build
+
+If you have an existing Vue 2 project or library that you intend to upgrade to Vue 3, we provide a build of Vue 3 that offers Vue 2 compatible APIs. Check out the [Migration Build](./migration-build.html) page for more details.
+
 ## Notable New Features
 
 Some of the new features to keep an eye on in Vue 3 include:
@@ -46,16 +53,12 @@ Some of the new features to keep an eye on in Vue 3 include:
 - [Fragments](/guide/migration/fragments.html)
 - [Emits Component Option](/guide/component-custom-events.html)
 - [`createRenderer` API from `@vue/runtime-core`](https://github.com/vuejs/vue-next/tree/master/packages/runtime-core) to create custom renderers
-- [SFC Composition API Syntax Sugar (`<script setup>`)](https://github.com/vuejs/rfcs/blob/sfc-improvements/active-rfcs/0000-sfc-script-setup.md) <Badge text="experimental" type="warning" />
-- [SFC State-driven CSS Variables (`v-bind` in `<style>`)](https://github.com/vuejs/rfcs/blob/style-vars-2/active-rfcs/0000-sfc-style-variables.md) <Badge text="experimental" type="warning" />
+- [SFC Composition API Syntax Sugar (`<script setup>`)](/api/sfc-script-setup.html)
+- [SFC State-driven CSS Variables (`v-bind` in `<style>`)](/api/sfc-style.html#state-driven-dynamic-css)
 - [SFC `<style scoped>` can now include global rules or rules that target only slotted content](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0023-scoped-styles-changes.md)
 - [Suspense](/guide/migration/suspense.html) <Badge text="experimental" type="warning" />
 
 ## Breaking Changes
-
-::: info INFO
-We are still working on a dedicated Migration Build of Vue 3 with Vue 2 compatible behavior and runtime warnings of incompatible usage. If you are planning to migrate a non-trivial Vue 2 app, we strongly recommend waiting for the Migration Build for a smoother experience.
-:::
 
 The following consists a list of breaking changes from 2.x:
 
@@ -90,14 +93,14 @@ The following consists a list of breaking changes from 2.x:
 ### Custom Elements
 
 - [Custom element checks are now performed during template compilation](/guide/migration/custom-elements-interop.html)
-- [Special `is` prop usage is restricted to the reserved `<component>` tag only](/guide/migration/custom-elements-interop.html#customized-built-in-elements)
+- [Special `is` attribute usage is restricted to the reserved `<component>` tag only](/guide/migration/custom-elements-interop.html#customized-built-in-elements)
 
 ### Other Minor Changes
 
 - The `destroyed` lifecycle option has been renamed to `unmounted`
 - The `beforeDestroy` lifecycle option has been renamed to `beforeUnmount`
 - [Props `default` factory function no longer has access to `this` context](/guide/migration/props-default-this.html)
-- [Custom directive API changed to align with component lifecycle](/guide/migration/custom-directives.html)
+- [Custom directive API changed to align with component lifecycle and `binding.expression` removed](/guide/migration/custom-directives.html)
 - [The `data` option should always be declared as a function](/guide/migration/data-option.html)
 - [The `data` option from mixins is now merged shallowly](/guide/migration/data-option.html#mixin-merge-behavior-change)
 - [Attributes coercion strategy changed](/guide/migration/attribute-coercion.html)
@@ -163,7 +166,7 @@ We are working on a new version of the Devtools with a new UI and refactored int
 
 ### IDE Support
 
-It is recommended to use [VSCode](https://code.visualstudio.com/) with our official extension [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur), which provides comprehensive IDE support for Vue 3.
+It is recommended to use [VSCode](https://code.visualstudio.com/) with our official extension [Volar](https://github.com/johnsoncodehk/volar), which provides comprehensive IDE support for Vue 3.
 
 ### Other Projects
 

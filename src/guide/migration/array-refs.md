@@ -1,7 +1,7 @@
 ---
 title: v-for Array Refs
 badges:
-- breaking
+  - breaking
 ---
 
 # {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
@@ -70,3 +70,10 @@ Note that:
 - `itemRefs` doesn't have to be an array: it can also be an object where the refs are set by their iteration keys.
 
 - This also allows `itemRefs` to be made reactive and watched, if needed.
+
+## Migration Strategy
+
+[Migration build flags:](migration-build.html#compat-configuration)
+
+- `V_FOR_REF`
+- `COMPILER_V_FOR_REF`

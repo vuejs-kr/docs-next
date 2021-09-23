@@ -18,6 +18,8 @@ Detailed release notes for each version are available on [GitHub](https://github
 ## Vue Devtools
 
 > Currently in Beta - Vuex and Router integration is still WIP
+ 
+<VideoLesson href="https://vueschool.io/lessons/using-vue-dev-tools-with-vuejs-3?friend=vuejs" title="Learn how to install Vue Devtools on Vue School">Learn how to install and use Vue Devtools in a free Vue School lesson</VideoLesson>
 
 When using Vue, we recommend also installing the [Vue Devtools](https://github.com/vuejs/vue-devtools#vue-devtools) in your browser, allowing you to inspect and debug your Vue applications in a more user-friendly interface.
 
@@ -45,12 +47,24 @@ The files can be browsed and downloaded from a CDN such as [unpkg](https://unpkg
 
 ## npm
 
-npm is the recommended installation method when building large scale applications with Vue. It pairs nicely with module bundlers such as [Webpack](https://webpack.js.org/) or [Rollup](https://rollupjs.org/). Vue also provides accompanying tools for authoring [Single File Components](../guide/single-file-component.html).
+npm is the recommended installation method when building large scale applications with Vue. It pairs nicely with module bundlers such as [webpack](https://webpack.js.org/) or [Rollup](https://rollupjs.org/).
 
 ```bash
 # latest stable
 $ npm install vue@next
 ```
+
+Vue also provides accompanying tools for authoring [Single File Components](../guide/single-file-component.html) (SFCs). If you want to use SFCs then you'll also need to install `@vue/compiler-sfc`:
+
+```bash
+$ npm install -D @vue/compiler-sfc
+```
+
+If you're coming from Vue 2 then note that `@vue/compiler-sfc` replaces `vue-template-compiler`.
+
+In addition to `@vue/compiler-sfc`, you'll also need a suitable SFC loader or plugin for your chosen bundler. See the [SFC documentation](../guide/single-file-component.html) for more information.
+
+In most cases, the preferred way to create a webpack build with minimal configuration is to use Vue CLI.
 
 ## CLI
 
@@ -76,14 +90,19 @@ vue upgrade --next
 
 ## Vite
 
-[Vite](https://github.com/vitejs/vite) is a web development build tool that allows for lightning fast serving of code due its native ES Module import approach.
+[Vite](https://github.com/vitejs/vite) is a web development build tool that allows for lightning fast serving of code due to its native ES Module import approach.
 
 Vue projects can quickly be set up with Vite by running the following commands in your terminal.
 
 With npm:
 
 ```bash
-$ npm init @vitejs/app <project-name>
+# npm 6.x
+$ npm init vite@latest <project-name> --template vue
+
+# npm 7+, extra double-dash is needed:
+$ npm init vite@latest <project-name> -- --template vue
+
 $ cd <project-name>
 $ npm install
 $ npm run dev
@@ -92,16 +111,10 @@ $ npm run dev
 Or with Yarn:
 
 ```bash
-$ yarn create @vitejs/app <project-name>
+$ yarn create vite <project-name> --template vue
 $ cd <project-name>
 $ yarn
 $ yarn dev
-```
-
-It might occur, that when your username has a space in it like 'Mike Baker', Vite cannot succeed. Have a try with
-
-```bash
-$ create-vite-app <project-name>
 ```
 
 ## Explanation of Different Builds

@@ -1,5 +1,7 @@
 # List Rendering
 
+<VideoLesson href="https://vueschool.io/lessons/list-rendering-in-vue-3?friend=vuejs" title="Learn how to render lists on Vue School">Learn how to render list with a free Vue School lesson</VideoLesson>
+
 ## Mapping an Array to Elements with `v-for`
 
 We can use the `v-for` directive to render a list of items based on an array. The `v-for` directive requires a special syntax in the form of `item in items`, where `items` is the source data array and `item` is an **alias** for the array element being iterated on:
@@ -125,7 +127,7 @@ To give Vue a hint so that it can track each node's identity, and thus reuse and
 </div>
 ```
 
-It is recommended to provide a `key` attribute with `v-for` whenever possible, unless the iterated DOM content is simple, or you are intentionally relying on the default behavior for performance gains.
+[It is recommended](/style-guide/#keyed-v-for-essential) to provide a `key` attribute with `v-for` whenever possible, unless the iterated DOM content is simple, or you are intentionally relying on the default behavior for performance gains.
 
 Since it's a generic mechanism for Vue to identify nodes, the `key` also has other uses that are not specifically tied to `v-for`, as we will see later in the guide.
 
@@ -217,7 +219,7 @@ methods: {
 
 Result:
 
-<common-codepen-snippet title="v-for with a range" slug="NWqLjNY" tab="html,result" :preview="false" />
+<common-codepen-snippet title="v-for with a range" slug="NWqLjNY" tab="html,result" />
 
 ## `v-for` on a `<template>`
 
