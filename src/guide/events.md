@@ -257,7 +257,7 @@ Vue는 가장흔히 사용되는 키에서 명령어를 제공합니다:
 <!-- 아래코드는 Alt 또는 Shift와 함께 눌렀을 때도 실행됩니다.-->
 <button @click.ctrl="onClick">A</button>
 
-<!-- 아래코드는 Cntl키만 눌려져 있을 때 실행됩니다.-->
+<!-- 아래코드는 Ctrl키만 눌려져 있을 때 실행됩니다.-->
 <button @click.ctrl.exact="onCtrlClick">A</button>
 
 <!-- 아래 코드는 시스템 키가 눌리지 않은 상태인 경우에만 작동합니다.-->
