@@ -40,9 +40,9 @@ data() {
 <div class="static active"></div>
 ```
 
-`isActive` 또는 `hasError`가 변경되면 그에 따라 클래스 목록이 업데이트됩니다. 예를 들어, `hasError`가  `true`가되면 클래스 목록은 `"static active text-danger"`가 됩니다.
+`isActive` 또는 `hasError`가 변경되면 그에 따라 클래스 목록이 업데이트됩니다. 예를 들어, `hasError`가  `true`가 되면 클래스 목록은 `"static active text-danger"`가 됩니다.
 
-바인딩 된 객체는 인라인 일 필요는 없습니다 :
+바인딩 된 객체는 인라인일 필요는 없습니다 :
 
 ```html
 <div :class="classObject"></div>
@@ -84,7 +84,7 @@ computed: {
 
 ### 배열 구문
 
-배열을 `:class`에 전달하여 클래스 목록을 적용 할 수 있습니다.
+배열을 `:class`에 전달하여 클래스 목록을 적용할 수 있습니다.
 
 ```html
 <div :class="[activeClass, errorClass]"></div>
@@ -99,7 +99,7 @@ data() {
 }
 ```
 
-다음 처럼 렌더링됩니다:
+다음처럼 렌더링됩니다:
 
 ```html
 <div class="active text-danger"></div>
@@ -113,7 +113,7 @@ data() {
 
 이는 항상 `errorClass`를 적용하지만 `isActive`가 true 인 경우 `activeClass`만 적용합니다.
 
-그러나, 여러 조건부 클래스가 있다면 이것은 약간 장황할 수 있습니다. 그렇기 때문에 배열 구문내에서 객체 구문을 사용할 수도 있습니다:
+그러나, 여러 조건부 클래스가 있다면 이것은 약간 장황할 수 있습니다. 그렇기 때문에 배열 구문 내에서 객체 구문을 사용할 수도 있습니다:
 
 ```html
 <div :class="[{ active: isActive }, errorClass]"></div>
@@ -123,7 +123,7 @@ data() {
 
 > 이 섹션은 [Vue Components](component-basics.md)에 대한 지식이 있다고 가정합니다. 건너 뛰고 나중에 다시 보셔도 됩니다.
 
-단일 루트 엘리먼트가 있는 커스텀 컴포넌트에서 `class` 속성을 사용하면 해당클래스가 이 엘리먼트에 추가됩니다. 이 엘리먼트의 기존 클래스는 덮어 쓰지 않습니다.
+단일 루트 엘리먼트가 있는 커스텀 컴포넌트에서 `class` 속성을 사용하면 해당 클래스가 이 엘리먼트에 추가됩니다. 이 엘리먼트의 기존 클래스는 덮어 쓰지 않습니다.
 
 예를 들어, 이 컴포넌트를 선언하는 경우:
 
@@ -135,7 +135,7 @@ app.component('my-component', {
 })
 ```
 
-그런다음 사용할 때 몇가지 클래스를 추가하십시오:
+그런다음 사용할 때 몇 가지 클래스를 추가하십시오:
 
 ```html
 <div id="app">
@@ -155,7 +155,7 @@ app.component('my-component', {
 <my-component :class="{ active: isActive }"></my-component>
 ```
 
-`isActive` 가 참일때, 렌더링된 HTML은 다음과 같습니다:
+`isActive` 가 참일 때, 렌더링된 HTML은 다음과 같습니다:
 
 ```html
 <p class="foo bar active">Hi</p>
