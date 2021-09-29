@@ -79,7 +79,7 @@ app.component('my-component-name', {
 
 전역적으로 등록된 컴포넌트는 나중에 생성된 `app` 인스턴스의 템플릿에서 사용할 수 있으며, 해당 루트 인스턴스의 컴포넌트 트리의 모든 하위 컴포넌트에서도 사용할 수 있습니다.
 
-지금은 등록에 대해 알아야할 모든 것이지만, 이 페이지를 읽고 내용에 익숙해지면 나중에 다시 돌아와 [Component Registration](component-registration.md)에 대한 전체 가이드를 읽어보는 것이 좋습니다.
+지금은 등록에 대해 알아야 할 모든 것이지만, 이 페이지를 읽고 내용에 익숙해지면 나중에 다시 돌아와 [Component Registration](component-registration.md)에 대한 전체 가이드를 읽어보는 것이 좋습니다.
 
 ## Props를 이용해 자식 컴포넌트에게 데이터 전달하기
 
@@ -137,7 +137,7 @@ app.component('blog-post', {
 app.mount('#blog-posts-demo')
 ```
 
-그런다음 각 컴포넌트를 렌더링하려고 합니다.
+그런 다음 각 컴포넌트를 렌더링하려고 합니다.
 
 ```html
 <div id="blog-posts-demo">
@@ -151,7 +151,7 @@ app.mount('#blog-posts-demo')
 
 위에서 `v-bind`를 사용해서 props를 동적으로 전달할 수 있음을 알 수 있습니다. 이는 미리 렌더링할 정확한 컨텐츠를 모르는 경우 특히 유용합니다.
 
-지금까지 prop에 대해 알아야할 모든 것입니다. 하지만 이 페이지를 읽고 내용이 익숙해지만 나중에 다시 돌아와 [Props](component-props.html)에 대한 전체 가이드를 읽어보는 것이 좋습니다.
+지금까지 prop에 대해 알아야 할 모든 것입니다. 하지만 이 페이지를 읽고 내용이 익숙해지만 나중에 다시 돌아와 [Props](component-props.html)에 대한 전체 가이드를 읽어보는 것이 좋습니다.
 
 ## 하위 컴포넌트 이벤트 수신
 
@@ -198,7 +198,7 @@ app.component('blog-post', {
 })
 ```
 
-문제는 이 버튼이 아무런 일울 하지 못한다는 거죠:
+문제는 이 버튼이 아무런 일을 하지 못한다는 거죠:
 
 ```html
 <button>
@@ -212,7 +212,7 @@ app.component('blog-post', {
 <blog-post ... @enlarge-text="postFontSize += 0.1"></blog-post>
 ```
 
-이렇게 하면 자식 컴포넌트는 내장된 [**`$emit`** 메소드](../api/instance-methods.html#emit)에 이벤트 이름을 넘겨서 이벤트를 발송할수 있습니다:
+이렇게 하면 자식 컴포넌트는 내장된 [**`$emit`** 메소드](../api/instance-methods.html#emit)에 이벤트 이름을 넘겨서 이벤트를 발송할 수 있습니다:
 
 ```html
 <button @click="$emit('enlarge-text')">
@@ -257,7 +257,7 @@ app.component('blog-post', {
 <blog-post ... @enlarge-text="onEnlargeText"></blog-post>
 ```
 
-그런다음 값이 해당 메소드의 첫 번째 파라미터로 전달됩니다:
+그런 다음 값이 해당 메소드의 첫 번째 파라미터로 전달됩니다:
 
 ```js
 methods: {
@@ -343,7 +343,7 @@ app.component('custom-input', {
 })
 ```
 
-지금은 커스텀 엘리먼트 이벤트에 대해 알아야할 모든 것입니다. 하지만 이 페이지를 읽고 컨텐츠에 익숙해지면 나중에 다시 돌아와 [Custom Events](component-custom-events.md)에 대한 전체 가이드를 읽어보는 것이 좋습니다.
+지금은 커스텀 엘리먼트 이벤트에 대해 알아야 할 모든 것입니다. 하지만 이 페이지를 읽고 컨텐츠에 익숙해지면 나중에 다시 돌아와 [Custom Events](component-custom-events.md)에 대한 전체 가이드를 읽어보는 것이 좋습니다.
 
 ## 슬롯(Slot)을 이용한 컨텐츠 제공
 
