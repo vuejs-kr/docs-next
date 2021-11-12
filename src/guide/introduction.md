@@ -96,11 +96,11 @@ Vue.createApp(AttributeBinding).mount('#bind-attribute')
 
 <common-codepen-snippet title="Attribute dynamic binding" slug="KKpRVvJ" />
 
-Here we're encountering something new. The `v-bind` attribute you're seeing is called a **directive**. Directives are prefixed with `v-` to indicate that they are special attributes provided by Vue, and as you may have guessed, they apply special reactive behavior to the rendered DOM. Here we are basically saying "_keep this element's `title` attribute up-to-date with the `message` property on the current active instance._"
+Here we're encountering something new. The `v-bind` attribute you're seeing is called a **directive**. Directives are prefixed with `v-` to indicate that they are special attributes provided by Vue, and as you may have guessed, they apply special reactive behavior to the rendered DOM. Here, we're basically saying "_keep this element's `title` attribute up-to-date with the `message` property on the current active instance._"
 
 ## Handling User Input
 
-To let users interact with your app, we can use the `v-on` directive to attach event listeners that invoke methods on our instances:
+To let users interact with our app, we can use the `v-on` directive to attach event listeners that invoke methods on our instances:
 
 ```html
 <div id="event-handling">
@@ -223,12 +223,16 @@ The component system is another important concept in Vue, because it's an abstra
 In Vue, a component is essentially an instance with pre-defined options. Registering a component in Vue is straightforward: we create a component object as we did with `App` objects and we define it in parent's `components` option:
 
 ```js
-// Create Vue application
-const app = Vue.createApp(...)
-
-// Define a new component called todo-item
-app.component('todo-item', {
+const TodoItem = {
   template: `<li>This is a todo</li>`
+}
+
+// Create Vue application
+const app = Vue.createApp({
+  components: {
+    TodoItem // Register a new component
+  },
+  ... // Other properties for the component
 })
 
 // Mount Vue application
