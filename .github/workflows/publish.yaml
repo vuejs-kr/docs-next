@@ -1,0 +1,28 @@
+name: publish
+
+on: 
+  push:
+    branches:
+    - rootKoKr
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 14.x
+    - name: Install Dependencies
+      run: yarn
+    - name: Generate pages
+      run: yarn build
+    - name: Add CNAME
+      run: cat "v3.ko.vuejs.org" > src/.vurpress/dist/CNAME
+    - name: Deploy to GitHub Pages
+      uses: comfuture/actions/ghpages@master
+      env:
+        BUILD_DIR: src/.vuepress/dist/
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
