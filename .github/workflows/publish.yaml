@@ -20,7 +20,7 @@ jobs:
     - name: Generate pages
       run: yarn build
     - name: Add CNAME
-      run: cat "v3.ko.vuejs.org" > src/.vurpress/dist/CNAME
+      run: echo "v3.ko.vuejs.org" > src/.vurpress/dist/CNAME
     - name: Deploy to GitHub Pages
       uses: comfuture/actions/ghpages@master
       env:
