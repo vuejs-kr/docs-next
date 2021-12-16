@@ -195,10 +195,10 @@ Vue.createApp(Demo).mount('#demo')
 
 - `enter-from-class`
 - `enter-active-class`
-- ``enter-to-class` (2.1.8+)`
+- `enter-to-class` (2.1.8+)
 - `leave-from-class`
 - `leave-active-class`
-- ``leave-to-class` (2.1.8+)`
+- `leave-to-class` (2.1.8+)
 
 이것들은 원본 클래스 명을 오버라이드 합니다. 이는 Vue의 트랜지션 시스템을 [Animate.css](https://daneden.github.io/animate.css/)와 같은 기존 CSS 애니메이션 라이브러리와 결합하려는 경우 특히 유용합니다.
 
