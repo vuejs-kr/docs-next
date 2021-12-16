@@ -4,8 +4,6 @@
 
 ## `ref`
 
-Takes an inner value and returns a reactive and mutable ref object. The ref object has a single property `.value` that points to the inner value.
-
 내부에 값을 가지면서 반응적이고 변경 가능한 ref 객체를 반환합니다. ref 객체는 단 하나의 프로퍼티를 가지는데, 내부 값을 가리키는 `.value` 입니다. 
 
 **예제:**
@@ -118,9 +116,6 @@ stateAsRefs.foo.value++
 console.log(state.foo) // 3
 ```
 
-`toRefs` is useful when returning a reactive object from a composition function so that the consuming component can destructure/spread the returned object without losing reactivity:
-
-
 `toRefs`는 사용하는 곳에서 반응성(reactivity)를 읽지 않고 반환된 값을 destructure/spread  할수 있기 때문에, 컴포지션 함수등에서 유용하게 사용할수 있습니다. 
 
 ```js
@@ -210,9 +205,6 @@ type CustomRefFactory<T> = (
 ```
 
 ## `shallowRef`
-
-Creates a ref that tracks its own `.value` mutation but doesn't make its value reactive.
-
 
 자신의 `.value`가 변경되는것은 추적하지만, value 값 자체를 반응적으로 만들지 않는 ref를 만듭니다.
 
