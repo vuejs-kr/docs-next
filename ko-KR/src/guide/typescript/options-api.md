@@ -1,10 +1,12 @@
-# Options API와 함께 타입스크립트 사용하기
+# Options API와 함께 타입스크립트 사용하기 {#typescript-with-options-api}
 
 > 이 페이지에서는 [Vue와 함께 타입스크립트 사용하기](./overview) 에 대한 개요를 이미 읽었다고 가정합니다.
 
-:::tip Vue는 Options API에서 타입스크립트를 지원 합니다. 하지만 보다 간단하고 효율적이며 강력한 타입 추론을 제공하는 Composition API를 타입스크립트와 함께 사용하는 것을 추천합니다.:::
+:::tip 
+Vue는 Options API에서 타입스크립트를 지원 합니다. 하지만 보다 간단하고 효율적이며 강력한 타입 추론을 제공하는 Composition API를 타입스크립트와 함께 사용하는 것을 추천합니다.
+:::
 
-## 컴포넌트 Props 작성
+## 컴포넌트 Props 작성 {#typing-component-props}
 
 Options API의 props에 대한 타입 추론은 컴포넌트를 `defineComponent()` 로 래핑해야 합니다. 이를 통해 Vue는 `props` 옵션을 기반으로 props의 타입을 추론할 수 있으며 `required: true` 및 `default` 와 같은 추가 옵션을 사용할 수 있습니다.
 
@@ -62,7 +64,7 @@ export default defineComponent({
 })
 ```
 
-### 주의사항
+### 주의사항 {#caveats}
 
 타입스크립트의 [설계 제한 사항](https://github.com/microsoft/TypeScript/issues/38845) 때문에 `validator` 및 `default` prop 옵션에 대한 함수 값을 사용할 때 주의해야 합니다. 화살표 함수를 사용 하세요.
 
@@ -90,7 +92,7 @@ export default defineComponent({
 
 이렇게 하면 타입스크립트가 함수 내에서 `this` 형식을 유추할 필요가 없으므로 타입 추론에 실패할 수 있습니다.
 
-## 컴포넌트 Emits 작성
+## 컴포넌트 Emits 작성 {#typing-component-emits}
 
 `emits` 옵션의 객체 구문을 사용하여 emitted 이벤트의 페이로드 타입을 선언할 수 있습니다. 또한 선언되지 않은 emitted 이벤트는 호출될 때 타입 오류를 발생시킵니다.
 
@@ -116,7 +118,7 @@ export default defineComponent({
 })
 ```
 
-## Computed 속성 작성
+## Computed 속성 작성 {#typing-computed-properties}
 
 Computed 속성은 반환 값을 기반으로 타입을 유추합니다.
 
@@ -172,7 +174,7 @@ export default defineComponent({
 
 타입스크립트가 순환 참조 루프로 인해 computed 속성의 타입을 추론하지 못하는 일부의 경우에는 명시적 어노테이팅이 필요 할 수 있습니다.
 
-## 이벤트 핸들러 작성
+## 이벤트 핸들러 작성 {#typing-event-handlers}
 
 네이티브 DOM 이벤트를 처리할 때 핸들러에 올바르게 인수를 전달하는 것이 유용합니다. 다음 예를 살펴보겠습니다.
 
@@ -209,9 +211,9 @@ export default defineComponent({
 })
 ```
 
-## 전역 속성 확장
+## 전역 속성 확장 {#augmenting-global-properties}
 
-일부 플러그인은 [`app.config.globalProperties`](/api/application.html#app-config-globalproperties) 를 통해 모든 컴포넌트 인스턴스에 전역적으로 사용 가능하게 합니다. 예를 들어 데이터 가져오기를 위해 `this.$http` 를 설치하거나 국제화를 위해 `this.$translate` 를 설치할 수 있습니다. 이 작업을 타입스크립트에서 잘 실행하기 위해 Vue는 <code>ComponentCustomProperties</code> 인터페이스가 <a>TypeScript 모듈 기능</a>을 통해 확장 하도록 설계되었습니다.
+일부 플러그인은 [`app.config.globalProperties`](/api/application.html#app-config-globalproperties) 를 통해 모든 컴포넌트 인스턴스에 전역적으로 사용 가능하게 합니다. 예를 들어 데이터 가져오기를 위해 `this.$http` 를 설치하거나 국제화를 위해 `this.$translate` 를 설치할 수 있습니다. 이 작업을 타입스크립트에서 잘 실행하기 위해 Vue는 <code>ComponentCustomProperties</code> 인터페이스가 [TypeScript 모듈 기능](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation)을 통해 확장 하도록 설계되었습니다.
 
 ```ts
 import axios from 'axios'
@@ -228,13 +230,13 @@ declare module 'vue' {
 
 - [컴포넌트 타입 확장을 위한 타입스크립트 유닛 테스트 ](https://github.com/vuejs/core/blob/main/test-dts/componentTypeExtensions.test-d.tsx)
 
-### 타입 배치 확장
+### 타입 배치 확장 {#augmenting-global-properties}
 
 타입 확장을 `.ts` 파일이나 프로젝트의 `*.d.ts` 파일에 넣을 수 있습니다. 어느 쪽이든 `tsconfig.json` 에 포함되어 있는지 확인하십시오. 라이브러리/플러그인 작성자의 경우 이 파일을`package.json` 의 `types` 속성에 작성해야합니다.
 
 모듈 확장을 활용하려면 [타입스크립트 모듈](https://www.typescriptlang.org/docs/handbook/modules.html) 에 선언 되었는지 확인해야 합니다. 즉, 파일은 `export {}` 일지라도 최소한 하나의 최상위 `import` 또는 `export` 를 포함해야 합니다. 기능 확장이 모듈 외부에 선언되면 원래 타입을 사용하지 않고 덮어씁니다!
 
-## 사용자 지정 옵션 확장
+## 사용자 지정 옵션 확장 {#augmenting-custom-options}
 
 `vue-router` 와 같은 일부 플러그인은 `beforeRouteEnter` 와 같은 사용자 지정 컴포넌트 옵션을 지원합니다.
 
@@ -262,7 +264,7 @@ declare module 'vue' {
 
 이제 `beforeRouteEnter` 옵션이 올바르게 입력됩니다. 이건 하나의 예 입니다. `vue-router` 와 같이 타입이 잘 지정된 라이브러리는 자체 타입 정의에서 이러한 확장을 자동으로 수행 합니다.
 
-이 타입 배치 확장은 전역 속성 확장과 [ 동일한 제한 사항](#type-augmentation-placement) 이 적용됩니다.
+이 타입 배치 확장은 전역 속성 확장과 [동일한 제한 사항](#type-augmentation-placement) 이 적용됩니다.
 
 참고항목
 
