@@ -1,8 +1,10 @@
 ---
-page: 'true'
-title: Vue.js   - The Progressive JavaScript Framework
+page: true
+title: Vue.js - The Progressive JavaScript Framework
 ---
 
-&lt;script setup&gt; import Home from '/@theme/components/Home.vue' &lt;/script&gt;
+<script setup>
+import Home from '/@theme/components/Home.vue'
+</script>
 
 <home></home>
