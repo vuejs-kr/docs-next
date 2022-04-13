@@ -1,11 +1,11 @@
 # Computed 속성
 
 <div class="options-api">
-  <vueschoollink href="https://vueschool.io/lessons/computed-properties-in-vue-3" title="Free Vue.js Computed Properties Lesson"></vueschoollink>
+  <VueSchoolLink href="https://vueschool.io/lessons/computed-properties-in-vue-3" title="Free Vue.js Computed Properties Lesson"/>
 </div>
 
 <div class="composition-api">
-  <vueschoollink href="https://vueschool.io/lessons/vue-fundamentals-capi-computed-properties-in-vue-with-the-composition-api" title="Free Vue.js Computed Properties Lesson"></vueschoollink>
+  <VueSchoolLink href="https://vueschool.io/lessons/vue-fundamentals-capi-computed-properties-in-vue-with-the-composition-api" title="Free Vue.js Computed Properties Lesson"/>
 </div>
 
 ## 기본 예제
@@ -13,8 +13,9 @@
 표현식을 템플릿 안에서 사용하는 것은 편리하긴 하지만, 이 기능은 단순한 연산을 위해서 사용해야 합니다. 템플릿 안에서 너무 많은 연산을 하면 코드가 비대해지고 유지보수가 어렵습니다. 예를 들기 위해, 중첩된 배열을 가지는 객체를 살펴 봅시다.
 
 <div class="options-api">
-</div>
-<pre data-md-type="block_code" data-md-language="js"><code class="language-js">export default {
+
+```js
+export default {
   data() {
     return {
       author: {
@@ -28,11 +29,13 @@
     }
   }
 }
-</code></pre>
-<div data-md-type="block_html"></div>
-<div class="composition-api">
+```
+
 </div>
-<pre data-md-type="block_code" data-md-language="js"><code class="language-js">const author = reactive({
+<div class="composition-api">
+
+```js
+const author = reactive({
   name: '존 도우',
   books: [
     'Vue 2 - Advanced Guide',
@@ -40,8 +43,9 @@
     'Vue 4 - The Mystery'
   ]
 })
-</code></pre>
-<div data-md-type="block_html"></div>
+```
+
+</div>
 
 그리고 `author`가 출판한 책이 있는 지 여부에 따라 다른 메시지를 보여주고자 합니다.
 
@@ -55,8 +59,9 @@
 이런 이유로 반응형 데이터를 포함하는 복잡한 로직에 대해 **계산된  속성(computed property)**의 사용을 추천합니다. 동일한 예제를 리팩토링 해보겠습니다.
 
 <div class="options-api">
-</div>
-<pre data-md-type="block_code" data-md-language="js"><code class="language-js">export default {
+
+```js
+export default {
   data() {
     return {
       author: {
@@ -72,25 +77,34 @@
   computed: {
     // a computed getter
     publishedBooksMessage() {
-      // 여기서의 `this` 는 vm 인스턴스이다.
-      return this.author.books.length &gt; 0 ? '있음' : '없음'
+      // `this` points to the component instance
+      return this.author.books.length > 0 ? 'Yes' : 'No'
     }
   }
 }
-</code></pre>
-<pre data-md-type="block_code" data-md-language="vue-html"><code class="language-vue-html">&lt;p&gt;출판된 책:&lt;/p&gt;
-&lt;span&gt;{{ publishedBooksMessage }}&lt;/span&gt;
-</code></pre>
-<p data-md-type="paragraph"><a href="https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdD5cbmV4cG9ydCBkZWZhdWx0IHtcbiAgZGF0YSgpIHtcbiAgICByZXR1cm4ge1xuICAgICAgYXV0aG9yOiB7XG4gICAgICAgIG5hbWU6ICdKb2huIERvZScsXG4gICAgICAgIGJvb2tzOiBbXG4gICAgICAgICAgJ1Z1ZSAyIC0gQWR2YW5jZWQgR3VpZGUnLFxuICAgICAgICAgICdWdWUgMyAtIEJhc2ljIEd1aWRlJyxcbiAgICAgICAgICAnVnVlIDQgLSBUaGUgTXlzdGVyeSdcbiAgICAgICAgXVxuICAgICAgfVxuICAgIH1cbiAgfSxcbiAgY29tcHV0ZWQ6IHtcbiAgICBwdWJsaXNoZWRCb29rc01lc3NhZ2UoKSB7XG4gICAgICByZXR1cm4gdGhpcy5hdXRob3IuYm9va3MubGVuZ3RoID4gMCA/ICdZZXMnIDogJ05vJ1xuICAgIH1cbiAgfVxufVxuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPHA+SGFzIHB1Ymxpc2hlZCBib29rczo8L3A+XG4gIDxzcGFuPnt7IGF1dGhvci5ib29rcy5sZW5ndGggPiAwID8gJ1llcycgOiAnTm8nIH19PC9zcGFuPlxuPC90ZW1wbGF0ZT4iLCJpbXBvcnQtbWFwLmpzb24iOiJ7XG4gIFwiaW1wb3J0c1wiOiB7XG4gICAgXCJ2dWVcIjogXCJodHRwczovL3NmYy52dWVqcy5vcmcvdnVlLnJ1bnRpbWUuZXNtLWJyb3dzZXIuanNcIlxuICB9XG59In0=" data-md-type="link">플레이그라운드에서 해보세요</a></p>
-<p data-md-type="paragraph">우리는 여기서 <code data-md-type="codespan">publishedBooksMessage</code> 라는 computed 속성을 선언했습니다.</p>
-<p data-md-type="paragraph">이 어플리케이션에서 <code data-md-type="codespan">data</code> 의 <code data-md-type="codespan">books</code> 배열의 값을 변경하면, 그에 따라 <code data-md-type="codespan">publishedBooksMessage</code> 가 어떻게 변경되는 지 볼 수 있습니다.</p>
-<p data-md-type="paragraph">일반적인 속성과 마찬가지로 템플릿에서 computed 속성도 데이터 바인딩 할 수 있습니다. Vue는 <code data-md-type="codespan">this.publishedBooksMessage</code> 가 <code data-md-type="codespan">this.author.books</code> 에 의존한다는 것을 알고 있습니다. 그래서 <code data-md-type="codespan">this.author.books</code>가 변경될 때 <code data-md-type="codespan">this.publishedBooksMessage</code> 의존하는 모든 바인딩을 업데이트합니다.</p>
-<p data-md-type="paragraph">참조: <a href="/guide/typescript/options-api.html#typing-computed-properties" data-md-type="link">타입을 가지는 계산된 속성</a><sup data-md-type="raw_html" class="vt-badge ts"></sup></p>
-<div data-md-type="block_html"></div>
+```
+
+```vue-html
+<p>Has published books:</p>
+<span>{{ publishedBooksMessage }}</span>
+```
+
+[Try it in the Playground](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdD5cbmV4cG9ydCBkZWZhdWx0IHtcbiAgZGF0YSgpIHtcbiAgICByZXR1cm4ge1xuICAgICAgYXV0aG9yOiB7XG4gICAgICAgIG5hbWU6ICdKb2huIERvZScsXG4gICAgICAgIGJvb2tzOiBbXG4gICAgICAgICAgJ1Z1ZSAyIC0gQWR2YW5jZWQgR3VpZGUnLFxuICAgICAgICAgICdWdWUgMyAtIEJhc2ljIEd1aWRlJyxcbiAgICAgICAgICAnVnVlIDQgLSBUaGUgTXlzdGVyeSdcbiAgICAgICAgXVxuICAgICAgfVxuICAgIH1cbiAgfSxcbiAgY29tcHV0ZWQ6IHtcbiAgICBwdWJsaXNoZWRCb29rc01lc3NhZ2UoKSB7XG4gICAgICByZXR1cm4gdGhpcy5hdXRob3IuYm9va3MubGVuZ3RoID4gMCA/ICdZZXMnIDogJ05vJ1xuICAgIH1cbiAgfVxufVxuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPHA+SGFzIHB1Ymxpc2hlZCBib29rczo8L3A+XG4gIDxzcGFuPnt7IGF1dGhvci5ib29rcy5sZW5ndGggPiAwID8gJ1llcycgOiAnTm8nIH19PC9zcGFuPlxuPC90ZW1wbGF0ZT4iLCJpbXBvcnQtbWFwLmpzb24iOiJ7XG4gIFwiaW1wb3J0c1wiOiB7XG4gICAgXCJ2dWVcIjogXCJodHRwczovL3NmYy52dWVqcy5vcmcvdnVlLnJ1bnRpbWUuZXNtLWJyb3dzZXIuanNcIlxuICB9XG59In0=)
+
+우리는 여기서 `publishedBooksMessage` 라는 computed 속성을 선언했습니다.
+
+이 어플리케이션에서 `data` 의 `books` 배열의 값을 변경하면, 그에 따라 `publishedBooksMessage` 가 어떻게 변경되는 지 볼 수 있습니다.
+
+일반적인 속성과 마찬가지로 템플릿에서 computed 속성도 데이터 바인딩 할 수 있습니다. Vue는 `this.publishedBooksMessage` 가 `this.author.books` 에 의존한다는 것을 알고 있습니다. 그래서 `this.author.books`가 변경될 때 `this.publishedBooksMessage` 의존하는 모든 바인딩을 업데이트합니다.
+
+참조: [타입을 가지는 계산된 속성](/guide/typescript/options-api.html#typing-computed-properties) <sup class="vt-badge ts" />
+
+</div>
 
 <div class="composition-api">
-</div>
-<pre data-md-type="block_code" data-md-language="vue"><code class="language-vue">&lt;script setup&gt;
+
+```vue
+<script setup>
 import { reactive, computed } from 'vue'
 
 const author = reactive({
@@ -103,21 +117,26 @@ const author = reactive({
 })
 
 // a computed ref
-const publishedBooksMessage = computed(() =&gt; {
-  return author.books.length &gt; 0 ? '있음' : '없음'
+const publishedBooksMessage = computed(() => {
+  return author.books.length > 0 ? 'Yes' : 'No'
 })
-&lt;/script&gt;
+</script>
 
-&lt;template&gt;
-  &lt;p&gt;출판된 책:&lt;/p&gt;
-  &lt;span&gt;{{ publishedBooksMessage }}&lt;/span&gt;
-&lt;/template&gt;
-</code></pre>
-<p data-md-type="paragraph"><a href="https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlYWN0aXZlLCBjb21wdXRlZCB9IGZyb20gJ3Z1ZSdcblxuY29uc3QgYXV0aG9yID0gcmVhY3RpdmUoe1xuICBuYW1lOiAnSm9obiBEb2UnLFxuICBib29rczogW1xuICAgICdWdWUgMiAtIEFkdmFuY2VkIEd1aWRlJyxcbiAgICAnVnVlIDMgLSBCYXNpYyBHdWlkZScsXG4gICAgJ1Z1ZSA0IC0gVGhlIE15c3RlcnknXG4gIF1cbn0pXG5cbi8vIGEgY29tcHV0ZWQgcmVmXG5jb25zdCBwdWJsaXNoZWRCb29rc01lc3NhZ2UgPSBjb21wdXRlZCgoKSA9PiB7XG4gIHJldHVybiBhdXRob3IuYm9va3MubGVuZ3RoID4gMCA/ICdZZXMnIDogJ05vJ1xufSlcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDxwPkhhcyBwdWJsaXNoZWQgYm9va3M6PC9wPlxuICA8c3Bhbj57eyBwdWJsaXNoZWRCb29rc01lc3NhZ2UgfX08L3NwYW4+XG48L3RlbXBsYXRlPiIsImltcG9ydC1tYXAuanNvbiI6IntcbiAgXCJpbXBvcnRzXCI6IHtcbiAgICBcInZ1ZVwiOiBcImh0dHBzOi8vc2ZjLnZ1ZWpzLm9yZy92dWUucnVudGltZS5lc20tYnJvd3Nlci5qc1wiXG4gIH1cbn0ifQ==" data-md-type="link">플레이그라운드에서 해보세요</a></p>
-<p data-md-type="paragraph">여기에서 computed 속성인 <code data-md-type="codespan">publishedBooksMessage</code> 를 선언했습니다. <code data-md-type="codespan">computed()</code> 함수는 getter 함수가 전달될 것으로 예상하고 반환된 값은 <strong data-md-type="double_emphasis">computed ref</strong> 입니다. 일반 refs와 유사하게 계산된 결과에 <code data-md-type="codespan">publishedBooksMessage.value</code> 로 액세스할 수 있습니다. Computed ref는 템플릿에서 자동으로 래핑 해제(unwrap)되므로 템플릿 표현식에서 <code data-md-type="codespan">.value</code> 없이 참조할 수 있습니다.</p>
-<p data-md-type="paragraph">computed 속성은 반응형(reactive) 종속성을 자동으로 추적합니다. Vue는 <code data-md-type="codespan">publishedBooksMessage</code>계산이 <code data-md-type="codespan">author.books</code>에 의존한다는 것을 알고 있으므로 <code data-md-type="codespan">publishedBooksMessage</code> 가 변경되면 <code data-md-type="codespan">author.books</code> 에 의존하는 모든 바인딩을 업데이트할 것입니다.</p>
-<p data-md-type="paragraph">참조: <a href="/guide/typescript/composition-api.html#typing-computed" data-md-type="link">타입을 가지는 Computed</a><sup data-md-type="raw_html" class="vt-badge ts"></sup></p>
-<div data-md-type="block_html"></div>
+<template>
+  <p>Has published books:</p>
+  <span>{{ publishedBooksMessage }}</span>
+</template>
+```
+
+[Try it in the Playground](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlYWN0aXZlLCBjb21wdXRlZCB9IGZyb20gJ3Z1ZSdcblxuY29uc3QgYXV0aG9yID0gcmVhY3RpdmUoe1xuICBuYW1lOiAnSm9obiBEb2UnLFxuICBib29rczogW1xuICAgICdWdWUgMiAtIEFkdmFuY2VkIEd1aWRlJyxcbiAgICAnVnVlIDMgLSBCYXNpYyBHdWlkZScsXG4gICAgJ1Z1ZSA0IC0gVGhlIE15c3RlcnknXG4gIF1cbn0pXG5cbi8vIGEgY29tcHV0ZWQgcmVmXG5jb25zdCBwdWJsaXNoZWRCb29rc01lc3NhZ2UgPSBjb21wdXRlZCgoKSA9PiB7XG4gIHJldHVybiBhdXRob3IuYm9va3MubGVuZ3RoID4gMCA/ICdZZXMnIDogJ05vJ1xufSlcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDxwPkhhcyBwdWJsaXNoZWQgYm9va3M6PC9wPlxuICA8c3Bhbj57eyBwdWJsaXNoZWRCb29rc01lc3NhZ2UgfX08L3NwYW4+XG48L3RlbXBsYXRlPiIsImltcG9ydC1tYXAuanNvbiI6IntcbiAgXCJpbXBvcnRzXCI6IHtcbiAgICBcInZ1ZVwiOiBcImh0dHBzOi8vc2ZjLnZ1ZWpzLm9yZy92dWUucnVudGltZS5lc20tYnJvd3Nlci5qc1wiXG4gIH1cbn0ifQ==)
+
+여기에서 computed 속성인 `publishedBooksMessage` 를 선언했습니다. `computed()` 함수는 getter 함수가 전달될 것으로 예상하고 반환된 값은 **computed ref** 입니다. 일반 refs와 유사하게 계산된 결과에 `publishedBooksMessage.value` 로 액세스할 수 있습니다. Computed ref는 템플릿에서 자동으로 래핑 해제(unwrap)되므로 템플릿 표현식에서 `.value` 없이 참조할 수 있습니다.
+
+computed 속성은 반응형(reactive) 종속성을 자동으로 추적합니다. Vue는 `publishedBooksMessage` 계산이 `author.books`에 의존한다는 것을 알고 있으므로 `publishedBooksMessage` 가 변경되면 `author.books` 에 의존하는 모든 바인딩을 업데이트할 것입니다.
+
+참조: [Typing Computed](/guide/typescript/composition-api.html#typing-computed) <sup class="vt-badge ts" />
+
+</div>
 
 ## Computed 속성의 캐싱 vs 메소드
 
@@ -128,42 +147,52 @@ const publishedBooksMessage = computed(() =&gt; {
 ```
 
 <div class="options-api">
-</div>
-<pre data-md-type="block_code" data-md-language="js"><code class="language-js">// 컴포넌트 내부
+
+```js
+// in component
 methods: {
   calculateBooksMessage() {
-    return this.author.books.length &gt; 0 ? '있음' : '없음'
+    return this.author.books.length > 0 ? 'Yes' : 'No'
   }
 }
-</code></pre>
-<div data-md-type="block_html"></div>
+```
+
+</div>
 
 <div class="composition-api">
-</div>
-<pre data-md-type="block_code" data-md-language="js"><code class="language-js">// 컴포넌트 내부
+
+```js
+// in component
 function calculateBooksMessage() {
-  return author.books.length &gt; 0 ? '있음' : '없음'
+  return author.books.length > 0 ? 'Yes' : 'No'
 }
-</code></pre>
-<div data-md-type="block_html"></div>
+```
+
+</div>
 
 computed 속성 대신에 메소드와 동일한 함수를 정의할 수 있습니다. 결과적으로 두 가지 접근 방식은 실제로 완전히 동일합니다. 그러나 차이점은 **computed 속성은 반응형(reactive) 종속성에 기반하여 캐시된다는 것 입니다.** computed 속성은 반응형 종속성 중 일부가 변경된 경우에만 재평가됩니다. 이는 `author.books` 가 변경되지 않은 한 `publishedBooksMessage` BooksMessage에 여러번 접근하더라도 getter 함수를 다시 실행할 필요 없이 이전에 계산된 결과를 즉시 반환합니다.
 
 또한 이는 `Date.now()`이 반응형 종속성이 아니기 때문에, 다음 예제의 computed 속성이 업데이트되지 않음을 의미합니다.
 
 <div class="options-api">
-</div>
-<pre data-md-type="block_code" data-md-language="js"><code class="language-js">computed: {
+
+```js
+computed: {
   now() {
     return Date.now()
   }
-}</code></pre>
-<div data-md-type="block_html"></div>
+}
+```
+
+</div>
 
 <div class="composition-api">
+
+```js
+const now = computed(() => Date.now())
+```
+
 </div>
-<pre data-md-type="block_code" data-md-language="js"><code class="language-js">const now = computed(() =&gt; Date.now())</code></pre>
-<div data-md-type="block_html"></div>
 
 이에 비해 메소드 호출은 다시 렌더링이 발생할 때마다 **항상** 함수를 호출합니다.
 
@@ -174,12 +203,13 @@ computed 속성 대신에 메소드와 동일한 함수를 정의할 수 있습�
 computed 속성은 기본적으로 getter만 제공하는 읽기 전용입니다. computed 속성에 새 값을 할당하려고 하면 런타임 경고가 표시됩니다. "쓰기 가능한" 계산 속성이 필요한 드문 경우에 getter와 setter를 모두 제공하여 속성을 만들 수 있습니다.
 
 <div class="options-api">
-</div>
-<pre data-md-type="block_code" data-md-language="js"><code class="language-js">export default {
+
+```js
+export default {
   data() {
     return {
-      firstName: '존',
-      lastName: '도우'
+      firstName: 'John',
+      lastName: 'Doe'
     }
   },
   computed: {
@@ -190,19 +220,21 @@ computed 속성은 기본적으로 getter만 제공하는 읽기 전용입니다
       },
       // setter
       set(newValue) {
-        // 참고: 여기서는 구조분해할당 구문을 사용합니다.
+        // Note: we are using destructuring assignment syntax here.
         [this.firstName, this.lastName] = newValue.split(' ')
       }
     }
   }
 }
-</code></pre>
-<p data-md-type="paragraph">이제 <code data-md-type="codespan">this.fullName = '존 도우'</code> 를 실행하면 setter가 호출되고 이에 따라 <code data-md-type="codespan">this.firstName</code> 및 <code data-md-type="codespan">this.lastName</code> 이 업데이트됩니다.</p>
-<div data-md-type="block_html"></div>
+```
+
+이제 `this.fullName = '존 도우'` 를 실행하면 setter가 호출되고 이에 따라 `this.firstName` 및 `this.lastName` 이 업데이트됩니다.
+</div>
 
 <div class="composition-api">
-</div>
-<pre data-md-type="block_code" data-md-language="vue"><code class="language-vue">&lt;script setup&gt;
+
+```vue
+<script setup>
 import { ref, computed } from 'vue'
 
 const firstName = ref('John')
@@ -215,14 +247,15 @@ const fullName = computed({
   },
   // setter
   set(newValue) {
-    // 참고: 여기서는 구조분해할당 구문을 사용합니다.
+    // Note: we are using destructuring assignment syntax here.
     [firstName.value, lastName.value] = newValue.split(' ')
   }
 })
-&lt;/script&gt;
-</code></pre>
-<p data-md-type="paragraph">이제 <code data-md-type="codespan">fullName.value = 'John Doe'</code> 를 실행하면 setter가 호출되고 이에 따라 <code data-md-type="codespan">firstName</code> 및 <code data-md-type="codespan">lastName</code> 이 업데이트됩니다.</p>
-<div data-md-type="block_html"></div>
+</script>
+```
+
+이제 `fullName.value = 'John Doe'`를 실행하면 setter가 호출되고 이에 따라 `firstName` 및 `lastName` 이 업데이트됩니다.
+</div>
 
 ## 모범 사례
 
