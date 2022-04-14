@@ -7,12 +7,14 @@ footer: false
 
 
 Depending on your use case and preference, you can use Vue with or without a build step.
+
 독자님의 유스케이스와 선호도에 따라 빌드 단계를 포함하거나 포함하지 않고 Vue를 사용할 수 있습니다.
 
 ## With Build Tools
 ## 빌드 도구 사용
 
 A build setup allows us to use Vue [Single-File Components](/guide/scaling-up/sfc) (SFCs). The official Vue build setup is based on [Vite](https://vitejs.dev), a frontend build tool that is modern, lightweight and extremely fast.
+
 빌드 설정을 통해 Vue SFC( [싱글 파일 컴포넌트](/guide/scaling-up/sfc))를 사용할 수 있습니다. 공식 Vue 빌드 설정은 현대적이고 가벼우며 매우 빠른 프론트엔드 빌드 도구인 [Vite](https://vitejs.dev) 를 기반으로 합니다.
 
 ### Online
@@ -32,18 +34,20 @@ You can try Vue with SFCs online on [StackBlitz](https://vite.new/vue). StackBli
 - Install [Node.js](https://nodejs.org/)
   :::
 
-:::tip 전제 조건
+::: tip 전제 조건
 
-- 커맨드 라인 환경에 익숙함Familiarity with the command line
-- [Node.js](https://nodejs.org/) 설치 
-  :::
+- 커맨드 라인 환경에 익숙함
+- [Node.js](https://nodejs.org/) 가 설치됨
+:::
 
 To create a build-tool-enabled Vue project on your machine, run the following command in your command line (without the `>` sign):
-당신의 기기에서 빌드 도구를 이용해 Vue 프로젝트를 생성하려면 커맨드라인에서 다음 명령을 실행합니다( `>` 기호는 제외).
+
+로컬 머신에 빌드 도구가 활성화된 Vue 프로젝트를 생성하려면 커맨드라인에서 다음 명령을 실행합니다( `>` 기호는 제외).
 
 <div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">&gt;</span> <span style="color:#A6ACCD;">npm init vue@latest</span></span></code></pre></div>
 
 This command will install and execute [create-vue](https://github.com/vuejs/create-vue), the official Vue project scaffolding tool. You will be presented with prompts for a number of optional features such as TypeScript and testing support:
+
 이 명령은 공식 Vue 프로젝트 스캐폴딩 도구인 [create-vue](https://github.com/vuejs/create-vue) 를 설치하고 실행합니다. TypeScript 및 테스트 지원과 같은 여러 선택적 기능에 대한 프롬프트가 표시됩니다.
 
 <div class="language-sh"><pre><code><span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Project name: <span style="color:#888;">… <span style="color:#89DDFF;">&lt;</span><span style="color:#888;">your-project-name</span><span style="color:#89DDFF;">&gt;</span></span></span>
@@ -60,6 +64,7 @@ This command will install and execute [create-vue](https://github.com/vuejs/crea
 <span style="color:#A6ACCD;">Done.</span></code></pre></div>
 
 If you are unsure about an option, simply choose `No` by hitting enter for now. Once the project is created, follow the instructions to install dependencies and start the dev server:
+
 옵션이 확실하지 않은 경우 지금은 Enter 키를 눌러 `No` 를 선택하십시오. 프로젝트가 생성되면 지침에 따라 의존성을 설치하고 개발 서버를 시작합니다.
 
 <div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">&gt; </span><span style="color:#A6ACCD;">cd</span><span style="color:#A6ACCD;"> </span><span style="color:#89DDFF;">&lt;</span><span style="color:#888;">your-project-name</span><span style="color:#89DDFF;">&gt;</span></span>
@@ -68,6 +73,7 @@ If you are unsure about an option, simply choose `No` by hitting enter for now. 
 <span class="line"></span></code></pre></div>
 
 You should now have your first Vue project running! Here are some additional tips:
+
 이제 첫 번째 Vue 프로젝트가 실행 되고 있습니다! 다음은 몇 가지 추가 팁입니다:
 
 - The recommended IDE setup is [Visual Studio Code](https://code.visualstudio.com/) + [Volar extension](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar). [WebStorm](https://www.jetbrains.com/webstorm/) is also viable.
@@ -80,21 +86,25 @@ You should now have your first Vue project running! Here are some additional tip
 - TypeScript를 사용하기로 선택한 경우 [TypeScript 사용 가이드](typescript/overview.html) 를 확인하십시오.
 
 When you are ready to ship your app to production, run the following:
+
 앱을 프로덕션에 제공할 준비가 되면 다음을 실행합니다:
 
 <div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">&gt; </span><span style="color:#A6ACCD;">npm run build</span></span>
 <span class="line"></span></code></pre></div>
 
 This will create a production-ready build of your app in the project's `./dist` directory. Check out the [Production Deployment Guide](/guide/best-practices/production-deployment.html) to learn more about shipping your app to production.
+
 그러면 프로젝트의 `./dist` 디렉토리에 프로덕션 준비가 된 앱 빌드가 생성됩니다. [운영 배포 가이드](/guide/best-practices/production-deployment.html) 를 확인하여 앱을 운영으로 배포하는 방법에 대해 자세히 알아보세요.
 
 [Next Steps >](#next-steps)
+[다음 단계 >](#next-steps)
 
 ## Without Build Tools
 ## 빌드 도구 미사용
 
 To get started with Vue without a build step, simply copy the following code into an HTML file and open it in your browser:
-빌드 단계 없이 Vue를 시작하려면 다음 코드를 HTML 파일에 복사하고 브라우저에서 엽니다:
+
+빌드 단계 없이 Vue를 시작하려면 다음 코드를 HTML 파일에 복사 해넣고 브라우저에서 엽니다:
 
 
 ```html
@@ -114,9 +124,11 @@ To get started with Vue without a build step, simply copy the following code int
 ```
 
 The above example uses the global build of Vue where all APIs are exposed under the global `Vue` variable.
-위의 예는 모든 API가  `Vue` 전역 변수에 제공됩니다. 노출되는 Vue의 전역 빌드를 사용합니다.
+
+위의 예는 모든 API가 전역 `Vue` 변수 아래에 노출되는 Vue의 전역 빌드를 사용합니다.
 
 While the global build works, we will be primarily using [ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) syntax throughout the rest of the documentation for consistency. In order to use Vue over native ES modules, use the following HTML instead:
+
 전역 빌드가 작동하는 동안 일관성을 위해 문서의 나머지 부분에서 주로 [ES 모듈](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) 구문을 사용합니다. 기본 ES 모듈에서 Vue를 사용하려면 대신 다음 HTML을 사용하십시오.
 
 ```html
@@ -144,10 +156,12 @@ While the global build works, we will be primarily using [ES modules](https://de
 ```
 
 Notice how we can import directly from `'vue'` in our code - this is made possible by the `<script type="importmap">` block, leveraging a native browser feature called [Import Maps](https://caniuse.com/import-maps). Import maps are currently only available in Chromium-based browsers, so we recommend using Chrome or Edge during the learning process. If your preferred browser does not support import maps yet, you can polyfill it with [es-module-shims](https://github.com/guybedford/es-module-shims).
+
 코드 `'vue'` 에서 직접 가져올 수 있는 방법에 주목하세요. 이는 [Import Maps](https://caniuse.com/import-maps) 라는 기본 브라우저 기능을 활용하여 `<script type="importmap">`  블록으로 가능합니다. 지도 가져오기는 현재 Chromium 기반 브라우저에서만 사용할 수 있으므로 학습 과정에서 Chrome 또는 Edge를 사용하는 것이 좋습니다. 선호하는 브라우저가 아직 지도 가져오기를 지원하지 않는 경우 [es-module-shims](https://github.com/guybedford/es-module-shims) 로 폴리필할 수 있습니다.
 
 
 You can add entries for other dependencies to the import map - just make sure they point to the ES modules version of the library you intend to use.
+
 다른 의존성에 대한 항목을 지도 가져오기에 추가할 수 있습니다. 사용하려는 라이브러리의 ES 모듈 버전을 가리키는지 확인하기만 하면 됩니다.
 
 
@@ -163,6 +177,7 @@ The import-maps-based setup is meant for learning only - if you intend to use Vu
 ### HTTP를 통한 제공
 
 As we dive deeper into the guide, we may need to split our code into separate JavaScript files so that they are easier to manage. For example:
+
 가이드에 대해 더 깊이 파고들면 관리하기 쉽도록 코드를 별도의 JavaScript 파일로 분할해야 할 수도 있습니다. 예를 들어:
 
 ```html

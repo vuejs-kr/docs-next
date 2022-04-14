@@ -296,28 +296,43 @@ If you are new to Vue, here's our general recommendation:
 
 You don't have to commit to only one style during the learning phase. The rest of the documentation will provide code samples in both styles where applicable, and you can toggle between them at any time using the **API Preference switches** at the top of the left sidebar.
 
-You don't have to commit to only one style during the learning phase. The rest of the documentation will provide code samples in both styles where applicable, and you can toggle between them at any time using the **API Preference switches** at the top of the left sidebar.
+학습 단계에서 한 가지 스타일만 고집할 필요는 없습니다. 나머지 문서는 해당되는 경우 두 가지 스타일의 코드 샘플을 제공하며 왼쪽 사이드바 상단에 있는 **API 기본 설정 스위치**를 사용하여 언제든지 두 스타일 사이를 전환할 수 있습니다.
 
 
 ## Still Got Questions?
 
+## 궁굼한게 남으셨나요? 
+
 Check out our [FAQ](/about/faq).
+
+[FAQ](/about/faq)를 방문해보세요
 
 ## Pick Your Learning Path
 
+## 학습 경록 선택
+
 Different developers have different learning styles. Feel free to pick a learning path that suits your preference - although we do recommend going over all content if possible!
+
+개발자마다 학습 스타일이 다릅니다. 선호하는 학습 경로를 자유롭게 선택하세요. 가능하면 모든 콘텐츠를 살펴보는 것이 좋습니다.
+
 
 <div class="vt-box-container next-steps">
   <a class="vt-box" href="/tutorial/">
     <p class="next-steps-link">Try the Tutorial</p>
     <p class="next-steps-caption">For those who prefer learning things hands-on.</p>
+    <p class="next-steps-link">튜토리얼로 시작해보세요</p>
+    <p class="next-steps-caption">손으로 직접 무언가를 해보는 것을 선호하는 분들을 위한 방법입니다.</p>
   </a>
   <a class="vt-box" href="/guide/quick-start.html">
     <p class="next-steps-link">Read the Guide</p>
     <p class="next-steps-caption">The guide walks you through every aspect of the framework in full details.</p>
+    <p class="next-steps-link">가이드 문서를 읽어 보세요</p>
+    <p class="next-steps-caption">가이드 문서는 프레임워크의 모든 측명을 아주 자세하게 안내합니다.</p>
   </a>
   <a class="vt-box" href="/examples/">
     <p class="next-steps-link">Check out the Examples</p>
     <p class="next-steps-caption">Explore examples of core features and common UI tasks.</p>
+    <p class="next-steps-link">예제를 확인해보세요</p>
+    <p class="next-steps-caption">핵심 기능과 일반적인 UI 작업에 대안 예제를 탐색해보세요</p>
   </a>
 </div>
