@@ -34,10 +34,13 @@ export default {
 인스턴스 생명주기의 여러 단계에서 호출되는 다른 훅도 있으며 가장 일반적으로 사용되는 것은 <span class="composition-api">[`onMounted`](/api/composition-api-lifecycle.html#onmounted), [`onUpdated`](/api/composition-api-lifecycle.html#onupdated), 그리고 [`onUnmounted`](/api/composition-api-lifecycle.html#onunmounted) 입니다. </span><span class="options-api">[`mounted`](/api/options-lifecycle.html#mounted), [`updated`](/api/options-lifecycle.html#updated), and [`unmounted`](/api/options-lifecycle.html#unmounted) 입니다.</span>
 
 <div class="options-api">
+
 모든 생명주기 훅은 호출하는 현재 활성 인스턴스를 가리키는 `this` 컨텍스트로 호출됩니다. 즉, 생명주기 훅을 선언할 때 화살표 함수를 사용하지 말아야 합니다. 그렇게 하면 `this`를 통해 컴포넌트 인스턴스에 접근할 수 없기 때문입니다.
+
 </div>
 
 <div class="composition-api">
+
 `onMounted`를 호출하면 Vue는 등록된 콜백 함수를 현재 활성 컴포넌트 인스턴스와 자동으로 연결합니다. 이를 위해서는 컴포넌트 설정 중에 이러한 훅을 **동기적으로(synchronously)** 등록해야 합니다. 예를 들어 다음과 같이 하지 마십시오:
 
 ```js
@@ -49,6 +52,7 @@ setTimeout(() => {
 ```
 
 이 호출이 `setup()` 또는 `<script setup>` 내에 사전적으로 배치되어야 함을 의미하지는 않습니다. `onMounted()`는 호출 스택이 동기식이고 `setup()` 내에서 시작되는 한 외부 함수로 호출할 수 있습니다.
+
 </div>
 
 ## 생명주기 다이어그램
