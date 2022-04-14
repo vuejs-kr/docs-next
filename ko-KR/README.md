@@ -6,10 +6,16 @@
 
 로컬 개발의 경우 [pnpm](https://pnpm.io/) 이 패키지 관리자로 선호됩니다.
 
+
 ```bash
 pnpm i
 pnpm run dev
 ```
+
+::: tip 실행하기
+node 16+ 로 실행하셔야 실행됩니다. 
+:::
+
 
 ## 콘텐츠 작업하기
 

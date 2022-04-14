@@ -111,7 +111,7 @@ Vue는 프론트엔드 개발에 필요한 대부분의 공통 기능을 다루�
 - 단일 페이지 어플리케이션(Single-Page Application SPA)
 - Fullstack / Server-Side-Rendering (SSR)
 - 풀스택/서버 사이드 렌더링(SSR)
-- JAMStack / Static-Site-Generation (SSG)
+- Jamstack / Static-Site-Generation (SSG)
 - JAMStack / 정적 사이트 생성(SSG)
 - Targeting desktop, mobile, WebGL or even the terminal
 - 데스크탑, 모바일, WebGL 또는 터미널까지 타겟팅

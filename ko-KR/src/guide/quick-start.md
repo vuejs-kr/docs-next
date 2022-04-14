@@ -54,7 +54,7 @@ This command will install and execute [create-vue](https://github.com/vuejs/crea
 <span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add Vitest for Unit testing? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
 <span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add Cypress for both Unit and End-to-End testing? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
 <span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add ESLint for code quality? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
-<span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add Prettier for code formating? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
+<span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add Prettier for code formatting? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
 <span></span>
 <span style="color:#A6ACCD;">Scaffolding project in ./<span style="color:#89DDFF;">&lt;</span><span style="color:#888;">your-project-name</span><span style="color:#89DDFF;">&gt;</span>...</span>
 <span style="color:#A6ACCD;">Done.</span></code></pre></div>
@@ -206,7 +206,7 @@ If you skipped the [Introduction](/guide/introduction), we strongly recommend re
   <a class="vt-box" href="/guide/essentials/application.html">
     <p class="next-steps-link">Continue the Guide</p>
     <p class="next-steps-link">가이드를 이어나갑니다.</p>
-    <p class="next-steps-caption">The guide walks you through every aspect of the framework in full details.</p>    
+    <p class="next-steps-caption">The guide walks you through every aspect of the framework in full details.</p>
     <p class="next-steps-caption">이 가이드는 프레임워크의 모든 측면에 대해 자세히 설명합니다.</p>
   </a>
   <a class="vt-box" href="/tutorial/">
@@ -218,7 +218,7 @@ If you skipped the [Introduction](/guide/introduction), we strongly recommend re
   <a class="vt-box" href="/examples/">
     <p class="next-steps-link">Check out the Examples</p>
     <p class="next-steps-link">샘플을 확인 하세요.</p>
-    <p class="next-steps-caption">Explore examples of core features and common UI tasks.</p>    
+    <p class="next-steps-caption">Explore examples of core features and common UI tasks.</p>
     <p class="next-steps-caption">핵심 기능 및 일반적인 UI 작업의 예.</p>
   </a>
 </div>

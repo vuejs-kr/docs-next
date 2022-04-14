@@ -7,4 +7,4 @@ title: Vue.js - The Progressive JavaScript Framework
 import Home from '/@theme/components/Home.vue'
 </script>
 
-<home></home>
+<Home />
