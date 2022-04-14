@@ -224,7 +224,7 @@ To wait for the DOM update to complete after a state change, you can use the [ne
 import { nextTick } from 'vue'
 
 function increment() {
-  count.value++
+  state.count++
   nextTick(() => {
     // access updated DOM
   })
@@ -343,16 +343,16 @@ The `reactive()` API has two limitations:
 
 1. It only works for object types (objects, arrays, and [collection types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects#keyed_collections) such as `Map` and `Set`). It cannot hold [primitive types](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) such as `string`, `number` or `boolean`.
 
-2. Since Vue's reactivity tracking works over property access, we must always keep the same reference to the reactive object. This means we can't easily "replace" a reactive object:
+2. Since Vue's reactivity tracking works over property access, we must always keep the same reference to the reactive object. This means we can't easily "replace" a reactive object because the reactivity connection to the first reference is lost:
 
    ```js
    let state = reactive({ count: 0 })
 
-   // this won't work!
+   // the above reference ({ count: 0 }) is no longer being tracked (reactivity connection is lost!)
    state = reactive({ count: 1 })
    ```
 
-   It also means that when we assign or destructure a reactive object's property into local variables, or when we pass that property into a function, or destructure properties from a reactive object, we will lose the reactivity connection:
+   It also means that when we assign or destructure a reactive object's property into local variables, or when we pass that property into a function, we will lose the reactivity connection:
 
    ```js
    const state = reactive({ count: 0 })
@@ -465,7 +465,7 @@ The following expression will **NOT** work as expected:
 {{ object.foo + 1 }}
 ```
 
-The rendered result will be `[object Object]1` because `object.foo` is a ref object. We can fix that by making `foo` a top-level property:
+The rendered result will be `[object Object]` because `object.foo` is a ref object. We can fix that by making `foo` a top-level property:
 
 ```js
 const { foo } = object

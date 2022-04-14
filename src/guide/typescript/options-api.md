@@ -23,7 +23,7 @@ export default defineComponent({
   },
   mounted() {
     this.name // type: string | undefined
-    this.id // type" number | string | undefined
+    this.id // type: number | string | undefined
     this.msg // type: string
     this.metadata // type: any
   }
@@ -35,7 +35,8 @@ However, the runtime `props` options only support using constructor functions as
 To annotate complex props types, we can use the `PropType` utility type:
 
 ```ts
-import { defineComponent, PropType } from 'vue'
+import { defineComponent } from 'vue'
+import type { PropType } from 'vue'
 
 interface Book {
   title: string
@@ -69,7 +70,8 @@ export default defineComponent({
 Because of a [design limitation](https://github.com/microsoft/TypeScript/issues/38845) in TypeScript, you have to be careful when using function values for `validator` and `default` prop options - make sure to use arrow functions:
 
 ```ts
-import { defineComponent, PropType } from 'vue'
+import { defineComponent } from 'vue'
+import type { PropType } from 'vue'
 
 interface Book {
   title: string
