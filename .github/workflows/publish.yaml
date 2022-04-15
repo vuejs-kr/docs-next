@@ -24,5 +24,5 @@ jobs:
     - name: Deploy to GitHub Pages
       uses: comfuture/actions/ghpages@master
       env:
-        BUILD_DIR: src/.vitepress/dist/
+        BUILD_DIR: ko-KR/.vitepress/dist/
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
