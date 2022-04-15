@@ -537,6 +537,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   title: 'Vue.js',
   description: 'Vue.js - The Progressive JavaScript Framework',
   srcDir: 'src',
+  base: '/docs-next/',
   srcExclude: ['tutorial/**/description.md'],
   scrollOffset: 'header',
 
