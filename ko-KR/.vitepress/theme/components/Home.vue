@@ -7,18 +7,17 @@ import VueMasteryModal from './VueMasteryModal.vue';
 <template>
   <section id="hero">
     <h1 class="tagline">
-      The
-      <span class="accent">Progressive</span>
-      <br />JavaScript Framework
+
+      <span class="accent">프로그래시브</span>
+      <br />자바스크립트 프레임워크
     </h1>
     <p class="description">
-      An approachable, performant and versatile framework for building web
-      user interfaces.
+      웹 유저 인터페이스를 구축하기 위한 접근하기 쉽고 성능이 뛰어나며 다재다능한 프레임워크
     </p>
     <p class="actions">
       <vue-mastery-modal />
       <a class="get-started" href="/guide/introduction.html">
-        Get Started
+        시작하기
         <svg
           class="icon"
           xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +30,7 @@ import VueMasteryModal from './VueMasteryModal.vue';
           />
         </svg>
       </a>
-      <a class="setup" href="/guide/quick-start.html">Install</a>
+      <a class="setup" href="/guide/quick-start.html">설치</a>
     </p>
   </section>
 
@@ -49,37 +48,34 @@ import VueMasteryModal from './VueMasteryModal.vue';
         />
       </picture>
     </a>
-    <span>Advanced IDE for Vue</span>
+    <span>Vue를 위한 IDE</span>
   </section>
 
   <section id="highlights" class="vt-box-container">
     <div class="vt-box">
-      <h2>Approachable</h2>
+      <h2>접근하기 쉬운</h2>
       <p>
-        Builds on top of standard HTML, CSS and JavaScript with intuitive
-        API and world-class documentation.
+        직관적인 API 및 세계적 수준의 문서를 제공하며 표준 HTML, CSS 및 자바스크립트이 기반입니다.
       </p>
     </div>
     <div class="vt-box">
-      <h2>Performant</h2>
+      <h2>성능이 뛰어난</h2>
       <p>
-        Truly reactive, compiler-optimized rendering system that rarely
-        requires manual optimization.
+        완전히 반응형이며, 컴파일러를 통해 최적화된 렌더링 시스템은 수동 최적화를 거의 할 필요가 없습니다.
       </p>
     </div>
     <div class="vt-box">
-      <h2>Versatile</h2>
+      <h2>다재다능한</h2>
       <p>
-        A rich, incrementally adoptable ecosystem that scales between a
-        library and a full-featured framework.
+        풍부한 기능을 점증적으로 적용할수 있는 생태계를 제공하여 단순히 라이브러리로도 사용할수 있고 모든 기능을 가진 프레임워크로도 사용할수 있습니다.
       </p>
     </div>
   </section>
 
   <section id="sponsors">
-    <h2>Platinum Sponsors</h2>
+    <h2>플래티넘 스폰서</h2>
     <SponsorsGroup tier="platinum" placement="landing" />
-    <h2>Gold Sponsors</h2>
+    <h2>골드 스폰서</h2>
     <SponsorsGroup tier="gold" placement="landing" />
   </section>
 
