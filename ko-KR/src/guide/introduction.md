@@ -33,7 +33,7 @@ footer: false
 
 ## What is Vue?
 
-## Vue 는 어떤 것인가요?
+## Vue 는 무엇인가요?
 
 Vue (pronounced /vjuː/, like **view**) is a JavaScript framework for building user interfaces. It builds on top of standard HTML, CSS and JavaScript, and provides a declarative and component-based programming model that helps you efficiently develop user interfaces, be it simple or complex.
 
@@ -102,38 +102,38 @@ The rest of the documentation assumes basic familiarity with HTML, CSS and JavaS
 :::
 
 ## The Progressive Framework
-## 프로그레시브 프레임워크
+## 점진적인(Progressive) 프레임워크
 
 
 Vue is a framework and ecosystem that covers most of the common features needed in frontend development. But the web is extremely diverse - the things we build on the web may vary drastically in form and scale. With that in mind, Vue is designed to be flexible and incrementally adoptable. Depending on your use case, Vue can be used in different ways:
 
-Vue는 프론트엔드 개발에 필요한 대부분의 공통 기능을 다루는 프레임워크이자 생태계입니다. 그러나 웹은 극단적으로 다양합니다. 웹에서 구축하는 것은 형태와 규모가 크게 다를 수 있습니다. 이를 염두에 두고 Vue는 유연하고 점진적으로 채택할 수 있도록 설계되었습니다. 사용 사례에 따라 Vue를 다양한 방식으로 사용할 수 있습니다.
+Vue는 프론트엔드 개발에 필요한 대부분의 공통 기능을 다루는 프레임워크이자 생태계입니다. 그러나 웹은 극단적으로 다양합니다. 웹에서 구축하고자 하는 것의 형태와 규모는 서로 크게 다를 수 있습니다. 이를 염두에 두고 Vue는 유연하고 점진적으로 채택할 수 있도록 설계되었습니다. 사용 사례에 따라 Vue를 다양한 방식으로 사용할 수 있습니다.
 
 - Enhancing static HTML without a build step
 - 빌드 단계 없이 정적 HTML 개선
 - Embedding as Web Components on any page
-- 어떤 페이지든 웹 컴포넌트 형태로 포함시키기
+- 어떤 페이지에서든 웹 컴포넌트 형태로 포함시키기
 - Single-Page Application (SPA)
 - 단일 페이지 어플리케이션(Single-Page Application SPA)
 - Fullstack / Server-Side-Rendering (SSR)
 - 풀스택/서버 사이드 렌더링(SSR)
 - Jamstack / Static-Site-Generation (SSG)
-- JAMStack / 정적 사이트 생성(SSG)
+- Jamstack / 정적 사이트 생성(SSG)
 - Targeting desktop, mobile, WebGL or even the terminal
 - 데스크탑, 모바일, WebGL 또는 터미널까지 타겟팅
 
 If you find these concepts intimidating, don't worry! The tutorial and guide only require basic HTML and JavaScript knowledge, and you should be able to follow along without being an expert in any of these.
 
-새로운 개념이 많이 나와서 두려울수 있습니다만, 걱정마세요! 튜토리얼과 가이드를 따라 가기 위해서는  기본적인 HTML과 자바스크립트 지식만 있으면 됩니다. 전문가가 아니더라도 배우실수 있습니다.
+새로운 개념이 많이 나와서 두려울수 있습니다만, 걱정 마세요! 튜토리얼과 가이드를 따라 가기 위해서는 기본적인 HTML과 자바스크립트 지식만 있으면 됩니다. 전문가가 아니더라도 배우실수 있습니다.
 
 
 If you are an experienced developer interested in how to best integrate Vue into your stack, or you are curious about what these terms mean, we discuss them in more details in [Ways of Using Vue](/guide/extras/ways-of-using-vue).
 
-Vue를 스택에 가장 잘 통합하는 방법에 관심이 있는 숙련된 개발자이거나 이러한 용어의 의미가 궁금하다면 [Vue 사용 방법](/guide/extras/ways-of-using-vue) 에서 더 자세히 다룹니다.
+Vue를 사용하고 계신 개발 스택에 잘 통합하는 방법에 관심이 있는 숙련된 개발자이거나 이러한 용어의 의미가 궁금하다면 [Vue 사용 방법](/guide/extras/ways-of-using-vue)에서 더 자세한 내용을 다루고 있습니다. 
 
 Despite the flexibility, the core knowledge about how Vue works is shared across all these use cases. Even if you are just a beginner now, the knowledge gained along the way will stay useful as you grow to tackle more ambitious goals in the future. If you are a veteran, you can pick the optimal way to leverage Vue based on the problems you are trying to solve, while retaining the same productivity. This is why we call Vue "The Progressive Framework": it's a framework that can grow with you and adapt to your needs.
 
-이렇게 사용방식에 대한 놀라운 유연성을 제공하지만, Vue가 어떻게 동작하는가에 대한 지식은 모든 사용 사례에서 공유됩니다. 지금은 초보자일지라도 그 과정에서 얻은 지식은 앞으로 더 야심찬 목표를 달성하기 위해 성장함에 따라 유용하게 사용될 것입니다. 베테랑이라면 동일한 생산성을 유지하면서 해결하려는 문제를 기반으로 Vue를 활용하는 최적의 방법을 선택할 수 있습니다. 이것이 우리가 Vue를 "프로그레시브 프레임워크"라고 부르는 이유입니다. 이는 귀하와 함께 성장하고 귀하의 요구에 적응할 수 있는 프레임워크입니다.
+이렇게 사용 방식에 대한 놀라운 유연성을 제공하지만, Vue가 어떻게 동작하는가에 대한 지식은 모든 사용 사례에서 공유됩니다. 지금은 초보자일지라도 그 과정에서 얻은 지식은 앞으로 더 야심찬 목표를 달성하기 위해 성장함에 따라 유용하게 사용될 것입니다. 베테랑이라면 동일한 생산성을 유지하면서 해결하려는 문제를 기반으로 Vue를 활용하는 최적의 방법을 선택할 수 있습니다. 이것이 우리가 Vue를 "점진적인(Progressive) 프레임워크"라고 부르는 이유입니다. Vue는 당신과 함께 성장하고 당신의 요구에 적응할 수 있는 프레임워크입니다.
 
 ## Single-File Components
 ## 싱글 파일 컴포넌트
