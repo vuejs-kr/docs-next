@@ -141,7 +141,7 @@ Despite the flexibility, the core knowledge about how Vue works is shared across
 
 In most build-tool-enabled Vue projects, we author Vue components using an HTML-like file format called **Single-File Component** (also known as `*.vue` files, abbreviated as **SFC**). A Vue SFC, as the name suggests, encapsulates the component's logic (JavaScript), template (HTML), and styles (CSS) in a single file. Here's the previous example, written in SFC format:
 
-대부분의 빌드 도구 지원 Vue 프로젝트에서 **싱글 파일 컴포넌트** ( `*.vue` 파일이라고도 함, `SFC` 로 약칭)라는 HTML과 유사한 파일 형식을 사용하여 Vue 구성 요소를 작성합니다. Vue SFC는 이름에서 알 수 있듯이 구성 요소의 논리(JavaScript), 템플릿(HTML) 및 스타일(CSS)을 단일 파일에 캡슐화합니다. 다음은 앞에 나왔던 예제를 SFC 형식으로 작성한 것입니다:
+대부분의 빌드 도구 지원 Vue 프로젝트에서 **싱글 파일 컴포넌트** ( `*.vue` 파일이라고도 함, `SFC` 로 약칭)라는 HTML과 유사한 파일 형식을 사용하여 Vue 컴포넌트를 작성합니다. Vue SFC는 이름에서 알 수 있듯이 컴포넌트의 논리(JavaScript), 템플릿(HTML) 및 스타일(CSS)을 단일 파일에 캡슐화합니다. 다음은 앞에 나왔던 예제를 SFC 형식으로 작성한 것입니다:
 
 ```vue
 <script>
@@ -167,19 +167,19 @@ button {
 
 SFC is a defining feature of Vue, and is the recommended way to author Vue components **if** your use case warrants a build setup. You can learn more about the [how and why of SFC](/guide/scaling-up/sfc) in its dedicated section - but for now, just know that Vue will handle all the build tools setup for you.
 
-SFC는 Vue의 정의 기능이며 사용 사례가 빌드 설정을 사용하는 **경우** Vue 구성 요소를 작성하는 데 권장되는 방법입니다. 전용 섹션에서 [SFC의 사용하는 이유와 방법](/guide/scaling-up/sfc) 대해 자세히 알아볼 수 있지만 지금은 Vue가 모든 빌드 도구 설정을 처리한다는 점만 알아두세요.
+SFC는 Vue의 정의 기능이며 사용 사례가 빌드 설정을 사용하는 **경우** Vue 컴포넌트를 작성하는 데 권장되는 방법입니다. 전용 섹션에서 [SFC의 사용하는 이유와 방법](/guide/scaling-up/sfc) 대해 자세히 알아볼 수 있지만 지금은 Vue가 모든 빌드 도구 설정을 처리한다는 점만 알아두세요.
 
 ## API Styles
 
 Vue components can be authored in two different API styles: **Options API** and **Composition API**.
 
-Vue 구성 요소는 **옵션 API** 및 **컴포지션(Composition) API** 의 두 가지 API 스타일로 작성할 수 있습니다.
+Vue 컴포넌트는 **옵션 API** 및 **컴포지션(Composition) API** 의 두 가지 API 스타일로 작성할 수 있습니다.
 
 ### Options API
 
 With Options API, we define a component's logic using an object of options such as `data`, `methods`, and `mounted`. Properties defined by options are exposed on `this` inside functions, which points to the component instance:
 
-Options API를 사용하여 `data` , `methods` 및 `mounted` 와 같은 옵션 개체를 사용하여 구성 요소의 논리를 정의합니다. 옵션으로 정의된 속성은 구성 요소 인스턴스를 가리키는 `this`의 내부 함수에 노출
+Options API를 사용하여 `data` , `methods` 및 `mounted` 와 같은 옵션 개체를 사용하여 컴포넌트의 논리를 정의합니다. 옵션으로 정의된 속성은 컴포넌트 인스턴스를 가리키는 `this`의 내부 함수에 노출
 
 ```vue
 <script>
@@ -208,7 +208,7 @@ export default {
   // of a component's lifecycle.
   // This function will be called when the component is mounted.
   // 수명 주기 후크는 다른 단계에서 호출됩니다.
-  // 구성 요소의 수명 주기.
+  // 컴포넌트의 수명 주기.
   // 이 함수는 컴포넌트가 마운트될 때 호출됩니다.  
   mounted() {
     console.log(`The initial count is ${this.count}.`)

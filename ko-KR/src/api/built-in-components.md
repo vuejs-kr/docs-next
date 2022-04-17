@@ -290,7 +290,7 @@ Caches dynamically toggled components wrapped inside.
 
   When used with `v-if` / `v-else` branches, there must be only one component rendered at a time:
 
-  `v-if` / `v-else` 분기와 함께 사용할 때 한 번에 하나의 구성 요소만 렌더링되어야 합니다:
+  `v-if` / `v-else` 분기와 함께 사용할 때 한 번에 하나의 컴포넌트만 렌더링되어야 합니다:
 
 
   ```vue-html
@@ -402,7 +402,7 @@ Renders its slot content to another part of the DOM.
 
 Used for orchestrating nested async dependencies in a component tree.
 
-구성 요소 트리에서 중첩된 비동기 의존성을 조정하는 데 사용됩니다.
+컴포넌트 트리에서 중첩된 비동기 의존성을 조정하는 데 사용됩니다.
 
 
 - **Props**
@@ -428,7 +428,7 @@ Used for orchestrating nested async dependencies in a component tree.
 
   If it encounters async dependencies ([Async Components](/guide/components/async.html) and components with [`async setup()`](/guide/built-ins/suspense.html#async-setup)) while rendering the default slot, it will wait until all of them are resolved before displaying the default slot.
 
-  렌더링하는 동안 비동기 종속성([Async Components](/guide/components/async.html) 및 [`async setup()`](/guide/built-ins/suspense.html#async-setup)이 있는 구성 요소)이 발생하는 경우 기본 슬롯이 있는 경우 기본 슬롯을 표시하기 전에 모든 문제가 해결될 때까지 기다립니다.
+  렌더링하는 동안 비동기 종속성([Async Components](/guide/components/async.html) 및 [`async setup()`](/guide/built-ins/suspense.html#async-setup)이 있는 컴포넌트)이 발생하는 경우 기본 슬롯이 있는 경우 기본 슬롯을 표시하기 전에 모든 문제가 해결될 때까지 기다립니다.
 
 
 - **See also:** [Guide - Suspense](/guide/built-ins/suspense.html)

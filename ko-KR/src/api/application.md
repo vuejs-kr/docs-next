@@ -15,7 +15,7 @@ Creates an application instance.
 - **Details**
 
   The first argument is the root component. The second optional argument is the props to be passed to the root component.
-  첫 번째 인수는 루트 구성 요소입니다. 두 번째 선택적 인수는 루트 구성 요소에 전달할 props입니다.
+  첫 번째 인수는 루트 컴포넌트입니다. 두 번째 선택적 인수는 루트 컴포넌트에 전달할 props입니다.
 
 - **Example**
 

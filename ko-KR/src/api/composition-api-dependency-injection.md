@@ -86,7 +86,7 @@ Injects a value provided by an ancestor component or the application (via `app.p
 
   The first argument is the injection key. Vue will walk up the parent chain to locate a provided value with a matching key. If multiple components in the parent chain provides the same key, the one closest to the injecting component will "shadow" those higher up the chain. If no value with matching key was found, `inject()` returns `undefined` unless a default value is provided.
 
-  첫 번째 인수는 주입 키입니다. Vue는 일치하는 키가 있는 제공된 값을 찾기 위해 상위 체인을 걸어 올라갑니다. 상위 체인의 여러 구성 요소가 동일한 키를 제공하는 경우 주입 구성 요소에 가장 가까운 구성 요소가 상위 체인에 있는 구성 요소에 "그림자"를 표시합니다. 일치하는 키가 있는 값을 찾을 수 없는 경우 기본값이 제공되지 않는 한 `inject()`는 `undefined`를 반환합니다.
+  첫 번째 인수는 주입 키입니다. Vue는 일치하는 키가 있는 제공된 값을 찾기 위해 상위 체인을 걸어 올라갑니다. 상위 체인의 여러 컴포넌트가 동일한 키를 제공하는 경우 주입 컴포넌트에 가장 가까운 컴포넌트가 상위 체인에 있는 컴포넌트에 "그림자"를 표시합니다. 일치하는 키가 있는 값을 찾을 수 없는 경우 기본값이 제공되지 않는 한 `inject()`는 `undefined`를 반환합니다.
 
 
   The second argument is optional and is the default value to be used when no matching value was found. It can also be a factory function to return values that are expensive to create. If the default value is a function, then `false` must be passed as the third argument to indicate that the function should be used as the value instead of the factory.
@@ -106,7 +106,7 @@ Injects a value provided by an ancestor component or the application (via `app.p
 
   Assuming a parent component has provided values as shown in the previous `provide()` example:
 
-  상위 구성 요소가 이전 `provide()` 예제와 같이 값을 제공했다고 가정합니다:
+  상위 컴포넌트가 이전 `provide()` 예제와 같이 값을 제공했다고 가정합니다:
 
 
 
