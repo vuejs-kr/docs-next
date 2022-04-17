@@ -62,7 +62,7 @@ Called after the instance has finished processing all state-related options.
 
 Called right before the component is to be mounted.
 
-컴포넌트가 마우트 되지 직전에 호출됩니다. 
+컴포넌트가 마우트 되기 직전에 호출됩니다. 
 
 - **Type**
 - **타입**
@@ -382,7 +382,7 @@ Called when a reactive dependency triggers the component's render effect to be r
 
 Called after the component instance is inserted into the DOM as part of a tree cached by [`<KeepAlive>`](/api/built-in-components.html#keepalive).
 
- [`<KeepAlive>`](/api/built-in-components.html#keepalive)에 의해 캐시된 컴포넌트 인스턴스가 DOM 트리 내부에 삽입된 후 호출됩니다.
+[`<KeepAlive>`](/api/built-in-components.html#keepalive)에 의해 캐시된 컴포넌트 인스턴스가 DOM 트리 내부에 삽입된 후 호출됩니다.
 
 
 **This hook is not called during server-side rendering.**
