@@ -21,6 +21,8 @@ jobs:
       run: cd ko-KR ; pnpm i
     - name: Generate pages
       run: cd ko-KR ; pnpm run build
+    - name: Add CNAME
+      run: echo "v3-docs.vuejs-korea.org" > ko-KR/.vitepress/dist/CNAME
     - name: Deploy to GitHub Pages
       uses: comfuture/actions/ghpages@master
       env:
