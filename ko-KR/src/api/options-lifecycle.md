@@ -217,7 +217,7 @@ Called right before a component instance is to be unmounted.
 
 Called after the component has been unmounted.
 
-구성 요소가 마운트 해제된 후 호출됩니다.
+컴포넌트가 마운트 해제된 후 호출됩니다.
 
 
 - **Type**
@@ -298,7 +298,7 @@ Called when an error propagating from a descendent component has been captured.
 
   You can modify component state in `errorCaptured()` to display an error state to the user. However, it is important that the error state should not render the original content that caused the error; otherwise the component will be thrown into an infinite render loop.
 
-  `errorCaptured()`에서 컴포넌트 상태를 수정하여 사용자에게 오류 상태를 표시할 수 있습니다. 그러나 오류 상태가 오류를 일으킨 원본 콘텐츠를 렌더링해서는 안 됩니다. 그렇지 않으면 구성 요소가 무한 렌더링 루프에 던져집니다.
+  `errorCaptured()`에서 컴포넌트 상태를 수정하여 사용자에게 오류 상태를 표시할 수 있습니다. 그러나 오류 상태가 오류를 일으킨 원본 콘텐츠를 렌더링해서는 안 됩니다. 그렇지 않으면 컴포넌트가 무한 렌더링 루프에 던져집니다.
 
 
   The hook can return `false` to stop the error from propagating further. See error propagation details below.
