@@ -116,7 +116,7 @@ Vue는 프론트엔드 개발에 필요한 대부분의 공통 기능을 다루�
 - Embedding as Web Components on any page
 - 어떤 페이지에서든 웹 컴포넌트 형태로 포함시키기
 - Single-Page Application (SPA)
-- 단일 페이지 어플리케이션(Single-Page Application SPA)
+- 단일 페이지 애플리케이션(Single-Page Application SPA)
 - Fullstack / Server-Side-Rendering (SSR)
 - 풀스택/서버 사이드 렌더링(SSR)
 - Jamstack / Static-Site-Generation (SSG)
@@ -294,7 +294,7 @@ If you are new to Vue, here's our general recommendation:
   - 만약 빌드 도구를 사용하지 않거나 복잡하지 않은 시나리오에서 Vue를 사용하실거라면 옵션 API를 사용하세요. 예) 점증적인 개선
 
   - Go with Composition API + Single-File Components if you plan to build full applications with Vue.
-  - Vue로 완전한 어플리케이션을 빌드하실 예정이라면  컴포지션 API와 싱글 파일 컴포넌트를 사용하세요 
+  - Vue로 완전한 애플리케이션을 빌드하실 예정이라면  컴포지션 API와 싱글 파일 컴포넌트를 사용하세요 
 
 You don't have to commit to only one style during the learning phase. The rest of the documentation will provide code samples in both styles where applicable, and you can toggle between them at any time using the **API Preference switches** at the top of the left sidebar.
 

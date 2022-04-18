@@ -63,7 +63,7 @@ Provides a value that can be injected by descendent components.
 
 Injects a value provided by an ancestor component or the application (via `app.provide()`).
 
-상위 컴포넌트 또는 어플리케이션(`app.provide()`을 통해)에서 제공된 값을 주입 받는다.
+상위 컴포넌트 또는 애플리케이션(`app.provide()`을 통해)에서 제공된 값을 주입 받는다.
 
 - **Type**
 

@@ -115,7 +115,7 @@ See also: [Typing Computed Properties](/guide/typescript/options-api.html#typing
 
 우리는 여기서 `publishedBooksMessage` 라는 computed 속성을 선언했습니다.
 
-이 어플리케이션에서 `data` 의 `books` 배열의 값을 변경하면, 그에 따라 `publishedBooksMessage` 가 어떻게 변경되는 지 볼 수 있습니다.
+이 애플리케이션에서 `data` 의 `books` 배열의 값을 변경하면, 그에 따라 `publishedBooksMessage` 가 어떻게 변경되는 지 볼 수 있습니다.
 
 일반적인 속성과 마찬가지로 템플릿에서 computed 속성도 데이터 바인딩 할 수 있습니다. Vue는 `this.publishedBooksMessage` 가 `this.author.books` 에 의존한다는 것을 알고 있습니다. 그래서 `this.author.books`가 변경될 때 `this.publishedBooksMessage` 의존하는 모든 바인딩을 업데이트합니다.
 

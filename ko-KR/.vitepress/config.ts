@@ -118,7 +118,7 @@ export const sidebar = {
       text: '핵심 가이드',
       items: [
         {
-          text: '어플리케이션 만들기',
+          text: '애플리케이션 만들기',
           link: '/guide/essentials/application'
         },
         {
