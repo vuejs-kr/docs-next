@@ -1,4 +1,8 @@
-# \<script setup>
+:::warning 현재 이 문서는 번역 작업이 진행중입니다
+:::
+
+
+# `<script setup>`
 
 `<script setup>` is a compile-time syntactic sugar for using Composition API inside Single File Components (SFCs). It is the recommended syntax if you are using both SFCs and Composition API. It provides a number of advantages over the normal `<script>` syntax:
 

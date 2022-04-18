@@ -5,6 +5,9 @@ import Colors from './demos/Colors.vue'
 import AnimateWatcher from './demos/AnimateWatcher.vue'
 </script>
 
+:::warning 현재 이 문서는 번역 작업이 진행중입니다
+:::
+
 # Animation Techniques
 
 Vue provides the [`<Transition>`](/guide/built-ins/transition.html) and [`<TransitionGroup>`](/guide/built-ins/transition-group.html) components for handling enter / leave and list transitions. However, there are many other ways of using animations on the web, even in a Vue application. Here we will discuss a few additional techniques.

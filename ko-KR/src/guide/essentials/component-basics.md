@@ -1,3 +1,6 @@
+:::warning 현재 이 문서는 번역 작업이 진행중입니다
+:::
+
 # Components Basics
 
 Components allow us to split the UI into independent and reusable pieces, and think about each piece in isolation. It's common for an app to be organized into a tree of nested components:

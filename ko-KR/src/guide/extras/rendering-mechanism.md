@@ -2,6 +2,9 @@
 outline: deep
 ---
 
+:::warning 현재 이 문서는 번역 작업이 진행중입니다
+:::
+
 # Rendering Mechanism
 
 How does Vue take a template and turn it into actual DOM nodes? How does Vue update those DOM nodes efficiently? We will attempt to shed some light on these questions here by diving into Vue's internal rendering mechanism.

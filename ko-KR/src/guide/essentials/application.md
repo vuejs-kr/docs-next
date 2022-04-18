@@ -1,3 +1,7 @@
+:::warning 현재 이 문서는 번역 작업이 진행중입니다
+:::
+
+
 # Creating a Vue Application
 # Vue 애플리케이션 생성하기
 

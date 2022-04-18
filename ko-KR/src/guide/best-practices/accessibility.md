@@ -1,9 +1,15 @@
+:::warning 현재 이 문서는 번역 작업이 진행중입니다
+:::
+
+
 # 접근성
 
 Web accessibility (also known as a11y) refers to the practice of creating websites that can be used by anyone — be that a person with a disability, a slow connection, outdated or broken hardware or simply someone in an unfavorable environment. For example, adding subtitles to a video would help both your deaf and hard-of-hearing users and your users who are in a loud environment and can't hear their phone. Similarly, making sure your text isn't too low contrast will help both your low-vision users and your users who are trying to use their phone in bright sunlight.
+
 웹 접근성(a11y)은 장애가 있는 사람, 느린 네트워크 환경(a slow connetion)에 있는 사람, 오래되거나 손상된 하드웨어 또는 단순히 좋지 않은 환경에 있는 사람 등 누구나 사용할 수 있는 웹사이트를 만드는 것을 가르킵니다. 예를 들어, 비디오에 자막을 추가하면 청각 장애인 및 난청 사용자와 시끄러운 환경에서 휴대전화를 들을 수 없는 사용자 모두에게 도움이 됩니다. 마찬가지로 텍스트의 대비가 너무 낮지 않은지 확인하면 시력이 약한 사용자와 밝은 햇빛 아래에서 휴대전화를 사용하려는 사용자 모두에게 도움이 됩니다.
 
 Ready to start but aren’t sure where?
+
 시작할 준비가 되었지만 어디에서 시작할지 모르십니까?
 
 
@@ -13,9 +19,11 @@ Checkout the [Planning and managing web accessibility guide](https://www.w3.org/
 ## Skip link
 
 You should add a link at the top of each page that goes directly to the main content area so users can skip content that is repeated on multiple Web pages.
+
 사용자가 여러 웹 페이지에서 반복되는 콘텐츠를 건너뛸 수 있도록 각 페이지 상단에 기본 콘텐츠 영역으로 이동하는 링크를 추가해야 합니다.
 
 Typically this is done on the top of `App.vue` as it will be the first focusable element on all your pages:
+
 일반적으로 이것은 모든 페이지에서 포커스 가능한 첫 번째 요소가 되기 때문에 `App.vue` 상단에서 수행됩니다:
 
 ```vue-html
@@ -27,6 +35,7 @@ Typically this is done on the top of `App.vue` as it will be the first focusable
 ```
 
 To hide the link unless it is focused, you can add the following style:
+
 포커싱이 되지 않은 링크를 숨기려면 다음 스타일을 추가할 수 있습니다.
 
 ```css
@@ -48,6 +57,7 @@ To hide the link unless it is focused, you can add the following style:
 ```
 
 Once a user changes route, bring focus back to the skip link. This can be achieved by calling focus on the skip link's template ref (assuming usage of `vue-router`):
+
 사용자가 경로를 변경하면 포커스를 skip link로 다시 가져옵니다. 이것은 skip link의 template ref에 대한 포커스를 호출하여 수행(archieved)할 수 있습니다. 아래 코드는 `vue-router`를 사용한다고 가정합니다.
 
 <div class="options-api">
@@ -91,12 +101,14 @@ watch(
 ## Content Structure
 
 One of the most important pieces of accessibility is making sure that design can support accessible implementation. Design should consider not only color contrast, font selection, text sizing, and language, but also how the content is structured in the application.
+
 접근성의 가장 중요한 부분 중 하나는 디자인이 접근성 구현을 지원할 수 있는지 확인하는 것입니다. 디자인은 색상 대비, 글꼴 선택, 텍스트 크기 및 언어뿐만 아니라 애플리케이션에서 콘텐츠가 구성되는 방식도 고려해야 합니다.
 
 
 ### Headings
 
 Users can navigate an application through headings. Having descriptive headings for every section of your application makes it easier for users to predict the content of each section. When it comes to headings, there are a couple of recommended accessibility practices:
+
 사용자는 제목을 통해 애플리케이션을 탐색할 수 있습니다. 애플리케이션의 모든 섹션에 대한 설명 제목이 있으면 사용자가 각 섹션의 내용을 더 쉽게 예측할 수 있습니다. 제목과 관련하여 몇 가지 권장되는 접근성 방법이 있습니다:
 
 

@@ -2,6 +2,10 @@
 outline: deep
 ---
 
+
+:::warning 현재 이 문서는 번역 작업이 진행중입니다
+:::
+
 # Render Functions & JSX
 
 Vue recommends using templates to build applications in the vast majority of cases. However, there are situations where we need the full programmatic power of JavaScript. That's where we can use the **render function**.

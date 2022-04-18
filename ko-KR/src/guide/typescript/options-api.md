@@ -1,3 +1,7 @@
+:::warning 현재 이 문서는 번역 작업이 진행중입니다
+:::
+
+
 # TypeScript with Options API
 # Options API와 함께 타입스크립트 사용하기 {#typescript-with-options-api2}
 

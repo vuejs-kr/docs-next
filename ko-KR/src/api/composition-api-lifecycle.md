@@ -1,3 +1,6 @@
+:::warning 현재 이 문서는 번역 작업이 진행중입니다
+:::
+
 # Composition API: Lifecycle Hooks
 # 컴포지션 API: 생명주기 후크
 

@@ -1,3 +1,6 @@
+:::warning 현재 이 문서는 번역 작업이 진행중입니다
+:::
+
 # Vue and Web Components
 
 [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) is an umbrella term for a set of web native APIs that allows developers to create reusable custom elements.

@@ -2,9 +2,12 @@
 footer: false
 ---
 
+:::warning 현재 이 문서는 번역 작업이 진행중입니다
+:::
+
+
 # Quick Start
 # 빠른 시작
-
 
 Depending on your use case and preference, you can use Vue with or without a build step.
 
