@@ -7,6 +7,7 @@
 ## createApp()
 
 Creates an application instance.
+
 애플리케이션 인스턴스를 생성합니다.
 
 
@@ -19,11 +20,13 @@ Creates an application instance.
 - **Details**
 
   The first argument is the root component. The second optional argument is the props to be passed to the root component.
+
   첫 번째 인수는 루트 컴포넌트입니다. 두 번째 선택적 인수는 루트 컴포넌트에 전달할 props입니다.
 
 - **Example**
 
   With inline root component:
+
   인라인 루트 컴포넌트 사용:
 
 
@@ -36,6 +39,7 @@ Creates an application instance.
   ```
 
   With imported component:
+
   가져온 컴포넌트 사용:
 
 
@@ -51,11 +55,13 @@ Creates an application instance.
 ## createSSRApp()
 
 Creates an application instance in [SSR Hydration](/guide/scaling-up/ssr.html#client-hydration) mode. Usage is exactly the same as `createApp()`.
+
 [SSR Hydration](/guide/scaling-up/ssr.html#client-hydration) 모드에서 애플리케이션 인스턴스를 생성합니다. 사용법은 `createApp()`과 정확히 동일합니다.
 
 ## app.mount()
 
 Mounts the application instance in a container element.
+
 컨테이너 엘리먼트에 애플리케이션 인스턴스를 마운트합니다.
 
 - **Type**
@@ -69,16 +75,20 @@ Mounts the application instance in a container element.
 - **Details**
 
   The argument can either be an actual DOM element or a CSS selector (the first matched element will be used). Returns the root component instance.
+
   인자는 실제 DOM요소 또는 CSS 선택자일 수 있습니다(첫번째로 일치하는 요소가 사용됨). 루트 컴포넌트 인스턴스를 반환합니다.
 
 
   If the component has a template or a render function defined, it will replace any existing DOM nodes inside the container. Otherwise, if the runtime compiler is available, the `innerHTML` of the container will be used as the template.
+  
   컴포넌트에 정의된 템플릿 또는 렌더링 기능이 있는 경우 컨테이너 내부의 기존 DOM노드를 대체합니다. 그렇지 않고 런타임 컴파일러를 사용할 수 있는 경우 컨테이너의 `innerHTML`이 템플릿으로 사용됩니다.
 
   In SSR hydration mode, it will hydrate the existing DOM nodes inside the container. If there are [mismatches](/guide/scaling-up/ssr.html#hydration-mismatch), the existing DOM nodes will be morphed to match the expected output.
+  
   SSR hydration 모드에서는 컨테이너 내부의 기존 DOM노드를 수화(hydrate)합니다. [mismatches](/guide/scaling-up/ssr.html#hydration-mismatch)가 있는 경우 기존 DOM노드가 예상 출력과 일치하도록 변형됩니다.
 
   For each app instance, `mount()` can only be called once.
+  
   각 앱 인스턴스에 대해 `mount()`는 한 번만 호출이 가능합니다.
 
 - **Example**
@@ -91,6 +101,7 @@ Mounts the application instance in a container element.
   ```
 
   Can also mount to an actual DOM element:
+  
   실제 DOM 엘리먼트에 마운트 할 수도 있습니다.
 
   ```js
@@ -100,6 +111,7 @@ Mounts the application instance in a container element.
 ## app.unmount()
 
 Unmounts a mounted application instance, triggering the unmount lifecycle hooks for all components in the application's component tree.
+
 마운트된 애플리케이션 인스턴스를 마운트 해제하여 애플리케이션의 컴포넌트 트리에 있는 모든 컴포넌트에 대해 마운트 해제 수명 주기 훅을 실행합니다.
 
 - **Type**
@@ -113,6 +125,7 @@ Unmounts a mounted application instance, triggering the unmount lifecycle hooks 
 ## app.provide()
 
 Provide a value that can be injected in all descendent components within the application.
+
 애플리케이션 내의 모든 하위 컴포넌트에 주입할 수 있는 값을 제공합니다.
 
 - **Type**
@@ -126,6 +139,7 @@ Provide a value that can be injected in all descendent components within the app
 - **Details**
 
   Expects the injection key as the first argument, and the provided value as the second. Returns the application instance itself.
+  
   주입 키를 첫 번째 인자로 제공된 값을 두 번째 인자로 사용합니다. 애플리케이션 인스턴스 자체를 반환합니다.
 
 
@@ -140,6 +154,7 @@ Provide a value that can be injected in all descendent components within the app
   ```
 
   Inside a component in the application:
+  
   애플리케이션의 컴포넌트 내부:
 
   <div class="composition-api">
@@ -175,6 +190,7 @@ Provide a value that can be injected in all descendent components within the app
 ## app.component()
 
 Registers a global component if passing both a name string and a component definition, or retrieves an already registered one if only the name is passed.
+
 이름 문자열과 컴포넌트 정의를 모두 전달하는 경우 전역 컴포넌트를 등록하거나 이름만 전달되는 경우 이미 등록된 항목을 검색합니다.
 
 - **Type**
@@ -207,6 +223,7 @@ Registers a global component if passing both a name string and a component defin
 ## app.directive()
 
 Registers a global custom directive if passing both a name string and a directive definition, or retrieves an already registered one if only the name is passed.
+
 이름 문자열과 지시문 정의를 모두 전달하는 경우 전역 사용자 정의 지시문을 등록하거나 이름만 전달된 경우 이미 등록된 지시문을 검색합니다.
 
 
@@ -247,6 +264,7 @@ Registers a global custom directive if passing both a name string and a directiv
 ## app.use()
 
 Installs a [plugin](/guide/reusability/plugins.html).
+
 [플러그인](/guide/reusability/plugins.html)을 설치합니다.
 
 - **Type**
@@ -260,12 +278,15 @@ Installs a [plugin](/guide/reusability/plugins.html).
 - **Details**
 
   Expects the plugin as the first argument, and optional plugin options as the second argument.
+  
   첫 번째 인자로 플러그인이, 두 번째 인자로 선택적 플러그인 옵션이 필요합니다.
 
   The plugin can either be an object with an `install()` method, or a directly a function (which itself will used as the install method). The options (second argument of `app.use()`) will be passed along to the plugin's install method.
+  
   플러그인은 `install()`  메소드가 있는 객체이거나 직접 함수(자체적으로 설치 메소드로 사용됨)일 수 있습니다. 옵션(`app.use()`의 두 번째 인자)은 플러그인의 설치 메소드에 전달됩니다.
 
   When `app.use()` is called on the same plugin multiple times, the plugin will be installed only once.
+  
   `app.use()`가 동일한 플러그인에서 여러 번 호출되면 플러그인은 한 번만 설치됩니다.
 
 - **Example**
@@ -286,6 +307,7 @@ Installs a [plugin](/guide/reusability/plugins.html).
 ## app.mixin()
 
 Applies a global mixin (scoped to the application). A global mixin applies its included options to every component instance in the application.
+
 전역 믹스인을 적용합니다(애플리케이션 범위). 전역 믹스인은 포함된 옵션을 애플리케이션의 모든 컴포넌트 인스턴스에 적용합니다.
 
 :::warning Not Recommended
@@ -310,6 +332,7 @@ For logic reuse, prefer [Composables](/guide/reusability/composables.html) inste
 ## app.version
 
 Provides the version of Vue that the application was created with. This is useful inside [plugins](/guide/reusability/plugins.html), where you might need conditional logic based on different Vue versions.
+
 애플리케이션이 생성된 Vue 버전을 제공합니다. 이는 다양한 Vue 버전을 기반으로 하는 조건부 로직이 필요할 수 있는 [plugins](/guide/reusability/plugins.html) 내에서 유용합니다.
 
 - **Type**
@@ -323,6 +346,7 @@ Provides the version of Vue that the application was created with. This is usefu
 - **Example**
 
   Performing a version check inside a plugin:
+  
   플러그인 내부에서 버전 확인 수행:
 
   ```js
@@ -341,6 +365,7 @@ Provides the version of Vue that the application was created with. This is usefu
 ## app.config
 
 Every application instance exposes a `config` object that contains the configuration settings for that application. You can modify its properties (documented below) before mounting your application.
+
 모든 애플리케이션 인스턴스는 해당 애플리케이션의 구성 설정이 포함된 `config` 객체를 노출합니다. 애플리케이션을 마운트하기 전에 속성(아래 문서 참조)을 수정할 수 있습니다.
 
 ```js
@@ -354,6 +379,7 @@ console.log(app.config)
 ## app.config.errorHandler
 
 Assign a global handler for uncaught errors propagating from within the application.
+
 애플리케이션 내에서 전파되는 포착되지 않은 오류에 대한 전역 처리기를 할당합니다.
 
 - **Type**
@@ -373,9 +399,11 @@ Assign a global handler for uncaught errors propagating from within the applicat
 - **Details**
 
   The error handler receives three arguments: the error, the component instance that triggered the error, and an information string specifying the error source type.
+  
   오류 처리기는 오류, 오류를 트리거한 컴포넌트 인스턴스 및 오류 소스 유형을 지정하는 정보 문자열의 세 가지 인자를 수신합니다.  
 
   It can capture errors from the following sources:
+  
   오류 처리기는 오류, 오류를 트리거한 컴포넌트 인스턴스 및 오류 소스 유형을 지정하는 정보 문자열의 세 가지 인자를 수신합니다:
 
   - Component renders
@@ -397,6 +425,7 @@ Assign a global handler for uncaught errors propagating from within the applicat
 ## app.config.warnHandler
 
 Assign a custom handler for runtime warnings from Vue.
+
 Vue에서 런타임 경고에 대한 사용자 지정 처리기를 할당합니다.
 
 
@@ -415,10 +444,12 @@ Vue에서 런타임 경고에 대한 사용자 지정 처리기를 할당합니�
 - **Details**
 
   The warning handler receives the warning message as the first argument, the source component instance as the second argument, and a component trace string as the third.
+  
   경고 처리기는 경고 메시지를 첫 번째 인자로, 소스 컴포넌트 인스턴스를 두 번째 인자로, 컴포넌트 추적 문자열을 세 번째 인자로 수신합니다.
 
 
   It can be used to filter out specific warnings to reduce console verbosity. All Vue warnings should be addressed during development, so this is only recommended during debug sessions to focus on specific warnings among many, and should be removed once the debugging is done.
+  
   콘솔의 자세한 정보를 줄이기 위해 특정 경고를 필터링하는 데 사용할 수 있습니다. 모든 Vue 경고는 개발 중에 해결되어야 하므로 많은 경고 중 특정 경고에 집중하기 위해 디버그 세션 중에만 권장되며 디버깅이 완료되면 제거해야 합니다.
 
 
@@ -441,6 +472,7 @@ Vue에서 런타임 경고에 대한 사용자 지정 처리기를 할당합니�
 ## app.config.performance
 
 Set this to `true` to enable component init, compile, render and patch performance tracing in the browser devtool performance/timeline panel. Only works in development mode and in browsers that support the [performance.mark](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark) API.
+
 브라우저 devtool 성능/타임라인 패널에서 컴포넌트 초기화, 컴파일, 렌더링 및 패치 성능 추적을 사용하려면 이것을 `true`로 설정합니다. 개발 모드 및  [performance.mark](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark)  API를 지원하는 브라우저에서만 작동합니다.
 
 - **Type**: `boolean`
@@ -473,6 +505,7 @@ This config option is only respected when using the full build (i.e. the standal
 ### app.compilerOptions.isCustomElement
 
 Specifies a check method to recognize native custom elements.
+
 기본 사용자 정의 요소를 인식하기 위한 검사 방법을 지정합니다.
 
 - **Type:** `(tag: string) => boolean`
@@ -480,9 +513,11 @@ Specifies a check method to recognize native custom elements.
 - **Details**
 
   Should return `true` if the tag should be treated as a native custom element. For a matched tag, Vue will render it as a native element instead of attempting to resolve it as a Vue component.
+  
   태그를 기본 맞춤 요소로 처리해야 하는 경우 `true`를 반환해야 합니다. 일치하는 태그의 경우 Vue는 이를 Vue 컴포넌트로 확인하는 대신 기본 요소로 렌더링합니다.
 
   Native HTML and SVG tags don't need to be matched in this function - Vue's parser recognizes them automatically.
+  
   기본 HTML 및 SVG 태그는 이 함수에서 일치시킬 필요가 없습니다. Vue의 파서는 자동으로 태그를 인식합니다.
 
 - **Example**
@@ -499,6 +534,7 @@ Specifies a check method to recognize native custom elements.
 ### app.compilerOptions.whitespace
 
 Adjusts template whitespace handling behavior.
+
 템플릿 공백 처리 동작을 조정합니다.
 
 
@@ -509,6 +545,7 @@ Adjusts template whitespace handling behavior.
 - **Details**
 
   Vue removes / condenses whitespace characters in templates to produce more efficient compiled output. The default strategy is "condense", with the following behavior:
+  
   Vue는 템플릿에서 공백 문자를 제거/축소하여 보다 효율적인 컴파일된 출력을 생성합니다. 기본 전략은 다음 동작과 함께 "condense(축소)"입니다:
 
   1. Leading / ending whitespace characters inside an element are condensed into a single space.
@@ -521,6 +558,7 @@ Adjusts template whitespace handling behavior.
   3. 텍스트 노드의 연속 공백 문자는 단일 공백으로 압축됩니다.
 
   Setting this option to `'preserve'` will disable (2) and (3).
+  
   이 옵션을 `'preserve'` 로 설정하면 (2)와 (3)이 비활성화됩니다.
 
 
@@ -533,6 +571,7 @@ Adjusts template whitespace handling behavior.
 ### app.compilerOptions.delimiters
 
 Adjusts the delimiters used for text interpolation within the template.
+
 템플릿 내에서 텍스트 보간에 사용되는 구분 기호를 조정합니다.
 
 - **Type:** `[string, string]`
@@ -542,6 +581,7 @@ Adjusts the delimiters used for text interpolation within the template.
 - **Details**
 
   This is typically used to avoid conflicting with server-side frameworks that also use mustache syntax.
+  
   이것은 일반적으로 콧수염(mustache) 구문도 사용하는 서버 측 프레임워크와의 충돌을 피하기 위해 사용됩니다.
 
 - **Example**
@@ -554,6 +594,7 @@ Adjusts the delimiters used for text interpolation within the template.
 ### app.compilerOptions.comments
 
 Adjusts treatment of HTML comments in templates.
+
 템플릿에서 HTML 주석 처리를 조정합니다.
 
 - **Type:** `boolean`
@@ -563,6 +604,7 @@ Adjusts treatment of HTML comments in templates.
 - **Details**
 
   By default, Vue will remove the comments in production. Setting this option to `true` will force Vue to preserve comments even in production. Comments are always preserved during development. This option is typically used when Vue is used with other libraries that rely on HTML comments.
+  
   기본적으로 Vue는 프로덕션에서 주석을 제거합니다. 이 옵션을 `true`로 설정하면 Vue가 프로덕션에서도 주석을 보존하도록 합니다. 주석은 개발 중에 항상 보존됩니다. 이 옵션은 일반적으로 Vue가 HTML 주석에 의존하는 다른 라이브러리와 함께 사용될 때 사용됩니다.
 
 - **Example**
@@ -574,6 +616,7 @@ Adjusts treatment of HTML comments in templates.
 ## app.config.globalProperties
 
 An object that can be used to register global properties that can be accessed on any component instance inside the application.
+
 애플리케이션 내부의 모든 컴포넌트 인스턴스에서 접근할 수 있는 전역 속성을 등록하는 데 사용할 수 있는 객체입니다.
 
 
@@ -588,9 +631,11 @@ An object that can be used to register global properties that can be accessed on
 - **Details**
 
   This is a replacement of Vue 2's `Vue.prototype` which is no longer present in Vue 3. As with anything global, this should be used sparingly.
+  
   이것은 Vue 3에 더 이상 존재하지 않는 Vue 2의 `Vue.prototype`을 대체합니다. 전반적인 모든 것과 마찬가지로 이것은 드물게 사용해야 합니다.
 
   If a global property conflicts with a component’s own property, the component's own property will have higher priority.
+  
   전역 속성이 컴포넌트 자체 속성과 충돌하는 경우 컴포넌트 자체 속성이 더 높은 우선 순위를 갖습니다.
 
 
@@ -601,6 +646,7 @@ An object that can be used to register global properties that can be accessed on
   ```
 
   This makes `msg` available inside any component template in the application, and also on `this` of any component instance:
+  
   이렇게 하면 애플리케이션의 모든 컴포넌트 템플릿 내에서 `msg`를 사용할 수 있으며 컴포넌트 인스턴스의 `this`에서도 사용할 수 있습니다.
 
   ```js
@@ -614,6 +660,7 @@ An object that can be used to register global properties that can be accessed on
 ## app.config.optionMergeStrategies
 
 An object for defining merging strategies for custom component options.
+
 사용자 지정 컴포넌트 옵션에 대한 병합 전략을 정의하기 위한 객체입니다.
 
 - **Type**
@@ -629,12 +676,15 @@ An object for defining merging strategies for custom component options.
 - **Details**
 
   Some plugins / libraries add support for custom component options (by injecting global mixins). These options may require special merging logic when the same option needs to be "merged" from multiple sources (e.g. mixins or component inheritance).
+  
   일부 플러그인/라이브러리는 사용자 정의 컴포넌트 옵션에 대한 지원을 추가합니다(전역 믹스인 주입). 여러 소스(예: 믹스인 또는 컴포넌트 상속)에서 동일한 옵션을 "병합"해야 하는 경우 이러한 옵션에는 특별한 병합 논리가 필요할 수 있습니다.
 
   A merge strategy function can registered for a custom option by assigning it on the `app.config.optionMergeStrategies` object using the option's name as the key.
+  
   옵션 이름을 키로 사용하여 `app.config.optionMergeStrategies` 객체에 할당하여 맞춤 옵션에 병합 전략 기능을 등록할 수 있습니다.
 
   The merge strategy function receives the value of that option defined on the parent and child instances as the first and second arguments, respectively.
+  
   병합 전략 함수는 부모 및 자식 인스턴스에 정의된 해당 옵션의 값을 각각 첫 번째 및 두 번째 인자로 받습니다.
 
 - **Example**
