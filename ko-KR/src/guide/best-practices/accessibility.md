@@ -119,16 +119,16 @@ watch(
 
 [Landmarks](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/landmark_role)는 애플리케이션 내의 섹션에 대한 프로그래밍 방식 액세스를 제공합니다. 보조 기술에 의존하는 사용자는 애플리케이션의 각 섹션으로 이동하여 콘텐츠를 건너뛸 수 있습니다.[ARIA roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles)을 사용하여 이를 달성할 수 있습니다.
 
-| HTML            | ARIA Role            | Landmark Purpose                                                                                                 |
-| --------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| header          | role="banner"        | Prime heading: title of the page                                                                                 |
-| nav             | role="navigation"    | Collection of links suitable for use when navigating the document or related documents                           |
-| main            | role="main"          | The main or central content of the document.                                                                     |
-| footer          | role="contentinfo"   | Information about the parent document: footnotes/copyrights/links to privacy statement                           |
-| aside           | role="complementary" | Supports the main content, yet is separated and meaningful on its own content                                    |
-| _Not available_ | role="search"        | This section contains the search functionality for the application                                               |
-| form            | role="form"          | Collection of form-associated elements                                                                           |
-| section         | role="region"        | Content that is relevant and that users will likely want to navigate to. Label must be provided for this element |
+| HTML            | ARIA Role            | Landmark Purpose                                                                         |
+| --------------- | -------------------- | ---------------------------------------------------------------------------------------- |
+| header          | role="banner"        | 주요 제목: 페이지 제목                                                                   |
+| nav             | role="navigation"    | 문서나 관련 문서를 탐색할 때 사용하기에 적합한 링크 모음                                 |
+| main            | role="main"          | 문서의 주요 또는 중심 내용                                                               |
+| footer          | role="contentinfo"   | 상위 문서에 대한 정보: 각주/저작권/개인정보 보호 정책 링크                               |
+| aside           | role="complementary" | 주요 내용을 지원하지만, 컨텐츠로부터 분리되어 의미가 있음                                |
+| _Not available_ | role="search"        | 애플리케이션에 대한 검색 기능을 포함                                                     |
+| form            | role="form"          | 양식 관련 요소 모음                                                                      |
+| section         | role="region"        | 관련성이 있고 사용자가 탐색하고 싶어할 것 같은 콘텐츠. 이 요소에 대한 라벨을 제공해야 함 |
 
 :::tip 팁:
 [HTML5 시맨틱 요소를 지원하지 않는 레거시 브라우저](https://caniuse.com/#feat=html5semantic)와의 호환성을 최대화하기 위해 중복 랜드마크 역할 속성이 있는 랜드마크 HTML 요소를 사용하는 것이 좋습니다.
@@ -138,9 +138,9 @@ watch(
 
 ## Semantic Forms
 
-When creating a form, you can use the following elements: `<form>`, `<label>`, `<input>`, `<textarea>`, and `<button>`
+양식을 작성할 때, 다음 요소를 사용할 수 있습니다.: `<form>`, `<label>`, `<input>`, `<textarea>`, and `<button>`
 
-Labels are typically placed on top or to the left of the form fields:
+일반적으로 label은 양식 필드의 상단이나 왼쪽에 배치됩니다:
 
 ```vue-html
 <form action="/dataCollectionLocation" method="post" autocomplete="on">
@@ -159,11 +159,11 @@ Labels are typically placed on top or to the left of the form fields:
 
 <!-- <common-codepen-snippet title="Simple Form" slug="dyNzzWZ" :height="368" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-Notice how you can include `autocomplete='on'` on the form element and it will apply to all inputs in your form. You can also set different [values for autocomplete attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) for each input.
+양식 요소의 모든 입력 요소에 적용되는, 양식 요소에 `autocomplete='on'`를 적용하는 방법을 확인하세요. 각 입력에 대해 서로 다른 [자동 완성 속성값](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete)을 설정할 수 있습니다.
 
 ### Labels
 
-Provide labels to describe the purpose of all form control; linking `for` and `id`:
+모든 양식 제어에 목적을 설명하는 레이블을 제공하세요; `for`과 `id` 연결:
 
 ```vue-html
 <label for="name">Name</label>
@@ -172,12 +172,12 @@ Provide labels to describe the purpose of all form control; linking `for` and `i
 
 <!-- <common-codepen-snippet title="Form Label" slug="XWpaaaj" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-If you inspect this element in your chrome developer tools and open the Accessibility tab inside the Elements tab, you will see how the input gets its name from the label:
+크롬 개발자 도구에서 이 요소를 검사하고, 요소 탭에서 접근성 탭을 열면, 입력이 레이블에서 이름을 가져오는 것을 볼 수 있습니다:
 
 ![Chrome Developer Tools showing input accessible name from label](./images/AccessibleLabelChromeDevTools.png)
 
-:::warning Warning:
-Though you might have seen labels wrapping the input fields like this:
+:::warning 경고:
+다음과 같이 레이블이 입력 요소를 감싸아는 것을 보았을 수도 있습니다:
 
 ```vue-html
 <label>
@@ -186,12 +186,12 @@ Though you might have seen labels wrapping the input fields like this:
 </label>
 ```
 
-Explicitly setting the labels with a matching id is better supported by assistive technology.
+ID와 일치하는 label을 명시적으로 설정하는 것이, 보조 기술로부터 보다 더 지원받을 수 있습니다.
 :::
 
 #### `aria-label`
 
-You can also give the input an accessible name with [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute).
+[`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute)을 사용하여 입력에 접근성 이름(accessible name)을 지정할 수 있습니다..
 
 ```vue-html
 <label for="name">Name</label>
@@ -206,13 +206,15 @@ You can also give the input an accessible name with [`aria-label`](https://devel
 
 <!-- <common-codepen-snippet title="Form ARIA label" slug="NWdvvYQ" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-Feel free to inspect this element in Chrome DevTools to see how the accessible name has changed:
+크롬 개발자도구에서 이 요소를 검사하여, 접근성 이름(accessible name)이 어떻게 바뀌는지 확인하여 자유를 느껴라:
 
 ![Chrome Developer Tools showing input accessible name from aria-label](./images/AccessibleARIAlabelDevTools.png)
 
 #### `aria-labelledby`
 
 Using [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-labelledby_attribute) is similar to `aria-label` except it is used if the label text is visible on screen. It is paired to other elements by their `id` and you can link multiple `id`s:
+
+[`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-labelledby_attribute)를 사용하는 것은 레이블 문자가 화면에 보인 다는것을 제외하고 `aria-label` 을 사용하는 것과 비슷합니다. 다른 요소의 id를 통해 쌍을 이룰 수 있고, 여러 id에 연결 할 수 있습니다:
 
 ```vue-html
 <form
@@ -244,6 +246,8 @@ Using [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibi
 
 [aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute) is used the same way as `aria-labelledby` except provides a description with additional information that the user might need. This can be used to describe the criteria for any input:
 
+[aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute) 는 사용자에게 필요할 수 있는 추가적인 정보와 함께 설명을 제공한다는 점을 제외하고는 `aria-labelledby`과 동일한 방식으로 사용됩니다. 이것은 입력에 대한 기준을 설명하는 데 사용할 수 있습니다:
+
 ```vue-html
 <form
   class="demo"
@@ -271,6 +275,8 @@ Using [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibi
 <!-- <common-codepen-snippet title="Form ARIA describedby" slug="gOgxxQE" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
 You can see the description by inspecting Chrome DevTools:
+
+크롬 개발자 도구 검사를 통해 설명을 볼 수 있습니다.
 
 ![Chrome Developer Tools showing input accessible name from aria-labelledby and description with aria-describedby](./images/AccessibleARIAdescribedby.png)
 
