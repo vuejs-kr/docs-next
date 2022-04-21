@@ -180,7 +180,7 @@ Returns a reactive proxy of the object.
 
   It should also be noted that there is no ref unwrapping performed when the ref is accessed as an element of a reactive array or a native collection type like `Map`.
 
-  또한 ref가 'Map'과 같은 기본 컬렉션 유형 또는 반응형 배열의 요소로 액세스될 때 수행되는 ref 래핑 해제가 없다는 점에 유의해야 합니다.
+  또한 ref가 'Map'과 같은 기본 컬렉션 유형 또는 반응형 배열의엘리먼트로 액세스될 때 수행되는 ref 래핑 해제가 없다는 점에 유의해야 합니다.
 
   To avoid the deep conversion and only retain reactivity at the root level, use [shallowReactive()](./reactivity-advanced.html#shallowreactive) instead.
 
@@ -231,7 +231,7 @@ Returns a reactive proxy of the object.
 
   Note that refs are **not** unwrapped when accessed as array or collection elements:
 
-  ref는 배열 또는 컬렉션 요소로 액세스할 때 업래핑되지 **않습니다**:
+  ref는 배열 또는 컬렉션엘리먼트로 액세스할 때 업래핑되지 **않습니다**:
 
   ```js
   const books = reactive([ref('Vue 3 Guide')])

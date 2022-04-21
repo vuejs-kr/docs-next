@@ -24,7 +24,7 @@ You should add a link at the top of each page that goes directly to the main con
 
 Typically this is done on the top of `App.vue` as it will be the first focusable element on all your pages:
 
-일반적으로 이것은 모든 페이지에서 포커스 가능한 첫 번째 요소가 되기 때문에 `App.vue` 상단에서 수행됩니다:
+일반적으로 이것은 모든 페이지에서 포커스 가능한 첫 번째엘리먼트가 되기 때문에 `App.vue` 상단에서 수행됩니다:
 
 ```vue-html
 <ul class="skip-links">
@@ -161,7 +161,7 @@ It is recommended to use landmark HTML elements with redundant landmark role att
 :::
 
 :::tip 
-팁: [HTML5 시맨틱 요소를 지원하지 않는 레거시 브라우저](https://caniuse.com/#feat=html5semantic)와의 호환성을 최대화하기 위해 중복 랜드마크 역할 속성이 있는 랜드마크 HTML 요소를 사용하는 것이 좋습니다. 
+팁: [HTML5 시맨틱엘리먼트를 지원하지 않는 레거시 브라우저](https://caniuse.com/#feat=html5semantic)와의 호환성을 최대화하기 위해 중복 랜드마크 역할 속성이 있는 랜드마크 HTML엘리먼트를 사용하는 것이 좋습니다. 
 :::
 
 [Read more about landmarks](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)

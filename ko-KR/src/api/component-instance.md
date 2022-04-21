@@ -81,7 +81,7 @@ The root DOM node that the component instance is managing.
 
 
   - For components with a single root element, `$el` will point to that element.
-  - 단일 루트 요소가 있는 컴포넌트의 경우 `$el`은 해당 요소를 가리킵니다.
+  - 단일 루트엘리먼트가 있는 컴포넌트의 경우 `$el`은 해당엘리먼트를 가리킵니다.
   - 
   - For components with text root, `$el` will point to the text node.
   - 텍스트 루트가 있는 컴포넌트의 경우 `$el`은 텍스트 노드를 가리킵니다.
@@ -95,7 +95,7 @@ The root DOM node that the component instance is managing.
   :::
 
   :::tip
-  일관성을 위해 `$el`에 의존하는 대신 요소에 직접 액세스할 때 [템플릿 refs](/guide/essentials/template-refs.html)를 사용하는 것이 좋습니다.
+  일관성을 위해 `$el`에 의존하는 대신엘리먼트에 직접 액세스할 때 [템플릿 refs](/guide/essentials/template-refs.html)를 사용하는 것이 좋습니다.
   :::
 
   
@@ -219,7 +219,7 @@ An object representing the [slots](/guide/components/slots.html) passed by the p
 
 An object of DOM elements and component instances, registered via [template refs](/guide/essentials/template-refs.html).
 
-[템플릿 참조](/guide/essentials/template-refs.html)를 통해 등록된 DOM 요소 및 컴포넌트 인스턴스의 개체입니다.
+[템플릿 참조](/guide/essentials/template-refs.html)를 통해 등록된 DOM엘리먼트 및 컴포넌트 인스턴스의 개체입니다.
 
 
 - **Type**
@@ -254,12 +254,12 @@ An object that contains the component's fallthrough attributes.
 
   [Fallthrough Attributes](/guide/components/attrs.html) are attributes and event handlers passed by the parent component, but not declared as a prop or a emitted event by the child.
 
-  [폴스루 속성](/guide/components/attrs.html)은 상위 구성요소에 의해 전달된 속성 및 이벤트 핸들러이지만 하위 요소 또는 내보낸 이벤트로 선언되지 않습니다.
+  [폴스루 속성](/guide/components/attrs.html)은 상위 구성요소에 의해 전달된 속성 및 이벤트 핸들러이지만 하위엘리먼트 또는 내보낸 이벤트로 선언되지 않습니다.
 
 
   By default, everything in `$attrs` will be automatically inherited on the component's root element if there is only a single root element. This behavior is disabled if the component has multiple root nodes, and can be explicitly disabled with the [`inheritAttrs`](./options-misc.html#inheritattrs) option.
 
-  기본적으로 `$attrs`의 모든 항목은 단일 루트 요소만 있는 경우 컴포넌트의 루트 요소에서 자동으로 상속됩니다. 이 동작은 컴포넌트에 여러 루트 노드가 있는 경우 비활성화되며 [`inheritAttrs`](./options-misc.html#inheritattrs) 옵션을 사용하여 명시적으로 비활성화할 수 있습니다.
+  기본적으로 `$attrs`의 모든 항목은 단일 루트엘리먼트만 있는 경우 컴포넌트의 루트엘리먼트에서 자동으로 상속됩니다. 이 동작은 컴포넌트에 여러 루트 노드가 있는 경우 비활성화되며 [`inheritAttrs`](./options-misc.html#inheritattrs) 옵션을 사용하여 명시적으로 비활성화할 수 있습니다.
 
 
 - **See also:**

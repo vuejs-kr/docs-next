@@ -19,11 +19,11 @@ Virtual DOM 개념에 익숙하고 JavaScript의 원시 기능을 선호하는 �
 
 
 ## Text Interpolation
-## 텍스트 보간
+## 텍스트 보간(Text Interpolation)
 
 The most basic form of data binding is text interpolation using the "Mustache" syntax (double curly braces):
 
-데이터 바인딩의 가장 기본적인 형태는 "Mustache" 구문(이중 중괄호)을 사용하는 텍스트 보간입니다.
+데이터 바인딩의 가장 기본적인 형태는 콧수염 표기법이라고 알려진 "Mustache" 구문(이중 중괄호)을 사용하는 텍스트 보간입니다.
 
 
 ```vue-html
@@ -43,8 +43,8 @@ mustache은 데이터를 HTML이 아닌 일반 텍스트로 해석합니다. 실
 
 
 ```vue-html
-<p>Using text interpolation: {{ rawHtml }}</p>
-<p>Using v-html directive: <span v-html="rawHtml"></span></p>
+<p>문자열 보간: {{ rawHtml }}</p>
+<p>v-html 디렉티브: <span v-html="rawHtml"></span></p>
 ```
 
 <script setup>
@@ -52,18 +52,18 @@ mustache은 데이터를 HTML이 아닌 일반 텍스트로 해석합니다. 실
 </script>
 
 <div class="demo">
-  <p>Using text interpolation: {{ rawHtml }}</p>
-  <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+  <p>문자열 보간: {{ rawHtml }}</p>
+  <p>v-html 디렉티브: <span v-html="rawHtml"></span></p>
 </div>
 
 Here we're encountering something new. The `v-html` attribute you're seeing is called a **directive**. Directives are prefixed with `v-` to indicate that they are special attributes provided by Vue, and as you may have guessed, they apply special reactive behavior to the rendered DOM. Here, we're basically saying "keep this element's inner HTML up-to-date with the `rawHtml` property on the current active instance."
 
-지금 보시는 `v-html` 같은 속성을 **디렉티브**(directive)이라고 합니다. 디렉티브는 Vue에서 제공하는 특수 속성임을 나타내는 접두사 `v-`를 사용하며, 예상하신대로 렌더링된 DOM에 특별한 반응형 행위를 적용합니다. 위의 코드에서는  "현재 활성 인스턴스의 `rawHtml` 속성을 사용하여 이 엘레멘트의 `innerHtml`을 최신 상태로 유지합니다."라는 행위를 수행합니다.
+지금 보시는 `v-html` 같은 속성을 **디렉티브**(directive)이라고 합니다. 디렉티브는 Vue에서 제공하는 특수 속성임을 나타내는 접두사 `v-`를 사용하며, 예상하신대로 렌더링된 DOM에 특별한 반응형 행위를 적용합니다. 위의 코드에서는 "현재 활성 인스턴스의 `rawHtml` 속성을 사용하여 이 엘리먼트의 `innerHtml`을 최신 상태로 유지합니다."라는 행위를 수행합니다.
 
 
 The contents of the `span` will be replaced with the value of the `rawHtml` property, interpreted as plain HTML - data bindings are ignored. Note that you cannot use `v-html` to compose template partials, because Vue is not a string-based templating engine. Instead, components are preferred as the fundamental unit for UI reuse and composition.
 
-`span`의 내용은 plain HTML로 해석되는 `rawHtml` 속성 값으로 대체됩니다. 데이터 바인딩은 무시됩니다. Vue는 문자열 기반 템플릿 엔진이 아니기 때문에 `v-html`을 사용하여 템플릿 조각을 작성할 수는 없습니다. UI 재사용 및 구성을 위한 기본 단위로 컴포넌트가 선호됩니다.
+`rawHtml` 속성에 저장된 값은 plain HTML로 해석되어 `span`의 내용(`innerHTML`)을 대체 하게 됩니다. 데이터 바인딩은 무시됩니다. Vue는 문자열 기반 템플릿 엔진이 아니기 때문에 `v-html`을 사용하여 템플릿 조각을 작성할 수는 없습니다. UI 재사용 및 구성을 위한 기본 단위로 컴포넌트가 선호됩니다.
 
 
 :::warning Security Warning
@@ -87,7 +87,7 @@ Mustache 표기법은 HTML 속성에는 사용 할 수 없습니다. 대신 [`v-
 
 The `v-bind` directive instructs Vue to keep the element's `id` attribute in sync with the component's `dynamicId` property. If the bound value is `null` or `undefined`, then the attribute will be removed from the rendered element.
 
-`v-bind` 디렉티브는 엘레멘트의 `id` 속성을 컴포넌트의 `dynamicId` 속성과 동기화된 상태로 유지하도록 Vue에 지시합니다. 바인딩된 값이 `null` 또는 `undefined`이면 속성이 렌더링된 요소에서 제거됩니다.
+`v-bind` 디렉티브는 엘리먼트의 `id` 속성을 컴포넌트의 `dynamicId` 속성과 동기화된 상태로 유지하도록 Vue에 지시합니다. 바인딩된 값이 `null` 또는 `undefined`이면 속성이 렌더링된 엘리먼트에서 제거됩니다.
 
 
 ### Shorthand
@@ -104,7 +104,7 @@ Because `v-bind` is so commonly used, it has a dedicated shorthand syntax:
 
 Attributes that start with `:` may look a bit different from normal HTML, but it is in fact a valid character for attribute names and all Vue-supported browsers can parse it correctly. In addition, they do not appear in the final rendered markup. The shorthand syntax is optional, but you will likely appreciate it when you learn more about its usage later.
 
-`:`로 시작하는 속성은 일반 HTML과 약간 다르게 보일 수 있지만 실제로는 속성 이름에 유효한 문자이며 모든 Vue 지원 브라우저에서 올바르게 구문 분석할 수 있습니다. 또한 최종 렌더링된 마크업에는 표시되지 않습니다. 약식 구문은 선택 사항이지만 나중에 사용법에 대해 자세히 알아볼 때 유용할 것입니다.
+`:`로 시작하는 속성은 일반 HTML과 약간 다르게 보일 수 있지만 실제로는 HTML 속성명으로 유효한 문자이며 Vue를  지원하는 모든 브라우저에서 올바르게 파싱할수 있습니다. 또한 최종 렌더링된 마크업에는 표시되지 않습니다. 약식 구문은 선택 사항이지만 나중에 사용법에 대해 자세히 알아볼 때 유용할 것입니다.
 
 
 > For the rest of the guide, we will be using the shorthand syntax in code examples, as that's the most common usage for Vue developers.
@@ -116,7 +116,7 @@ Attributes that start with `:` may look a bit different from normal HTML, but it
 
 [Boolean attributes](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes) are attributes that can indicate true / false values by its presence on an element. For example, [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled) is one of the most commonly used boolean attributes.
 
-[Boolean 속성](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes)은 엘레멘트에 존재하여 참/거짓 값을 나타낼 수 있는 속성입니다. 예를 들어, [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled)는 가장 일반적으로 사용되는 Boolean 속성 중 하나입니다.
+[Boolean 속성](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes)은  참/거짓 값을 이용해 엘리먼트 속성 자체의 표시 여부를 나타낼수 있습니다. 예를 들어, [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled)는 가장 일반적으로 사용되는 Boolean 속성 중 하나입니다.
 
 
 `v-bind` works a bit differently in this case:
@@ -130,7 +130,7 @@ Attributes that start with `:` may look a bit different from normal HTML, but it
 
 The `disabled` attribute will be included if `isButtonDisabled` has a [truthy value](https://developer.mozilla.org/en-US/docs/Glossary/Truthy). It will also be included if the value is an empty string, maintaining consistency with `<button disabled="">`. For other falsy values the attribute will be omitted.
 
-`isButtonDisabled`에 [truthy 값](https://developer.mozilla.org/en-US/docs/Glossary/Truthy)이 있는 경우 `disabled` 속성이 포함됩니다. 값이 빈 문자열인 경우에도 포함되어 `<button disabled="">`와 일관성을 유지합니다. 다른 거짓 값의 경우 속성이 생략됩니다.
+`isButtonDisabled`에 [참(truthy) 값](https://developer.mozilla.org/en-US/docs/Glossary/Truthy)이 있는 경우 `disabled` 속성이 포함됩니다. 값이 빈 문자열인 경우에도 포함되어 `<button disabled="">`와 일관성을 유지합니다. 거짓 값의 경우 속성이 생략됩니다.
 
 
 ### Dynamically Binding Multiple Attributes
@@ -167,7 +167,7 @@ data() {
 
 You can bind them to a single element by using `v-bind` without an argument:
 
-인자 지정 없이 `v-bind`를 사용하여 단일 요소에 바인딩할 수 있습니다:
+인자 지정 없이 `v-bind`를 사용하여 단일 엘리먼트에 바인딩할 수 있습니다:
 
 ```vue-html
 <div v-bind="objectOfAttrs"></div>
@@ -178,7 +178,7 @@ You can bind them to a single element by using `v-bind` without an argument:
 
 So far we've only been binding to simple property keys in our templates. But Vue actually supports the full power of JavaScript expressions inside all data bindings:
 
-지금까지는 템플릿의 간단한 속성 키에만 바인딩했습니다. 그러나 Vue는 실제로 모든 데이터 바인딩 내에서 JavaScript 표현식의 모든 기능을 지원합니다:
+지금까지는 템플릿의 간단한 속성 키로만 바인딩했습니다. 그러나 Vue는 실제로 모든 데이터 바인딩 내에서 JavaScript 표현식의 모든 기능을 지원합니다:
 
 
 ```vue-html
@@ -193,7 +193,7 @@ So far we've only been binding to simple property keys in our templates. But Vue
 
 These expressions will be evaluated as JavaScript in the data scope of the current component instance.
 
-이러한 표현식은 현재 컴포넌트 인스턴스의 데이터 범위에서 JavaScript로 평가됩니다.
+이러한 표현식은 현재 컴포넌트 인스턴스가 가진 데이터를 이용해 JavaScript로 평가됩니다.
 
 In Vue templates, JavaScript expressions can be used in the following positions:
 
@@ -215,10 +215,10 @@ Each binding can only contain **one single expression**, so the following will *
 
 
 ```vue-html
-<!-- this is a statement, not an expression: -->
+<!-- 이건 표현식(expression)이 아니라 문장(statement)임: -->
 {{ var a = 1 }}
 
-<!-- flow control won't work either, use ternary expressions -->
+<!-- 흐름 제어역시 동작하지 않음. 3항연산자( `condition ? a : b`)를 사용하세요:   -->
 {{ if (ok) { return message } }}
 ```
 
@@ -227,7 +227,7 @@ Each binding can only contain **one single expression**, so the following will *
 
 It is possible to call a component-exposed method inside a binding expression:
 
-바인딩 식 내에서 컴포넌트 노출 메서드를 호출할 수 있습니다:
+바인딩 식 내에서 컴포넌트에서 제공하는 메서드를 호출할 수 있습니다:
 
 
 ```vue-html
@@ -249,7 +249,7 @@ Functions called inside binding expressions will be called every time the compon
 
 Template expressions are sandboxed and only have access to a [restricted list of globals](https://github.com/vuejs/core/blob/main/packages/shared/src/globalsWhitelist.ts#L3). The list exposes commonly used built-in globals such as `Math` and `Date`.
 
-템플릿 표현식은 샌드박스 처리되며 [제한된 전역 목록](https://github.com/vuejs/core/blob/main/packages/shared/src/globalsWhitelist.ts#L3)에만 액세스할 수 있습니다. 이 목록은 `Math` 및 `Date`와 같이 일반적으로 사용되는 내장 전역 객체를 표시합니다.
+템플릿 표현식은 샌드박스 처리되며 [제한된 전역 객체 목록](https://github.com/vuejs/core/blob/main/packages/shared/src/globalsWhitelist.ts#L3)에만 액세스할 수 있습니다. 이 목록은 `Math` 및 `Date`와 같이 일반적으로 사용되는 내장 전역 객체를 표시합니다.
 
 
 Globals not explicitly included in the list, for example user-attached properties on `window`, will not be accessible in template expressions. You can, however, explicitly define additional globals for all Vue expressions by adding them to [`app.config.globalProperties`](/api/application.html#app-config-globalproperties).
@@ -277,7 +277,7 @@ Directive attribute values are expected to be single JavaScript expressions (wit
 
 Here, the `v-if` directive would remove / insert the `<p>` element based on the truthiness of the value of the expression `seen`.
 
-여기서 `v-if` 디렉티브는 `seen` 표현 값의 진실성을 기반으로 `<p>` 요소를 제거/삽입합니다.
+여기서 `v-if` 디렉티브는 `seen` 표현 값의 진실성을 기반으로 `<p>`엘리먼트를 제거/삽입합니다.
 
 
 ### Arguments
@@ -297,7 +297,7 @@ Some directives can take an "argument", denoted by a colon after the directive n
 
 Here `href` is the argument, which tells the `v-bind` directive to bind the element's `href` attribute to the value of the expression `url`. In the shorthand, everything before the argument (i.e. `v-bind:`) is condensed into a single character, `:`.
 
-여기서 `href`는 요소의 `href` 속성을 표현식 `url`의 값에 바인딩하도록 `v-bind` 디렉티브에 지시하는 인수입니다. 간단히 말해서, 인수 앞의 모든 것(즉, `v-bind:`)은 단일 문자 `:`로 압축됩니다.
+여기서 `href`는엘리먼트의 `href` 속성을 표현식 `url`의 값에 바인딩하도록 `v-bind` 디렉티브에 지시하는 인자입니다. 간단히 말해서, 인자 앞의 모든 것(즉, `v-bind:`)은 단일 문자 `:`로 압축됩니다.
 
 
 Another example is the `v-on` directive, which listens to DOM events:
@@ -314,15 +314,15 @@ Another example is the `v-on` directive, which listens to DOM events:
 
 Here the argument is the event name to listen to: `click`. `v-on` is one of the few directives that also have a corresponding shorthand, with its shorthand character being `@`. We will talk about event handling in more detail too.
 
-여기 인자는 수신할 이벤트 이름입니다. `click`. `v-on`은 해당 약어가 있는 몇 안 되는 지시문 중 하나이며 약어 문자는 `@`입니다. 이벤트 처리에 대해서도 더 자세히 이야기하겠습니다.
+여기 인자는 수신할 이벤트 이름입니다. `click`. `v-on`은 전용 약어가 있는 몇 안 되는 지시문 중 하나이며 약어 문자는 `@`입니다. 이벤트 처리에 대해서도 더 자세히 이야기하겠습니다.
 
 
 ### Dynamic Arguments
-### 동적 인자
+### 동적 인자 지정
 
 It is also possible to use a JavaScript expression in a directive argument by wrapping it with square brackets:
 
-대괄호로 감싸서 디렉티브 인자에서 JavaScript 표현식을 사용할 수도 있습니다"
+대괄호로 감싸서 디렉티브 인자에서 JavaScript 표현식을 사용할 수도 있습니다:
 
 
 ```vue-html
@@ -338,12 +338,12 @@ as explained in the "Dynamic Argument Value Constraints" and "Dynamic Argument S
 
 Here `attributeName` will be dynamically evaluated as a JavaScript expression, and its evaluated value will be used as the final value for the argument. For example, if your component instance has a data property, `attributeName`, whose value is `"href"`, then this binding will be equivalent to `v-bind:href`.
 
-여기서 `attributeName`은 JavaScript 표현식으로 동적으로 평가되며 평가된 값은 인수의 최종 값으로 사용됩니다. 예를 들어 구성 요소 인스턴스에 값이 `"href"`인 데이터 속성 `attributeName`이 있는 경우 이 바인딩은 `v-bind:href`와 동일합니다.
+여기서 `attributeName`은 JavaScript 표현식으로 동적으로 평가되며 평가된 값은 인자의 최종 값으로 사용됩니다. 예를 들어 컴포넌트 인스턴스에 값이 `"href"`인 데이터 속성 `attributeName`이 있는 경우 이 바인딩은 `v-bind:href`와 동일합니다.
 
 
 Similarly, you can use dynamic arguments to bind a handler to a dynamic event name:
 
-마찬가지로 동적 인수를 사용하여 핸들러를 동적 이벤트 이름에 바인딩할 수 있습니다:
+마찬가지로 동적 인자를 사용하여 핸들러를 동적 이벤트 이름에 바인딩할 수 있습니다:
 
 ```vue-html
 <a v-on:[eventName]="doSomething"> ... </a>
@@ -362,7 +362,7 @@ In this example, when `eventName`'s value is `"focus"`, `v-on:[eventName]` will 
 
 Dynamic arguments are expected to evaluate to a string, with the exception of `null`. The special value `null` can be used to explicitly remove the binding. Any other non-string value will trigger a warning.
 
-동적 인수는 `null`을 제외하고 문자열로 평가되어야 합니다. 특수 값 `null`을 사용하여 바인딩을 명시적으로 제거할 수 있습니다. 문자열이 아닌 다른 값은 경고를 날립니다. 
+동적 인자는 `null`을 제외하고 문자열로 평가되어야 합니다. 특수 값 `null`을 사용하여 바인딩을 명시적으로 제거할 수 있습니다. 문자열이 아닌 다른 값은 경고를 날립니다. 
 
 
 #### Dynamic Argument Syntax Constraints
@@ -380,7 +380,7 @@ Dynamic argument expressions have some syntax constraints because certain charac
 
 If you need to pass a complex dynamic argument, it's probably better to use a [computed property](./computed.html), which we will cover shortly.
 
-복잡한 동적 인수를 전달해야 하는 경우 [computed property](./computed.html)를 사용하는 것이 더 나을 것입니다. 이에 대해서는 곧 다룰 것입니다.
+복잡한 동적 인자를 전달해야 하는 경우 [computed property](./computed.html)를 사용하는 것이 더 나을 것입니다. 이에 대해서는 곧 다룰 것입니다.
 
 
 When using in-DOM templates (templates directly written in an HTML file), you should also avoid naming keys with uppercase characters, as browsers will coerce attribute names into lowercase:
@@ -394,7 +394,7 @@ DOM 내 템플릿(HTML 파일에 직접 작성된 템플릿)을 사용할 때 �
 
 The above will be converted to `:[someattr]` in in-DOM templates. If your component has a `someAttr` property instead of `someattr`, your code won't work.
 
-위의 내용은 DOM 내 템플릿에서 `:[someattr]`로 변환됩니다. 구성 요소에 `someattr` 대신 `someAttr` 속성이 있으면 코드가 작동하지 않습니다.
+위의 내용은 DOM 내 템플릿에서 `:[someattr]`로 변환됩니다. 컴포넌트에 `someattr` 대신 `someAttr` 속성이 있으면 코드가 작동하지 않습니다.
 
 
 ### Modifiers

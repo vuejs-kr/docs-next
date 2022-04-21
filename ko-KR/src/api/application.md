@@ -76,7 +76,7 @@ Mounts the application instance in a container element.
 
   The argument can either be an actual DOM element or a CSS selector (the first matched element will be used). Returns the root component instance.
 
-  인자는 실제 DOM요소 또는 CSS 선택자일 수 있습니다(첫번째로 일치하는 요소가 사용됨). 루트 컴포넌트 인스턴스를 반환합니다.
+  인자는 실제 DOM요소 또는 CSS 선택자일 수 있습니다(첫번째로 일치하는엘리먼트가 사용됨). 루트 컴포넌트 인스턴스를 반환합니다.
 
 
   If the component has a template or a render function defined, it will replace any existing DOM nodes inside the container. Otherwise, if the runtime compiler is available, the `innerHTML` of the container will be used as the template.
@@ -506,7 +506,7 @@ This config option is only respected when using the full build (i.e. the standal
 
 Specifies a check method to recognize native custom elements.
 
-기본 사용자 정의 요소를 인식하기 위한 검사 방법을 지정합니다.
+기본 사용자 정의엘리먼트를 인식하기 위한 검사 방법을 지정합니다.
 
 - **Type:** `(tag: string) => boolean`
 
@@ -514,7 +514,7 @@ Specifies a check method to recognize native custom elements.
 
   Should return `true` if the tag should be treated as a native custom element. For a matched tag, Vue will render it as a native element instead of attempting to resolve it as a Vue component.
   
-  태그를 기본 맞춤 요소로 처리해야 하는 경우 `true`를 반환해야 합니다. 일치하는 태그의 경우 Vue는 이를 Vue 컴포넌트로 확인하는 대신 기본 요소로 렌더링합니다.
+  태그를 기본 맞춤엘리먼트로 처리해야 하는 경우 `true`를 반환해야 합니다. 일치하는 태그의 경우 Vue는 이를 Vue 컴포넌트로 확인하는 대신 기본엘리먼트로 렌더링합니다.
 
   Native HTML and SVG tags don't need to be matched in this function - Vue's parser recognizes them automatically.
   
@@ -553,8 +553,8 @@ Adjusts template whitespace handling behavior.
   3. Consecutive whitespace characters in text nodes are condensed into a single space.
 
 
-  1. 요소 내부의 선행/종료 공백 문자는 단일 공백으로 압축됩니다.
-  2. 개행을 포함하는 요소 사이의 공백 문자는 제거됩니다.
+  1.엘리먼트 내부의 선행/종료 공백 문자는 단일 공백으로 압축됩니다.
+  2. 개행을 포함하는엘리먼트 사이의 공백 문자는 제거됩니다.
   3. 텍스트 노드의 연속 공백 문자는 단일 공백으로 압축됩니다.
 
   Setting this option to `'preserve'` will disable (2) and (3).

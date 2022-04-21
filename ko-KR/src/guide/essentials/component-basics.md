@@ -18,7 +18,7 @@ Components allow us to split the UI into independent and reusable pieces, and th
 
 This is very similar to how we nest native HTML elements, but Vue implements its own component model that allow us to encapsulate custom content and logic in each component. Vue also plays nicely with native Web Components. If you are curious about the relationship between Vue Components and native Web Components, [read more here](/guide/extras/web-components.html).
 
-이것은 기본 HTML 엘레멘트를 중첩하는 방법과 매우 유사하지만 Vue는 각 컴포넌트에 사용자 정의 콘텐츠와 논리를 캡슐화할 수 있는 자체 컴포넌트 모델을 구현합니다. Vue는 네이티브 웹 컴포넌트와도 잘 작동합니다. Vue 컴포넌트와 네이티브 웹 컴포넌트 간의 관계가 궁금하시다면 [여기에서 자세히 읽어보세요](/guide/extras/web-components.html).
+이것은 기본 HTML 엘리먼트를 중첩하는 방법과 매우 유사하지만 Vue는 각 컴포넌트에 사용자 정의 콘텐츠와 논리를 캡슐화할 수 있는 자체 컴포넌트 모델을 구현합니다. Vue는 네이티브 웹 컴포넌트와도 잘 작동합니다. Vue 컴포넌트와 네이티브 웹 컴포넌트 간의 관계가 궁금하시다면 [여기에서 자세히 읽어보세요](/guide/extras/web-components.html).
 
 
 ## Defining a Component
@@ -108,7 +108,7 @@ export default {
 
 The template is inlined as a JavaScript string here, which Vue will compile on the fly. You can also use an ID selector pointing to an element (usually native `<template>` elements) - Vue will use its content as the template source.
 
-템플릿은 Vue가 즉석에서 컴파일할 JavaScript 문자열로 인라인됩니다. 엘레멘트(보통 기본 `<template>` 엘레멘트)를 가리키는 ID 셀렉터를 사용할 수도 있습니다. Vue는 해당 콘텐츠를 템플릿 소스로 사용합니다.
+템플릿은 Vue가 즉석에서 컴파일할 JavaScript 문자열로 인라인됩니다. 엘리먼트(보통 기본 `<template>` 엘리먼트)를 가리키는 ID 셀렉터를 사용할 수도 있습니다. Vue는 해당 콘텐츠를 템플릿 소스로 사용합니다.
 
 The example above defines a single component and exports it as the default export of a `.js` file, but you can use named exports to export multiple components from the same file.
 
@@ -212,12 +212,12 @@ Notice that when clicking on the buttons, each one maintains its own, separate `
 
 In SFCs, it's recommended to use `PascalCase` tag names for child components to differentiate from native HTML elements. Although native HTML tag names are case-insensitive, Vue SFC is a compiled format so we are able to use case-sensitive tag names in it. We are also able to use `/>` to close a tag.
 
-SFC에서는 네이티브 HTML 엘레멘트와 구별하기 위해 자식 컴포넌트에 `PascalCase` 태그 이름을 사용하는 것이 좋습니다. 기본 HTML 태그 이름은 대소문자를 구분하지 않지만 Vue SFC는 컴파일된 형식이므로 대소문자 구분 태그 이름을 사용할 수 있습니다. 또한 `/>`를 사용하여 태그를 닫을 수 있습니다.
+SFC에서는 네이티브 HTML 엘리먼트와 구별하기 위해 자식 컴포넌트에 `PascalCase` 태그 이름을 사용하는 것이 좋습니다. 기본 HTML 태그 이름은 대소문자를 구분하지 않지만 Vue SFC는 컴파일된 형식이므로 대소문자 구분 태그 이름을 사용할 수 있습니다. 또한 `/>`를 사용하여 태그를 닫을 수 있습니다.
 
 
 If you are authoring your templates directly in a DOM (e.g. as the content of a native `<template>` element), the template will be subject to the browser's native HTML parsing behavior. In such cases, you will need to use `kebab-case` and explicit closing tags for components:
 
-템플릿을 DOM에서 직접 작성하는 경우(예: 기본 `<template>` 엘레멘트의 콘텐츠로) 템플릿은 브라우저의 기본 HTML 구문 분석 동작을 따릅니다. 이러한 경우 컴포넌트에 `kebab-case` 및 명시적 닫는 태그를 사용해야 합니다.
+템플릿을 DOM에서 직접 작성하는 경우(예: 기본 `<template>` 엘리먼트의 콘텐츠로) 템플릿은 브라우저의 기본 HTML 구문 분석 동작을 따릅니다. 이러한 경우 컴포넌트에 `kebab-case` 및 명시적 닫는 태그를 사용해야 합니다.
 
 
 ```vue-html
@@ -562,7 +562,7 @@ That's all you need to know about custom component events for now, but once you'
 
 Just like with HTML elements, it's often useful to be able to pass content to a component, like this:
 
-HTML 엘레멘트와 마찬가지로 다음과 같이 컴포넌트에 콘텐츠를 전달할 수 있으면 종종 유용합니다:
+HTML 엘리먼트와 마찬가지로 다음과 같이 컴포넌트에 콘텐츠를 전달할 수 있으면 종종 유용합니다:
 
 ```vue-html
 <AlertBox>
@@ -584,7 +584,7 @@ Something bad happened.
 
 This can be achieved using Vue's custom `<slot>` element:
 
-이것은 Vue의 사용자 정의 `<slot>` 엘레멘트를 사용하여 달성할 수 있습니다"
+이것은 Vue의 사용자 정의 `<slot>` 엘리먼트를 사용하여 달성할 수 있습니다"
 
 
 ```vue{4}
@@ -644,7 +644,7 @@ Sometimes, it's useful to dynamically switch between components, like in a tabbe
 
 The above is made possible by Vue's `<component>` element with the special `is` attribute:
 
-위의 내용은 Vue의 `<component>` 엘레멘트에 특별한 `is` 속성이 있어 가능합니다.
+위의 내용은 Vue의 `<component>` 엘리먼트에 특별한 `is` 속성이 있어 가능합니다.
 
 
 <div class="options-api">
@@ -675,7 +675,7 @@ In the example above, the value passed to `:is` can contain either:
 
 You can also use the `is` attribute to create regular HTML elements.
 
-`is` 속성을 사용하여 일반 HTML 엘레멘트를 만들 수도 있습니다.
+`is` 속성을 사용하여 일반 HTML 엘리먼트를 만들 수도 있습니다.
 
 
 When switching between multiple components with `<component :is="...">`, a component will be unmounted when it is switched away from. We can force the inactive components to stay "alive" with the built-in [`<KeepAlive>` component](/guide/built-ins/keep-alive.html).
@@ -759,7 +759,7 @@ In DOM templates, however, we must always include explicit closing tags:
 
 This is because the HTML spec only allows [a few specific elements](https://html.spec.whatwg.org/multipage/syntax.html#void-elements) to omit closing tags, the most common being `<input>` and `<img>`. For all other elements, if you omit the closing tag, the native HTML parser will think you never terminated the opening tag. For example, the following snippet:
 
-HTML 사양은 [몇 가지 특정 엘레멘트](https://html.spec.whatwg.org/multipage/syntax.html#void-elements)만 닫는 태그를 생략할 수 있도록 허용하기 때문입니다. 가장 일반적인 것은 `<input> ` 및 `<img>`. 다른 모든 엘레멘트의 경우 닫는 태그를 생략하면 기본 HTML 파서는 사용자가 여는 태그를 종료하지 않은 것으로 간주합니다. 예를 들어 다음 스니펫:
+HTML 사양은 [몇 가지 특정 엘리먼트](https://html.spec.whatwg.org/multipage/syntax.html#void-elements)만 닫는 태그를 생략할 수 있도록 허용하기 때문입니다. 가장 일반적인 것은 `<input> ` 및 `<img>`. 다른 모든 엘리먼트의 경우 닫는 태그를 생략하면 기본 HTML 파서는 사용자가 여는 태그를 종료하지 않은 것으로 간주합니다. 예를 들어 다음 스니펫:
 
 
 ```vue-html
@@ -779,16 +779,16 @@ will be parsed as:
 ```
 
 ### Element Placement Restrictions
-### 엘레멘트 배치 제한
+### 엘리먼트 배치 제한
 
 Some HTML elements, such as `<ul>`, `<ol>`, `<table>` and `<select>` have restrictions on what elements can appear inside them, and some elements such as `<li>`, `<tr>`, and `<option>` can only appear inside certain other elements.
 
-`<ul>`, `<ol>`, `<table>` 및 `<select>`와 같은 일부 HTML 엘레멘트에는 내부에 표시할 수 있는 엘레멘트에 대한 제한이 있으며 `<li>`와 같은 일부 엘레멘트는 `<tr>` 및 `<option>`은 특정 다른 엘레멘트 내부에만 나타날 수 있습니다.
+`<ul>`, `<ol>`, `<table>` 및 `<select>`와 같은 일부 HTML 엘리먼트에는 내부에 표시할 수 있는 엘리먼트에 대한 제한이 있으며 `<li>`와 같은 일부 엘리먼트는 `<tr>` 및 `<option>`은 특정 다른 엘리먼트 내부에만 나타날 수 있습니다.
 
 
 This will lead to issues when using components with elements that have such restrictions. For example:
 
-이러한 제한이 있는 엘레멘트가 있는 컴포넌트를 사용할 때 문제가 발생합니다. 예를 들어:
+이러한 제한이 있는 엘리먼트가 있는 컴포넌트를 사용할 때 문제가 발생합니다. 예를 들어:
 
 
 ```vue-html
@@ -814,7 +814,7 @@ When used on native HTML elements, the value of `is` must be prefixed with `vue:
 :::
 
 :::tip
-기본 HTML 엘레멘트에 사용되는 경우 'is' 값은 Vue 컴포넌트로 해석되기 위해 'vue:' 접두사를 사용해야 합니다. 이는 기본 [맞춤형 내장 엘레멘트](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example)와의 혼동을 피하기 위해 필요합니다.
+기본 HTML 엘리먼트에 사용되는 경우 'is' 값은 Vue 컴포넌트로 해석되기 위해 'vue:' 접두사를 사용해야 합니다. 이는 기본 [맞춤형 내장 엘리먼트](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example)와의 혼동을 피하기 위해 필요합니다.
 
 :::
 

@@ -34,14 +34,14 @@ Aside from these two components, we can also apply animations in Vue using other
 
 `<Transition>` is a built-in component: this means it is available in any component's template without having to register it. It can be used to apply enter and leave animations on elements or components passed to it via its default slot. The enter or leave can be triggered by one of the following:
 
-`<Transition>`은 기본 제공 컴포넌트입니다. 즉, 등록하지 않고도 컴포넌트의 템플릿에서 사용할 수 있습니다. 기본 슬롯을 통해 전달된 엘레멘트 또는 컴포넌트에 들어가기 및 나가기 애니메이션을 적용하는 데 사용할 수 있습니다. 입장 또는 진출은 다음 중 하나에 의해 트리거될 수 있습니다:
+`<Transition>`은 기본 제공 컴포넌트입니다. 즉, 등록하지 않고도 컴포넌트의 템플릿에서 사용할 수 있습니다. 기본 슬롯을 통해 전달된 엘리먼트 또는 컴포넌트에 들어가기 및 나가기 애니메이션을 적용하는 데 사용할 수 있습니다. 입장 또는 진출은 다음 중 하나에 의해 트리거될 수 있습니다:
 
 - Conditional rendering via `v-if`
 - `v-if` 를 통한 조건부 렌더링 
 - Conditional display via `v-show`
 - `v-show`를 통한 조건부 표시
 - Dynamic components toggling via the `<component>` special element
-- `<component>` 특수 엘레먼트를 통한 동적 컴포넌트 토글링
+- `<component>` 특수엘리먼트를 통한 동적 컴포넌트 토글링
 
 This is an example of the most basic usage:
 
@@ -85,16 +85,16 @@ This is an example of the most basic usage:
 :::
 
 :::tip
-`<Transition>`은 슬롯 콘텐츠로 단일 엘레멘트 또는 구성엘레멘트만 지원합니다. 콘텐츠가 컴포넌트인 경우 컴포넌트에는 단일 루트 엘레멘트만 있어야 합니다.
+`<Transition>`은 슬롯 콘텐츠로 단일 엘리먼트 또는 구성엘리먼트만 지원합니다. 콘텐츠가 컴포넌트인 경우 컴포넌트에는 단일 루트 엘리먼트만 있어야 합니다.
 
 :::
 
 When an element in a `<Transition>` component is inserted or removed, this is what happens:
 
-`<Transition>` 컴포넌트의 엘레멘트가 삽입되거나 제거되면 다음과 같이 됩니다:
+`<Transition>` 컴포넌트의 엘리먼트가 삽입되거나 제거되면 다음과 같이 됩니다:
 
 1. Vue will automatically sniff whether the target element has CSS transitions or animations applied. If it does, a number of [CSS transition classes](#transition-classes) will be added / removed at appropriate timings.
-1. Vue는 대상 엘레멘트에 CSS 트랜지션 또는 애니메이션이 적용되었는지 여부를 자동으로 감지합니다. 그렇다면 적절한 타이밍에 여러 [CSS transition classes](#transition-classes)가 추가/제거됩니다.
+1. Vue는 대상 엘리먼트에 CSS 트랜지션 또는 애니메이션이 적용되었는지 여부를 자동으로 감지합니다. 그렇다면 적절한 타이밍에 여러 [CSS transition classes](#transition-classes)가 추가/제거됩니다.
 
 
 2. If there are listeners for [JavaScript hooks](#javascript-hooks), these hooks will be called at appropriate timings.
@@ -123,16 +123,16 @@ There are six classes applied for enter / leave transitions.
 
 1. `v-enter-from`: Starting state for enter. Added before the element is inserted, removed one frame after the element is inserted.
 
-1. `v-enter-from`: 진입을 위한 시작 상태입니다. 엘레멘트가 삽입되기 전에 추가되고 엘레멘트가 삽입된 후 한 프레임 제거됩니다.
+1. `v-enter-from`: 진입을 위한 시작 상태입니다. 엘리먼트가 삽입되기 전에 추가되고 엘리먼트가 삽입된 후 한 프레임 제거됩니다.
 
 
 2. `v-enter-active`: Active state for enter. Applied during the entire entering phase. Added before the element is inserted, removed when the transition/animation finishes. This class can be used to define the duration, delay and easing curve for the entering transition.
 
-2. `v-enter-active`: 진입을 위한 활성 상태입니다. 전체 진입 단계 동안 적용됩니다. 엘레멘트가 삽입되기 전에 추가되고 트랜지션/애니메이션이 완료되면 제거됩니다. 이 클래스는 진입 트랜지션에 대한 지속 시간, 지연 및 완화 곡선을 정의하는 데 사용할 수 있습니다.
+2. `v-enter-active`: 진입을 위한 활성 상태입니다. 전체 진입 단계 동안 적용됩니다. 엘리먼트가 삽입되기 전에 추가되고 트랜지션/애니메이션이 완료되면 제거됩니다. 이 클래스는 진입 트랜지션에 대한 지속 시간, 지연 및 완화 곡선을 정의하는 데 사용할 수 있습니다.
 
 3. `v-enter-to`: Ending state for enter. Added one frame after the element is inserted (at the same time `v-enter-from` is removed), removed when the transition/animation finishes.
 
-3. `v-enter-to`: 진입를 위한 종료 상태입니다. 엘레멘트가 삽입된 후 한 프레임이 추가되고(동시에 `v-enter-from`이 제거됨) 트랜지션/애니메이션이 완료되면 제거됩니다.
+3. `v-enter-to`: 진입를 위한 종료 상태입니다. 엘리먼트가 삽입된 후 한 프레임이 추가되고(동시에 `v-enter-from`이 제거됨) 트랜지션/애니메이션이 완료되면 제거됩니다.
 
 4. `v-leave-from`: Starting state for leave. Added immediately when a leaving transition is triggered, removed after one frame.
 
@@ -241,7 +241,7 @@ Here is a more advanced example that transitions multiple properties, with diffe
 
 [Native CSS animations](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations) are applied in the same way as CSS transitions, with the difference being that `*-enter-from` is not removed immediately after the element is inserted, but on an `animationend` event.
 
-[네이티브 CSS 애니메이션](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations)은 CSS 트랜지션과 동일한 방식으로 적용되지만 `*-enter- from`은 엘레멘트가 삽입된 직후가 아니라 'animationend' 이벤트에서 제거됩니다.
+[네이티브 CSS 애니메이션](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations)은 CSS 트랜지션과 동일한 방식으로 적용되지만 `*-enter- from`은 엘리먼트가 삽입된 직후가 아니라 'animationend' 이벤트에서 제거됩니다.
 
 
 For most CSS animations, we can simply declare them under the `*-enter-active` and `*-leave-active` classes. Here's an example:
@@ -341,7 +341,7 @@ Vue는 트랜지션이 종료된 시점을 알기 위해 이벤트 리스너를 
 
 However, in some cases you may want to have both on the same element, for example having a CSS animation triggered by Vue, along with a CSS transition effect on hover. In these cases, you will have to explicitly declare the type you want Vue to care about by passing the `type` prop, with a value of either `animation` or `transition`:
 
-그러나 경우에 따라 Vue에 의해 트리거된 CSS 애니메이션과 호버에 대한 CSS 트랜지션 효과가 있는 경우와 같이 동일한 엘레멘트에 둘 다 갖고 싶을 수 있습니다. 이러한 경우에는 `animation` 또는 `transition` 값과 함께 `type` prop을 전달하여 Vue에서 처리할 유형을 명시적으로 선언해야 합니다.
+그러나 경우에 따라 Vue에 의해 트리거된 CSS 애니메이션과 호버에 대한 CSS 트랜지션 효과가 있는 경우와 같이 동일한 엘리먼트에 둘 다 갖고 싶을 수 있습니다. 이러한 경우에는 `animation` 또는 `transition` 값과 함께 `type` prop을 전달하여 Vue에서 처리할 유형을 명시적으로 선언해야 합니다.
 
 
 ```vue-html
@@ -353,7 +353,7 @@ However, in some cases you may want to have both on the same element, for exampl
 
 Although the transition classes are only applied to the direct child element in `<Transition>`, we can transition nested elements using nested CSS selectors:
 
-트랜지션 클래스는 `<Transition>`의 직접적인 자식 엘레멘트에만 적용되지만 중첩된 CSS 선택기를 사용하여 중첩된 엘레멘트를 트랜지션할 수 있습니다:
+트랜지션 클래스는 `<Transition>`의 직접적인 자식 엘리먼트에만 적용되지만 중첩된 CSS 선택기를 사용하여 중첩된 엘리먼트를 트랜지션할 수 있습니다:
 
 
 ```vue-html
@@ -382,7 +382,7 @@ Although the transition classes are only applied to the direct child element in 
 
 We can even add a transition delay to the nested element on enter, which creates a staggered enter animation sequence:
 
-엔터 시 중첩된 엘레멘트에 트랜지션 지연을 추가하여 엇갈린 엔터 애니메이션 시퀀스를 생성할 수도 있습니다:
+엔터 시 중첩된 엘리먼트에 트랜지션 지연을 추가하여 엇갈린 엔터 애니메이션 시퀀스를 생성할 수도 있습니다:
 
 ```css{3}
 /* delay enter of nested element for staggered effect */
@@ -393,12 +393,12 @@ We can even add a transition delay to the nested element on enter, which creates
 
 However, this creates a small issue. By default, the `<Transition>` component attempts to automatically figure out when the transition has finished by listening to the **first** `transitionend` or `animationend` event on the root transition element. With a nested transition, the desired behavior should be waiting until the transitions of all inner elements have finished.
 
-그러나 이것은 작은 문제를 만듭니다. 기본적으로 `<Transition>` 컴포넌트는 루트 트랜지션 엘레멘트에서 **first** `transitionend` 또는 `animationend` 이벤트를 수신하여 트랜지션이 완료되는 시점을 자동으로 파악하려고 시도합니다. 중첩 트랜지션을 사용하면 모든 내부 엘레멘트의 트랜지션이 완료될 때까지 원하는 동작이 대기해야 합니다.
+그러나 이것은 작은 문제를 만듭니다. 기본적으로 `<Transition>` 컴포넌트는 루트 트랜지션 엘리먼트에서 **first** `transitionend` 또는 `animationend` 이벤트를 수신하여 트랜지션이 완료되는 시점을 자동으로 파악하려고 시도합니다. 중첩 트랜지션을 사용하면 모든 내부 엘리먼트의 트랜지션이 완료될 때까지 원하는 동작이 대기해야 합니다.
 
 
 In such cases you can specify an explicit transition duration (in milliseconds) using the `duration` prop on the `<transition>` component. The total duration should match the delay plus transition duration of the inner element:
 
-이러한 경우 `<transition>` 구성엘레멘트의 `duration` 소품을 사용하여 명시적 트랜지션 기간(밀리초 단위)을 지정할 수 있습니다. 총 지속 시간은 지연에 내부 엘레멘트의 트랜지션 지속 시간을 더한 값과 일치해야 합니다:
+이러한 경우 `<transition>` 구성엘리먼트의 `duration` 소품을 사용하여 명시적 트랜지션 기간(밀리초 단위)을 지정할 수 있습니다. 총 지속 시간은 지연에 내부 엘리먼트의 트랜지션 지속 시간을 더한 값과 일치해야 합니다:
 
 
 ```vue-html
@@ -468,14 +468,14 @@ You can hook into the transition process with JavaScript by listening to events 
 ```js
 // called before the element is inserted into the DOM.
 // use this to set the "enter-from" state of the element
-// 엘레멘트가 DOM에 삽입되기 전에 호출됩니다.
-// 이것을 사용하여 엘레멘트의 "enter-from" 상태를 설정합니다.
+// 엘리먼트가 DOM에 삽입되기 전에 호출됩니다.
+// 이것을 사용하여 엘리먼트의 "enter-from" 상태를 설정합니다.
 
 function onBeforeEnter(el) {},
 
 // called one frame after the element is inserted.
 // use this to start the entering animation.
-// 엘레멘트가 삽입된 후 한 프레임이 호출됩니다.
+// 엘리먼트가 삽입된 후 한 프레임이 호출됩니다.
 // 이를 사용하여 진입 애니메이션을 시작합니다.
 
 function onEnter(el, done) {
@@ -666,7 +666,7 @@ If you also want to apply a transition on the initial render of a node, you can 
 
 In addition to toggling an element with `v-if` / `v-show`, we can also transition between two elements using `v-if` / `v-else` / `v-else-if`:
 
-`v-if` / `v-show`로 엘레멘트를 트랜지션하는 것 외에도 `v-if` / `v-else` / `v-else-if`를 사용하여 두 엘레멘트 사이를 트랜지션할 수도 있습니다:
+`v-if` / `v-show`로 엘리먼트를 트랜지션하는 것 외에도 `v-if` / `v-else` / `v-else-if`를 사용하여 두 엘리먼트 사이를 트랜지션할 수도 있습니다:
 
 
 ```vue-html
@@ -686,12 +686,12 @@ In addition to toggling an element with `v-if` / `v-show`, we can also transitio
 
 In the previous example, the entering and leaving elements are animated at the same time, and we had to make them `position: absolute` to avoid the layout issue when both elements are present in the DOM.
 
-앞의 예에서 들어가는 엘레멘트와 나가는 엘레멘트는 동시에 애니메이션되며 두 엘레멘트가 모두 DOM에 있을 때 레이아웃 문제를 피하기 위해 `position: absolute`로 만들어야 했습니다.
+앞의 예에서 들어가는 엘리먼트와 나가는 엘리먼트는 동시에 애니메이션되며 두 엘리먼트가 모두 DOM에 있을 때 레이아웃 문제를 피하기 위해 `position: absolute`로 만들어야 했습니다.
 
 
 However, in some cases this isn't an option, or simply isn't the desired behavior. We may want the leaving element to be animated out first, and for the entering element to only be inserted **after** the leaving animation has finished. Orchestrating such animations manually would be very complicated - luckily, we can enable this behavior by passing `<Transition>` a `mode` prop:
 
-그러나 어떤 경우에는 이것이 옵션이 아니거나 단순히 원하는 동작이 아닙니다. 떠나는 엘레멘트가 먼저 애니메이션 처리되고 들어가는 엘레멘트가 떠나는 애니메이션이 완료된 **이후에**만 삽입되기를 원할 수 있습니다. 이러한 애니메이션을 수동으로 조정하는 것은 매우 복잡합니다. 운 좋게도 `<Transition>`에 `mode` 소품을 전달하여 이 동작을 활성화할 수 있습니다:
+그러나 어떤 경우에는 이것이 옵션이 아니거나 단순히 원하는 동작이 아닙니다. 떠나는 엘리먼트가 먼저 애니메이션 처리되고 들어가는 엘리먼트가 떠나는 애니메이션이 완료된 **이후에**만 삽입되기를 원할 수 있습니다. 이러한 애니메이션을 수동으로 조정하는 것은 매우 복잡합니다. 운 좋게도 `<Transition>`에 `mode` 소품을 전달하여 이 동작을 활성화할 수 있습니다:
 
 ```vue-html
 <Transition mode="out-in">
@@ -715,7 +715,7 @@ Here's the previous demo with `mode="out-in"`:
 
 `<Transition>` can also be used around [dynamic components](/guide/essentials/component-basics.html#dynamic-components):
 
-`<Transition>`은 [동적 구성엘레멘트](/guide/essentials/component-basics.html#dynamic-components)에서도 사용할 수 있습니다:
+`<Transition>`은 [동적 구성엘리먼트](/guide/essentials/component-basics.html#dynamic-components)에서도 사용할 수 있습니다:
 
 
 ```vue-html
