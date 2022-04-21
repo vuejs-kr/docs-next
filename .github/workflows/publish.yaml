@@ -24,7 +24,7 @@ jobs:
     - name: Add CNAME
       run: echo "v3-docs.vuejs-korea.org" > ko-KR/.vitepress/dist/CNAME
     - name: Deploy to GitHub Pages
-      uses: comfuture/actions/ghpages@master
-      env:
-        BUILD_DIR: ko-KR/.vitepress/dist/
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ko-KR/.vitepress/dist/
