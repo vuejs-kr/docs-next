@@ -314,7 +314,7 @@ Another example is the `v-on` directive, which listens to DOM events:
 
 Here the argument is the event name to listen to: `click`. `v-on` is one of the few directives that also have a corresponding shorthand, with its shorthand character being `@`. We will talk about event handling in more detail too.
 
-여기 인자는 수신할 이벤트 이름입니다. `click`. `v-on`은 전용 약어가 있는 몇 안 되는 지시문 중 하나이며 약어 문자는 `@`입니다. 이벤트 처리에 대해서도 더 자세히 이야기하겠습니다.
+여기 인자는 수신할 이벤트 이름입니다. `click`. `v-on`은 전용 약어가 있는 몇 안 되는 디렉티브 중 하나이며 약어 문자는 `@`입니다. 이벤트 처리에 대해서도 더 자세히 이야기하겠습니다.
 
 
 ### Dynamic Arguments
@@ -403,7 +403,7 @@ The above will be converted to `:[someattr]` in in-DOM templates. If your compon
 
 Modifiers are special postfixes denoted by a dot, which indicate that a directive should be bound in some special way. For example, the `.prevent` modifier tells the `v-on` directive to call `event.preventDefault()` on the triggered event:
 
-수정자는 점으로 표시되는 특수 접미사로 지시문이 특별한 방식으로 바인딩되어야 함을 나타냅니다. 예를 들어 `.prevent` 수정자는 트리거된 이벤트에서 `event.preventDefault()`를 호출하도록 `v-on` 지시문에 지시합니다.
+수정자는 점으로 표시되는 특수 접미사로 디렉티브이 특별한 방식으로 바인딩되어야 함을 나타냅니다. 예를 들어 `.prevent` 수정자는 트리거된 이벤트에서 `event.preventDefault()`를 호출하도록 `v-on` 디렉티브에 지시합니다.
 
 
 ```vue-html
@@ -412,12 +412,12 @@ Modifiers are special postfixes denoted by a dot, which indicate that a directiv
 
 You'll see other examples of modifiers later, [for `v-on`](./event-handling.html#event-modifiers) and [for `v-model`](./forms.html#modifiers), when we explore those features.
 
-나중에 [for `v-on`](./event-handling.html#event-modifiers) 및 [for `v-model`](./forms.html#modifiers)과 같은 수정자의 다른 예를 볼 수 있습니다. 이러한 기능을 탐색할 때
+나중에 [`v-on`](./event-handling.html#event-modifiers) 및 [`v-model`](./forms.html#modifiers) 기능을을 다룰때 해당 기능들의 수정자들에 대한 예시들을 보실수 있습니다. 
 
 
 And finally, here's the full directive syntax visualized:
 
-마지막으로 다음은 전체 지시문 구문을 시각화한 것입니다.
+마지막으로 다음은 전체 디렉티브 문법을 시각화한 것입니다.
 
 
 ![directive syntax graph](./images/directive.png)
