@@ -5,16 +5,25 @@ outline: deep
 :::
 
 # Reactivity Fundamentals
+# 반응형 기초
 
 :::tip API Preference
 This page and many other chapters later in the guide contain different content for Options API and Composition API. Your current preference is <span class="options-api">Options API</span><span class="composition-api">Composition API</span>. You can toggle between the API styles using the "API Preference" switches at the top of the left sidebar.
 :::
 
+:::tip API Preference
+이 페이지와 가이드 뒷부분의 다른 많은 장에는 옵션 API 및 컴포지션 API에 대한 다양한 콘텐츠가 포함되어 있습니다. 현재 기본 설정은 <span class="options-api">옵션 API</span><span class="composition-api">작성 API</span>입니다. 왼쪽 사이드바 상단에 있는 "API 기본 설정" 스위치를 사용하여 API 스타일 간에 전환할 수 있습니다.
+:::
+
 ## Declaring Reactive State
+## 반응형 상태 선언하기
 
 <div class="options-api">
 
 With Options API, we use the `data` option to declare reactive state of a component. The option value should be a function that returns an object. Vue will call the function when creating a new component instance, and wrap the returned object in its reactivity system. Any top-level properties of this object are proxied on the component instance (`this` in methods and lifecycle hooks):
+
+Options API에서는 `data` 옵션을 사용하여 컴포넌트의 반응 상태를 선언합니다. 옵션 값은 객체를 반환하는 함수여야 합니다. Vue는 새 컴포넌트 인스턴스를 만들 때마다 해당 함수를 호출하여 반환된 개체를 반응성 시스템에 래핑합니다. 반환된 객체의 모든 최상위 속성은 컴포넌트 인스턴스에서 프록시됩니다(메서드 및 생명주기 후크에서 `this`로 접근 할 수 있습니다).
+
 
 ```js{2-6}
 export default {
@@ -25,11 +34,14 @@ export default {
   },
 
   // `mounted` is a lifecycle hook which we will explain later
+  // `mounted`는 생명주기 후크인데 나중에 설명합니다. 
   mounted() {
     // `this` refers to the component instance.
+    // `this` 는 컴포넌트 인스턴스를 나타냅니다. 
     console.log(this.count) // => 1
 
     // data can be mutated as well
+    // 데이터는 잘 변경됩니다.
     this.count = 2
   }
 }
@@ -39,13 +51,25 @@ export default {
 
 These instance properties are only added when the instance is first created, so you need to ensure they are all present in the object returned by the `data` function. Where necessary, use `null`, `undefined` or some other placeholder value for properties where the desired value isn't yet available.
 
+이러한 인스턴스 속성은 인스턴스가 처음 생성될 때만 추가되므로 `data` 함수에서 반환된 객체에 필요한 속성이 모두 존재하는지 확인해야 합니다. 필요한 경우 `null`, `undefined` 또는 원하는 값을 아직 사용할 수 없는 속성에 대해 임시 값(PLaceholder value)을 사용하세요.
+
+
 It is possible to add a new property directly to `this` without including it in `data`. However, properties added this way will not be able to trigger reactive updates.
+
+`data`에 포함하지 않고 `this`에 직접 새 속성을 추가할 수 있습니다. 그러나 이러한 방식으로 추가된 속성은 반응형 업데이트를 트리거할 수 없습니다.
 
 Vue uses a `$` prefix when exposing its own built-in APIs via the component instance. It also reserves the prefix `_` for internal properties. You should avoid using names for top-level `data` properties that start with either of these characters.
 
+Vue는 컴포넌트 인스턴스를 통해 자체 내장 API를 노출할 때 `$` 접두사를 사용합니다. 또한 내부 속성에 대해 접두사 `_`를 예약합니다. 이러한 문자 중 하나로 시작하는 최상위 `data` 속성의 이름을 사용하지 않아야 합니다.
+
+
 ### Reactive Proxy vs. Original \*
+### 반응형 프락시 vs 원본 \*
 
 In Vue 3, data is made reactive by leveraging [JavaScript Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy). Users coming from Vue 2 should be aware of the following edge case:
+
+Vue 3에서 `data`는 [JavaScript Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)를 활용하여 반응형으로 만들어집니다. Vue 2를 사용하다 오시는 분은  다음과 같은 경우에 주의해야 합니다.
+
 
 ```js
 export default {
@@ -65,11 +89,17 @@ export default {
 
 When you access `this.someObject` after assigning it, the value is a reactive proxy of the original `newObject`. **Unlike in Vue 2, the original `newObject` is left intact and will not be made reactive: make sure to always access reactive state as a property of `this`.**
 
+할당 후 `this.someObject`에 접근할때 얻어지는 값은 원본 `newObject`에 대한 반응형 프록시입니다. **Vue 2와 달리 원래의 `newObject`는 그대로 유지되며 반응형이 되지 않습니다. 항상 `this`의 속성으로 반응형 상태에 액세스해야 합니다.**
+
+
 </div>
 
 <div class="composition-api">
 
 We can create a reactive object or array with the [`reactive()`](/api/reactivity-core.html#reactive) function:
+
+[`reactive()`](/api/reactivity-core.html#reactive) 함수를 사용하여 반응형 객체 또는 배열을 만들 수 있습니다.
+
 
 ```js
 import { reactive } from 'vue'
@@ -79,19 +109,28 @@ const state = reactive({ count: 0 })
 
 Reactive objects are [JavaScript Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) and behave just like normal objects. The difference is that Vue is able to track the property access and mutations of a reactive object. If you are curious about the details, we explain how Vue's reactivity system works in [Reactivity in Depth](/guide/extras/reactivity-in-depth.html) - but we recommend reading it after you have finished the main guide.
 
+반응형 객체는 [JavaScript Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)이며 일반 개체처럼 작동합니다. 차이점은 Vue가 속성에 대한 접근 및 및 반응형 객체의 변경을 추적할 수 있다는 것입니다. 자세한 내용이 궁금하시다면 [Reactivity in Depth](/guide/extras/reactivity-in-depth.html)에서 Vue의 반응형 시스템이 어떻게 작동하는지 설명하지만, 메인 가이드를 마친 후 읽는 것을 권장합니다.
+
 See also: [Typing Reactive](/guide/typescript/composition-api.html#typing-reactive) <sup class="vt-badge ts" />
 
+참조: [반응형에 타입 지정하기](/guide/typescript/composition-api.html#typing-reactive) <sup class="vt-badge ts" />
+
 To use reactive state in a component's template, declare and return them from a component's `setup()` function:
+
+컴포넌트의 템플릿에서 반응 상태를 사용하려면 컴포넌트의 `setup()` 함수에서 이를 선언하고 반환합니다.
+
 
 ```js{5,9-11}
 import { reactive } from 'vue'
 
 export default {
   // `setup` is a special hook dedicated for composition API.
+  // `setup`는 컴포지션 API를 위한 전용 후크입니다. 
   setup() {
     const state = reactive({ count: 0 })
 
     // expose the state to the template
+    // state를 템플릿에 노출 시킵니다. 
     return {
       state
     }
@@ -105,6 +144,9 @@ export default {
 
 Similarly, we can declare functions that mutate reactive state in the same scope, and expose it as a method alongside the state:
 
+마찬가지로 동일한 범위에서 반응형 상태를 변경하는 함수를 선언하고, 상태와 함께 메서드로 노출할 수 있습니다:
+
+
 ```js{7-9,14}
 import { reactive } from 'vue'
 
@@ -117,6 +159,7 @@ export default {
     }
 
     // don't forget to expose the function as well.
+    // 함수를 노출하는것을 잊지 마세요
     return {
       state,
       increment
@@ -126,6 +169,9 @@ export default {
 ```
 
 Exposed methods are typically used as event listeners:
+
+노출된 메서드는 일반적으로 이벤트 리스너로 사용됩니다:
+
 
 ```vue-html
 <button @click="increment">
