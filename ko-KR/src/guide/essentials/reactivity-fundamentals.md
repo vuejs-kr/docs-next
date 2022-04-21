@@ -183,6 +183,9 @@ Exposed methods are typically used as event listeners:
 
 Manually exposing state and methods via `setup()` can be verbose. Luckily, it is only necessary when not using a build step. When using Single-File Components (SFCs), we can greatly simplify the usage with `<script setup>`:
 
+`setup()`을 통해 상태와 메서드를 수동으로 노출하는 것은 장황할 수 있습니다. 빌드 도구를 이용해 빌드를 할때는 더 쉬운 방법이 있습니다. SFC(싱글 파일 컴포넌트)를 사용할 때 `<script setup>`으로 반응형 상태의 사용을 크게 단순화할 수 있습니다:
+
+
 ```vue
 <script setup>
 import { reactive } from 'vue'
