@@ -12,11 +12,12 @@ This page and many other chapters later in the guide contain different content f
 :::
 
 :::tip API Preference
-이 페이지와 가이드 뒷부분의 다른 많은 장에는 옵션 API 및 컴포지션 API에 대한 다양한 콘텐츠가 포함되어 있습니다. 현재 기본 설정은 <span class="options-api">옵션 API</span><span class="composition-api">작성 API</span>입니다. 왼쪽 사이드바 상단에 있는 "API 기본 설정" 스위치를 사용하여 API 스타일 간에 전환할 수 있습니다.
+이 페이지와 가이드 뒷부분의 다른 많은 장에는 옵션 API 및 컴포지션 API에 대한 다양한 콘텐츠가 포함되어 있습니다. 현재 설정은 <span class="options-api">옵션 API</span><span class="composition-api">컴포지션 API</span>입니다. 왼쪽 사이드바 상단에 있는 "API 기본 설정" 스위치를 사용하여 API 스타일을 전환할 수 있습니다.
 :::
 
 ## Declaring Reactive State
 ## 반응형 상태 선언하기
+
 
 <div class="options-api">
 
@@ -94,6 +95,8 @@ When you access `this.someObject` after assigning it, the value is a reactive pr
 
 </div>
 
+
+
 <div class="composition-api">
 
 We can create a reactive object or array with the [`reactive()`](/api/reactivity-core.html#reactive) function:
@@ -109,7 +112,7 @@ const state = reactive({ count: 0 })
 
 Reactive objects are [JavaScript Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) and behave just like normal objects. The difference is that Vue is able to track the property access and mutations of a reactive object. If you are curious about the details, we explain how Vue's reactivity system works in [Reactivity in Depth](/guide/extras/reactivity-in-depth.html) - but we recommend reading it after you have finished the main guide.
 
-반응형 객체는 [JavaScript Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)이며 일반 개체처럼 작동합니다. 차이점은 Vue가 속성에 대한 접근 및 및 반응형 객체의 변경을 추적할 수 있다는 것입니다. 자세한 내용이 궁금하시다면 [Reactivity in Depth](/guide/extras/reactivity-in-depth.html)에서 Vue의 반응형 시스템이 어떻게 작동하는지 설명하지만, 메인 가이드를 마친 후 읽는 것을 권장합니다.
+반응형 객체는 [자바스크립트 프락시](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)이며 일반 개체처럼 동작합니다. 보통의 객체와의 차이점은 반응형 객체의 속성을 읽고 변경하는 것을 Vue가 추적할수 있다는 것입니다. [반응형 심화](/guide/extras/reactivity-in-depth.html) 가이드에서 Vue의 반응형 시스템이 어떻게 작동하는지 자세히 설명 합니다만, 메인 가이드를 마친후에 읽을 것을 권장합니다.
 
 See also: [Typing Reactive](/guide/typescript/composition-api.html#typing-reactive) <sup class="vt-badge ts" />
 
@@ -217,6 +220,7 @@ Top-level imports and variables declared in `<script setup>` are automatically u
 
 </div>
 
+
 <div class="options-api">
 
 ## Declaring Methods \*
@@ -283,6 +287,8 @@ In the example above, the method `increment` will be called when the `<button>` 
 
 </div>
 
+
+
 ### DOM Update Timing
 ### DOM 갱신 타이밍
 
@@ -338,6 +344,7 @@ In Vue, state is deeply reactive by default. This means you can expect changes t
 
 Vue에서 상태는 기본적으로 깊게(deep) 반응성을 추적 됩니다. 즉, 중첩된 객체나 배열을 변경하는 경우에도 변경 사항이 감지될 것으로 기대할수 있습니다.
 
+
 <div class="options-api">
 
 ```js
@@ -382,6 +389,7 @@ function mutateDeeply() {
 ```
 
 </div>
+
 
 It is also possible to explicitly create [shallow reactive objects](/api/reactivity-advanced.html#shallowreactive) where the reactivity is only tracked at the root-level, however they are typically only needed in advanced use cases.
 
@@ -527,7 +535,7 @@ See also: [Typing Refs](/guide/typescript/composition-api.html#typing-ref) <sup 
 
 Similar to properties on a reactive object, the `.value` property of a ref is reactive. In addition, when holding object types, ref automatically converts its `.value` with `reactive()`.
 
-반응형 객체의 속성과 유사하게 ref의 `.value` 속성은 반응형입니다. 또한 ref는 값으로 객체 유형을 가질때 `.value`를 `reactive()`로 자동으로 변환합니다.
+반응형 객체의 속성과 유사하게 ref의 `.value` 속성은 반응형입니다. 또한 ref는 값으로 객체 유형을 가질때 `.value` 를 `reactive()` 로 자동으로 변환합니다.
 
 
 A ref containing an object value can reactively replace the entire object:
@@ -762,9 +770,11 @@ export default {
 
 </div>
 
+
 <div class="composition-api">
 
 ## Reactivity Transform <sup class="vt-badge experimental" /> \*\*
+
 ## 반응형 변환 <sup class="vt-badge experimental" /> \*\*
 
 Having to use `.value` with refs is a drawback imposed by the language constraints of JavaScript. However, with compile-time transforms we can improve the ergonomics by automatically appending `.value` in appropriate locations. Vue provides a compile-time transform that allows us to write the earlier "counter" example like this:
@@ -790,4 +800,5 @@ function increment() {
 You can learn more about [Reactivity Transform](/guide/extras/reactivity-transform.html) in its dedicated section. Do note that it is currently still experimental and may change before being finalized.
 
 [Reactivity Transform](/guide/extras/reactivity-transform.html)에 대해 자세히 알아볼 수 있습니다. 현재 아직 실험 단계이며 최종 결정되기 전에 변경될 수 있습니다.
+
 </div>
