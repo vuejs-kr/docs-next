@@ -2,6 +2,8 @@
 :::
 
 # List Rendering
+# 리스트 렌더링
+
 
 <div class="options-api">
   <VueSchoolLink href="https://vueschool.io/lessons/list-rendering-in-vue-3" title="Free Vue.js List Rendering Lesson"/>
@@ -13,7 +15,11 @@
 
 ## `v-for`
 
+## `v-for`로 엘리먼트에 배열 매핑하기
+
 We can use the `v-for` directive to render a list of items based on an array. The `v-for` directive requires a special syntax in the form of `item in items`, where `items` is the source data array and `item` is an **alias** for the array element being iterated on:
+
+`v-for` 디렉티브를 사용하여 배열을 기반으로 리스트를 렌더링 할 수 있습니다. `v-for` 디렉티브는 `item in items` 형태로 특별한 문법이 필요합니다. 여기서 `items`는 원본 데이터 배열이고 `item`은 반복되는 배열 엘리먼트의 **별칭**입니다:
 
 <div class="composition-api">
 
@@ -42,6 +48,8 @@ data() {
 ```
 
 Inside the `v-for` scope, template expressions have access to all parent scope properties. In addition, `v-for` also supports an optional second alias for the index of the current item:
+
+`v-for` 블록 안에는 부모 범위 속성에 대한 모든 권한이 있습니다. `v-for`는 또한 현재 항목의 인덱스에 대한 두 번째 전달인자 옵션을 제공합니다:
 
 <div class="composition-api">
 
@@ -93,6 +101,8 @@ const items = [{ message: 'Foo' }, { message: 'Bar' }]
 
 The variable scoping of `v-for` is similar to the following JavaScript:
 
+`v-for` 의 변수 범위는 다음 자바스크립트와 유사합니다: 
+
 ```js
 const parentMessage = 'Parent'
 const items = [
@@ -102,11 +112,16 @@ const items = [
 items.forEach((item, index) => {
   // has access to outer scope `parentMessage`
   // but `item` and `index` are only available in here
+  // 외부 `parentMessage` 에 접근할수 있습니다. 
+  // 그런데 `item` 과  `index` 는 여기에서만 접근할수 있습니다. 
   console.log(parentMessage, item.message, index)
 })
 ```
 
 Notice how the `v-for` value matches the function signature of the `forEach` callback. In fact, you can use destructuring on the `v-for` item alias similar to destructuring function arguments:
+
+`v-for`에서 주어진 값이  `forEach`의 콜백 함수의 시그니처와 유사 하다는 것을 알아 채셨나요? 실제로 함수 인수를 구조분해(destructure) 것과 비슷하게  `v-for`의 아이템 alias 부분에 구조분해를 사용할 수 있습니다:
+
 
 ```vue-html
 <li v-for="{ message } in items">
@@ -121,6 +136,8 @@ Notice how the `v-for` value matches the function signature of the `forEach` cal
 
 For nested `v-for`, scoping also works similar to nested functions. Each `v-for` scope has access to parent scopes:
 
+중첩된 `v-for`에서도 중첩된 함수와 유사한 범위를 가집니다. 각각의 `v-for`는 부모 범위에 접근할수 있습니다:
+
 ```vue-html
 <li v-for="item in items">
   <span v-for="childItem in item.children">
@@ -131,13 +148,20 @@ For nested `v-for`, scoping also works similar to nested functions. Each `v-for`
 
 You can also use `of` as the delimiter instead of `in`, so that it is closer to JavaScript's syntax for iterators:
 
+`in` 대신에 `of`를 구분자로 사용할 수 있습니다. 이는 JavaScript의 이터레이터 구문과 유사합니다.
+
+
 ```vue-html
 <div v-for="item of items"></div>
 ```
 
 ## `v-for` with an Object
 
+## `v-for`와 객체
+
 You can also use `v-for` to iterate through the properties of an object.
+
+`v-for`를 사용하여 객체의 속성을 반복할 수도 있습니다.
 
 <div class="composition-api">
 
@@ -176,6 +200,9 @@ data() {
 
 You can also provide a second alias for the property's name (a.k.a. key):
 
+속성의 이름(key라고 불리우는) 한 두번째 alias를 제공할 수도 있습니다:
+
+
 ```vue-html
 <li v-for="(value, key) in myObject">
   {{ key }}: {{ value }}
@@ -183,6 +210,8 @@ You can also provide a second alias for the property's name (a.k.a. key):
 ```
 
 And another for the index:
+
+그리고 인덱스도 전달 할수 있습니다: 
 
 ```vue-html
 <li v-for="(value, key, index) in myObject">
@@ -205,9 +234,17 @@ And another for the index:
 When iterating over an object, the order is based on the enumeration order of `Object.keys()`, which isn't guaranteed to be consistent across JavaScript engine implementations.
 :::
 
+:::tip 참고
+객체를 반복할 때 순서는 `Object.keys()`의 키 나열 순서에 따라 결정됩니다. 이 순서는 자바스크립트 엔진 구현마다 다를수 있습니다. 
+:::
+
 ## `v-for` with a Range
 
+## 범위를 가지는 `v-for`
+
 `v-for` can also take an integer. In this case it will repeat the template that many times, based on a range of `1...n`.
+
+`v-for` 는 정수를 인자로 받을수 있습니다. 이때는 템플릿을 1부터 주어진 숫자(`1...n`)까지 증가하며 반복하게 됩니다. 
 
 ```vue-html
 <span v-for="n in 10">{{ n }}</span>
@@ -215,9 +252,16 @@ When iterating over an object, the order is based on the enumeration order of `O
 
 Note here `n` starts with an initial value of `1` instead of `0`.
 
+`n`이 `0` 이 아니라 `1` 부터 시작한다는 점에 유의 하세요. 
+
 ## `v-for` on `<template>`
 
+## 템플릿에 `v-for` 사용하기
+
 Similar to template `v-if`, you can also use a `<template>` tag with `v-for` to render a block of multiple elements. For example:
+
+템플릿의 `v-if`와 마찬가지로, `v-for`와 함께 `<template>`태그를 사용하여 여러 요소의 블록을 렌더링 할 수도 있습니다. 예를들어:
+
 
 ```vue-html
 <ul>
@@ -234,7 +278,13 @@ Similar to template `v-if`, you can also use a `<template>` tag with `v-for` to 
 It's **not** recommended to use `v-if` and `v-for` on the same element due to implicit precedence. Refer to [style guide](/style-guide/rules-essential.html#avoid-v-if-with-v-for) for details.
 :::
 
+:::tip 참고
+`v-if`와 `v-for`를 함께 사용하는 것은 권장되지 **않습니다.** 자세한 내용은 [스타일 가이드](/style-guide/rules-essential.html#avoid-v-if-with-v-for) 를 참조하세요. 
+:::
+
 When they exist on the same node, `v-if` has a higher priority than `v-for`. That means the `v-if` condition will not have access to variables from the scope of the `v-for`:
+
+동일한 노드에 있는 경우, `v-if`는 `v-for`보다 우선 순위가 높습니다. 즉, `v-if` 조건은 `v-for` 범위의 변수에 접근할 수 없습니다:
 
 ```vue-html
 <!--
@@ -248,6 +298,8 @@ is not defined on instance.
 
 This can be fixed by moving `v-for` to a wrapping `<template>` tag (which is also more explicit):
 
+`v-for`를 래핑(wrapping)하는 `<template>`태그를 사용하면 문제를 해결할 수 있습니다:
+
 ```vue-html
 <template v-for="todo in todos">
   <li v-if="!todo.isComplete">
@@ -257,12 +309,21 @@ This can be fixed by moving `v-for` to a wrapping `<template>` tag (which is als
 ```
 
 ## Maintaining State with `key`
+## `key` 를 통한 상태유지
+
 
 When Vue is updating a list of elements rendered with `v-for`, by default it uses an "in-place patch" strategy. If the order of the data items has changed, instead of moving the DOM elements to match the order of the items, Vue will patch each element in-place and make sure it reflects what should be rendered at that particular index.
 
+Vue가 `v-for`에서 렌더링된 엘리먼트 목록을 갱신할 때 기본적으로 "in-place patch" 전략을 사용합니다. 데이터 항목의 순서가 변경된 경우 항목의 순서와 일치하도록 DOM 요소를 이동하는 대신 Vue는 각 요소를 적절한 위치에 패치하고 해당 인덱스에서 렌더링할 내용을 반영하는지 확인합니다.
+
 This default mode is efficient, but **only suitable when your list render output does not rely on child component state or temporary DOM state (e.g. form input values)**.
 
+이 기본 모드는 효율적이지만 **목록의 출력 결과가 하위 컴포넌트 상태 또는 임시 DOM 상태(예: 폼 input)에 의존하지 않는 경우**에 적합합니다.
+
 To give Vue a hint so that it can track each node's identity, and thus reuse and reorder existing elements, you need to provide a unique `key` attribute for each item:
+
+각 노드의 id를 추적하여, 재사용하거나 순서를 변경하는등의 작업을 위해 각 아이템에 유일한 `key` 속성을 주어, vue에게 힌트를 줄수 있습니다:
+
 
 ```vue-html
 <div v-for="item in items" :key="item.id">
@@ -271,6 +332,9 @@ To give Vue a hint so that it can track each node's identity, and thus reuse and
 ```
 
 When using `<template v-for>`, the `key` should be placed on the `<template>` container:
+
+`<template v-for>`를 사용할 때 `key`는 `<template>` 컨테이너에 있어야 합니다"
+
 
 ```vue-html
 <template v-for="todo in todos" :key="todo.name">
@@ -282,21 +346,39 @@ When using `<template v-for>`, the `key` should be placed on the `<template>` co
 `key` here is a special attribute being bound with `v-bind`. It should not be confused with the property key variable when [using `v-for` with an object](#v-for-with-an-object).
 :::
 
+:::tip 참고
+여기서 `key` 는 `v-bind` 와 결합되는 특수 속성입니다. [객체와 함께 `v-for`를 사용할 때](#v-for-with-an-object) 속성 키 변수와 혼동해서는 안 됩니다.
+:::
+
 [It is recommended](/style-guide/rules-essential.html#use-keyed-v-for) to provide a `key` attribute with `v-for` whenever possible, unless the iterated DOM content is simple (i.e. contains no components or stateful DOM elements), or you are intentionally relying on the default behavior for performance gains.
+
+반복되는 DOM 내용이 단순한 경우나 의도적인 성능 향상을 위해 기본 동작에 의존하지 않는 경우를 제외하면, 가능하면 언제나 `v-for`에 `key`를 추가하는 것이 [좋습니다](/style-guide/rules-essential.html#use-keyed-v-for).
 
 The `key` binding expects primitive values - i.e. strings and numbers. Do not use objects as `v-for` keys. For detailed usage of the `key` attribute, please see the [`key` API documentation](/api/built-in-special-attributes.html#key).
 
+`key` 는 문자열이나 숫자같은 원시형 값을 가져야 합니다. 객체를 `v-for`의 키로 사용해서는 안됩니다. `key`에 대한 자세한 설명은  [`key` API documentation](/api/built-in-special-attributes.html#key) 를 참고 하세요. 
+
+
+
 ## `v-for` with a Component
+
+## 컴포넌트의 `v-for`
 
 > This section assumes knowledge of [Components](/guide/essentials/component-basics). Feel free to skip it and come back later.
 
+> 이 섹션에서는 [컴포넌트](/guide/essentials/component-basics) 를 안다고 가정합니다. 부담없이 건너뛰어도 됩니다.
+
 You can directly use `v-for` on a component, like any normal element (don't forget to provide a `key`):
+
+보통의 앨리먼트처럼 `v-for`를  컴포넌트에 바로 사용할 수 있습니다.(`key`를 주는것을 잊지 마세요)
 
 ```vue-html
 <my-component v-for="item in items" :key="item.id"></my-component>
 ```
 
 However, this won't automatically pass any data to the component, because components have isolated scopes of their own. In order to pass the iterated data into the component, we should also use props:
+
+그러나 컴포넌트에는 자체 범위가 분리되어있기 때문에 컴포넌트에 데이터를 자동으로 전달하지는 않습니다. 반복할 데이터를 컴포넌트로 전달하려면 props도 사용해야합니다.
 
 ```vue-html
 <my-component
@@ -308,6 +390,8 @@ However, this won't automatically pass any data to the component, because compon
 ```
 
 The reason for not automatically injecting `item` into the component is because that makes the component tightly coupled to how `v-for` works. Being explicit about where its data comes from makes the component reusable in other situations.
+
+`item`을 컴포넌트에 자동으로 삽입하지 않는 이유는 컴포넌트가 `v-for` 작동방식과 밀접하게 연결되어 있기 때문입니다. 데이터의 출처를 명시하면 다른 상황에서 컴포넌트를 재사용할 수 있습니다.
 
 <div class="composition-api">
 
@@ -322,9 +406,14 @@ Check out [this example of a simple todo list](https://sfc.vuejs.org/#eyJBcHAudn
 
 ## Array Change Detection
 
+## 배열 변경 감지
+
 ### Mutation Methods
+### 변경 메소드
 
 Vue wraps an observed array's mutation methods so they will also trigger view updates. The wrapped methods are:
+
+Vue는 감시중인 배열의 변경메소드를 래핑하여 뷰(view) 갱신을 트리거합니다. 래핑된 메소드는 다음과 같습니다.
 
 - `push()`
 - `pop()`
@@ -335,8 +424,11 @@ Vue wraps an observed array's mutation methods so they will also trigger view up
 - `reverse()`
 
 ### Replacing an Array
+### 배열 교체
 
 Mutation methods, as the name suggests, mutate the original array they are called on. In comparison, there are also non-mutating methods, e.g. `filter()`, `concat()` and `slice()`, which do not mutate the original array but **always return a new array**. When working with non-mutating methods, we should replace the old array with the new one:
+
+이름에서 알 수 있듯이 변이 메소드는 호출된 원래 배열을 변경합니다. 이에 비해 `filter()`, `concat()` and `slice()`와 같은 원래 배열을 변경하지는 않지만 **항상 새 배열을 반환**하는 비-변이 메소드도 있습니다. 비-변이 메소드로 작업할 때 이전 배열을 새 배열로 바꿀 수 있습니다:
 
 <div class="composition-api">
 
@@ -356,11 +448,18 @@ this.items = this.items.filter((item) => item.message.match(/Foo/))
 
 You might think this will cause Vue to throw away the existing DOM and re-render the entire list - luckily, that is not the case. Vue implements some smart heuristics to maximize DOM element reuse, so replacing an array with another array containing overlapping objects is a very efficient operation.
 
+이로 인해 Vue가 기존 DOM을 버리고 전체 목록을 다시 렌더링할 것이라고 생각할 수 있습니다. 다행히도 그렇지 않습니다. Vue는 DOM 요소 재사용을 최대화하기 위해 몇 가지 smart heuristics(스마트 휴리스틱, 과학적인 조건보다는 경험이나 직관에 의해 똑똑하게 의사결정을 하는 방식)을 구현하므로, 배열을 겹치는 객체를 포함하는 다른 배열로 교체하는 것은 매우 효율적인 작업입니다.
+
 ## Displaying Filtered/Sorted Results
+## 필터링/졍렬된 결과 표시
 
 Sometimes we want to display a filtered or sorted version of an array without actually mutating or resetting the original data. In this case, you can create a computed property that returns the filtered or sorted array.
 
+때때로 우리는 원래 데이터를 실제로 변경하거나 재설정하지 않고, 배열의 필터링되거나 정렬된 버전을 표시하려고 합니다. 이 경우 필터링되거나 정렬된 배열을 반환하는 computed 속성을 만들 수 있습니다.
+
 For example:
+
+예시:
 
 <div class="composition-api">
 
@@ -395,6 +494,8 @@ computed: {
 ```
 
 In situations where computed properties are not feasible (e.g. inside nested `v-for` loops), you can use a method:
+
+computed 속성이 실행 가능하지 않은 상황 (예. 중접된 `v-for` 루프 내부)에서는 다음 메소드를 사용할 수 있습니다:
 
 <div class="composition-api">
 
@@ -434,6 +535,9 @@ methods: {
 ```
 
 Be careful with `reverse()` and `sort()` in a computed property! These two methods will mutate the original array, which should be avoided in computed getters. Create a copy of the original array before calling these methods:
+
+계산된 속성내의  `reverse()` 및 `sort()`에 주의하십시오! 이 두 가지 방법은 계산된 getter에서 하지 말아야 하는 행동인 원래 배열을 변경하는 동작을 하고 있습니다.  다음 메서드를 호출하기 전에 원래 배열의 복사본을 만듭니다.
+
 
 ```diff
 - return numbers.reverse()
