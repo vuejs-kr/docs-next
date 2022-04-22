@@ -15,8 +15,8 @@ footer: false
 - Upgrading from Vue 2? Check out the [Migration Guide](https://v3-migration.vuejs.org/).
   :::
 
-:::info 현재 Vue 3 를 위한 문서를 읽고 계십니다!
-- Vue 2 문서가 [v2.vuejs.org](https://v2.vuejs.org/) 로 이동되었습니다.
+:::info 지금 Vue 3 문서를 읽고 계십니다!
+- Vue 2 문서는 [v2.vuejs.org](https://v2.vuejs.org/)로 이동되었습니다.
 - Vue 2에서 업그레이드 하고자 하신다면 [마이그레이션 가이드](https://v3-migration.vuejs.org/) 를 확인하세요.
 :::  
 
