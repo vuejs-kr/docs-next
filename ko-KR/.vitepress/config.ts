@@ -141,18 +141,29 @@ export const sidebar = {
           text: '조건부 렌더링',
           link: '/guide/essentials/conditional'
         },
-        { text: '목록 렌더링', link: '/guide/essentials/list' },
+        {
+          text: '리스트 렌더링',
+          link: '/guide/essentials/list' },
         {
           text: '이벤트 핸들링',
           link: '/guide/essentials/event-handling'
         },
-        { text: 'Form 입력 바인딩', link: '/guide/essentials/forms' },
         {
-          text: '라이프사이클 훅(Lifecycle Hooks)',
+          text: 'Form 입력 바인딩',
+          link: '/guide/essentials/forms'
+        },
+        {
+          text: '생명주기 훅(Lifecycle Hooks)',
           link: '/guide/essentials/lifecycle'
         },
-        { text: 'Watchers', link: '/guide/essentials/watchers' },
-        { text: 'Template Refs', link: '/guide/essentials/template-refs' },
+        {
+          text: 'Watchers',
+          link: '/guide/essentials/watchers'
+        },
+        {
+          text: 'Template Refs',
+          link: '/guide/essentials/template-refs'
+        },
         {
           text: '컴포넌트 기초',
           link: '/guide/essentials/component-basics'
