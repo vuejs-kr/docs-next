@@ -260,7 +260,7 @@ Note here `n` starts with an initial value of `1` instead of `0`.
 
 Similar to template `v-if`, you can also use a `<template>` tag with `v-for` to render a block of multiple elements. For example:
 
-템플릿의 `v-if`와 마찬가지로, `v-for`와 함께 `<template>` 태그를 사용하여 여러 요소로 구성된 블럭을 목록으로 렌더링 할 수 있습니다. 예를들어:
+템플릿의 `v-if`와 마찬가지로, `v-for`와 함께 `<template>` 태그를 사용하여 여러 앨리먼트로 구성된 블럭을 목록으로 렌더링 할 수 있습니다. 예를들어:
 
 
 ```vue-html
@@ -314,7 +314,7 @@ This can be fixed by moving `v-for` to a wrapping `<template>` tag (which is als
 
 When Vue is updating a list of elements rendered with `v-for`, by default it uses an "in-place patch" strategy. If the order of the data items has changed, instead of moving the DOM elements to match the order of the items, Vue will patch each element in-place and make sure it reflects what should be rendered at that particular index.
 
-Vue가 `v-for`에서 렌더링된 엘리먼트 목록을 갱신할 때 기본적으로 "in-place patch" 전략을 사용합니다. Vue는 데이터 항목의 순서가 변경된 경우 항목의 순서와 일치하도록 DOM 요소를 이동하는 대신(Reflow를 유발하는 대신), 각 데이터와 일치하는 인덱스에 해당하는 앨리먼트를 찾아 그 자리에서(in-place) 바로 패치 작업을 수행하여 다시 그립니다(Repaint). 
+Vue가 `v-for`에서 렌더링된 엘리먼트 목록을 갱신할 때 기본적으로 "in-place patch" 전략을 사용합니다. Vue는 데이터 항목의 순서가 변경된 경우 항목의 순서와 일치하도록 DOM 앨리먼트를 이동하는 대신(Reflow를 유발하는 대신), 각 데이터와 일치하는 인덱스에 해당하는 앨리먼트를 찾아 그 자리에서(in-place) 바로 패치 작업을 수행하여 다시 그립니다(Repaint). 
 
 :::tip 참고
 웹 브라우저에서는 레이아웃을 구성하는 DOM Tree의 변경이 발생 할 때(Reflow) 보다는 같은 DOM Tree 구성인 상태에서 내부 컨텐츠만 변경되는 것(Repaint)을 훨씬 더 빠르게 재 랜더링 합니다. 
@@ -454,7 +454,7 @@ this.items = this.items.filter((item) => item.message.match(/Foo/))
 
 You might think this will cause Vue to throw away the existing DOM and re-render the entire list - luckily, that is not the case. Vue implements some smart heuristics to maximize DOM element reuse, so replacing an array with another array containing overlapping objects is a very efficient operation.
 
-이로 인해 Vue가 기존 DOM을 버리고 전체 목록을 다시 렌더링할 것이라고 생각할 수 있습니다. 다행히도 그렇지 않습니다. Vue는 DOM 요소 재사용을 최대화하기 위해 몇 가지 smart heuristics(스마트 휴리스틱, 과학적인 조건보다는 경험이나 직관에 의해 똑똑하게 의사결정을 하는 방식)을 구현하므로, 서로 중복되면서 겹치는 객체를 가지는 배열을 다른 배열로 교체하면서 렌더링 하는 작업은 매우 효율적으로 수행됩니다. 
+이로 인해 Vue가 기존 DOM을 버리고 전체 목록을 다시 렌더링할 것이라고 생각할 수 있습니다. 다행히도 그렇지 않습니다. Vue는 DOM 앨리먼트 재사용을 최대화하기 위해 몇 가지 smart heuristics(스마트 휴리스틱, 과학적인 조건보다는 경험이나 직관에 의해 똑똑하게 의사결정을 하는 방식)을 구현하므로, 서로 중복되면서 겹치는 객체를 가지는 배열을 다른 배열로 교체하면서 렌더링 하는 작업은 매우 효율적으로 수행됩니다. 
 
 ## Displaying Filtered/Sorted Results
 ## 필터링/졍렬된 결과 표시
@@ -542,7 +542,7 @@ methods: {
 
 Be careful with `reverse()` and `sort()` in a computed property! These two methods will mutate the original array, which should be avoided in computed getters. Create a copy of the original array before calling these methods:
 
-계산된 속성내의  `reverse()` 및 `sort()`에 주의하세요! 이 두 가지 메소드는  computed getter에서 하지 말아야 하는 행동인, 원본 배열을 변경 작업을 하고 있습니다. 다음처럼 메서드를 호출하기 전에 원래 배열의 복사본을 만듭니다.
+계산된 속성내의  `reverse()` 및 `sort()`에 주의하세요! 이 두 가지 메소드는  computed getter에서 하지 말아야 하는 행동인, 원본 배열을 변경 작업을 하고 있습니다. 다음처럼 메소드를 호출하기 전에 원래 배열의 복사본을 만듭니다.
 
 
 ```diff

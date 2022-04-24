@@ -203,7 +203,7 @@ ref 배열은 소스 배열과 동일한 순서를 보장하지 **않습니다**
 
 Instead of a string key, the `ref` attribute can also be bound to a function, which will be called on each component update and gives you full flexibility on where to store the element reference. The function receives the element reference as the first argument:
 
-문자열 키 대신 `ref` 속성을 함수에 바인딩할 수도 있습니다. 이 함수는 각 컴포넌트 업데이트에서 호출되며 앨리먼트 참조를 저장할 위치에 대한 완전한 유연성을 제공합니다. 이 함수는 첫 번째 인수로 앨리먼트 참조를 받습니다.
+문자열 키 대신 `ref` 속성을 함수에 바인딩할 수도 있습니다. 이 함수는 각 컴포넌트 업데이트에서 호출되며 앨리먼트 참조를 저장할 위치에 대한 완전한 유연성을 제공합니다. 이 함수는 첫 번째 인자로 앨리먼트 참조를 받습니다.
 
 
 ```vue-html
@@ -212,7 +212,7 @@ Instead of a string key, the `ref` attribute can also be bound to a function, wh
 
 Note we are using a dynamic `:ref` binding so we can pass it a function instead of a ref name string. When the element is unmounted, the argument will be `null`. You can, of course, use a method instead of an inline function.
 
-동적 `:ref` 바인딩을 사용하고 있으므로 ref 명 문자열 대신 함수를 전달할 수 있습니다. 앨리먼트가 마운트 해제되면 인수는 `null`이 됩니다. 물론 인라인 함수 대신 메서드를 사용할 수 있습니다.
+동적 `:ref` 바인딩을 사용하고 있으므로 ref 명 문자열 대신 함수를 전달할 수 있습니다. 앨리먼트가 마운트 해제되면 인자는 `null`이 됩니다. 물론 인라인 함수 대신 메소드를 사용할 수 있습니다.
 
 
 ## Ref on Component
@@ -273,7 +273,7 @@ export default {
 
 <span class="composition-api">If the child component is using Options API or not using `<script setup>`, the</span><span class="options-api">The</span> referenced instance will be identical to the child component's `this`, which means the parent component will have full access to every property and method of the child component. This makes it easy to create tightly coupled implementation details between the parent and the child, so component refs should be only used when absolutely needed - in most cases, you should try to implement parent / child interactions using the standard props and emit interfaces first.
 
-<span class="composition-api">자식 컴포넌트가 옵션 API를 사용하거나 `<script setup>`을 사용하지 않는 경우, 해당</span><span class="options-api">해당</span>  참조된 인스턴스는 자식 컴포넌트의 this와 동일합니다. 즉, 부모 컴포넌트는 자식 컴포넌트의 모든 속성과 메서드에 대한 전체 액세스 권한을 가집니다. 이렇게 하면 부모와 자식 간에 밀접하게 연결된 구현 세부 정보를 쉽게 만들 수 있으므로 컴포넌트 참조는 절대적으로 필요할 때만 사용해야 합니다. 대부분의 경우 표준 props를 사용하여 부모/자식 상호 작용을 구현하고 인터페이스를 먼저 내보내야 합니다.
+<span class="composition-api">자식 컴포넌트가 옵션 API를 사용하거나 `<script setup>`을 사용하지 않는 경우, 해당</span><span class="options-api">해당</span>  참조된 인스턴스는 자식 컴포넌트의 this와 동일합니다. 즉, 부모 컴포넌트는 자식 컴포넌트의 모든 속성과 메소드에 대한 전체 액세스 권한을 가집니다. 이렇게 하면 부모와 자식 간에 밀접하게 연결된 구현 세부 정보를 쉽게 만들 수 있으므로 컴포넌트 참조는 절대적으로 필요할 때만 사용해야 합니다. 대부분의 경우 표준 props를 사용하여 부모/자식 상호 작용을 구현하고 인터페이스를 먼저 내보내야 합니다.
 
 <div class="composition-api">
 

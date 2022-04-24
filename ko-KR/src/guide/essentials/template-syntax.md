@@ -227,7 +227,7 @@ Each binding can only contain **one single expression**, so the following will *
 
 It is possible to call a component-exposed method inside a binding expression:
 
-바인딩 식 내에서 컴포넌트에서 제공하는 메서드를 호출할 수 있습니다:
+바인딩 식 내에서 컴포넌트에서 제공하는 메소드를 호출할 수 있습니다:
 
 
 ```vue-html

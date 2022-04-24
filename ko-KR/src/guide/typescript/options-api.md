@@ -220,7 +220,7 @@ Explicit annotations may also be required in some edge cases where TypeScript fa
 
 When dealing with native DOM events, it might be useful to type the argument we pass to the handler correctly. Let's take a look at this example:
 
-네이티브 DOM 이벤트를 처리할 때 핸들러에 올바르게 인수를 전달하는 것이 유용합니다. 다음 예를 살펴보겠습니다: 
+네이티브 DOM 이벤트를 처리할 때 핸들러에 올바르게 인자를 전달하는 것이 유용합니다. 다음 예를 살펴보겠습니다: 
 
 ```vue
 <script lang="ts">
@@ -243,7 +243,7 @@ export default defineComponent({
 
 Without type annotation, the `event` argument will implicitly have a type of `any`. This will also result in a TS error if `"strict": true` or `"noImplicitAny": true` are used in `tsconfig.json`. It is therefore recommended to explicitly annotate the argument of event handlers. In addition, you may need to explicitly cast properties on `event`:
 
-타입 어노테이션이 없으면 `event` 인수는 암묵적으로 `any` 타입을 갖습니다. `"strict": true` 또는 `"noImplicitAny": true` 가 `tsconfig.json` 에서 사용되는 경우에 TS 오류가 발생합니다. 따라서 이벤트 핸들러의 전달인자에 어노테이팅 하는 것을 권장합니다. 또한 `event` 에 대한 속성을 캐스팅해야 할 수도 있습니다: 
+타입 어노테이션이 없으면 `event` 인자는 암묵적으로 `any` 타입을 갖습니다. `"strict": true` 또는 `"noImplicitAny": true` 가 `tsconfig.json` 에서 사용되는 경우에 TS 오류가 발생합니다. 따라서 이벤트 핸들러의 전달인자에 어노테이팅 하는 것을 권장합니다. 또한 `event` 에 대한 속성을 캐스팅해야 할 수도 있습니다: 
 
 ```ts
 import { defineComponent } from 'vue'

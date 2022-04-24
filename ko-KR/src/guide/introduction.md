@@ -198,7 +198,7 @@ export default {
 
   // Methods are functions that mutate state and trigger updates.
   // They can be bound as event listeners in templates.
-  // 메서드는 상태를 변경하고 업데이트를 트리거하는 함수입니다.
+  // 메소드는 상태를 변경하고 업데이트를 트리거하는 함수입니다.
   // 템플릿에서 이벤트 리스너로 바인딩될 수 있습니다.
   methods: {
     increment() {

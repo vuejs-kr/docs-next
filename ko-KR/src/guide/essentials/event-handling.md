@@ -81,7 +81,7 @@ data() {
 
 The logic for many event handlers will be more complex though, and likely isn't feasible with inline handlers. That's why `v-on` can also accept the name or path of a component method you'd like to call.
 
-많은 이벤트 핸들러에 대한 논리는 더 복잡하고 인라인 핸들러에서는 실현 가능하지 않을 수 있습니다. 그렇기 때문에 `v-on`은 호출하려는 구성 요소 메소드의 이름이나 경로도 받아들일 수 있습니다.
+많은 이벤트 핸들러에 대한 논리는 더 복잡하고 인라인 핸들러에서는 실현 가능하지 않을 수 있습니다. 그렇기 때문에 `v-on`은 호출하려는 컴포넌트 메소드의 이름이나 경로도 받아들일 수 있습니다.
 
 대부분의 이벤트 핸들러는 더 복잡한 로직을 가지기 때문에 인라인 핸들러는 적합하지 않습니다. `v-on`이 호출한  컴포넌트 메소드의 이름이나 경로를 인자로 받는 것이 이런 이유 때문입니다. 
 
@@ -226,7 +226,7 @@ methods: {
 
 Sometimes we also need to access the original DOM event in an inline handler. You can pass it into a method using the special `$event` variable, or use an inline arrow function:
 
-때로는 인라인 핸들러에서 원래 DOM 이벤트에 액세스해야 하는 경우도 있습니다. 특수 변수 `$event`를 사용하여 이를 메서드에 전달하거나 인라인 화살표 함수에서 사용할 수 있습니다.
+때로는 인라인 핸들러에서 원래 DOM 이벤트에 액세스해야 하는 경우도 있습니다. 특수 변수 `$event`를 사용하여 이를 메소드에 전달하거나 인라인 화살표 함수에서 사용할 수 있습니다.
 
 
 ```vue-html
@@ -275,7 +275,7 @@ methods: {
 
 It is a very common need to call `event.preventDefault()` or `event.stopPropagation()` inside event handlers. Although we can do this easily inside methods, it would be better if the methods can be purely about data logic rather than having to deal with DOM event details.
 
-이벤트 핸들러 내에서 `event.preventDefault()` 또는 `event.stopPropagation()`을 호출 하는 것은 정말 일반적입니다. 메서드 내에서 그냥 호출 해도 되지만, 메서드의 구현이 가급적이면 DOM 이벤트에 대한 세부 정보를 처리하지 않고, 순전히 데이터 로직만 처리하는게 좋을 거 같습니다. 
+이벤트 핸들러 내에서 `event.preventDefault()` 또는 `event.stopPropagation()`을 호출 하는 것은 정말 일반적입니다. 메소드 내에서 그냥 호출 해도 되지만, 메소드의 구현이 가급적이면 DOM 이벤트에 대한 세부 정보를 처리하지 않고, 순전히 데이터 로직만 처리하는게 좋을 거 같습니다. 
 
 
 To address this problem, Vue provides **event modifiers** for `v-on`. Recall that modifiers are directive postfixes denoted by a dot.

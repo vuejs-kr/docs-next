@@ -23,7 +23,7 @@ This page and many other chapters later in the guide contain different content f
 
 With Options API, we use the `data` option to declare reactive state of a component. The option value should be a function that returns an object. Vue will call the function when creating a new component instance, and wrap the returned object in its reactivity system. Any top-level properties of this object are proxied on the component instance (`this` in methods and lifecycle hooks):
 
-Options API에서는 `data` 옵션을 사용하여 컴포넌트의 반응 상태를 선언합니다. 옵션 값은 객체를 반환하는 함수여야 합니다. Vue는 새 컴포넌트 인스턴스를 만들 때마다 해당 함수를 호출하여 반환된 개체를 반응성 시스템에 래핑합니다. 반환된 객체의 모든 최상위 속성은 컴포넌트 인스턴스에서 프록시됩니다(메서드 및 생명주기 후크에서 `this`로 접근 할 수 있습니다).
+Options API에서는 `data` 옵션을 사용하여 컴포넌트의 반응 상태를 선언합니다. 옵션 값은 객체를 반환하는 함수여야 합니다. Vue는 새 컴포넌트 인스턴스를 만들 때마다 해당 함수를 호출하여 반환된 개체를 반응성 시스템에 래핑합니다. 반환된 객체의 모든 최상위 속성은 컴포넌트 인스턴스에서 프록시됩니다(메소드 및 생명주기 후크에서 `this`로 접근 할 수 있습니다).
 
 
 ```js{2-6}
@@ -147,7 +147,7 @@ export default {
 
 Similarly, we can declare functions that mutate reactive state in the same scope, and expose it as a method alongside the state:
 
-마찬가지로 동일한 범위에서 반응형 상태를 변경하는 함수를 선언하고, 상태와 함께 메서드로 노출할 수 있습니다:
+마찬가지로 동일한 범위에서 반응형 상태를 변경하는 함수를 선언하고, 상태와 함께 메소드로 노출할 수 있습니다:
 
 
 ```js{7-9,14}
@@ -173,7 +173,7 @@ export default {
 
 Exposed methods are typically used as event listeners:
 
-노출된 메서드는 일반적으로 이벤트 리스너로 사용됩니다:
+노출된 메소드는 일반적으로 이벤트 리스너로 사용됩니다:
 
 
 ```vue-html
@@ -186,7 +186,7 @@ Exposed methods are typically used as event listeners:
 
 Manually exposing state and methods via `setup()` can be verbose. Luckily, it is only necessary when not using a build step. When using Single-File Components (SFCs), we can greatly simplify the usage with `<script setup>`:
 
-`setup()`을 통해 상태와 메서드를 수동으로 노출하는 것은 장황할 수 있습니다. 빌드 도구를 이용해 빌드를 할때는 더 쉬운 방법이 있습니다. SFC(싱글 파일 컴포넌트)를 사용할 때 `<script setup>`으로 반응형 상태의 사용을 크게 단순화할 수 있습니다:
+`setup()`을 통해 상태와 메소드를 수동으로 노출하는 것은 장황할 수 있습니다. 빌드 도구를 이용해 빌드를 할때는 더 쉬운 방법이 있습니다. SFC(싱글 파일 컴포넌트)를 사용할 때 `<script setup>`으로 반응형 상태의 사용을 크게 단순화할 수 있습니다:
 
 
 ```vue
@@ -255,7 +255,7 @@ export default {
 
 Vue automatically binds the `this` value for `methods` so that it always refers to the component instance. This ensures that a method retains the correct `this` value if it's used as an event listener or callback. You should avoid using arrow functions when defining `methods`, as that prevents Vue from binding the appropriate `this` value:
 
-Vue는 항상 컴포넌트 인스턴스를 참조하도록 `methods`에 대해 `this` 값을 자동으로 바인딩합니다. 이렇게 하면 메서드가 이벤트 리스너 또는 콜백으로 사용되는 경우 올바른 `this` 값이 유지됩니다. `methods`를 정의할때 화살표 함수를 사용하면 Vue가  적절한 `this` 값을 바인딩 할수 없기 때문에 화살표 함수는 사용하지 말아야 합니다:
+Vue는 항상 컴포넌트 인스턴스를 참조하도록 `methods`에 대해 `this` 값을 자동으로 바인딩합니다. 이렇게 하면 메소드가 이벤트 리스너 또는 콜백으로 사용되는 경우 올바른 `this` 값이 유지됩니다. `methods`를 정의할때 화살표 함수를 사용하면 Vue가  적절한 `this` 값을 바인딩 할수 없기 때문에 화살표 함수는 사용하지 말아야 합니다:
 
 
 ```js
@@ -698,7 +698,7 @@ Ref unwrapping only happens when nested inside a deep reactive object. It does n
 
 Unlike reactive objects, there is no unwrapping performed when the ref is accessed as an element of a reactive array or a native collection type like `Map`:
 
-반응형 객체와 달리 ref가 반응형 배열의 요소로 액세스되거나 `Map`과 같은 기본 컬렉션 유형으로 액세스될 때 래핑 해제가 수행되지 않습니다.
+반응형 객체와 달리 ref가 반응형 배열의 앨리먼트로 액세스되거나 `Map`과 같은 기본 컬렉션 유형으로 액세스될 때 래핑 해제가 수행되지 않습니다.
 
 
 ```js

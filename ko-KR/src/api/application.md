@@ -21,7 +21,7 @@ Creates an application instance.
 
   The first argument is the root component. The second optional argument is the props to be passed to the root component.
 
-  첫 번째 인수는 루트 컴포넌트입니다. 두 번째 선택적 인수는 루트 컴포넌트에 전달할 props입니다.
+  첫 번째 인자는 루트 컴포넌트입니다. 두 번째 선택적 인자는 루트 컴포넌트에 전달할 props입니다.
 
 - **Example**
 
@@ -76,7 +76,7 @@ Mounts the application instance in a container element.
 
   The argument can either be an actual DOM element or a CSS selector (the first matched element will be used). Returns the root component instance.
 
-  인자는 실제 DOM요소 또는 CSS 선택자일 수 있습니다(첫번째로 일치하는엘리먼트가 사용됨). 루트 컴포넌트 인스턴스를 반환합니다.
+  인자는 실제 DOM앨리먼트 또는 CSS 선택자일 수 있습니다(첫번째로 일치하는엘리먼트가 사용됨). 루트 컴포넌트 인스턴스를 반환합니다.
 
 
   If the component has a template or a render function defined, it will replace any existing DOM nodes inside the container. Otherwise, if the runtime compiler is available, the `innerHTML` of the container will be used as the template.

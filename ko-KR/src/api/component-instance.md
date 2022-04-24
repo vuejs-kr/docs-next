@@ -12,7 +12,7 @@ All properties listed on this page are readonly (except nested properties in `$d
 :::
 
 :::info
-이 페이지는 컴포넌트 공개(Public) 인스턴스(예: `this`)에서 제공되는 내장 속성 및 메서드를 문서화합니다.
+이 페이지는 컴포넌트 공개(Public) 인스턴스(예: `this`)에서 제공되는 내장 속성 및 메소드를 문서화합니다.
 
 
 All properties listed on this page are readonly (except nested properties in `$data`).
@@ -209,7 +209,7 @@ An object representing the [slots](/guide/components/slots.html) passed by the p
 
   If a slot is a [scoped slot](/guide/components/slots.html#scoped-slots), arguments passed to the slot functions are available to the slot as its slot props.
 
-  슬롯이 [범위가 지정된 슬롯](/guide/components/slots.html#scoped-slots)인 경우 슬롯 함수에 전달된 인수는 슬롯 소품으로 슬롯에 사용할 수 있습니다.
+  슬롯이 [범위가 지정된 슬롯](/guide/components/slots.html#scoped-slots)인 경우 슬롯 함수에 전달된 인자는 슬롯 소품으로 슬롯에 사용할 수 있습니다.
 
 
 - **See also:** [Render Functions - Rendering Slots](/guide/extras/render-function.html#rendering-slots)
@@ -254,7 +254,7 @@ An object that contains the component's fallthrough attributes.
 
   [Fallthrough Attributes](/guide/components/attrs.html) are attributes and event handlers passed by the parent component, but not declared as a prop or a emitted event by the child.
 
-  [폴스루 속성](/guide/components/attrs.html)은 상위 구성요소에 의해 전달된 속성 및 이벤트 핸들러이지만 하위엘리먼트 또는 내보낸 이벤트로 선언되지 않습니다.
+  [폴스루 속성](/guide/components/attrs.html)은 상위 구성앨리먼트에 의해 전달된 속성 및 이벤트 핸들러이지만 하위엘리먼트 또는 내보낸 이벤트로 선언되지 않습니다.
 
 
   By default, everything in `$attrs` will be automatically inherited on the component's root element if there is only a single root element. This behavior is disabled if the component has multiple root nodes, and can be explicitly disabled with the [`inheritAttrs`](./options-misc.html#inheritattrs) option.
@@ -313,7 +313,7 @@ watcher를 생성하기 위한 명령형 API.
 
   The second argument is the callback function. The callback receives the new value and the old value of the watched source.
 
-  두 번째 인수는 콜백 함수입니다. 콜백은 감시된 소스의 새 값과 이전 값을 수신합니다.
+  두 번째 인자는 콜백 함수입니다. 콜백은 감시된 소스의 새 값과 이전 값을 수신합니다.
 
 
   - **`immediate`**: trigger the callback immediately on watcher creation. Old value will be `undefined` on the first call.
@@ -384,7 +384,7 @@ watcher를 생성하기 위한 명령형 API.
 
 Trigger a custom event on the current instance. Any additional arguments will be passed into the listener's callback function.
 
-현재 인스턴스에서 사용자 정의 이벤트를 트리거합니다. 추가 인수는 리스너의 콜백 함수로 전달됩니다.
+현재 인스턴스에서 사용자 정의 이벤트를 트리거합니다. 추가 인자는 리스너의 콜백 함수로 전달됩니다.
 
 
 - **Type**

@@ -396,7 +396,7 @@ When you mutate reactive state, it may trigger both Vue component updates and wa
 
 By default, user-created watcher callbacks are called **before** Vue component updates. This means if you attempt to access the DOM inside a watcher callback, the DOM will be in the state before Vue has applied any updates.
 
-기본적으로 사용자가 생성한 감시자 콜백은 Vue 구성 요소 업데이트보다 먼저 실행됩니다. 즉, 감시자 콜백 내에서 DOM에 액세스 했을때의 DOM은 Vue에서 업데이트를 적용하기 전의 상태의 DOM입니다. 
+기본적으로 사용자가 생성한 감시자 콜백은 Vue 컴포넌트 업데이트보다 먼저 실행됩니다. 즉, 감시자 콜백 내에서 DOM에 액세스 했을때의 DOM은 Vue에서 업데이트를 적용하기 전의 상태의 DOM입니다. 
 
 If you want to access the DOM in a watcher callback **after** Vue has updated it, you need to specify the `flush: 'post'` option:
 
@@ -453,7 +453,7 @@ watchPostEffect(() => {
 
 It's also possible to imperatively create watchers using the [`$watch()` instance method](/api/component-instance.html#watch):
 
-[`$watch()` 인스턴스 메서드](/api/component-instance.html#watch)를 사용하여 감시자를 명령적으로 생성할 수도 있습니다:
+[`$watch()` 인스턴스 메소드](/api/component-instance.html#watch)를 사용하여 감시자를 명령적으로 생성할 수도 있습니다:
 
 
 ```js
@@ -480,12 +480,12 @@ This is useful when you need to conditionally set up a watcher, or only watch so
 
 Watchers declared using the `watch` option or the `$watch()` instance method are automatically stopped when the owner component is unmounted, so in most cases you don't need to worry about stopping the watcher yourself.
 
-`watch` 옵션이나 `$watch()` 인스턴스 메소드를 사용하여 선언된 감시자는 소유자 구성 요소가 마운트 해제될 때 자동으로 중지되므로 대부분의 경우 감시자를 직접 중지하는 것에 대해 걱정할 필요가 없습니다.
+`watch` 옵션이나 `$watch()` 인스턴스 메소드를 사용하여 선언된 감시자는 소유자 컴포넌트가 마운트 해제될 때 자동으로 중지되므로 대부분의 경우 감시자를 직접 중지하는 것에 대해 걱정할 필요가 없습니다.
 
 
 In the rare case where you need to stop a watcher before the owner component unmounts, the `$watch()` API returns a function for that:
 
-소유자 구성 요소가 마운트 해제되기 전에 감시자를 중지해야 하는 드문 경우에 `$watch()` API는 이에 대한 함수를 반환합니다.
+소유자 컴포넌트가 마운트 해제되기 전에 감시자를 중지해야 하는 드문 경우에 `$watch()` API는 이에 대한 함수를 반환합니다.
 
 
 ```js
@@ -502,12 +502,12 @@ unwatch()
 
 Watchers declared synchronously inside `setup()` or `<script setup>` are bound to the owner component instance, and will be automatically stopped when the owner component is unmounted. In most cases, you don't need to worry about stopping the watcher yourself.
 
-`setup()` 또는 `<script setup>` 내부에서 동기적으로 선언된 감시자는 소유자 구성 요소 인스턴스에 바인딩되며 소유자 구성 요소가 마운트 해제되면 자동으로 중지됩니다. 대부분의 경우 감시자를 직접 중지하는 것에 대해 걱정할 필요가 없습니다.
+`setup()` 또는 `<script setup>` 내부에서 동기적으로 선언된 감시자는 소유자 컴포넌트 인스턴스에 바인딩되며 소유자 컴포넌트가 마운트 해제되면 자동으로 중지됩니다. 대부분의 경우 감시자를 직접 중지하는 것에 대해 걱정할 필요가 없습니다.
 
 
 The key here is that the watcher must be created **synchronously**: if the watcher is created in an async callback, it won't be bound to the owner component and must be stopped manually to avoid memory leaks. Here's an example:
 
-여기서 핵심은 감시자가 **동기적으로** 생성되어야 한다는 것입니다. 감시자가 비동기 콜백에서 생성된 경우, 감시자는 소유자 구성 요소에 바인딩되지 않으며 메모리 누수를 방지하기 위해 수동으로 중지해야 합니다. 다음은 예입니다.
+여기서 핵심은 감시자가 **동기적으로** 생성되어야 한다는 것입니다. 감시자가 비동기 콜백에서 생성된 경우, 감시자는 소유자 컴포넌트에 바인딩되지 않으며 메모리 누수를 방지하기 위해 수동으로 중지해야 합니다. 다음은 예입니다.
 
 
 ```vue

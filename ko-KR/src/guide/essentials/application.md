@@ -82,7 +82,7 @@ The content of the app's root component will be rendered inside the container el
 
 The `.mount()` method should always be called after all app configurations and asset registrations are done. Also note that its return value, unlike the asset registration methods, is the root component instance instead of the application instance.
 
-`.mount()` 메서드는 모든 애플리케이션 구성 및 자산 등록이 완료된 후에 항상 호출되어야 합니다. 또한 자산 등록 방법과 달리 반환 값은 응용 프로그램 인스턴스가 아닌 루트 구성 엘리먼트 인스턴스입니다.
+`.mount()` 메소드는 모든 애플리케이션 구성 및 자산 등록이 완료된 후에 항상 호출되어야 합니다. 또한 자산 등록 방법과 달리 반환 값은 응용 프로그램 인스턴스가 아닌 루트 구성 엘리먼트 인스턴스입니다.
 
 ### In-DOM Root Component Template
 ### DOM 내부에 루트 컴퍼넌트 템플릿 사용하기

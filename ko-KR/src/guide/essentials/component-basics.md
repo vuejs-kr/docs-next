@@ -295,7 +295,7 @@ See also: [Typing Component Props](/guide/typescript/composition-api.html#typing
 
 If you are not using `<script setup>`, props should be declared using the `props` option, and the props object will be passed to `setup()` as the first argument:
 
-`<script setup>`을 사용하지 않는 경우 props는 `props` 옵션을 사용하여 선언해야 하며 props 객체는 첫 번째 인수로 `setup()`에 전달됩니다.
+`<script setup>`을 사용하지 않는 경우 props는 `props` 옵션을 사용하여 선언해야 하며 props 객체는 첫 번째 인자로 `setup()`에 전달됩니다.
 
 ```js
 export default {

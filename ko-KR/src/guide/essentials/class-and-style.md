@@ -7,7 +7,7 @@
 
 A common need for data binding is manipulating an element's class list and its inline styles. Since they are both attributes, we can use `v-bind` to handle them: we only need to calculate a final string with our expressions. However, meddling with string concatenation is annoying and error-prone. For this reason, Vue provides special enhancements when `v-bind` is used with `class` and `style`. In addition to strings, the expressions can also evaluate to objects or arrays.
 
-일반적으로 웹에서 데이터 바인딩을 하고자 하는 요구사항은 엘리먼트가 가지는 클래스의 목록과 인라인 스타일을 조작하는 것입니다. 클래스와 스타일 모두 속성이므로, v-bind를 사용하여 처리할 수 있습니다. 표현식으로 최종 문자열을 계산하기만 하면 됩니다. 그러나 이런 문자열 연결은 여러 방해요소가 있어서 짜증나고  오류가 발생하기 쉽습니다. 그래서 Vue는 class와 style에 v-bind를 사용하면 문자열 외에도 객체나 배열을 표현하는 특별한 기능 강화를 제공합니다. 
+일반적으로 웹에서 데이터 바인딩을 하고자 하는 요구사항은 엘리먼트가 가지는 클래스의 목록과 인라인 스타일을 조작하는 것입니다. 클래스와 스타일 모두 속성이므로, v-bind를 사용하여 처리할 수 있습니다. 표현식으로 최종 문자열을 계산하기만 하면 됩니다. 그러나 이런 문자열 연결은 여러 방해앨리먼트가 있어서 짜증나고  오류가 발생하기 쉽습니다. 그래서 Vue는 class와 style에 v-bind를 사용하면 문자열 외에도 객체나 배열을 표현하는 특별한 기능 강화를 제공합니다. 
 
 
 
@@ -250,7 +250,7 @@ When you use the `class` attribute on a component with a single root element, th
 
 단일 루트 엘리먼트가 있는 커스텀 컴포넌트에서 `class` 속성을 사용하면 해당 클래스가 이 엘리먼트에 추가됩니다. 이 엘리먼트의 기존 클래스는 덮어 쓰지 않습니다.
 
-단일 루트 요소가 있는 컴포넌트에서 `class` 속성을 사용하면 해당 클래스가 컴포넌트의 루트 요소에 추가되고 이미 있는 기존 클래스와 병합됩니다.
+단일 루트 앨리먼트가 있는 컴포넌트에서 `class` 속성을 사용하면 해당 클래스가 컴포넌트의 루트 앨리먼트에 추가되고 이미 있는 기존 클래스와 병합됩니다.
 
 
 For example, if we have a component named `my-component` with the following template:
@@ -297,7 +297,7 @@ When `isActive` is truthy, the rendered HTML will be:
 
 If your component has multiple root elements, you would need to define which element will receive this class. You can do this using the `$attrs` component property:
 
-컴포넌트에 여러 루트 요소가 있는 경우 이 클래스를 받을 요소를 정의해야 합니다. `$attrs` 컴포넌트 속성을 사용하여 이 작업을 수행할 수 있습니다.
+컴포넌트에 여러 루트 앨리먼트가 있는 경우 이 클래스를 받을 앨리먼트를 정의해야 합니다. `$attrs` 컴포넌트 속성을 사용하여 이 작업을 수행할 수 있습니다.
 
 
 ```vue-html
@@ -332,7 +332,7 @@ You can learn more about component attribute inheritance in [Fallthrough Attribu
 
 `:style` supports binding to JavaScript object values - it corresponds to an [HTML element's `style` property](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style):
 
-`:style`은 JavaScript 개체 값에 대한 바인딩을 지원합니다. 이는 [HTML 요소의 `style` 속성](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style)에 해당합니다.
+`:style`은 JavaScript 개체 값에 대한 바인딩을 지원합니다. 이는 [HTML 앨리먼트의 `style` 속성](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style)에 해당합니다.
 
 
 
