@@ -157,11 +157,11 @@ export const sidebar = {
           link: '/guide/essentials/lifecycle'
         },
         {
-          text: 'Watchers',
+          text: '감시자(Watcher)',
           link: '/guide/essentials/watchers'
         },
         {
-          text: 'Template Refs',
+          text: '템플릿 Refs',
           link: '/guide/essentials/template-refs'
         },
         {
