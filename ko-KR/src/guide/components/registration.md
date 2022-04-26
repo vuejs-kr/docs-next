@@ -173,11 +173,24 @@ Note that **locally registered components are _not_ also available in descendent
 ## 컴포넌트명 표기법
 
 Throughout the guide, we are using PascalCase names when registering components. This is because:
+가이드 문서에서는 컴포넌트명을 파스칼 케이스(PascalCase)를 사용하고있습니다:
+
 
 1. PascalCase names are valid JavaScript identifiers. This makes it easier to import and register components in JavaScript. It also helps IDEs with auto-completion.
 
+1. PascalCase 이름은 유효한 JavaScript 식별자입니다. 이렇게 하면 JavaScript에서 컴포넌트를 더 쉽게 가져오고 등록할 수 있습니다. IDE의 자동 완성 기능도 지원합니다.
+
 2. `<PascalCase />` makes it more obvious that this is a Vue component instead of a native HTML element in templates. It also differentiates Vue components from custom elements (web components).
+
+
+2. `<PascalCase />`를 사용하면 템플릿의 기본 HTML 요소가 아닌 Vue 컴포넌트임을 더 명확하게 알 수 있습니다. 또한 Vue 컴포넌트를 사용자 정의 요소(웹 컴포넌트)와 구별합니다.
+
 
 This is the recommended style when working with SFC or string templates. However, as discussed in [DOM Template Parsing Caveats](/guide/essentials/component-basics.html#dom-template-parsing-caveats), PascalCase tags are not usable in DOM templates.
 
+이것은 SFC 또는 문자열 템플릿으로 작업할 때 권장되는 스타일입니다. 그러나 [DOM 템플릿 구문 분석 주의 사항](/guide/essentials/component-basics.html#dom-template-parsing-caveats)에서 설명한 것처럼 PascalCase 태그는 DOM 템플릿에서 사용할 수 없습니다.
+
 Luckily, Vue supports resolving kebab-case tags to components registered using PascalCase. This means a component registered as `MyComponent` can be referenced in the template via both `<MyComponent>` and `<my-component>`. This allows us to use the same JavaScript component registration code regardless of template source.
+
+다행히 Vue는 PascalCase로  등록된 컴포넌트에 대해 템플릿에서 케밥케이스 kebab-case)를 이용해도 리졸빙할수 있습니다  이것은 `MyComponent`로 등록된 컴포넌트가 `<MyComponent>`와 `<my-component>`를 통해 템플릿에서 사용할수 있다는 겁니다. 이를 통해 템플릿 소스에 관계없이 동일한 JavaScript 컴포넌트 등록 코드를 사용할 수 있습니다.
+
