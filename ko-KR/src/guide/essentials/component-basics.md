@@ -7,9 +7,7 @@
 
 Components allow us to split the UI into independent and reusable pieces, and think about each piece in isolation. It's common for an app to be organized into a tree of nested components:
 
-컴포넌트를 사용하면 UI를 독립적이고 재사용 가능한 부분으로 분할하고 각 부분을 독립시켜 고려할수 있습니다. 애플리케이션이 중첩된 컴포넌트의 트리로 구성되는 것은 일반적입니다.
-
-
+컴포넌트를 사용하면 UI를 독립적이고 재사용 가능한 부분으로 분할하고 각 부분을 독립시켜 고려할수 있습니다. 애플리케이션을 중첩된 컴포넌트의 트리로 분해하여 구성하는 것은 매우 일반적인 설계입니다. 
 
 
 ![Component Tree](./images/components.png)
@@ -18,7 +16,7 @@ Components allow us to split the UI into independent and reusable pieces, and th
 
 This is very similar to how we nest native HTML elements, but Vue implements its own component model that allow us to encapsulate custom content and logic in each component. Vue also plays nicely with native Web Components. If you are curious about the relationship between Vue Components and native Web Components, [read more here](/guide/extras/web-components.html).
 
-이것은 기본 HTML 엘리먼트를 중첩하는 방법과 매우 유사하지만 Vue는 각 컴포넌트에 사용자 정의 콘텐츠와 논리를 캡슐화할 수 있는 자체 컴포넌트 모델을 구현합니다. Vue는 네이티브 웹 컴포넌트와도 잘 작동합니다. Vue 컴포넌트와 네이티브 웹 컴포넌트 간의 관계가 궁금하시다면 [여기에서 자세히 읽어보세요](/guide/extras/web-components.html).
+네이티브 HTML 엘리먼트를 중첩시키는 것과 유사하지만, Vue는 자체 컴포넌트 모델을 통해 컴포넌트에 사용자 정의 콘텐츠와 논리를 캡슐화 합니다. Vue는 네이티브 웹 컴포넌트와도 잘 작동합니다. Vue 컴포넌트와 네이티브 웹 컴포넌트 간의 관계가 궁금하시다면 [여기에서 자세히 읽어보세요](/guide/extras/web-components.html).
 
 
 ## Defining a Component
@@ -26,7 +24,7 @@ This is very similar to how we nest native HTML elements, but Vue implements its
 
 When using a build step, we typically define each Vue component in a dedicated file using the `.vue` extension - known as a [Single-File Component](/guide/scaling-up/sfc.html) (SFC for short):
 
-빌드 단계를 사용할 때 일반적으로 [싱글 파일 컴포넌트](/guide/scaling-up/sfc.html)(줄여서 SFC)라고 하는 `.vue` 확장자를 사용하는 전용 파일에 각 Vue 컴포넌트를 정의합니다:
+빌드 단계를 사용하면 일반적으로 [싱글 파일 컴포넌트](/guide/scaling-up/sfc.html)(줄여서 SFC)라고 하는 `.vue` 확장자를 사용하는 전용 파일에 각 Vue 컴포넌트를 정의합니다:
 
 
 <div class="options-api">
