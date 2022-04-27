@@ -14,13 +14,13 @@
 
 Vue components require explicit props declaration so that Vue knows what external props passed to the component should be treated as fallthrough attributes (which will be discussed in the next section).
 
-Vue 컴포넌트은 명시적 props 선언을 요구하기 때문에 외부에서 컴포넌트에 props를 넘길때  fallthrough 속성으로 처리되야야 합니다(다음 섹션에서 설명함).
+Vue 컴포넌트는 props 선언이 명시적으로 되어 있어야 합니다. 그렇기 때문에 외부에서 컴포넌트에 props를 넘길때 어떤 속성이 fallthrough 속성으로 처리되어야 하는지 알수 있어야 합니다. (다음 섹션에서 설명함).
 
 <div class="composition-api">
 
 In SFCs using `<script setup>`, props can be declared using the `defineProps()` macro:
 
-`<script setup>`을 사용하는 SFC에서 props는 `defineProps()` 매크로를 사용하여 선언할 수 있습니다.
+`<script setup>`을 사용하는 SFC에서 `defineProps()` 매크로를 사용하여 props를 선언할 수 있습니다.
 
 ```vue
 <script setup>
@@ -108,7 +108,7 @@ export default {
 
 For each property in the object declaration syntax, the key is the name of the prop, while the value should be the constructor function of the expected type.
 
-객체 형태로 선언 될때 속성의 키는 props의 이름이며, 속성의 값은 원하는 타입의 생성 함수이여야 합니다. 
+객체 형태로 선언 될때 객체 속성의 키는 props의 이름이 되며, 객체 속성의 값은 원하는 타입의 값을 생성하는 함수이여야 합니다. 
 
 This not only documents your component, but will also warn other developers using your component in the browser console if they pass the wrong type. We will discuss more details about [prop validation](#prop-validation) further down this page.
 
@@ -151,7 +151,7 @@ More details: [Typing Component Props](/guide/typescript/composition-api.html#ty
 
 We declare long prop names using camelCase because this avoids having to use quotes when using them as property keys, and allows us to reference them directly in template expressions because they are valid JavaScript identifiers:
 
-우리는 camelCase 형식의 긴 Props 이름을 선언합니다. 이렇게 하면 속성 키로 사용할 때 따옴표를 사용할 필요가 없고 유효한 JavaScript 식별자이기 때문에 템플릿 표현식에서 직접 참조할 수 있기 때문입니다.
+긴 속성명을 선언할때 사용 할 때 `obj["kebab-case"]` 같이 키에 따옴표로 사용하는것을 피하기 위해 카멜 케이스(camelCase, `obj.camelCase`) 를 사용합니다. 이렇게 선언된 속성명은 유효한 자바스크립트 식별자라서 템플릿 표현식에서 바로 참조해서 사용 할 수 있습니다. 
 
 <div class="composition-api">
 
@@ -180,7 +180,7 @@ export default {
 
 Technically, you can also use camelCase when passing props to a child component (except in [DOM templates](/guide/essentials/component-basics.html#dom-template-parsing-caveats)). However, the convention is using kebab-case in all cases to align with HTML attributes:
 
-기술적으로 하위 컴포넌트에 props을 전달할 때 camelCase를 사용할 수도 있습니다([DOM 템플릿](/guide/essentials/component-basics.html#dom-template-parsing-caveats) 제외). HTML 속성을 표시할때 모든 경우에 케밥-케이스(kebab-case)를 사용 하는 것이 관례입니다. 
+기술적으로 하위 컴포넌트에 props을 전달할 때 camelCase를 사용할 수 있습니다([DOM 템플릿](/guide/essentials/component-basics.html#dom-template-parsing-caveats) 제외). 하지만 HTML의 관례(Convention)는 모든 HTML 속성은 케밥-케이스(kebab-case)를 이여야 한다는 것입니다. 
 
 ```vue-html
 <MyComponent greeting-message="hello" />
@@ -188,14 +188,15 @@ Technically, you can also use camelCase when passing props to a child component 
 
 We use [PascalCase for component tags](/guide/components/registration.html#component-name-casing) when possible because it improves template readability by differentiating Vue components from native elements. However, there isn't as much practical benefits for using camelCase when passing props, so we choose to follow each language's conventions.
 
-Vue 컴포넌트를 기본 앨리먼트와 구별할수 있어어서 템플릿을 읽을때 좀더 쉽게 읽을수 있기 때문에 가급적 [컴포넌트 태그에는 PascalCase](/guide/components/registration.html#component-name-casing)를 사용합니다. 그러나 props를 전달할 때 camelCase를 사용하면 실질적인 이점이 많지 않으므로 각 언어의 규칙을 따르기로 했습니다.
+
+[Vue 컴포넌트 태그에 PascalCase](/guide/components/registration.html#component-name-casing)를 적용 하면 네이티브 앨리먼트와 Vue 컴포넌트가 잘 구분 되기 때문에 HTML 관례와 다르지만 파스칼 케이스(PaseCase)를 사용합니다. 하지만 props에 camelCase를 사용하는것은 실질적인 이점이 많지 않기 때문에 HTML의 관례인 케밥케이스(kebab-case)를 따르기로 했습니다. 
 
 ### Static vs. Dynamic Props
 ### 정적  vs. 동적 Props
 
 So far, you've seen props passed as static values, like in:
 
-지금까지 다음과 같이 정적인 값으로 전달된 props를 보았습니다:
+지금까지 정적인 값으로 전달된 props 예제들을 보았습니다:
 
 ```vue-html
 <BlogPost title="My journey with Vue" />
@@ -203,7 +204,7 @@ So far, you've seen props passed as static values, like in:
 
 You've also seen props assigned dynamically with `v-bind` or its `:` shortcut, such as in:
 
-다음과 같이 `v-bind` 또는 `:` 단축키를 사용하여 동적으로 할당된 props도 보았습니다.
+그리고 `v-bind` 또는 `:` 단축어를 사용하여 동적으로 할당된 props도 보았습니다:
 
 ```vue-html
 <!-- Dynamically assign the value of a variable -->
@@ -220,7 +221,7 @@ You've also seen props assigned dynamically with `v-bind` or its `:` shortcut, s
 
 In the two examples above, we happen to pass string values, but _any_ type of value can be passed to a prop.
 
-위의 두 가지 예제에서 문자열 값을 전달했지만 어떤 타입의 값이던 props로 전달할 수 있습니다.
+위의 두 가지 예제에서 문자열 값을 전달했지만, 사실 어떤 타입의 값이던 props로 전달할 수 있습니다.
 
 #### Number
 #### 숫자
@@ -228,7 +229,7 @@ In the two examples above, we happen to pass string values, but _any_ type of va
 ```vue-html
 <!-- Even though `42` is static, we need v-bind to tell Vue that -->
 <!-- this is a JavaScript expression rather than a string.       -->
-<!-- `42`는 정적인 값이지만 Vue에게 이것이 문자열이 아닌 자바스크립트  표현식임을 알려주는 v-bind를 사용해야 합니다.  -->
+<!-- `42`는 정적인 값이지만 Vue에게 이것이 문자열이 아닌 자바스크립트 표현식임을 알려주는 v-bind를 사용해야 합니다.  -->
 <BlogPost :likes="42" />
 
 <!-- Dynamically assign to the value of a variable. -->
@@ -378,7 +379,7 @@ There are usually two cases where it's tempting to mutate a prop:
 
 1. **The prop is used to pass in an initial value; the child component wants to use it as a local data property afterwards.** In this case, it's best to define a local data property that uses the prop as its initial value:
 
-1. **소품은 초기 값을 전달하는 데 사용됩니다. 자식 컴포넌트는 나중에 로컬 데이터 속성으로 사용하려고 합니다.** 이 경우 prop을 초기 값으로 사용하는 로컬 데이터 속성을 정의하는 것이 가장 좋습니다.
+1. **prop은 초기 값을 전달하는 데 사용됩니다. 자식 컴포넌트는 나중에 이 값을 로컬 데이터 속성으로 사용하려고 합니다.** 이 경우 prop을 초기 값으로 사용하는 로컬 데이터 속성을 정의하는 것이 가장 좋습니다.
 
    <div class="composition-api">
 
@@ -387,7 +388,7 @@ There are usually two cases where it's tempting to mutate a prop:
 
    // counter only uses props.initialCounter as the initial value;
    // it is disconnected from future prop updates.
-   // counter 는  props.initialCounter 를 초기값을 위해서만 사용합니다;
+   // counter는  props.initialCounter 를 초기값을 위해서만 사용합니다;
    // 추후 props가 갱신되어도 연결 되지 않습니다. 
    const counter = ref(props.initialCounter)
    ```
@@ -602,24 +603,24 @@ Additional details:
 
 - All props are optional by default, unless `required: true` is specified.
 
-- `required: true`가 지정되지 않는 한 모든 prop은 기본적으로 선택 사항입니다.
+- `required: true`가 지정되지 않는 한 모든 prop은 기본적으로 선택 사항(optional)입니다.
 
 - An absent optional prop will have `undefined` value.
-- 선택 사항인 prop을 건네지지 않았다면 `undefined`를 값으로 가지게 됩니다. 
+- 선택 사항(optional)인 prop을 누락되었다면 `undefined`를 값으로 가지게 됩니다. 
 
 - If a `default` value is specified, it will be used if the resolved prop value is `undefined` - this includes both when the prop is absent, or an explicit `undefined` value is passed.
-- `default` 값이 지정되면 확인된 prop 값이 `undefined`인 경우 이 값이 사용됩니다. 여기에는 prop이 없거나 명시적인 `undefined` 값이 전달되는 경우가 모두 포함됩니다.
+- `default` 값이 지정되면  prop 값이 `undefined`로 해소(resolve) 될 경우 경우 `default` 값이 사용됩니다. prop이 누락 되었거나 명시적으로  `undefined` 값이 전달되는 경우가 모두 포함됩니다.
 
 When prop validation fails, Vue will produce a console warning (if using the development build).
 
-prop 유효성 검사가 실패하면 Vue는 콘솔 경고를 생성합니다(개발 빌드를 사용하는 경우).
+prop 유효성 검사에 실패하면 Vue는 콘솔에 경고를 출력합니다. (개발 빌드를 사용하는 경우).
 
 
 <div class="composition-api">
 
 If using [Type-based props declarations](/api/sfc-script-setup.html#typescript-only-features), Vue will try its best to compile the type annotations into equivalent runtime prop declarations. For example, `defineProps<{ msg: string }>` will be compiled into `{ msg: { type: String, required: true }}`.
 
-[타입 기반 props 선언](/api/sfc-script-setup.html#typescript-only-features)을 사용하는 경우 Vue는 타입 주석을 런타임 prop 선언으로 컴파일하기 위해 최선을 다할 것입니다. 예를 들어 `defineProps<{ msg: string }>`는 `{ msg: { type: String, required: true }}`로 컴파일됩니다.
+[타입 기반 props 선언](/api/sfc-script-setup.html#typescript-only-features)을 사용하는 경우 Vue는 타입 주석을 적절한 런타임 prop 선언으로 컴파일하기 위해 최선을 다할 것입니다. 예를 들어 `defineProps<{ msg: string }>`는 `{ msg: { type: String, required: true }}`로 컴파일됩니다.
 
 </div>
 <div class="options-api">
