@@ -14,7 +14,7 @@
 
 Vue components require explicit props declaration so that Vue knows what external props passed to the component should be treated as fallthrough attributes (which will be discussed in the next section).
 
-Vue 컴포넌트는 props 선언이 명시적으로 되어 있어야 합니다. 그렇기 때문에 외부에서 컴포넌트에 props를 넘길때 어떤 속성이 fallthrough 속성으로 처리되어야 하는지 알수 있어야 합니다. (다음 섹션에서 설명함).
+Vue 컴포넌트는 명시적인 props 선언을 요구하는데, 이렇게 함으로써 외부에서 컴포넌트에 props를 넘길 때 어떤 속성이 fallthrough 속성으로 처리되어야 하는지 알수 있습니다. (다음 섹션에서 설명함).
 
 <div class="composition-api">
 
