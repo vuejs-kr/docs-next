@@ -206,7 +206,7 @@ ID와 일치하는 label을 명시적으로 설정하는 것이, 보조 기술�
 
 <!-- <common-codepen-snippet title="Form ARIA label" slug="NWdvvYQ" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-크롬 개발자도구에서 이 요소를 검사하여, 접근성 이름(accessible name)이 어떻게 바뀌는지 확인하여 자유를 느껴라:
+크롬 개발자도구에서 이 요소를 검사하여, 접근성 이름(accessible name)이 어떻게 바뀌는지 확인해도 좋다:
 
 ![Chrome Developer Tools showing input accessible name from aria-label](./images/AccessibleARIAlabelDevTools.png)
 
@@ -284,7 +284,15 @@ You can see the description by inspecting Chrome DevTools:
 
 Avoid using placeholders as they can confuse many users.
 
-One of the issues with placeholders is that they don't meet the [color contrast criteria](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html) by default; fixing the color contrast makes the placeholder look like pre-populated data in the input fields. Looking at the following example, you can see that the Last Name placeholder which meets the color contrast criteria looks like pre-populated data:
+유저들을 혼란스럽게 할 수 있으므로 placeholders 사용을 피하세요.
+
+One of the issues with placeholders is that they don't meet the [color contrast criteria](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html) by default;
+
+placeholders의 이슈 중 하나는, 기본적으로 [색상 대비 기준](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)을 충족하지 않는 다는 것입니다.
+
+fixing the color contrast makes the placeholder look like pre-populated data in the input fields. Looking at the following example, you can see that the Last Name placeholder which meets the color contrast criteria looks like pre-populated data:
+
+색상 대비를 수정하면 placeholder가 input 영역에 미리 채워진 데이터처럼 보입니다. 다음 예를 보면, 미리 데이터가 채워진것처럼 보이며, 색상 대비 기준을 충족하는 Last Name placeholder를 볼 수 있습니다.
 
 ```vue-html
 <form
@@ -311,10 +319,17 @@ One of the issues with placeholders is that they don't meet the [color contrast 
 
 It is best to provide all the information the user needs to fill out forms outside any inputs.
 
+입력의 외부에 유저가 양식을 채우기 위한 모든 정보를 제공하는 것이 가장 좋습니다.
+
 ### Instructions
 
 When adding instructions for your input fields, make sure to link it correctly to the input.
+
+입력 영역에 대해 지시자를 추가할 때, 입력에 올바르게 연결해야 합니다.
+
 You can provide additional instructions and bind multiple ids inside an [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-labelledby_attribute). This allows for more flexible design.
+
+추가 지침을 제공하고, [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-labelledby_attribute)에 여러 id를 바인딩 할 수 있습니다. 이를 통해 보다 유연한 설계가 가능합니다.
 
 ```vue-html
 <fieldset>
@@ -332,6 +347,8 @@ You can provide additional instructions and bind multiple ids inside an [`aria-l
 
 Alternatively, you can attach the instructions to the input with [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute):
 
+또는 [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute)를 사용하여 입력에 지침을 첨부할 수 있습니다.
+
 ```vue-html
 <fieldset>
   <legend>Using aria-describedby</legend>
@@ -345,9 +362,17 @@ Alternatively, you can attach the instructions to the input with [`aria-describe
 
 ### Hiding Content
 
-Usually it is not recommended to visually hide labels, even if the input has an accessible name. However, if the functionality of the input can be understood with surrounding content, then we can hide the visual label.
+Usually it is not recommended to visually hide labels, even if the input has an accessible name.
+
+입력에 접근가능한 이름(accessible name)이 있더라도, 시각적으로 label을 숨기는 것은 일반적으로 권장되지 않습니다.
+
+However, if the functionality of the input can be understood with surrounding content, then we can hide the visual label.
+
+그러나, 입력의 기능을 주변 콘텐츠로 이해할 수 있다면, label을 시각적으로 숨길 수 있습니다.
 
 Let's look at this search field:
+
+아래 검색 영역을 살펴보자.
 
 ```vue-html
 <form role="search">
