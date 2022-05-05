@@ -10,9 +10,15 @@
 
 ## Slot Content and Outlet
 
+## 슬롯 컨텐츠와 아웃릿
+
 We have learned that components can accept props, which can be JavaScript values of any type. But how about template content? In some cases, we may want to pass a template fragment to a child component, and let the child component render the fragment within its own template.
 
+우리는 컴포넌트가 모든 유형의 JavaScript 값이 될 수 있는 props를 받아들일 수 있다는 것을 배웠습니다. 그러나 템플릿 콘텐츠는 어떻습니까? 어떤 경우에는 템플릿 조각을 자식 컴포넌트에 전달하고 자식 컴포넌트가 자체 템플릿 내에서 조각을 렌더링하도록 할 수 있습니다.
+
 For example, we may have a `<FancyButton>` component that supports usage like this:
+
+예를 들어 다음과 같은 사용법을 지원하는 `<FancyButton>` 컴포넌트가 있을 수 있습니다.
 
 ```vue-html{2}
 <FancyButton>
@@ -22,6 +28,8 @@ For example, we may have a `<FancyButton>` component that supports usage like th
 
 The template of `<FancyButton>` looks like this:
 
+`<FancyButton>`의 템플릿은 다음과 같습니다.
+
 ```vue-html{2}
 <button class="fancy-btn">
   <slot></slot> <!-- slot outlet -->
@@ -30,11 +38,16 @@ The template of `<FancyButton>` looks like this:
 
 The `<slot>` element is a **slot outlet** that indicates where the parent-provided **slot content** should be rendered.
 
+`<slot>` 앨리먼트는 부모가 제공한 **슬롯 콘텐츠**가 렌더링되어야 하는 위치를 나타내는 **슬롯 콘센트**입니다.
+
 ![slot diagram](./images/slots.png)
 
 <!-- https://www.figma.com/file/LjKTYVL97Ck6TEmBbstavX/slot -->
 
 And the final rendered DOM:
+
+
+최종적으로 렌더링된 DOM은: 
 
 ```html
 <button class="fancy-btn">
@@ -55,13 +68,21 @@ And the final rendered DOM:
 
 With slots, the `<FancyButton>` is responsible for rendering the outer `<button>` (and its fancy styling), while the inner content is provided by the parent component.
 
+슬롯을 사용하면 `<FancyButton>`이 외부 `<button>`(및 멋진 스타일 지정)을 렌더링하는 반면 내부 콘텐츠는 상위 컴포넌트에서 제공합니다.
+
 Another way to understand slots is by comparing them to JavaScript functions:
+
+슬롯을 이해하는 또 다른 방법은 슬롯을 JavaScript 함수와 비교하는 것입니다.
+
+
 
 ```js
 // parent component passing slot content
+// 부모 컴포넌트에서 슬롯 컨텐츠를 넘김
 FancyButton('Click me!')
 
 // FancyButton renders slot content in its own template
+// FancyButton 에서자신의 템플릿에서 슬롯 컨텐츠를 렌더링
 function FancyButton(slotContent) {
   return (
     `<button class="fancy-btn">
@@ -72,6 +93,8 @@ function FancyButton(slotContent) {
 ```
 
 Slot content is not just limited to text. It can be any valid template content. For example, we can pass in multiple elements, or even other components:
+
+슬롯 콘텐츠는 텍스트에만 국한되지 않습니다. 모든 유효한 템플릿 콘텐츠일 수 있습니다. 예를 들어 여러 요소 또는 다른 컴포넌트를 전달할 수 있습니다.:
 
 ```vue-html
 <FancyButton>
@@ -93,11 +116,19 @@ Slot content is not just limited to text. It can be any valid template content. 
 
 By using slots, our `<FancyButton>` is more flexible and reusable. We can now use it in different places with different inner content, but all with the same fancy styling.
 
+슬롯을 사용하면 `<FancyButton>`이 더 유연하고 재사용할 수 있습니다. 이제 내부 내용은 다르지만 모두 동일한 멋진 스타일로 다른 장소에서 사용할 수 있습니다.
+
 Vue components' slot mechanism is inspired by the [native Web Component `<slot>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot), but with additional capabilities that we will see later.
 
+Vue 컴포넌트의 슬롯 메커니즘은 [네이티브 웹 컴포넌트 `<slot>` 요소](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot)에서 영감을 얻었지만 추가 기능이 있습니다. 나중에 보게 될 것입니다.
+
 ## Render Scope
+## 렌더링 범위
+
 
 Slot content has access to the data scope of the parent component, because it is defined in the parent. For example:
+
+슬롯 콘텐츠는 상위 컴포넌트에 정의되어 있으므로 상위 컴포넌트의 데이터 범위에 액세스할 수 있습니다. 예를 들어:
 
 ```vue-html
 <span>{{ message }}</span>
@@ -106,13 +137,23 @@ Slot content has access to the data scope of the parent component, because it is
 
 Here both <span v-pre>`{{ message }}`</span> interpolations will render the same content.
 
+여기서 두 <span v-pre>`{{ message }}`</span> 보간은 동일한 콘텐츠를 렌더링합니다.
+
 Slot content does **not** have access to the child component's data. As a rule, remember that:
+
+슬롯 콘텐츠는 하위 컴포넌트의 데이터에 액세스할 수 **없습니다**. 일반적으로 다음을 기억하십시오:
 
 > Everything in the parent template is compiled in parent scope; everything in the child template is compiled in the child scope.
 
+> 상위 템플릿의 모든 항목은 상위 범위에서 컴파일됩니다. 자식 템플릿의 모든 것은 자식 범위에서 컴파일됩니다.
+
 ## Fallback Content
+## 대체 컨텐츠
 
 There are cases when it's useful to specify fallback (i.e. default) content for a slot, to be rendered only when no content is provided. For example, in a `<SubmitButton>` component:
+
+콘텐츠가 제공되지 않을 때만 렌더링되도록 슬롯에 대한 대체(즉, 기본) 콘텐츠를 지정하는 것이 유용한 경우가 있습니다. 예를 들어 `<SubmitButton>` 컴포넌트에서:
+
 
 ```vue-html
 <button type="submit">
@@ -121,6 +162,9 @@ There are cases when it's useful to specify fallback (i.e. default) content for 
 ```
 
 We might want the text "Submit" to be rendered inside the `<button>` if the parent didn't provide any slot content. To make "Submit" the fallback content, we can place it in between the `<slot>` tags:
+
+
+부모가 슬롯 콘텐츠를 제공하지 않은 경우 텍스트 "Submit"이 `<button>` 내부에 렌더링되기를 원할 수 있습니다. "Submit" 이 대체 콘텐츠로 지정하려면  `<slot>` 태그 사이에 넣으면 됩니다:
 
 ```vue-html{3}
 <button type="submit">
@@ -132,11 +176,17 @@ We might want the text "Submit" to be rendered inside the `<button>` if the pare
 
 Now when we use `<SubmitButton>` in a parent component, providing no content for the slot:
 
+이제 상위 컴포넌트에서 `<SubmitButton>`을 사용할때 슬롯에 빈 콘텐츠를 제공할 필요가 없습니다:
+
+
 ```vue-html
 <SubmitButton />
 ```
 
 This will render the fallback content, "Submit":
+
+이렇게 하면 대체 컨텐츠인  "Submit"이 렌더링 됩니다:
+
 
 ```html
 <button type="submit">Submit</button>
@@ -144,11 +194,16 @@ This will render the fallback content, "Submit":
 
 But if we provide content:
 
+
+만약 컨텐츠를 제공한다면:
+
 ```vue-html
 <SubmitButton>Save</SubmitButton>
 ```
 
 Then the provided content will be rendered instead:
+
+제공된 컨텐츠가 렌더링됩니다:
 
 ```html
 <button type="submit">Save</button>
@@ -166,6 +221,7 @@ Then the provided content will be rendered instead:
 </div>
 
 ## Named Slots
+## 명명된 슬롯
 
 There are times when it's useful to have multiple slot outlets in a single component. For example, in a `<BaseLayout>` component with the following template:
 
