@@ -384,7 +384,11 @@ Let's look at this search field:
 
 We can do this because the search button will help visual users identify the purpose of the input field.
 
+시각적인 사용자(visual users)에게, 검색 버튼이 입력 영역의 목적을 식별하는데 도움이 되기 때문에, 이렇게 할 수 있습니다.
+
 We can use CSS to visually hide elements but keep them available for assistive technology:
+
+CSS를 사용하여 요소를 시각적으로 숨기지만, 보조 기술에서는 계속 이용하게 할 수 있습니다.
 
 ```css
 .hidden-visually {
@@ -406,6 +410,8 @@ We can use CSS to visually hide elements but keep them available for assistive t
 
 Adding `aria-hidden="true"` will hide the element from assistive technology but leave it visually available for other users. Do not use it on focusable elements, purely on decorative, duplicated or offscreen content.
 
+`aria-hidden="true"`를 추가하면, 보조 기술에게는 요소가 숨겨지고, 다른 사용자는 시각적으로 이용할 수 있습니다. 초점을 맞출 수 있는 요소(focusable elements), 온전한 장식(purely on decorative), 복제 또는 오프스크린 콘텐츠(duplicated or offscreen content)에 사용하지 마십시오.
+
 ```vue-html
 <p>This is not hidden from screen readers.</p>
 <p aria-hidden="true">This is hidden from screen readers.</p>
@@ -415,6 +421,9 @@ Adding `aria-hidden="true"` will hide the element from assistive technology but 
 
 When using buttons inside a form, you must set the type to prevent submitting the form.
 You can also use an input to create buttons:
+
+양식 내에서 버튼을 사용할 때 양식이 제출되지 않도록 유형을 설정해야 합니다.
+입력을 사용하여 버튼을 만들 수도 있습니다.
 
 ```vue-html
 <form action="/dataCollectionLocation" method="post" autocomplete="on">
@@ -432,11 +441,11 @@ You can also use an input to create buttons:
 
 ### Functional Images
 
-You can use this technique to create functional images.
+이 기술을 사용하여 기능적 이미지를 만들 수 있습니다.
 
 - Input fields
 
-  - These images will act as a submit type button on forms
+  - 이 이미지는 양식에서 제출 유형 버튼(submit type button)으로 작동합니다.
 
   ```vue-html
   <form role="search">
@@ -470,16 +479,23 @@ You can use this technique to create functional images.
 
 The World Wide Web Consortium (W3C) Web Accessibility Initiative (WAI) develops web accessibility standards for the different components:
 
+World Wide Web Consortium (W3C) Web Accessibility Initiative(WAI)는 다양한 구성 요소에 대한 웹 접근성 표준을 개발합니다:
+
 - [User Agent Accessibility Guidelines (UAAG)](https://www.w3.org/WAI/standards-guidelines/uaag/)
   - web browsers and media players, including some aspects of assistive technologies
+  - 보조 기술의 일부 측면을 포함한 웹 브라우저 및 미디어 플레이어
 - [Authoring Tool Accessibility Guidelines (ATAG)](https://www.w3.org/WAI/standards-guidelines/atag/)
   - authoring tools
+  - 저작 도구(authoring tools)
 - [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/)
   - web content - used by developers, authoring tools, and accessibility evaluation tools
+  - 웹 콘텐츠 - 개발자, 저작 도구 및 접근성 평가 도구에서 사용
 
 ### Web Content Accessibility Guidelines (WCAG)
 
 [WCAG 2.1](https://www.w3.org/TR/WCAG21/) extends on [WCAG 2.0](https://www.w3.org/TR/WCAG20/) and allows implementation of new technologies by addressing changes to the web. The W3C encourages use of the most current version of WCAG when developing or updating Web accessibility policies.
+
+[WCAG 2.1](https://www.w3.org/TR/WCAG21/)는 [WCAG 2.0](https://www.w3.org/TR/WCAG20/) 에서 확장되었고, 웹의 변경 사항을 다뤄(addressing) 새로운 기술을 구현할 수 있습니다. W3C는 웹 접근성 정책을 개발하거나 업데이트할 때 최신 버전의 WCAG를 사용하도록 권장합니다.
 
 #### WCAG 2.1 Four Main Guiding Principles (abbreviated as POUR):
 
