@@ -624,10 +624,10 @@ export default defineConfigWithTheme<ThemeConfig>({
       { icon: 'discord', link: 'https://discord.com/invite/HBherRA' }
     ],
 
-    // editLink: {
-    //   repo: 'niceplugin/vue3-docs-ko',
-    //   text: 'GitHub에서 이 페이지 편집'
-    // },
+    editLink: {
+      repo: 'vuejs-kr/docs-next',
+      text: 'GitHub에서 이 페이지 편집'
+    },
 
     footer: {
       license: {
