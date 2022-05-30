@@ -68,32 +68,29 @@ function useToggleFn(
       @mousedown="removeOutline"
       @blur="restoreOutline"
     >
-      <span>API Preference</span>
+      <span>API 스타일 설정</span>
       <VTIconChevronDown class="vt-link-icon" :class="{ open: isOpen }" />
     </button>
     <div id="preference-switches" :hidden="!isOpen" :aria-hidden="!isOpen">
       <div class="switch-container">
         <label class="options-label" @click="toggleCompositionAPI(false)"
-          >Options</label
-        >
+        >옵션</label>
         <VTSwitch
           class="api-switch"
-          aria-label="prefer composition api"
+          aria-label="컴포지션 api를 추천합니다"
           :aria-checked="preferComposition"
           @click="toggleCompositionAPI()"
         />
         <label
           class="composition-label"
           @click="toggleCompositionAPI(true)"
-          >Composition</label
-        >
+        >컴포지션</label>
         <a
           class="switch-link"
-          title="About API preference"
-          href="/guide/introduction.html#api-styles"
+          title="API 스타일에 대하여"
+          href="/guide/introduction.html#api-스타일"
           @click="closeSideBar"
-          >?</a
-        >
+        >?</a>
       </div>
       <div class="switch-container" v-if="showSFC">
         <label class="no-sfc-label" @click="toggleSFC(false)">HTML</label>
@@ -109,8 +106,7 @@ function useToggleFn(
           title="About SFC"
           href="/guide/scaling-up/sfc.html"
           @click="closeSideBar"
-          >?</a
-        >
+        >?</a>
       </div>
     </div>
   </div>

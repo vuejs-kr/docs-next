@@ -14,9 +14,13 @@ const nav = [
       { text: '튜토리얼', link: '/tutorial/' },
       { text: '예제', link: '/examples/' },
       { text: '시작하기', link: '/guide/quick-start' },
-      { text: '스타일 가이드', link: '/style-guide/' },
+      // { text: 'Style Guide', link: '/style-guide/' },
       {
-        text: 'Vue 2에서 이전하기',
+        text: 'Vue 2 문서',
+        link: 'https://v2.vuejs.org'
+      },
+      {
+        text: 'Vue 2에서 마이그레이션',
         link: 'https://v3-migration.vuejs.org/'
       }
     ]
@@ -27,7 +31,7 @@ const nav = [
     link: '/api/'
   },
   {
-    text: 'Playground',
+    text: '온라인 연습장',
     link: 'https://sfc.vuejs.org'
   },
   {
@@ -35,12 +39,20 @@ const nav = [
     activeMatch: `^/ecosystem/`,
     items: [
       {
-        text: '자원',
+        text: '핵심 라이브러리',
         items: [
-          { text: '파트너', link: '/ecosystem/partners' },
-          { text: '테마', link: '/ecosystem/themes' },
-          { text: '구직 구인', link: 'https://vuejobs.com/?ref=vuejs' },
-          { text: '티 셔츠 샵', link: 'https://vue.threadless.com/' }
+          { text: 'Vue 라우터', link: 'https://router.vuejs.org/' },
+          { text: '피니아 (상태 관리)', link: 'https://pinia.vuejs.org/' }
+        ]
+      },
+      {
+        text: 'Resources',
+        items: [
+          { text: 'Sponsor', link: 'https://vuejs.org/sponsor/' },
+          { text: 'Partners', link: 'https://vuejs.org/partners/' },
+          { text: 'Themes', link: 'https://vuejs.org/ecosystem/themes' },
+          { text: 'Jobs', link: 'https://vuejobs.com/?ref=vuejs' },
+          { text: 'T-Shirt Shop', link: 'https://vue.threadless.com/' }
         ]
       },
       {
@@ -63,7 +75,10 @@ const nav = [
             text: 'Discord Chat',
             link: 'https://discord.com/invite/HBherRA'
           },
-          { text: 'Forum', link: 'https://forum.vuejs.org/' },
+          {
+            text: 'GitHub Discussions',
+            link: 'https://github.com/vuejs/core/discussions'
+          },
           { text: 'DEV Community', link: 'https://dev.to/t/vue' }
         ]
       },
@@ -83,23 +98,19 @@ const nav = [
     activeMatch: `^/about/`,
     items: [
       { text: 'FAQ', link: '/about/faq' },
-      { text: 'Team', link: '/about/team' },
-      { text: 'Releases', link: '/about/releases' },
+      { text: 'Team', link: 'https://vuejs.org/about/team' },
+      { text: 'Releases', link: 'https://vuejs.org/about/releases' },
       {
-        text: '커뮤니티 가이드',
-        link: '/about/community-guide'
+        text: 'Community Guide',
+        link: 'https://vuejs.org/about/community-guide'
       },
-      { text: 'Code of Conduct', link: '/about/coc' },
+      { text: 'Code of Conduct', link: 'https://vuejs.org/about/coc' },
       {
         text: 'The Documentary',
         link: 'https://www.youtube.com/watch?v=OrxmtDw4pVI'
       }
     ]
   },
-  {
-    text: '스폰서',
-    link: '/sponsor/'
-  }
 ]
 
 export const sidebar = {
@@ -107,7 +118,7 @@ export const sidebar = {
     {
       text: '시작하기',
       items: [
-        { text: '시작하기', link: '/guide/introduction' },
+        { text: '소개', link: '/guide/introduction' },
         {
           text: '빠른 시작',
           link: '/guide/quick-start'
@@ -118,7 +129,7 @@ export const sidebar = {
       text: '핵심 가이드',
       items: [
         {
-          text: '애플리케이션 만들기',
+          text: '앱 생성',
           link: '/guide/essentials/application'
         },
         {
@@ -153,15 +164,15 @@ export const sidebar = {
           link: '/guide/essentials/forms'
         },
         {
-          text: '생명주기 훅(Lifecycle Hooks)',
+          text: '수명주기 훅',
           link: '/guide/essentials/lifecycle'
         },
         {
-          text: '감시자(Watcher)',
+          text: '감시자',
           link: '/guide/essentials/watchers'
         },
         {
-          text: '템플릿 Refs',
+          text: '템플릿 참조',
           link: '/guide/essentials/template-refs'
         },
         {
@@ -178,12 +189,12 @@ export const sidebar = {
           link: '/guide/components/registration'
         },
         { text: 'Props', link: '/guide/components/props' },
-        { text: 'Events', link: '/guide/components/events' },
+        { text: '이벤트', link: '/guide/components/events' },
         {
-          text: 'Fallthrough Attributes',
+          text: '폴스루 속성',
           link: '/guide/components/attrs'
         },
-        { text: '슬롯(Slots)', link: '/guide/components/slots' },
+        { text: '슬롯', link: '/guide/components/slots' },
         {
           text: 'Provide / inject',
           link: '/guide/components/provide-inject'
@@ -378,7 +389,7 @@ export const sidebar = {
       ]
     },
     {
-      text: '내장',
+      text: '빌트-인',
       items: [
         { text: '디렉티브', link: '/api/built-in-directives' },
         { text: '컴포넌트', link: '/api/built-in-components' },
@@ -441,7 +452,7 @@ export const sidebar = {
       ]
     },
     {
-      text: '심Practical',
+      text: 'Practical',
       items: [
         {
           text: 'Markdown Editor',
@@ -601,10 +612,10 @@ export default defineConfigWithTheme<ThemeConfig>({
       }
     },
 
-    carbonAds: {
-      code: 'CEBDT27Y',
-      placement: 'vuejsorg'
-    },
+    // carbonAds: {
+    //   code: 'CEBDT27Y',
+    //   placement: 'vuejsorg'
+    // },
 
     socialLinks: [
       { icon: 'languages', link: '/translations/' },
@@ -613,10 +624,10 @@ export default defineConfigWithTheme<ThemeConfig>({
       { icon: 'discord', link: 'https://discord.com/invite/HBherRA' }
     ],
 
-    editLink: {
-      repo: 'vuejs/docs',
-      text: 'Edit this page on GitHub'
-    },
+    // editLink: {
+    //   repo: 'niceplugin/vue3-docs-ko',
+    //   text: 'GitHub에서 이 페이지 편집'
+    // },
 
     footer: {
       license: {

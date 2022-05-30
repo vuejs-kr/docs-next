@@ -31,6 +31,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
+pnpm-debug.log*
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
@@ -109,3 +110,33 @@ src/api/index.json
 src/examples/data.json
 src/tutorial/data.json
 draft.md
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Firebase cache
+.firebase/
+
+# add firebase gitignore ==================================
+# Logs
+firebase-debug.log*
+firebase-debug.*.log*
+node_modules
+/dist
+
+
+# local env files
+.env.local
+.env.*.local
+
+# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+# Bower dependency directory (https://bower.io/)
+bower_components
