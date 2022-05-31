@@ -6,9 +6,7 @@
 
 > This page assumes you've already read the [Components Basics](/guide/essentials/component-basics). Read that first if you are new to components.
 
-<div class="options-api">
-  <VueSchoolLink href="https://vueschool.io/lessons/defining-custom-events-emits" title="Free Vue.js Lesson on Defining Custom Events"/>
-</div>
+
 
 ## Emitting and Listening to Events
 ## 이벤트 방출(emitting)과 수신
