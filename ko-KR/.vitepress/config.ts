@@ -39,22 +39,22 @@ const nav = [
     activeMatch: `^/ecosystem/`,
     items: [
       {
+        text: 'Resources',
+        items: [
+          { text: 'Partners', link: '/partners/' },
+          { text: 'Themes', link: '/ecosystem/themes' },
+          { text: 'Jobs', link: 'https://vuejobs.com/?ref=vuejs' },
+          { text: 'T-Shirt Shop', link: 'https://vue.threadless.com/' }
+        ]
+      },
+      {
         text: '핵심 라이브러리',
         items: [
           { text: 'Vue 라우터', link: 'https://router.vuejs.org/' },
           { text: '피니아 (상태 관리)', link: 'https://pinia.vuejs.org/' }
         ]
       },
-      {
-        text: 'Resources',
-        items: [
-          { text: 'Sponsor', link: 'https://vuejs.org/sponsor/' },
-          { text: 'Partners', link: 'https://vuejs.org/partners/' },
-          { text: 'Themes', link: 'https://vuejs.org/ecosystem/themes' },
-          { text: 'Jobs', link: 'https://vuejobs.com/?ref=vuejs' },
-          { text: 'T-Shirt Shop', link: 'https://vue.threadless.com/' }
-        ]
-      },
+
       {
         text: '비디오 코스',
         items: [
@@ -111,6 +111,15 @@ const nav = [
       }
     ]
   },
+  {
+    text: 'Sponsor',
+    link: '/sponsor/'
+  },
+  {
+    text: 'Partners',
+    link: '/partners/',
+    activeMatch: `^/partners/`
+  }
 ]
 
 export const sidebar = {
