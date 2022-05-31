@@ -17,7 +17,7 @@ const nav = [
       // { text: 'Style Guide', link: '/style-guide/' },
       {
         text: 'Vue 2 문서',
-        link: 'https://v2.vuejs.org'
+        link: 'https://kr.vuejs.org'
       },
       {
         text: 'Vue 2에서 마이그레이션',
@@ -127,10 +127,7 @@ export const sidebar = {
     {
       text: '시작하기',
       items: [
-        {
-          text: '소개',
-          link: '/guide/introduction'
-        },
+        { text: '소개', link: '/guide/introduction' },
         {
           text: '빠른 시작',
           link: '/guide/quick-start'
@@ -164,29 +161,18 @@ export const sidebar = {
           text: '조건부 렌더링',
           link: '/guide/essentials/conditional'
         },
-        {
-          text: '리스트 렌더링',
-          link: '/guide/essentials/list' },
+        { text: '리스트 렌더링', link: '/guide/essentials/list' },
         {
           text: '이벤트 핸들링',
           link: '/guide/essentials/event-handling'
         },
-        {
-          text: 'Form 입력 바인딩',
-          link: '/guide/essentials/forms'
-        },
+        { text: 'Form 입력 바인딩', link: '/guide/essentials/forms' },
         {
           text: '수명주기 훅',
           link: '/guide/essentials/lifecycle'
         },
-        {
-          text: '감시자',
-          link: '/guide/essentials/watchers'
-        },
-        {
-          text: '템플릿 참조',
-          link: '/guide/essentials/template-refs'
-        },
+        { text: '감시자', link: '/guide/essentials/watchers' },
+        { text: '템플릿 참조', link: '/guide/essentials/template-refs' },
         {
           text: '컴포넌트 기초',
           link: '/guide/essentials/component-basics'
@@ -232,7 +218,7 @@ export const sidebar = {
       ]
     },
     {
-      text: '내장 컴포넌튼',
+      text: '내장 컴포넌트',
       items: [
         { text: 'Transition', link: '/guide/built-ins/transition' },
         {
@@ -247,26 +233,14 @@ export const sidebar = {
     {
       text: '규모 키우기',
       items: [
-        {
-          text: '싱글 파일 컴포넌트',
-          link: '/guide/scaling-up/sfc'
-        },
-        {
-          text: '도구',
-          link: '/guide/scaling-up/tooling'
-        },
-        {
-          text: '라우팅',
-          link: '/guide/scaling-up/routing'
-        },
+        { text: '싱글 파일 컴포넌트', link: '/guide/scaling-up/sfc' },
+        { text: '도구', link: '/guide/scaling-up/tooling' },
+        { text: '라우팅', link: '/guide/scaling-up/routing' },
         {
           text: '상태 관리',
           link: '/guide/scaling-up/state-management'
         },
-        {
-          text: '테스팅',
-          link: '/guide/scaling-up/testing'
-        },
+        { text: '테스팅', link: '/guide/scaling-up/testing' },
         {
           text: 'Server-Side Rendering (SSR)',
           link: '/guide/scaling-up/ssr'
@@ -297,10 +271,7 @@ export const sidebar = {
     {
       text: '타입스크립트',
       items: [
-        {
-          text: '개요',
-          link: '/guide/typescript/overview'
-        },
+        { text: '개요', link: '/guide/typescript/overview' },
         {
           text: '컴포지션 API와 타입스크립트',
           link: '/guide/typescript/composition-api'
@@ -362,10 +333,7 @@ export const sidebar = {
     {
       text: '전역 API',
       items: [
-        {
-          text: 'Application',
-          link: '/api/application'
-        },
+        { text: 'Application', link: '/api/application' },
         {
           text: '일반',
           link: '/api/general'
@@ -375,10 +343,7 @@ export const sidebar = {
     {
       text: '컴포지션 API',
       items: [
-        {
-          text: 'setup()', link:
-          '/api/composition-api-setup'
-        },
+        { text: 'setup()', link: '/api/composition-api-setup' },
         {
           text: '반응형: 핵심',
           link: '/api/reactivity-core'
