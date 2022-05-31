@@ -1,0 +1,1 @@
+import{_ as e,o as a,c as r,a as t}from"./app.aaf5bfda.js";const s='{"title":"번역","description":"","frontmatter":{"aside":false},"headers":[{"level":2,"title":"번역에 기여하기 전에","slug":"번역에-기여하기-전에"}],"relativePath":"translations/index.md"}',n={},o=[t("",5)];var i=e(n,[["render",function(e,t,s,n,i,d){return a(),r("div",null,o)}]]);export{s as __pageData,i as default};
