@@ -118,7 +118,10 @@ export const sidebar = {
     {
       text: '시작하기',
       items: [
-        { text: '소개', link: '/guide/introduction' },
+        {
+          text: '소개',
+          link: '/guide/introduction'
+        },
         {
           text: '빠른 시작',
           link: '/guide/quick-start'
@@ -235,14 +238,26 @@ export const sidebar = {
     {
       text: '규모 키우기',
       items: [
-        { text: '싱글 파일 컴포넌트', link: '/guide/scaling-up/sfc' },
-        { text: '도구', link: '/guide/scaling-up/tooling' },
-        { text: '라우팅', link: '/guide/scaling-up/routing' },
+        {
+          text: '싱글 파일 컴포넌트',
+          link: '/guide/scaling-up/sfc'
+        },
+        {
+          text: '도구',
+          link: '/guide/scaling-up/tooling'
+        },
+        {
+          text: '라우팅',
+          link: '/guide/scaling-up/routing'
+        },
         {
           text: '상태 관리',
           link: '/guide/scaling-up/state-management'
         },
-        { text: '테스팅', link: '/guide/scaling-up/testing' },
+        {
+          text: '테스팅',
+          link: '/guide/scaling-up/testing'
+        },
         {
           text: 'Server-Side Rendering (SSR)',
           link: '/guide/scaling-up/ssr'
@@ -273,7 +288,10 @@ export const sidebar = {
     {
       text: '타입스크립트',
       items: [
-        { text: '개요', link: '/guide/typescript/overview' },
+        {
+          text: '개요',
+          link: '/guide/typescript/overview'
+        },
         {
           text: '컴포지션 API와 타입스크립트',
           link: '/guide/typescript/composition-api'
@@ -335,7 +353,10 @@ export const sidebar = {
     {
       text: '전역 API',
       items: [
-        { text: 'Application', link: '/api/application' },
+        {
+          text: 'Application',
+          link: '/api/application'
+        },
         {
           text: '일반',
           link: '/api/general'
@@ -345,7 +366,10 @@ export const sidebar = {
     {
       text: '컴포지션 API',
       items: [
-        { text: 'setup()', link: '/api/composition-api-setup' },
+        {
+          text: 'setup()', link:
+          '/api/composition-api-setup'
+        },
         {
           text: '반응형: 핵심',
           link: '/api/reactivity-core'

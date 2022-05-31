@@ -57,17 +57,17 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 ```vue-html
 <!-- 쉼표로 구분된 문자열 -->
 <KeepAlive include="a,b">
-  <component :is="view"></component>
+  <component :is="view" />
 </KeepAlive>
 
 <!-- regex (use `v-bind`) -->
 <KeepAlive :include="/a|b/">
-  <component :is="view"></component>
+  <component :is="view" />
 </KeepAlive>
 
 <!-- Array (use `v-bind`) -->
 <KeepAlive :include="['a', 'b']">
-  <component :is="view"></component>
+  <component :is="view" />
 </KeepAlive>
 ```
 

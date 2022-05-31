@@ -294,6 +294,26 @@ In order to take advantage of module augmentation, you will need to ensure the a
 
 모듈 확장을 활용하려면 [타입스크립트 모듈](https://www.typescriptlang.org/docs/handbook/modules.html) 에 선언 되었는지 확인해야 합니다. 즉, 파일은 `export {}` 일지라도 최소한 하나의 최상위 `import` 또는 `export` 를 포함해야 합니다. 기능 확장이 모듈 외부에 선언되면 원래 타입을 사용하지 않고 덮어씁니다!
 
+```ts
+// Does not work, overwrites the original types.
+declare module 'vue' {
+  interface ComponentCustomProperties {
+    $translate: (key: string) => string
+  }
+}
+```
+
+```ts
+// Works correctly
+export {}
+
+declare module 'vue' {
+  interface ComponentCustomProperties {
+    $translate: (key: string) => string
+  }
+}
+```
+
 ## Augmenting Custom Options
 ## 사용자 지정 옵션 확장 {#augmenting-custom-options2}
 

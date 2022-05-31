@@ -96,9 +96,9 @@ Local registration scopes the availability of the registered components to the c
 
 <div class="composition-api">
 
-When using SFC with `<script setup>`, imported components are automatically registered locally:
+When using SFC with `<script setup>`, imported components can be locally used without registration:
 
-SFC에서 `<script setup>` 에서 임포트된 컴포넌트는 자동으로 로컬에 등록됩니다. 
+SFC에서 `<script setup>` 에서 임포트된 컴포넌트는 등록하지 않아도 로컬에서 사용할수 있습니다.
 
 ```vue
 <script setup>
@@ -110,9 +110,9 @@ import ComponentA from './ComponentA.vue'
 </template>
 ```
 
-If not using SFC, you will need to use the `components` option:
+In non-`<script setup>`, you will need to use the `components` option:
 
-SFC를 사용하지 않는다면 `components` 옵션을 사용합니다:
+`<script setup>`을  사용하지 않는다면 `components` 옵션을 사용 해야 합니다:
 
 ```js
 import ComponentA from './ComponentA.js'

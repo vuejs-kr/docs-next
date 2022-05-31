@@ -12,9 +12,9 @@
 ## Props Declaration
 ## Props 선언
 
-Vue components require explicit props declaration so that Vue knows what external props passed to the component should be treated as fallthrough attributes (which will be discussed in the next section).
+Vue components require explicit props declaration so that Vue knows what external props passed to the component should be treated as fallthrough attributes (which will be discussed in [its dedicated section](/guide/components/attrs)).
 
-Vue 컴포넌트는 명시적인 props 선언을 요구하는데, 이렇게 함으로써 외부에서 컴포넌트에 props를 넘길 때 어떤 속성이 fallthrough 속성으로 처리되어야 하는지 알수 있습니다. (다음 섹션에서 설명함).
+Vue 컴포넌트는 명시적인 props 선언을 요구하는데, 이렇게 함으로써 외부에서 컴포넌트에 props를 넘길 때 어떤 속성이 fallthrough 속성으로 처리되어야 하는지 알수 있습니다. ([전용 섹션](/guide/components/attrs) 에서 설명함).
 
 <div class="composition-api">
 
@@ -498,9 +498,10 @@ defineProps({
   propE: {
     type: Object,
     // Object or array defaults must be returned from
-    // a factory function
-    // 객체나 배열에 대한 기본값은 항상 팩토리 함수를 통해 기본값을 반환해야 합니다. 
-    default() {
+    // a factory function. The function receives the raw
+    // props received by the component as the argument.     
+    // 객체나 배열에 대한 기본값은 항상 팩토리 함수를 통해 기본값을 반환해야 합니다.  함수는 컴포넌트에 주어진 원본 raw props를 인자로 받습니다. 
+    default(rawProps) {
       return { message: 'hello' }
     }
   },
@@ -605,8 +606,11 @@ Additional details:
 
 - `required: true`가 지정되지 않는 한 모든 prop은 기본적으로 선택 사항(optional)입니다.
 
-- An absent optional prop will have `undefined` value.
-- 선택 사항(optional)인 prop을 누락되었다면 `undefined`를 값으로 가지게 됩니다. 
+- An absent optional prop other than `Boolean` will have `undefined` value.
+- `Boolean`이 아닌 선택 사항(optional)인 prop을 누락되었다면 `undefined`를 값으로 가지게 됩니다. 
+
+- The `Boolean` absent props will be cast to `false`. You should set a `default` value for it in order to get desired behavior.
+- `Boolean` 인 props가 누락되었다면 `false`가 기본값이됩니다. 따라서 원하는 동작을 위해서는 적절한 `default` 값을 지정해주어야 합니다. 
 
 - If a `default` value is specified, it will be used if the resolved prop value is `undefined` - this includes both when the prop is absent, or an explicit `undefined` value is passed.
 - `default` 값이 지정되면  prop 값이 `undefined`로 해소(resolve) 될 경우 경우 `default` 값이 사용됩니다. prop이 누락 되었거나 명시적으로  `undefined` 값이 전달되는 경우가 모두 포함됩니다.

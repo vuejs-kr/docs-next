@@ -53,7 +53,7 @@ Provides animated transition effects to a **single** element or component.
   interface TransitionProps {
     /**
      * Used to automatically generate transition CSS class names.
-     * e.g. `name: fade'` will auto expand to `.fade-enter`,
+    * e.g. `name: 'fade'` will auto expand to `.fade-enter`,
      * `.fade-enter-active`, etc.
      * 트랜지션 CSS 클래스 이름을 자동으로 생성하는 데 사용됩니다.
      * 예. `name: fade'` 은 자동으로 `.fade-enter`,

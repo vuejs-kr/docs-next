@@ -255,7 +255,8 @@ methods: {
 반면, `@click.self.prevent`는 **해당 엘리먼트가 클릭 되는 경우에만 실행되는 기본 동작을 방지**합니다.
 :::
 
-`.capture`, `.once` 및 `.passive` 수식어는 [네이티브 `addEventListener` 메서드의 옵션](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Parameters)을 반영합니다.:
+`.capture`, `.once` 및 `.passive` 수식어는 [네이티브 `addEventListener` 메서드의 옵션](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#options):
+
 
 ```vue-html
 <!-- 이벤트 리스너를 추가할 때 캡처 모드 사용 -->

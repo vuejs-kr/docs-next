@@ -31,13 +31,13 @@ Vite 기반 설정을 사용하면 개발 서버와 번들러가 트랜스파일
 
 - [Visual Studio Code](https://code.visualstudio.com/) (VSCode)는 기본적으로 타입스크립트를 훌륭하게 지원하고 있기에 강력하게 권장합니다.
 
-    - [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) 는 다른 많은 훌륭한 기능과 함께 Vue SFC 내에서 타입스크립트를 지원하는 공식 VSCode extension 입니다.
+    - [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) 는 다른 많은 훌륭한 기능과 함께 Vue SFC 내에서 타입스크립트를 지원하는 공식 VSCode extension 입니다.
 
         :::tip 
         Volar는 Vue2용 공식 VSCode extension인 [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) 를 대체합니다. 현재 Vetur가 설치되어 있는 경우 Vue3 프로젝트에서 비활성화해야 합니다. 
         :::
 
-    - [타입스크립트 Vue 플러그인](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin) 은 TS 파일에서 `*.vue` 를 가져오기 위해 별도의 타입 지원이 필요합니다.
+    - [타입스크립트 Vue 플러그인](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) 은 TS 파일에서 `*.vue` 를 가져오기 위해 별도의 타입 지원이 필요합니다.
 
 - [WebStorm](https://www.jetbrains.com/webstorm/) 은 타입스크립트와 Vue 모두 기본적으로 지원합니다. 다른 JetBrains IDE도 [무료 플러그인](https://plugins.jetbrains.com/plugin/9442-vue-js) 설치를 통해 바로 사용 가능합니다.
 
