@@ -7,7 +7,7 @@ aside: false
 Vue 문서는 최근에 주요 개정을 거쳐 아직 한국어 번역이 완성되지 않았습니다.
 
 번역 작업은 [vuejs-kr/docs-next](https://github.com/vuejs-kr/docs-next)에서 관리됩니다.
-기여하고 싶다면 슬랙의 워크스페이스 [Vue.js Korea](vuejs-korea.slack.com)에 참여하여 관심을 표할 수 있습니다.
+기여하고 싶다면 슬랙의 워크스페이스 [Vue.js Korea](https://vuejs-korea.slack.com)에 참여하여 관심을 표할 수 있습니다.
 
 ## 번역에 기여하기 전에
 
