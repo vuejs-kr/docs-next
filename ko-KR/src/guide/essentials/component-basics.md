@@ -234,7 +234,7 @@ defineProps(['title'])
 </template>
 ```
 
-`defineProps`는 `<script setup>` 내에서만 사용할 수 있는 컴파일 타임 매크로이며, 템플릿에 선언된 `props`는 자동으로 노출됩니다.
+`defineProps`는 `<script setup>` 내에서만 사용할 수 있는 컴파일 타임 매크로이며, 템플릿에 선언된 `props`는 자동으로 노출됩니다. (역자주: 컴파일러 매크로이기 때문에 개발 환경 설정에 따라 lint 오류나 경고가 나올수 있습니다)
 그리고 `defineProps`는 컴포넌트에 전달된 모든 `props`를 객체로 반환하므로, 필요한 경우 JavaScript에서 접근할 수 있습니다:
 
 ```js
