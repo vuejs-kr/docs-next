@@ -261,6 +261,12 @@ Vue가 `v-for`로 렌더링된 리스트를 업데이트할 때, 기본적으로
 
 이러한 기본동작은 효율적이지만, **리스트 렌더링 출력이 하위 컴포넌트 상태 또는 임시 DOM 상태(예: 양식 입력 값)에 의존하지 않는 경우에만 유효**합니다.
 
+:::tip 역자주 
+DOM Node의 위치가 변경되면 DOM Tree구조가 변경 되었기 때문에 Render Tree를 재구성한후에, 재 구성된 Node들의 위치,크기,깊이등을 다시 계산하는 Reflow 과정을 수행하고, DOM Node를 다시 그려 내는 Repaint 과정을 거치게 됩니다. 만약 Node를 이동하지 않고, Node 내부의 컨텐츠만 변경한다면 렌더 트리 재구성이나, Reflow를 수행하지 않고, 해당 Node만 Repaint 하면 되기 때문에 효율적입니다. 
+
+참고: [Render-tree Construction, Layout, and Paint](https://web.dev/critical-rendering-path-render-tree-construction/)
+:::
+
 Vue가 각 노드의 ID를 추적하고 기존 엘리먼트를 재사용하고 재정렬할 수 있도록 힌트를 제공하려면 각 항목에 대해 고유한 `key` 속성을 제공해야 합니다.
 
 ```vue-html
