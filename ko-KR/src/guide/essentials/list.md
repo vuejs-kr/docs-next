@@ -266,7 +266,7 @@ Vue가 각 노드의 ID를 추적하고 기존 엘리먼트를 재사용하고 �
 :::tip 역자주 
 DOM Node의 위치가 변경되면 DOM Tree구조가 변경 되었기 때문에 Render Tree를 재구성한후에, 재 구성된 Node들의 위치,크기,깊이등을 다시 계산하는 Reflow 과정을 수행하고, DOM Node를 다시 그려 내는 Repaint 과정을 거치게 됩니다. 만약 Node를 이동하지 않고 Node 내부의 컨텐츠만 변경한다면, 렌더 트리 재구성이나 Reflow를 생략하고 해당 Node를 Repaint하기 때문에 효율적입니다. 
 
-만약 하위 컴포넌트가 상태를 가진다면(예를 들어, Input 폼에 사용자가 값을 입력 해두었다면, 그 입력값을 지우면 안되기 때문에)가 있다면 해당 하위 컴포넌트를 재사용 할 수 없기 때문에, 이렇게 기존 DOM Node를 재사용하는 방법은 유효한 방법이 아닐 것 입니다. 
+만약 하위 컴포넌트가 상태를 가진다면(예를 들어, Input 폼에 사용자가 값을 입력 해두었다면, 그 입력값을 지우면 안되기 때문에) 해당 하위 컴포넌트를 재사용 할 수 없기 때문에, 이렇게 기존 DOM Node를 재사용하는 방법은 유효한 방법이 아닐 것 입니다. 
 
 참고: [Render-tree Construction, Layout, and Paint](https://web.dev/critical-rendering-path-render-tree-construction/)
 :::
