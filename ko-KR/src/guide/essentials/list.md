@@ -291,10 +291,7 @@ DOM Node의 위치가 변경되면 DOM Tree구조가 변경 되었기 때문에 
 [객체에 `v-for` 사용하기](#객체에-v-for-사용하기)에서 언급하는 두 번째 에일리어스인 key와 혼동해서는 안 됩니다.
 :::
 
-반복된 DOM 컨텐츠가 단순하지 않거나, 의도적으로 성능을 위해 기본 동작에 의존하는 경우가 아니라면, `v-for`는 `key` 속성과 함께 사용하는 것을 권장합니다.
-
-[comment]: <> (스타일 가이드 페이지 오픈시 위 문장에서 권장이라는 단어는 아래 주석과 같이 링크로 교체 필요)
-[comment]: <> ([권장]&#40;/style-guide/rules-essential.html#use-keyed-v-for&#41;)
+반복되는 DOM 콘텐츠가 단순하거나(컴포넌트도 없고, 상태를 가지는 DOM 앨리먼트도 없을때), 의도적으로 기본 리스트 렌더링 동작을 통해 성능 향샹을 꾀하는 경우가 아니라면, 가능한 한 언제나 `v-for`는 `key` 속성과 함께 사용하는 것을 [권장합니다](/style-guide/rules-essential.html#use-keyed-v-for). 
 
 `key`에는 문자열, 숫자, 심볼 형식의 값만 바인딩해야 합니다.
 `key` 속성의 자세한 사용법은 [`key` API 문서](/api/built-in-special-attributes.html#key)를 참조하세요.
