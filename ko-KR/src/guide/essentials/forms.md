@@ -468,6 +468,4 @@ export default {
 HTML의 기본 제공되는 인풋 유형이 항상 요구 사항을 충족하는 것은 아닙니다.
 다행히 Vue 컴포넌트를 사용하면 완전히 사용자 정의된 동작으로 재사용 가능한 인풋을 빌드할 수 있습니다.
 `v-model`은 이러한 인풋에서도 작동합니다!
-자세한 내용은 컴포넌트 가이드에서 [`v-model`과 함께 사용](/guide/components/events.html#usage-with-v-model)에 대해 읽어보세요.
-
-[comment]: <> (guide/components 문서 번역 후 링크 재확인 필요)
+자세한 내용은 컴포넌트 가이드에서 [`v-model`과 함께 사용](/guide/components/events.html#v-model과-함께-사용하기)에 대해 읽어보세요.
