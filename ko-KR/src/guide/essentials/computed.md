@@ -134,7 +134,6 @@ const publishedBooksMessage = computed(() => {
 일반 ref와 유사하게 계산된 결과를 `publishedBooksMessage.value`로 접근할 수 있습니다.
 계산된 ref는 템플릿에서 자동으로 언래핑되므로, 템플릿 표현식에서 `.value` 없이 참조할 수 있습니다.
 
-A computed property automatically tracks its reactive dependencies. Vue is aware that the computation of `publishedBooksMessage` depends on `author.books`, so it will update any bindings that depend on `publishedBooksMessage` when `author.books` changes.
 계산된 속성은 종속된 반응형을 자동으로 추적합니다.
 Vue는 `publishedBooksMessage`의 값이 `author.books`에 의존한다는 것을 알고 있으므로,
 `author.books`가 변경되면 `publishedBooksMessage`를 바인딩해 의존하는 모든 것을 업데이트합니다.
@@ -205,7 +204,6 @@ const now = computed(() => Date.now())
 
 이와 반대로 메서드 호출은 **리렌더링이 발생할 때마다 항상 함수를 실행**합니다.
 
-Why do we need caching? Imagine we have an expensive computed property `list`, which requires looping through a huge array and doing a lot of computations. Then we may have other computed properties that in turn depend on `list`. Without caching, we would be executing `list`’s getter many more times than necessary! In cases where you do not want caching, use a method call instead.
 캐싱이 필요한 이유는 무엇일까요?
 거대한 배열을 루프 하며 많은 계산을 해야 하는 값비싼 비용의 `list` 속성이 있다고 가정해봅시다.
 그리고 `list`에 의존하는 또 다른 계산된 속성이 있을 수 있습니다.
@@ -214,7 +212,6 @@ Why do we need caching? Imagine we have an expensive computed property `list`, w
 
 ## 수정 가능한 계산된 속성
 
-Computed properties are by default getter-only. If you attempt to assign a new value to a computed property, you will receive a runtime warning. In the rare cases where you need a "writable" computed property, you can create one by providing both a getter and a setter:
 계산된 속성은 기본적으로 getter 전용입니다.
 계산된 속성에 새 값을 할당하려고 하면 런타임 애러가 발생합니다.
 드물게 "수정 가능한" 계산된 속성이 필요한 경우, getter와 setter를 모두 제공하여 속성을 만들 수 있습니다.
