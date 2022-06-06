@@ -146,7 +146,6 @@ data() {
 
 이러한 표현식은 현재 컴포넌트 인스턴스의 데이터 범위에서 JavaScript로 평가됩니다.
 
-In Vue templates, JavaScript expressions can be used in the following positions:
 Vue 템플릿에서 JavaScript 표현식은 다음과 같은 위치에 사용할 수 있습니다:
 
 - 이중 중괄호(텍스트 보간법) 내부
@@ -256,7 +255,6 @@ Vue는 위에서 소개한 `v-html`과 `v-bind`를 포함하여 [빌트인 지�
 <a @[eventName]="doSomething">
 ```
 
-In this example, when `eventName`'s value is `"focus"`, `v-on:[eventName]` will be equivalent to `v-on:focus`.
 이 예에서 `eventName`의 값이 `"focus"`인 경우, `v-on:[eventName]`은 `v-on:focus`와 같습니다.
 
 #### 동적인 인수 값 제약 조건
@@ -267,7 +265,6 @@ In this example, when `eventName`'s value is `"focus"`, `v-on:[eventName]` will 
 
 #### 동적인 인수 문법 제약 조건
 
-Dynamic argument expressions have some syntax constraints because certain characters, such as spaces and quotes, are invalid inside HTML attribute names. For example, the following is invalid:
 동적인 인수 표현식에는 공백 및 따옴표와 같은 특정 문자가 HTML 속성 이름 내에서 유효하지 않기 때문에 문법에 일부 제약 조건이 있습니다.
 예를 들어 다음은 유효하지 않습니다:
 
