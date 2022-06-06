@@ -207,11 +207,11 @@ export const sidebar = {
       text: '재사용성',
       items: [
         {
-          text: '조합하기',
+          text: '구성화',
           link: '/guide/reusability/composables'
         },
         {
-          text: '커스텀 디렉티브(Custom Directives)',
+          text: '커스텀 지시문',
           link: '/guide/reusability/custom-directives'
         },
         { text: '플러그인', link: '/guide/reusability/plugins' }
