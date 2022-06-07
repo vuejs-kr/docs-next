@@ -113,14 +113,14 @@ TypeScript 및 테스트 지원과 같은 여러 선택적 기능에 대한 프�
 </script>
 ```
 
-위의 예는 모든 API가 글로벌 변수 `Vue` 내에 노출되는 Vue의 글로벌 빌드를 사용합니다.
+위의 예는 모든 API가 전역 변수 `Vue` 내에 노출되는 Vue의 전역 빌드를 사용합니다.
 예를 들어 `ref` API를 사용하려면 다음과 같이 해야합니다:
 
 ```js
 const { createApp, ref } = Vue
 ```
 
-글로벌 빌드가 작동하는 동안 일관성을 위해 문서의 나머지 부분에서 주로 [ES 모듈](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) 문법을 사용합니다.
+전역 빌드가 작동하는 동안 일관성을 위해 문서의 나머지 부분에서 주로 [ES 모듈](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) 문법을 사용합니다.
 네이티브 ES 모듈에서 Vue를 사용하려면 HTML을 아래와 같이 사용하십시오:
 
 ```html

@@ -105,7 +105,7 @@ Vue는 해당 콘텐츠를 템플릿 소스로 사용합니다.
 [예제](/examples/) 섹션은 두 시나리오 모두에서 컴포넌트 사용을 보여줍니다.
 :::
 
-하위 컴포넌트를 사용하려면 상위 컴포넌트에서 가져와야 합니다.
+자식 컴포넌트를 사용하려면 부모 컴포넌트에서 가져와야 합니다.
 파일 안에 `ButtonCounter.vue`라는 카운터 컴포넌트를 배치했다고 가정하면, 해당 컴포넌트 파일의 기본 내보내기가 노출됩니다:
 
 <div class="options-api">
@@ -122,7 +122,7 @@ export default {
 </script>
 
 <template>
-  <h1>아래에 하위 컴포넌트가 있습니다.</h1>
+  <h1>아래에 자식 컴포넌트가 있습니다.</h1>
   <ButtonCounter />
 </template>
 ```
@@ -140,7 +140,7 @@ import ButtonCounter from './ButtonCounter.vue'
 </script>
 
 <template>
-  <h1>아래에 하위 컴포넌트가 있습니다.</h1>
+  <h1>아래에 자식 컴포넌트가 있습니다.</h1>
   <ButtonCounter />
 </template>
 ```
@@ -149,13 +149,13 @@ import ButtonCounter from './ButtonCounter.vue'
 
 </div>
 
-컴포넌트를 글로벌로 등록하면, 가져오기(import) 없이 지정된 앱의 모든 곳에서 컴포넌트를 사용할 수 있습니다.
-글로벌 및 로컬 등록의 장단점은 [컴포넌트 등록](/guide/components/registration.html) 섹션에서 설명합니다.
+컴포넌트를 전역으로 등록하면, 가져오기(import) 없이 지정된 앱의 모든 곳에서 컴포넌트를 사용할 수 있습니다.
+전역 및 로컬 등록의 장단점은 [컴포넌트 등록](/guide/components/registration.html) 섹션에서 설명합니다.
 
 컴포넌트는 원하는 만큼 재사용할 수 있습니다:
 
 ```vue-html
-<h1>여기에 많은 하위 컴포넌트가 있습니다!</h1>
+<h1>여기에 많은 자식 컴포넌트가 있습니다!</h1>
 <ButtonCounter />
 <ButtonCounter />
 <ButtonCounter />
@@ -175,7 +175,7 @@ import ButtonCounter from './ButtonCounter.vue'
 버튼을 클릭할 때 각 버튼은 독립적인 `count`를 유지합니다.
 컴포넌트를 사용할 때마다 해당 컴포넌트의 새 **인스턴스**가 생성되기 때문입니다.
 
-SFC에서는 네이티브 HTML 엘리먼트와 구별하기 위해 하위 컴포넌트에 `PascalCase` 태그 이름을 사용하는 것이 좋습니다.
+SFC에서는 네이티브 HTML 엘리먼트와 구별하기 위해 자식 컴포넌트에 `PascalCase` 태그 이름을 사용하는 것이 좋습니다.
 기본 HTML 태그 이름은 대소문자를 구분하지 않지만, Vue의 SFC는 컴파일된 포멧으로 대소문자를 구분하여 태그 이름을 사용할 수 있습니다.
 또한 `/>`를 사용하여 태그를 닫을 수 있습니다.
 
@@ -268,7 +268,7 @@ export default {
 <BlogPost title="Vue가 재미있는 이유" />
 ```
 
-그러나 일반적인 앱에서는 상위 컴포넌트에 다음과 같은 게시물 배열이 있을 수 있습니다:
+그러나 일반적인 앱에서는 부모 컴포넌트에 다음과 같은 게시물 배열이 있을 수 있습니다:
 
 <div class="options-api">
 
@@ -332,7 +332,7 @@ const posts = ref([
 `<BlogPost>` 컴포넌트를 개발할 때 일부 기능은 상위 항목과 다시 통신해야 할 수 있습니다.
 예를 들어, 페이지의 나머지 부분은 기본 크기로 유지하면서, 블로그 게시물의 텍스트를 확대하는 접근성 기능을 포함하기로 결정할 수 있습니다.
 
-상위 컴포넌트에서 `postFontSize` <span class="options-api">데이터 속성을</span><span class="composition-api">ref를</span> 추가하여 이 기능을 지원할 수 있습니다:
+부모 컴포넌트에서 `postFontSize` <span class="options-api">데이터 속성을</span><span class="composition-api">ref를</span> 추가하여 이 기능을 지원할 수 있습니다:
 
 <div class="options-api">
 
@@ -387,7 +387,7 @@ const postFontSize = ref(1)
 버튼은 현재 아무 작업도 수행하지 않습니다.
 버튼을 클릭하여 모든 게시물의 텍스트를 확대해야 한다는 사실을 상위에 알리고 싶습니다.
 이 문제를 해결하기 위해 컴포넌트 인스턴스는 사용자 지정 이벤트 시스템을 제공합니다.
-상위 컴포넌트는 네이티브 DOM 이벤트와 마찬가지로 `v-on` 또는 `@`을 사용하여 하위 컴포넌트 인스턴스의 모든 이벤트를 수신하도록 선택할 수 있습니다:
+부모 컴포넌트는 네이티브 DOM 이벤트와 마찬가지로 `v-on` 또는 `@`을 사용하여 자식 컴포넌트 인스턴스의 모든 이벤트를 수신하도록 선택할 수 있습니다:
 
 ```vue-html{3}
 <BlogPost
@@ -396,7 +396,7 @@ const postFontSize = ref(1)
  />
 ```
 
-그런 다음 하위 컴포넌트는 빌트인 [**`$emit`** 메서드](/api/component-instance.html#emit)를 호출하고 이벤트 이름을 전달하여 자체적으로 이벤트를 생성할 수 있습니다:
+그런 다음 자식 컴포넌트는 빌트인 [**`$emit`** 메서드](/api/component-instance.html#emit)를 호출하고 이벤트 이름을 전달하여 자체적으로 이벤트를 생성할 수 있습니다:
 
 ```vue{5}
 <!-- BlogPost.vue의 <script> 생략 -->
@@ -408,7 +408,7 @@ const postFontSize = ref(1)
 </template>
 ```
 
-`@enlarge-text="postFontSize += 0.1"` 리스너 덕분에 상위 컴포넌트는 이벤트를 수신하고 `postFontSize` 값을 업데이트합니다.
+`@enlarge-text="postFontSize += 0.1"` 리스너 덕분에 부모 컴포넌트는 이벤트를 수신하고 `postFontSize` 값을 업데이트합니다.
 
 <div class="options-api">
 
@@ -449,7 +449,7 @@ defineEmits(['enlarge-text'])
 </div>
 
 이것은 컴포넌트가 내보내는 모든 이벤트를 문서화하고 선택적으로 [유효성 검사](/guide/components/events.html#이벤트-유효성-검사)를 합니다.
-또한 Vue가 하위 컴포넌트의 루트 엘리먼트에 암시적으로 네이티브 리스너가 적용되는 것을 방지할 수 있습니다.
+또한 Vue가 자식 컴포넌트의 루트 엘리먼트에 암시적으로 네이티브 리스너가 적용되는 것을 방지할 수 있습니다.
 
 <div class="composition-api">
 

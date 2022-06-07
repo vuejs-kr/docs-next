@@ -243,7 +243,7 @@ Registers a hook to be called right before a component instance is to be unmount
 
 Registers a hook to be called when an error propagating from a descendent component has been captured.
 
-하위 컴포넌트에서 에러가 전파되었다면 호출됩니다. 
+자식 컴포넌트에서 에러가 전파되었다면 호출됩니다. 
 
 - **Type**
 

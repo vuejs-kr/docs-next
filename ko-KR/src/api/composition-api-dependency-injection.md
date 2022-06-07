@@ -8,7 +8,7 @@
 
 Provides a value that can be injected by descendent components.
 
-하위 컴포넌트에 값을 주입합니다. 
+자식 컴포넌트에 값을 주입합니다. 
 
 - **Type**
 
@@ -63,7 +63,7 @@ Provides a value that can be injected by descendent components.
 
 Injects a value provided by an ancestor component or the application (via `app.provide()`).
 
-상위 컴포넌트 또는 애플리케이션(`app.provide()`을 통해)에서 제공된 값을 주입 받는다.
+부모 컴포넌트 또는 애플리케이션(`app.provide()`을 통해)에서 제공된 값을 주입 받는다.
 
 - **Type**
 
@@ -109,7 +109,7 @@ Injects a value provided by an ancestor component or the application (via `app.p
 
   Assuming a parent component has provided values as shown in the previous `provide()` example:
 
-  상위 컴포넌트가 이전 `provide()` 예제와 같이 값을 제공했다고 가정합니다:
+  부모 컴포넌트가 이전 `provide()` 예제와 같이 값을 제공했다고 가정합니다:
 
 
 

@@ -258,7 +258,7 @@ Called after the component has been unmounted.
 
 Called when an error propagating from a descendent component has been captured.
 
-하위 컴포넌트에서 에러가 전파되었다면 호출됩니다. 
+자식 컴포넌트에서 에러가 전파되었다면 호출됩니다. 
 
 
 - **Type**

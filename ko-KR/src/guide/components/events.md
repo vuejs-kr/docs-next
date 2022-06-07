@@ -410,7 +410,7 @@ const value = computed({
 <MyComponent v-model:title="bookTitle" />
 ```
 
-이 경우 하위 컴포넌트는 `title` prop을 예상하고 `update:title` 이벤트를 내보내 상위 값을 업데이트해야 합니다:
+이 경우 자식 컴포넌트는 `title` prop을 예상하고 `update:title` 이벤트를 내보내 상위 값을 업데이트해야 합니다:
 
 <div class="composition-api">
 

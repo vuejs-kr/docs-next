@@ -131,7 +131,7 @@ export default {
 
 - <span class="composition-api"><code>onActivated</code></span> <span class="options-api"><code>activated</code></span> 는 마운트 시에도 호출되고 <span class="composition-api"><code>onDeactivated</code></span> 는 마운트 해제 시 <span class="options-api"><code>deactivated</code></span> 됩니다.
 
-- 두 훅 모두 `<KeepAlive>` 에 의해 캐시된 루트 컴포넌트뿐만 아니라 캐시된 트리의 하위 컴포넌트에서도 작동합니다.
+- 두 훅 모두 `<KeepAlive>` 에 의해 캐시된 루트 컴포넌트뿐만 아니라 캐시된 트리의 자식 컴포넌트에서도 작동합니다.
 
 ---
 

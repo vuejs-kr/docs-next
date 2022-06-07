@@ -17,7 +17,7 @@
 위의 구문은 `isActive` 데이터 속성의 [truthiness](https://developer.mozilla.org/en-US/docs/Glossary/Truthy)에 의해 `active` 클래스의 존재 여부가 결정됨을 의미합니다.
 
 객체에 더 많은 필드를 사용하여 여러 클래스를 토글할 수 있습니다.
-또한 `:class` 지시문은 일반 `class` 속성과 공존할 수도 있습니다.
+또한 `:class` 디렉티브는 일반 `class` 속성과 공존할 수도 있습니다.
 따라서 다음과 같은 상황이 주어지고:
 
 <div class="composition-api">
