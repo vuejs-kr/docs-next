@@ -211,7 +211,7 @@ export const sidebar = {
           link: '/guide/reusability/composables'
         },
         {
-          text: '커스텀 지시문',
+          text: '커스텀 디렉티브',
           link: '/guide/reusability/custom-directives'
         },
         { text: '플러그인', link: '/guide/reusability/plugins' }
