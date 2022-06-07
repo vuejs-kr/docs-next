@@ -28,7 +28,7 @@ const myPlugin = {
 
 플러그인에 대해 엄격하게 정의된 범위는 없지만 플러그인이 유용한 일반적인 시나리오는 다음과 같습니다:
 
-1. [`app.component()`](/api/application.html#app-component) 및 [`app.directive()`](/api/application.html#app-directive)를 사용하여 하나 이상의 전역 컴포넌트 또는 커스텀 지시문을 등록합니다.
+1. [`app.component()`](/api/application.html#app-component) 및 [`app.directive()`](/api/application.html#app-directive)를 사용하여 하나 이상의 전역 컴포넌트 또는 커스텀 디렉티브를 등록합니다.
 
 2. [`app.provide()`](/api/application.html#app-provide)를 호출하여 앱 전체에 리소스를 [주입 가능](/guide/components/provide-inject.html)하게 만듭니다.
 
