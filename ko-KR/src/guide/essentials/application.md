@@ -92,7 +92,7 @@ app.mount('#app')
 ## 앱 환경설정
 
 앱 인스턴스는 몇 가지 앱 레벨의 옵션을 구성할 수 있는 `.config` 객체를 노출합니다.
-예를 들어 모든 하위 컴포넌트에서 애러를 캡처하는 앱 레벨의 애러 핸들러를 정의합니다.
+예를 들어 모든 자식 컴포넌트에서 애러를 캡처하는 앱 레벨의 애러 핸들러를 정의합니다.
 
 ```js
 app.config.errorHandler = (err) => {
@@ -116,7 +116,7 @@ app.component('TodoDeleteButton', TodoDeleteButton)
 ## 멀티 앱 인스턴스
 
 앱 인스턴스는 동일한 페이지 내 하나로 제한되지 않습니다.
-`createApp` API를 사용하면 여러 Vue 앱이 동일한 페이지에 공존할 수 있으며, 각각은 구성 및 글로벌 자산에 대한 고유한 범위를 갖습니다.
+`createApp` API를 사용하면 여러 Vue 앱이 동일한 페이지에 공존할 수 있으며, 각각은 구성 및 전역 자산에 대한 고유한 범위를 갖습니다.
 
 ```js
 const app1 = createApp({

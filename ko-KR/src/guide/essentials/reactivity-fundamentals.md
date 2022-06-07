@@ -235,7 +235,7 @@ export default {
 그러나 DOM 업데이트는 동기적으로 적용되지 않는다는 점에 유의해야 합니다.
 대신 Vue는 업데이트 주기의 "다음 틱(tick)"까지 버퍼링하여 상태 변경을 여러 번 수행했어도 각 컴포넌트가 한 번만 업데이트되도록 합니다.
 
-상태 변경 후, DOM 업데이트가 완료될 때까지 기다리려면 [nextTick()](/api/general.html#nexttick) 글로벌 API를 사용할 수 있습니다:
+상태 변경 후, DOM 업데이트가 완료될 때까지 기다리려면 [nextTick()](/api/general.html#nexttick) 전역 API를 사용할 수 있습니다:
 
 <div class="composition-api">
 

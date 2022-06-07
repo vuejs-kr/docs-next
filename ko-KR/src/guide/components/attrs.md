@@ -34,7 +34,7 @@ outline: deep
 
 ### `class`와 `style`의 병합
 
-하위 컴포넌트의 루트 엘리먼트에 이미 `class` 또는 `style` 속성이 있는 경우, 상위 엘리먼트에서 상속된 `class` 또는 `style` 값과 병합됩니다.
+자식 컴포넌트의 루트 엘리먼트에 이미 `class` 또는 `style` 속성이 있는 경우, 상위 엘리먼트에서 상속된 `class` 또는 `style` 값과 병합됩니다.
 이전 예에서 `<MyButton>`의 템플릿을 다음과 같이 변경한다면:
 
 ```vue-html
@@ -57,7 +57,7 @@ outline: deep
 ```
 
 `click` 리스너는 `<MyButton>`의 루트 엘리먼트인 `<button>` 엘리먼트에 추가됩니다.
-`<button>`을 클릭하면 상위 컴포넌트의 `onClick` 메소드가 트리거됩니다.
+`<button>`을 클릭하면 부모 컴포넌트의 `onClick` 메소드가 트리거됩니다.
 `<button>`에 이미 `v-on`으로 바인딩된 `click` 리스너가 있는 경우 두 리스너가 모두 트리거됩니다.
 
 ### 중첩된 컴포넌트 상속

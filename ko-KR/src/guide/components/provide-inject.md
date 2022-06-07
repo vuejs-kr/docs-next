@@ -5,7 +5,7 @@
 
 ## Prop 드릴링
 
-일반적으로 상위 컴포넌트에서 하위 컴포넌트로 데이터를 전달해야 할 때 [props](/guide/components/props)를 사용합니다.
+일반적으로 부모 컴포넌트에서 자식 컴포넌트로 데이터를 전달해야 할 때 [props](/guide/components/props)를 사용합니다.
 그러나 큰 컴포넌트 트리가 있고 깊이 중첩된 컴포넌트에 먼 조상 컴포넌트의 무언가가 필요한 경우를 상상해 보십시오.
 props만 있으면 전체 부모 체인에 동일한 prop을 전달해야 합니다:
 
@@ -18,7 +18,7 @@ props만 있으면 전체 부모 체인에 동일한 prop을 전달해야 합니
 이것을 "prop 드릴링"이라고 하며 정말 재미가 없습니다.
 
 우리는 `provide`와 `inject`로 props 드릴링을 해결할 수 있습니다.
-상위 컴포넌트는 모든 하위 컴포넌트에 대한 **종속성 제공자** 역할을 할 수 있습니다.
+부모 컴포넌트는 모든 자식 컴포넌트에 대한 **종속성 제공자** 역할을 할 수 있습니다.
 하위 트리의 모든 컴포넌트는 깊이에 관계없이 상위 체인의 컴포넌트에서 제공(provide)하는 종속성을 **주입**(inject)할 수 있습니다.
 
 ![제공/주입 구성표](./images/provide-inject.png)
@@ -54,7 +54,7 @@ export default {
 
 `provide()` 함수는 두 개의 인자를 허용합니다.
 첫 번째 인자는 **주입 키**라고 하며 문자열 또는 `Symbol`이 될 수 있습니다.
-주입 키는 하위 컴포넌트에서 주입할 원하는 값을 조회하는 데 사용됩니다.
+주입 키는 자식 컴포넌트에서 주입할 원하는 값을 조회하는 데 사용됩니다.
 단일 컴포넌트는 다른 값을 제공하기 위해 다른 주입 키를 사용하여 `provide()`를 여러 번 호출할 수 있습니다.
 
 두 번째 인자는 제공되는 값입니다.
@@ -67,7 +67,7 @@ const count = ref(0)
 provide('key', count)
 ```
 
-반응형 값을 제공하면, 제공된 값을 사용하는 하위 컴포넌트가 제공자 컴포넌트에 대한 반응형 연결을 설정할 수 있습니다.
+반응형 값을 제공하면, 제공된 값을 사용하는 자식 컴포넌트가 제공자 컴포넌트에 대한 반응형 연결을 설정할 수 있습니다.
 
 </div>
 
@@ -127,7 +127,7 @@ app.provide(/* 키 */ 'message', /* 값 */ '안녕!')
 
 <div class="composition-api">
 
-상위 컴포넌트에서 제공하는 데이터를 주입하려면 [`inject()`](/api/composition-api-dependency-injection.html#inject) 함수를 사용하세요:
+부모 컴포넌트에서 제공하는 데이터를 주입하려면 [`inject()`](/api/composition-api-dependency-injection.html#inject) 함수를 사용하세요:
 
 ```vue
 <script setup>
@@ -159,7 +159,7 @@ export default {
 
 <div class="options-api">
 
-상위 컴포넌트에서 제공하는 데이터를 주입하려면 [`inject`](/api/options-composition.html#inject) 옵션을 사용하세요:
+부모 컴포넌트에서 제공하는 데이터를 주입하려면 [`inject`](/api/options-composition.html#inject) 옵션을 사용하세요:
 
 ```js
 export default {

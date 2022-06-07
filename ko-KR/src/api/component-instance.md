@@ -182,7 +182,7 @@ The root component instance of the current component tree. If the current instan
 
 An object representing the [slots](/guide/components/slots.html) passed by the parent component.
 
-상위 컴포넌트에 의해 전달된 [슬롯](/guide/components/slots.html)을 나타내는 개체입니다.
+부모 컴포넌트에 의해 전달된 [슬롯](/guide/components/slots.html)을 나타내는 개체입니다.
 
 
 - **Type**
@@ -455,7 +455,7 @@ Instance-bound version of the global [`nextTick()`](./general.html#nexttick).
   The only difference from the global version of `nextTick()` is that the callback passed to `this.$nextTick()` will have its `this` context bound to the current component instance.
 
 
-  `nextTick()`의 글로벌 버전과 유일한 차이점은 `this.$nextTick()`에 전달된 콜백이 현재 컴포넌트 인스턴스에 바인딩된 `this` 컨텍스트를 갖는다는 것입니다.
+  `nextTick()`의 전역 버전과 유일한 차이점은 `this.$nextTick()`에 전달된 콜백이 현재 컴포넌트 인스턴스에 바인딩된 `this` 컨텍스트를 갖는다는 것입니다.
 
 
 - **See also:** [`nextTick()`](./general.html#nexttick)

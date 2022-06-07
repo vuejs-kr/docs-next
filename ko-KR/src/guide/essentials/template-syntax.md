@@ -23,11 +23,11 @@ Vue는 컴포넌트 인스턴스의 데이터를 서술적으로 렌더링된 DO
 ## HTML 출력
 
 이중 중괄호는 데이터를 HTML이 아닌 일반 텍스트로 해석합니다.
-실제 HTML을 출력하려면 [`v-html` 지시문](/api/built-in-directives.html#v-html)을 사용해야 합니다:
+실제 HTML을 출력하려면 [`v-html` 디렉티브](/api/built-in-directives.html#v-html)을 사용해야 합니다:
 
 ```vue-html
 <p>텍스트 보간법 사용: {{ rawHtml }}</p>
-<p>v-html 지시문 사용: <span v-html="rawHtml"></span></p>
+<p>v-html 디렉티브 사용: <span v-html="rawHtml"></span></p>
 ```
 
 <script setup>
@@ -36,11 +36,11 @@ Vue는 컴포넌트 인스턴스의 데이터를 서술적으로 렌더링된 DO
 
 <div class="demo">
   <p>텍스트 보간법 사용: {{ rawHtml }}</p>
-  <p>v-html 지시문 사용: <span v-html="rawHtml"></span></p>
+  <p>v-html 디렉티브 사용: <span v-html="rawHtml"></span></p>
 </div>
 
-여기서 우리가 보고있는 `v-html`이라는 새로운 속성은 **지시문**이라고 합니다.
-지시문은 Vue에서 제공하는 특수한 속성임을 나타내기 위해 접두사 `v-`를 사용하며, 짐작했듯이 지시문은 렌더링된 DOM에 특별한 반응적 동작을 적용합니다.
+여기서 우리가 보고있는 `v-html`이라는 새로운 속성은 **디렉티브**라고 합니다.
+디렉티브는 Vue에서 제공하는 특수한 속성임을 나타내기 위해 접두사 `v-`를 사용하며, 짐작했듯이 디렉티브는 렌더링된 DOM에 특별한 반응적 동작을 적용합니다.
 여기서 우리가 설명하고자 하는 것은 "현재 활성화 상태인 인스턴스의 `rawHtml` 속성을 사용하여 이 엘리먼트 내부의 HTML을 최신 상태로 유지합니다."입니다.
 
 `span` 내부의 컨텐츠는 `rawHtml` 속성 값을 일반 HTML로 해석한 것으로 대체됩니다.
@@ -56,13 +56,13 @@ Vue는 문자열 기반 템플릿 엔진이 아니기 때문에 `v-html`을 사�
 ## 속성 바인딩
 
 이중 중괄호는 HTML 속성(attribute) 내에서 사용할 수 없습니다.
-대신 [`v-bind` 지시문](/api/built-in-directives.html#v-bind)을 사용하세요:
+대신 [`v-bind` 디렉티브](/api/built-in-directives.html#v-bind)를 사용하세요:
 
 ```vue-html
 <div v-bind:id="dynamicId"></div>
 ```
 
-`v-bind` 지시문은 엘리먼트의 `id` 속성을 컴포넌트의 `dynamicId` 속성과 동기화된 상태로 유지하도록 Vue에 지시합니다.
+`v-bind` 디렉티브는 엘리먼트의 `id` 속성을 컴포넌트의 `dynamicId` 속성과 동기화된 상태로 유지하도록 Vue에 지시합니다.
 바인딩된 값이 `null` 또는 `undefined`이면 엘리먼트의 속성이 제거된 상태로 랜더링 됩니다.
 
 ### 단축 문법
@@ -149,7 +149,7 @@ data() {
 Vue 템플릿에서 JavaScript 표현식은 다음과 같은 위치에 사용할 수 있습니다:
 
 - 이중 중괄호(텍스트 보간법) 내부
-- 모든 Vue 지시문 속성(`v-`로 시작하는 특수 속성) 내부
+- 모든 Vue 디렉티브 속성(`v-`로 시작하는 특수 속성) 내부
 
 ### 하나의 표현식만 가능
 
@@ -177,33 +177,33 @@ Vue 템플릿에서 JavaScript 표현식은 다음과 같은 위치에 사용할
 바인딩 표현식 내부에서 호출되는 함수는 컴포넌트가 업데이트될 때마다 호출되므로, 데이터를 변경 또는 비동기 작업을 트리거하는 등의 **부작용이 없어야 합니다**.
 :::
 
-### 제한된 글로벌 액세스
+### 제한된 전역 액세스
 
-템플릿 표현식은 샌드박스 처리되어 [제한된 글로벌 리스트](https://github.com/vuejs/core/blob/main/packages/shared/src/globalsWhitelist.ts#L3)에만 액세스할 수 있습니다.
-이 목록은 `Math` 및 `Date` 등 일반적으로 사용되는 기본 제공 글로벌 객체를 표시합니다.
+템플릿 표현식은 샌드박스 처리되어 [제한된 전역 리스트](https://github.com/vuejs/core/blob/main/packages/shared/src/globalsWhitelist.ts#L3)에만 액세스할 수 있습니다.
+이 목록은 `Math` 및 `Date` 등 일반적으로 사용되는 기본 제공 전역 객체를 표시합니다.
 
-리스트에 명시적으로 포함되지 않은 `window`와 같은 글로벌 속성은 템플릿 표현식에서 액세스할 수 없습니다.
-그러나 [`app.config.globalProperties`](/api/application.html#app-config-globalproperties)에 추가하여, Vue 내부의 모든 표현식에서 글로벌 속성에 액세스 할 수 있도록 명시적으로 정의할 수 있습니다.
+리스트에 명시적으로 포함되지 않은 `window`와 같은 전역 속성은 템플릿 표현식에서 액세스할 수 없습니다.
+그러나 [`app.config.globalProperties`](/api/application.html#app-config-globalproperties)에 추가하여, Vue 내부의 모든 표현식에서 전역 속성에 액세스 할 수 있도록 명시적으로 정의할 수 있습니다.
 
-## 지시문
+## 디렉티브
 
-`v-` 접두사가 있는 특수한 속성을 지시문이라 합입니다.
-Vue는 위에서 소개한 `v-html`과 `v-bind`를 포함하여 [빌트인 지시문](/api/built-in-directives.html)을 제공합니다.
+`v-` 접두사가 있는 특수한 속성을 디렉티브라 합입니다.
+Vue는 위에서 소개한 `v-html`과 `v-bind`를 포함하여 [빌트인 디렉티브](/api/built-in-directives.html)를 제공합니다.
 
-지시문 속성 값은 단일 JavaScript 표현식이어야 합니다(나중에 해당 섹션에서 설명할 `v-for`, `v-on` 및 `v-slot` 제외).
-지시문의 역할은 표현식 값이 변경될 때 DOM에 반응적으로 업데이트를 적용하는 것입니다.
+디렉티브 속성 값은 단일 JavaScript 표현식이어야 합니다(나중에 해당 섹션에서 설명할 `v-for`, `v-on` 및 `v-slot` 제외).
+디렉티브의 역할은 표현식 값이 변경될 때 DOM에 반응적으로 업데이트를 적용하는 것입니다.
 [`v-if`](/api/built-in-directives.html#v-if)를 예로 들어 보겠습니다.
 
 ```vue-html
 <p v-if="seen">이제 이것을 볼 수 있습니다.</p>
 ```
 
-여기서 `v-if` 지시문은 `seen`의 불리언(truthy/falsy) 값을 기반으로 `<p>` 엘리먼트를 삽입 또는 제거합니다.
+여기서 `v-if` 디렉티브는 `seen`의 불리언(truthy/falsy) 값을 기반으로 `<p>` 엘리먼트를 삽입 또는 제거합니다.
 
 ### 인수
 
-일부 지시문은 지시문 뒤에 콜론(`:`)으로 표시되는 "인수"를 사용할 수 있습니다.
-예를 들어 `v-bind` 지시문은 HTML 속성을 반응적으로 업데이트하는 데 사용됩니다:
+일부 디렉티브는 디렉티브 뒤에 콜론(`:`)으로 표시되는 "인수"를 사용할 수 있습니다.
+예를 들어 `v-bind` 디렉티브는 HTML 속성을 반응적으로 업데이트하는 데 사용됩니다:
 
 ```vue-html
 <a v-bind:href="url"> ... </a>
@@ -212,10 +212,10 @@ Vue는 위에서 소개한 `v-html`과 `v-bind`를 포함하여 [빌트인 지�
 <a :href="url"> ... </a>
 ```
 
-여기서 `href`는 `v-bind` 지시문의 인수로서, 엘리먼트의 속성인 `href`에 `url`의 값을 바인딩한 것입니다.
+여기서 `href`는 `v-bind` 디렉티브의 인수로서, 엘리먼트의 속성인 `href`에 `url`의 값을 바인딩한 것입니다.
 간단하게 인수 앞의 `v-bind:`는 `:`로 줄여 쓸 수 있습니다.
 
-또 다른 예로는 DOM 이벤트를 수신하는 `v-on` 지시문입니다:
+또 다른 예로는 DOM 이벤트를 수신하는 `v-on` 디렉티브입니다:
 
 ```vue-html
 <a v-on:click="doSomething"> ... </a>
@@ -224,13 +224,13 @@ Vue는 위에서 소개한 `v-html`과 `v-bind`를 포함하여 [빌트인 지�
 <a @click="doSomething"> ... </a>
 ```
 
-`v-on`은 단축 문법이 있는 몇 안 되는 지시문 중 하나이며 `@`로 줄여 쓸 수 있습니다.
+`v-on`은 단축 문법이 있는 몇 안 되는 디렉티브 중 하나이며 `@`로 줄여 쓸 수 있습니다.
 여기서 `click`은 인수로서 수신할 이벤트 이름입니다.
 이벤트 처리에 대해서는 나중에 더 자세히 설명하겠습니다.
 
 ### 동적인 인수
 
-지시문의 인수를 대괄호로 감싸서 JavaScript 표현식으로 사용할 수도 있습니다:
+디렉티브의 인수를 대괄호로 감싸서 JavaScript 표현식으로 사용할 수도 있습니다:
 
 ```vue-html
 <!--
@@ -287,8 +287,8 @@ DOM 내 템플릿(HTML 파일에 직접 작성된 템플릿)을 사용할 때, �
 
 ### 수식어
 
-수식어는 점(`.`)으로 시작하는 특수한 접미사로, 지시문이 특별한 방식으로 바인딩되어야 함을 나타냅니다.
-예를 들어 `.prevent` 수식어는 트리거된 이벤트에서 `event.preventDefault()`를 호출하도록 `v-on` 지시문에 지시합니다.
+수식어는 점(`.`)으로 시작하는 특수한 접미사로, 디렉티브가 특별한 방식으로 바인딩되어야 함을 나타냅니다.
+예를 들어 `.prevent` 수식어는 트리거된 이벤트에서 `event.preventDefault()`를 호출하도록 `v-on` 디렉티브에 지시합니다.
 
 ```vue-html
 <form @submit.prevent="onSubmit">...</form>
@@ -296,9 +296,9 @@ DOM 내 템플릿(HTML 파일에 직접 작성된 템플릿)을 사용할 때, �
 
 추후 이러한 기능에 대해 찾아볼 때, [`v-on`](./event-handling.html#이벤트-수식어) 또는 [`v-model`](./forms.html#수식어) 전용의 다른 수식어에 대한 예제를 접할 수 있습니다.
 
-마지막으로 다음은 전체적인 지시문 문법을 시각화한 것입니다:
+마지막으로 다음은 전체적인 디렉티브 문법을 시각화한 것입니다:
 
-![지시문 문법 그래프](./images/directive.png)
+![디렉티브 문법 그래프](./images/directive.png)
 
 <!-- https://www.figma.com/file/BGWUknIrtY9HOmbmad0vFr/Directive -->
 <!-- https://www.figma.com/file/al5C8iirhnfOKZ6izKwDw4/Directive-(ko-kr) -->

@@ -126,7 +126,7 @@ Unmounts a mounted application instance, triggering the unmount lifecycle hooks 
 
 Provide a value that can be injected in all descendent components within the application.
 
-애플리케이션 내의 모든 하위 컴포넌트에 주입할 수 있는 값을 제공합니다.
+애플리케이션 내의 모든 자식 컴포넌트에 주입할 수 있는 값을 제공합니다.
 
 - **Type**
 
@@ -224,7 +224,7 @@ Registers a global component if passing both a name string and a component defin
 
 Registers a global custom directive if passing both a name string and a directive definition, or retrieves an already registered one if only the name is passed.
 
-이름 문자열과 지시문 정의를 모두 전달하는 경우 전역 사용자 정의 지시문을 등록하거나 이름만 전달된 경우 이미 등록된 지시문을 검색합니다.
+이름 문자열과 디렉티브 정의를 모두 전달하는 경우 전역 사용자 정의 디렉티브를 등록하거나 이름만 전달된 경우 이미 등록된 디렉티브를 검색합니다.
 
 
 - **Type**

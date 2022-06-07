@@ -24,7 +24,7 @@ const multiSelected = ref([])
   @input="event => text = event.target.value">
 ```
 
-`v-model` 지시문은 위의 내용을 다음과 같이 단순화하는 데 도움이 됩니다:
+`v-model` 디렉티브는 위의 내용을 다음과 같이 단순화하는 데 도움이 됩니다:
 
 ```vue-html
 <input v-model="text">

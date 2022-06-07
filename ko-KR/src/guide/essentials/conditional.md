@@ -7,8 +7,8 @@ const awesome = ref(true)
 
 ## `v-if`
 
-`v-if` 지시문은 조건부로 블록을 렌더링하는 데 사용됩니다.
-블록은 지시문 표현식이 truthy 값을 반환하는 경우에만 렌더링됩니다.
+`v-if` 디렉티브는 조건부로 블록을 렌더링하는 데 사용됩니다.
+블록은 디렉티브 표현식이 truthy 값을 반환하는 경우에만 렌더링됩니다.
 
 ```vue-html
 <h1 v-if="awesome">Vue는 정말 멋지죠!</h1>
@@ -16,7 +16,7 @@ const awesome = ref(true)
 
 ## `v-else`
 
-`v-else` 지시문을 사용하여 `v-if`에 대한 "else 블록"을 나타낼 수 있습니다:
+`v-else` 디렉티브를 사용하여 `v-if`에 대한 "else 블록"을 나타낼 수 있습니다:
 
 ```vue-html
 <button @click="awesome = !awesome">전환</button>
@@ -69,7 +69,7 @@ const awesome = ref(true)
 
 ## `<template>`에서 `v-if`
 
-`v-if`는 지시문이므로 단일 엘리먼트에 연결해야 합니다.
+`v-if`는 디렉티브이므로 단일 엘리먼트에 연결해야 합니다.
 하지만 둘 이상의 엘리먼트를 전환하려면 어떻게 해야 할까요?
 이 경우 보이지 않는 래퍼 역할을 하는 `<template>` 엘리먼트에 `v-if`를 사용할 수 있습니다.
 최종 렌더링된 결과에는 `<template>` 엘리먼트가 포함되지 않습니다.
@@ -86,7 +86,7 @@ const awesome = ref(true)
 
 ## `v-show`
 
-엘리먼트를 조건부로 표시하는 다른 옵션은 `v-show` 지시문입니다.
+엘리먼트를 조건부로 표시하는 다른 옵션은 `v-show` 디렉티브입니다.
 사용법은 대체로 동일합니다:
 
 ```vue-html
