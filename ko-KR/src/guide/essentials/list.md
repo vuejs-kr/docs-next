@@ -123,7 +123,7 @@ items.forEach((item, index) => {
 </li>
 ```
 
-`in` 대신 `of`를 구분 기호를 사용하여 JavaScript 반복문 문법처럼 사용할 수도 있습니다:
+`in` 대신 `of`를 구분 기호로 사용하여 JavaScript 반복문 문법처럼 사용할 수도 있습니다:
 
 ```vue-html
 <div v-for="item of items"></div>
