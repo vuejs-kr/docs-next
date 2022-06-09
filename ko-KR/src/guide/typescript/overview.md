@@ -132,7 +132,9 @@ export default defineComponent({
 })
 ```
 
-참고사항: [`defineComponent`를 위한 타입 테스트](https://github.com/vuejs/core/blob/main/test-dts/defineComponent.test-d.tsx)
+참고사항: 
+- [웹팩에서 트리쉐이킹](/api/general.html#note-on-webpack-treeshaking)
+- [`defineComponent`를 위한 타입 테스트](https://github.com/vuejs/core/blob/main/test-dts/defineComponent.test-d.tsx)
 
 :::tip 
 `defineComponent()` 는 일반 자바스크립트로 정의된 컴포넌트에 대한 타입 추론을 가능하게 합니다. 
