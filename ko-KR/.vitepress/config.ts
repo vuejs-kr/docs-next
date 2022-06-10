@@ -218,7 +218,7 @@ export const sidebar = {
       ]
     },
     {
-      text: '내장 컴포넌트',
+      text: '빌트인 컴포넌트',
       items: [
         { text: 'Transition', link: '/guide/built-ins/transition' },
         {
