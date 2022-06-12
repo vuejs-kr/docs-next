@@ -231,7 +231,7 @@ export const sidebar = {
       ]
     },
     {
-      text: '규모 키우기',
+      text: '확장하기',
       items: [
         { text: '싱글 파일 컴포넌트', link: '/guide/scaling-up/sfc' },
         { text: '툴', link: '/guide/scaling-up/tooling' },
