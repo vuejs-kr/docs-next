@@ -429,8 +429,6 @@ React에 대한 경험이 있다면 이것이 커스텀 React 훅과 매우 유�
 
 - [상태 관리](/guide/scaling-up/state-management.html): 여러 컴포넌트가 공유하는 상태를 관리하는 패턴입니다.
 
-- [테스팅 구성화](/guide/scaling-up/testing.html#testing-composables): 단위 테스트 구성화에 대한 팁.
-
-[comment]: <> (/guide/scaling-up/testing.md 번역 후 링크 수정 필요)
+- [테스팅 구성화](/guide/scaling-up/testing.html#구성화-테스트): 단위 테스트 구성화에 대한 팁.
 
 - [VueUse](https://vueuse.org/): 계속 증가하는 Vue 구성화 컬렉션입니다. 또한 소스 코드는 훌륭한 학습 자료입니다.
