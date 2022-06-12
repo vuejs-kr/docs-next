@@ -217,6 +217,4 @@ Props 전달() 및 이벤트 발신(emit)은 계속 동일한 방식으로 작�
 **관련 문서**
 
 - [`<Teleport>` API 참고](/api/built-in-components.html#teleport)
-- [SSR에서 텔레포트 핸들링](/guide/scaling-up/ssr.html#teleports)
-
-[comment]: <> (/guide/scaling-up/ssr.md 문서 번역 후 링크 수정 필요)
+- [SSR에서 텔레포트 핸들링](/guide/scaling-up/ssr.html#텔레포트)
