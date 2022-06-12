@@ -1,0 +1,1 @@
+import{_ as a,o as d,c as i,d as s}from"../app.ac1660ad.js";const r={},l={class:"repl-loading"},n=[s("div",{class:"lds-ring"},[s("div"),s("div"),s("div"),s("div")],-1),s("div",null,"Repl is loading...",-1)];var o=a(r,[["render",function(a,s){return d(),i("div",l,n)}]]);export{o as R};
