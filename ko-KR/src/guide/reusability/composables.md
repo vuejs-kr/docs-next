@@ -154,9 +154,7 @@ export function useMouse() {
 
 :::tip
 `useMouse()`를 호출하는 각 컴포넌트 인스턴스는 서로 간섭하지 않도록 `x`와 `y` 상태의 자체 복사본을 생성합니다.
-컴포넌트 간의 공유 상태를 관리하려면 [상태 관리하기](/guide/scaling-up/state-management.html) 장을 읽으십시오.
-
-[comment]: <> (/guide/scaling-up/state-management.md 번역 후 링크 수정 필요)
+컴포넌트 간의 공유 상태를 관리하려면 [상태 관리](/guide/scaling-up/state-management.html) 문서를 읽으십시오.
 :::
 
 ## 비동기 상태 예제
