@@ -242,7 +242,7 @@ export const sidebar = {
         },
         { text: '테스팅', link: '/guide/scaling-up/testing' },
         {
-          text: 'Server-Side Rendering (SSR)',
+          text: '서버 사이드 렌더링 (SSR)',
           link: '/guide/scaling-up/ssr'
         }
       ]
