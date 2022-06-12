@@ -234,7 +234,7 @@ export const sidebar = {
       text: '규모 키우기',
       items: [
         { text: '싱글 파일 컴포넌트', link: '/guide/scaling-up/sfc' },
-        { text: '도구', link: '/guide/scaling-up/tooling' },
+        { text: '툴', link: '/guide/scaling-up/tooling' },
         { text: '라우팅', link: '/guide/scaling-up/routing' },
         {
           text: '상태 관리',

@@ -71,9 +71,7 @@ TypeScript 및 테스트 지원과 같은 여러 선택적 기능에 대한 프�
 다음은 몇 가지 추가 팁입니다:
 
 - 권장되는 IDE는 [Visual Studio Code](https://code.visualstudio.com/) + [Volar extension](https://marketplace.visualstudio.com/items?itemName=Vue.volar)입니다.
-  다른 편집기를 사용하는 경우 [IDE 지원 섹션](/guide/scaling-up/tooling.html#ide-support)을 확인하세요.
-
-[comment]: <> (/guide/scaling-up/tooling.md 번역 후 링크 수정 필요)
+  다른 편집기를 사용하는 경우 [IDE 지원 섹션](/guide/scaling-up/tooling.html#ide-지원)을 확인하세요.
 
 - 백엔드 프레임워크와의 통합을 비롯한 자세한 도구 세부정보는 [도구 가이드](/guide/scaling-up/tooling.html)에서 설명합니다.
 
