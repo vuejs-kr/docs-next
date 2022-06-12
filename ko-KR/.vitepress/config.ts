@@ -233,8 +233,8 @@ export const sidebar = {
     {
       text: '확장하기',
       items: [
-        { text: '싱글 파일 컴포넌트 (SFC)', link: '/guide/scaling-up/sfc' },
-        { text: '도구', link: '/guide/scaling-up/tooling' },
+        { text: '싱글 파일 컴포넌트', link: '/guide/scaling-up/sfc' },
+        { text: '툴', link: '/guide/scaling-up/tooling' },
         { text: '라우팅', link: '/guide/scaling-up/routing' },
         {
           text: '상태 관리',
@@ -242,7 +242,7 @@ export const sidebar = {
         },
         { text: '테스팅', link: '/guide/scaling-up/testing' },
         {
-          text: 'Server-Side Rendering (SSR)',
+          text: '서버 사이드 렌더링 (SSR)',
           link: '/guide/scaling-up/ssr'
         }
       ]
