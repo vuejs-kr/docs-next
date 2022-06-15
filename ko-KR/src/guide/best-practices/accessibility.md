@@ -516,10 +516,10 @@ W3C의 WAI-ARIA는 동적 콘텐츠 및 고급 사용자 인터페이스 제어�
 
 넓은 범위의 장애가 있으며, 대략 4가지 범주로 나눌 수 있습니다.
 
-- _[Visual](https://webaim.org/articles/visual/)_ - 이러한 사용자는 스크린 리더, 화면 확대, 화면 대비 제어 또는 점자 표시를 사용하여 이점을 얻을 수 있습니다.
-- _[Auditory](https://webaim.org/articles/auditory/)_ - 이러한 사용자는 자막(captioning), 구술 기록(transcripts) 또는 수화 동영상의 이점을 얻을 수 있습니다.
-- _[Motor](https://webaim.org/articles/motor/)_ - 이러한 사용자는 다양한 [운동 장애 보조 기술](https://webaim.org/articles/motor/assistive)에서 이점을 얻을 수 있습니다: 음성 인식 소프트웨어, 시선 추적, 단일 스위치 액세스, 헤드 지팡이, 입으로 동작시키는 스위치(sip and puff switch), 대형 트랙볼 마우스, 적응형 키보드 또는 기타 보조 기술.
-- _[Cognitive](https://webaim.org/articles/cognitive/)_ - 이러한 사용자는 보충 미디어, 콘텐츠의 구조적 구성, 명확하고 간단한 쓰기에서 이점을 얻을 수 있습니다.
+- _[Visual](https://webaim.org/articles/visual/)_ - 이러한 사용자는 스크린 리더, 화면 확대, 화면 대비 제어 또는 점자 표시로부터 도움을 받을 수 있습니다.
+- _[Auditory](https://webaim.org/articles/auditory/)_ - 이러한 사용자는 자막(captioning), 구술 기록(transcripts) 또는 수화 동영상으로부터 도움을 받을 수 있습니다.
+- _[Motor](https://webaim.org/articles/motor/)_ - 이러한 사용자는 다양한 [운동 장애 보조 기술](https://webaim.org/articles/motor/assistive)로부터 도움을 받을 수 있습니다: 음성 인식 소프트웨어, 시선 추적, 단일 스위치 액세스, 헤드 지팡이, 입으로 동작시키는 스위치(sip and puff switch), 대형 트랙볼 마우스, 적응형 키보드 또는 기타 보조 기술.
+- _[Cognitive](https://webaim.org/articles/cognitive/)_ - 이러한 사용자는 보충 미디어, 콘텐츠의 구조적 구성, 명확하고 간단한 쓰기로부터 도움을 받을 수 있습니다.
 
 WebAim에서 다음 링크를 확인하여 사용자로부터 이해하십시오.
 
