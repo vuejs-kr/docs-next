@@ -1,30 +1,19 @@
 :::warning 현재 이 문서는 번역 작업이 진행중입니다
 :::
 
-
 # 접근성
-
-Web accessibility (also known as a11y) refers to the practice of creating websites that can be used by anyone — be that a person with a disability, a slow connection, outdated or broken hardware or simply someone in an unfavorable environment. For example, adding subtitles to a video would help both your deaf and hard-of-hearing users and your users who are in a loud environment and can't hear their phone. Similarly, making sure your text isn't too low contrast will help both your low-vision users and your users who are trying to use their phone in bright sunlight.
 
 웹 접근성(a11y)은 장애가 있는 사람, 느린 네트워크 환경(a slow connetion)에 있는 사람, 오래되거나 손상된 하드웨어 또는 단순히 좋지 않은 환경에 있는 사람 등 누구나 사용할 수 있는 웹사이트를 만드는 것을 가르킵니다. 예를 들어, 비디오에 자막을 추가하면 청각 장애인 및 난청 사용자와 시끄러운 환경에서 휴대전화를 들을 수 없는 사용자 모두에게 도움이 됩니다. 마찬가지로 텍스트의 대비가 너무 낮지 않은지 확인하면 시력이 약한 사용자와 밝은 햇빛 아래에서 휴대전화를 사용하려는 사용자 모두에게 도움이 됩니다.
 
-Ready to start but aren’t sure where?
-
 시작할 준비가 되었지만 어디에서 시작할지 모르십니까?
 
-
-Checkout the [Planning and managing web accessibility guide](https://www.w3.org/WAI/planning-and-managing/) provided by [World Wide Web Consortium (W3C)](https://www.w3.org/)
-[World Wide Web Consortium (W3C)](https://www.w3.org/)에서 제공하는  [웹 접근성 계획 및 관리 가이드](https://www.w3.org/WAI/planning-and-managing/)를 확인하세요.
+[World Wide Web Consortium (W3C)](https://www.w3.org/)에서 제공하는 [웹 접근성 계획 및 관리 가이드](https://www.w3.org/WAI/planning-and-managing/)를 확인하세요.
 
 ## Skip link
 
-You should add a link at the top of each page that goes directly to the main content area so users can skip content that is repeated on multiple Web pages.
-
 사용자가 여러 웹 페이지에서 반복되는 콘텐츠를 건너뛸 수 있도록 각 페이지 상단에 기본 콘텐츠 영역으로 이동하는 링크를 추가해야 합니다.
 
-Typically this is done on the top of `App.vue` as it will be the first focusable element on all your pages:
-
-일반적으로 이것은 모든 페이지에서 포커스 가능한 첫 번째엘리먼트가 되기 때문에 `App.vue` 상단에서 수행됩니다:
+일반적으로 이것은 모든 페이지에서 포커스 가능한 첫 번째 요소가 되기 때문에 `App.vue` 상단에서 수행됩니다:
 
 ```vue-html
 <ul class="skip-links">
@@ -33,8 +22,6 @@ Typically this is done on the top of `App.vue` as it will be the first focusable
   </li>
 </ul>
 ```
-
-To hide the link unless it is focused, you can add the following style:
 
 포커싱이 되지 않은 링크를 숨기려면 다음 스타일을 추가할 수 있습니다.
 
@@ -55,8 +42,6 @@ To hide the link unless it is focused, you can add the following style:
   border: 1px solid black;
 }
 ```
-
-Once a user changes route, bring focus back to the skip link. This can be achieved by calling focus on the skip link's template ref (assuming usage of `vue-router`):
 
 사용자가 경로를 변경하면 포커스를 skip link로 다시 가져옵니다. 이것은 skip link의 template ref에 대한 포커스를 호출하여 수행(archieved)할 수 있습니다. 아래 코드는 `vue-router`를 사용한다고 가정합니다.
 
@@ -96,30 +81,21 @@ watch(
 
 </div>
 
-[Read documentation on skip link to main content](https://www.w3.org/WAI/WCAG21/Techniques/general/G1.html)
+[주요 콘텐츠로 이동하는 링크에 대한 문서 살펴보기](https://www.w3.org/WAI/WCAG21/Techniques/general/G1.html)
 
 ## Content Structure
 
-One of the most important pieces of accessibility is making sure that design can support accessible implementation. Design should consider not only color contrast, font selection, text sizing, and language, but also how the content is structured in the application.
-
 접근성의 가장 중요한 부분 중 하나는 디자인이 접근성 구현을 지원할 수 있는지 확인하는 것입니다. 디자인은 색상 대비, 글꼴 선택, 텍스트 크기 및 언어뿐만 아니라 애플리케이션에서 콘텐츠가 구성되는 방식도 고려해야 합니다.
-
 
 ### Headings
 
-Users can navigate an application through headings. Having descriptive headings for every section of your application makes it easier for users to predict the content of each section. When it comes to headings, there are a couple of recommended accessibility practices:
+사용자는 헤더를 통해 애플리케이션을 탐색할 수 있습니다. 애플리케이션의 모든 섹션에 대한 설명 제목이 있으면 사용자가 각 섹션의 내용을 더 쉽게 예측할 수 있습니다. 제목과 관련하여 몇 가지 권장되는 접근성 방법이 있습니다:
 
-사용자는 제목을 통해 애플리케이션을 탐색할 수 있습니다. 애플리케이션의 모든 섹션에 대한 설명 제목이 있으면 사용자가 각 섹션의 내용을 더 쉽게 예측할 수 있습니다. 제목과 관련하여 몇 가지 권장되는 접근성 방법이 있습니다:
+- 순위에 따라 헤더를 끼어넣기 : `<h1>` - `<h6>`
+- 섹션 내에서 헤더를 생략하지 마세요.
+- 헤더의 시각적 모양을 제공하기 위해 텍스트 스타일 지정 대신 실제 제목 태그를 사용합니다.
 
-
-- Nest headings in their ranking order: `<h1>` - `<h6>`
-- 순위에 따라 header를 끼어넣기 : `<h1>` - `<h6>`
-- Don’t skip headings within a section
-- 섹션 내에서 제목을 건너뛰지 마세요.
-- Use actual heading tags instead of styling text to give the visual appearance of headings
-- 제목의 시각적 모양을 제공하기 위해 텍스트 스타일 지정 대신 실제 제목 태그를 사용합니다.
-
-[Read more about headings](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-descriptive.html)
+[headings에 대해 살펴보기](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-descriptive.html)
 
 ```vue-html
 <main role="main" aria-labelledby="main-title">
@@ -141,36 +117,30 @@ Users can navigate an application through headings. Having descriptive headings 
 
 ### Landmarks
 
-[Landmarks](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/landmark_role) provide programmatic access to sections within an application. Users who rely on assistive technology can navigate to each section of the application and skip over content. You can use [ARIA roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles) to help you achieve this.
+[Landmarks](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/landmark_role)는 애플리케이션 내의 섹션에 대한 프로그래밍 방식 액세스를 제공합니다. 보조 기술에 의존하는 사용자는 애플리케이션의 각 섹션으로 이동하여 콘텐츠를 건너뛸 수 있습니다.[ARIA roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles)을 사용하여 이를 달성할 수 있습니다.
 
-[Landmarks](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/landmark_role) 는 애플리케이션 내의 섹션에 대한 프로그래밍 방식 액세스를 제공합니다. 보조 기술에 의존하는 사용자는 애플리케이션의 각 섹션으로 이동하여 콘텐츠를 건너뛸 수 있습니다.[ARIA roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles) 을 사용하여 이를 달성할 수 있습니다.
+| HTML            | ARIA Role            | Landmark Purpose                                                                         |
+| --------------- | -------------------- | ---------------------------------------------------------------------------------------- |
+| header          | role="banner"        | 주요 제목: 페이지 제목                                                                   |
+| nav             | role="navigation"    | 문서나 관련 문서를 탐색할 때 사용하기에 적합한 링크 모음                                 |
+| main            | role="main"          | 문서의 주요 또는 중심 내용                                                               |
+| footer          | role="contentinfo"   | 상위 문서에 대한 정보: 각주/저작권/개인정보 보호 정책 링크                               |
+| aside           | role="complementary" | 주요 내용을 지원하지만, 컨텐츠로부터 분리되어 의미가 있음                                |
+| _Not available_ | role="search"        | 애플리케이션에 대한 검색 기능을 포함                                                     |
+| form            | role="form"          | 양식 관련 요소 모음                                                                      |
+| section         | role="region"        | 관련성이 있고 사용자가 탐색하고 싶어할 것 같은 콘텐츠. 이 요소에 대한 라벨을 제공해야 함 |
 
-| HTML            | ARIA Role            | Landmark Purpose                                                                                                 |
-| --------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| header          | role="banner"        | Prime heading: title of the page                                                                                 |
-| nav             | role="navigation"    | Collection of links suitable for use when navigating the document or related documents                           |
-| main            | role="main"          | The main or central content of the document.                                                                     |
-| footer          | role="contentinfo"   | Information about the parent document: footnotes/copyrights/links to privacy statement                           |
-| aside           | role="complementary" | Supports the main content, yet is separated and meaningful on its own content                                    |
-| _Not available_ | role="search"        | This section contains the search functionality for the application                                               |
-| form            | role="form"          | Collection of form-associated elements                                                                           |
-| section         | role="region"        | Content that is relevant and that users will likely want to navigate to. Label must be provided for this element |
-
-:::tip Tip:
-It is recommended to use landmark HTML elements with redundant landmark role attributes in order to maximize compatibility with legacy [browsers that don’t support HTML5 semantic elements](https://caniuse.com/#feat=html5semantic).
+:::tip 팁:
+[HTML5 시맨틱 요소를 지원하지 않는 레거시 브라우저](https://caniuse.com/#feat=html5semantic)와의 호환성을 최대화하기 위해 중복 랜드마크 역할 속성이 있는 랜드마크 HTML 요소를 사용하는 것이 좋습니다.
 :::
 
-:::tip 
-팁: [HTML5 시맨틱엘리먼트를 지원하지 않는 레거시 브라우저](https://caniuse.com/#feat=html5semantic)와의 호환성을 최대화하기 위해 중복 랜드마크 역할 속성이 있는 랜드마크 HTML엘리먼트를 사용하는 것이 좋습니다. 
-:::
-
-[Read more about landmarks](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)
+[landmarks에 대해 살펴보기](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)
 
 ## Semantic Forms
 
-When creating a form, you can use the following elements: `<form>`, `<label>`, `<input>`, `<textarea>`, and `<button>`
+양식을 작성할 때, 다음 요소를 사용할 수 있습니다.: `<form>`, `<label>`, `<input>`, `<textarea>`, and `<button>`
 
-Labels are typically placed on top or to the left of the form fields:
+일반적으로 label은 양식 필드의 상단이나 왼쪽에 배치됩니다:
 
 ```vue-html
 <form action="/dataCollectionLocation" method="post" autocomplete="on">
@@ -189,11 +159,11 @@ Labels are typically placed on top or to the left of the form fields:
 
 <!-- <common-codepen-snippet title="Simple Form" slug="dyNzzWZ" :height="368" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-Notice how you can include `autocomplete='on'` on the form element and it will apply to all inputs in your form. You can also set different [values for autocomplete attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) for each input.
+양식 요소의 모든 입력 요소에 적용되는, 양식 요소에 `autocomplete='on'`를 적용하는 방법을 확인하세요. 각 입력에 대해 서로 다른 [자동 완성 속성값](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete)을 설정할 수 있습니다.
 
 ### Labels
 
-Provide labels to describe the purpose of all form control; linking `for` and `id`:
+모든 양식 제어에 목적을 설명하는 레이블을 제공하세요; `for`과 `id`로 연결:
 
 ```vue-html
 <label for="name">Name</label>
@@ -202,12 +172,12 @@ Provide labels to describe the purpose of all form control; linking `for` and `i
 
 <!-- <common-codepen-snippet title="Form Label" slug="XWpaaaj" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-If you inspect this element in your chrome developer tools and open the Accessibility tab inside the Elements tab, you will see how the input gets its name from the label:
+크롬 개발자 도구에서 이 요소를 검사하고, 요소 탭에서 접근성 탭을 열면, 입력이 레이블에서 이름을 가져오는 것을 볼 수 있습니다:
 
 ![Chrome Developer Tools showing input accessible name from label](./images/AccessibleLabelChromeDevTools.png)
 
-:::warning Warning:
-Though you might have seen labels wrapping the input fields like this:
+:::warning 경고:
+다음과 같이 레이블이 입력 요소를 감싸아는 것을 보았을 수도 있습니다:
 
 ```vue-html
 <label>
@@ -216,12 +186,12 @@ Though you might have seen labels wrapping the input fields like this:
 </label>
 ```
 
-Explicitly setting the labels with a matching id is better supported by assistive technology.
+ID와 일치하는 label을 명시적으로 설정하는 것이, 보조 기술로부터 보다 더 지원받을 수 있습니다.
 :::
 
 #### `aria-label`
 
-You can also give the input an accessible name with [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute).
+[`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute)을 사용하여 입력에 접근성 이름(accessible name)을 지정할 수 있습니다.
 
 ```vue-html
 <label for="name">Name</label>
@@ -236,13 +206,13 @@ You can also give the input an accessible name with [`aria-label`](https://devel
 
 <!-- <common-codepen-snippet title="Form ARIA label" slug="NWdvvYQ" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-Feel free to inspect this element in Chrome DevTools to see how the accessible name has changed:
+크롬 개발자도구에서 이 요소를 검사하여, 접근성 이름(accessible name)이 어떻게 바뀌는지 확인해도 좋다:
 
 ![Chrome Developer Tools showing input accessible name from aria-label](./images/AccessibleARIAlabelDevTools.png)
 
 #### `aria-labelledby`
 
-Using [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-labelledby_attribute) is similar to `aria-label` except it is used if the label text is visible on screen. It is paired to other elements by their `id` and you can link multiple `id`s:
+[`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-labelledby_attribute)를 사용하는 것은 레이블 문자가 화면에 보인 다는 것을 제외하고 `aria-label`을 사용하는 것과 비슷합니다. 다른 요소의 id를 통해 쌍을 이룰 수 있고, 여러 id에 연결 할 수 있습니다:
 
 ```vue-html
 <form
@@ -272,7 +242,7 @@ Using [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibi
 
 #### `aria-describedby`
 
-[aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute) is used the same way as `aria-labelledby` except provides a description with additional information that the user might need. This can be used to describe the criteria for any input:
+[aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute)는 사용자에게 필요할 수 있는 추가적인 정보와 함께 설명을 제공한다는 점을 제외하고는 `aria-labelledby`과 동일한 방식으로 사용됩니다. 이것은 입력에 대한 기준을 설명하는 데 사용할 수 있습니다:
 
 ```vue-html
 <form
@@ -300,15 +270,19 @@ Using [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibi
 
 <!-- <common-codepen-snippet title="Form ARIA describedby" slug="gOgxxQE" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-You can see the description by inspecting Chrome DevTools:
+크롬 개발자 도구 검사를 통해 설명을 볼 수 있습니다.
 
 ![Chrome Developer Tools showing input accessible name from aria-labelledby and description with aria-describedby](./images/AccessibleARIAdescribedby.png)
 
 ### Placeholder
 
-Avoid using placeholders as they can confuse many users.
+유저들을 혼란스럽게 할 수 있으므로 placeholders 사용을 피하세요.
 
-One of the issues with placeholders is that they don't meet the [color contrast criteria](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html) by default; fixing the color contrast makes the placeholder look like pre-populated data in the input fields. Looking at the following example, you can see that the Last Name placeholder which meets the color contrast criteria looks like pre-populated data:
+placeholders의 이슈 중 하나는, 기본적으로 [색상 대비 기준](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)을 충족하지 않는 다는 것입니다.
+
+fixing the color contrast makes the placeholder look like pre-populated data in the input fields. Looking at the following example, you can see that the Last Name placeholder which meets the color contrast criteria looks like pre-populated data:
+
+색상 대비를 수정하면 placeholder가 input 영역에 미리 채워진 데이터처럼 보입니다. 다음 예를 보면, 데이터가 미리 채워진것처럼 보이는, 색상 대비 기준을 충족하는 Last Name placeholder를 볼 수 있습니다.
 
 ```vue-html
 <form
@@ -333,12 +307,13 @@ One of the issues with placeholders is that they don't meet the [color contrast 
 
 <!-- <common-codepen-snippet title="Form Placeholder" slug="ExZvvMw" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-It is best to provide all the information the user needs to fill out forms outside any inputs.
+입력의 외부에 유저가 양식을 채우기 위한 모든 정보를 제공하는 것이 가장 좋습니다.
 
 ### Instructions
 
-When adding instructions for your input fields, make sure to link it correctly to the input.
-You can provide additional instructions and bind multiple ids inside an [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-labelledby_attribute). This allows for more flexible design.
+입력 영역에 대해 지시자(instructions)를 추가할 때, 입력에 올바르게 연결해야 합니다.
+
+추가 지침을 제공하고, [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-labelledby_attribute)에 여러 id를 바인딩 할 수 있습니다. 이를 통해 보다 유연한 설계가 가능합니다.
 
 ```vue-html
 <fieldset>
@@ -354,7 +329,7 @@ You can provide additional instructions and bind multiple ids inside an [`aria-l
 </fieldset>
 ```
 
-Alternatively, you can attach the instructions to the input with [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute):
+또는 [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute)로 입력에 지침을 첨부할 수 있습니다.
 
 ```vue-html
 <fieldset>
@@ -369,9 +344,11 @@ Alternatively, you can attach the instructions to the input with [`aria-describe
 
 ### Hiding Content
 
-Usually it is not recommended to visually hide labels, even if the input has an accessible name. However, if the functionality of the input can be understood with surrounding content, then we can hide the visual label.
+입력에 접근성 있는 이름(accessible name)이 있더라도, 시각적으로 label을 숨기는 것은 일반적으로 권장되지 않습니다.
 
-Let's look at this search field:
+그러나, 입력의 기능을 주변 콘텐츠로 이해할 수 있다면, label을 시각적으로 숨길 수 있습니다.
+
+아래 검색 영역을 살펴보자.
 
 ```vue-html
 <form role="search">
@@ -381,9 +358,9 @@ Let's look at this search field:
 </form>
 ```
 
-We can do this because the search button will help visual users identify the purpose of the input field.
+시각적인 사용자(visual users)에게, 검색 버튼이 입력 영역의 목적을 식별하는데 도움이 되기 때문에, 이렇게 할 수 있습니다.
 
-We can use CSS to visually hide elements but keep them available for assistive technology:
+CSS를 사용하여 요소를 시각적으로 숨기지만, 보조 기술에서는 계속 이용하게 할 수 있습니다.
 
 ```css
 .hidden-visually {
@@ -403,7 +380,7 @@ We can use CSS to visually hide elements but keep them available for assistive t
 
 #### `aria-hidden="true"`
 
-Adding `aria-hidden="true"` will hide the element from assistive technology but leave it visually available for other users. Do not use it on focusable elements, purely on decorative, duplicated or offscreen content.
+`aria-hidden="true"`를 추가하면, 보조 기술에게는 요소가 숨겨지고, 다른 사용자는 시각적으로 이용할 수 있습니다. 초점을 맞출 수 있는 요소(focusable elements), 온전한 장식(purely on decorative), 복제 또는 오프스크린 콘텐츠(duplicated or offscreen content)에 사용하지 마십시오.
 
 ```vue-html
 <p>This is not hidden from screen readers.</p>
@@ -412,8 +389,8 @@ Adding `aria-hidden="true"` will hide the element from assistive technology but 
 
 ### Buttons
 
-When using buttons inside a form, you must set the type to prevent submitting the form.
-You can also use an input to create buttons:
+양식 내에서 버튼을 사용할 때, 양식이 제출되지 않도록 유형을 설정해야 합니다.
+또한 입력을 사용하여 버튼을 만들 수도 있습니다.
 
 ```vue-html
 <form action="/dataCollectionLocation" method="post" autocomplete="on">
@@ -431,11 +408,11 @@ You can also use an input to create buttons:
 
 ### Functional Images
 
-You can use this technique to create functional images.
+이 기술을 사용하여 기능적 이미지를 만들 수 있습니다.
 
 - Input fields
 
-  - These images will act as a submit type button on forms
+  - 이 이미지는 양식에서 제출 유형 버튼(submit type button)으로 작동합니다.
 
   ```vue-html
   <form role="search">
@@ -467,33 +444,33 @@ You can use this technique to create functional images.
 
 ## Standards
 
-The World Wide Web Consortium (W3C) Web Accessibility Initiative (WAI) develops web accessibility standards for the different components:
+World Wide Web Consortium (W3C) Web Accessibility Initiative(WAI)는 다양한 구성 요소에 대한 웹 접근성 표준을 개발합니다:
 
 - [User Agent Accessibility Guidelines (UAAG)](https://www.w3.org/WAI/standards-guidelines/uaag/)
-  - web browsers and media players, including some aspects of assistive technologies
+  - 보조 기술의 일부 측면을 포함한 웹 브라우저 및 미디어 플레이어
 - [Authoring Tool Accessibility Guidelines (ATAG)](https://www.w3.org/WAI/standards-guidelines/atag/)
-  - authoring tools
+  - 저작 도구(authoring tools)
 - [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/)
-  - web content - used by developers, authoring tools, and accessibility evaluation tools
+  - 웹 콘텐츠 - 개발자, 저작 도구 및 접근성 평가 도구에서 사용되는
 
 ### Web Content Accessibility Guidelines (WCAG)
 
-[WCAG 2.1](https://www.w3.org/TR/WCAG21/) extends on [WCAG 2.0](https://www.w3.org/TR/WCAG20/) and allows implementation of new technologies by addressing changes to the web. The W3C encourages use of the most current version of WCAG when developing or updating Web accessibility policies.
+[WCAG 2.1](https://www.w3.org/TR/WCAG21/)는 [WCAG 2.0](https://www.w3.org/TR/WCAG20/) 에서 확장되었고, 웹의 변경 사항을 다뤄(addressing) 새로운 기술을 구현할 수 있습니다. W3C는 웹 접근성 정책을 개발하거나 업데이트할 때 최신 버전의 WCAG를 사용하도록 권장합니다.
 
-#### WCAG 2.1 Four Main Guiding Principles (abbreviated as POUR):
+#### WCAG 2.1 4가지 주요 지침 (약칭 POUR):
 
 - [Perceivable](https://www.w3.org/TR/WCAG21/#perceivable)
-  - Users must be able to perceive the information being presented
+  - 사용자는 제공되는 정보를 인지할 수 있어야 합니다.
 - [Operable](https://www.w3.org/TR/WCAG21/#operable)
-  - Interface forms, controls, and navigation are operable
+  - 인터페이스 폼, 컨트롤과 내비이션은 작동 가능해야합니다.
 - [Understandable](https://www.w3.org/TR/WCAG21/#understandable)
-  - Information and the operation of user interface must be understandable to all users
+  - 정보와 사용자 인터페이스의 동작은 모든 사용자가 이해할 수 있어야 합니다.
 - [Robust](https://www.w3.org/TR/WCAG21/#robust)
-  - Users must be able to access the content as technologies advance
+  - 사용자는 기술(technologies advance)로 콘텐츠에 접근할 수 있어야합니다.
 
 #### Web Accessibility Initiative – Accessible Rich Internet Applications (WAI-ARIA)
 
-W3C's WAI-ARIA provides guidance on how to build dynamic content and advanced user interface controls.
+W3C의 WAI-ARIA는 동적 콘텐츠 및 고급 사용자 인터페이스 제어를 구축하는 방법에 대한 지침을 제공합니다.
 
 - [Accessible Rich Internet Applications (WAI-ARIA) 1.2](https://www.w3.org/TR/wai-aria-1.2/)
 - [WAI-ARIA Authoring Practices 1.2](https://www.w3.org/TR/wai-aria-practices-1.2/)
@@ -535,16 +512,16 @@ W3C's WAI-ARIA provides guidance on how to build dynamic content and advanced us
 
 ### Users
 
-The World Health Organization estimates that 15% of the world's population has some form of disability, 2-4% of them severely so. That is an estimated 1 billion people worldwide; making people with disabilities the largest minority group in the world.
+세계보건기구(WHO)는 세계 인구의 15%가 어떤 형태의 장애를 갖고 있으며 그 중 2-4%가 심각한 장애를 갖고 있다고 추정합니다. 이 수치는 전 세계적으로 10억 명으로 추산됩니다. 장애는 이들을 세계에서 가장 큰 소수 집단으로 만듭니다.
 
-There are a huge range of disabilities, which can be divided roughly into four categories:
+넓은 범위의 장애가 있으며, 대략 4가지 범주로 나눌 수 있습니다.
 
-- _[Visual](https://webaim.org/articles/visual/)_ - These users can benefit from the use of screen readers, screen magnification, controlling screen contrast, or braille display.
-- _[Auditory](https://webaim.org/articles/auditory/)_ - These users can benefit from captioning, transcripts or sign language video.
-- _[Motor](https://webaim.org/articles/motor/)_ - These users can benefit from a range of [assistive technologies for motor impairments](https://webaim.org/articles/motor/assistive): voice recognition software, eye tracking, single-switch access, head wand, sip and puff switch, oversized trackball mouse, adaptive keyboard or other assistive technologies.
-- _[Cognitive](https://webaim.org/articles/cognitive/)_ - These users can benefit from supplemental media, structural organization of content, clear and simple writing.
+- _[Visual](https://webaim.org/articles/visual/)_ - 이러한 사용자는 스크린 리더, 화면 확대, 화면 대비 제어 또는 점자 표시로부터 도움을 받을 수 있습니다.
+- _[Auditory](https://webaim.org/articles/auditory/)_ - 이러한 사용자는 자막(captioning), 구술 기록(transcripts) 또는 수화 동영상으로부터 도움을 받을 수 있습니다.
+- _[Motor](https://webaim.org/articles/motor/)_ - 이러한 사용자는 다양한 [운동 장애 보조 기술](https://webaim.org/articles/motor/assistive)로부터 도움을 받을 수 있습니다: 음성 인식 소프트웨어, 시선 추적, 단일 스위치 액세스, 헤드 지팡이, 입으로 동작시키는 스위치(sip and puff switch), 대형 트랙볼 마우스, 적응형 키보드 또는 기타 보조 기술.
+- _[Cognitive](https://webaim.org/articles/cognitive/)_ - 이러한 사용자는 보충 미디어, 콘텐츠의 구조적 구성, 명확하고 간단한 쓰기로부터 도움을 받을 수 있습니다.
 
-Check out the following links from WebAim to understand from users:
+WebAim에서 다음 링크를 확인하여 사용자로부터 이해하십시오.
 
 - [Web Accessibility Perspectives: Explore the Impact and Benefits for Everyone](https://www.w3.org/WAI/perspective-videos/)
 - [Stories of Web Users](https://www.w3.org/WAI/people-use-web/user-stories/)
