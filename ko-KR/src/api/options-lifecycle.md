@@ -59,7 +59,7 @@ Called after the instance has finished processing all state-related options.
 
   When this hooks is called, the following have been set up: reactive data, computed properties, methods, and watchers. However, the mounting phase has not been started, and the `$el` property will not be available yet.
 
-  이 후크가 호출되면 반응형 데이터, 계산된 속성, 메서드 및 감시자(wathcer)가 설정됩니다. 그러나 마운트 단계는 시작되지 않았으며, 따라서 `$el` 속성은 아직 사용할 수 없습니다.
+  이 후크가 호출되면 반응형 데이터, 계산된 속성, 메소드 및 감시자(wathcer)가 설정됩니다. 그러나 마운트 단계는 시작되지 않았으며, 따라서 `$el` 속성은 아직 사용할 수 없습니다.
 
 
 ## beforeMount
@@ -258,7 +258,7 @@ Called after the component has been unmounted.
 
 Called when an error propagating from a descendent component has been captured.
 
-하위 컴포넌트에서 에러가 전파되었다면 호출됩니다. 
+자식 컴포넌트에서 에러가 전파되었다면 호출됩니다. 
 
 
 - **Type**

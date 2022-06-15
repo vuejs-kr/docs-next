@@ -53,7 +53,7 @@ Provides animated transition effects to a **single** element or component.
   interface TransitionProps {
     /**
      * Used to automatically generate transition CSS class names.
-     * e.g. `name: fade'` will auto expand to `.fade-enter`,
+    * e.g. `name: 'fade'` will auto expand to `.fade-enter`,
      * `.fade-enter-active`, etc.
      * 트랜지션 CSS 클래스 이름을 자동으로 생성하는 데 사용됩니다.
      * 예. `name: fade'` 은 자동으로 `.fade-enter`,
@@ -82,7 +82,7 @@ Provides animated transition effects to a **single** element or component.
      * Default behavior is wait for the first `transitionend`
      * or `animationend` event on the root transition element.
      * 트랜지션의 명시적 지속 시간을 지정합니다.
-     * 기본 동작은 루트 트랜지션 요소의 첫 번째 `transitionend` 또는 `animationend` 이벤트를 기다리는 것입니다.
+     * 기본 동작은 루트 트랜지션엘리먼트의 첫 번째 `transitionend` 또는 `animationend` 이벤트를 기다리는 것입니다.
      */
     duration?: number | { enter: number; leave: number }
     /**
@@ -206,7 +206,7 @@ Provides transition effects for **multiple** elements or components in a list.
 
   By default, `<TransitionGroup>` doesn't render a wrapper DOM element, but one can be defined via the `tag` prop.
 
-  기본적으로 `<TransitionGroup>`은 래퍼(wrapper) DOM 요소를 렌더링하지 않지만 `tag` 소품을 통해 정의할 수 있습니다.
+  기본적으로 `<TransitionGroup>`은 래퍼(wrapper) DOM엘리먼트를 렌더링하지 않지만 `tag` 소품을 통해 정의할 수 있습니다.
 
 
   Note that every child in a `<transition-group>` must be [**uniquely keyed**](/guide/essentials/list.html#maintaining-state-with-key) for the animations to work properly.

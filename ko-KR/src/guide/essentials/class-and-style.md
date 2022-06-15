@@ -1,31 +1,24 @@
-:::warning 현재 이 문서는 번역 작업이 진행중입니다
-:::
+# 클래스와 스타일 바인딩
 
-# Class and Style Bindings
+일반적으로 엘리먼트에 데이터를 바인딩하는 이유는 클래스 목록과 해당 인라인 스타일을 조작하기 위함입니다.
+둘 다 속성이므로 `v-bind`를 사용하여 표현 식으로 처리할 경우, 최종적인 문자열만 산출을 위한 로직만 신경 쓰면 되지만, 이것은 성가시고 오류가 발생하기 쉽습니다.
+이러한 이유로 `class` 및 `style`에 `v-bind`를 사용할 경우, 표현 식 내에 문자열 외에도 객체 또는 배열을 평가할 수 있도록 개발 편의적인 능력을 제공합니다.
 
-A common need for data binding is manipulating an element's class list and its inline styles. Since they are both attributes, we can use `v-bind` to handle them: we only need to calculate a final string with our expressions. However, meddling with string concatenation is annoying and error-prone. For this reason, Vue provides special enhancements when `v-bind` is used with `class` and `style`. In addition to strings, the expressions can also evaluate to objects or arrays.
+## HTML 클래스 바인딩
 
-## Binding HTML Classes
+### 객체로 바인딩 하기
 
-<div class="options-api">
-  <VueSchoolLink href="https://vueschool.io/lessons/dynamic-css-classes-with-vue-3" title="Free Vue.js Dynamic CSS Classes Lesson"/>
-</div>
-
-<div class="composition-api">
-  <VueSchoolLink href="https://vueschool.io/lessons/vue-fundamentals-capi-dynamic-css-classes-with-vue" title="Free Vue.js Dynamic CSS Classes Lesson"/>
-</div>
-
-### Binding to Objects
-
-We can pass an object to `:class` (short for `v-bind:class`) to dynamically toggle classes:
+클래스를 동적으로 토글하기 위해 객체를 `:class`(`v-bind:class`의 줄임말)에 전달할 수 있습니다:
 
 ```vue-html
 <div :class="{ active: isActive }"></div>
 ```
 
-The above syntax means the presence of the `active` class will be determined by the [truthiness](https://developer.mozilla.org/en-US/docs/Glossary/Truthy) of the data property `isActive`.
+위의 구문은 `isActive` 데이터 속성의 [truthiness](https://developer.mozilla.org/en-US/docs/Glossary/Truthy)에 의해 `active` 클래스의 존재 여부가 결정됨을 의미합니다.
 
-You can have multiple classes toggled by having more fields in the object. In addition, the `:class` directive can also co-exist with the plain `class` attribute. So given the following state:
+객체에 더 많은 필드를 사용하여 여러 클래스를 토글할 수 있습니다.
+또한 `:class` 디렉티브는 일반 `class` 속성과 공존할 수도 있습니다.
+따라서 다음과 같은 상황이 주어지고:
 
 <div class="composition-api">
 
@@ -49,7 +42,7 @@ data() {
 
 </div>
 
-And the following template:
+아래와 같이 템플릿이 구성되 있다면:
 
 ```vue-html
 <div
@@ -58,15 +51,16 @@ And the following template:
 ></div>
 ```
 
-It will render:
+다음과 같이 랜더링 됩니다:
 
 ```vue-html
 <div class="static active"></div>
 ```
 
-When `isActive` or `hasError` changes, the class list will be updated accordingly. For example, if `hasError` becomes `true`, the class list will become `"static active text-danger"`.
+`isActive` 또는 `hasError`가 변경되면 그에 따라 클래스 목록이 업데이트됩니다.
+예를 들어 `hasError`가 `true`가 되면 클래스 목록은 `"static active text-danger"`가 됩니다.
 
-The bound object doesn't have to be inline:
+바인딩된 객체는 인라인일 필요가 없습니다:
 
 <div class="composition-api">
 
@@ -98,7 +92,9 @@ data() {
 <div :class="classObject"></div>
 ```
 
-This will render the same result. We can also bind to a [computed property](./computed) that returns an object. This is a common and powerful pattern:
+이렇게 하면 동일한 결과가 렌더링됩니다.
+객체를 반환하는 [계산된 속성](./computed)으로 바인딩할 수도 있습니다.
+이것은 일반적이고 강력한 패턴입니다:
 
 <div class="composition-api">
 
@@ -139,9 +135,9 @@ computed: {
 <div :class="classObject"></div>
 ```
 
-### Binding to Arrays
+### 배열로 바인딩 하기
 
-We can bind `:class` to an array to apply a list of classes:
+`:class`를 배열로 바인딩하여 클래스 목록을 적용할 수 있습니다:
 
 <div class="composition-api">
 
@@ -169,90 +165,92 @@ data() {
 <div :class="[activeClass, errorClass]"></div>
 ```
 
-Which will render:
+다음과 같이 랜더링 됩니다:
 
 ```vue-html
 <div class="active text-danger"></div>
 ```
 
-If you would like to also toggle a class in the list conditionally, you can do it with a ternary expression:
+삼항 표현식을 사용하여 목록 내 클래스도 토글할 수 있습니다:
 
 ```vue-html
 <div :class="[isActive ? activeClass : '', errorClass]"></div>
 ```
 
-This will always apply `errorClass`, but `activeClass` will only be applied when `isActive` is truthy.
+위 코드는 `errorClass`를 항상 적용하지만, `activeClass`는 `isActive`가 truthy 일 때만 적용됩니다.
 
-However, this can be a bit verbose if you have multiple conditional classes. That's why it's also possible to use the object syntax inside array syntax:
+그러나 조건부 클래스가 여러 개인 경우 다소 장황할 수 있습니다.
+이러한 이유로 배열 구문 내에서 객체 구문을 사용할 수도 있습니다:
 
 ```vue-html
 <div :class="[{ active: isActive }, errorClass]"></div>
 ```
 
-### With Components
+### 컴포넌트에서 사용하기
 
-> This section assumes knowledge of [Components](/guide/essentials/component-basics). Feel free to skip it and come back later.
+> 이 섹션은 [컴포넌트](/guide/essentials/component-basics)에 대한 지식이 있다고 가정하므로, 건너뛰고 나중에 읽어도 됩니다.
 
-When you use the `class` attribute on a component with a single root element, those classes will be added to the component's root element, and merged with any existing class already on it.
+최상위(root) 엘리먼트가 하나로 구성된 컴포넌트에서 `class` 속성을 사용하면, 해당 클래스가 컴포넌트의 루트 엘리먼트에 이미 정의된 기존 클래스와 병합되어 추가됩니다.
 
-For example, if we have a component named `my-component` with the following template:
+`my-component`라는 컴포넌트의 템플릿이 아래와 같이 구성되어 있다고 가정:
 
 ```vue-html
-<!-- child component template -->
-<p class="foo bar">Hi!</p>
+<!-- my-component 컴포넌트의 템플릿 -->
+<p class="foo bar">안녕!</p>
 ```
 
-Then add some classes when using it:
+그런 다음 사용할 때 몇 가지 클래스를 추가합니다:
 
 ```vue-html
-<!-- when using the component -->
+<!-- 컴포넌트가 사용될 때 -->
 <my-component class="baz boo"></my-component>
 ```
 
-The rendered HTML will be:
+다음과 같이 랜더링 됩니다:
 
 ```vue-html
-<p class="foo bar baz boo">Hi</p>
+<p class="foo bar baz boo">안녕!</p>
 ```
 
-The same is true for class bindings:
+클래스 바인딩도 마찬가지입니다:
 
 ```vue-html
 <my-component :class="{ active: isActive }"></my-component>
 ```
 
-When `isActive` is truthy, the rendered HTML will be:
+`isActive`가 truthy이면 렌더링된 HTML은 다음과 같습니다:
 
 ```vue-html
-<p class="foo bar active">Hi</p>
+<p class="foo bar active">안녕!</p>
 ```
 
-If your component has multiple root elements, you would need to define which element will receive this class. You can do this using the `$attrs` component property:
+여러 개의 최상위 엘리먼트로 컴포넌트가 구성되어 있는 경우, 클래스를 적용할 엘리먼트를 정의해야 합니다.
+`$attrs` 컴포넌트 속성을 사용하여 이 작업을 수행할 수 있습니다.
 
 ```vue-html
-<!-- my-component template using $attrs -->
-<p :class="$attrs.class">Hi!</p>
-<span>This is a child component</span>
+<!-- my-component 템플릿에서 $attrs 속성을 사용 -->
+<p :class="$attrs.class">안녕!</p>
+<span>반가워!</span>
 ```
 
 ```vue-html
 <my-component class="baz"></my-component>
 ```
 
-Will render:
+다음과 같이 랜더링 됩니다:
 
 ```html
 <p class="baz">Hi!</p>
-<span>This is a child component</span>
+<span>반가워!</span>
 ```
 
-You can learn more about component attribute inheritance in [Fallthrough Attributes](/guide/components/attrs.html) section.
+컴포넌트 속성 상속에 대한 자세한 내용은 [폴스루 속성](/guide/components/attrs.html) 섹션에서 확인할 수 있습니다.
 
-## Binding Inline Styles
+## 인라인 스타일 바인딩
 
-### Binding to Objects
+### 객체로 바인딩
 
-`:style` supports binding to JavaScript object values - it corresponds to an [HTML element's `style` property](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style):
+`:style`은 [HTML 엘리먼트의 `style` 속성](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style)에 해당하는 JavaScript 객체에 대한 바인딩을 지원합니다:
 
 <div class="composition-api">
 
@@ -280,13 +278,14 @@ data() {
 <div :style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
 ```
 
-Although camelCase keys are recommended, `:style` also supports kebab-cased CSS property keys (corresponds to how they are used in actual CSS) - for example:
+`:style`에 사용될 CSS 속성에 해당하는 키 문자열은 camelCase가 권장되지만, kebab-cased(실제 CSS에서 사용되는 방식)도 지원합니다:
+예를 들면 다음과 같습니다:
 
 ```vue-html
 <div :style="{ 'font-size': fontSize + 'px' }"></div>
 ```
 
-It is often a good idea to bind to a style object directly so that the template is cleaner:
+템플릿이 더 깔끔해지도록 스타일 객체를 직접 바인딩하는 것이 좋은 방법입니다:
 
 <div class="composition-api">
 
@@ -318,26 +317,30 @@ data() {
 <div :style="styleObject"></div>
 ```
 
-Again, object style binding is often used in conjunction with computed properties that return objects.
+일반적으로 인라인 스타일에 바인딩 하는 경우, 객체를 반환하는 계산된 속성을 사용합니다.
 
-### Binding to Arrays
+### 배열로 바인딩 하기
 
-We can bind `:style` to an array of multiple style objects. These objects will be merged and applied to the same element:
+스타일 객체 여러 개로 이루어진 배열을 `:style`에 바인딩할 수 있습니다.
+객체들은 병합되어 엘리먼트에 적용됩니다:
 
 ```vue-html
 <div :style="[baseStyles, overridingStyles]"></div>
 ```
 
-### Auto-prefixing
+### 접두사 자동완성
 
-When you use a CSS property that requires a [vendor prefix](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) in `:style`, Vue will automatically add the appropriate prefix. Vue does this by checking at runtime to see which style properties are supported in the current browser. If the browser doesn't support a particular property then various prefixed variants will be tested to try to find one that is supported.
+Vue가 실행되고 있을 때, 해당 브라우저에서 지원되지 않는 CSS 속성이 `:style`에 사용되면,
+자동으로 해당 속성과 [벤더 접두사](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix)가 조합된 여러 개의 특수한 속성을 테스트하고 지원되는 속성을 찾아서 추가합니다.
 
-### Multiple Values
+### 다중 값
 
-You can provide an array of multiple (prefixed) values to a style property, for example:
+스타일 속성에 다중 값을 배열로 제공할 수 있습니다.
+예를 들면 다음과 같습니다:
 
 ```vue-html
-<div :style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }"></div>
+<div :style="{ display: ['flex', '-webkit-box', '-ms-flexbox'] }"></div>
 ```
 
-This will only render the last value in the array which the browser supports. In this example, it will render `display: flex` for browsers that support the unprefixed version of flexbox.
+이 경우, 브라우저가 지원하는 배열 내 마지막 값을 렌더링합니다.
+이 예제에서 브라우저가 `flex`와 `-webkit-box` 속성만 지원한다면, `flex`라는 표준 속성 값이 있음에도 `display: -webkit-box`를 렌더링 합니다.

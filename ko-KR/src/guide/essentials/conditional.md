@@ -1,16 +1,4 @@
-:::warning 현재 이 문서는 번역 작업이 진행중입니다
-:::
-
-
-# Conditional Rendering
-
-<div class="options-api">
-  <VueSchoolLink href="https://vueschool.io/lessons/conditional-rendering-in-vue-3" title="Free Vue.js Conditional Rendering Lesson"/>
-</div>
-
-<div class="composition-api">
-  <VueSchoolLink href="https://vueschool.io/lessons/vue-fundamentals-capi-conditionals-in-vue" title="Free Vue.js Conditional Rendering Lesson"/>
-</div>
+# 조건부 랜더링
 
 <script setup>
 import { ref } from 'vue'
@@ -19,45 +7,48 @@ const awesome = ref(true)
 
 ## `v-if`
 
-The directive `v-if` is used to conditionally render a block. The block will only be rendered if the directive's expression returns a truthy value.
+`v-if` 디렉티브는 조건부로 블록을 렌더링하는 데 사용됩니다.
+블록은 디렉티브 표현식이 truthy 값을 반환하는 경우에만 렌더링됩니다.
 
 ```vue-html
-<h1 v-if="awesome">Vue is awesome!</h1>
+<h1 v-if="awesome">Vue는 정말 멋지죠!</h1>
 ```
 
 ## `v-else`
 
-You can use the `v-else` directive to indicate an "else block" for `v-if`:
+`v-else` 디렉티브를 사용하여 `v-if`에 대한 "else 블록"을 나타낼 수 있습니다:
 
 ```vue-html
-<button @click="awesome = !awesome">Toggle</button>
+<button @click="awesome = !awesome">전환</button>
 
-<h1 v-if="awesome">Vue is awesome!</h1>
-<h1 v-else>Oh no 😢</h1>
+<h1 v-if="awesome">Vue는 정말 멋지죠!</h1>
+<h1 v-else>아닌가요? 😢</h1>
 ```
 
 <div class="demo">
-  <button @click="awesome = !awesome">Toggle</button>
-  <h1 v-if="awesome">Vue is awesome!</h1>
-  <h1 v-else>Oh no 😢</h1>
+  <button @click="awesome = !awesome">전환</button>
+  <h1 v-if="awesome">Vue는 정말 멋지죠!</h1>
+  <h1 v-else>아닌가요? 😢</h1>
 </div>
 
 <div class="composition-api">
 
-[Try it in the Playground](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcblxuY29uc3QgYXdlc29tZSA9IHJlZih0cnVlKVxuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPGJ1dHRvbiBAY2xpY2s9XCJhd2Vzb21lID0gIWF3ZXNvbWVcIj50b2dnbGU8L2J1dHRvbj5cblxuXHQ8aDEgdi1pZj1cImF3ZXNvbWVcIj5WdWUgaXMgYXdlc29tZSE8L2gxPlxuXHQ8aDEgdi1lbHNlPk9oIG5vIPCfmKI8L2gxPlxuPC90ZW1wbGF0ZT4iLCJpbXBvcnQtbWFwLmpzb24iOiJ7XG4gIFwiaW1wb3J0c1wiOiB7XG4gICAgXCJ2dWVcIjogXCJodHRwczovL3NmYy52dWVqcy5vcmcvdnVlLnJ1bnRpbWUuZXNtLWJyb3dzZXIuanNcIlxuICB9XG59In0=)
+[온라인 연습장으로 실행하기](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcblxuY29uc3QgYXdlc29tZSA9IHJlZih0cnVlKVxuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPGJ1dHRvbiBAY2xpY2s9XCJhd2Vzb21lID0gIWF3ZXNvbWVcIj7soITtmZg8L2J1dHRvbj5cbiAgXG4gIDxoMSB2LWlmPVwiYXdlc29tZVwiPlZ1ZeuKlCDsoJXrp5Ag66mL7KeA7KOgITwvaDE+XG4gIDxoMSB2LWVsc2U+7JWE64uM6rCA7JqUPyDwn5iiPC9oMT5cbjwvdGVtcGxhdGU+IiwiaW1wb3J0LW1hcC5qc29uIjoie1xuICBcImltcG9ydHNcIjoge1xuICAgIFwidnVlXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3Z1ZS5ydW50aW1lLmVzbS1icm93c2VyLmpzXCIsXG4gICAgXCJ2dWUvc2VydmVyLXJlbmRlcmVyXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3NlcnZlci1yZW5kZXJlci5lc20tYnJvd3Nlci5qc1wiXG4gIH1cbn0ifQ==)
 
 </div>
 <div class="options-api">
 
-[Try it in the Playground](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdD5cbmV4cG9ydCBkZWZhdWx0IHtcbiAgZGF0YSgpIHtcbiAgXHRyZXR1cm4ge1xuXHQgICAgYXdlc29tZTogdHJ1ZVxuICBcdH1cblx0fVxufVxuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPGJ1dHRvbiBAY2xpY2s9XCJhd2Vzb21lID0gIWF3ZXNvbWVcIj50b2dnbGU8L2J1dHRvbj5cblxuXHQ8aDEgdi1pZj1cImF3ZXNvbWVcIj5WdWUgaXMgYXdlc29tZSE8L2gxPlxuXHQ8aDEgdi1lbHNlPk9oIG5vIPCfmKI8L2gxPlxuPC90ZW1wbGF0ZT4iLCJpbXBvcnQtbWFwLmpzb24iOiJ7XG4gIFwiaW1wb3J0c1wiOiB7XG4gICAgXCJ2dWVcIjogXCJodHRwczovL3NmYy52dWVqcy5vcmcvdnVlLnJ1bnRpbWUuZXNtLWJyb3dzZXIuanNcIlxuICB9XG59In0=)
+[온라인 연습장으로 실행하기](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdD5cbmV4cG9ydCBkZWZhdWx0IHtcbiAgZGF0YSgpIHtcbiAgXHRyZXR1cm4ge1xuXHQgICAgYXdlc29tZTogdHJ1ZVxuICBcdH1cblx0fVxufVxuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPGJ1dHRvbiBAY2xpY2s9XCJhd2Vzb21lID0gIWF3ZXNvbWVcIj7soITtmZg8L2J1dHRvbj5cbiAgXG4gIDxoMSB2LWlmPVwiYXdlc29tZVwiPlZ1ZeuKlCDsoJXrp5Ag66mL7KeA7KOgITwvaDE+XG4gIDxoMSB2LWVsc2U+7JWE64uM6rCA7JqUPyDwn5iiPC9oMT5cbjwvdGVtcGxhdGU+IiwiaW1wb3J0LW1hcC5qc29uIjoie1xuICBcImltcG9ydHNcIjoge1xuICAgIFwidnVlXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3Z1ZS5ydW50aW1lLmVzbS1icm93c2VyLmpzXCIsXG4gICAgXCJ2dWUvc2VydmVyLXJlbmRlcmVyXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3NlcnZlci1yZW5kZXJlci5lc20tYnJvd3Nlci5qc1wiXG4gIH1cbn0ifQ==)
 
 </div>
 
-A `v-else` element must immediately follow a `v-if` or a `v-else-if` element - otherwise it will not be recognized.
+`v-else` 엘리먼트는 `v-if` 또는 `v-else-if` 엘리먼트 바로 다음에 와야 합니다.
+그렇지 않으면 인식되지 않습니다.
 
 ## `v-else-if`
 
-The `v-else-if`, as the name suggests, serves as an "else if block" for `v-if`. It can also be chained multiple times:
+`v-else-if`는 이름에서 알 수 있듯이 `v-if`에 대한 "else if 블록" 역할을 합니다.
+여러 번 연결될 수도 있습니다:
 
 ```vue-html
 <div v-if="type === 'A'">
@@ -70,52 +61,64 @@ The `v-else-if`, as the name suggests, serves as an "else if block" for `v-if`. 
   C
 </div>
 <div v-else>
-  Not A/B/C
+  A/B/C 아님
 </div>
 ```
 
-Similar to `v-else`, a `v-else-if` element must immediately follow a `v-if` or a `v-else-if` element.
+`v-else`와 마찬가지로 `v-else-if` 엘리먼트는 `v-if` 또는 `v-else-if` 엘리먼트 바로 다음에 와야 합니다.
 
-## `v-if` on `<template>`
+## `<template>`에서 `v-if`
 
-Because `v-if` is a directive, it has to be attached to a single element. But what if we want to toggle more than one element? In this case we can use `v-if` on a `<template>` element, which serves as an invisible wrapper. The final rendered result will not include the `<template>` element.
+`v-if`는 디렉티브이므로 단일 엘리먼트에 연결해야 합니다.
+하지만 둘 이상의 엘리먼트를 전환하려면 어떻게 해야 할까요?
+이 경우 보이지 않는 래퍼 역할을 하는 `<template>` 엘리먼트에 `v-if`를 사용할 수 있습니다.
+최종 렌더링된 결과에는 `<template>` 엘리먼트가 포함되지 않습니다.
 
 ```vue-html
 <template v-if="ok">
-  <h1>Title</h1>
-  <p>Paragraph 1</p>
-  <p>Paragraph 2</p>
+  <h1>제목</h1>
+  <p>단락 1</p>
+  <p>단락 2</p>
 </template>
 ```
 
-`v-else` and `v-else-if` can also be used on `<template>`.
+`v-else` 및 `v-else-if`는 `<template>`에서도 사용할 수 있습니다.
 
 ## `v-show`
 
-Another option for conditionally displaying an element is the `v-show` directive. The usage is largely the same:
+엘리먼트를 조건부로 표시하는 다른 옵션은 `v-show` 디렉티브입니다.
+사용법은 대체로 동일합니다:
 
 ```vue-html
-<h1 v-show="ok">Hello!</h1>
+<h1 v-show="ok">안녕!</h1>
 ```
 
-The difference is that an element with `v-show` will always be rendered and remain in the DOM; `v-show` only toggles the `display` CSS property of the element.
+차이점은 `v-show`가 있는 엘리먼트는 항상 렌더링되고 DOM에 남아 있다는 것입니다.
+`v-show`는 엘리먼트의 `display` CSS 속성만 전환합니다.
 
-`v-show` doesn't support the `<template>` element, nor does it work with `v-else`.
+`v-show`는 `<template>` 엘리먼트를 지원하지 않으며 `v-else`와 상호작용하지 않습니다.
 
 ## `v-if` vs `v-show`
 
-`v-if` is "real" conditional rendering because it ensures that event listeners and child components inside the conditional block are properly destroyed and re-created during toggles.
+`v-if`는 "실제" 조건부 렌더링입니다.
+왜냐하면 조건부 블록이 전환될 경우, 블록 내 이벤트 리스너와 자식 컴포넌트가 제대로 제거되거나 재생성되기 때문입니다.
 
-`v-if` is also **lazy**: if the condition is false on initial render, it will not do anything - the conditional block won't be rendered until the condition becomes true for the first time.
+또한 `v-if`는 **게으르므로**(lazy), 초기 조건이 false면 아무 작업도 수행하지 않습니다.
+조건부 블록은 조건이 true가 될 때까지 렌더링되지 않습니다.
 
-In comparison, `v-show` is much simpler - the element is always rendered regardless of initial condition, with CSS-based toggling.
+이에 비해 `v-show`는 훨씬 간단합니다.
+엘리먼트는 CSS 기반으로 전환 되므로, 초기 조건과 관계없이 항상 렌더링 됩니다.
 
-Generally speaking, `v-if` has higher toggle costs while `v-show` has higher initial render costs. So prefer `v-show` if you need to toggle something very often, and prefer `v-if` if the condition is unlikely to change at runtime.
+일반적으로 `v-if`는 전환 비용이 더 높고, `v-show`는 초기 렌더링 비용이 더 높습니다.
+따라서 매우 자주 전환해야 하는 경우 `v-show`를, 실행 중에 조건이 변경되지 않는 경우 `v-if`를 사용하는 것이 좋습니다.
 
 ## `v-if` with `v-for`
 
-::: warning Note
-It's **not** recommended to use `v-if` and `v-for` on the same element due to implicit precedence. Refer to [style guide](/style-guide/rules-essential.html#avoid-v-if-with-v-for) for details.
+:::warning 참고
+`v-if`와 `v-for`를 함께 사용하는 것은 **권장되지 않습니다**.
+
+[comment]: <> (자세한 내용은 [스타일 가이드]&#40;/style-guide/rules-essential.html#avoid-v-if-with-v-for&#41;를 참조하세요.)
 :::
 
-When `v-if` and `v-for` are both used on the same element, `v-if` will be evaluated first. See the [list rendering guide](list#v-for-with-v-if) for details.
+엘리먼트에 `v-if`와 `v-for`를 함께 사용하면 `v-if`가 먼저 평가됩니다.
+자세한 내용은 [리스트 렌더링 가이드](list#v-if에-v-for-사용하기)를 참조하세요.

@@ -9,7 +9,7 @@ All APIs listed on this page must be called synchronously during the `setup()` p
 :::
 
 :::info 사용법 설명
-이 페이지에 나열된 모든 API는 구성요소의 `setup()` 단계에서 동기적으로 호출되어야 합니다. 자세한 내용은 [가이드 - 생명주기 후크](/guide/essentials/lifecycle.html)를 참조하세요.
+이 페이지에 나열된 모든 API는 구성앨리먼트의 `setup()` 단계에서 동기적으로 호출되어야 합니다. 자세한 내용은 [가이드 - 생명주기 후크](/guide/essentials/lifecycle.html)를 참조하세요.
 :::
 
 ## onMounted()
@@ -243,7 +243,7 @@ Registers a hook to be called right before a component instance is to be unmount
 
 Registers a hook to be called when an error propagating from a descendent component has been captured.
 
-하위 컴포넌트에서 에러가 전파되었다면 호출됩니다. 
+자식 컴포넌트에서 에러가 전파되었다면 호출됩니다. 
 
 - **Type**
 

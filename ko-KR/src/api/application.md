@@ -21,7 +21,7 @@ Creates an application instance.
 
   The first argument is the root component. The second optional argument is the props to be passed to the root component.
 
-  첫 번째 인수는 루트 컴포넌트입니다. 두 번째 선택적 인수는 루트 컴포넌트에 전달할 props입니다.
+  첫 번째 인자는 루트 컴포넌트입니다. 두 번째 선택적 인자는 루트 컴포넌트에 전달할 props입니다.
 
 - **Example**
 
@@ -76,7 +76,7 @@ Mounts the application instance in a container element.
 
   The argument can either be an actual DOM element or a CSS selector (the first matched element will be used). Returns the root component instance.
 
-  인자는 실제 DOM요소 또는 CSS 선택자일 수 있습니다(첫번째로 일치하는 요소가 사용됨). 루트 컴포넌트 인스턴스를 반환합니다.
+  인자는 실제 DOM앨리먼트 또는 CSS 선택자일 수 있습니다(첫번째로 일치하는엘리먼트가 사용됨). 루트 컴포넌트 인스턴스를 반환합니다.
 
 
   If the component has a template or a render function defined, it will replace any existing DOM nodes inside the container. Otherwise, if the runtime compiler is available, the `innerHTML` of the container will be used as the template.
@@ -126,7 +126,7 @@ Unmounts a mounted application instance, triggering the unmount lifecycle hooks 
 
 Provide a value that can be injected in all descendent components within the application.
 
-애플리케이션 내의 모든 하위 컴포넌트에 주입할 수 있는 값을 제공합니다.
+애플리케이션 내의 모든 자식 컴포넌트에 주입할 수 있는 값을 제공합니다.
 
 - **Type**
 
@@ -224,7 +224,7 @@ Registers a global component if passing both a name string and a component defin
 
 Registers a global custom directive if passing both a name string and a directive definition, or retrieves an already registered one if only the name is passed.
 
-이름 문자열과 지시문 정의를 모두 전달하는 경우 전역 사용자 정의 지시문을 등록하거나 이름만 전달된 경우 이미 등록된 지시문을 검색합니다.
+이름 문자열과 디렉티브 정의를 모두 전달하는 경우 전역 사용자 정의 디렉티브를 등록하거나 이름만 전달된 경우 이미 등록된 디렉티브를 검색합니다.
 
 
 - **Type**
@@ -281,9 +281,9 @@ Installs a [plugin](/guide/reusability/plugins.html).
   
   첫 번째 인자로 플러그인이, 두 번째 인자로 선택적 플러그인 옵션이 필요합니다.
 
-  The plugin can either be an object with an `install()` method, or a directly a function (which itself will used as the install method). The options (second argument of `app.use()`) will be passed along to the plugin's install method.
+  The plugin can either be an object with an `install()` method, or just a function that will be used as the `install()` method. The options (second argument of `app.use()`) will be passed along to the plugin's `install()` method.
   
-  플러그인은 `install()`  메소드가 있는 객체이거나 직접 함수(자체적으로 설치 메소드로 사용됨)일 수 있습니다. 옵션(`app.use()`의 두 번째 인자)은 플러그인의 설치 메소드에 전달됩니다.
+  플러그인은 `install()`  메소드가 있는 객체이거나 `install()`를 직접 사용하는 함수 일 수 있습니다. 옵션(`app.use()`의 두 번째 인자)은 플러그인의 설치 메소드에 전달됩니다.
 
   When `app.use()` is called on the same plugin multiple times, the plugin will be installed only once.
   
@@ -311,13 +311,14 @@ Applies a global mixin (scoped to the application). A global mixin applies its i
 전역 믹스인을 적용합니다(애플리케이션 범위). 전역 믹스인은 포함된 옵션을 애플리케이션의 모든 컴포넌트 인스턴스에 적용합니다.
 
 :::warning Not Recommended
-Mixins are supported in Vue 3 mainly for backwards compatibility due to its wide-spread use in ecosystem libraries. Use of mixins, especially global mixins, should be avoided in application code.
+Mixins are supported in Vue 3 mainly for backwards compatibility, due to their widespread use in ecosystem libraries. Use of mixins, especially global mixins, should be avoided in application code.
+
 
 For logic reuse, prefer [Composables](/guide/reusability/composables.html) instead.
 :::
 
 :::warning 권장하지 않음
-믹스인은 생태계 라이브러리에서 널리 사용되기 때문에 주로 하위 호환성을 위해 Vue 3에서 지원됩니다. 믹스인, 특히 전역 믹스인의 사용은 애플리케이션 코드에서 피해야 합니다.
+믹스인은 생태계 라이브러리에서 널리 사용되기 때문에, 주로 하위 호환성을 위해 Vue 3에서 지원됩니다. 믹스인, 특히 전역 믹스인의 사용은 애플리케이션 코드에서 피해야 합니다.
 로직 재사용의 경우 대신 [Composables](/guide/reusability/composables.html)를 사용하세요. 
 :::
 
@@ -488,25 +489,26 @@ Configure runtime compiler options. Values set on this object will be passed to 
 ::: warning Important
 This config option is only respected when using the full build (i.e. the standalone `vue.js` that can compile templates in the browser). If you are using the runtime-only build with a build setup, compiler options must be passed to `@vue/compiler-dom` via build tool configurations instead.
 
-- For `vue-loader`: [pass via the `compilerOptions` loader option](/). Also see [how to configure it in `vue-cli`](/).
+- For `vue-loader`: [pass via the `compilerOptions` loader option](https://vue-loader.vuejs.org/options.html#compileroptions). Also see [how to configure it in `vue-cli`](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader).
 
-- For `vite`: [pass via `@vitejs/plugin-vue` options](/).
+
+- For `vite`: [pass via `@vitejs/plugin-vue` options](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#options).
   :::
 
 ::: warning  중요 
 이 구성 옵션은 전체 빌드(예: 브라우저에서 템플릿을 컴파일할 수 있는 독립 실행형 {code0}vue.js{/code0})를 사용할 때만 적용됩니다. 빌드 설정과 함께 런타임 전용 빌드를 사용하는 경우 대신 빌드 도구 구성을 통해 컴파일러 옵션을 {code1}@vue/compiler-dom{/code1}으로 전달해야 합니다.
 
 
-- For `vue-loader`: [pass via the `compilerOptions` loader option](/). Also see [how to configure it in `vue-cli`](/).
+- `vue-loader` 설정: [`compilerOptions` 로더 옵션을 통해 전달](https://vue-loader.vuejs.org/options.html#compileroptions). [`vue-cli`에서 설정하는 방법](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader) 을 참고하세요.
 
-- For `vite`: [pass via `@vitejs/plugin-vue` options](/).
-:::
+- `vite` 설정: [`@vitejs/plugin-vue` 옵션을 통해 전달](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#options).
+  :::
 
 ### app.compilerOptions.isCustomElement
 
 Specifies a check method to recognize native custom elements.
 
-기본 사용자 정의 요소를 인식하기 위한 검사 방법을 지정합니다.
+기본 사용자 정의엘리먼트를 인식하기 위한 검사 방법을 지정합니다.
 
 - **Type:** `(tag: string) => boolean`
 
@@ -514,7 +516,7 @@ Specifies a check method to recognize native custom elements.
 
   Should return `true` if the tag should be treated as a native custom element. For a matched tag, Vue will render it as a native element instead of attempting to resolve it as a Vue component.
   
-  태그를 기본 맞춤 요소로 처리해야 하는 경우 `true`를 반환해야 합니다. 일치하는 태그의 경우 Vue는 이를 Vue 컴포넌트로 확인하는 대신 기본 요소로 렌더링합니다.
+  태그를 기본 맞춤엘리먼트로 처리해야 하는 경우 `true`를 반환해야 합니다. 일치하는 태그의 경우 Vue는 이를 Vue 컴포넌트로 확인하는 대신 기본엘리먼트로 렌더링합니다.
 
   Native HTML and SVG tags don't need to be matched in this function - Vue's parser recognizes them automatically.
   
@@ -553,8 +555,8 @@ Adjusts template whitespace handling behavior.
   3. Consecutive whitespace characters in text nodes are condensed into a single space.
 
 
-  1. 요소 내부의 선행/종료 공백 문자는 단일 공백으로 압축됩니다.
-  2. 개행을 포함하는 요소 사이의 공백 문자는 제거됩니다.
+  1.엘리먼트 내부의 선행/종료 공백 문자는 단일 공백으로 압축됩니다.
+  2. 개행을 포함하는엘리먼트 사이의 공백 문자는 제거됩니다.
   3. 텍스트 노드의 연속 공백 문자는 단일 공백으로 압축됩니다.
 
   Setting this option to `'preserve'` will disable (2) and (3).
@@ -679,7 +681,7 @@ An object for defining merging strategies for custom component options.
   
   일부 플러그인/라이브러리는 사용자 정의 컴포넌트 옵션에 대한 지원을 추가합니다(전역 믹스인 주입). 여러 소스(예: 믹스인 또는 컴포넌트 상속)에서 동일한 옵션을 "병합"해야 하는 경우 이러한 옵션에는 특별한 병합 논리가 필요할 수 있습니다.
 
-  A merge strategy function can registered for a custom option by assigning it on the `app.config.optionMergeStrategies` object using the option's name as the key.
+  A merge strategy function can be registered for a custom option by assigning it on the `app.config.optionMergeStrategies` object using the option's name as the key.
   
   옵션 이름을 키로 사용하여 `app.config.optionMergeStrategies` 객체에 할당하여 맞춤 옵션에 병합 전략 기능을 등록할 수 있습니다.
 

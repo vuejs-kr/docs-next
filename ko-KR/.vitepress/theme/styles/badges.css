@@ -1,5 +1,5 @@
 .vt-badge.wip:before {
-  content: 'WIP';
+  content: '작업 중...';
 }
 
 .vt-badge.ts {
@@ -16,11 +16,11 @@
 }
 
 .vt-badge.dev-only:before {
-  content: 'Dev only';
+  content: '개발용';
 }
 
 .vt-badge.experimental:before {
-  content: 'Experimental';
+  content: '실험적';
 }
 
 .vt-badge[data-text]:before {

@@ -180,7 +180,7 @@ Returns a reactive proxy of the object.
 
   It should also be noted that there is no ref unwrapping performed when the ref is accessed as an element of a reactive array or a native collection type like `Map`.
 
-  또한 ref가 'Map'과 같은 기본 컬렉션 유형 또는 반응형 배열의 요소로 액세스될 때 수행되는 ref 래핑 해제가 없다는 점에 유의해야 합니다.
+  또한 ref가 'Map'과 같은 기본 컬렉션 유형 또는 반응형 배열의엘리먼트로 액세스될 때 수행되는 ref 래핑 해제가 없다는 점에 유의해야 합니다.
 
   To avoid the deep conversion and only retain reactivity at the root level, use [shallowReactive()](./reactivity-advanced.html#shallowreactive) instead.
 
@@ -231,7 +231,7 @@ Returns a reactive proxy of the object.
 
   Note that refs are **not** unwrapped when accessed as array or collection elements:
 
-  ref는 배열 또는 컬렉션 요소로 액세스할 때 업래핑되지 **않습니다**:
+  ref는 배열 또는 컬렉션엘리먼트로 액세스할 때 업래핑되지 **않습니다**:
 
   ```js
   const books = reactive([ref('Vue 3 Guide')])
@@ -348,7 +348,7 @@ Runs a function immediately while reactively tracking its dependencies and re-ru
 
   The second argument is an optional options object that can be used to adjust the effect's flush timing or to debug the effect's dependencies.
 
-  두 번째 인수는 효과의 플러시 타이밍을 조정하거나 효과의 종속성을 디버그하는 데 사용할 수 있는 선택적 옵션 개체입니다
+  두 번째 인자는 효과의 플러시 타이밍을 조정하거나 효과의 종속성을 디버그하는 데 사용할 수 있는 선택적 옵션 개체입니다
 
   The return value is a handle function that can be called to stop the effect from running again.
 
@@ -503,7 +503,7 @@ Watches one or more reactive data sources and invokes a callback function when t
 
   The second argument is the callback that will be called when the source changes. The callback receives three arguments: the new value, the old value, and a function for registering a side effect cleanup callback. The cleanup callback will be called right before the next time the effect is re-run, and can be used to clean up invalidated side effects, e.g. a pending async request.
 
-  두 번째 인자는 소스가 변경될 때 호출될 콜백입니다. 콜백은 새 값, 이전 값 및 부작용 정리 콜백을 등록하기 위한 함수의 세 가지 인수를 받습니다. 정리 콜백은 다음에 효과가 다시 실행되기 직전에 호출되며 무효화된 부작용을 정리하는 데 사용할 수 있습니다. 예) 비동기 요청 보류하기
+  두 번째 인자는 소스가 변경될 때 호출될 콜백입니다. 콜백은 새 값, 이전 값 및 부작용 정리 콜백을 등록하기 위한 함수의 세 가지 인자를 받습니다. 정리 콜백은 다음에 효과가 다시 실행되기 직전에 호출되며 무효화된 부작용을 정리하는 데 사용할 수 있습니다. 예) 비동기 요청 보류하기
 
   When watching multiple sources, the callback receives two arrays containing new / old values corresponding to the source array.
 
@@ -511,7 +511,7 @@ Watches one or more reactive data sources and invokes a callback function when t
 
   The third optional argument is an options object that supports the following options:
 
-  세 번째 선택적 인수는 다음 옵션을 지원하는 옵션 개체입니다.
+  세 번째 선택적 인자는 다음 옵션을 지원하는 옵션 개체입니다.
 
   - **`immediate`**: trigger the callback immediately on watcher creation. Old value will be `undefined` on the first call.
   - **`immediate`**: watcher가 생성되는 즉시 콜백을 트리거합니다. 이전 값은 첫 번째 호출에서 '정의되지 않음'입니다.

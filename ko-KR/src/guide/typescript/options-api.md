@@ -220,7 +220,7 @@ Explicit annotations may also be required in some edge cases where TypeScript fa
 
 When dealing with native DOM events, it might be useful to type the argument we pass to the handler correctly. Let's take a look at this example:
 
-네이티브 DOM 이벤트를 처리할 때 핸들러에 올바르게 인수를 전달하는 것이 유용합니다. 다음 예를 살펴보겠습니다: 
+네이티브 DOM 이벤트를 처리할 때 핸들러에 올바르게 인자를 전달하는 것이 유용합니다. 다음 예를 살펴보겠습니다: 
 
 ```vue
 <script lang="ts">
@@ -243,7 +243,7 @@ export default defineComponent({
 
 Without type annotation, the `event` argument will implicitly have a type of `any`. This will also result in a TS error if `"strict": true` or `"noImplicitAny": true` are used in `tsconfig.json`. It is therefore recommended to explicitly annotate the argument of event handlers. In addition, you may need to explicitly cast properties on `event`:
 
-타입 어노테이션이 없으면 `event` 인수는 암묵적으로 `any` 타입을 갖습니다. `"strict": true` 또는 `"noImplicitAny": true` 가 `tsconfig.json` 에서 사용되는 경우에 TS 오류가 발생합니다. 따라서 이벤트 핸들러의 전달인자에 어노테이팅 하는 것을 권장합니다. 또한 `event` 에 대한 속성을 캐스팅해야 할 수도 있습니다: 
+타입 어노테이션이 없으면 `event` 인자는 암묵적으로 `any` 타입을 갖습니다. `"strict": true` 또는 `"noImplicitAny": true` 가 `tsconfig.json` 에서 사용되는 경우에 TS 오류가 발생합니다. 따라서 이벤트 핸들러의 전달인자에 어노테이팅 하는 것을 권장합니다. 또한 `event` 에 대한 속성을 캐스팅해야 할 수도 있습니다: 
 
 ```ts
 import { defineComponent } from 'vue'
@@ -293,6 +293,26 @@ We can put this type augmentation in a `.ts` file, or in a project-wide `*.d.ts`
 In order to take advantage of module augmentation, you will need to ensure the augmentation is placed in a [TypeScript module](https://www.typescriptlang.org/docs/handbook/modules.html). That is to say, the file needs to contain at least one top-level `import` or `export`, even if it is just `export {}`. If the augmentation is placed outside of a module, it will overwrite the original types rather than augmenting them!
 
 모듈 확장을 활용하려면 [타입스크립트 모듈](https://www.typescriptlang.org/docs/handbook/modules.html) 에 선언 되었는지 확인해야 합니다. 즉, 파일은 `export {}` 일지라도 최소한 하나의 최상위 `import` 또는 `export` 를 포함해야 합니다. 기능 확장이 모듈 외부에 선언되면 원래 타입을 사용하지 않고 덮어씁니다!
+
+```ts
+// Does not work, overwrites the original types.
+declare module 'vue' {
+  interface ComponentCustomProperties {
+    $translate: (key: string) => string
+  }
+}
+```
+
+```ts
+// Works correctly
+export {}
+
+declare module 'vue' {
+  interface ComponentCustomProperties {
+    $translate: (key: string) => string
+  }
+}
+```
 
 ## Augmenting Custom Options
 ## 사용자 지정 옵션 확장 {#augmenting-custom-options2}

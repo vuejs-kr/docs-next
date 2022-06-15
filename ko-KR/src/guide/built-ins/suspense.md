@@ -101,7 +101,7 @@ resolved 상태에서 `<Suspense>` 는 `#default` 슬롯의 루트 노드가 교
 
 ## 오류 처리 {#error-handling}
 
-`<Suspense>` 는 현재 컴포넌트 자체를 통해 오류를 처리하지 않습니다. 그러나 [`errorCaptured`](/api/options-lifecycle.html#errorcaptured) 옵션 또는 [`onErrorCaptured()`](/api/composition-api-lifecycle.html#onerrorcaptured) 훅을 사용하여 `<Suspense>` 의 상위 컴포넌트에서 비동기 오류를 캡처하고 처리할 수 있습니다.
+`<Suspense>` 는 현재 컴포넌트 자체를 통해 오류를 처리하지 않습니다. 그러나 [`errorCaptured`](/api/options-lifecycle.html#errorcaptured) 옵션 또는 [`onErrorCaptured()`](/api/composition-api-lifecycle.html#onerrorcaptured) 훅을 사용하여 `<Suspense>` 의 부모 컴포넌트에서 비동기 오류를 캡처하고 처리할 수 있습니다.
 
 ## 다른 컴포넌트와 결합 {#combining-with-other-components}
 
