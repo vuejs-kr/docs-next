@@ -248,10 +248,10 @@ export const sidebar = {
       ]
     },
     {
-      text: 'Best Practices',
+      text: '모범 사례',
       items: [
         {
-          text: '운영 배포',
+          text: '프로덕션 배포',
           link: '/guide/best-practices/production-deployment'
         },
         {
