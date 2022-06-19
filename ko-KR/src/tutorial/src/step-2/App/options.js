@@ -1,3 +1,3 @@
 export default {
-  // component options
+  // 컴포넌트 옵션
 }
