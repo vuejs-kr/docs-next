@@ -294,7 +294,7 @@ export const sidebar = {
           link: '/guide/extras/composition-api-faq'
         },
         {
-          text: '반응형 심화학습',
+          text: '반응형 심화',
           link: '/guide/extras/reactivity-in-depth'
         },
         {
