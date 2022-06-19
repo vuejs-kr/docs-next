@@ -1,6 +1,6 @@
-# Form Bindings
+# 폼(form) 바인딩
 
-Using `v-bind` and `v-on` together, we can create two-way bindings on form input elements:
+`v-bind`와 `v-on`을 함께 사용하면, 폼 안의 입력 엘리먼트에 양방향 바인딩을 만들 수 있습니다:
 
 ```vue-html
 <input :value="text" @input="onInput">
@@ -11,8 +11,7 @@ Using `v-bind` and `v-on` together, we can create two-way bindings on form input
 ```js
 methods: {
   onInput(e) {
-    // a v-on handler receives the native DOM event
-    // as the argument.
+    // v-on 핸들러는 네이티브 DOM 이벤트를 인자로 받습니다.
     this.text = e.target.value
   }
 }
@@ -24,24 +23,26 @@ methods: {
 
 ```js
 function onInput(e) {
-  // a v-on handler receives the native DOM event
-  // as the argument.
+  // v-on 핸들러는 네이티브 DOM 이벤트를 인자로 받습니다.
   text.value = e.target.value
 }
 ```
 
 </div>
 
-Try typing in the input box - you should see the text in `<p>` updating as you type.
+입력란에 입력해 보십시오.
+입력할 때 `<p>`에 텍스트가 업데이트되는 것을 볼 수 있습니다.
 
-To simplify two-way bindings, Vue provides a directive, `v-model`, which is essentially a syntax sugar for the above:
+Vue는 양방향 바인딩을 단순화하기 위해, 위 문법을 간편 표기하는 `v-model` 디렉티브를 제공합니다:
 
 ```vue-html
 <input v-model="text">
 ```
 
-`v-model` automatically syncs the `<input>`'s value with the bound state, so we no longer need to use a event handler for that.
+`v-model`은 `<input>`의 값을 바인딩된 상태와 자동으로 동기화하므로,
+더 이상 이에 대한 이벤트 핸들러를 사용할 필요가 없습니다.
 
-`v-model` works not only on text inputs, but also other input types such as checkboxes, radio buttons, and select dropdowns. We cover more details in <a target="_blank" href="/guide/essentials/forms.html">Guide - Form Bindings</a>.
+`v-model`은 텍스트 입력 외에도 체크박스, 라디오 버튼, 셀렉트 드롭다운과 같은 다른 입력 타입에서도 작동합니다.
+자세한 내용은 <a target="_blank" href="/guide/essentials/forms.html">가이드 - Form 입력 바인딩</a>에서 다룹니다.
 
-Now, try to refactor the code to use `v-model` instead.
+이제 `v-model`을 대신 사용하도록 코드를 리팩토링 해봅시다.
