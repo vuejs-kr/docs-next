@@ -96,14 +96,14 @@ function useToggleFn(
         <label class="no-sfc-label" @click="toggleSFC(false)">HTML</label>
         <VTSwitch
           class="sfc-switch"
-          aria-label="prefer single file component"
+          aria-label="싱글 파일 컴포넌트를 추천합니다"
           :aria-checked="preferSFC"
           @click="toggleSFC()"
         />
         <label class="sfc-label" @click="toggleSFC(true)">SFC</label>
         <a
           class="switch-link"
-          title="About SFC"
+          title="SFC에 대하여"
           href="/guide/scaling-up/sfc.html"
           @click="closeSideBar"
         >?</a>
