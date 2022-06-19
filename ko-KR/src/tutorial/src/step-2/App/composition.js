@@ -2,10 +2,10 @@ import { ref } from 'vue'
 
 export default {
   setup() {
-    // component logic
+    // 컴포넌트 로직
 
     return {
-      // exposed to template
+      // 템플릿에 노출
     }
   }
 }

@@ -1,7 +1,7 @@
 export default {
   data() {
     return {
-      message: 'Hello World!',
+      message: '안녕 Vue!',
       counter: {
         count: 0
       }
