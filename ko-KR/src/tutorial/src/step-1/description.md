@@ -1,26 +1,42 @@
-# Getting Started
+# 시작하기
 
-Welcome to the Vue tutorial!
+Vue 튜토리얼에 온 것을 환영합니다.
 
-The goal of this tutorial is to quickly give you an experience of what it feels like to work with Vue, right in the browser. It does not aim to be comprehensive, and you don't need to understand everything before moving on. However, after you complete it, make sure to also read the <a target="_blank" href="/guide/introduction.html">Guide</a> which covers each topic in more details.
+이 튜토리얼의 목표는 브라우저에서 빠르고 쉽게 Vue 사용 경험을 제공하는 것입니다.
+포괄적인 것을 목표로 하지 않으므로 계속 진행하기 전에 모든 것을 이해할 필요가 없습니다.
+그러나 완료한 후에는 각 주제에 대해 자세히 설명하는 <a target="_blank" href="/guide/introduction.html">가이드</a>를 읽어보십시오.
 
-## Prerequisites
+## 전제 조건
 
-The tutorial assumes basic familiarity with HTML, CSS and JavaScript. If you are totally new to front-end development, it might not be the best idea to jump right into a framework as your first step - grasp the basics then come back! Prior experience with other frameworks helps, but is not required.
+이 튜토리얼에서는 HTML, CSS 및 JavaScript에 대한 기본적인 지식이 있다고 가정합니다.
+프론트엔드 개발을 처음하는 경우, 첫 번째 단계로 프레임워크로 바로 뛰어드는 것이 좋은 생각이 아닐 수 있습니다.
+기초를 갖춘 다음 다시 돌아오세요!
+다른 프레임워크를 사용해본 경험이 도움이 될 수 있지만 필수는 아닙니다.
 
-## How to Use This Tutorial
+## 이 튜토리얼을 사용하는 방법
 
-You can edit the code <span class="wide">on the right</span><span class="narrow">below</span> and see the result update instantly. Each step will introduce a core feature of Vue, and you will be expected to complete the code to get the demo working. If you get stuck, you will have a "Show me!" button that reveals the working code for you. Try not to rely on it too much - you'll learn faster by figuring things out on your own.
+오른쪽에서 코드를 편집하고 즉시 업데이트된 결과물을 볼 수 있습니다.
+각 단계는 Vue의 핵심 기능을 소개하며, 데모가 작동하도록 코드를 완성해야 합니다.
+막히면 작동하는 코드를 보여주는 "보여줘!" 버튼이 표시됩니다.
+하지만 그것에 너무 의존하지 마십시오.
+스스로 알아내면 더 빨리 배울 수 있습니다.
 
-If you are an experienced developer coming from Vue 2 or other frameworks, there are a few settings you can tweak to make the best use of this tutorial. If you are a beginner, it's recommended to go with the defaults.
+Vue 2 또는 다른 프레임워크에서 온 숙련된 개발자라면 이 튜토리얼을 최대한 활용하기 위해 조정할 수 있는 몇 가지 설정이 있습니다.
+초보자라면 기본값을 사용하는 것이 좋습니다.
 
 <details>
-<summary>Tutorial Setting Details</summary>
+<summary>튜토리얼 설정 세부 사항</summary>
 
-- Vue offers two API styles: Options API and Composition API. This tutorial is designed to work for both - you can choose your preferred style using the **API Preference** switches at the top. <a target="_blank" href="/guide/introduction.html#api-styles">Learn more about API styles</a>.
+- Vue는 옵션 API와 컴포지션 API의 두 가지 API 스타일을 제공합니다.
+  이 튜토리얼은 두 스타일 모두에서 작동하도록 설계되었습니다.
+  상단의 API 스타일 설정 스위치를 사용하여 원하는 스타일을 선택할 수 있습니다.
+  <a target="_blank" href="/guide/introduction.html#api-styles">API 스타일에 대해 자세히 알아보기</a>
 
-- You can also switch between SFC-mode or HTML-mode. The former will show code examples in <a target="_blank" href="/guide/introduction.html#single-file-components">Single-File Component</a> (SFC) format, which is what most developers use when they use Vue with a build step. HTML-mode shows usage without a build step.
+- SFC 또는 HTML 모드로 전환할 수도 있습니다.
+  전자는 대부분의 개발자가 빌드 단계에서 Vue를 사용할 때 사용하는 <a target="_blank" href="/guide/introduction.html#single-file-components">싱글 파일 컴포넌트</a>(SFC) 형식의 코드 예제를 보여줍니다.
+  HTML 모드는 빌드 단계 없이 사용법을 보여줍니다.
 
 </details>
 
-Ready? Click "Next" to get started.
+준비 됬나요?
+"다음"을 클릭하여 시작하십시오.
