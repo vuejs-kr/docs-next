@@ -1,55 +1,86 @@
-:::warning 현재 이 문서는 번역 작업이 진행중입니다
-:::
+# Vue를 사용하는 다양한 방법
 
+우리는 "모든 사람에게 맞는" 웹이란 없다고 믿습니다.
+이것이 Vue가 유연하고 점진적으로 채택될 수 있도록 설계된 이유입니다.
+사용 사례에 따라 Vue는 스택 복잡성, 개발자 경험 및 최종 성능 간의 최적 균형을 유지하기 위해 다양한 방식으로 사용될 수 있습니다.
 
-# Ways of Using Vue
+## 독립 실행형 스크립트
 
-We believe there is no "one size fits all" story for the web. This is why Vue is designed to be flexible and incrementally adoptable. Depending on your use case, Vue can be used in different ways to strike the optimal balance between stack complexity, developer experience and end performance.
+Vue는 독립 실행형 스크립트 파일로 사용할 수 있습니다.
+빌드 단계가 필요하지 않습니다!
+백엔드 프레임워크가 이미 대부분의 HTML을 렌더링하고 있거나,
+프론트엔드 로직이 빌드 단계를 정당화할 만큼 복잡하지 않은 경우,
+Vue를 스택에 통합하는 가장 쉬운 방법입니다.
+이러한 경우, Vue가 jQuery를 대신한다고 생각해도 됩니다.
 
-## Standalone Script
+또한 Vue는 기존 HTML을 점진적으로 향상시키기 위해 특별히 최적화된 [petite-vue](https://github.com/vuejs/petite-vue)라는 대체 배포판을 제공합니다.
+더 작은 기능 세트이지만, 매우 가볍고 빌드 단계가 필요 없는 상황에서 더 효율적인 구현을 위해 사용합니다.
 
-Vue can be used as a standalone script file - no build step required! If you have a backend framework already rendering most of the HTML, or your frontend logic isn't complex enough to justify a build step, this is the easiest way to integrate Vue into your stack. You can think of Vue as a more declarative replacement of jQuery in such cases.
+## 임베디드 웹 컴포넌트
 
-Vue also provides an alternative distribution called [petite-vue](https://github.com/vuejs/petite-vue) that is specifically optimized for progressively enhancing existing HTML. It has a smaller feature set, but is extremely lightweight and uses an implementation that is more efficient in no-build-step scenarios.
+Vue를 사용하여 렌더링 방법에 관계없이 모든 HTML 페이지에 포함할 수 있는 [표준 웹 컴포넌트](/guide/extras/web-components)를 빌드 할 수 있습니다.
+이 옵션을 사용하면 완전히 소비자에 구애받지 않는 방식으로 Vue를 활용할 수 있습니다.
+즉, 웹 컴포넌트는 레거시 앱, 정적 HTML 또는 다른 프레임워크로 빌드된 앱에 포함될 수 있습니다.
 
-## Embedded Web Components
+## SPA (싱글 페이지 웹)
 
-You can use Vue to [build standard Web Components](/guide/extras/web-components) that can be embedded in any HTML page, regardless of how they are rendered. This option allows you to leverage Vue in a completely consumer-agnostic fashion: the resulting web components can be embedded in legacy applications, static HTML, or even applications built with other frameworks.
+일부 앱에는 프런트엔드에서 풍부한 상호 작용과 간단한 상태 저장 로직이 필요합니다.
+이러한 앱을 구축하는 가장 좋은 방법은 Vue가 전체 페이지를 제어하면서,
+페이지를 다시 로드하지 않고도 데이터 업데이트 및 탐색을 처리하는 아키텍처를 사용하는 것입니다.
+이러한 유형의 앱을 일반적으로 SPA라고 합니다.
 
-## Single-Page Application (SPA)
+Vue는 다음을 포함하여 최신 SPA를 구축하기 위한 핵심 라이브러리 및 [종합 도구 지원](/guide/scaling-up/tooling)을 제공합니다:
 
-Some applications require rich interactivity and non-trivial stateful logic on the frontend. The best way to build such applications is to use an architecture where Vue not only controls the entire page, but also handles data updates and navigation without having to reload the page. This type of application is typically referred to as a Single-Page Application (SPA).
+- 클라이언트 측 라우터
+- 초고속 빌드 툴 체인
+- IDE 지원
+- 브라우저 개발 도구
+- TypeScript 통합
+- 테스트 유틸리티
 
-Vue provides core libraries and [comprehensive tooling support](/guide/scaling-up/tooling) with amazing developer experience for building modern SPAs, including:
+SPA는 일반적으로 API 엔드포인트를 노출하는 백엔드가 필요하지만,
+Vue를 [Inertia.js](https://inertiajs.com)와 같은 솔루션과 페어링하여,
+서버 중심 개발 모델을 유지하면서 SPA 이점을 얻을 수도 있습니다.
 
-- Client-side router
-- Blazing fast build tool chain
-- IDE support
-- Browser devtools
-- TypeScript integrations
-- Testing utilities
+## 풀스택 / SSR
 
-SPAs typically require the backend to expose API endpoints - but you can also pair Vue with solutions like [Inertia.js](https://inertiajs.com) to get the SPA benefits while retaining a server-centric development model.
+순수한 클라이언트 측 SPA는 앱이 SEO 및 콘텐츠 생성 시간에 민감한 경우 문제가 됩니다.
+이는 브라우저가 대부분 비어 있는 HTML 페이지를 수신하고,
+무엇을 렌더링하기 전에 JavaScript가 로드될 때까지 기다려야 하기 때문입니다.
 
-## Fullstack / SSR
+Vue는 Vue 앱을 서버의 HTML 문자열로 "렌더링"하는 first-class API를 제공합니다.
+이를 통해 서버는 이미 렌더링된 HTML을 보낼 수 있으므로,
+최종 사용자는 JavaScript가 다운로드되는 동안 콘텐츠를 즉시 볼 수 있습니다.
+그러면 Vue는 클라이언트 측에서 앱을 "하이드레이트"(hydrate: 변환)하여 대화형으로 만듭니다.
+이를 [서버 측 렌더링(SSR)](/guide/scaling-up/ssr)이라고 하며,
+[Largest Contentful Paint(LCP)](https://web.dev/lcp/)와 같은 Core Web Vital 메트릭을 크게 향상시킵니다.
 
-Pure client-side SPAs are problematic when the app is sensitive to SEO and time-to-content. This is because the browser will receive a largely empty HTML page, and has to wait until the JavaScript is loaded before rendering anything.
+이 패러다임 위에 구축된 Vue 기반의 상위 레벨 프레임워크로 [Nuxt](https://v3.nuxtjs.org/)가 있습니다.
+이를 통해 Vue 및 JavaScript를 사용하여 풀스택 앱을 개발할 수 있습니다.
 
-Vue provides first-class APIs to "render" a Vue app into HTML strings on the server. This allows the server to send back already-rendered HTML, allowing end users to see the content immediately while the JavaScript is being downloaded. Vue will then "hydrate" the application on the client side to make it interactive. This is called [Server-Side Rendering (SSR)](/guide/scaling-up/ssr) and it greatly improves Core Web Vital metrics such as [Largest Contentful Paint (LCP)](https://web.dev/lcp/).
+## 잼스택 / SSG
 
-There are higher-level Vue-based frameworks built on top of this paradigm, such as [Nuxt](https://v3.nuxtjs.org/), which allow you to develop a fullstack application using Vue and JavaScript.
+필요한 데이터가 정적인 경우,
+서버 사이드 렌더링을 미리 수행할 수 있습니다.
+즉, 전체 앱을 HTML로 미리 렌더링하고 정적 파일로 제공할 수 있습니다.
+이렇게 하면 더 이상 각 요청에서 페이지를 동적으로 렌더링할 필요가 없으므로,
+사이트 성능이 향상되고 배포가 훨씬 간단해집니다.
+Vue는 여전히 이러한 앱을 하이드레이트하여 클라이언트에서 풍부한 상호 작용을 제공할 수 있습니다.
+이 기술은 일반적으로 SSG(Static-Site Generation)라고 하며,
+[잼스택](https://jamstack.org/what-is-jamstack/)이라고도 합니다.
 
-## JAMStack / SSG
+Vue 팀은 [VitePress](https://vitepress.vuejs.org/)라는 정적 사이트 생성기를 유지 관리합니다.
+지금 읽고 있는 이 웹사이트도 이 생성기로 만들었습니다!
+또한 [Nuxt](https://v3.nuxtjs.org/)도 SSG를 지원합니다.
+동일한 Nuxt 앱에서 다른 라우트에 대해 SSR과 SSG를 혼합할 수도 있습니다.
 
-Server-side rendering can be done ahead of time if the required data is static. This means we can pre-render an entire application into HTML and serve them as static files. This improves site performance and makes deployment a lot simpler since we no longer need to dynamically render pages on each request. Vue can still hydrate such applications to provide rich interactivity on the client. This technique is commonly referred to as Static-Site Generation (SSG), also known as [JAMStack](https://jamstack.org/what-is-jamstack/).
+## 웹을 넘어서
 
-The Vue team maintains a static-site generator called [VitePress](https://vitepress.vuejs.org/), which powers this website you are reading right now! In addition, [Nuxt](https://v3.nuxtjs.org/) also supports SSG. You can even mix SSR and SSG for different routes in the same Nuxt app.
+Vue는 주로 웹 앱을 구축하기 위해 설계되었지만,
+브라우저에만 국한되지는 않습니다.
+다음을 수행할 수 있습니다:
 
-## Beyond the Web
-
-Although Vue is primarily designed for building web applications, it is by no means limited to just the browser. You can:
-
-- Build desktop apps with [Electron](https://www.electronjs.org/) or [Tauri](https://tauri.studio/en/)
-- Build mobile apps with [Ionic Vue](https://ionicframework.com/docs/vue/overview)
-- Build desktop and mobile apps from the same codebase with [Quasar](https://quasar.dev/)
-- Use Vue's [Custom Renderer API](/api/custom-renderer) to build custom renderers targeting [WebGL](https://troisjs.github.io/) or even [the terminal](https://github.com/ycmjason/vuminal)!
+- [Electron](https://www.electronjs.org/) 또는 [Tauri](https://tauri.studio/en/)로 데스톱 앱 생성.
+- [Ionic Vue](https://ionicframework.com/docs/vue/overview)로 모바일 앱 생성.
+- 동일한 코드를 기반으로 [Quasar](https://quasar.dev/)를 사용하여 데스크톱 및 모바일 앱 생성.
+- Vue의 [Custom Renderer API](/api/custom-renderer)를 사용하여 [WebGL](https://troisjs.github.io/) 또는 [터미널](https://github.com/ycmjason/vuminal)을 대상으로 하는 커스텀 렌더러를 생성할 수 있습니다!
