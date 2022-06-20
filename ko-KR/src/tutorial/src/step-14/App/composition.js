@@ -6,7 +6,7 @@ export default {
     ChildComp
   },
   setup() {
-    const msg = ref('from parent')
+    const msg = ref('Vue는 개발자에게 정말 유용하죠! 🎁')
 
     return {
       msg
