@@ -1,6 +1,6 @@
-# 감시자
+# 감시자 {#watchers}
 
-## 기본 예제
+## 기본 예제 {#basic-example}
 
 계산된 속성은 계산되어 파생된 값을 선언적으로 사용할 수 있게 합니다.
 그러나 상태 변경에 대한 반응으로 "사이드 이펙트"(예: DOM을 변경하거나 비동기 작업의 결과를 기반으로 다른 상태를 변경하는 것)를 수행해야 하는 경우가 있습니다.
@@ -100,7 +100,7 @@ watch(question, async (newQuestion, oldQuestion) => {
 
 [온라인 연습장으로 실행하기](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiwgd2F0Y2ggfSBmcm9tICd2dWUnXG5cbmNvbnN0IHF1ZXN0aW9uID0gcmVmKCcnKVxuY29uc3QgYW5zd2VyID0gcmVmKCfsp4jrrLjsl5DripQg7J2867CY7KCB7Jy866GcIOusvOydjO2RnOqwgCDtj6ztlajrkKnri4jri6QuJylcblxuLy8gd2F0Y2jripQgcmVm7JeQ7IScIOyngeygkSDsnpHrj5ntlanri4jri6RcbndhdGNoKHF1ZXN0aW9uLCBhc3luYyAobmV3UXVlc3Rpb24sIG9sZFF1ZXN0aW9uKSA9PiB7XG4gIGlmIChuZXdRdWVzdGlvbi5pbmRleE9mKCc/JykgPiAtMSkge1xuICAgIGFuc3dlci52YWx1ZSA9ICfsg53qsIEg7KSRLi4uJ1xuICAgIHRyeSB7XG4gICAgICBjb25zdCByZXMgPSBhd2FpdCBmZXRjaCgnaHR0cHM6Ly95ZXNuby53dGYvYXBpJylcbiAgICAgIGFuc3dlci52YWx1ZSA9IChhd2FpdCByZXMuanNvbigpKS5hbnN3ZXIgPT09ICd5ZXMnID8gJ+uEpCcgOiAn7JWE64uI7JikJ1xuICAgIH0gY2F0Y2ggKGVycm9yKSB7XG4gICAgICBhbnN3ZXIudmFsdWUgPSAn7Jik66WYISBBUEnsl5Ag7Jew6rKw7ZWgIOyImCDsl4bsirXri4jri6QuICcgKyBlcnJvclxuICAgIH1cbiAgfVxufSlcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDxwPlxuICAgIOyYiC/slYTri4jsmKQg7KeI66y4OlxuICAgIDxpbnB1dCB2LW1vZGVsPVwicXVlc3Rpb25cIiAvPlxuICA8L3A+XG4gIDxwPnt7IGFuc3dlciB9fTwvcD5cbjwvdGVtcGxhdGU+IiwiaW1wb3J0LW1hcC5qc29uIjoie1xuICBcImltcG9ydHNcIjoge1xuICAgIFwidnVlXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3Z1ZS5ydW50aW1lLmVzbS1icm93c2VyLmpzXCIsXG4gICAgXCJ2dWUvc2VydmVyLXJlbmRlcmVyXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3NlcnZlci1yZW5kZXJlci5lc20tYnJvd3Nlci5qc1wiXG4gIH1cbn0ifQ==)
 
-### 감시 대상 타입
+### 감시 대상 타입 {https://vuejs.org/guide/essentials/watchers.html#watch-source-types}
 
 `watch`의 첫 번째 인수는 다양한 유형의 반응형 "소스"가 될 수 있습니다.
 ref(계산된 ref 포함), 반응형 객체, getter 함수 또는 여러 소스의 배열이 될 수 있습니다:
@@ -152,7 +152,7 @@ watch(
 
 </div>
 
-## 깊은 감시자
+## 깊은 감시자 {#deep-watchers}
 
 <div class="options-api">
 
@@ -236,7 +236,7 @@ watch(
 
 <div class="options-api">
 
-## 열성적인 감시자 \*
+## 열성적인 감시자 \* {#eager-watchers}
 
 `watch`는 기본적으로 게으릅니다(lazy).
 콜백은 감시된 소스가 변경되기 전까지 호출되지 않습니다.
@@ -267,7 +267,7 @@ export default {
 
 <div class="composition-api">
 
-## `watchEffect()` \*\*
+## `watchEffect()` \*\* {#watcheffect}
 
 `watch()`는 게으르므로(lazy) 감시 소스가 변경될 때까지 콜백이 호출되지 않습니다.
 그러나 어떤 경우에는 동일한 콜백 로직이 열성적으로 실행되기를 원할 수 있습니다.
@@ -314,7 +314,7 @@ watchEffect(async () => {
 비동기 콜백과 함께 사용할 때 첫 번째 `await` 틱 이전에 접근한 속성들만 추적합니다.
 :::
 
-### `watch` vs. `watchEffect`
+### `watch` vs. `watchEffect` {#watch-vs-watcheffect}
 
 `watch`와 `'watchEffect`' 둘 다 사이드 이펙트를 반응적으로 실행할 수 있게 해줍니다.
 주요 차이점은 반응형 종속성을 추적하는 방식입니다:
@@ -330,7 +330,7 @@ watchEffect(async () => {
 
 </div>
 
-## 콜백 실행 타이밍
+## 콜백 실행 타이밍 {#callback-flush-timing}
 
 반응형 상태를 변경하면 Vue 컴포넌트 업데이트와 사용자가 만든 감시자 콜백이 모두 실행될 수 있습니다.
 
@@ -400,7 +400,7 @@ export default {
 
 </div>
 
-## 감시자 중지하기
+## 감시자 중지하기 {#stopping-a-watcher}
 
 <div class="options-api">
 

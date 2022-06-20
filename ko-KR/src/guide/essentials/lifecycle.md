@@ -1,10 +1,10 @@
-# 수명 주기 훅
+# 수명 주기 훅 {#lifecycle-hooks}
 
 각 Vue 컴포넌트 인스턴스는 생성될 때 일련의 초기화 단계를 거칩니다.
 예를 들어, 데이터 관찰을 설정하고, 템플릿을 컴파일하고, 인스턴스를 DOM에 마운트하고, 데이터가 변경되면 DOM을 업데이트해야 합니다.
 그 과정에서 수명 주기 훅(lifecycle hooks)이라 불리는 함수도 실행하여, 특정 단계에서 개발자가 의도하는 로직이 실행될 수 있도록 합니다.
 
-## 수명 주기 훅 등록하기
+## 수명 주기 훅 등록하기 {#registering-lifecycle-hooks}
 
 예를 들어 <span class="composition-api">`onMounted`</span><span class="options-api">`mounted`</span> 훅은 컴포넌트가 초기 렌더링 및 DOM 노드 생성이 완료된 후 코드를 실행하는 데 사용할 수 있습니다:
 
@@ -89,7 +89,7 @@ export default {
 
 </div>
 
-## 수명 주기 도표
+## 수명 주기 도표 {#lifecycle-diagram}
 
 다음은 인스턴스 수명 주기에 대한 도표입니다.
 지금 진행 중인 모든 것을 완전히 이해할 필요는 없지만, 더 많이 배우고 구축함에 따라 유용한 참고 자료가 될 것입니다.

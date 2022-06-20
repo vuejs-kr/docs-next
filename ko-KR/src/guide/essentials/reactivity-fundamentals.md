@@ -2,7 +2,7 @@
 outline: deep
 ---
 
-# 반응형 기초
+# 반응형 기초 {#reactivity-fundamentals}
 
 :::tip API 기본설정
 이 페이지와 이후 다른 가이드의 많은 챕터에는 옵션과 컴포지션 API에 대한 다양한 콘텐츠가 포함되어 있습니다.
@@ -10,7 +10,7 @@ outline: deep
 좌측 사이드바 상단에 있는 "API 스타일 설정" 스위치를 사용하여 API 스타일을 전환할 수 있습니다.
 :::
 
-## 반응형 상태 설정
+## 반응형 상태 설정 {#declaring-reactive-state}
 
 <div class="options-api">
 
@@ -50,7 +50,7 @@ Vue는 컴포넌트 인스턴스를 통해 기본 제공되는 API를 노출할 
 또한 내부 속성에 대해서는 `_` 접두사를 사용합니다.
 따라서 `data` 함수에 의해 반환되는 객체 내 최상위 속성명은 이러한 문자 중 하나로 시작하지 않아야 합니다.
 
-### 반응형 재정의 vs 원본 \*
+### 반응형 재정의 vs 원본 \* {#reactive-proxy-vs-original}
 
 Vue 3에서는 [JavaScript Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)를 활용하여 데이터를 반응형으로 만듭니다.
 Vue 2를 경험한 개발자는 다음과 같은 경우에 주의해야 합니다:
@@ -145,7 +145,7 @@ export default {
 </button>
 ```
 
-### `<script setup>` \*\*
+### `<script setup>` \*\* {#script-setup}
 
 `setup()` 훅을 통해 상태와 메서드를 수동으로 노출하는 것은 장황할 수 있습니다.
 다행히 빌드 방식을 사용하지 않을 때만 이러한 방법이 필요합니다.
@@ -179,7 +179,7 @@ function increment() {
 
 <div class="options-api">
 
-## 메서드 선언 \*
+## 메서드 선언 \* {#declaring-methods}
 
 컴포넌트 인스턴스에 메서드를 추가하기 위해서는 `methods` 옵션을 사용해야 합니다.
 이것은 직접 정의한 메서드를 포함하는 객체입니다:
@@ -229,7 +229,7 @@ export default {
 
 </div>
 
-### DOM 업데이트 시기
+### DOM 업데이트 시기 {#dom-update-timing}
 
 반응형 상태를 변경하면 DOM이 자동으로 업데이트됩니다.
 그러나 DOM 업데이트는 동기적으로 적용되지 않는다는 점에 유의해야 합니다.
@@ -270,7 +270,7 @@ export default {
 
 </div>
 
-### 깊은 반응형
+### 깊은 반응형 {#deep-reactivity}
 
 Vue는 기본적으로 반응형 상태를 깊이 있게 추적하므로, 중첩된 객체나 배열을 변경할 때에도 변경 사항이 감지됩니다:
 
@@ -321,7 +321,7 @@ function mutateDeeply() {
 
 <div class="composition-api">
 
-### 반응형 재정의 vs. 원본 \*\*
+### 반응형 재정의 vs. 원본 \*\* {#reactive-proxy-vs-original-1}
 
 `reactive()`의 반환 값은 원본 객체와 같지 않고 원본 객체를 재정의한 [프록시](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)(Proxy)라는 점을 유의하는 것이 중요합니다.
 
@@ -359,7 +359,7 @@ proxy.nested = raw
 console.log(proxy.nested === raw) // false
 ```
 
-### `reactive()`의 제한 사항 \*\*
+### `reactive()`의 제한 사항 \*\* {#limitations-of-reactive}
 
 `reactive()` API는 두 개의 제한 사항이 있습니다:
 
@@ -396,7 +396,7 @@ console.log(proxy.nested === raw) // false
    callSomeFunction(state.count)
    ```
 
-## `ref()`를 사용한 반응형 변수 \*\*
+## `ref()`를 사용한 반응형 변수 \*\* {#reactive-variables-with-ref}
 
 Vue는 `reactive()`의 제한 사항을 해결하기 위해, 어떠한 유형의 데이터라도 반응형으로 재정의할 수 있는 [`ref()`](/api/reactivity-core.html#ref) 함수를 제공합니다:
 
@@ -452,7 +452,7 @@ const { foo, bar } = obj
 즉, `ref()`를 사용하면 모든 값에 대한 "참조"를 만들어 반응성을 잃지 않고 전달할 수 있습니다.
 이 기능은 [컴포저블 함수](/guide/reusability/composables.html)로 로직을 추출할 때 자주 사용되기 때문에 상당히 중요합니다.
 
-### 템플릿에서 ref 래핑 해제 \*\*
+### 템플릿에서 ref 래핑 해제 \*\* {#ref-unwrapping-in-templates}
 
 최상위 속성의 ref를 템플릿에서 접근하면 자동으로 "래핑 해제"되므로 `.value`를 사용할 필요가 없습니다.
 아래는 `ref()`를 사용한 카운터 예제입니다:
@@ -513,7 +513,7 @@ const { foo } = object
 
 이것은 텍스트 보간의 편의 기능일 뿐이며 <code v-pre>{{ object.foo.value }}</code>와 동일합니다.
 
-### 반응형 객체에서 ref 래핑 해제 \*\*
+### 반응형 객체에서 ref 래핑 해제 \*\* {#ref-unwrapping-in-reactive-objects}
 
 `ref`가 반응형 객체의 속성으로 접근하거나 변경되면 자동으로 래핑 해제되어 일반 속성처럼 작동합니다:
 
@@ -543,7 +543,7 @@ console.log(count.value) // 1
 ref의 래핑 해제는 깊은 반응형 객체 내부에 중첩된 경우에만 발생합니다.
 [얕은 반응형 객체](/api/reactivity-advanced.html#shallowreactive)의 속성으로 접근하는 경우에는 적용되지 않습니다.
 
-#### 배열 및 컬렉션에서 ref 래핑 해제
+#### 배열 및 컬렉션에서 ref 래핑 해제 {#ref-unwrapping-in-arrays-and-collections}
 
 반응형 객체와 달리 ref를 반응형 배열의 요소로서 접근하거나 `Map`과 같은 기본 컬렉션 유형에서 접근할 때 래핑 해제가 실행되지 않습니다:
 
@@ -561,7 +561,7 @@ console.log(map.get('count').value)
 
 <div class="options-api">
 
-### 메서드 상태유지 \*
+### 메서드 상태유지 \* {#stateful-methods}
 
 어떤 경우에는 메서드 함수를 동적으로 생성해야 할 수도 있습니다.
 예를 들어 디바운스된 이벤트 핸들러 생성:
@@ -607,7 +607,7 @@ export default {
 
 <div class="composition-api">
 
-## 반응형 변환 <sup class="vt-badge experimental" /> \*\*
+## 반응형 변환 <sup class="vt-badge experimental" /> \*\* {#reactivity-transform}
 
 JavaScript의 언어적 제약으로 인해 ref를 `.value`와 같이 사용해야 하는 단점이 있습니다.
 그러나 컴파일 시 변환을 사용해 적절한 위치에 `.value`를 자동으로 추가하여 개발간 편의성을 개선할 수 있습니다.

@@ -1,6 +1,6 @@
-# 계산된 속성
+# 계산된 속성 {#computed-properties}
 
-## 기본 예제
+## 기본 예제 {#basic-example}
 
 템플릿 내 표현식은 매우 편리하지만 간단한 작업을 위한 것입니다.
 템플릿에 너무 많은 논리를 넣으면 비대해져 유지 관리가 어려워질 수 있습니다.
@@ -142,7 +142,7 @@ Vue는 `publishedBooksMessage`의 값이 `author.books`에 의존한다는 것�
 
 </div>
 
-## 계산된 캐싱 vs 메서드
+## 계산된 캐싱 vs 메서드 {#computed-caching-vs-methods}
 
 표현식에서 메소드를 호출하여 동일한 결과를 얻을 수도 있습니다:
 
@@ -210,7 +210,7 @@ const now = computed(() => Date.now())
 캐싱이 없다면 우리는 `list`의 getter를 불필요하게 많이 실행할 것입니다!
 캐싱을 원하지 않는 경우에만 메서드 호출을 사용하십시오.
 
-## 수정 가능한 계산된 속성
+## 수정 가능한 계산된 속성 {#writable-computed}
 
 계산된 속성은 기본적으로 getter 전용입니다.
 계산된 속성에 새 값을 할당하려고 하면 런타임 애러가 발생합니다.
@@ -273,9 +273,9 @@ const fullName = computed({
 
 </div>
 
-## 모범 사례
+## 모범 사례 {#best-practices}
 
-### getter에서 사이드 이펙트는 금물
+### getter에서 사이드 이펙트는 금물 {#getters-should-be-side-effect-free}
 
 계산된 속성의 getter 함수는 오로지 계산만 수행해야 함으로써, 사이드 이펙트는 없어야 함을 기억하는 것이 중요합니다.
 예를 들어, **getter에서 비동기 요청을 하거나 DOM을 변경하면 안됩니다!**
@@ -287,7 +287,7 @@ const fullName = computed({
 프로그래밍에서 함수가 결과값 이외에 다른 상태를 변경하는 행위
 :::
 
-### 계산된 값을 변경하지 마십시오
+### 계산된 값을 변경하지 마십시오 {#avoid-mutating-computed-value}
 
 계산된 속성에서 반환된 값은 파생된 상태입니다.
 임시 스냅샷으로 생각하십시오.

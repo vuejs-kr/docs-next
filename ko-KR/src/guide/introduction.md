@@ -2,7 +2,7 @@
 footer: false
 ---
 
-# 소개
+# 소개 {#introduction}
 
 :::info 당신은 현재 Vue 3에 대한 문서를 읽고 있습니다!
 
@@ -10,7 +10,7 @@ footer: false
 - Vue 2에서 업그레이드 하시려면 [마이그레이션 가이드](https://v3-migration.vuejs.org/)를 확인하십시오.
   :::
 
-## Vue는 무엇입니까?
+## Vue는 무엇입니까? {#what-is-vue}
 
 Vue는 사용자 인터페이스를 구축하기 위한 JavaScript 프레임 워크입니다.
 표준 HTML, CSS 및 JavaScript를 기반으로 구축되며, 단순하든 복잡하든 사용자 인터페이스를 효율적으로 개발할 수 있도록 컴포넌트 기반 프로그래밍 모델을 제공합니다.
@@ -67,7 +67,7 @@ const count = ref(0)
 다른 프레임워크를 사용했던 경험이 도움이 되지만 필수는 아닙니다.
 :::
 
-## 프로그레시브 프레임워크
+## 프로그레시브 프레임워크 {#the-progressive-framework}
 
 Vue는 프론트엔드 개발에 필요한 대부분의 공통 기능을 다루는 프레임워크이자 생태계입니다.
 그러나 웹은 매우 다양해 구축하려는 것의 형태와 규모가 크게 다를 수 있습니다.
@@ -93,7 +93,7 @@ Vue는 프론트엔드 개발에 필요한 대부분의 공통 기능을 다루�
 이러한 이유로 Vue를 "프로그레시브 프레임워크(Progressive Framework)"라고 부릅니다.
 이것은 당신과 함께 성장하고 당신의 요구에 적응할 수 있는 프레임워크입니다.
 
-## 싱글 파일 컴포넌트
+## 싱글 파일 컴포넌트 {#single-file-components}
 
 빌드 도구를 지원하는 대부분의 Vue 프로젝트에서는 HTML과 유사한 **싱글 파일 컴포넌트**(Single-File Component: **SFC**, `*.vue` 파일이라고도 함)라는 파일 형식을 사용하여 Vue 컴포넌트를 작성합니다.
 Vue SFC는 이름에서 알 수 있듯이 컴포넌트의 논리(JavaScript), 템플릿(HTML) 및 스타일(CSS)을 하나의 파일에 캡슐화합니다.
@@ -125,11 +125,11 @@ SFC는 Vue를 빌드 방식으로 사용하는 경우, 컴포넌트를 만들고
 [SFC를 왜 그리고 어떻게 사용해야 할까](/guide/scaling-up/sfc)에서 자세히 알아볼 수 있습니다.
 하지만 지금은 Vue가 모든 빌드 도구 설정을 처리한다는 점만 알아두세요.
 
-## API 스타일
+## API 스타일 {#api-styles}
 
 Vue 컴포넌트는 **옵션(Options) API**와 **컴포지션(Composition) API** 두 가지 스타일로 작성할 수 있습니다.
 
-### 옵션 API
+### 옵션 API {#options-api}
 
 옵션 API를 사용하여 `data`, `methods` 및 `mounted`와 같은 옵션의 객체를 사용하여 컴포넌트의 로직를 정의합니다.
 옵션으로 정의된 속성은 컴포넌트 인스턴스를 가리키는 함수 내부의 `this`에 노출됩니다:
@@ -167,7 +167,7 @@ export default {
 
 [온라인 연습장으로 실행하기](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdD5cbmV4cG9ydCBkZWZhdWx0IHtcbiAgLy8g67CY7J2R7ZiVIOyDge2DnFxuICBkYXRhKCkge1xuICAgIHJldHVybiB7XG4gICAgICBjb3VudDogMFxuICAgIH1cbiAgfSxcblxuICAvLyBtZXRob2Rz64qUIOyGjeyEsSDqsJLsnYQg67OA6rK97ZWY6rOgIOyXheuNsOydtO2KuCDtlaAg7IiYIOyeiOuKlCDtlajsiJhcbiAgbWV0aG9kczoge1xuICAgIGluY3JlbWVudCgpIHtcbiAgICAgIHRoaXMuY291bnQrK1xuICAgIH1cbiAgfSxcblxuICAvLyDsiJjrqoUg7KO86riwIO2bhVxuICBtb3VudGVkKCkge1xuICAgIGNvbnNvbGUubG9nKGDsiKvsnpAg7IS46riw7J2YIOy0iOq4sOqwkuydgCAke3RoaXMuY291bnR9IOyeheuLiOuLpC5gKVxuICB9XG59XG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8YnV0dG9uIEBjbGljaz1cImluY3JlbWVudFwiPuyIq+yekCDshLjquLA6IHt7IGNvdW50IH19PC9idXR0b24+XG48L3RlbXBsYXRlPiIsImltcG9ydC1tYXAuanNvbiI6IntcbiAgXCJpbXBvcnRzXCI6IHtcbiAgICBcInZ1ZVwiOiBcImh0dHBzOi8vc2ZjLnZ1ZWpzLm9yZy92dWUucnVudGltZS5lc20tYnJvd3Nlci5qc1wiXG4gIH1cbn0ifQ==)
 
-### 컴포지션 API
+### 컴포지션 API {#composition-api}
 
 컴포지션 API를 사용하는 경우, 가져온(`import`) API 함수들을 사용하여 컴포넌트의 로직를 정의합니다.
 SFC에서 컴포지션 API는 일반적으로 [`<script setup>`](/api/sfc-script-setup)과 함께 사용됩니다.
@@ -203,7 +203,7 @@ onMounted(() => {
 
 [온라인 연습장으로 실행하기](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiwgb25Nb3VudGVkIH0gZnJvbSAndnVlJ1xuXG4vLyDrsJjsnZHsoIHsnbgg7IOB7YOc7J2YIOyGjeyEsVxuY29uc3QgY291bnQgPSByZWYoMClcblxuLy8g7IaN7ISxIOqwkuydhCDrs4Dqsr3tlZjqs6Ag7JeF642w7J207Yq4IO2VoCDsiJgg7J6I64qUIO2VqOyImC5cbmZ1bmN0aW9uIGluY3JlbWVudCgpIHtcbiAgY291bnQudmFsdWUrK1xufVxuXG4vLyDsiJjrqoUg7KO86riwIO2bhVxub25Nb3VudGVkKCgpID0+IHtcbiAgY29uc29sZS5sb2coYOyIq+yekCDshLjquLDsnZgg7LSI6riw6rCS7J2AICR7IGNvdW50LnZhbHVlIH0g7J6F64uI64ukLmApXG59KVxuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPGJ1dHRvbiBAY2xpY2s9XCJpbmNyZW1lbnRcIj7siKvsnpAg7IS46riwOiB7eyBjb3VudCB9fTwvYnV0dG9uPlxuPC90ZW1wbGF0ZT4iLCJpbXBvcnQtbWFwLmpzb24iOiJ7XG4gIFwiaW1wb3J0c1wiOiB7XG4gICAgXCJ2dWVcIjogXCJodHRwczovL3NmYy52dWVqcy5vcmcvdnVlLnJ1bnRpbWUuZXNtLWJyb3dzZXIuanNcIlxuICB9XG59In0=)
 
-### 무엇을 선택해야 할까요?
+### 무엇을 선택해야 할까요? {#whichi-to-choose}
 
 우선 두 API 스타일 모두 일반적인 사용 사례를 완벽하게 다룰 수 있습니다.
 이것들은 정확히 동일한 기본 시스템에 의해 구동되는 서로 다른 인터페이스입니다.
@@ -233,11 +233,11 @@ Vue를 처음 사용하는 경우 일반적인 권장 사항은 다음과 같습
 학습 단계에서 한 가지 스타일만 고집할 필요는 없습니다.
 이후 문서에서는 두 가지 스타일의 코드 샘플을 제공하며, 왼쪽 사이드바의 상단에 있는 **API 스타일 설정**을 사용하여 언제든지 두 스타일 사이를 전환할 수 있습니다.
 
-## 여전히 질문이 있나요?
+## 여전히 질문이 있나요? {#still-got-questions}
 
 [FAQ](/about/faq)를 확인하세요.
 
-## 학습 방법 선택
+## 학습 방법 선택 {#pick-your-learning-path}
 
 개발자마다 학습 스타일이 다릅니다.
 선호하는 학습 방법을 자유롭게 선택하세요.

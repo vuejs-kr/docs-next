@@ -1,12 +1,12 @@
-# 클래스와 스타일 바인딩
+# 클래스와 스타일 바인딩 {#class-and-style-bindings}
 
 일반적으로 엘리먼트에 데이터를 바인딩하는 이유는 클래스 목록과 해당 인라인 스타일을 조작하기 위함입니다.
 둘 다 속성이므로 `v-bind`를 사용하여 표현 식으로 처리할 경우, 최종적인 문자열만 산출을 위한 로직만 신경 쓰면 되지만, 이것은 성가시고 오류가 발생하기 쉽습니다.
 이러한 이유로 `class` 및 `style`에 `v-bind`를 사용할 경우, 표현 식 내에 문자열 외에도 객체 또는 배열을 평가할 수 있도록 개발 편의적인 능력을 제공합니다.
 
-## HTML 클래스 바인딩
+## HTML 클래스 바인딩 {#binding-html-classes}
 
-### 객체로 바인딩 하기
+### 객체로 바인딩 하기 {#binding-to-objects}
 
 클래스를 동적으로 토글하기 위해 객체를 `:class`(`v-bind:class`의 줄임말)에 전달할 수 있습니다:
 
@@ -135,7 +135,7 @@ computed: {
 <div :class="classObject"></div>
 ```
 
-### 배열로 바인딩 하기
+### 배열로 바인딩 하기 {#binding-to-arrays}
 
 `:class`를 배열로 바인딩하여 클래스 목록을 적용할 수 있습니다:
 
@@ -186,7 +186,7 @@ data() {
 <div :class="[{ active: isActive }, errorClass]"></div>
 ```
 
-### 컴포넌트에서 사용하기
+### 컴포넌트에서 사용하기 {#with-components}
 
 > 이 섹션은 [컴포넌트](/guide/essentials/component-basics)에 대한 지식이 있다고 가정하므로, 건너뛰고 나중에 읽어도 됩니다.
 
@@ -246,9 +246,9 @@ data() {
 
 컴포넌트 속성 상속에 대한 자세한 내용은 [폴스루 속성](/guide/components/attrs.html) 섹션에서 확인할 수 있습니다.
 
-## 인라인 스타일 바인딩
+## 인라인 스타일 바인딩 {#binding-inline-styles}
 
-### 객체로 바인딩
+### 객체로 바인딩 {#binding-to-objects-1}
 
 `:style`은 [HTML 엘리먼트의 `style` 속성](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style)에 해당하는 JavaScript 객체에 대한 바인딩을 지원합니다:
 
@@ -319,7 +319,7 @@ data() {
 
 일반적으로 인라인 스타일에 바인딩 하는 경우, 객체를 반환하는 계산된 속성을 사용합니다.
 
-### 배열로 바인딩 하기
+### 배열로 바인딩 하기 {#binding-to-arrays-1}
 
 스타일 객체 여러 개로 이루어진 배열을 `:style`에 바인딩할 수 있습니다.
 객체들은 병합되어 엘리먼트에 적용됩니다:
@@ -328,12 +328,12 @@ data() {
 <div :style="[baseStyles, overridingStyles]"></div>
 ```
 
-### 접두사 자동완성
+### 접두사 자동완성 {#auto-prefixing}
 
 Vue가 실행되고 있을 때, 해당 브라우저에서 지원되지 않는 CSS 속성이 `:style`에 사용되면,
 자동으로 해당 속성과 [벤더 접두사](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix)가 조합된 여러 개의 특수한 속성을 테스트하고 지원되는 속성을 찾아서 추가합니다.
 
-### 다중 값
+### 다중 값 {#multiple-values}
 
 스타일 속성에 다중 값을 배열로 제공할 수 있습니다.
 예를 들면 다음과 같습니다:

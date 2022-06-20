@@ -1,4 +1,4 @@
-# 템플릿 문법
+# 템플릿 문법 {#template-syntax}
 
 Vue는 컴포넌트 인스턴스의 데이터를 서술적으로 렌더링된 DOM에 바인딩할 수 있는 HTML 기반 템플릿 문법을 사용합니다.
 모든 Vue 템플릿은 사양을 준수하는 브라우저 및 HTML 파서에서 문법을 분석할 수 있는 문법적으로 유효한 HTML입니다.
@@ -9,7 +9,7 @@ Vue는 컴포넌트 인스턴스의 데이터를 서술적으로 렌더링된 DO
 가상 DOM 개념에 익숙하고 JavaScript의 원시적인 작동법을 선호하는 경우, JSX 지원 옵션을 사용하여 템플릿 대신 [렌더링 함수를 직접 작성](/guide/extras/render-function.html)할 수도 있습니다.
 그러나 템플릿과 동일한 수준의 컴파일 시간 최적화를 기대할 수 없다는 점에 유의하십시오.
 
-## 텍스트 보간법
+## 텍스트 보간법 {#text-interpolation}
 
 데이터 바인딩의 가장 기본적인 형태는 "Mustache"(이중 중괄호) 문법을 사용한 텍스트 보간법입니다:
 
@@ -20,7 +20,7 @@ Vue는 컴포넌트 인스턴스의 데이터를 서술적으로 렌더링된 DO
 이중 중괄호 태그 내 `msg`는 해당 컴포넌트 인스턴스의 `msg` 속성의 값으로 대체됩니다.
 또한 `msg` 속성이 변경될 때마다 업데이트됩니다.
 
-## HTML 출력
+## HTML 출력 {#raw-html}
 
 이중 중괄호는 데이터를 HTML이 아닌 일반 텍스트로 해석합니다.
 실제 HTML을 출력하려면 [`v-html` 디렉티브](/api/built-in-directives.html#v-html)을 사용해야 합니다:
@@ -53,7 +53,7 @@ Vue는 문자열 기반 템플릿 엔진이 아니기 때문에 `v-html`을 사�
 신뢰할 수 있는 콘텐츠에만 `v-html`을 사용하고 사용자가 제공한 콘텐츠에는 **절대** 사용하지 마세요.
 :::
 
-## 속성 바인딩
+## 속성 바인딩 {#attribute-bindings}
 
 이중 중괄호는 HTML 속성(attribute) 내에서 사용할 수 없습니다.
 대신 [`v-bind` 디렉티브](/api/built-in-directives.html#v-bind)를 사용하세요:
@@ -65,7 +65,7 @@ Vue는 문자열 기반 템플릿 엔진이 아니기 때문에 `v-html`을 사�
 `v-bind` 디렉티브는 엘리먼트의 `id` 속성을 컴포넌트의 `dynamicId` 속성과 동기화된 상태로 유지하도록 Vue에 지시합니다.
 바인딩된 값이 `null` 또는 `undefined`이면 엘리먼트의 속성이 제거된 상태로 랜더링 됩니다.
 
-### 단축 문법
+### 단축 문법 {#shorthand}
 
 `v-bind`는 매우 일반적으로 사용되기 때문에 전용 단축 문법이 있습니다:
 
@@ -79,7 +79,7 @@ Vue는 문자열 기반 템플릿 엔진이 아니기 때문에 `v-html`을 사�
 
 > 이후 가이드 내용에서는 Vue 개발자에게 가장 일반적으로 사용되는 단축 문법을 코드 예제에서 사용할 것입니다.
 
-### 불리언(Boolean) 속성
+### 불리언(Boolean) 속성 {#boolean-attributes}
 
 [불리언 속성](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes)은 엘리먼트에 표기했는지 여부로 참/거짓 값을 나타내는 속성입니다.
 예를 들어, [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled)는 가장 일반적으로 사용되는 불리언 속성 중 하나입니다.
@@ -94,7 +94,7 @@ Vue는 문자열 기반 템플릿 엔진이 아니기 때문에 `v-html`을 사�
 값이 빈 문자열인 경우 `<button disabled="">`의 일관성을 유지하므로 속성이 표기됩니다.
 그 외 [falsy 값](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)의 경우 속성이 생략됩니다.
 
-### 여러 속성을 동적으로 바인딩
+### 여러 속성을 동적으로 바인딩 {#dynamically-binding-multiple-attributes}
 
 아래와 같이 여러 속성을 나타내는 JavaScript 객체가 있는 경우:
 
@@ -129,7 +129,7 @@ data() {
 <div v-bind="objectOfAttrs"></div>
 ```
 
-## JavaScript 표현식 사용
+## JavaScript 표현식 사용 {#using-javascript-expressions}
 
 지금까지는 템플릿의 간단한 속성 키에만 바인딩했습니다.
 그러나 Vue는 실제로 모든 데이터 바인딩 내에서 JavaScript 표현식의 모든 기능을 지원합니다:
@@ -151,7 +151,7 @@ Vue 템플릿에서 JavaScript 표현식은 다음과 같은 위치에 사용할
 - 이중 중괄호(텍스트 보간법) 내부
 - 모든 Vue 디렉티브 속성(`v-`로 시작하는 특수 속성) 내부
 
-### 하나의 표현식만 가능
+### 하나의 표현식만 가능 {#expressions-only}
 
 각 바인딩에는 **하나의 단일 표현식**만 포함될 수 있으므로 다음은 **작동하지 않습니다**:
 
@@ -163,7 +163,7 @@ Vue 템플릿에서 JavaScript 표현식은 다음과 같은 위치에 사용할
 {{ if (ok) { return message } }}
 ```
 
-### 함수 호출
+### 함수 호출 {#calling-functions}
 
 바인딩 표현식 내부에서 컴포넌트에서 노출하는 메서드를 호출할 수 있습니다:
 
@@ -177,7 +177,7 @@ Vue 템플릿에서 JavaScript 표현식은 다음과 같은 위치에 사용할
 바인딩 표현식 내부에서 호출되는 함수는 컴포넌트가 업데이트될 때마다 호출되므로, 데이터를 변경 또는 비동기 작업을 트리거하는 등의 **부작용이 없어야 합니다**.
 :::
 
-### 제한된 전역 액세스
+### 제한된 전역 액세스 {#restricted-globals-access}
 
 템플릿 표현식은 샌드박스 처리되어 [제한된 전역 리스트](https://github.com/vuejs/core/blob/main/packages/shared/src/globalsWhitelist.ts#L3)에만 액세스할 수 있습니다.
 이 목록은 `Math` 및 `Date` 등 일반적으로 사용되는 기본 제공 전역 객체를 표시합니다.
@@ -185,7 +185,7 @@ Vue 템플릿에서 JavaScript 표현식은 다음과 같은 위치에 사용할
 리스트에 명시적으로 포함되지 않은 `window`와 같은 전역 속성은 템플릿 표현식에서 액세스할 수 없습니다.
 그러나 [`app.config.globalProperties`](/api/application.html#app-config-globalproperties)에 추가하여, Vue 내부의 모든 표현식에서 전역 속성에 액세스 할 수 있도록 명시적으로 정의할 수 있습니다.
 
-## 디렉티브
+## 디렉티브 {#directives}
 
 `v-` 접두사가 있는 특수한 속성을 디렉티브라 합입니다.
 Vue는 위에서 소개한 `v-html`과 `v-bind`를 포함하여 [빌트인 디렉티브](/api/built-in-directives.html)를 제공합니다.
@@ -200,7 +200,7 @@ Vue는 위에서 소개한 `v-html`과 `v-bind`를 포함하여 [빌트인 디�
 
 여기서 `v-if` 디렉티브는 `seen`의 불리언(truthy/falsy) 값을 기반으로 `<p>` 엘리먼트를 삽입 또는 제거합니다.
 
-### 인수
+### 인수 {#arguments}
 
 일부 디렉티브는 디렉티브 뒤에 콜론(`:`)으로 표시되는 "인수"를 사용할 수 있습니다.
 예를 들어 `v-bind` 디렉티브는 HTML 속성을 반응적으로 업데이트하는 데 사용됩니다:
@@ -228,7 +228,7 @@ Vue는 위에서 소개한 `v-html`과 `v-bind`를 포함하여 [빌트인 디�
 여기서 `click`은 인수로서 수신할 이벤트 이름입니다.
 이벤트 처리에 대해서는 나중에 더 자세히 설명하겠습니다.
 
-### 동적인 인수
+### 동적인 인수 {#dynamic-arguments}
 
 디렉티브의 인수를 대괄호로 감싸서 JavaScript 표현식으로 사용할 수도 있습니다:
 
@@ -257,13 +257,13 @@ Vue는 위에서 소개한 `v-html`과 `v-bind`를 포함하여 [빌트인 디�
 
 이 예에서 `eventName`의 값이 `"focus"`인 경우, `v-on:[eventName]`은 `v-on:focus`와 같습니다.
 
-#### 동적인 인수 값 제약 조건
+#### 동적인 인수 값 제약 조건 {#dynamic-argument-value-constraints}
 
 동적인 인수는 `null` 또는 문자열로 평가되어야 합니다.
 값이 `null`일 경우, 바인딩을 명시적으로 제거합니다.
 문자열이 아닌 다른 값은 애러를 트리거합니다.
 
-#### 동적인 인수 문법 제약 조건
+#### 동적인 인수 문법 제약 조건 {#dynamic-argument-syntax-constraints}
 
 동적인 인수 표현식에는 공백 및 따옴표와 같은 특정 문자가 HTML 속성 이름 내에서 유효하지 않기 때문에 문법에 일부 제약 조건이 있습니다.
 예를 들어 다음은 유효하지 않습니다:
@@ -285,7 +285,7 @@ DOM 내 템플릿(HTML 파일에 직접 작성된 템플릿)을 사용할 때, �
 위의 내용은 DOM 내 템플릿에서 `:[someattr]`로 변환됩니다.
 컴포넌트에 `someAttr` 속성을 정의했다면, `someattr` 속성은 없으므로 코드가 작동하지 않습니다.
 
-### 수식어
+### 수식어 {#modifiers}
 
 수식어는 점(`.`)으로 시작하는 특수한 접미사로, 디렉티브가 특별한 방식으로 바인딩되어야 함을 나타냅니다.
 예를 들어 `.prevent` 수식어는 트리거된 이벤트에서 `event.preventDefault()`를 호출하도록 `v-on` 디렉티브에 지시합니다.

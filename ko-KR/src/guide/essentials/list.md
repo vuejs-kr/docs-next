@@ -1,4 +1,4 @@
-# 리스트 렌더링
+# 리스트 렌더링 {#list-rendering}
 
 ## `v-for`
 
@@ -129,7 +129,7 @@ items.forEach((item, index) => {
 <div v-for="item of items"></div>
 ```
 
-## 객체에 `v-for` 사용하기
+## 객체에 `v-for` 사용하기 {#v-for-with-an-object}
 
 `v-for`를 객체의 속성을 반복하는 데 사용할 수 있습니다:
 
@@ -199,7 +199,7 @@ data() {
 객체 속성을 순회할 때의 순서는 `Object.keys()`의 키 나열 순서를 따르며, 구현된 JavaScript 엔진에 따라 순서는 다를 수 있습니다.
 :::
 
-## 숫자 범위에 `v-for` 사용하기
+## 숫자 범위에 `v-for` 사용하기 {#v-for-with-a-range}
 
 `v-for`는 정수를 사용할 수도 있습니다.
 이 경우 `1...n` 범위를 기준으로 템플릿을 여러 번 반복합니다.
@@ -210,7 +210,7 @@ data() {
 
 여기서 `n`의 값은 `0`이 아니라 `1`부터 시작합니다.
 
-## `<template>`에서 `v-for` 사용하기
+## `<template>`에서 `v-for` 사용하기 {#v-for-on-template}
 
 `v-if`와 유사하게 `<template>` 태그에 `v-for`를 사용하여 여러 엘리먼트 블록을 렌더링할 수도 있습니다:
 
@@ -223,7 +223,7 @@ data() {
 </ul>
 ```
 
-## `v-if`에 `v-for` 사용하기
+## `v-if`에 `v-for` 사용하기 {#v-for-with-v-if}
 
 :::warning 참고
 `v-if`와 `v-for`를 함께 사용하는 것은 **권장되지 않습니다**.
@@ -252,7 +252,7 @@ data() {
 </template>
 ```
 
-## `key`를 통한 상태유지
+## `key`를 통한 상태유지 {#maintaining-state-with-key}
 
 Vue가 `v-for`로 렌더링된 리스트를 업데이트할 때, 기본적으로 "in-place patch" 전략을 사용합니다.
 리스트 아이템의 순서가 변경된 경우,
@@ -296,7 +296,7 @@ DOM Node의 위치가 변경되면 DOM Tree구조가 변경 되었기 때문에 
 `key`에는 문자열, 숫자, 심볼 형식의 값만 바인딩해야 합니다.
 `key` 속성의 자세한 사용법은 [`key` API 문서](/api/built-in-special-attributes.html#key)를 참조하세요.
 
-## 컴포넌트에 `v-for` 사용하기
+## 컴포넌트에 `v-for` 사용하기 {#v-for-with-a-component}
 
 > 이 섹션은 [컴포넌트](/guide/essentials/component-basics)에 대한 지식이 있다고 가정하므로, 건너뛰고 나중에 읽어도 됩니다.
 
@@ -332,9 +332,9 @@ DOM Node의 위치가 변경되면 DOM Tree구조가 변경 되었기 때문에 
 
 </div>
 
-## 배열 변경 감지
+## 배열 변경 감지 {#array-change-detection}
 
-### 수정 메서드
+### 수정 메서드 {#mutation-methods}
 
 Vue는 배열을 수정하는 메서드를 래핑하고 관찰하며 뷰(view) 업데이트를 트리거합니다. 래핑된 메서드는 다음과 같습니다:
 
@@ -346,7 +346,7 @@ Vue는 배열을 수정하는 메서드를 래핑하고 관찰하며 뷰(view) �
 - `sort()`
 - `reverse()`
 
-### 배열 교체
+### 배열 교체 {#replacing-an-array}
 
 수정 메서드는 이름에서 알 수 있듯이 호출된 원래 배열을 수정합니다.
 이에 비해 수정이 아닌 방법도 있습니다.
@@ -375,7 +375,7 @@ this.items = this.items.filter((item) => item.message.match(/Foo/))
 Vue는 DOM 엘리먼트 재사용을 최대화하기 위해 몇 가지 스마트 휴리스틱을 구현하므로,
 이전 배열을 다른 배열로 바꾸는 과정에서 서로 중복되는 객체를 가지는 부분을 매우 효율적으로 처리합니다.
 
-## 필터링/정렬 결과 표시
+## 필터링/정렬 결과 표시 {#displaying-filtered-sorted-results}
 
 때로는 원본 데이터를 실제로 수정하거나 교체하지 않고 필터링되거나 정렬된 결과를 표시하고 싶을 수 있습니다.
 이 경우 필터링되거나 정렬된 배열을 반환하는 계산된 속성을 만들 수 있습니다.

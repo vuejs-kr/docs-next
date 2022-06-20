@@ -1,4 +1,4 @@
-# 조건부 랜더링
+# 조건부 랜더링 {#conditional-rendering}
 
 <script setup>
 import { ref } from 'vue'
@@ -67,7 +67,7 @@ const awesome = ref(true)
 
 `v-else`와 마찬가지로 `v-else-if` 엘리먼트는 `v-if` 또는 `v-else-if` 엘리먼트 바로 다음에 와야 합니다.
 
-## `<template>`에서 `v-if`
+## `<template>`에서 `v-if` {#v-if-on-template}
 
 `v-if`는 디렉티브이므로 단일 엘리먼트에 연결해야 합니다.
 하지만 둘 이상의 엘리먼트를 전환하려면 어떻게 해야 할까요?

@@ -13,7 +13,7 @@ const selected = ref('')
 const multiSelected = ref([])
 </script>
 
-# Form 입력 바인딩
+# Form 입력 바인딩 {#form-input-bindings}
 
 프론트엔드에서 폼을 처리할 때, 폼 입력 엘리먼트의 상태를 JavaScript의 상태와 동기화해야 하는 경우가 많습니다.
 값 바인딩을 수동으로 연결하고 이벤트 리스너를 변경하는 것은 번거로운 작업입니다:
@@ -43,9 +43,9 @@ const multiSelected = ref([])
 <span class="options-api">`data` 옵션을</span><span class="composition-api">reactivity API를</span> 사용하여 JavaScript에서 초기 값을 선언해야 합니다.
 :::
 
-## 기본 사용법
+## 기본 사용법 {#basic-usage}
 
-### 텍스트
+### 텍스트 {#text}
 
 ```vue-html
 <p>메세지: {{ message }}</p>
@@ -74,7 +74,7 @@ const multiSelected = ref([])
 이러한 업데이트에도 응답하려면 `v-model`을 사용하는 대신 `input` 이벤트 리스너와 `value` 바인딩을 사용해 기능을 구성해야 합니다.
 :::
 
-### 여러 줄 텍스트
+### 여러 줄 텍스트 {#multiline-text}
 
 ```vue-html
 <span>여러 줄 메세지:</span>
@@ -109,7 +109,7 @@ const multiSelected = ref([])
 <textarea v-model="text"></textarea>
 ```
 
-### 체크박스
+### 체크박스 {#checkbox}
 
 단일 체크박스는 불리언을 값을 사용합니다:
 
@@ -196,7 +196,7 @@ export default {
 
 </div>
 
-### 라디오
+### 라디오 {#radio}
 
 ```vue-html
 <div>선택한 것: {{ picked }}</div>
@@ -229,7 +229,7 @@ export default {
 
 </div>
 
-### 셀렉트
+### 셀렉트 {#select}
 
 단일 셀렉트:
 
@@ -359,7 +359,7 @@ export default {
 
 </div>
 
-## 값 바인딩 하기
+## 값 바인딩 하기 {#value-bindings}
 
 라디오, 체크박스 및 셀렉트 옵션의 경우, `v-model`에 바인딩된 값은 일반적으로 정적 문자열(체크박스의 경우 불리언)입니다:
 
@@ -380,7 +380,7 @@ export default {
 이것을 구현하기 위해서는 `v-bind`를 사용해야 합니다.
 또한 `v-bind`를 사용하면 입력 값을 문자열이 아닌 값에 바인딩할 수 있습니다.
 
-### Checkbox
+### Checkbox {#checkbox-1}
 
 ```vue-html
 <input
@@ -408,7 +408,7 @@ export default {
 두 값 중 하나가 폼으로 제출되도록 하려면(예: "네" 또는 "아니오") 체크박스 대신 라디오로 구현해야 합니다.
 :::
 
-### 라디오
+### 라디오 {#radio-1}
 
 ```vue-html
 <input type="radio" v-model="pick" :value="first" />
@@ -417,7 +417,7 @@ export default {
 
 `pick`는 첫 번째 라디오 입력이 확인되면 `first` 값으로 설정되고 두 번째 라디오 입력이 확인되면 `second` 값으로 설정됩니다.
 
-### 셀렉트 옵션
+### 셀렉트 옵션 {#select-options}
 
 ```vue-html
 <select v-model="selected">
@@ -429,9 +429,9 @@ export default {
 `v-model`은 문자열이 아닌 값의 바인딩도 지원합니다!
 위의 예에서 옵션이 선택되면 `selected`는 `{ number: 123 }` 객체 값으로 설정됩니다.
 
-## 수식어
+## 수식어 {#modifiers}
 
-### `.lazy`
+### `.lazy` {#lazy}
 
 기본적으로 `v-model`은 각 `input` 이벤트 이후 데이터와 입력을 동기화합니다([위에 언급된 IME 구성 제외](#vmodel-ime-tip)).
 대신 `change` 이벤트 이후에 동기화하기 위해 `.lazy` 수식어를 추가할 수 있습니다.
@@ -441,7 +441,7 @@ export default {
 <input v-model.lazy="msg" />
 ```
 
-### `.number`
+### `.number` {#number}
 
 사용자 입력이 자동으로 숫자로 유형 변환되도록 하려면, `v-model` 수식어로 `.number`를 추가하면 됩니다:
 
@@ -453,7 +453,7 @@ export default {
 
 인풋에 `type="number"`가 있으면 `.number` 수식어가 자동으로 적용됩니다.
 
-### `.trim`
+### `.trim` {#trim}
 
 사용자 입력의 공백이 자동으로 트리밍되도록 하려면 `v-model` 수식어로 `.trim`을 추가하면 됩니다:
 
@@ -461,7 +461,7 @@ export default {
 <input v-model.trim="msg" />
 ```
 
-## 컴포넌트에 `v-model` 사용하기
+## 컴포넌트에 `v-model` 사용하기 {#v-model-with-components}
 
 > Vue의 컴포넌트에 아직 익숙하지 않은 경우, 지금은 건너뛰어도 됩니다.
 

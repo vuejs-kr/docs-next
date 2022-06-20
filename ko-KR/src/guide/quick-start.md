@@ -2,21 +2,21 @@
 footer: false
 ---
 
-# 빠른 시작
+# 빠른 시작 {#quick-start}
 
 사용 사례 및 기본 설정에 따라 빌드 단계를 포함하거나 포함하지 않고 Vue를 사용할 수 있습니다.
 
-## 빌드 도구 사용
+## 빌드 도구 사용 {#with-build-tools}
 
 빌드 설정을 통해 Vue [싱글 파일 컴포넌트](/guide/scaling-up/sfc)(SFC)를 사용할 수 있습니다.
 공식 Vue 빌드 설정은 현대적이고 가볍고 매우 빠른 프론트엔드 빌드 도구인 [Vite](https://vitejs.dev)를 기반으로 합니다.
 
-### 온라인
+### 온라인 {#online}
 
 [StackBlitz](https://vite.new/vue)에서 온라인으로 Vue와 SFC를 사용해 볼 수 있습니다.
 StackBlitz는 브라우저에서 직접 Vite 기반 빌드 설정을 실행하므로 로컬 설정과 거의 동일하며 컴퓨터에 아무것도 설치할 필요가 없습니다.
 
-### 로컬
+### 로컬 {#local}
 
 :::tip 전제 조건
 
@@ -89,7 +89,7 @@ TypeScript 및 테스트 지원과 같은 여러 선택적 기능에 대한 프�
 
 [다음 단계 >](#다음-단계)
 
-## 빌드 도구 사용 안 함
+## 빌드 도구 사용 안 함 {#without-build-tools}
 
 빌드 단계 없이 Vue를 시작하려면 다음 코드를 HTML 파일에 복사하고 브라우저에서 엽니다:
 
@@ -164,7 +164,7 @@ import-maps 기반 설정은 학습용입니다.
 프로덕션에서 빌드 도구 없이 Vue를 사용하려는 경우 [프로덕션 배포 가이드](/guide/best-practices/production-deployment.html#without-build-tools)를 확인하세요.
 :::
 
-### HTTP를 통한 서비스
+### HTTP를 통한 서비스 {#serving-over-http}
 
 가이드를 자세히 살펴보면서 관리하기 쉽도록 코드를 별도의 JavaScript 파일로 분할해야 할 수도 있습니다.
 예를 들면:
@@ -196,7 +196,7 @@ export default {
 가져온 컴포넌트의 템플릿이 JavaScript 문자열로 인라인된 것을 보았을 것입니다.
 VSCode를 사용하는 경우 [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) 확장자를 설치하고 문자열에 `/*html*/` 주석을 붙여서 문법 강조 표시를 얻을 수 있습니다.
 
-## 다음 단계
+## 다음 단계 {#next-steps}
 
 [소개](/guide/introduction)를 건너뛴 경우 다른 문서로 이동하기 전에 해당 문서를 읽는 것이 좋습니다.
 
