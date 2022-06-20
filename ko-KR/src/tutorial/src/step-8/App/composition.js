@@ -7,9 +7,9 @@ export default {
     const newTodo = ref('')
     const hideCompleted = ref(false)
     const todos = ref([
-      { id: id++, text: 'Learn HTML', done: true },
-      { id: id++, text: 'Learn JavaScript', done: true },
-      { id: id++, text: 'Learn Vue', done: false }
+      { id: id++, text: 'HTML 배우기', done: true },
+      { id: id++, text: 'JavaScript 배우기', done: true },
+      { id: id++, text: 'Vue 배우기', done: false }
     ])
 
     function addTodo() {
