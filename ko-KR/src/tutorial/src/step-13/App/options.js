@@ -6,7 +6,7 @@ export default {
   },
   data() {
     return {
-      childMsg: 'No child msg yet'
+      childMsg: '자식 컴포넌트로부터 아직 메시지를 받지 못했어요!'
     }
   }
 }
