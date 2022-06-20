@@ -15,7 +15,7 @@
 import { onMounted } from 'vue'
 
 onMounted(() => {
-  console.log(`컴포넌트가 마운트 됬습니다.`)
+  console.log(`컴포넌트가 마운트 됐습니다.`)
 })
 </script>
 ```
@@ -26,7 +26,7 @@ onMounted(() => {
 ```js
 export default {
   mounted() {
-    console.log(`컴포넌트가 마운트 됬습니다.`)
+    console.log(`컴포넌트가 마운트 됐습니다.`)
   }
 }
 ```
