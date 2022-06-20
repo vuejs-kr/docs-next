@@ -1,6 +1,6 @@
-# 비동기 컴포넌트
+# 비동기 컴포넌트 {#async-components}
 
-## 기본 사용법
+## 기본 사용법 {#basic-usage}
 
 거대한 앱에서는 앱을 더 작게 조각내어 나누고, 필요할 때만 서버에서 컴포넌트를 로드해야 할 수 있습니다.
 이를 구현하기 위해 [`defineAsyncComponent`](/api/general.html#defineasynccomponent) 함수를 제공합니다:
@@ -54,7 +54,7 @@ export default {
 
 </div>
 
-## 로딩 및 애러 상태
+## 로딩 및 애러 상태 {#loading-and-error-states}
 
 비동기 작업에는 필연적으로 로드 및 애러 상태가 포함됩니다.
 `defineAsyncComponent()`는 고급 옵션을 통해 이러한 상태 처리를 지원합니다:
@@ -83,7 +83,7 @@ const AsyncComp = defineAsyncComponent({
 애러 컴포넌트가 제공되면 로더 함수의 Promise가 reject로 반환될 때 표시됩니다.
 요청이 너무 오래 걸릴 때 애러 컴포넌트를 표시하도록 시간 초과를 지정할 수도 있습니다.
 
-## 지연(suspense) 사용하기
+## 지연(suspense) 사용하기 {#using-with-suspense}
 
 비동기 컴포넌트는 내장 컴포넌트인 `<Suspense>`와 함께 사용할 수 있습니다.
 `<Suspense>`와 비동기 컴포넌트 간의 상호 작용은 [`<Suspense>`](/guide/built-ins/suspense.html)에 설명되어 있습니다.

@@ -1,9 +1,9 @@
-# Props
+# Props {#props}
 
 > 이 페이지에서는 [컴포넌트 기초](/guide/essentials/component-basics)를 이미 읽었다고 가정합니다.
 컴포넌트를 처음 사용하는 경우, 그 문서를 먼저 읽으십시오.
 
-## Props 선언
+## Props 선언 {#props-declaration}
 
 Vue 컴포넌트는 명시적인 props 선언을 요구하는데, 이렇게 함으로써 외부에서 컴포넌트에 props를 넘길 때 어떤 속성이 폴스루 속성으로 처리되어야 하는지 알 수 있습니다([전용 섹션](/guide/components/attrs)에서 설명함).
 
@@ -116,9 +116,9 @@ defineProps<{
 
 </div>
 
-## Props 전달에 관한 심화
+## Props 전달에 관한 심화 {#prop-passing-details}
 
-### Props 이름 케이싱
+### Props 이름 케이싱 {#prop-name-casing}
 
 긴 속성명을 선언할 때 `obj['kebab-case']`와 같이 키에 따옴표를 사용하는 번거로움을 줄이기 위해, `obj.camelCase`와 같이 camelCase를 사용합니다.
 이렇게 선언된 속성명은 유효한 JavaScript 식별자이므로 템플릿 표현식에서 바로 참조해서 사용 할 수 있습니다:
@@ -158,7 +158,7 @@ export default {
 기본 엘리먼트와 Vue 컴포넌트를 쉽게 구별하여 템플릿 가독성을 향상하기 위해 되도록 컴포넌트는 [PascalCase](/guide/components/registration.html#component-name-casing)를 사용합니다.
 그러나 props를 전달할 때 camelCase를 사용하면 실질적인 이점이 많지 않으므로 각 언어의 규칙을 따르기로 했습니다.
 
-### 정적 vs. 동적 Props
+### 정적 vs. 동적 Props {#static-vs-dynamic-props}
 
 지금까지는 정적인 값으로 전달된 props 예제들을 보았습니다:
 
@@ -176,11 +176,11 @@ export default {
 <BlogPost :title="post.title + ' by ' + post.author.name" />
 ```
 
-### 다양한 타입의 값 전달
+### 다양한 타입의 값 전달 {#passing-different-value-types}
 
 위의 두 가지 예제에서 문자열 값을 전달했지만, 사실 어떠한 타입의 값도 prop로 전달할 수 있습니다.
 
-#### 숫자
+#### 숫자 {#number}
 
 ```vue-html
 <!-- `42`는 정적이지만 Vue에 이것이 문자열이 아닌          -->
@@ -191,7 +191,7 @@ export default {
 <BlogPost :likes="post.likes" />
 ```
 
-#### 불리언
+#### 불리언 {#boolean}
 
 ```vue-html
 <!-- 값이 없는 prop는 `true`가 전달됩니다. -->
@@ -205,7 +205,7 @@ export default {
 <BlogPost :is-published="post.isPublished" />
 ```
 
-#### 배열
+#### 배열 {#array}
 
 ```vue-html
 <!-- 배열이 정적이더라도 Vue에 이것이 문자열이 아닌         -->
@@ -216,7 +216,7 @@ export default {
 <BlogPost :comment-ids="post.commentIds" />
 ```
 
-#### 객체
+#### 객체 {#object}
 
 ```vue-html
 <!-- 객체가 정적이더라도 Vue에 이것이 문자열이 아닌         -->
@@ -232,7 +232,7 @@ export default {
 <BlogPost :author="post.author" />
 ```
 
-### 객체로 여러 속성 바인딩하기
+### 객체로 여러 속성 바인딩하기 {#binding-multiple-properties-using-an-object}
 
 If you want to pass all the properties of an object as props, you can use [`v-bind` without an argument](/guide/essentials/template-syntax.html#dynamically-binding-multiple-attributes) (`v-bind` instead of `:prop-name`). For example, given a `post` object:
 
@@ -278,7 +278,7 @@ const post = {
 <BlogPost :id="post.id" :title="post.title" />
 ```
 
-## 단방향 데이터 흐름
+## 단방향 데이터 흐름 {#one-way-data-flow}
 
 모든 props는 자식 속성과 부모 속성 사이에 **하향식 단방향 바인딩**을 형성합니다.
 부모 속성이 업데이트되면 자식으로 흐르지만 그 반대는 안됩니다.
@@ -375,7 +375,7 @@ export default {
 
    </div>
 
-### 객체/배열 props 변경에 관하여
+### 객체/배열 props 변경에 관하여 {#mutating-object-array-props}
 
 객체와 배열이 props로 전달되면, 자식 컴포넌트는 바인딩된 prop을 변경할 수는 없지만, **객체 또는 배열의 중첩 속성을 변경할 수는 있습니다.**
 이것은 자바스크립트에서 객체와 배열이 참조로 전달되고, Vue가 이런 변경까지 방지하는 것은 너무 큰 비용이 들기 때문에 수행 하지 않습니다.
@@ -384,7 +384,7 @@ export default {
 가장 좋은 방법은 부모와 자식이 의도적으로 밀접하게 연결되어 있지 않는 한 이러한 변경을 피하는 것이며,
 필요 시 자식은 부모가 변경을 수행할 수 있도록 [emit 이벤트](/guide/components/events.html)를 호출하는 방식으로 구현해야 합니다.
 
-## Prop 유효성 검사
+## Prop 유효성 검사 {#prop-validation}
 
 앞서 봤던 것처럼 컴포넌트는 props에 타입을 지정할 수 있습니다.
 지정한 요구 사항이 충족되지 않으면 Vue는 브라우저의 JavaScript 콘솔에서 경고합니다.
@@ -530,7 +530,7 @@ props는 컴포넌트 **인스턴스가 생성되기 전**에 유효성 검사�
 
 </div>
 
-### 실행 간 타입 체크
+### 실행 간 타입 체크 {#runtime-type-checks}
 
 `type`은 다음 기본 생성자 중 하나일 수 있습니다:
 
@@ -580,7 +580,7 @@ export default {
 
 `author` prop 값이 `new Person`으로 생성되었는지 확인합니다.
 
-## 불리언 캐스팅
+## 불리언 캐스팅 {#boolean-casting}
 
 `Boolean` 타입의 props는 네이티브 불리언 속성의 동작을 모방하는 특별한 캐스팅 규칙이 있습니다.
 다음 선언과 함께 `<MyComponent>`가 제공됩니다:

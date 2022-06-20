@@ -1,6 +1,6 @@
-# 도구
+# 도구 {#tooling}
 
-## 온라인으로 사용해보기
+## 온라인으로 사용해보기 {#try-it-online}
 
 Vue SFC를 사용해 보기 위해서 컴퓨터에 무엇을 설치할 필요가 없습니다.
 브라우저에서 바로 실행할 수 있는 온라인 연습장이 있습니다:
@@ -14,9 +14,9 @@ Vue SFC를 사용해 보기 위해서 컴퓨터에 무엇을 설치할 필요가
 
 또한 버그 신고 시 이러한 온라인 연습장을 사용하여 재현 코드를 제공하는 것이 좋습니다.
 
-## 프로젝트의 스케폴딩
+## 프로젝트의 스케폴딩 {#project-scaffolding}
 
-### Vite
+### Vite {#vite}
 
 [Vite](https://vitejs.dev/)는 Vue SFC를 지원하는 가볍고 빠른 최신 빌드 도구입니다.
 Vue의 저자이기도 한 Evan You가 만들었습니다!
@@ -32,7 +32,7 @@ Vite + Vue를 시작하려면 다음을 실행하기만 하면 됩니다:
 
 위에서 언급한 두 온라인 연습장는 Vite 프로젝트 파일로 다운로드를 지원합니다.
 
-### Vue CLI
+### Vue CLI {#vue-cli}
 
 [Vue CLI](https://cli.vuejs.org/)는 웹팩 기반의 Vue 공식 툴체인입니다.
 특정 웹팩 전용 기능에 의존하는 유지보수 상태가 아니라면, Vite로 새 프로젝트를 시작하는 것이 좋습니다.
@@ -43,7 +43,7 @@ Vue CLI에서 Vite로 마이그레이션하는 방법에 대한 정보:
 - [VueSchool.io에서 Vue CLI -> Vite 마이그레이션 가이드에 대해 알아보기(영문)](https://vueschool.io/articles/vuejs-tutorials/how-to-migrate-from-vue-cli-to-vite/)
 - [자동 마이그레이션에 도움이 되는 도구/플러그인](https://github.com/vitejs/awesome-vite#vue-cli)
 
-### 브라우저 내 템플릿 편집에 대한 참고 사항
+### 브라우저 내 템플릿 편집에 대한 참고 사항 {#note-on-in-browser-template-compilation}
 
 빌드 단계 없이 Vue를 사용할 때, 컴포넌트 템플릿은 페이지의 HTML에 직접 작성되거나 인라인된 JavaScript 문자열로 작성됩니다.
 이러한 경우 Vue는 즉시 템플릿 컴파일을 수행하기 위해 템플릿 컴파일러를 브라우저에 제공해야 합니다.
@@ -63,7 +63,7 @@ SFC의 모든 템플릿이 미리 컴파일되어 있기 때문에 기본 도구
 
 빌드 단계가 없는 사용을 위한 더 가벼운 대안을 찾고 있다면 [petite-vue](https://github.com/vuejs/petite-vue)를 확인하십시오.
 
-## IDE 지원
+## IDE 지원 {#ide-support}
 
 - 권장 IDE 설정은 [VSCode](https://code.visualstudio.com/) + [Volar](https://github.com/johnsoncodehk/volar)입니다.
   Volar는 문법 강조 표시, TypeScript 지원, 템플릿 표현식 및 컴포넌트 props에 대한 인텔리센스를 제공합니다.
@@ -83,7 +83,7 @@ SFC의 모든 템플릿이 미리 컴파일되어 있기 때문에 기본 도구
 
   - emacs: [lsp-mode](https://emacs-lsp.github.io/lsp-mode/page/lsp-volar/)
 
-## 브라우저 개발자 도구
+## 브라우저 개발자 도구 {#browser-devtools}
 
 Vue 브라우저 개발자 도구 확장 프로그램을 사용하면, Vue 앱의 컴포넌트 트리를 탐색하고 개별 컴포넌트의 상태를 검사하고 상태 관리 이벤트 및 프로필 성능을 추적할 수 있습니다.
 
@@ -94,7 +94,7 @@ Vue 브라우저 개발자 도구 확장 프로그램을 사용하면, Vue 앱�
 - [Firefox 애드온](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
 - [독립형 Electron 앱](https://devtools.vuejs.org/guide/installation.html#standalone)
 
-## 타입스크립트
+## 타입스크립트 {#typescript}
 
 주요 내용: [TypeScript로 Vue 사용하기](/guide/typescript/overview).
 
@@ -102,7 +102,7 @@ Vue 브라우저 개발자 도구 확장 프로그램을 사용하면, Vue 앱�
 
 - 명령줄에서 동일한 유형 검사를 수행하거나 SFC용 `d.ts` 파일을 생성하려면 [`vue-tsc`](https://github.com/johnsoncodehk/volar/tree/master/packages/vue-tsc)를 사용합니다.
 
-## 테스팅
+## 테스팅 {#testing}
 
 주요 내용: [테스팅 가이드](/guide/scaling-up/testing).
 
@@ -115,7 +115,7 @@ Vue 브라우저 개발자 도구 확장 프로그램을 사용하면, Vue 앱�
 - [Jest](https://jestjs.io/)는 [vite-jest](https://github.com/sodatea/vite-jest)를 통해 Vite와 함께 작동하도록 만들 수 있습니다.
   그러나 이는 Vitest가 훨씬 더 효율적인 통합으로 유사한 기능을 제공하므로, Vite 기반 설정으로 마이그레이션해야 하는 기존 Jest 기반 테스트 제품군이 있는 경우에만 권장됩니다.
 
-## Linting(코드 유효성 검사)
+## Linting(코드 유효성 검사) {#linting}
 
 Vue 팀은 SFC별 린팅 규칙을 지원하는 [ESLint](https://eslint.org/) 플러그인인 [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue)를 유지 관리합니다.
 
@@ -132,13 +132,13 @@ Vue 팀은 SFC별 린팅 규칙을 지원하는 [ESLint](https://eslint.org/) �
 
 4. (선택 사항) git commit 시 수정된 파일을 자동으로 린트하도록 [lint-staged](https://github.com/okonet/lint-staged)와 같은 도구를 설정합니다.
 
-## Formatting
+## Formatting {#formatting}
 
 - VSCode 확장 [Volar](https://github.com/johnsoncodehk/volar)는 Vue SFC에 대한 포멧팅을 즉시 제공합니다.
 
 - 또는 [Prettier](https://prettier.io/)는 빌트인 Vue SFC 형식 지원을 제공합니다.
 
-## SFC Custom Block Integrations
+## SFC Custom Block Integrations {#sfc-custom-block-integrations}
 
 Custom blocks are compiled into imports to the same Vue file with different request queries. It is up to the underlying build tool to handle these import requests.
 
@@ -153,9 +153,9 @@ Custom blocks are compiled into imports to the same Vue file with different requ
 
 - Vue CLI 또는 일반 웹팩을 사용하는 경우, 일치하는 블록을 변환하도록 웹팩 로더를 구성해야 합니다. [예제](https://vue-loader.vuejs.org/guide/custom-blocks.html)
 
-## 저수준 패키지
+## 저수준 패키지 {#lower-level-packages}
 
-### `@vue/compiler-sfc`
+### `@vue/compiler-sfc` {#vue-compiler-sfc}
 
 - [Docs](https://github.com/vuejs/core/tree/main/packages/compiler-sfc)
 
@@ -168,20 +168,20 @@ Custom blocks are compiled into imports to the same Vue file with different requ
 이 패키지의 버전이 Vue 런타임과 동기화되도록 하려면 항상 `vue/compiler-sfc` deep import를 통해 이 패키지를 사용하는 것이 좋습니다.
 :::
 
-### `@vitejs/plugin-vue`
+### `@vitejs/plugin-vue` {#vitejs-plugin-vue}
 
 - [Docs](https://github.com/vitejs/vite/tree/main/packages/plugin-vue)
 
 Vite에서 Vue SFC 지원을 제공하는 공식 플러그인입니다.
 
-### `vue-loader`
+### `vue-loader` {#vue-loader}
 
 - [Docs](https://vue-loader.vuejs.org/)
 
 webpack에서 Vue SFC 지원을 제공하는 공식 로더입니다.
 Vue CLI를 사용하는 경우, [Vue CLI에서 `vue-loader` 옵션 수정에 대한 문서](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader)를 참조하세요.
 
-## 기타 온라인 연습장
+## 기타 온라인 연습장 {#other-online-playgrounds}
 
 - [VueUse 연습장](https://play.vueuse.org)
 - [Repl.it(Vue + Vite)](https://replit.com/@templates/VueJS-with-Vite)

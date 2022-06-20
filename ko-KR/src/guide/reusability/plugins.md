@@ -1,6 +1,6 @@
-﻿# 플러그인
+﻿# 플러그인 {#plugins}
 
-## 소개
+## 소개 {#introduction}
 
 플러그인은 일반적으로 Vue에 앱 레벨 기능을 추가하는 자체 코드입니다.
 플러그인을 설치하는 방법은 다음과 같습니다:
@@ -36,7 +36,7 @@ const myPlugin = {
 
 4. 위 목록의 몇 가지를 조합해 무언가를 수행해야 하는 라이브러리(예: [vue-router](https://github.com/vuejs/vue-router-next)).
 
-## 플러그인 작성하기
+## 플러그인 작성하기 {#writing-a-plugin}
 
 고유한 Vue.js 플러그인을 만드는 방법을 더 잘 이해하기 위해 `i18n`([Internationalization](https://en.wikipedia.org/wiki/Internationalization_and_localization)의 약어) 문자열을 표시하는 매우 간단한 버전의 플러그인을 만들 것입니다.
 
@@ -97,7 +97,7 @@ app.use(i18nPlugin, {
 앱 전체에서 다른 플러그인에 의해 주입된 전역 속성이 너무 많이 사용되면 혼란스러워질 수 있기 때문입니다.
 :::
 
-### 플러그인에서 Provide / Inject 활용하기
+### 플러그인에서 Provide / Inject 활용하기 {#provide-inject-with-plugins}
 
 플러그인을 사용하면 `inject`를 사용하여 플러그인 사용자에게 함수나 속성을 제공할 수도 있습니다.
 예를 들어 앱이 `options` 매개변수에 접근하여 번역 객체를 사용할 수 있도록 허용할 수 있습니다.

@@ -1,9 +1,9 @@
-# Provide(제공) / Inject(주입)
+# Provide(제공) / Inject(주입) {#provide-inject}
 
 > 이 페이지에서는 [컴포넌트 기초](/guide/essentials/component-basics)를 이미 읽었다고 가정합니다.
 컴포넌트를 처음 사용하는 경우, 그 문서를 먼저 읽으십시오.
 
-## Prop 드릴링
+## Prop 드릴링 {#prop-drilling}
 
 일반적으로 부모 컴포넌트에서 자식 컴포넌트로 데이터를 전달해야 할 때 [props](/guide/components/props)를 사용합니다.
 그러나 큰 컴포넌트 트리가 있고 깊이 중첩된 컴포넌트에 먼 조상 컴포넌트의 무언가가 필요한 경우를 상상해 보십시오.
@@ -26,7 +26,7 @@ props만 있으면 전체 부모 체인에 동일한 prop을 전달해야 합니
 <!-- https://www.figma.com/file/PbTJ9oXis5KUawEOWdy2cE/provide-inject -->
 <!-- https://www.figma.com/file/t9jXISrv0ZJyq5WNOa79fH/provide%2Finject-(ko-kr) -->
 
-## Provide
+## Provide {#provide}
 
 <div class="composition-api">
 
@@ -108,7 +108,7 @@ export default {
 
 </div>
 
-## 앱 수준의 provide
+## 앱 수준의 provide {#app-level-provide}
 
 컴포넌트에 데이터를 제공하는 것 외에도 앱 수준에서 다음을 제공할 수도 있습니다:
 
@@ -123,7 +123,7 @@ app.provide(/* 키 */ 'message', /* 값 */ '안녕!')
 앱 수준 제공은 앱에서 렌더링되는 모든 컴포넌트에서 사용할 수 있습니다.
 플러그인은 일반적으로 컴포넌트를 사용하여 값을 제공할 수 없기 때문에 [플러그인](/guide/reusability/plugins.html)을 작성할 때 특히 유용합니다.
 
-## Inject
+## Inject {#inject}
 
 <div class="composition-api">
 
@@ -186,7 +186,7 @@ export default {
 
 [반응형으로 작동하는 provide 및 inject의 전체 예제 보기](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdD5cbmltcG9ydCBDaGlsZCBmcm9tICcuL0NoaWxkLnZ1ZSdcblxuZXhwb3J0IGRlZmF1bHQge1xuICBjb21wb25lbnRzOiB7IENoaWxkIH0sXG4gIHByb3ZpZGUoKSB7XG4gICAgcmV0dXJuIHtcbiAgICAgIG1lc3NhZ2U6ICfslYjrhZUnXG4gICAgfVxuICB9XG59XG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8Q2hpbGQgLz5cbjwvdGVtcGxhdGU+IiwiaW1wb3J0LW1hcC5qc29uIjoie1xuICBcImltcG9ydHNcIjoge1xuICAgIFwidnVlXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3Z1ZS5ydW50aW1lLmVzbS1icm93c2VyLmpzXCIsXG4gICAgXCJ2dWUvc2VydmVyLXJlbmRlcmVyXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3NlcnZlci1yZW5kZXJlci5lc20tYnJvd3Nlci5qc1wiXG4gIH1cbn0iLCJDaGlsZC52dWUiOiI8c2NyaXB0PlxuaW1wb3J0IEdyYW5kQ2hpbGQgZnJvbSAnLi9HcmFuZENoaWxkLnZ1ZSdcblxuZXhwb3J0IGRlZmF1bHQge1xuICBjb21wb25lbnRzOiB7XG4gICAgR3JhbmRDaGlsZFxuICB9XG59XG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8R3JhbmRDaGlsZCAvPlxuPC90ZW1wbGF0ZT4iLCJHcmFuZENoaWxkLnZ1ZSI6IjxzY3JpcHQ+XG5leHBvcnQgZGVmYXVsdCB7XG4gIGluamVjdDogWydtZXNzYWdlJ11cbn1cbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDxwPlxuICAgIOyGkOyekOyXkOqyjCDsoITtlZjripQg66mU7Iuc7KeAOiB7eyBtZXNzYWdlIH19XG4gIDwvcD5cbjwvdGVtcGxhdGU+In0=)
 
-### 주입 별칭 \*
+### 주입 별칭 \* {#injection-aliasing}
 
 `inject`에 대한 배열 구문을 사용할 때 주입된 속성은 동일한 키를 사용하여 컴포넌트 인스턴스에 노출됩니다.
 위의 예제에서 속성은 `"message"` 키 아래에 제공되었으며 `this.message`로 삽입되었습니다.
@@ -208,7 +208,7 @@ export default {
 
 </div>
 
-### 주입 시 기본 값 설정하기
+### 주입 시 기본 값 설정하기 {#injection-default-values}
 
 기본적으로 `inject`는 주입된 키가 상위 체인의 어딘가에서 제공된다고 가정합니다.
 키가 제공되지 않은 경우 런타임 경고가 표시됩니다.
@@ -254,7 +254,7 @@ export default {
 
 </div>
 
-## 반응형으로 만들기
+## 반응형으로 만들기 {#working-with-reactivity}
 
 <div class="composition-api">
 
@@ -345,7 +345,7 @@ API 스타일 설정이 Composition API로 지정된 상태에서 [반응형 기
 
 </div>
 
-## 심볼 키 사용하기
+## 심볼 키 사용하기 {#working-with-symbol-keys}
 
 지금까지 예제에서 문자열 삽입 키를 사용했습니다.
 많은 종속성 제공자가 있는 대규모 앱에서 작업하거나,

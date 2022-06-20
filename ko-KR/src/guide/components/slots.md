@@ -1,9 +1,9 @@
-# 슬롯
+# 슬롯 {#slots}
 
 > 이 페이지에서는 [컴포넌트 기초](/guide/essentials/component-basics)를 이미 읽었다고 가정합니다.
 컴포넌트를 처음 사용하는 경우, 그 문서를 먼저 읽으십시오.
 
-## 슬롯 컨텐츠와 아울렛
+## 슬롯 컨텐츠와 아울렛 {#slot-content-and-outlet}
 
 우리는 컴포넌트의 props가 모든 유형의 JavaScript 값을 받을 수 있다는 것을 배웠습니다.
 그러나 템플릿 컨텐츠는 어떻습니까?
@@ -96,7 +96,7 @@ function FancyButton(slotContent) {
 
 Vue 컴포넌트의 슬롯 메커니즘은 [네이티브 웹 컴포넌트 `<slot>` 엘리먼트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot)에서 영감을 얻었고, 나중에 추가 기능에 대해 설명하겠습니다.
 
-## 렌더링 범위
+## 렌더링 범위 {#render-scope}
 
 슬롯 컨텐츠는 부모 컴포넌트에 정의되어 있으므로 부모 컴포넌트의 데이터 범위에 액세스할 수 있습니다.
 예를 들어:
@@ -113,7 +113,7 @@ Vue 컴포넌트의 슬롯 메커니즘은 [네이티브 웹 컴포넌트 `<slot
 
 > 상위 템플릿의 모든 항목은 상위 범위에서 컴파일됩니다. 자식 템플릿의 모든 것은 자식 범위에서 컴파일됩니다.
 
-## 대체 컨텐츠
+## 대체 컨텐츠 {#fallback-content}
 
 슬롯에 대체(fallback) 컨텐츠를 지정하여, 컨텐츠가 제공되지 않을 때만 렌더링되도록 하는 것이 유용한 경우가 있습니다.
 예를 들어 `<SubmitButton>` 컴포넌트에서:
@@ -170,7 +170,7 @@ Vue 컴포넌트의 슬롯 메커니즘은 [네이티브 웹 컴포넌트 `<slot
 
 </div>
 
-## 이름이 있는 슬롯
+## 이름이 있는 슬롯 {#named-slots}
 
 단일 컴포넌트에 여러 개의 슬롯 아울렛이 있는 것이 유용한 경우가 있습니다.
 예를 들어 `<BaseLayout>` 템플릿 컴포넌트에서:
@@ -317,7 +317,7 @@ function BaseLayout(slots) {
 }
 ```
 
-## 동적인 슬롯 이름
+## 동적인 슬롯 이름 {#dynamic-slot-names}
 
 [동적인 디렉티브의 인수](/guide/essentials/template-syntax.html#동적인-인수)는 `v-slot`에서도 작동하므로 동적 슬롯 이름을 정의할 수 있습니다:
 
@@ -336,7 +336,7 @@ function BaseLayout(slots) {
 
 표현식에는 디렉티브의 [동적인 인수 문법 제약 조건](/guide/essentials/template-syntax.html#동적인-인수-문법-제약-조건)이 적용됩니다.
 
-## 범위가 지정된 슬롯
+## 범위가 지정된 슬롯 {#scoped-slots}
 
 [렌더링 범위](#렌더링-범위)에서 논의한 바와 같이 슬롯 콘텐츠는 자식 컴포넌트의 상태에 접근할 수 없습니다.
 
@@ -415,7 +415,7 @@ function MyComponent(slots) {
 </MyComponent>
 ```
 
-### 이름이 있고 범위가 지정된 슬롯
+### 이름이 있고 범위가 지정된 슬롯 {#named-scoped-slots}
 
 이름이 있고 범위가 지정된 슬롯은 유사하게 작동합니다.
 슬롯 props는 `v-slot` 디렉티브의 값인 `v-slot:name="slotProps"`로 접근할 수 있습니다.
@@ -447,7 +447,7 @@ function MyComponent(slots) {
 따라서 `headerProps`의 결과는 `{ message: '안녕' }`이 됩니다.
 
 
-### 멋진 목록 예제
+### 멋진 목록 예제 {#fancy-list-example}
 
 범위가 지정된 슬롯의 좋은 사용 사례가 무엇인지 궁금할 수 있습니다.
 예를 들면 다음과 같습니다.
@@ -489,7 +489,7 @@ function MyComponent(slots) {
 
 </div>
 
-### 렌더리스 컴포넌트
+### 렌더리스 컴포넌트 {#renderless-components}
 
 위에서 논의한 `<FancyList>` 사용 사례는, 재사용 가능한 로직(데이터 가져오기, 페이지 매김 등)과 시각적 출력을 모두 포함하는 동시에, 시각적 출력의 일부를 범위가 지정된 슬롯을 통해 사용될 컴포넌트에 위임합니다.
 

@@ -2,11 +2,11 @@
 outline: deep
 ---
 
-# 서버 사이드 렌더링 (SSR)
+# 서버 사이드 렌더링 (SSR) {#server-side-rendering-ssr}
 
-## 개요
+## 개요 {#overview}
 
-### SSR 란?
+### SSR 란? {#what-is-ssr}
 
 Vue.js는 클라이언트측 앱을 빌드하기 위한 프레임워크입니다.
 기본적으로 브라우저에서 DOM으로 출력되는 Vue 컴포넌트를 생성하고 조작합니다.
@@ -14,7 +14,7 @@ Vue.js는 클라이언트측 앱을 빌드하기 위한 프레임워크입니다
 
 서버에서 렌더링된 Vue.js 앱은 앱 코드의 대부분이 **서버와 클라이언트 모두에서 실행된다는 점**에서 "동형"(isomorphic) 또는 "범용"(universal)으로 간주될 수도 있습니다.
 
-### 왜 SSR 일까요?
+### 왜 SSR 일까요? {#why-ssr}
 
 클라이언트측 SPA(Single-Page Application)와 비교할 때 SSR의 장점은 주로 다음과 같습니다:
 
@@ -57,7 +57,7 @@ SSR을 사용할 때 고려해야 할 몇 가지 단점도 있습니다:
 예를 들어 초기 로드 시, 추가로 수백 밀리초가 중요하지 않은 내부 대시보드를 구축하는 경우 SSR은 과도합니다.
 그러나 컨텐츠에 도달하는 시간이 절대적으로 중요한 경우, SSR은 가능한 최상의 초기 로드 성능을 달성하는 데 도움이 될 수 있습니다.
 
-### SSR vs. SSG
+### SSR vs. SSG {#ssr-vs-ssg}
 
 사전 렌더링이라고도 하는 **정적 사이트 생성**(SSG: Static-Site Generation)은 빠른 웹사이트 구축을 위한 또 다른 인기 있는 기술입니다.
 페이지를 서버 렌더링하는 데 필요한 데이터가 모든 사용자에 대해 동일한 경우,
@@ -75,9 +75,9 @@ SSG는 정적 데이터, 즉 빌드 시 결정되어 배포 간에 변경되지 
 SSG는 문서 사이트나 블로그와 같은 컨텐츠 기반 웹사이트에도 적합합니다.
 사실 지금 보고 있는 이 웹사이트는 Vue 기반 정적 사이트 생성기 [VitePress](https://vitepress.vuejs.org/)를 사용하여 정적으로 생성된 것입니다.
 
-## 기본 튜토리얼
+## 기본 튜토리얼 {#basic-tutorial}
 
-### 앱 렌더링하기
+### 앱 렌더링하기 {#rendering-an-app}
 
 Vue SSR이 작동하는 가장 기본적인 예를 살펴보겠습니다.
 
@@ -168,7 +168,7 @@ server.listen(3000, () => {
 - 위 예제 링크에서 버튼이 작동하지 않는 것은 의도된 것입니다.
   :::
 
-### 클라이언트 하이드레이트
+### 클라이언트 하이드레이트 {#client-hydration}
 
 버튼을 클릭하면 숫자가 변경되지 않는 것을 알 수 있습니다.
 브라우저에서 Vue를 로드하지 않기 때문에 HTML은 클라이언트에서 완전히 정적입니다.
@@ -192,7 +192,7 @@ const app = createSSRApp({
 app.mount('#app')
 ```
 
-### 코드 구조
+### 코드 구조 {#code-structure}
 
 서버에서와 동일한 앱 구현을 어떻게 재사용해야 하는지 주목하세요.
 여기에서 SSR 앱의 코드 구조에 대해 생각해야 합니다.
@@ -250,7 +250,7 @@ server.get('/', (req, res) => {
 [StackBlitz에서 완성된 예제 실행하기](https://stackblitz.com/fork/vue-ssr-example?file=index.js).
 버튼은 이제 상호작용 합니다!
 
-## 고수준 솔루션
+## 고수준 솔루션 {#higher-level-solutions}
 
 예제에서 프로덕션 준비 SSR 앱으로 이동하려면 훨씬 더 많은 작업이 필요합니다.
 다음을 수행해야 합니다:
@@ -273,18 +273,18 @@ server.get('/', (req, res) => {
 따라서 복잡성을 추상화하는 더 높은 수준의 독창적인 솔루션을 사용하는 것이 좋습니다.
 아래에서는 Vue 생태계에서 권장되는 몇 가지 SSR 솔루션을 소개합니다.
 
-### Nuxt
+### Nuxt {#nuxt}
 
 [Nuxt](https://v3.nuxtjs.org/)는 범용 Vue 앱을 작성하기 위한 간소화된 개발 경험을 제공하는 Vue 생태계 위에 구축된 상위 수준 프레임워크입니다.
 더 좋은 점은 정적 사이트 생성기로도 사용할 수 있다는 것입니다!
 시도해 볼 것을 적극 권장합니다.
 
-### Quasar
+### Quasar {#quasar}
 
 [Quasar](https://quasar.dev)는 하나의 코드베이스를 사용하여 SPA, SSR, PWA, 모바일 앱, 데스크톱 앱 및 브라우저 확장을 모두 타겟팅할 수 있는 완전한 Vue 기반 솔루션입니다.
 빌드 설정을 처리할 뿐만 아니라 Material Design 호환 UI 컴포넌트의 전체 컬렉션을 제공합니다.
 
-### Vite SSR
+### Vite SSR {#vite-ssr}
 
 Vite는 내장된 [Vue 서버 사이드 렌더링 지원](https://vitejs.dev/guide/ssr.html)을 제공하지만 의도적으로 저수준입니다.
 Vite를 직접 사용하고 싶다면 [vite-plugin-ssr](https://vite-plugin-ssr.com/)을 확인하십시오.
@@ -294,17 +294,17 @@ Vite를 직접 사용하고 싶다면 [vite-plugin-ssr](https://vite-plugin-ssr.
 이 프로젝트를 베이스로 삼을 수 있습니다.
 이것은 SSR/빌드 도구에 대한 경험이 있고 더 높은 수준의 아키텍처를 완전히 제어하려는 경우에만 권장됩니다.
 
-## SSR 친화적인 코드 작성
+## SSR 친화적인 코드 작성 {#writing-ssr-friendly-code}
 
 빌드 설정 또는 고수준 프레임워크 선택에 관계없이 모든 Vue SSR 앱에 적용되는 몇 가지 원칙이 있습니다.
 
-### 서버에서 반응형
+### 서버에서 반응형 {#reactivity-on-the-server}
 
 SSR 동안 각 리퀘스트 URL은 앱이 원하는 상태로 매핑됩니다.
 사용자 상호 작용 및 DOM 업데이트가 없으므로 서버에서 반응형이 필요하지 않습니다.
 기본적으로 반응성은 더 나은 성능을 위해 SSR 동안 비활성화됩니다.
 
-### 컴포넌트 수명 주기 훅
+### 컴포넌트 수명 주기 훅 {#component-lifecycle-hooks}
 
 동적 업데이트가 없기 때문에 <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span> 또는 <span class="options-api">`updated`</span><span class="composition-api">`onUpdated`</span>과 같은 수명 주기 훅은 SSR 중에 호출되지 않고 클라이언트에서만 실행됩니다.
 <span class="options-api">SSR 동안 호출되는 유일한 훅은 `beforeCreate` 및 `created`입니다.</span>
@@ -315,7 +315,7 @@ SSR 동안 각 리퀘스트 URL은 앱이 원하는 상태로 매핑됩니다.
 그러나 마운트 해제 훅은 SSR 중에 호출되지 않기 때문에 타이머는 영원히 유지됩니다.
 이를 피하려면 사이드 이팩트 코드를 <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span>로 이동하십시오.
 
-### 플랫폼별 API에 대한 액세스
+### 플랫폼별 API에 대한 액세스 {#access-to-platform-specific-apis}
 
 범용 코드는 플랫폼별 API에 대한 액세스를 가정할 수 없으므로,
 코드가 `window` 또는 `document`와 같은 브라우저 전용 전역을 직접 사용하는 경우,
@@ -334,7 +334,7 @@ Node.js에서 실행할 때 오류가 발생하고,
 일부 전역을 모의하여 작동하도록 할 수 있지만 임시방편적이며,
 다른 라이브러리의 환경 감지 코드를 방해할 수 있습니다.
 
-### 교차 요청 상태 오염(Cross-Request State Pollution)
+### 교차 요청 상태 오염(Cross-Request State Pollution) {#cross-request-state-pollution}
 
 상태 관리 문서에서 [반응성 API를 통한 간단한 상태 관리 패턴](state-management.html#반응형-api를-통한-간단한-상태-관리)을 소개했습니다.
 SSR 컨텍스트에서 이 패턴은 몇 가지 추가 조정이 필요합니다.
@@ -376,7 +376,7 @@ export function createApp() {
 Pinia와 같은 상태 관리 라이브러리는 이를 염두에 두고 설계되었습니다.
 자세한 내용은 [Pinia의 SSR 가이드](https://pinia.vuejs.org/ssr/)를 참고하세요.
 
-### 하이드레이션 불일치(Hydration Mismatch)
+### 하이드레이션 불일치(Hydration Mismatch) {#hydration-mismatch}
 
 미리 렌더링된 HTML의 DOM 구조가 클라이언트 측 앱의 예상 출력과 일치하지 않으면 하이드레이션 불일치 오류가 발생합니다.
 대부분의 경우 이는 HTML 문자열에서 잘못된 구조를 수정하려는 브라우저의 기본 HTML 구문 분석 동작으로 인해 발생합니다.
@@ -398,7 +398,7 @@ Vue는 하이드레이션 불일치가 발생하면 클라이언트 측 상태�
 이로 인해 잘못된 노드가 삭제되고 새 노드가 마운트되어 렌더링 성능이 약간 저하되지만 대부분의 경우 앱은 예상대로 계속 작동해야 합니다.
 즉, 개발 중에 하이드레이션 불일치를 제거하는 것이 가장 좋습니다.
 
-### 커스텀 디렉티브
+### 커스텀 디렉티브 {#custom-directives}
 
 대부분의 커스텀 디렉티브는 직접적인 DOM 조작을 포함하므로 SSR 동안 무시됩니다.
 그러나 커스텀 디렉티브를 렌더링하는 방법(즉, 렌더링된 엘리먼트에 추가해야 하는 속성)을 지정하려면 `getSSRProps` 디렉티브 훅을 사용할 수 있습니다:
@@ -421,7 +421,7 @@ const myDirective = {
 }
 ```
 
-### 텔레포트
+### 텔레포트 {#teleports}
 
 텔레포트는 SSR 동안 특별한 처리가 필요합니다.
 렌더링된 앱에 텔레포트가 포함된 경우 텔레포트된 컨텐츠는 렌더링된 문자열의 일부가 아닙니다.

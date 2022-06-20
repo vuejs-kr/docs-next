@@ -1,9 +1,9 @@
-# 컴포넌트 이벤트
+# 컴포넌트 이벤트 {#component-events}
 
 > 이 페이지에서는 [컴포넌트 기초](/guide/essentials/component-basics)를 이미 읽었다고 가정합니다.
 컴포넌트를 처음 사용하는 경우, 그 문서를 먼저 읽으십시오.
 
-## 이벤트 발신 및 수신하기
+## 이벤트 발신 및 수신하기 {#emitting-and-listening-to-events}
 
 컴포넌트는 내장 함수 `$emit`을 사용하여 템플릿 표현식(예: `v-on` 핸들러에서)에서 직접 사용자 정의 이벤트를 발신할 수 있습니다:
 
@@ -40,7 +40,7 @@
 직계 자식 컴포넌트에서 발생하는 이벤트만 수신할 수 있습니다.
 :::
 
-## 이벤트 인자
+## 이벤트 인자 {#event-arguments}
 
 이벤트와 함께 특정 값을 내보내는 것이 때때로 유용합니다.
 예를 들어, `<BlogPost>` 컴포넌트가 텍스트를 얼마나 크게 확대할지 결정할 수 있습니다.
@@ -93,7 +93,7 @@ function increaseCount(n) {
 예를 들어, `$emit('foo', 1, 2, 3)`을 사용하면 리스너 함수는 세 개의 인자를 받습니다.
 :::
 
-## 발신되는 이벤트 선언하기
+## 발신되는 이벤트 선언하기 {#declaring-emitted-events}
 
 발신되는 이벤트는 <span class="composition-api">[`defineEmits()`](/api/sfc-script-setup.html#defineprops-defineemits) 메크로를</span><span class="options-api">[`emits`](/api/options-state.html#emits) 옵션을</span> 통해 컴포넌트에서 명시적으로 선언될 수 있습니다.
 
@@ -192,7 +192,7 @@ export default {
 네이티브 이벤트(예: `click`)가 `emits` 옵션에 정의된 경우 리스너는 이제 컴포넌트에서 발생하는 `click` 이벤트만 수신 대기하고 네이티브 `click` 이벤트에 더 이상 응답하지 않습니다.
 :::
 
-## 이벤트 유효성 검사
+## 이벤트 유효성 검사 {#events-validation}
 
 props 타입 유효성 검사와 유사하게, 발신되는 이벤트는 배열 대신 객체 구문으로 정의된 경우 유효성을 검사할 수 있습니다.
 
@@ -253,7 +253,7 @@ export default {
 
 </div>
 
-## `v-model`과 함께 사용하기
+## `v-model`과 함께 사용하기 {#usage-with-v-model}
 
 사용자 정의 이벤트는 `v-model`과 함께 작동하는 사용자 정의 입력을 생성하는 데 사용할 수도 있습니다.
 다음 코드는:
@@ -401,7 +401,7 @@ const value = computed({
 
 </div>
 
-### `v-model` 인자
+### `v-model` 인자 {#v-model-arguments}
 
 기본적으로 컴포넌트의 `v-model`은 `modelValue`를 prop으로 사용하고, `update:modelValue`를 이벤트로 사용합니다.
 `v-model`에 인자를 전달하여 이러한 이름을 수정할 수 있습니다.
@@ -457,7 +457,7 @@ export default {
 
 </div>
 
-### `v-model` 다중 바인딩
+### `v-model` 다중 바인딩 {#multiple-v-model-bindings}
 
 이전에 [`v-model` 인자](#v-model-인자)에서 배운 것처럼, 특정 prop과 이벤트를 대상으로 하는 기능을 활용하면 이제 단일 컴포넌트 인스턴스에 여러 `v-model` 바인딩을 만들 수 있습니다.
 
@@ -530,7 +530,7 @@ export default {
 
 </div>
 
-### `v-model` 수식어 핸들링
+### `v-model` 수식어 핸들링 {#handling-v-model-modifiers)}
 
 폼 입력 바인딩에 대해 배울 때, `v-model`에 `.trim`, `.number` 및 `.lazy`와 같은 [빌트인 수식어](/guide/essentials/forms.html#수식어)가 있었습니다.
 그러나 경우에 따라 고유한 사용자 지정 수식어를 추가할 수도 있습니다.

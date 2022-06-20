@@ -2,12 +2,12 @@
 outline: deep
 ---
 
-# 폴스루 속성
+# 폴스루 속성 {#fallthrough-attributes}
 
 > 이 페이지에서는 [컴포넌트 기초](/guide/essentials/component-basics)를 이미 읽었다고 가정합니다.
 컴포넌트를 처음 사용하는 경우, 그 문서를 먼저 읽으십시오.
 
-## 속성 상속
+## 속성 상속 {#attribute-inheritance}
 
 "폴스루(fallthrough: 대체) 속성"은 컴포넌트에 전달되는 속성 또는 `v-on` 이벤트 리스너 이지만, 이것을 받는 컴포넌트의 [props](./props) 또는 [emits](./events.html#declaring-emitted-events)에서 명시적으로 선언되지 않은 속성입니다.
 일반적인 예로는 `class`, `style`, `id` 속성이 있습니다.
@@ -32,7 +32,7 @@ outline: deep
 <button class="large">클릭하기</button>
 ```
 
-### `class`와 `style`의 병합
+### `class`와 `style`의 병합 {#class-and-style-merging}
 
 자식 컴포넌트의 루트 엘리먼트에 이미 `class` 또는 `style` 속성이 있는 경우, 상위 엘리먼트에서 상속된 `class` 또는 `style` 값과 병합됩니다.
 이전 예에서 `<MyButton>`의 템플릿을 다음과 같이 변경한다면:
@@ -48,7 +48,7 @@ outline: deep
 <button class="btn large">클릭하기</button>
 ```
 
-### `v-on` 리스터 상속
+### `v-on` 리스너 상속 {#v-on-listener-inheritance}
 
 `v-on` 이벤트 리스너에도 동일한 규칙이 적용됩니다:
 
@@ -60,7 +60,7 @@ outline: deep
 `<button>`을 클릭하면 부모 컴포넌트의 `onClick` 메소드가 트리거됩니다.
 `<button>`에 이미 `v-on`으로 바인딩된 `click` 리스너가 있는 경우 두 리스너가 모두 트리거됩니다.
 
-### 중첩된 컴포넌트 상속
+### 중첩된 컴포넌트 상속 {#nested-component-inheritance}
 
 컴포넌트가 다른 컴포넌트를 루트 노드로 렌더링하는 경우, 예를 들어 `<MyButton>`을 리팩터링하여 `<BaseButton>`을 루트로 렌더링합니다:
 
@@ -78,7 +78,7 @@ outline: deep
 
 2. 그러나 전달되는 속성이 `<MyButton>`의 템플릿에서 다시 선언된 경우, `props`나 핸들러로 허용될 수 있습니다.
 
-## 속성 상속 비활성화
+## 속성 상속 비활성화 {#disabling-attribute-inheritance}
 
 컴포넌트가 속성을 **자동으로 상속하지 않도록**하려면, 컴포넌트 옵션 중 `inheritAttrs: false`를 설정합니다.
 
@@ -137,7 +137,7 @@ export default {
 
 [인자없는 `v-bind`](/guide/essentials/template-syntax.html#여러-속성을-동적으로-바인딩)는 객체의 모든 속성을 대상 엘리먼트의 속성으로 묶는다는 것을 기억하세요.
 
-## 다중 루트 노드에서 속성 상속
+## 다중 루트 노드에서 속성 상속 {#attribute-inheritance-on-multiple-root-nodes}
 
 단일 루트 노드가 있는 컴포넌트와 달리 여러 루트 노드가 있는 컴포넌트에는 자동 속성 폴스루 동작이 없습니다.
 `$attrs`가 명시적으로 바인딩되지 않은 경우 런타임 경고가 발행됩니다.
@@ -162,7 +162,7 @@ export default {
 <footer>...</footer>
 ```
 
-## JavaScript에서 폴스루 속성 접근하기
+## JavaScript에서 폴스루 속성 접근하기 {#accessing-fallthrough-attributes-in-javascript}
 
 <div class="composition-api">
 

@@ -1,11 +1,11 @@
-# 라우팅
+# 라우팅 {#routing}
 
-## 공식 라우터
+## 공식 라우터 {#official-router}
 
 대부분의 싱글 페이지 앱(SPA)의 경우 공식적으로 지원되는 [vue-router 라이브러리](https://github.com/vuejs/router)를 사용하는 것이 좋습니다.
 자세한 내용은 vue-router의 [문서](https://router.vuejs.org/)를 참조하십시오.
 
-## 간단한 라우팅 구성하기
+## 간단한 라우팅 구성하기 {#simple-routing-from-scratch}
 
 매우 간단한 라우팅만 필요하여 모든 기능을 갖춘 라우터 라이브러리를 포함하지 않으려면 [동적인 컴포넌트](/guide/essentials/component-basics.html#동적-컴포넌트)를 사용하고,
 브라우저 [`hashchange` 이벤트](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event)를 수신하거나 [History API](https://developer.mozilla.org/en-US/docs/Web/API/History)를 사용하여 현재 컴포넌트 상태를 업데이트할 수 있습니다.

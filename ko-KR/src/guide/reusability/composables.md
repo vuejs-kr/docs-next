@@ -1,4 +1,4 @@
-# 구성화
+# 구성화 {#composables}
 
 <script setup>
 import { useMouse } from './mouse'
@@ -24,7 +24,7 @@ Vue는 이러한 개발 패턴을 쉽게 적용할 수 있게 많은 고민을 �
 그러나 좀 더 매끄러운 의미 전달을 위해 Composable은 "구성화(부품화)"라고 표기하였습니다.
 :::
 
-## "구성화"란?
+## "구성화"란? {#what-is-a-composable}
 
 Vue 앱의 컨텍스트에서 "구성화"는 Vue 컴포지션 API를 활용하여 **상태 저장 로직**를 캡슐화하고 재사용하는 기능입니다.
 
@@ -39,7 +39,7 @@ Vue 앱의 컨텍스트에서 "구성화"는 Vue 컴포지션 API를 활용하�
 간단한 예는 페이지에서 마우스의 현재 위치를 추적하는 것입니다.
 실제 시나리오에서는 터치 제스처 또는 데이터베이스 연결 상태와 같은 더 복잡한 로직이 될 수도 있습니다.
 
-## 마우스 위치 추적기 예제
+## 마우스 위치 추적기 예제 {#mouse-tracker-example}
 
 컴포넌트 내에서 직접 컴포지션 API를 사용하여 마우스 추적 기능은 다음과 같이 구현할 수 있습니다:
 
@@ -157,7 +157,7 @@ export function useMouse() {
 컴포넌트 간의 공유 상태를 관리하려면 [상태 관리](/guide/scaling-up/state-management.html) 문서를 읽으십시오.
 :::
 
-## 비동기 상태 예제
+## 비동기 상태 예제 {#async-state-example}
 
 구성화 함수 `useMouse()`는 인자를 사용하지 않으므로, 인자를 사용하는 다른 예를 살펴보겠습니다.
 비동기 데이터 가져오기를 수행할 때 로드, 성공 및 애러와 같은 다양한 상태를 처리해야 하는 경우가 많습니다:
@@ -260,13 +260,13 @@ URL ref가 변경될 때마다 데이터가 재설정되고 다시 가져옵니�
 여기 [`useFetch()`의 업데이트된 버전](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiwgY29tcHV0ZWQgfSBmcm9tICd2dWUnXG5pbXBvcnQgeyB1c2VGZXRjaCB9IGZyb20gJy4vdXNlRmV0Y2guanMnXG5cbmNvbnN0IGJhc2VVcmwgPSAnaHR0cHM6Ly9qc29ucGxhY2Vob2xkZXIudHlwaWNvZGUuY29tL3RvZG9zLydcbmNvbnN0IGlkID0gcmVmKCcxJylcbmNvbnN0IHVybCA9IGNvbXB1dGVkKCgpID0+IGJhc2VVcmwgKyBpZC52YWx1ZSlcblxuY29uc3QgeyBkYXRhLCBlcnJvciwgcmV0cnkgfSA9IHVzZUZldGNoKHVybClcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIExvYWQgcG9zdCBpZDpcbiAgPGJ1dHRvbiB2LWZvcj1cImkgaW4gNVwiIEBjbGljaz1cImlkID0gaVwiPnt7IGkgfX08L2J1dHRvbj5cblxuXHQ8ZGl2IHYtaWY9XCJlcnJvclwiPlxuICAgIDxwPuyVlyEg7Jik66WYIOuwnOyDnToge3sgZXJyb3IubWVzc2FnZSB9fTwvcD5cbiAgICA8YnV0dG9uIEBjbGljaz1cInJldHJ5XCI+7J6s7Iuc64+EPC9idXR0b24+XG4gIDwvZGl2PlxuICA8ZGl2IHYtZWxzZS1pZj1cImRhdGFcIj7roZzrk5zrkJwg642w7J207YSwOiA8cHJlPnt7IGRhdGEgfX08L3ByZT48L2Rpdj5cbiAgPGRpdiB2LWVsc2U+66Gc65SpLi4uPC9kaXY+XG48L3RlbXBsYXRlPiIsImltcG9ydC1tYXAuanNvbiI6IntcbiAgXCJpbXBvcnRzXCI6IHtcbiAgICBcInZ1ZVwiOiBcImh0dHBzOi8vc2ZjLnZ1ZWpzLm9yZy92dWUucnVudGltZS5lc20tYnJvd3Nlci5qc1wiLFxuICAgIFwidnVlL3NlcnZlci1yZW5kZXJlclwiOiBcImh0dHBzOi8vc2ZjLnZ1ZWpzLm9yZy9zZXJ2ZXItcmVuZGVyZXIuZXNtLWJyb3dzZXIuanNcIlxuICB9XG59IiwidXNlRmV0Y2guanMiOiJpbXBvcnQgeyByZWYsIGlzUmVmLCB1bnJlZiwgd2F0Y2hFZmZlY3QgfSBmcm9tICd2dWUnXG5cbmV4cG9ydCBmdW5jdGlvbiB1c2VGZXRjaCh1cmwpIHtcbiAgY29uc3QgZGF0YSA9IHJlZihudWxsKVxuICBjb25zdCBlcnJvciA9IHJlZihudWxsKVxuXG4gIGFzeW5jIGZ1bmN0aW9uIGRvRmV0Y2goKSB7XG4gICAgLy8g6rCA7KC47Jik6riwIOyghOyXkCDsg4Htg5wg7J6s7ISk7KCVLi5cbiAgICBkYXRhLnZhbHVlID0gbnVsbFxuICAgIGVycm9yLnZhbHVlID0gbnVsbFxuICAgIFxuICAgIC8vIHdhdGNoRWZmZWN0KCnsl5Ag7J2Y7ZW0IOyiheyGjeyEseycvOuhnCDstpTsoIHrkJjrj4TroZ1cbiAgICAvLyBVUkwg6rCS7J2EIOuPmeq4sOyLneycvOuhnCByZXNvbHZl7ZWp64uI64ukLlxuICAgIGNvbnN0IHVybFZhbHVlID0gdW5yZWYodXJsKVxuICAgIFxuICAgIHRyeSB7XG4gICAgICAvLyDsnbjsnITsoIHsnbgg65Sc66CI7J20IC8g66y07J6R7JyEIOyVoOufrFxuICBcdCAgYXdhaXQgdGltZW91dCgpXG4gIFx0ICAvLyB1bnJlZigp64qUIHJlZuydtOuptCByZWYg6rCS7J2EIOuwmO2ZmO2VqeuLiOuLpC5cbiAgICAgIC8vIOq3uOugh+yngCDslYrsnLzrqbQg6rCS7J2EIOyeiOuKlCDqt7jrjIDroZwg67CY7ZmY7ZWp64uI64ukLlxuICAgIFx0Y29uc3QgcmVzID0gYXdhaXQgZmV0Y2godXJsVmFsdWUpXG5cdCAgICBkYXRhLnZhbHVlID0gYXdhaXQgcmVzLmpzb24oKVxuICAgIH0gY2F0Y2ggKGUpIHtcbiAgICAgIGVycm9yLnZhbHVlID0gZVxuICAgIH1cbiAgfVxuXG4gIGlmIChpc1JlZih1cmwpKSB7XG4gICAgLy8g7ISk7KCV7ZWY6riwOiDsnoXroKUgVVJM7J20IHJlZuyduCDqsr3smrAg67CY7J2R7KCBIOuLpOyLnCDqsIDsoLjsmKTquLBcbiAgICB3YXRjaEVmZmVjdChkb0ZldGNoKVxuICB9IGVsc2Uge1xuICAgIC8vIOq3uOugh+yngCDslYrsnLzrqbQg7ZWcIOuyiOunjCDqsIDsoLjsmKTquLBcbiAgICBkb0ZldGNoKClcbiAgfVxuXG4gIHJldHVybiB7IGRhdGEsIGVycm9yLCByZXRyeTogZG9GZXRjaCB9XG59XG5cbi8vIOyduOychOyggeyduCDrlJzroIjsnbRcbmZ1bmN0aW9uIHRpbWVvdXQoKSB7XG4gIHJldHVybiBuZXcgUHJvbWlzZSgocmVzb2x2ZSwgcmVqZWN0KSA9PiB7XG4gICAgc2V0VGltZW91dCgoKSA9PiB7XG4gICAgICBpZiAoTWF0aC5yYW5kb20oKSA+IDAuMykge1xuICAgICAgICByZXNvbHZlKClcbiAgICAgIH0gZWxzZSB7XG4gICAgICAgIHJlamVjdChuZXcgRXJyb3IoJ+ustOyekeychCDslaDrn6wnKSlcbiAgICAgIH1cbiAgICB9LCAzMDApXG4gIH0pXG59In0=)이 있습니다.
 데모용이므로 인위적인 지연과 무작위 애러가 있습니다.
 
-## 관례와 모범 사례
+## 관례와 모범 사례 {#conventions-and-best-practices}
 
-### 작명
+### 작명 {#naming}
 
 "use"로 시작하는 camelCase 이름으로 구성화 함수의 이름을 지정하는 것이 관례입니다.
 
-### 입력 인자
+### 입력 인자 {#input-arguments}
 
 구성화 함수는 반응형에 의존하지 않더라도 ref 인자를 받을 수 있습니다.
 다른 개발자가 사용할 수 있는 구성화 함수를 작성하는 경우, 입력 인자가 원시 값 대신 ref인 경우를 처리하는 것이 좋습니다.
@@ -285,7 +285,7 @@ function useFeature(maybeRef) {
 
 입력이 ref일 때 구성화가 반응 효과를 생성하는 경우, `watch()`를 사용하여 ref를 명시적으로 관찰하거나, `watchEffect()` 내부에서 `unref()`를 호출하여 올바르게 추적되도록 하십시오.
 
-### 반환 값
+### 반환 값 {#return-values}
 
 구성화에서 `reactive()` 대신 `ref()`를 독점적으로 사용하고 있다는 것을 눈치챘을 것입니다.
 컴포넌트에서 항상 ref 객체를 반환하여 반응성을 유지하면서 컴포넌트에서 구조화할 수 있도록 하는 것이 좋습니다.
@@ -309,7 +309,7 @@ console.log(mouse.x)
 마우스 위치: {{ mouse.x }}, {{ mouse.y }}
 ```
 
-### 사이드 이펙트
+### 사이드 이펙트 {#side-effects}
 
 구성화에서 사이드 에픽트(예: DOM 이벤트 리스너 추가 또는 데이터 가져오기)를 수행하는 것은 괜찮지만 다음 규칙에 주의하십시오:
 
@@ -321,7 +321,7 @@ console.log(mouse.x)
   예를 들어, 구성화 코드에서 DOM 이벤트 리스너를 사용하는 경우, `onUnmounted()`에서 해당 리스너를 제거해야 합니다([`useMouse()`](#마우스-위치-추적기-예제) 예제에서 본 것처럼).
   [`useEventListener()`](#use-event-listener) 예제와 같이 자동으로 이를 수행하는 구성화 코드를 구성하는 것도 좋은 아이디어일 수 있습니다.
 
-### 제한사항
+### 제한사항 {#usage-restrictions}
 
 구성화는 `<script setup>` 또는 `setup()` 훅에서만 **동기적으로** 호출되어야 합니다.
 어떤 경우에는 `onMounted()`와 같은 수명주기 훅에서 호출할 수도 있습니다.
@@ -338,7 +338,7 @@ console.log(mouse.x)
 컴파일러는 비동기 작업 후 활성 인스턴스 컨텍스트를 자동으로 복원합니다.
 :::
 
-## 체계적인 코드를 만들기 위해 구성화하기
+## 체계적인 코드를 만들기 위해 구성화하기 {#extracting-composables-for-code-organization}
 
 구성화는 재사용뿐만 아니라 코드 체계화를 위해 추출할 수 있습니다.
 컴포넌트의 복잡성이 증가함에 따라 탐색 및 추론하기에 너무 큰 컴포넌트가 생길 수 있습니다.
@@ -358,7 +358,7 @@ const { qux } = useFeatureC(baz)
 
 이렇게 추출된 구성화 코드는 협업을 위해 컴포넌트 범위 내에서 제공할 수 있습니다.
 
-## 옵션 API에서 구성화 적용
+## 옵션 API에서 구성화 적용 {#using-composables-in-options-api}
 
 옵션 API를 사용하는 경우, 구성화 함수는 `setup()` 내에서 호출되어야 하고 반환된 바인딩은 `this`와 템플릿에 노출되도록 `setup()`에서 반환되어야 합니다:
 
@@ -380,9 +380,9 @@ export default {
 }
 ```
 
-## 다른 기술과의 비교
+## 다른 기술과의 비교 {#comparisons-with-other-techniques}
 
-### vs. Mixins
+### vs. Mixins {#vs-mixins}
 
 Vue 2를 사용한 개발자는 [mixins](/api/options-composition.html#mixins) 옵션에 익숙할 것입니다.
 이 옵션을 사용해 컴포넌트 로직을 재사용 가능한 단위로 추출할 수도 있습니다.
@@ -404,7 +404,7 @@ mixins에는 세 가지 주요 단점이 있습니다:
 위의 이유로 Vue 3에서는 더 이상 mixins를 사용하지 않는 것이 좋습니다.
 이 기능은 마이그레이션 및 익숙함을 위해서만 유지됩니다.
 
-### vs. 렌더리스 컴포넌트
+### vs. 렌더리스 컴포넌트 {#vs-renderless-components}
 
 컴포넌트 심화의 슬롯 챕터에서는 범위가 지정된 슬롯을 기반으로 하는 [렌더리스 컴포넌트](/guide/components/slots.html#렌더리스-컴포넌트) 패턴에 대해 논의했습니다.
 렌더리스 컴포넌트를 사용하여 동일한 마우스 추적 데모도 구현했습니다.
@@ -414,7 +414,7 @@ mixins에는 세 가지 주요 단점이 있습니다:
 
 권장 사항은 순수 로직을 재사용할 때 구성화를 사용하고 로직과 시각적 레이아웃을 모두 재사용할 때 컴포넌트를 사용하는 것입니다.
 
-### vs. React 훅
+### vs. React 훅 {#vs-react-hooks}
 
 React에 대한 경험이 있다면 이것이 커스텀 React 훅과 매우 유사하다는 것을 알 수 있습니다.
 컴포지션 API는 부분적으로 React 훅에서 영감을 얻었고 Vue 구성화는 실제로 로직 구성 기능 측면에서 React 훅와 유사합니다.
@@ -423,7 +423,7 @@ React에 대한 경험이 있다면 이것이 커스텀 React 훅과 매우 유�
 
 [comment]: <> (/guide/extras/composition-api-faq.md 번역 후 링크 수정 필요)
 
-## 추가적인 읽을거리
+## 추가적인 읽을거리 {#further-reading}
 
 - [반응형 심화](/guide/extras/reactivity-in-depth.html): Vue의 반응형 시스템이 어떻게 작동하는지에 대한 심화 수준의 이해를 위해.
 

@@ -8,7 +8,7 @@ import BetweenElements from './transition-demos/BetweenElements.vue'
 import BetweenComponents from './transition-demos/BetweenComponents.vue'
 </script>
 
-# 트랜지션
+# 트랜지션 {#transition}
 
 Vue는 상태 변화에 대응하기 위해 트랜지션 및 애니메이션 작업에 도움이 되는 두 가지 빌트인 컴포넌트를 제공합니다:
 
@@ -19,7 +19,7 @@ Vue는 상태 변화에 대응하기 위해 트랜지션 및 애니메이션 작
 이 두 가지 컴포넌트 외에도 CSS 클래스 트랜지션 또는 스타일 바인딩을 통한 상태 기반 애니메이션과 같은 기술을 사용하여 Vue에서 애니메이션을 적용할 수도 있습니다.
 이러한 추가 기술은 [애니메이션 기법](/guide/extras/animation.html) 장에서 다룹니다.
 
-## `<Transition>` 컴포넌트
+## `<Transition>` 컴포넌트 {#the-transition-component}
 
 `<Transition>`은 빌트인 컴포넌트이므로 등록하지 않고도 컴포넌트의 템플릿에서 사용할 수 있습니다.
 기본 슬롯을 통해 전달된 엘리먼트 또는 컴포넌트에 진입(enter) 및 진출(leave) 애니메이션을 적용하는 데 사용할 수 있습니다.
@@ -78,9 +78,9 @@ Vue는 상태 변화에 대응하기 위해 트랜지션 및 애니메이션 작
 
 3. CSS 트랜지션/애니메이션이 감지되지 않고 JavaScript 훅이 제공되지 않으면, DOM 삽입/제거 작업이 브라우저의 다음 애니메이션 프레임에서 실행됩니다.
 
-## CSS 기반 트랜지션
+## CSS 기반 트랜지션 {#css-based-transitions}
 
-### 트랜지션 클레스
+### 트랜지션 클레스 {#transition-classes}
 
 진입/진출 트랜지션에 적용되는 6개의 클래스가 있습니다.
 
@@ -114,7 +114,7 @@ Vue는 상태 변화에 대응하기 위해 트랜지션 및 애니메이션 작
 `v-enter-active` 및 `v-leave-active`는 진입/진출 트랜지션에 대해 다른 이징 곡선을 지정할 수 있는 기능을 제공합니다.
 이에 대한 예는 다음 섹션에서 볼 수 있습니다.
 
-### 트랜지션 이름 지정하기
+### 트랜지션 이름 지정하기 {#named-transitions}
 
 트랜지션은 `name` prop을 통해 이름을 지정할 수 있습니다:
 
@@ -140,7 +140,7 @@ Vue는 상태 변화에 대응하기 위해 트랜지션 및 애니메이션 작
 }
 ```
 
-### CSS 트랜지션
+### CSS 트랜지션 {#css-transitions}
 
 위의 기본 예제에서 볼 수 있듯이 일반적으로 `<Transition>`은 [네이티브 CSS 트랜지션](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions)과 함께 사용됩니다.
 `transition` CSS 속성은 애니메이션을 적용해야 하는 속성, 트랜지션 기간 및 [이징 곡선](https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function)을 포함하여 트랜지션 관련된 여러 속성을 지정할 수 있게 해주는 약칭입니다.
@@ -186,7 +186,7 @@ Vue는 상태 변화에 대응하기 위해 트랜지션 및 애니메이션 작
 
 </div>
 
-### CSS 애니메이션
+### CSS 애니메이션 {#css-animations}
 
 [네이티브 CSS 애니메이션](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations)은 CSS 트랜지션과 동일한 방식으로 적용되지만,
 엘리먼트가 삽입된 직후에 `*-enter-from`이 제거되지 않고, `animationend` 이벤트에서 제거된다는 차이점이 있습니다.
@@ -235,7 +235,7 @@ Vue는 상태 변화에 대응하기 위해 트랜지션 및 애니메이션 작
 
 </div>
 
-### 커스텀 트랜지션 클래스
+### 커스텀 트랜지션 클래스 {#custom-transition-classes}
 
 아래 나열된 `<Transition>` props에 커스텀 트랜지션 클래스를 정의하여 전달할 수도 있습니다:
 
@@ -271,7 +271,7 @@ Vue는 상태 변화에 대응하기 위해 트랜지션 및 애니메이션 작
 
 </div>
 
-### 트랜지션과 애니메이션을 같이 사용하기
+### 트랜지션과 애니메이션을 같이 사용하기 {#using-transitions-and-animations-together}
 
 Vue는 트랜지션이 종료된 시점을 알기 위해 이벤트 리스너를 연결해야 합니다.
 리스너는 적용된 CSS 규칙 유형에 따라 `transitionend` 또는 `animationend`가 될 수 있습니다.
@@ -284,7 +284,7 @@ Vue는 트랜지션이 종료된 시점을 알기 위해 이벤트 리스너를 
 <Transition type="animation">...</Transition>
 ```
 
-### 중첩된 트랜지션과 지속시간 설정하기
+### 중첩된 트랜지션과 지속시간 설정하기 {#nested-transitions-and-explicit-transition-durations}
 
 트랜지션 클래스는 `<Transition>`의 직접적인 자식 엘리먼트에만 적용되지만,
 중첩된 CSS 선택기를 사용하여 중첩된 엘리먼트를 트랜지션할 수 있습니다:
@@ -343,7 +343,7 @@ Vue는 트랜지션이 종료된 시점을 알기 위해 이벤트 리스너를 
 <Transition :duration="{ enter: 500, leave: 800 }">...</Transition>
 ```
 
-### 성능 고려사항
+### 성능 고려사항 {#performance-considerations}
 
 위에 표시된 애니메이션은 대부분 `transform` 및 `opacity`와 같은 속성을 사용하고 있음을 알 수 있습니다.
 이러한 속성은 다음과 같은 이유로 애니메이션에 효율적입니다:
@@ -355,7 +355,7 @@ Vue는 트랜지션이 종료된 시점을 알기 위해 이벤트 리스너를 
 이에 비해 `height` 또는 `margin`과 같은 속성은 CSS 레이아웃을 트리거하므로 애니메이션을 적용하는 데 훨씬 더 많은 비용이 소요되므로 주의해서 사용해야 합니다.
 [CSS-Triggers](https://csstriggers.com/)와 같은 리소스를 확인하여 애니메이션을 적용하면 레이아웃을 트리거하는 속성을 확인할 수 있습니다.
 
-## JavaScript 훅
+## JavaScript 훅 {#javascript-hooks}
 
 `<Transition>` 컴포넌트의 이벤트를 수신하여 JavaScript로 트랜지션 프로세스에 연결할 수 있습니다:
 
@@ -495,7 +495,7 @@ JavaScript 전용 트랜지션을 사용할 때 일반적으로 `:css="false"` p
 
 </div>
 
-## 재사용 가능한 트랜지션
+## 재사용 가능한 트랜지션 {#reusable-transitions}
 
 Vue의 컴포넌트 시스템을 통해 트랜지션을 재사용할 수 있습니다.
 재사용 가능한 트랜지션을 만들기 위해 `<Transition>` 컴포넌트를 래핑하고 슬롯 콘텐츠를 전달하는 컴포넌트를 만들 수 있습니다:
@@ -533,7 +533,7 @@ Vue의 컴포넌트 시스템을 통해 트랜지션을 재사용할 수 있습�
 </MyTransition>
 ```
 
-## 등장 트랜지션
+## 등장 트랜지션 {#transition-on-appear}
 
 노드의 초기 렌더링에도 트랜지션을 적용하려면 `appear` 속성을 추가할 수 있습니다:
 
@@ -543,7 +543,7 @@ Vue의 컴포넌트 시스템을 통해 트랜지션을 재사용할 수 있습�
 </Transition>
 ```
 
-## 엘리먼트 간 트랜지션
+## 엘리먼트 간 트랜지션 {#transition-between-elements}
 
 `v-if`/`v-show`로 엘리먼트를 전환하는 것 외에도 `v-if`/`v-else`/`v-else-if`를 사용하여 두 엘리먼트 사이를 전환할 수도 있습니다.
 
@@ -559,7 +559,7 @@ Vue의 컴포넌트 시스템을 통해 트랜지션을 재사용할 수 있습�
 
 [온라인 연습장으로 실행하기](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcblxuY29uc3QgZG9jU3RhdGUgPSByZWYoJ3NhdmVkJylcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG5cdDxzcGFuIHN0eWxlPVwibWFyZ2luLXJpZ2h0OiAyMHB4XCI+7YG066atIOyLnCDsg4Htg5wg67OA6rK9Ojwvc3Bhbj5cbiAgPGRpdiBjbGFzcz1cImJ0bi1jb250YWluZXJcIj5cblx0XHQ8VHJhbnNpdGlvbiBuYW1lPVwic2xpZGUtdXBcIj5cbiAgICAgIDxidXR0b24gdi1pZj1cImRvY1N0YXRlID09PSAnc2F2ZWQnXCJcbiAgICAgICAgICAgICAgQGNsaWNrPVwiZG9jU3RhdGUgPSAnZWRpdGVkJ1wiPuyImOyglTwvYnV0dG9uPlxuICAgICAgPGJ1dHRvbiB2LWVsc2UtaWY9XCJkb2NTdGF0ZSA9PT0gJ2VkaXRlZCdcIlxuICAgICAgICAgICAgICBAY2xpY2s9XCJkb2NTdGF0ZSA9ICdlZGl0aW5nJ1wiPuyggOyepTwvYnV0dG9uPlxuICAgICAgPGJ1dHRvbiB2LWVsc2UtaWY9XCJkb2NTdGF0ZSA9PT0gJ2VkaXRpbmcnXCJcbiAgICAgICAgICAgICAgQGNsaWNrPVwiZG9jU3RhdGUgPSAnc2F2ZWQnXCI+7Leo7IaMPC9idXR0b24+XG4gICAgPC9UcmFuc2l0aW9uPlxuICA8L2Rpdj5cbjwvdGVtcGxhdGU+XG5cbjxzdHlsZT5cbi5idG4tY29udGFpbmVyIHtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIGhlaWdodDogMWVtO1xufVxuXG5idXR0b24ge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHdoaXRlLXNwYWNlOiBwcmU7XG59XG5cbi5zbGlkZS11cC1lbnRlci1hY3RpdmUsXG4uc2xpZGUtdXAtbGVhdmUtYWN0aXZlIHtcbiAgdHJhbnNpdGlvbjogYWxsIDAuMjVzIGVhc2Utb3V0O1xufVxuXG4uc2xpZGUtdXAtZW50ZXItZnJvbSB7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgzMHB4KTtcbn1cblxuLnNsaWRlLXVwLWxlYXZlLXRvIHtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKC0zMHB4KTtcbn1cbjwvc3R5bGU+IiwiaW1wb3J0LW1hcC5qc29uIjoie1xuICBcImltcG9ydHNcIjoge1xuICAgIFwidnVlXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3Z1ZS5ydW50aW1lLmVzbS1icm93c2VyLmpzXCIsXG4gICAgXCJ2dWUvc2VydmVyLXJlbmRlcmVyXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3NlcnZlci1yZW5kZXJlci5lc20tYnJvd3Nlci5qc1wiXG4gIH1cbn0ifQ==)
 
-## 트랜지션 모드
+## 트랜지션 모드 {#transition-modes}
 
 이전 예제에서 진입 시 엘리먼트와 진출 시 엘리먼트는 동시에 애니메이션되며 두 엘리먼트가 DOM에 있을 때 레이아웃 문제를 피하기 위해 `position: absolute`로 만들어야 했습니다.
 
@@ -580,7 +580,7 @@ Vue의 컴포넌트 시스템을 통해 트랜지션을 재사용할 수 있습�
 
 `<Transition>`은 자주 사용되지는 않지만 `mode="in-out"`도 지원합니다.
 
-## 컴포넌트 간 트랜지션
+## 컴포넌트 간 트랜지션 {#transition-between-components}
 
 `<Transition>`은 [동적 컴포넌트](/guide/essentials/component-basics.html#동적-컴포넌트)에서도 사용할 수 있습니다:
 
@@ -603,7 +603,7 @@ Vue의 컴포넌트 시스템을 통해 트랜지션을 재사용할 수 있습�
 
 </div>
 
-## 동적 트랜지션
+## 동적 트랜지션 {#dynamic-transitions}
 
 `<Transition>` `name`과 같은 prop도 동적일 수 있습니다!
 이를 통해 상태 변경에 따라 다른 트랜지션을 동적으로 적용할 수 있습니다:

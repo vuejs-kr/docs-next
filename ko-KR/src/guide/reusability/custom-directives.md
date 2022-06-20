@@ -1,4 +1,4 @@
-# 커스텀 디렉티브
+# 커스텀 디렉티브 {#custom-directives}
 
 <script setup>
 const vFocus = {
@@ -8,7 +8,7 @@ const vFocus = {
 }
 </script>
 
-## 소개
+## 소개 {#introduction}
 
 코어에 포함된 기본 디렉티브 세트(예: `v-model` 또는 `v-show`) 외에도 Vue를 사용하면 커스텀 디렉티브를 정의할 수 있습니다.
 
@@ -111,7 +111,7 @@ app.directive('focus', {
 가능하면 `v-bind`와 같은 내장 디렉티브를 사용하여 선언적 템플릿을 사용하는 것이 더 효율적이고 서버 렌더링에 친숙하기 때문입니다.
 :::
 
-## 디렉티브 훅
+## 디렉티브 훅 {#directive-hooks}
 
 디렉티브를 정의하는 객체는 다음과 같은 여러 훅 기능을 제공할 수 있습니다(모두 선택 사항):
 
@@ -188,7 +188,7 @@ const myDirective = {
 훅 간에 정보를 공유해야 하는 경우 엘리먼트의 [dataset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset)을 통해 공유하는 것이 좋습니다.
 :::
 
-## 간단하게 함수로 사용하기
+## 간단하게 함수로 사용하기 {#function-shorthand}
 
 커스텀 디렉티브가 `mounted` 및 `updated`에 대해 동일한 동작을 갖는 것이 일반적이며, 다른 훅은 필요하지 않습니다.
 이러한 경우 디렉티브를 객체가 아닌 함수로 정의할 수 있습니다:
@@ -204,7 +204,7 @@ app.directive('color', (el, binding) => {
 })
 ```
 
-## 객체를 값으로 전달하기
+## 객체를 값으로 전달하기 {#object-literals}
 
 디렉티브에 여러 값이 필요한 경우, JavaScript 객체 리터럴을 전달할 수도 있습니다.
 디렉티브는 모든 유효한 JavaScript 표현식을 사용할 수 있음을 기억하십시오.
@@ -220,7 +220,7 @@ app.directive('demo', (el, binding) => {
 })
 ```
 
-## 컴포넌트에서 사용
+## 컴포넌트에서 사용 {#usage-on-components}
 
 컴포넌트에 사용될 때 커스텀 디렉티브는 [폴스루 속성](/guide/components/attrs.html)과 유사하게 항상 컴포넌트의 루트 노드에 적용됩니다.
 

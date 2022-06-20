@@ -2,11 +2,11 @@
 import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 </script>
 
-# KeepAlive
+# KeepAlive {#keepalive}
 
 `<KeepAlive>`는 여러 컴포넌트 간에 동적으로 전환될 때, 컴포넌트 인스턴스를 조건부로 캐시할 수 있는 빌트인 컴포넌트입니다.
 
-## 기본 사용법
+## 기본 사용법 {#basic-usage}
 
 컴포넌트 기초의 [동적 컴포넌트](/guide/essentials/component-basics.html#동적-컴포넌트) 장에서 특별한 `<component>` 엘리먼트를 사용하는 문법을 소개했습니다:
 
@@ -54,7 +54,7 @@ A에는 카운터가 포함되고 B에는 `v-model`을 통해 입력과 동기�
 [DOM 템플릿](/guide/essentials/component-basics.html#dom-템플릿-파싱-주의-사항)에서 사용할 때 `<keep-alive>`로 참조해야 합니다.
 :::
 
-## Include / Exclude
+## Include / Exclude {#include-exclude}
 
 기본적으로 `<KeepAlive>`는 내부의 모든 컴포넌트 인스턴스를 캐시합니다.
 `include` 및 `exclude` props를 통해 이 동작을 사용자 정의할 수 있습니다.
@@ -79,7 +79,7 @@ A에는 카운터가 포함되고 B에는 `v-model`을 통해 입력과 동기�
 
 컴포넌트의 [`name`](/api/options-misc.html#name) 옵션과 일치하는지 확인하므로, `KeepAlive`에 의해 조건부로 캐시되어야 하는 컴포넌트는 명시적으로 `name` 옵션을 선언해야 합니다.
 
-## 최대 캐시 인스턴스
+## 최대 캐시 인스턴스 {#max-cached-instances}
 
 `max` props를 통해 캐시할 수 있는 컴포넌트 인스턴스의 최대 수를 제한할 수 있습니다.
 `max`가 지정되면 `<KeepAlive>`는 [LRU 캐시](<https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)>)처럼 작동합니다.
@@ -91,7 +91,7 @@ A에는 카운터가 포함되고 B에는 `v-model`을 통해 입력과 동기�
 </KeepAlive>
 ```
 
-## 캐시된 인스턴스의 수명주기
+## 캐시된 인스턴스의 수명주기 {#lifecycle-of-cached-instance}
 
 컴포넌트 인스턴스가 DOM에서 제거되었지만 `<KeepAlive>`에 의해 캐시된 컴포넌트 트리의 일부인 경우,
 마운트 해제되는 대신 **비활성화됨** 상태가 됩니다.

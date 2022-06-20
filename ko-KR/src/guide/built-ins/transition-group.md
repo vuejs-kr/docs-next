@@ -4,11 +4,11 @@ import ListMove from './transition-demos/ListMove.vue'
 import ListStagger from './transition-demos/ListStagger.vue'
 </script>
 
-# 트랜지션 그룹
+# 트랜지션 그룹 {#transitiongroup}
 
 `<TransitionGroup>`은 목록에서 렌더링되는 엘리먼트 또는 컴포넌트의 삽입, 제거 및 순서 변경을 애니메이션으로 만들기 위해 설계된 빌트인 컴포넌트입니다.
 
-## `<Transition>`과의 차이점
+## `<Transition>`과의 차이점 {#differences-from-transition}
 
 `<TransitionGroup>`은 `<Transition>`과 동일한 props, CSS 트랜지션 클래스 및 JavaScript 훅 리스너를 지원하지만, 다음과 같은 차이점이 있습니다:
 
@@ -25,7 +25,7 @@ import ListStagger from './transition-demos/ListStagger.vue'
 [DOM 템플릿](/guide/essentials/component-basics.html#dom-템플릿-파싱-주의-사항)에서 사용할 때 `<transition-group>`으로 참조해야 합니다.
 :::
 
-## 진입/진출 트랜지션
+## 진입/진출 트랜지션 {#enter-leave-transitions}
 
 다음은 `<TransitionGroup>`을 사용하여 `v-for` 목록에 진입/진출 트랜지션을 적용하는 예제입니다:
 
@@ -51,7 +51,7 @@ import ListStagger from './transition-demos/ListStagger.vue'
 
 <ListBasic />
 
-## 이동 트랜지션
+## 이동 트랜지션 {#move-transitions}
 
 위의 데모에는 몇 가지 명백한 결함이 있습니다.
 항목을 삽입하거나 제거할 때 주변 항목이 부드럽게 움직이지 않고 제자리에 즉시 "점프"합니다.
@@ -86,7 +86,7 @@ import ListStagger from './transition-demos/ListStagger.vue'
 
 [comment]: <> (/examples 문서 번역 후 링크 수정 필요)
 
-## 시차가 있는 목록 트랜지션
+## 시차가 있는 목록 트랜지션 {#staggering-list-transitions}
 
 데이터 속성을 통해 JavaScript 트랜지션과 통신함으로써 목록에서 트랜지션을 시차가 있게 할 수도 있습니다.
 먼저 목록의 인덱스를 DOM 엘리먼트의 `data-` 속성으로 렌더링합니다:
