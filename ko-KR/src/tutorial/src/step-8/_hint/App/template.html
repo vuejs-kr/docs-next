@@ -1,6 +1,6 @@
 <form @submit.prevent="addTodo">
   <input v-model="newTodo" />
-  <button>Add Todo</button>
+  <button>할 일 추가</button>
 </form>
 <ul>
   <li v-for="todo in filteredTodos" :key="todo.id">
@@ -10,5 +10,5 @@
   </li>
 </ul>
 <button @click="hideCompleted = !hideCompleted">
-  {{ hideCompleted ? 'Show all' : 'Hide completed' }}
+  {{ hideCompleted ? '모두 보이기' : '완료된 항목 숨기기' }}
 </button>
