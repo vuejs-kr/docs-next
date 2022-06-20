@@ -5,7 +5,7 @@ export default {
     const p = ref(null)
 
     onMounted(() => {
-      p.value.textContent = 'mounted!'
+      p.value.textContent = '마운트 되었어요!'
     })
 
     return {

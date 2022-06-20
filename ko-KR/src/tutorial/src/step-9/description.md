@@ -1,16 +1,17 @@
-# Lifecycle and Template Refs
+# 수명주기와 템플릿 참조
 
-So far, Vue has been handling all the DOM updates for us, thanks to reactivity and declarative rendering. However, inevitably there will be cases where we need to manually work with the DOM.
+지금까지 Vue는 반응형 및 선언적 렌더링으로 모든 DOM 업데이트를 처리해 왔습니다.
+그러나 필연적으로 DOM을 수동으로 작업해야 하는 경우가 있습니다.
 
-We can request a **template ref** - i.e. a reference to an element in the template - using the <a target="_blank" href="/api/built-in-special-attributes.html#ref">special `ref` attribute</a>:
+우리는 <a target="_blank" href="/api/built-in-special-attributes.html#ref">특별한 속성인 `ref`</a>를 사용하여 **템플릿 참조**를 요청할 수 있습니다:
 
 ```vue-html
-<p ref="p">hello</p>
+<p ref="p">안녕</p>
 ```
 
 <div class="composition-api">
 
-To access the ref, we need to declare<span class="html"> and expose</span> a ref with matching name:
+참조에 접근하려면 다음과 같이 이름이 일치하는 `ref`를 선언<span class="html">하고 노출</span>해야 합니다:
 
 <div class="sfc">
 
@@ -33,9 +34,11 @@ setup() {
 
 </div>
 
-Notice the ref is initialized with `null` value. This is because the element doesn't exist yet when <span class="sfc">`<script setup>`</span><span class="html">`setup()`</span> is executed. The template ref is only accessible after the component is **mounted**.
+`ref`는 `null` 값으로 초기화합니다.
+<span class="sfc">`<script setup>`</span><span class="html">`setup()`</span> 실행 시 해당 엘리먼트가 아직 존재하지 않기 때문입니다.
+템플릿 참조는 컴포넌트가 **마운트된 후**에만 접근할 수 있습니다.
 
-To run code after mount, we can use the `onMounted()` function:
+마운트된 후, 코드를 실행하려면 `onMounted()` 함수를 사용해야 합니다:
 
 <div class="sfc">
 
@@ -43,7 +46,7 @@ To run code after mount, we can use the `onMounted()` function:
 import { onMounted } from 'vue'
 
 onMounted(() => {
-  // component is now mounted.
+  // 이제 컴포넌트가 마운트되었습니다.
 })
 ```
 
@@ -56,7 +59,7 @@ import { onMounted } from 'vue'
 createApp({
   setup() {
     onMounted(() => {
-      // component is now mounted.
+      // 이제 컴포넌트가 마운트되었습니다.
     })
   }
 })
@@ -67,16 +70,17 @@ createApp({
 
 <div class="options-api">
 
-The element will be exposed on `this.$refs` as `this.$refs.p`. However, you can only access it after the component is **mounted**.
+엘리먼트는 `this.$refs`에 `this.$refs.p`로 노출됩니다.
+그러나 컴포넌트가 **마운트된 후**에만 접근할 수 있습니다.
 
-To run code after mount, we can use the `mounted` option:
+마운트된 후, 코드를 실행하려면 `mounted` 옵션을 사용해야 합니다:
 
 <div class="sfc">
 
 ```js
 export default {
   mounted() {
-    // component is now mounted.
+    // 이제 컴포넌트가 마운트되었습니다.
   }
 }
 ```
@@ -87,7 +91,7 @@ export default {
 ```js
 createApp({
   mounted() {
-    // component is now mounted.
+    // 이제 컴포넌트가 마운트되었습니다.
   }
 })
 ```
@@ -95,6 +99,11 @@ createApp({
 </div>
 </div>
 
-This is called a **lifecycle hook** - it allows us to register a callback to be called at certain times of the component's lifecycle. There are other hooks such as <span class="options-api">`created` and `updated`</span><span class="composition-api">`onUpdated` and `onUnmounted`</span>. Check out the <a target="_blank" href="/guide/essentials/lifecycle.html#lifecycle-diagram">Lifecycle Diagram</a> for more details.
+이것을 컴포넌트 **수명 주기 훅**이라고 하며,
+수명 주기의 특정 시간에 호출할 콜백을 등록할 수 있습니다.
+<span class="options-api">`created` 및 `updated`</span><span class="composition-api">`onUpdated` 및 `onUnmounted`</span>와 같은 다른 훅도 있습니다.
+자세한 내용은 <a target="_blank" href="/guide/essentials/lifecycle.html#lifecycle-diagram">수명 주기 도표</a>에서 다룹니다.
 
-Now, try to add an <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span> hook, access the `<p>` via <span class="options-api">`this.$refs.p`</span><span class="composition-api">`p.value`</span>, and perform some direct DOM operations on it (e.g. changing its `textContent`).
+이제 <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span> 훅을 추가하고,
+<span class="options-api">`this.$refs.p`</span><span class="composition-api">`p.value`</span>를 통해 `<p>`에 접근한 다음,
+직접 DOM을 조작해봅시다(예: `textContent` 변경).
