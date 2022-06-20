@@ -6,7 +6,7 @@ export default {
     ChildComp
   },
   setup() {
-    const greeting = ref('Hello from parent')
+    const greeting = ref('부모 컴포넌트로부터 💌을 전달받았어요!')
 
     return {
       greeting
