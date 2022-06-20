@@ -21,5 +21,5 @@ Vue에서 이중 중괄호는 텍스트 삽입에만 사용됩니다.
 ```
 
 이제 <span class="options-api">`data` 속성</span><span class="composition-api">`ref`</span>의 `titleClass`을 값으로 사용하여,
-`<h1>`의 `class`에 동적 바인딩을 추가해 보십시오.
+`<h1>`의 `class`에 동적 바인딩을 추가해 봅시다.
 올바르게 바인딩된 경우, 텍스트가 빨간색으로 변해야 합니다.
