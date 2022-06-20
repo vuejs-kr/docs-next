@@ -2,9 +2,9 @@
 outline: deep
 ---
 
-# 성능 (Performance)
+# 성능 (Performance) {#performance}
 
-## 개요
+## 개요 {#overview}
 
 Vue는 수동 최적화가 크게 필요하지 않은 가장 일반적인 사용 사례에 적합하도록 설계되었습니다.
 그러나 추가 미세 조정이 필요한 어려운 시나리오가 항상 있습니다.
@@ -31,7 +31,7 @@ Vue는 수동 최적화가 크게 필요하지 않은 가장 일반적인 사용
 
 - Jason Miller의 블로그 [Application Holotypes](https://jasonformat.com/application-holotypes/)(앱 유형)에서 웹 앱의 유형과 이상적인 구현 및 제공에 대해 논의합니다.
 
-## 프로파일링 옵션 (profiling options)
+## 프로파일링 옵션 (profiling options) {#profiling-options}
 
 성능을 개선하려면 먼저 측정 방법을 알아야 합니다.
 이와 관련하여 도움이 될 수 있는 훌륭한 도구가 많이 있습니다.
@@ -47,13 +47,13 @@ Vue는 수동 최적화가 크게 필요하지 않은 가장 일반적인 사용
   - [`app.config.performance`](/api/application.html#app-config-performance)는 크롬 개발자도구의 성능 타임라인에서 Vue 관련 성능 마커를 활성화합니다.
 - [Vue 개발자도구 확장](/guide/scaling-up/tooling.html#브라우저-개발자-도구)은 성능 프로파일링 기능도 제공합니다.
 
-## 페이지 로드 최적화
+## 페이지 로드 최적화 {#page-load-optimizations}
 
 페이지 로드 성능을 최적화하는 것은 프레임워크에 구애받지 않는 경우가 많습니다.
 포괄적인 정리 내용은 [web.dev 가이드](https://web.dev/fast/)를 확인하세요.
 여기서는 주로 Vue에 특화된 기술에 초점을 맞출 것입니다.
 
-### 번들 크기 및 트리 쉐이킹 (tree-shaking)
+### 번들 크기 및 트리 쉐이킹 (tree-shaking) {#bundle-size-and-tree-shaking}
 
 페이지 로드 성능을 향상시키는 가장 효과적인 방법 중 하나는 더 작은 JavaScript 번들을 제공하는 것입니다.
 Vue를 사용할 때 번들 크기를 줄이는 몇 가지 방법은 다음과 같습니다:
@@ -79,7 +79,7 @@ Vue를 사용할 때 번들 크기를 줄이는 몇 가지 방법은 다음과 �
 
 - 주로 빌드 단계 없이 Vue를 사용하고 있다면, [petite-vue](https://github.com/vuejs/petite-vue)(**6kb**)를 사용하는 것이 좋습니다.
 
-### 코드 분할
+### 코드 분할 {#code-splitting}
 
 코드 분할은 빌드 도구가 앱 번들을 여러 개의 작은 청크로 분할하는 것으로, 로드 또는 요청 시 병렬로 로드할 수 있는 곳입니다.
 적절한 코드 분할을 사용하면 페이지 로드 시,
@@ -110,15 +110,15 @@ const Foo = defineAsyncComponent(() => import('./Foo.vue'))
 Vue 라우터를 통해 클라이언트 측 라우팅을 사용하는 경우, 라우트 컴포넌트를 비동기 컴포넌트로 사용하는 것이 좋습니다.
 자세한 내용은 [라우트 지연 로드](https://router.vuejs.org/guide/advanced/lazy-loading.html)를 참조하십시오.
 
-### SSR / SSG
+### SSR / SSG {#ssr-ssg}
 
 순수한 클라이언트 측 렌더링은 콘텐츠 생성 시간이 느립니다.
 이는 SSR(서버 사이드 렌더링) 또는 SSG(정적 사이트 생성)를 사용하여 완화할 수 있습니다.
 자세한 내용은 [SSR 가이드](/guide/scaling-up/ssr.html)를 확인하세요.
 
-## 업데이트 최적화
+## 업데이트 최적화 {#update-optimizations}
 
-### Props 안정성
+### Props 안정성 {#props-stability}
 
 Vue에서 자식 컴포넌트는 수신된 props 중 하나 이상이 변경된 경우에만 업데이트됩니다.
 다음 예제를 봅시다:
@@ -146,22 +146,22 @@ Vue에서 자식 컴포넌트는 수신된 props 중 하나 이상이 변경된 
 이제 대부분의 컴포넌트에서 `active` prop은 `activeId`가 변경될 때 동일하게 유지되므로, 더 이상 업데이트할 필요가 없습니다.
 이 개념은 일반적으로 자식 컴포넌트에 전달되는 prop을 가능한 한 안정적으로 유지하는 것입니다.
 
-### `v-once`
+### `v-once` {#v-once}
 
 `v-once`는 런타임 데이터에 의존하지만, 업데이트할 필요가 없는 콘텐츠를 렌더링하는 데 사용할 수 있는 내장 디렉티브입니다.
 이것을 사용하는 컴포넌트 내 전체 하위 트리는 이후 모든 업데이트를 건너뜁니다.
 자세한 내용은 [API 참조](/api/built-in-directives.html#v-once)를 참조하세요.
 
-### `v-memo`
+### `v-memo` {#v-memo}
 
 `v-memo`는 큰 하위 트리 또는 `v-for` 목록의 업데이트를 조건부로 건너뛰는 데 사용할 수 있는 내장 디렉티브입니다.
 자세한 내용은 [API 참조](/api/built-in-directives.html#v-memo)를 참조하세요.
 
-## 일반적인 최적화
+## 일반적인 최적화 {#general-optimizations}
 
 > 다음 팁은 페이지 로드와 업데이트 성능에 모두 영향을 미칩니다.
 
-### 대규모 목록 가상화
+### 대규모 목록 가상화 {#virtualize-large-lists}
 
 모든 프론트엔드 앱에서 가장 일반적인 성능 문제 중 하나는, 큰 목록을 렌더링하는 것입니다.
 프레임워크의 성능이 아무리 뛰어나더라도 수천 개의 아이템이 포함된 목록을 렌더링하는 것은 **브라우저가 처리해야 하는 DOM 노드의 수 때문에 느려질 것**입니다.
@@ -176,7 +176,7 @@ Vue에서 자식 컴포넌트는 수신된 props 중 하나 이상이 변경된 
 - [vue-virtual-scroller](https://github.com/Akryum/vue-virtual-scroller)
 - [vue-virtual-scroll-grid](https://github.com/rocwang/vue-virtual-scroll-grid)
 
-### 큰 불변 구조에 대한 반응성 오버헤드 감소
+### 큰 불변 구조에 대한 반응성 오버헤드 감소 {#reduce-reactivity-overhead-for-large-immutable-structures}
 
 Vue의 반응형 시스템은 기본적으로 깊습니다.
 이러면 상태 관리가 직관적이지만,
@@ -210,7 +210,7 @@ shallowArray.value = [
 ]
 ```
 
-### 불필요한 컴포넌트 추상화 방지
+### 불필요한 컴포넌트 추상화 방지 {#avoid-unnecessary-component-abstractions}
 
 때때로 우리는 더 나은 추상화 또는 코드 구성을 위해,
 [렌더리스 컴포넌트](/guide/components/slots.html#렌더리스-컴포넌트) 또는 고차 컴포넌트(예: 다른 컴포넌트를 추가 props로 렌더링하는 컴포넌트)를 만들 수 있습니다.

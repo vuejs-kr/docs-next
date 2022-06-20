@@ -1,6 +1,6 @@
-# 프로덕션 배포
+# 프로덕션 배포 {#production-deployment}
 
-## 개발(Development) vs. 프로덕션(Production)
+## 개발(Development) vs. 프로덕션(Production) {#development-vs-production}
 
 개발하는 동안 Vue는 개발 경험을 개선하기 위해 다음과 같은 여러 기능을 제공합니다:
 
@@ -13,7 +13,7 @@
 일부 경고 확인은 약간의 성능 오버헤드를 유발할 수도 있습니다.
 프로덕션에 배포할 때 더 작은 페이로드 크기와 더 나은 성능을 위해 사용되지 않는 개발 전용 코드 분기를 모두 삭제해야 합니다.
 
-## 빌드 툴 없이
+## 빌드 툴 없이 {#without-build-tools}
 
 CDN 또는 자체 호스팅 스크립트에서 로드하여 빌드 도구 없이 Vue를 사용하는 경우, 프로덕션에 배포할 때 프로덕션 빌드(`.prod.js`로 끝나는 dist 파일)를 사용해야 합니다.
 프로덕션 빌드는 모든 개발 전용 코드 분기가 제거된 상태로 미리 최소화됩니다.
@@ -23,7 +23,7 @@ CDN 또는 자체 호스팅 스크립트에서 로드하여 빌드 도구 없이
 
 자세한 내용은 [dist 파일 가이드](https://github.com/vuejs/core/tree/main/packages/vue#which-dist-file-to-use)를 참조하세요.
 
-## 빌드 툴 사용
+## 빌드 툴 사용 {#with-build-tools}
 
 `create-vue`(Vite 기반) 또는 Vue CLI(webpack 기반)를 통해 스캐폴딩된 프로젝트는 프로덕션 빌드를 위해 사전 구성됩니다.
 
@@ -39,7 +39,7 @@ CDN 또는 자체 호스팅 스크립트에서 로드하여 빌드 도구 없이
 - [Vite 배포 가이드](https://vitejs.dev/guide/static-deploy.html)
 - [Vue CLI 배포 가이드](https://cli.vuejs.org/guide/deployment.html)
 
-## 런타임 오류 추적
+## 런타임 오류 추적 {#tracking-runtime-errors}
 
 [앱 수준 애러 핸들러](/api/application.html#app-config-errorhandler)를 사용하여 애러 보고를 추적 제공할 수 있습니다:
 
