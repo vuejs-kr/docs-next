@@ -1,13 +1,15 @@
-# You Did It!
+# 훌륭하게 해냈군요!
 
-You have finished the tutorial!
+튜토리얼을 마쳤습니다!
 
-At this point, you should have a good idea of what it's like to work with Vue. However, we covered a lot of things really fast and glossed over the details, so definitely keep learning! As a next step, you can:
+이제 Vue를 어떻게 사용해야 하는지 잘 알게 되었을 것입니다.
+하지만, 우리는 정말 빠르고 쉽게 많은 것을 다루기 위해, 세부적인 것은 생략했습니다.
+더 확실하게 그리고 많은 것을 배우기 위해 다음을 생각해 볼 수 있습니다:
 
-- Set up a real Vue project on your machine by following the [Quick Start](/guide/quick-start.html).
+- [빠른 시작](/guide/quick-start.html)의 안내에 따라 컴퓨터에 실제 Vue 프로젝트를 생성하기.
 
-- Go through the [Main Guide](/guide/essentials/application.html), which covers all the topics we learned so far in greater details, and much more.
+- 지금까지 배운 모든 주제를 더 자세히 다루는 [메인 가이드](/guide/essentials/application.html)를 살펴보기.
 
-- Check out some more practical [Examples](/examples/).
+- 좀 더 실용적인 [예제](/examples/) 살펴보기.
 
-We can't wait to see what you build next!
+앞으로 Vue를 사용하여 어떤 멋진 것을 만들어낼지 너무 기대됩니다!
