@@ -1,1 +1,1 @@
-We can create two-way bindings between state and form inputs using the v-model directive.
+v-model 디렉티브를 사용하여 상태와 폼 입력 간에 양방향 바인딩을 만들 수 있습니다.
