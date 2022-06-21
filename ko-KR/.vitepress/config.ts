@@ -457,7 +457,7 @@ export const sidebar = {
           link: '/examples/#markdown'
         },
         {
-          text: 'Fetching Data',
+          text: '데이터 가져오기',
           link: '/examples/#fetching-data'
         },
         {
