@@ -1,7 +1,7 @@
 import { ref, computed } from 'vue'
 
 export default {
-  name: 'TreeItem', // necessary for self-reference
+  name: 'TreeItem', // 자기 참조에 필요함
   props: {
     model: Object
   },
@@ -24,7 +24,7 @@ export default {
     }
 
     function addChild() {
-      props.model.children.push({ name: 'new stuff' })
+      props.model.children.push({ name: '새로운 것' })
     }
 
     return {
