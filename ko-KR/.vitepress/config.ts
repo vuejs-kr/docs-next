@@ -477,7 +477,7 @@ export const sidebar = {
           link: '/examples/#modal'
         },
         {
-          text: 'List with Transitions',
+          text: '트렌지션으로 리스트 구현',
           link: '/examples/#list-transition'
         },
         {
