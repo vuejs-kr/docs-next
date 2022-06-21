@@ -7,14 +7,14 @@ const filters = {
 }
 
 export default {
-  // app initial state
+  // 상태 초기화
   data: () => ({
     todos: JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'),
     editedTodo: null,
     visibility: 'all'
   }),
 
-  // watch todos change for localStorage persistence
+  // todos의 변경사항을 감지하여 localStorage에 저장
   watch: {
     todos: {
       handler(todos) {
@@ -38,8 +38,8 @@ export default {
     }
   },
 
-  // methods that implement data logic.
-  // note there's no DOM manipulation here at all.
+  // 데이터 로직을 구현하는 메소드.
+  // 여기에는 DOM 조작이 전혀 없습니다.
   methods: {
     toggleAll(e) {
       this.todos.forEach((todo) => (todo.completed = e.target.checked))
