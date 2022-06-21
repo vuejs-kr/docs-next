@@ -1,1 +1,1 @@
-A simple markdown editor.
+심플한 마크다운 편집기 입니다.
