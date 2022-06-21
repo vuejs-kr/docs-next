@@ -424,7 +424,7 @@ export const sidebar = {
       text: '기초',
       items: [
         {
-          text: 'Hello World',
+          text: '안녕 Vue',
           link: '/examples/#hello-world'
         },
         {
