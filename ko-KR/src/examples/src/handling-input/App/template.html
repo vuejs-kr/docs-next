@@ -1,22 +1,23 @@
 <!--
-  Note we don't need .value inside templates because
-  refs are automatically "unwrapped" in templates.
+  컴포지션 API 스타일의 경우,
+  ref는 템플릿에서 자동으로 "언래핑"되므로
+  템플릿 내에서 .value가 필요하지 않습니다.
 -->
 <h1>{{ message }}</h1>
 
 <!--
-  Bind to a method/function.
-  The @click syntax is short for v-on:click.
+  메서드/함수에 바인딩합니다.
+  @click 문법은 v-on:click의 줄임말입니다.
 -->
-<button @click="reverseMessage">Reverse Message</button>
+<button @click="reverseMessage">메시지 뒤집기</button>
 
-<!-- Can also be an inline expression statement -->
-<button @click="message += '!'">Append "!"</button>
+<!-- 인라인 표현식 문장이 될 수도 있습니다 -->
+<button @click="message += '!'">"!" 추가하기</button>
 
 <!--
-  Vue also provides modifiers for common tasks
-  such as e.preventDefault() and e.stopPropagation()
+  Vue는 e.preventDefault() 및 e.stopPropagation()과 같은
+  일반적인 작업에 대한 수식어를 제공합니다.
 -->
 <a href="https://vuejs.org" @click.prevent="notify">
-  A link with e.preventDefault()
+  e.preventDefault()가 작동하는 링크
 </a>

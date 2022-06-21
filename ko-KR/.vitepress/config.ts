@@ -428,7 +428,7 @@ export const sidebar = {
           link: '/examples/#hello-world'
         },
         {
-          text: '사용자 입력 처리하기',
+          text: '사용자 입력 핸들링',
           link: '/examples/#handling-input'
         },
         {
