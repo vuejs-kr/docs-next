@@ -122,7 +122,7 @@ function ref(value) {
 여기와 아래의 코드 스니펫은 가능한 한 간단한 형태로 핵심 개념을 설명하기 위한 것이기 때문에 많은 세부 사항은 생략되고 예외적인 케이스는 무시됩니다.
 :::
 
-아래는 우리가 기초 섹션에서 논의한 몇 가지 [반응형의 제한 사항](/guide/essentials/reactivity-fundamentals.html#reactive-의-제한-사항)입니다:
+아래는 우리가 기초 섹션에서 논의한 몇 가지 [반응형의 제한 사항](/guide/essentials/reactivity-fundamentals.html#limitations-of-reactive)입니다:
 
 - 반응형 객체의 속성을 로컬 변수에 할당하거나 분해 할당하면 로컬 변수에 접근이 더 이상 get/set 프록시 트랩을 트리거하지 않기 때문에 반응형이 "연결 해제"됩니다.
 

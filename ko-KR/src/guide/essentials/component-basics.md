@@ -190,7 +190,7 @@ SFC에서는 네이티브 HTML 엘리먼트와 구별하기 위해 자식 컴포
 <button-counter></button-counter>
 ```
 
-자세한 내용은 [DOM 템플릿 파싱 주의 사항](#dom-템플릿-파싱-주의-사항)을 참조하세요.
+자세한 내용은 [DOM 템플릿 파싱 주의 사항](#dom-template-parsing-caveats)을 참조하세요.
 
 ## Props 전달하기 {#passing-props}
 
@@ -448,7 +448,7 @@ defineEmits(['enlarge-text'])
 
 </div>
 
-이것은 컴포넌트가 내보내는 모든 이벤트를 문서화하고 선택적으로 [유효성 검사](/guide/components/events.html#이벤트-유효성-검사)를 합니다.
+이것은 컴포넌트가 내보내는 모든 이벤트를 문서화하고 선택적으로 [유효성 검사](/guide/components/events.html#events-validation)를 합니다.
 또한 Vue가 자식 컴포넌트의 루트 엘리먼트에 암시적으로 네이티브 리스너가 적용되는 것을 방지할 수 있습니다.
 
 <div class="composition-api">

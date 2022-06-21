@@ -240,7 +240,7 @@ div (block root)
 
 ### SSR 하이드레이션(hydration)에서의 영향
 
-패치 플래그와 트리 병합은 Vue의 [SSR 하이드레이션](/guide/scaling-up/ssr.html#클라이언트-하이드레이트) 성능도 크게 향상시킵니다.
+패치 플래그와 트리 병합은 Vue의 [SSR 하이드레이션](/guide/scaling-up/ssr.html#client-hydration) 성능도 크게 향상시킵니다.
 
 - 단일 엘리먼트 하이드레이션은 해당 vnode의 패치 플래그를 기반으로 빠른 경로를 취할 수 있습니다.
 

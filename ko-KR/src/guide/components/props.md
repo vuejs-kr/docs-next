@@ -91,7 +91,7 @@ export default {
 객체 선언 문법의 각 객체 속성의 키는 props의 이름이 되며, 객체 속성의 값은 값이 될 데이터의 타입에 해당하는 생성자 함수(`Number`, `String`같은)여야 합니다.
 
 타입을 지정하는 것은 컴포넌트를 가독성이 좋게 문서화하는데 도움이 되며, 컴포넌트를 사용하는 다른 개발자가 잘못된 유형을 전달할 때에 브라우저 콘솔에 경고를 출력합니다.
-[prop 유효성 검사](#prop-유효성-검사)에 대한 자세한 내용은 이 페이지 아래에서 더 자세히 설명하겠습니다.
+[prop 유효성 검사](#prop-validation)에 대한 자세한 내용은 이 페이지 아래에서 더 자세히 설명하겠습니다.
 
 <div class="options-api">
 
@@ -148,7 +148,7 @@ export default {
 <span>{{ greetingMessage }}</span>
 ```
 
-기술적으로 props를 자식 컴포넌트에 전달할 때 camelCase를 사용할 수도 있습니다([DOM 템플릿](/guide/essentials/component-basics.html#dom-템플릿-파싱-주의-사항) 제외).
+기술적으로 props를 자식 컴포넌트에 전달할 때 camelCase를 사용할 수도 있습니다([DOM 템플릿](/guide/essentials/component-basics.html#dom-template-parsing-caveats) 제외).
 그러나 camelCase로 선언된 props 속성일지라도 관례적으로 HTML 속성 표기법과 동일하게 kebab-case로 표기해서 사용하도록 해야 합니다:
 
 ```vue-html
@@ -236,7 +236,7 @@ export default {
 
 If you want to pass all the properties of an object as props, you can use [`v-bind` without an argument](/guide/essentials/template-syntax.html#dynamically-binding-multiple-attributes) (`v-bind` instead of `:prop-name`). For example, given a `post` object:
 
-객체의 모든 속성을 props로 전달하려면 [인자 없이 `v-bind`](/guide/essentials/template-syntax.html#여러-속성을-동적으로-바인딩)를 사용할 수 있습니다.
+객체의 모든 속성을 props로 전달하려면 [인자 없이 `v-bind`](/guide/essentials/template-syntax.html#dynamically-binding-multiple-attributes)를 사용할 수 있습니다.
 예를 들어, `post` 객체가 주어지면:
 
 <div class="options-api">

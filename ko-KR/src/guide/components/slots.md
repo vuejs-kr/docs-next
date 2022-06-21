@@ -319,7 +319,7 @@ function BaseLayout(slots) {
 
 ## 동적인 슬롯 이름 {#dynamic-slot-names}
 
-[동적인 디렉티브의 인수](/guide/essentials/template-syntax.html#동적인-인수)는 `v-slot`에서도 작동하므로 동적 슬롯 이름을 정의할 수 있습니다:
+[동적인 디렉티브의 인수](/guide/essentials/template-syntax.html#dynamic-arguments)는 `v-slot`에서도 작동하므로 동적 슬롯 이름을 정의할 수 있습니다:
 
 ```vue-html
 <base-layout>
@@ -334,11 +334,11 @@ function BaseLayout(slots) {
 </base-layout>
 ```
 
-표현식에는 디렉티브의 [동적인 인수 문법 제약 조건](/guide/essentials/template-syntax.html#동적인-인수-문법-제약-조건)이 적용됩니다.
+표현식에는 디렉티브의 [동적인 인수 문법 제약 조건](/guide/essentials/template-syntax.html#dynamic-argument-syntax-constraints)이 적용됩니다.
 
 ## 범위가 지정된 슬롯 {#scoped-slots}
 
-[렌더링 범위](#렌더링-범위)에서 논의한 바와 같이 슬롯 콘텐츠는 자식 컴포넌트의 상태에 접근할 수 없습니다.
+[렌더링 범위](#render-scope)에서 논의한 바와 같이 슬롯 콘텐츠는 자식 컴포넌트의 상태에 접근할 수 없습니다.
 
 그러나 슬롯의 콘텐츠가 상위 범위와 하위 범위의 데이터를 모두 사용할 수 있는 경우, 유용할 수 있습니다.
 이를 구현하려면 자식이 데이터를 렌더링할 때 슬롯에 데이터를 전달할 수 있는 방법이 필요합니다.

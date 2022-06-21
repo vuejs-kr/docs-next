@@ -10,6 +10,19 @@ footer: false
 - Vue 2에서 업그레이드 하시려면 [마이그레이션 가이드](https://v3-migration.vuejs.org/)를 확인하십시오.
   :::
 
+<style src="/@theme/styles/vue-mastery.css"></style>
+<div class="vue-mastery-link">
+  <a href="https://www.vuemastery.com/courses-path/beginner" target="_blank">
+    <div class="banner-wrapper">
+      <img class="banner" alt="Vue Mastery banner" width="96px" height="56px" src="https://storage.googleapis.com/vue-mastery.appspot.com/flamelink/media/vuemastery-graphical-link-96x56.png" />
+    </div>
+    <p class="description">Learn Vue with video tutorials on <span>VueMastery.com</span></p>
+    <div class="logo-wrapper">
+        <img alt="Vue Mastery Logo" width="25px" src="https://storage.googleapis.com/vue-mastery.appspot.com/flamelink/media/vue-mastery-logo.png" />
+    </div>
+  </a>
+</div>  
+
 ## Vue는 무엇입니까? {#what-is-vue}
 
 Vue는 사용자 인터페이스를 구축하기 위한 JavaScript 프레임 워크입니다.
@@ -223,12 +236,11 @@ Vue를 처음 사용하는 경우 일반적인 권장 사항은 다음과 같습
 
 - 학습을 목적으로 하는 경우, 당신이 쉽게 이해할 수 있어보이는 스타일로 가십시오. 다시 말하지만, 대부분의 핵심 개념은 두 스타일 간에 공유됩니다. 나중에 언제든지 다른 하나를 선택할 수 있습니다.
 
-- 생산용(production)으로 사용하는 경우:
+- 제품용(production)으로 사용하는 경우:
 
   - 빌드 도구를 사용하지 않거나 Vue를 주로 복잡성이 낮은 시나리오에서 사용할 계획이라면 옵션 API를 사용하세요.
 
-  - Go with Composition API + Single-File Components if you plan to build full applications with Vue.
-  - Vue로 어느정도 규모가 있는 애플리케이션의 전체를 구축하려는 경우 컴포넌트 API + SFC를 사용하십시오.
+  - Vue로 규모가 있는 애플리케이션의 전체를 구축하려는 경우 컴포넌트 API + 단일파일 컴포넌트(SFC)를 사용하십시오.
 
 학습 단계에서 한 가지 스타일만 고집할 필요는 없습니다.
 이후 문서에서는 두 가지 스타일의 코드 샘플을 제공하며, 왼쪽 사이드바의 상단에 있는 **API 스타일 설정**을 사용하여 언제든지 두 스타일 사이를 전환할 수 있습니다.

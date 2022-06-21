@@ -7,7 +7,7 @@
 
 ## 간단한 라우팅 구성하기 {#simple-routing-from-scratch}
 
-매우 간단한 라우팅만 필요하여 모든 기능을 갖춘 라우터 라이브러리를 포함하지 않으려면 [동적인 컴포넌트](/guide/essentials/component-basics.html#동적-컴포넌트)를 사용하고,
+매우 간단한 라우팅만 필요하여 모든 기능을 갖춘 라우터 라이브러리를 포함하지 않으려면 [동적인 컴포넌트](/guide/essentials/component-basics.html#dynamic-components)를 사용하고,
 브라우저 [`hashchange` 이벤트](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event)를 수신하거나 [History API](https://developer.mozilla.org/en-US/docs/Web/API/History)를 사용하여 현재 컴포넌트 상태를 업데이트할 수 있습니다.
 
 다음은 기본적인 예입니다:

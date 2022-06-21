@@ -318,7 +318,7 @@ console.log(mouse.x)
   이 훅은 브라우저에서만 호출되므로 내부 코드가 DOM에 접근할 수 있는지 알 수 있습니다.
 
 - `onUnmounted()`에서 사이드 이펙트를 마무리 지었는지 확인하십시오.
-  예를 들어, 구성화 코드에서 DOM 이벤트 리스너를 사용하는 경우, `onUnmounted()`에서 해당 리스너를 제거해야 합니다([`useMouse()`](#마우스-위치-추적기-예제) 예제에서 본 것처럼).
+  예를 들어, 구성화 코드에서 DOM 이벤트 리스너를 사용하는 경우, `onUnmounted()`에서 해당 리스너를 제거해야 합니다([`useMouse()`](#mouse-tracker-example) 예제에서 본 것처럼).
   [`useEventListener()`](#use-event-listener) 예제와 같이 자동으로 이를 수행하는 구성화 코드를 구성하는 것도 좋은 아이디어일 수 있습니다.
 
 ### 제한사항 {#usage-restrictions}
@@ -406,7 +406,7 @@ mixins에는 세 가지 주요 단점이 있습니다:
 
 ### vs. 렌더리스 컴포넌트 {#vs-renderless-components}
 
-컴포넌트 심화의 슬롯 챕터에서는 범위가 지정된 슬롯을 기반으로 하는 [렌더리스 컴포넌트](/guide/components/slots.html#렌더리스-컴포넌트) 패턴에 대해 논의했습니다.
+컴포넌트 심화의 슬롯 챕터에서는 범위가 지정된 슬롯을 기반으로 하는 [렌더리스 컴포넌트](/guide/components/slots.html#renderless-components) 패턴에 대해 논의했습니다.
 렌더리스 컴포넌트를 사용하여 동일한 마우스 추적 데모도 구현했습니다.
 
 렌더리스 컴포넌트에 비해 구성화의 주요 이점은 구성화가 추가적인 컴포넌트 인스턴스 오버헤드를 발생시키지 않는다는 것입니다.
@@ -429,6 +429,6 @@ React에 대한 경험이 있다면 이것이 커스텀 React 훅과 매우 유�
 
 - [상태 관리](/guide/scaling-up/state-management.html): 여러 컴포넌트가 공유하는 상태를 관리하는 패턴입니다.
 
-- [테스팅 구성화](/guide/scaling-up/testing.html#구성화-테스트): 단위 테스트 구성화에 대한 팁.
+- [테스팅 구성화](/guide/scaling-up/testing.html#testing-composables): 단위 테스트 구성화에 대한 팁.
 
 - [VueUse](https://vueuse.org/): 계속 증가하는 Vue 구성화 컬렉션입니다. 또한 소스 코드는 훌륭한 학습 자료입니다.

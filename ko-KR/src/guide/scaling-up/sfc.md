@@ -37,7 +37,7 @@ export default {
 SFC 사용을 위해서는 빌드 방식을 따라야 하지만 다음과 같은 많은 이점이 있습니다:
 
 - 친숙한 HTML, CSS 및 JavaScript 문법을 사용하여 모듈화된 컴포넌트 작성
-- [본질적으로 사용 목적에 따라 구성됨](#왜-sfc를-사용해야-하나요)
+- [본질적으로 사용 목적에 따라 구성됨](#why-sfc)
 - 사전 컴파일된 템플릿
 - [컴포넌트 범위 CSS](/api/sfc-css-features)
 - [컴포지션 API로 작업할 때 더욱 인체공학적인 문법](/api/sfc-script-setup)

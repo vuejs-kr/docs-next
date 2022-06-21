@@ -148,7 +148,7 @@ export default {
    또한 Vue 컴포넌트를 사용자 정의 엘리먼트(웹 컴포넌트)와 구별합니다.
 
 이것은 SFC 또는 문자열 템플릿으로 작업할 때 권장되는 스타일입니다.
-그러나 [DOM 템플릿 구문 분석 주의 사항](/guide/essentials/component-basics.html#dom-템플릿-파싱-주의-사항)에서 설명한 것처럼 PascalCase 태그는 DOM 템플릿에서 사용할 수 없습니다.
+그러나 [DOM 템플릿 구문 분석 주의 사항](/guide/essentials/component-basics.html#dom-template-parsing-caveats)에서 설명한 것처럼 PascalCase 태그는 DOM 템플릿에서 사용할 수 없습니다.
 
 운 좋게도 Vue는 PascalCase를 사용하여 등록된 컴포넌트에 대한 kebab-case 태그 해석을 지원합니다.
 이것은 `MyComponent`로 등록된 컴포넌트가 `<MyComponent>` 또는 `<my-component>`를 통해 템플릿에서 참조될 수 있음을 의미합니다.

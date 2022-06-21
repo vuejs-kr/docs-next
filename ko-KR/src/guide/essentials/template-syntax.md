@@ -294,7 +294,7 @@ DOM 내 템플릿(HTML 파일에 직접 작성된 템플릿)을 사용할 때, �
 <form @submit.prevent="onSubmit">...</form>
 ```
 
-추후 이러한 기능에 대해 찾아볼 때, [`v-on`](./event-handling.html#이벤트-수식어) 또는 [`v-model`](./forms.html#수식어) 전용의 다른 수식어에 대한 예제를 접할 수 있습니다.
+추후 이러한 기능에 대해 찾아볼 때, [`v-on`](./event-handling.html#event-modifiers) 또는 [`v-model`](./forms.html#modifiers) 전용의 다른 수식어에 대한 예제를 접할 수 있습니다.
 
 마지막으로 다음은 전체적인 디렉티브 문법을 시각화한 것입니다:
 

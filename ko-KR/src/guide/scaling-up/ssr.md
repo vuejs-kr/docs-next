@@ -81,7 +81,7 @@ SSG는 문서 사이트나 블로그와 같은 컨텐츠 기반 웹사이트에�
 
 Vue SSR이 작동하는 가장 기본적인 예를 살펴보겠습니다.
 
-1. 새 디렉토리를 만들고 그 안에 `cd`를 넣습니다.
+1. 새 디렉터리를 만들고 그 안에 `cd`를 넣습니다.
 2. `npm init -y` 실행
 3. Node.js가 [ES 모듈 모드](https://nodejs.org/api/esm.html#modules-ecmascript-modules)에서 실행되도록 `package.json`에 `"type": "module"`을 추가합니다.
 4. `npm install vue` 실행
@@ -216,7 +216,7 @@ export function createApp() {
 이 파일과 그 종속성은 서버와 클라이언트 간에 공유됩니다.
 우리는 이를 **범용 코드**(universal code)라고 부릅니다.
 범용 코드를 작성할 때 주의해야 할 몇 가지 사항이 있습니다.
-[아래에서 논의](#ssr-친화적인-코드-작성).
+[아래에서 논의](#writing-ssr-friendly-code).
 
 클라이언트 항목은 범용 코드를 가져오고 앱을 만들고 마운트를 수행합니다:
 
@@ -336,7 +336,7 @@ Node.js에서 실행할 때 오류가 발생하고,
 
 ### 교차 요청 상태 오염(Cross-Request State Pollution) {#cross-request-state-pollution}
 
-상태 관리 문서에서 [반응성 API를 통한 간단한 상태 관리 패턴](state-management.html#반응형-api를-통한-간단한-상태-관리)을 소개했습니다.
+상태 관리 문서에서 [반응성 API를 통한 간단한 상태 관리 패턴](state-management.html#simple-state-management-with-reactivity-api)을 소개했습니다.
 SSR 컨텍스트에서 이 패턴은 몇 가지 추가 조정이 필요합니다.
 
 패턴은 JavaScript 모듈의 루트 범위에서 공유 상태를 선언합니다.
@@ -353,7 +353,7 @@ SSR 컨텍스트에서 이 패턴은 몇 가지 추가 조정이 필요합니다
 그러나 JavaScript 모듈을 초기화하는 것은 비용이 많이 들 수 있으므로 서버 성능에 상당한 영향을 미칠 수 있습니다.
 
 권장되는 솔루션은 각 요청에 대해 라우터 및 글로벌 저장소를 포함한 전체 앱의 새 인스턴스를 만드는 것입니다.
-그런 다음 컴포넌트에서 직접 가져오는 대신 [앱 수준 provide](/guide/components/provide-inject.html#앱-수준의-provide)를 사용하여 공유 상태를 제공하고,
+그런 다음 컴포넌트에서 직접 가져오는 대신 [앱 수준 provide](/guide/components/provide-inject.html#app-level-provide)를 사용하여 공유 상태를 제공하고,
 이를 필요로 하는 컴포넌트에 주입합니다.
 
 ```js

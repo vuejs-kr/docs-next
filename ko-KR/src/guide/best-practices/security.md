@@ -164,7 +164,7 @@ URL이 `javascript:`를 사용하여 JavaScript 실행하는 것을 방지하기
 ```
 
 사용자를 클릭 재킹으로부터 완전히 보호하려면 샌드박스 처리된 iframe 내에서 CSS에 대한 제어만 허용하는 것이 좋습니다.
-또는 스타일 바인딩을 통해 사용자 제어를 제공할 때 [객체 구문](/guide/essentials/class-and-style.html#객체로-바인딩)을 사용하고,
+또는 스타일 바인딩을 통해 사용자 제어를 제공할 때 [객체 구문](/guide/essentials/class-and-style.html#binding-to-objects)을 사용하고,
 다음과 같이 사용자가 제어하기에 안전한 특정 속성에 대한 값만 제공하도록 허용하는 것이 좋습니다:
 
 ```vue-html
@@ -208,7 +208,7 @@ Vue로 `<script>` 엘리먼트를 렌더링하지 않는 것이 좋습니다.
 기본 규칙은 가공되지 않은 사용자 제공 콘텐츠(HTML, JavaScript 또는 CSS)를 실행하도록 허용하면 공격에 노출될 수 있다는 것입니다.
 이것은 Vue를 사용하든 다른 프레임워크를 사용하든 프레임워크를 사용하지 않든 동일하게 적용됩니다.
 
-[잠재적 위험](#잠재적-위험)에 대해 위에서 설명한 권장 사항 외에도 다음 리소스를 숙지하는 것이 좋습니다:
+[잠재적 위험](#potential-dangers)에 대해 위에서 설명한 권장 사항 외에도 다음 리소스를 숙지하는 것이 좋습니다:
 
 - [HTML5 보안 치트 시트](https://html5sec.org/)
 - [OWASP에서 제공하는 XSS(교차 사이트 스크립팅) 방지 치트 시트](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html)

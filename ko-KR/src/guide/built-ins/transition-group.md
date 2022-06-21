@@ -14,7 +14,7 @@ import ListStagger from './transition-demos/ListStagger.vue'
 
 - 기본적으로 래퍼 엘리먼트를 렌더링하지 않습니다. 그러나 `tag` prop으로 렌더링할 엘리먼트를 지정할 수 있습니다.
 
-- [트랜지션 모드](./transition.html#트랜지션-모드)는 더 이상 상호 배타적인 엘리먼트를 사용하지 않기 때문에 사용할 수 없습니다.
+- [트랜지션 모드](./transition.html#transition-mode)는 더 이상 상호 배타적인 엘리먼트를 사용하지 않기 때문에 사용할 수 없습니다.
 
 - 내부 엘리먼트는 고유한 `key` 속성을 **필수로 가져야** 합니다.
 
@@ -22,7 +22,7 @@ import ListStagger from './transition-demos/ListStagger.vue'
 
 
 :::tip
-[DOM 템플릿](/guide/essentials/component-basics.html#dom-템플릿-파싱-주의-사항)에서 사용할 때 `<transition-group>`으로 참조해야 합니다.
+[DOM 템플릿](/guide/essentials/component-basics.html#dom-template-parsing-caveats)에서 사용할 때 `<transition-group>`으로 참조해야 합니다.
 :::
 
 ## 진입/진출 트랜지션 {#enter-leave-transitions}

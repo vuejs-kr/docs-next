@@ -118,7 +118,7 @@ export default {
 
 - `@click`과 같은 `v-on` 이벤트 리스너는 `$attrs.onClick` 속성에 노출 됩니다.
 
-[이전 섹션](#속성-상속)의 `<MyButton>` 컴포넌트 예제 사용 - 때로는 스타일 지정을 위해 실제 `<button>` 엘리먼트를 `<div>`로 추가 래핑해야 할 수도 있습니다:
+[이전 섹션](#attribute-inheritance)의 `<MyButton>` 컴포넌트 예제 사용 - 때로는 스타일 지정을 위해 실제 `<button>` 엘리먼트를 `<div>`로 추가 래핑해야 할 수도 있습니다:
 
 ```vue-html
 <div class="btn-wrapper">
@@ -135,7 +135,7 @@ export default {
 </div>
 ```
 
-[인자없는 `v-bind`](/guide/essentials/template-syntax.html#여러-속성을-동적으로-바인딩)는 객체의 모든 속성을 대상 엘리먼트의 속성으로 묶는다는 것을 기억하세요.
+[인자없는 `v-bind`](/guide/essentials/template-syntax.html#dynamically-binding-multiple-attributes)는 객체의 모든 속성을 대상 엘리먼트의 속성으로 묶는다는 것을 기억하세요.
 
 ## 다중 루트 노드에서 속성 상속 {#attribute-inheritance-on-multiple-root-nodes}
 

@@ -1,13 +1,19 @@
 # Priority A Rules: Essential
+# 우선순쉬 A 등급 규칙: 필수 
+
 
 These rules help prevent errors, so learn and abide by them at all costs. Exceptions may exist, but should be very rare and only be made by those with expert knowledge of both JavaScript and Vue.
 
 ## Use multi-word component names
 
+## 여러 단어로 된 컴포넌트명을 사용하세요
+
 User component names should always be multi-word, except for root `App` components. This [prevents conflicts](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name) with existing and future HTML elements, since all HTML elements are a single word.
 
+사용자 컴포넌트의 이름은 항상 여러 단어되어 있어야 합니다. (단 루트 컴포넌트인 `App`은 제외) 이 규칙을 지키게 되면 HTML의 표준에서는 모든 앨리먼트가 단일 단어로 정의 되기 때문에 HTML 엘리먼트와 [충돌이 방지됩니다.](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name)
+
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>나쁨</h3>
 
 ```vue-html
 <!-- in pre-compiled templates -->
@@ -20,7 +26,7 @@ User component names should always be multi-word, except for root `App` componen
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>좋음</h3>
 
 ```vue-html
 <!-- in pre-compiled templates -->
@@ -33,8 +39,11 @@ User component names should always be multi-word, except for root `App` componen
 </div>
 
 ## Use detailed prop definitions
+## prop 정의를 상세하게 하세요. 
 
 In committed code, prop definitions should always be as detailed as possible, specifying at least type(s).
+
+코드를 커밋할때, prop을 가능한한 디테일하게 정의하세요. 최소한 타입이라도 기술하세요. 
 
 ::: details Detailed Explanation
 Detailed [prop definitions](/guide/components/props.html#prop-validation) have two advantages:

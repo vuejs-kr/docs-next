@@ -82,7 +82,7 @@ Vue CLI의 GUI에서 폴더 탐색기 컴포넌트를 예로 들어 보겠습니
 - 새 폴더 생성 처리
 - 즐겨찾기 폴더만 표시 전환
 - 숨김 폴더 표시 전환
-- 현재 작업 디렉토리 변경 처리
+- 현재 작업 디렉터리 변경 처리
 
 컴포넌트의 [원본 버전](https://github.com/vuejs/vue-cli/blob/a09407dd5b9f18ace7501ddb603b95e31d6d93c0/packages/@vue/cli-ui/src/components/folder/FolderExplorer.vue#L198-L404)은 옵션 API로 작성되었습니다.
 다루는 논리적 문제를 기준으로 코드의 각 라인에 색상을 지정하면 다음과 같이 표시됩니다:

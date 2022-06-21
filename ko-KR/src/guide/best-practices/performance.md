@@ -45,7 +45,7 @@ Vue는 수동 최적화가 크게 필요하지 않은 가장 일반적인 사용
 
 - [크롬 개발자도구 성능(Performance) 패널](https://developer.chrome.com/docs/devtools/evaluate-performance/)
   - [`app.config.performance`](/api/application.html#app-config-performance)는 크롬 개발자도구의 성능 타임라인에서 Vue 관련 성능 마커를 활성화합니다.
-- [Vue 개발자도구 확장](/guide/scaling-up/tooling.html#브라우저-개발자-도구)은 성능 프로파일링 기능도 제공합니다.
+- [Vue 개발자도구 확장](/guide/scaling-up/tooling.html#browser-devtools)은 성능 프로파일링 기능도 제공합니다.
 
 ## 페이지 로드 최적화 {#page-load-optimizations}
 
@@ -213,7 +213,7 @@ shallowArray.value = [
 ### 불필요한 컴포넌트 추상화 방지 {#avoid-unnecessary-component-abstractions}
 
 때때로 우리는 더 나은 추상화 또는 코드 구성을 위해,
-[렌더리스 컴포넌트](/guide/components/slots.html#렌더리스-컴포넌트) 또는 고차 컴포넌트(예: 다른 컴포넌트를 추가 props로 렌더링하는 컴포넌트)를 만들 수 있습니다.
+[렌더리스 컴포넌트](/guide/components/slots.html#renderless-components) 또는 고차 컴포넌트(예: 다른 컴포넌트를 추가 props로 렌더링하는 컴포넌트)를 만들 수 있습니다.
 여기에는 아무런 문제가 없지만,
 컴포넌트 인스턴스는 일반 DOM 노드보다 훨씬 비싸고,
 추상화 패턴으로 인해 컴포넌트 인스턴스를 너무 많이 생성하면 성능 비용이 발생한다는 점을 명심하십시오.

@@ -8,7 +8,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 
 ## 기본 사용법 {#basic-usage}
 
-컴포넌트 기초의 [동적 컴포넌트](/guide/essentials/component-basics.html#동적-컴포넌트) 장에서 특별한 `<component>` 엘리먼트를 사용하는 문법을 소개했습니다:
+컴포넌트 기초의 [동적 컴포넌트](/guide/essentials/component-basics.html#dynamic-components) 장에서 특별한 `<component>` 엘리먼트를 사용하는 문법을 소개했습니다:
 
 ```vue-html
 <component :is="activeComponent" />
@@ -51,7 +51,7 @@ A에는 카운터가 포함되고 B에는 `v-model`을 통해 입력과 동기�
 </div>
 
 :::tip
-[DOM 템플릿](/guide/essentials/component-basics.html#dom-템플릿-파싱-주의-사항)에서 사용할 때 `<keep-alive>`로 참조해야 합니다.
+[DOM 템플릿](/guide/essentials/component-basics.html#dom-template-parsing-caveats)에서 사용할 때 `<keep-alive>`로 참조해야 합니다.
 :::
 
 ## Include / Exclude {#include-exclude}

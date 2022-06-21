@@ -117,8 +117,9 @@ const awesome = ref(true)
 :::warning 참고
 `v-if`와 `v-for`를 함께 사용하는 것은 **권장되지 않습니다**.
 
-[comment]: <> (자세한 내용은 [스타일 가이드]&#40;/style-guide/rules-essential.html#avoid-v-if-with-v-for&#41;를 참조하세요.)
+자세한 내용은 [스타일 가이드](/style-guide/rules-essential.html#avoid-v-if-with-v-for) 를 참조하세요.
 :::
 
 엘리먼트에 `v-if`와 `v-for`를 함께 사용하면 `v-if`가 먼저 평가됩니다.
-자세한 내용은 [리스트 렌더링 가이드](list#v-if에-v-for-사용하기)를 참조하세요.
+자세한 내용은 [리스트 렌더링 가이드](list#v-for-with-v-if)를 참조하세요.
+

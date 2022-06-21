@@ -56,7 +56,7 @@ TypeScript 및 테스트 지원과 같은 여러 선택적 기능에 대한 프�
 <span style="color:#888;"># 완료</span></code></pre></div>
 
 :::tip 스케폴딩(Scaffolding)이란?
-프로젝트 생성 시 초기 디렉토리 구조, 컴파일 설정 등을 자동 또는 사용자 지정 값으로 생성해 주는 행위.
+프로젝트 생성 시 초기 디렉터리 구조, 컴파일 설정 등을 자동 또는 사용자 지정 값으로 생성해 주는 행위.
 :::
 
 옵션을 잘 모를 경우, 일단 Enter 키를 눌러 `No`를 선택하세요.
@@ -71,7 +71,7 @@ TypeScript 및 테스트 지원과 같은 여러 선택적 기능에 대한 프�
 다음은 몇 가지 추가 팁입니다:
 
 - 권장되는 IDE는 [Visual Studio Code](https://code.visualstudio.com/) + [Volar extension](https://marketplace.visualstudio.com/items?itemName=Vue.volar)입니다.
-  다른 편집기를 사용하는 경우 [IDE 지원 섹션](/guide/scaling-up/tooling.html#ide-지원)을 확인하세요.
+  다른 편집기를 사용하는 경우 [IDE 지원 섹션](/guide/scaling-up/tooling.html#ide-support)을 확인하세요.
 
 - 백엔드 프레임워크와의 통합을 비롯한 자세한 도구 세부정보는 [도구 가이드](/guide/scaling-up/tooling.html)에서 설명합니다.
 
@@ -84,10 +84,10 @@ TypeScript 및 테스트 지원과 같은 여러 선택적 기능에 대한 프�
 <div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">&gt; </span><span style="color:#A6ACCD;">npm run build</span></span>
 <span class="line"></span></code></pre></div>
 
-그러면 프로젝트의 `./dist` 디렉토리에 앱을 배포할 준비가 된 결과물이 생성됩니다.
+그러면 프로젝트의 `./dist` 디렉터리에 앱을 배포할 준비가 된 결과물이 생성됩니다.
 앱을 프로덕션으로 배포하는 방법에 대해 자세히 알아보려면 [프로덕션 배포 가이드](/guide/best-practices/production-deployment.html)를 확인하세요.
 
-[다음 단계 >](#다음-단계)
+[다음 단계 >](#next-steps)
 
 ## 빌드 도구 사용 안 함 {#without-build-tools}
 
@@ -190,7 +190,7 @@ export default {
 ```
 
 이것이 작동하려면 `file://` 프로토콜 대신 `http://` 프로토콜을 통해 HTML을 제공해야 합니다.
-로컬 HTTP 서버를 시작하려면 먼저 [Node.js](https://nodejs.org/en/)를 설치한 다음 HTML 파일이 있는 동일한 디렉토리의 명령줄에서 `npx serve`를 실행합니다.
+로컬 HTTP 서버를 시작하려면 먼저 [Node.js](https://nodejs.org/en/)를 설치한 다음 HTML 파일이 있는 동일한 디렉터리의 명령줄에서 `npx serve`를 실행합니다.
 올바른 MIME 유형으로 정적 파일을 제공할 수 있는 다른 HTTP 서버를 사용할 수도 있습니다.
 
 가져온 컴포넌트의 템플릿이 JavaScript 문자열로 인라인된 것을 보았을 것입니다.

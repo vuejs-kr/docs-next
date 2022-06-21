@@ -33,7 +33,7 @@
 
 컴포넌트 및 props와 마찬가지로 이벤트 이름은 자동 대소문자 변환을 제공합니다.
 우리는 camelCase 형식으로 이벤트를 발신했지만, 부모에서 kebab-case 표기로 리스너를 사용하여 이를 수신할 수 있습니다.
-[props 케이싱](/guide/components/props.html#props-이름-케이싱)과 마찬가지로 템플릿에서 kebab-case 형식의 이벤트 리스너를 사용하는 것이 좋습니다.
+[props 케이싱](/guide/components/props.html#prop-name-casing)과 마찬가지로 템플릿에서 kebab-case 형식의 이벤트 리스너를 사용하는 것이 좋습니다.
 
 :::tip
 네이티브 DOM 이벤트와 달리 컴포넌트 이벤트 발신은 버블링되지 않습니다.
@@ -186,7 +186,7 @@ export default {
 </div>
 
 선택 사항으로 컴포넌트가 작동하는 방식을 더 잘 문서화하기 위해 발신되는 모든 이벤트를 정의하는 것이 좋습니다.
-또한 상위로부터 전달된 리스너는 [폴스루 속성](/guide/components/attrs.html#v-on-리스터-상속)에 의해 제외할 수 있습니다.
+또한 상위로부터 전달된 리스너는 [폴스루 속성](/guide/components/attrs.html#v-on-listener-inheritance)에 의해 제외할 수 있습니다.
 
 :::tip
 네이티브 이벤트(예: `click`)가 `emits` 옵션에 정의된 경우 리스너는 이제 컴포넌트에서 발생하는 `click` 이벤트만 수신 대기하고 네이티브 `click` 이벤트에 더 이상 응답하지 않습니다.
@@ -459,7 +459,7 @@ export default {
 
 ### `v-model` 다중 바인딩 {#multiple-v-model-bindings}
 
-이전에 [`v-model` 인자](#v-model-인자)에서 배운 것처럼, 특정 prop과 이벤트를 대상으로 하는 기능을 활용하면 이제 단일 컴포넌트 인스턴스에 여러 `v-model` 바인딩을 만들 수 있습니다.
+이전에 [`v-model` 인자](#v-model-arguments)에서 배운 것처럼, 특정 prop과 이벤트를 대상으로 하는 기능을 활용하면 이제 단일 컴포넌트 인스턴스에 여러 `v-model` 바인딩을 만들 수 있습니다.
 
 각 `v-model`은 컴포넌트에 추가 옵션이 필요 없이 다른 prop과 동기화됩니다:
 
@@ -532,7 +532,7 @@ export default {
 
 ### `v-model` 수식어 핸들링 {#handling-v-model-modifiers)}
 
-폼 입력 바인딩에 대해 배울 때, `v-model`에 `.trim`, `.number` 및 `.lazy`와 같은 [빌트인 수식어](/guide/essentials/forms.html#수식어)가 있었습니다.
+폼 입력 바인딩에 대해 배울 때, `v-model`에 `.trim`, `.number` 및 `.lazy`와 같은 [빌트인 수식어](/guide/essentials/forms.html#modifiers)가 있었습니다.
 그러나 경우에 따라 고유한 사용자 지정 수식어를 추가할 수도 있습니다.
 
 `v-model` 바인딩으로 제공하는 문자열의 첫 글자를 대문자로 표시하는 사용자 지정 수식어 `capitalize`의 예를 만들어 보겠습니다:
