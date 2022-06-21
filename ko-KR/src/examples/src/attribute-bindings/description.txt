@@ -1,2 +1,2 @@
-Here we are reactively binding element attributes / properties to the state.
-The :title syntax is short for v-bind:title.
+이곳에서 엘리먼트의 속성에 상태를 반응형으로 바인딩합니다.
+:title 문법은 v-bind:title의 줄임말입니다.
