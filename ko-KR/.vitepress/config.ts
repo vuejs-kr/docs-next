@@ -450,10 +450,10 @@ export const sidebar = {
       ]
     },
     {
-      text: 'Practical',
+      text: '실용적',
       items: [
         {
-          text: 'Markdown Editor',
+          text: 'Markdown 편집기',
           link: '/examples/#markdown'
         },
         {
