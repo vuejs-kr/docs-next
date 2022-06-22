@@ -5,7 +5,7 @@
 # 컴포지션 API: 생명주기 후크
 
 :::info Usage Note
-All APIs listed on this page must be called synchronously during the `setup()` phase of a component. See [Guide - Lifecycle Hooks](/guide/essentials/lifecycle.html) for more details.
+All APIs listed on this page must be called synchronously during the `setup()` phase of a component. See [가이드 - Lifecycle Hooks](/guide/essentials/lifecycle.html) for more details.
 :::
 
 :::info 사용법 설명
@@ -18,13 +18,13 @@ Registers a callback to be called after the component has been mounted.
 
 컴포넌트가 마운트 된 후에 호출될 콜백을 등록합니다. 
 
-- **Type**
+- **타입**:
 
   ```ts
   function onMounted(callback: () => void): void
   ```
 
-- **Details**
+- **세부 사항**:
 
   A component is considered mounted after:
   
@@ -45,7 +45,7 @@ Registers a callback to be called after the component has been mounted.
 
   **이 후크는 서버 사이드 렌더링에서는 호출 되지 않습니다.**
 
-- **Example**
+- **예제**:
 
   Accessing an element via template ref:
 
@@ -73,13 +73,13 @@ Registers a callback to be called after the component has updated its DOM tree d
 
 반응형 상태 변경으로 인해 컴포넌트가 DOM 트리를 업데이트한 후 호출됩니다.
 
-- **Type**
+- **타입**:
 
   ```ts
   function onUpdated(callback: () => void): void
   ```
 
-- **Details**
+- **세부 사항**:
 
   A parent component's updated hook is called after that of its child components.
 
@@ -101,7 +101,7 @@ Registers a callback to be called after the component has updated its DOM tree d
   `updated` 후크에서 컴포넌트의 상태를 변경하지 마십시오. 무한 업데이트 루프가 발생할 수 있습니다!
   :::
 
-- **Example**
+- **예제**:
 
   Accessing updated DOM:
 
@@ -130,13 +130,13 @@ Registers a callback to be called after the component has been unmounted.
 
 컴포넌트가 마운트 해제된 후 호출됩니다.
 
-- **Type**
+- **타입**:
 
   ```ts
   function onUnmounted(callback: () => void): void
   ```
 
-- **Details**
+- **세부 사항**:
 
   A component is considered unmounted after:
 
@@ -156,7 +156,7 @@ Registers a callback to be called after the component has been unmounted.
 
   **이 후크는 서버 사이드 렌더링에서는 호출 되지 않습니다.**
 
-- **Example**
+- **예제**:
 
   ```vue
   <script setup>
@@ -179,13 +179,13 @@ Registers a hook to be called right before the component is to be mounted.
 
 컴포넌트가 마우트 되기 직전에 호출됩니다. 
 
-- **Type**
+- **타입**:
 
   ```ts
   function onBeforeMount(callback: () => void): void
   ```
 
-- **Details**
+- **세부 사항**:
 
   When this hook is called, the component has finished setting up its reactive state, but no DOM nodes have been created yet. It is about to execute its DOM render effect for the first time.
 
@@ -201,13 +201,13 @@ Registers a hook to be called right before the component is about to update its 
 
 반응형 상태의 변경이 발생하여 컴포넌트가 DOM 트리를 업데이트하려고 하기 직전에 호출됩니다.
 
-- **Type**
+- **타입**:
 
   ```ts
   function onBeforeUpdate(callback: () => void): void
   ```
 
-- **Details**
+- **세부 사항**:
 
   This hook can be used to access the DOM state before Vue updates the DOM. It is also safe to modify component state inside this hook.
 
@@ -223,13 +223,13 @@ Registers a hook to be called right before a component instance is to be unmount
 
 컴포넌트 인스턴스가 마운트 해제되기 직전에 호출됩니다.
 
-- **Type**
+- **타입**:
 
   ```ts
   function onBeforeUnmount(callback: () => void): void
   ```
 
-- **Details**
+- **세부 사항**:
 
   When this hook is called, the component instance is still fully functional.
 
@@ -245,7 +245,7 @@ Registers a hook to be called when an error propagating from a descendent compon
 
 자식 컴포넌트에서 에러가 전파되었다면 호출됩니다. 
 
-- **Type**
+- **타입**:
 
   ```ts
   function onErrorCaptured(callback: ErrorCapturedHook): void
@@ -257,7 +257,7 @@ Registers a hook to be called when an error propagating from a descendent compon
   ) => boolean | void
   ```
 
-- **Details**
+- **세부 사항**:
 
   Errors can be captured from the following sources:
 
@@ -317,7 +317,7 @@ Registers a debug hook to be called when a reactive dependency has been tracked 
 
 **이 후크는 개발 모드만을 위한 기능이며, 서버사이드렌더링에서는 호출되지 않습니다**
 
-- **Type**
+- **타입**:
 
   ```ts
   function onRenderTracked(callback: DebuggerHook): void
@@ -332,8 +332,7 @@ Registers a debug hook to be called when a reactive dependency has been tracked 
   }
   ```
 
-- **See also:** [Reactivity in Depth](/guide/extras/reactivity-in-depth.html)
-- **참고:** [반응형 심화](/guide/extras/reactivity-in-depth.html)
+- **참고**: [반응형 심화](/guide/extras/reactivity-in-depth.html)
 
 ## onRenderTriggered() <sup class="vt-badge dev-only" />
 
@@ -345,7 +344,7 @@ Registers a debug hook to be called when a reactive dependency triggers the comp
 
 **이 후크는 개발 모드만을 위한 기능이며, 서버사이드렌더링에서는 호출되지 않습니다**
 
-- **Type**
+- **타입**:
 
   ```ts
   function onRenderTriggered(callback: DebuggerHook): void
@@ -363,7 +362,7 @@ Registers a debug hook to be called when a reactive dependency triggers the comp
   }
   ```
 
-- **See also:** [Reactivity in Depth](/guide/extras/reactivity-in-depth.html)
+- **참고**: [Reactivity in Depth](/guide/extras/reactivity-in-depth.html)
 
 ## onActivated()
 
@@ -375,14 +374,13 @@ Registers a callback to be called after the component instance is inserted into 
 
 **이 후크는 서버 사이드 렌더링에서는 호출 되지 않습니다.**
 
-- **Type**
+- **타입**:
 
   ```ts
   function onActivated(callback: () => void): void
   ```
 
-- **See also:** [Guide - Lifecycle of Cached Instance](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
-- **참조:** [가이드 - 캐시된 인스턴스의 생명주기](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
+- **참고**: [가이드 - 캐시된 인스턴스의 생명주기](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
 
 ## onDeactivated()
 
@@ -394,13 +392,13 @@ Registers a callback to be called after the component instance is removed from t
 
 **이 후크는 서버 사이드 렌더링에서는 호출 되지 않습니다.**
 
-- **Type**
+- **타입**:
 
   ```ts
   function onDeactivated(callback: () => void): void
   ```
 
-- **See also:** [Guide - Lifecycle of Cached Instance](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
+- **참고**: [가이드 - Lifecycle of Cached Instance](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
 
 ## onServerPrefetch() <sup class="vt-badge" data-text="SSR only" />
 
@@ -408,13 +406,13 @@ Registers a async function to be resolved before the component instance is to be
 
 컴포넌트 인스턴스가 서버에서 렌더링되기 전에 해소될(resolve) 비동기 함수 콜백을 등록합니다. 
 
-- **Type**
+- **타입**:
 
   ```ts
   function onServerPrefetch(callback: () => Promise<any>): void
   ```
 
-- **Details**
+- **세부 사항**:
 
   If the callback returns a Promise, the server renderer will wait until the Promise is resolved before rendering the component.
 
@@ -424,7 +422,7 @@ Registers a async function to be resolved before the component instance is to be
 
   이 후크는 서버 측 렌더링 중에만 호출되어 서버 전용 데이터 가져오기를 수행하는 데 사용할 수 있습니다.
 
-- **Example**
+- **예제**:
 
   ```vue
   <script setup>
@@ -449,5 +447,4 @@ Registers a async function to be resolved before the component instance is to be
   </script>
   ```
 
-- **See also:** [Server-Side Rendering](/guide/scaling-up/ssr.html)
-- **참조:** [서버 사이드 렌더링](/guide/scaling-up/ssr.html)
+- **참고**: [서버 사이드 렌더링](/guide/scaling-up/ssr.html)

@@ -19,7 +19,7 @@ A "meta component" for rendering dynamic components or elements.
   }
   ```
 
-- **Details**
+- **세부 사항**:
 
   The actual component to render is determined by the `is` prop.
 
@@ -27,7 +27,7 @@ A "meta component" for rendering dynamic components or elements.
 
   - Alternatively, `is` can also be directly bound to the definition of a component.
 
-- **Example**
+- **예제**:
 
   Rendering components by registered name (Options API):
 
@@ -93,7 +93,7 @@ A "meta component" for rendering dynamic components or elements.
 
   Registration is not required if you pass the component itself to `is` rather than its name, e.g. in `<script setup>`.
 
-- **See also:** [Dynamic Components](/guide/essentials/component-basics.html#dynamic-components)
+- **참고**: [Dynamic Components](/guide/essentials/component-basics.html#dynamic-components)
 
 ## `<slot>`
 
@@ -115,7 +115,7 @@ Denotes slot content outlets in templates.
   }
   ```
 
-- **Details**
+- **세부 사항**:
 
   The `<slot>` element can use the `name` attribute to specify a slot name. When no `name` is specified, it will render the default slot. Additional attributes passed to the slot element will be passed as slot props to the scoped slot defined in the parent.
 
@@ -123,4 +123,4 @@ Denotes slot content outlets in templates.
 
   `<slot>` elements in Vue templates are compiled into JavaScript, so they are not to be confused with [native `<slot>` elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot).
 
-- **See also:** [Component - Slots](/guide/components/slots.html)
+- **참고**: [Component - Slots](/guide/components/slots.html)

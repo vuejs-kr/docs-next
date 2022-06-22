@@ -9,7 +9,7 @@
 
 Explicitly declare a display name for the component.
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentOptions {
@@ -17,7 +17,7 @@ Explicitly declare a display name for the component.
   }
   ```
 
-- **Details**
+- **세부 사항**:
 
   The name of a component is used for the following:
 
@@ -35,7 +35,7 @@ Explicitly declare a display name for the component.
 
 ## inheritAttrs
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentOptions {
@@ -43,11 +43,11 @@ Explicitly declare a display name for the component.
   }
   ```
 
-- **Details**
+- **세부 사항**:
 
   By default, parent scope attribute bindings that are not recognized as props will "fallthrough". This means that when we have a single-root component, these bindings will be applied to the root element of the child component as normal HTML attributes. When authoring a component that wraps a target element or another component, this may not always be the desired behavior. By setting `inheritAttrs` to `false`, this default behavior can be disabled. The attributes are available via the `$attrs` instance property and can be explicitly bound to a non-root element using `v-bind`.
 
-- **Example**
+- **예제**:
 
   <div class="options-api">
 
@@ -103,13 +103,13 @@ Explicitly declare a display name for the component.
 
   </div>
 
-- **See also:** [Fallthrough Attributes](/guide/components/attrs.html)
+- **참고**: [Fallthrough Attributes](/guide/components/attrs.html)
 
 ## components
 
 An object that registers components to be made available to the component instance.
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentOptions {
@@ -117,7 +117,7 @@ An object that registers components to be made available to the component instan
   }
   ```
 
-- **Example**
+- **예제**:
 
   ```js
   import Foo from './Foo.vue'
@@ -133,13 +133,13 @@ An object that registers components to be made available to the component instan
   }
   ```
 
-- **See also:** [Component Registration](/guide/components/registration.html)
+- **참고**: [Component Registration](/guide/components/registration.html)
 
 ## directives
 
 An object that registers directives to be made available to the component instance.
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentOptions {
@@ -147,7 +147,7 @@ An object that registers directives to be made available to the component instan
   }
   ```
 
-- **Example**
+- **예제**:
 
   ```js
   export default {
@@ -168,4 +168,4 @@ An object that registers directives to be made available to the component instan
 
   A hash of directives to be made available to the component instance.
 
-- **See also:** [Custom Directives](/guide/reusability/custom-directives.html)
+- **참고**: [Custom Directives](/guide/reusability/custom-directives.html)

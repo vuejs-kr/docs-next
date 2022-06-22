@@ -10,13 +10,13 @@ Provides a value that can be injected by descendent components.
 
 자식 컴포넌트에 값을 주입합니다. 
 
-- **Type**
+- **타입**:
 
   ```ts
   function provide<T>(key: InjectionKey<T> | string, value: T): void
   ```
 
-- **Details**
+- **세부 사항**:
 
   `provide()` takes two arguments: the key, which can be a string or a symbol, and the value to be injected.
 
@@ -32,7 +32,7 @@ Provides a value that can be injected by descendent components.
   생명주기  후크 등록 API와 유사하게 `provide()`는 컴포넌트의 `setup()` 단계에서 동기적으로 호출되어야 합니다.
 
 
-- **Example**
+- **예제**:
 
   ```vue
   <script setup>
@@ -53,11 +53,9 @@ Provides a value that can be injected by descendent components.
   </script>ㅣ
   ```
 
-- **See also**:
-  - [Guide - Provide / Inject](/guide/components/provide-inject.html)
+- **참고**:
   - [가이드 - Provide / Inject](/guide/components/provide-inject.html)
-  - [Guide - Typing Provide / Inject](/guide/typescript/composition-api.html#typing-provide-inject)
-  - [가이드 - Provide에 타입 적용하기 / Inject](/guide/typescript/composition-api.html#typing-provide-inject)
+  - [가이드 - Provide / Inject에 타입 지정하기](/guide/typescript/composition-api.html#typing-provide-inject)
 
 ## inject()
 
@@ -65,7 +63,7 @@ Injects a value provided by an ancestor component or the application (via `app.p
 
 부모 컴포넌트 또는 애플리케이션(`app.provide()`을 통해)에서 제공된 값을 주입 받는다.
 
-- **Type**
+- **타입**:
 
   ```ts
   // without default value
@@ -85,7 +83,7 @@ Injects a value provided by an ancestor component or the application (via `app.p
   ): T
   ```
 
-- **Details**
+- **세부 사항**:
 
   The first argument is the injection key. Vue will walk up the parent chain to locate a provided value with a matching key. If multiple components in the parent chain provides the same key, the one closest to the injecting component will "shadow" those higher up the chain. If no value with matching key was found, `inject()` returns `undefined` unless a default value is provided.
 
@@ -105,7 +103,7 @@ Injects a value provided by an ancestor component or the application (via `app.p
 
   TypeScript를 사용할 때 키는 `Symbol`를 상속받는 `InjectionKey`(Vue 제공 유틸리티 타입)으로 캐스팅된 symbol 일수 있습니다. 이는 `provide()`와 `inject()` 사이의 값 유형을 동기화하는 데 사용할 수 있습니다.
 
-- **Example**
+- **예제**:
 
   Assuming a parent component has provided values as shown in the previous `provide()` example:
 
@@ -138,8 +136,6 @@ Injects a value provided by an ancestor component or the application (via `app.p
   </script>
   ```
 
-- **See also**:
-  - [Guide - Provide / Inject](/guide/components/provide-inject.html)
+- **참고**:
   - [가이드 - Provide / Inject](/guide/components/provide-inject.html)
-  - [Guide - Typing Provide / Inject](/guide/typescript/composition-api.html#typing-provide-inject)
-  - [가이드 - Provide에 타입 적용하기 / Inject](/guide/typescript/composition-api.html#typing-provide-inject)
+  - [가이드 - Provide / Inject에 타입 지정하기](/guide/typescript/composition-api.html#typing-provide-inject)

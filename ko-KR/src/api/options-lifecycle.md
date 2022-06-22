@@ -6,7 +6,7 @@
 # 옵션: 생명주기 Options: Lifecycle
 
 :::info See also
-For shared usage of lifecycle hooks, see [Guide - Lifecycle Hooks](/guide/essentials/lifecycle.html)
+For shared usage of lifecycle hooks, see [가이드 - Lifecycle Hooks](/guide/essentials/lifecycle.html)
 :::
 
 :::info 참고
@@ -19,8 +19,7 @@ Called when the instance is initialized.
 
 인스턴스가 초기화 되기전에 호출됩니다. 
 
-- **Type**
-- **타입**
+- **타입**:
 
   ```ts
   interface ComponentOptions {
@@ -28,8 +27,7 @@ Called when the instance is initialized.
   }
   ```
 
-- **Details**
-- **상세**
+- **세부 사항**:
 
   Called immediately when the instance is initialized, after props resolution, before processing other options such as `data()` or `computed`.
 
@@ -45,8 +43,7 @@ Called after the instance has finished processing all state-related options.
 
 인스턴스가 모든 상태 관련 옵션 처리를 완료한 후 호출됩니다.
 
-- **Type**
-- **타입**
+- **타입**:
 
   ```ts
   interface ComponentOptions {
@@ -54,8 +51,7 @@ Called after the instance has finished processing all state-related options.
   }
   ```
 
-- **Details**
-- **상세s**
+- **세부 사항**:
 
   When this hooks is called, the following have been set up: reactive data, computed properties, methods, and watchers. However, the mounting phase has not been started, and the `$el` property will not be available yet.
 
@@ -68,8 +64,7 @@ Called right before the component is to be mounted.
 
 컴포넌트가 마우트 되기 직전에 호출됩니다. 
 
-- **Type**
-- **타입**
+- **타입**:
 
   ```ts
   interface ComponentOptions {
@@ -77,8 +72,7 @@ Called right before the component is to be mounted.
   }
   ```
 
-- **Details**
-- **상세s**
+- **세부 사항**:
 
   When this hook is called, the component has finished setting up its reactive state, but no DOM nodes have been created yet. It is about to execute its DOM render effect for the first time.
 
@@ -95,7 +89,7 @@ Called after the component has been mounted.
 
 컴포넌트가 마운트 된 다음에 호출됩니다. 
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentOptions {
@@ -103,7 +97,7 @@ Called after the component has been mounted.
   }
   ```
 
-- **Details**
+- **세부 사항**:
 
   A component is considered mounted after:
 
@@ -132,7 +126,7 @@ Called right before the component is about to update its DOM tree due to a react
 반응형 상태의 변경이 발생하여 컴포넌트가 DOM 트리를 업데이트하려고 하기 직전에 호출됩니다.
 
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentOptions {
@@ -140,8 +134,7 @@ Called right before the component is about to update its DOM tree due to a react
   }
   ```
 
-- **Details**
-- **Details**
+- **세부 사항**:
 
   This hook can be used to access the DOM state before Vue updates the DOM. It is also safe to modify component state inside this hook.
 
@@ -159,7 +152,7 @@ Called after the component has updated its DOM tree due to a reactive state chan
 반응형 상태 변경으로 인해 컴포넌트가 DOM 트리를 업데이트한 후 호출됩니다.
 
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentOptions {
@@ -167,8 +160,7 @@ Called after the component has updated its DOM tree due to a reactive state chan
   }
   ```
 
-- **Details**
-- **상세**
+- **세부 사항**:
   A parent component's updated hook is called after that of its child components.
 
   부모 컴포넌트의 `updated` 후크는 자식 컴포넌트들의 `updated` 후크가 모두 호출된 이후에 호출됩니다. 
@@ -198,7 +190,7 @@ Called right before a component instance is to be unmounted.
 컴포넌트 인스턴스가 마운트 해제되기 직전에 호출됩니다.
 
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentOptions {
@@ -206,7 +198,7 @@ Called right before a component instance is to be unmounted.
   }
   ```
 
-- **Details**
+- **세부 사항**:
 
   When this hook is called, the component instance is still fully functional.
 
@@ -224,7 +216,7 @@ Called after the component has been unmounted.
 컴포넌트가 마운트 해제된 후 호출됩니다.
 
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentOptions {
@@ -232,7 +224,7 @@ Called after the component has been unmounted.
   }
   ```
 
-- **Details**
+- **세부 사항**:
 
   A component is considered unmounted after:
 
@@ -261,7 +253,7 @@ Called when an error propagating from a descendent component has been captured.
 자식 컴포넌트에서 에러가 전파되었다면 호출됩니다. 
 
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentOptions {
@@ -274,7 +266,7 @@ Called when an error propagating from a descendent component has been captured.
   }
   ```
 
-- **Details**
+- **세부 사항**:
 
   Errors can be captured from the following sources:
 
@@ -336,7 +328,7 @@ Called when a reactive dependency has been tracked by the component's render eff
 컴포넌트의 렌더링 효과에 의해 반응형 의존성이 추적되었을때 호출됩니다.
 
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentOptions {
@@ -351,8 +343,7 @@ Called when a reactive dependency has been tracked by the component's render eff
   }
   ```
 
-- **See also:** [Reactivity in Depth](/guide/extras/reactivity-in-depth.html)
-- **참조 :** [반응형 심화](/guide/extras/reactivity-in-depth.html)
+- **참고**: [반응형 심화](/guide/extras/reactivity-in-depth.html)
 
 ## renderTriggered <sup class="vt-badge dev-only" />
 
@@ -361,7 +352,7 @@ Called when a reactive dependency triggers the component's render effect to be r
 반응 종속성이 컴포넌트의 렌더링 효과를 다시 실행하도록 트리거할 때 호출됩니다.
 
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentOptions {
@@ -379,9 +370,8 @@ Called when a reactive dependency triggers the component's render effect to be r
   }
   ```
 
-- **See also:** [Reactivity in Depth](/guide/extras/reactivity-in-depth.html)
-- **참조 :** [반응형 심화](/guide/extras/reactivity-in-depth.html)
-- 
+- **참고**: [반응형 심화](/guide/extras/reactivity-in-depth.html)
+
 ## activated
 
 Called after the component instance is inserted into the DOM as part of a tree cached by [`<KeepAlive>`](/api/built-in-components.html#keepalive).
@@ -393,7 +383,7 @@ Called after the component instance is inserted into the DOM as part of a tree c
 
 **이 후크는 서버 사이드 렌더링에서는 호출 되지 않습니다.**
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentOptions {
@@ -401,8 +391,7 @@ Called after the component instance is inserted into the DOM as part of a tree c
   }
   ```
 
-- **See also:** [Guide - Lifecycle of Cached Instance](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
-- **참조:** [가이드 - 캐시된 인스턴스의 생명주기](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
+- **참고**: [가이드 - 캐시된 인스턴스의 생명주기](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
 
 ## deactivated
 
@@ -414,7 +403,7 @@ Called after the component instance is removed from the DOM as part of a tree ca
 
 **이 후크는 서버 사이드 렌더링에서는 호출 되지 않습니다.**
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentOptions {
@@ -422,8 +411,7 @@ Called after the component instance is removed from the DOM as part of a tree ca
   }
   ```
 
-- **See also:** [Guide - Lifecycle of Cached Instance](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
-- **참조:** [가이드 - 캐시된 인스턴스의 생명주기](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
+- **참고**: [가이드 - 캐시된 인스턴스의 생명주기](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
 
 
 ## serverPrefetch <sup class="vt-badge" data-text="SSR only" />
@@ -433,7 +421,7 @@ Async function to be resolved before the component instance is to be rendered on
 컴포넌트 인스턴스가 서버에서 렌더링되기 전에 해소될(resolve) 비동기 함수입니다.
 
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentOptions {
@@ -441,7 +429,7 @@ Async function to be resolved before the component instance is to be rendered on
   }
   ```
 
-- **Details**
+- **세부 사항**:
 
   If the hook returns a Promise, the server renderer will wait until the Promise is resolved before rendering the component.
 
@@ -452,7 +440,7 @@ Async function to be resolved before the component instance is to be rendered on
   이 후크는 서버 측 렌더링 중에만 호출되어 서버 전용 데이터 가져오기를 수행하는 데 사용할 수 있습니다.
 
 
-- **Example**
+- **예제**:
 
   ```js
   export default {
@@ -479,5 +467,4 @@ Async function to be resolved before the component instance is to be rendered on
   }
   ```
 
-- **See also:** [Server-Side Rendering](/guide/scaling-up/ssr.html)
-- **참조:** [서버 사이드 렌더링](/guide/scaling-up/ssr.html)
+- **참고**: [서버 사이드 렌더링](/guide/scaling-up/ssr.html)
