@@ -473,7 +473,7 @@ export const sidebar = {
           link: '/examples/#svg'
         },
         {
-          text: 'Modal with Transitions',
+          text: '트렌지션으로 모달 구현',
           link: '/examples/#modal'
         },
         {
