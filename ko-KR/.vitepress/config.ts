@@ -491,19 +491,19 @@ export const sidebar = {
       text: '7 GUIs',
       items: [
         {
-          text: 'Counter',
+          text: '숫자세기',
           link: '/examples/#counter'
         },
         {
-          text: 'Temperature Converter',
+          text: '온도 단위 변환',
           link: '/examples/#temperature-converter'
         },
         {
-          text: 'Flight Booker',
+          text: '항공편 예약',
           link: '/examples/#flight-booker'
         },
         {
-          text: 'Timer',
+          text: '타이머',
           link: '/examples/#timer'
         },
         {
@@ -511,11 +511,11 @@ export const sidebar = {
           link: '/examples/#crud'
         },
         {
-          text: 'Circle Drawer',
+          text: '원 그리기',
           link: '/examples/#circle-drawer'
         },
         {
-          text: 'Cells',
+          text: '셀(스프레드시트)',
           link: '/examples/#cells'
         }
       ]

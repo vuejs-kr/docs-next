@@ -1,7 +1,7 @@
 export default {
   data() {
     return {
-      names: ['Emil, Hans', 'Mustermann, Max', 'Tisch, Roman'],
+      names: ['봉, 미선', '신, 형만', '신, 노스케'],
       selected: '',
       prefix: '',
       first: '',

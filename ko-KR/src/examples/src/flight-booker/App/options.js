@@ -40,8 +40,8 @@ export default {
     book() {
       alert(
         this.isReturn
-          ? `You have booked a return flight leaving on ${this.departureDate} and returning on ${this.returnDate}.`
-        	: `You have booked a one-way flight leaving on ${this.departureDate}.`
+          ? `${this.departureDate}에 출발하여 ${this.returnDate}에 돌아오는 왕복 항공편을 예약하셨습니다.`
+          : `${this.departureDate}에 출발하는 편도 항공편을 예약하셨습니다.`
       )
     }
   }
