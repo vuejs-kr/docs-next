@@ -1,1 +1,1 @@
-We can render content conditionally or in a loop with the v-if and v-for directives.
+v-if 및 v-for 디렉티브를 사용하여 콘텐츠를 조건부로 또는 반복적으로 렌더링할 수 있습니다.
