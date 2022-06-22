@@ -1,0 +1,1 @@
+import{_ as s,c as n,o as a,a as l}from"./app.3088e035.js";const p='{"title":"Custom Renderer API","description":"","frontmatter":{},"headers":[{"level":2,"title":"createRenderer()","slug":"createrenderer"}],"relativePath":"api/custom-renderer.md"}',o={},e=[l("",5)];var t=s(o,[["render",function(s,l,p,o,t,r){return a(),n("div",null,e)}]]);export{p as __pageData,t as default};
