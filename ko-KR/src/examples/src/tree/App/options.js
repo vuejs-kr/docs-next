@@ -1,22 +1,22 @@
 import TreeItem from './TreeItem.vue'
 
 const treeData = {
-  name: 'My Tree',
+  name: '나의 트리',
   children: [
-    { name: 'hello' },
-    { name: 'wat' },
+    { name: '안녕' },
+    { name: '반가워' },
     {
-      name: 'child folder',
+      name: '하위 폴더',
       children: [
         {
-          name: 'child folder',
-          children: [{ name: 'hello' }, { name: 'wat' }]
+          name: '하위 폴더',
+          children: [{ name: '안녕' }, { name: '반가워' }]
         },
-        { name: 'hello' },
-        { name: 'wat' },
+        { name: '안녕' },
+        { name: '반가워' },
         {
-          name: 'child folder',
-          children: [{ name: 'hello' }, { name: 'wat' }]
+          name: '하위 폴더',
+          children: [{ name: '안녕' }, { name: '반가워' }]
         }
       ]
     }

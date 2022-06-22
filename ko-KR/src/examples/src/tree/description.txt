@@ -1,2 +1,2 @@
-A nested tree component that recursively renders itself.
-You can double click on an item to turn it into a folder.
+자신을 재귀적으로 렌더링하는 중첩된 트리 컴포넌트입니다.
+항목을 더블 클릭하면 폴더로 변경됩니다.
