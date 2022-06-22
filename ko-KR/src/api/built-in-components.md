@@ -118,7 +118,7 @@ Provides animated transition effects to a **single** element or component.
   }
   ```
 
-- **Events**
+- **이벤트**:
 
   - `@before-enter`
   - `@before-leave`
@@ -132,7 +132,7 @@ Provides animated transition effects to a **single** element or component.
   - `@leave-cancelled` (`v-show` only)
   - `@appear-cancelled`
 
-- **Example**
+- **예제**:
 
   Simple element:
 
@@ -164,7 +164,7 @@ Provides animated transition effects to a **single** element or component.
   </Transition>
   ```
 
-- **See also:** [`<Transition>` Guide](/guide/built-ins/transition.html)
+- **참고**: [`<Transition>` Guide](/guide/built-ins/transition.html)
 
 ## `<TransitionGroup>`
 
@@ -197,12 +197,12 @@ Provides transition effects for **multiple** elements or components in a list.
   }
   ```
 
-- **Events**
+- **이벤트**:
 
   `<TransitionGroup>` emits the same events as `<Transition>`.
   `<TransitionGroup>`는  `<Transition>`과 동일한 이벤트를 발생시킵니다.
 
-- **Details**
+- **세부 사항**:
 
   By default, `<TransitionGroup>` doesn't render a wrapper DOM element, but one can be defined via the `tag` prop.
 
@@ -220,7 +220,7 @@ Provides transition effects for **multiple** elements or components in a list.
   `<TransitionGroup>`은 CSS 변환을 통한 이동 트랜지션을 지원합니다. 업데이트 후 화면에서 자녀의 위치가 변경되면 이동 CSS 클래스가 적용됩니다(`name` 속성에서 자동 생성되거나 `move-class` 소품으로 구성됨). 움직이는 클래스가 적용될 때 CSS의 `transform` 속성이 "전환 가능"이면 [FLIP 기술](https://aerotwist.com/blog/flip-your- 애니메이션/).
 
 
-- **Example**
+- **예제**:
 
   ```vue-html
   <TransitionGroup tag="ul" name="slide">
@@ -230,8 +230,7 @@ Provides transition effects for **multiple** elements or components in a list.
   </TransitionGroup>
   ```
 
-- **See also:** [Guide - TransitionGroup](/guide/built-ins/transition-group.html)
-- **참조:** [가이드 - 트랜지션 그룹](/guide/built-ins/transition-group.html)
+- **참고**: [가이드 - TransitionGroup](/guide/built-ins/transition-group.html)
 
 ## `<KeepAlive>`
 
@@ -265,7 +264,7 @@ Caches dynamically toggled components wrapped inside.
   type MatchPattern = string | RegExp | (string | RegExp)[]
   ```
 
-- **Details**
+- **세부 사항**:
 
   When wrapped around a dynamic component, `<KeepAlive>` caches the inactive component instances without destroying them.
 
@@ -281,7 +280,7 @@ Caches dynamically toggled components wrapped inside.
   컴포넌트가 `<KeepAlive>` 내에서 토글되면 그에 따라 `activated` 및 `deactivated` 수명 주기 후크가 호출되어 호출되지 않는 `mounted` 및 `unmounted` 에 대한 대안을 제공합니다. 이는 `<KeepAlive>`의 직계 자식과 모든 하위 항목에 적용됩니다.
 
 
-- **Example**
+- **예제**:
 
   Basic usage:
 
@@ -348,8 +347,7 @@ Caches dynamically toggled components wrapped inside.
   </KeepAlive>
   ```
 
-- **See also:** [Guide - KeepAlive](/guide/built-ins/keep-alive.html)
-- **참조:** [가이드 - KeepAlive](/guide/built-ins/keep-alive.html)
+- **참고**: [가이드 - KeepAlive](/guide/built-ins/keep-alive.html)
 
 ## `<Teleport>`
 
@@ -376,7 +374,7 @@ Renders its slot content to another part of the DOM.
   }
   ```
 
-- **Example**
+- **예제**:
 
   Specifying target container:
 
@@ -398,8 +396,7 @@ Renders its slot content to another part of the DOM.
   </teleport>
   ```
 
-- **See also:** [Guide - Teleport](/guide/built-ins/teleport.html)
-- **참조:** [가이드 - Teleport](/guide/built-ins/teleport.html)
+- **참고**: [가이드 - Teleport](/guide/built-ins/teleport.html)
 
 ## `<Suspense>` <sup class="vt-badge experimental" />
 
@@ -416,13 +413,13 @@ Used for orchestrating nested async dependencies in a component tree.
   }
   ```
 
-- **Events**
+- **이벤트**:
 
   - `@resolve`
   - `@pending`
   - `@fallback`
 
-- **Details**
+- **세부 사항**:
 
   `<Suspense>` accepts two slots: the `#default` slot and the `#fallback` slot. It will display the content of the fallback slot while rendering the default slot in memory.
 
@@ -434,5 +431,4 @@ Used for orchestrating nested async dependencies in a component tree.
   렌더링하는 동안 비동기 종속성([Async Components](/guide/components/async.html) 및 [`async setup()`](/guide/built-ins/suspense.html#async-setup)이 있는 컴포넌트)이 발생하는 경우 기본 슬롯이 있는 경우 기본 슬롯을 표시하기 전에 모든 문제가 해결될 때까지 기다립니다.
 
 
-- **See also:** [Guide - Suspense](/guide/built-ins/suspense.html)
-- **참조:** [가이드 - Suspense](/guide/built-ins/suspense.html)
+- **참고**: [가이드 - Suspense](/guide/built-ins/suspense.html)

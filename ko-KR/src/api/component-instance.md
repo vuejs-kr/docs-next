@@ -28,7 +28,7 @@ The object returned from the [`data`](./options-state.html#data) option, made re
 [`data`](./options-state.html#data) 옵션에서 반환된 객체는 컴포넌트에 의해 반응형 객체로 변환됩니다.  컴포넌트 인스턴스는 데이터 개체의 속성들에 접근할때 이 접근을 프록시하여 제공합니다. 
 
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentPublicInstance {
@@ -43,7 +43,7 @@ An object representing the component's current, resolved props.
 컴포넌트의 현재 해결된 props을 나타내는 개체입니다.
 
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentPublicInstance {
@@ -51,7 +51,7 @@ An object representing the component's current, resolved props.
   }
   ```
 
-- **Details**
+- **세부 사항**:
 
   Only props declared via the [`props`](./options-state.html#props) option will be included. The component instance proxies access to the properties on its props object.
 
@@ -65,7 +65,7 @@ The root DOM node that the component instance is managing.
 컴포넌트 인스턴스가 관리하는 루트 DOM 노드입니다.
 
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentPublicInstance {
@@ -73,7 +73,7 @@ The root DOM node that the component instance is managing.
   }
   ```
 
-- **Details**
+- **세부 사항**:
 
   `$el` will be `undefined` until the component is [mounted](./options-lifecycle#mounted).
 
@@ -108,7 +108,7 @@ The resolved component options used for instantiating the current component inst
 현재 컴포넌트 인스턴스를 인스턴스화하는 데 사용되는 확인된 컴포넌트 옵션입니다.
 
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentPublicInstance {
@@ -116,7 +116,7 @@ The resolved component options used for instantiating the current component inst
   }
   ```
 
-- **Details**
+- **세부 사항**:
 
   The `$options` object exposes the resolved options for the current component and is the merge result of these possible sources:
 
@@ -144,8 +144,7 @@ The resolved component options used for instantiating the current component inst
   })
   ```
 
-- **See also:** [`app.config.optionMergeStrategies`](/api/application.html#app-config-optionmergestrategies)
-- **참조:** [`app.config.optionMergeStrategies`](/api/application.html#app-config-optionmergestrategies)
+- **참고**: [`app.config.optionMergeStrategies`](/api/application.html#app-config-optionmergestrategies)
 
 
 ## $parent
@@ -155,7 +154,7 @@ The parent instance, if the current instance has one. It will be `null` for the 
 현재 인스턴스에 상위 인스턴스가 있는 경우 상위 인스턴스입니다. 루트 인스턴스 자체에 대해서는 'null'이 됩니다.
 
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentPublicInstance {
@@ -170,7 +169,7 @@ The root component instance of the current component tree. If the current instan
 현재 컴포넌트 트리의 루트 컴포넌트 인스턴스입니다. 현재 인스턴스에 상위 항목이 없으면 이 값 자체가 됩니다.
 
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentPublicInstance {
@@ -185,7 +184,7 @@ An object representing the [slots](/guide/components/slots.html) passed by the p
 부모 컴포넌트에 의해 전달된 [슬롯](/guide/components/slots.html)을 나타내는 개체입니다.
 
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentPublicInstance {
@@ -195,7 +194,7 @@ An object representing the [slots](/guide/components/slots.html) passed by the p
   type Slot = (...args: any[]) => VNode[]
   ```
 
-- **Details**
+- **세부 사항**:
 
   Typically used when manually authoring [render functions](/guide/extras/render-function.html), but can also be used to detect whether a slot is present.
 
@@ -212,8 +211,7 @@ An object representing the [slots](/guide/components/slots.html) passed by the p
   슬롯이 [범위가 지정된 슬롯](/guide/components/slots.html#scoped-slots)인 경우 슬롯 함수에 전달된 인자는 슬롯 소품으로 슬롯에 사용할 수 있습니다.
 
 
-- **See also:** [Render Functions - Rendering Slots](/guide/extras/render-function.html#rendering-slots)
-- **See also:** [렌더링 함수 - 슬롯 렌더링](/guide/extras/render-function.html#rendering-slots)
+- **참고**: [렌더링 함수 - 슬롯 렌더링](/guide/extras/render-function.html#rendering-slots)
 
 ## $refs
 
@@ -222,7 +220,7 @@ An object of DOM elements and component instances, registered via [template refs
 [템플릿 참조](/guide/essentials/template-refs.html)를 통해 등록된 DOM엘리먼트 및 컴포넌트 인스턴스의 개체입니다.
 
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentPublicInstance {
@@ -230,7 +228,7 @@ An object of DOM elements and component instances, registered via [template refs
   }
   ```
 
-- **See also:**
+- **참고**:
 
   - [Template refs](/guide/essentials/template-refs.html)
   - [Special Attributes - ref](./built-in-special-attributes.md#ref)
@@ -242,7 +240,7 @@ An object that contains the component's fallthrough attributes.
 컴포넌트의 대체 속성이 포함된 개체입니다.
 
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentPublicInstance {
@@ -250,7 +248,7 @@ An object that contains the component's fallthrough attributes.
   }
   ```
 
-- **Details**
+- **세부 사항**:
 
   [Fallthrough Attributes](/guide/components/attrs.html) are attributes and event handlers passed by the parent component, but not declared as a prop or a emitted event by the child.
 
@@ -262,7 +260,7 @@ An object that contains the component's fallthrough attributes.
   기본적으로 `$attrs`의 모든 항목은 단일 루트엘리먼트만 있는 경우 컴포넌트의 루트엘리먼트에서 자동으로 상속됩니다. 이 동작은 컴포넌트에 여러 루트 노드가 있는 경우 비활성화되며 [`inheritAttrs`](./options-misc.html#inheritattrs) 옵션을 사용하여 명시적으로 비활성화할 수 있습니다.
 
 
-- **See also:**
+- **참고**:
 
   - [Fallthrough Attributes](/guide/components/attrs.html)
   - [폴스루 속성](/guide/components/attrs.html)
@@ -276,7 +274,7 @@ Imperative API for creating watchers.
 watcher를 생성하기 위한 명령형 API.
 
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentPublicInstance {
@@ -304,7 +302,7 @@ watcher를 생성하기 위한 명령형 API.
   type StopHandle = () => void
   ```
 
-- **Details**
+- **세부 사항**:
 
   The first argument is the watch source. It can be a component property name string, a simple dot-delimited path string, or a getter function.
 
@@ -331,7 +329,7 @@ watcher를 생성하기 위한 명령형 API.
   - **`onTrack / onTrigger`**: 감시자의 종속성을 디버그합니다. [감시자 디버깅](/guide/extras/reactivity-in-depth.html#watcher-debugging)을 참조하세요.
 
 
-- **Example**
+- **예제**:
 
   Watch a property name:
   
@@ -376,9 +374,9 @@ watcher를 생성하기 위한 명령형 API.
   unwatch()
   ```
 
-- **See also:**
+- **참고**:
   - [Options - `watch`](/api/options-state.html#watch)
-  - [Guide - Watchers](/guide/essentials/watchers.html)
+  - [가이드 - Watchers](/guide/essentials/watchers.html)
 
 ## $emit()
 
@@ -387,7 +385,7 @@ Trigger a custom event on the current instance. Any additional arguments will be
 현재 인스턴스에서 사용자 정의 이벤트를 트리거합니다. 추가 인자는 리스너의 콜백 함수로 전달됩니다.
 
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentPublicInstance {
@@ -395,7 +393,7 @@ Trigger a custom event on the current instance. Any additional arguments will be
   }
   ```
 
-- **Example**
+- **예제**:
 
   ```js
   export default {
@@ -408,7 +406,7 @@ Trigger a custom event on the current instance. Any additional arguments will be
   }
   ```
 
-- **See also:**
+- **참고**:
 
   - [Component - Events](/guide/components/events.html)
   - [`emits` option](./options-state.html#emits)
@@ -420,7 +418,7 @@ Force the component instance to re-render.
 컴포넌트 인스턴스를 강제로 다시 렌더링합니다.
 
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentPublicInstance {
@@ -428,7 +426,7 @@ Force the component instance to re-render.
   }
   ```
 
-- **Details**
+- **세부 사항**:
 
   This should be rarely needed given Vue's fully automatic reactivity system. The only cases where you may need it is when you have explicitly created non-reactive component state using advanced reactivity APIs.
 
@@ -442,7 +440,7 @@ Instance-bound version of the global [`nextTick()`](./general.html#nexttick).
 전역 [`nextTick()`](./general.html#nexttick)의 인스턴스 바인딩 버전입니다.
 
 
-- **Type**
+- **타입**:
 
   ```ts
   interface ComponentPublicInstance {
@@ -450,7 +448,7 @@ Instance-bound version of the global [`nextTick()`](./general.html#nexttick).
   }
   ```
 
-- **Details**
+- **세부 사항**:
 
   The only difference from the global version of `nextTick()` is that the callback passed to `this.$nextTick()` will have its `this` context bound to the current component instance.
 
@@ -458,4 +456,4 @@ Instance-bound version of the global [`nextTick()`](./general.html#nexttick).
   `nextTick()`의 전역 버전과 유일한 차이점은 `this.$nextTick()`에 전달된 콜백이 현재 컴포넌트 인스턴스에 바인딩된 `this` 컨텍스트를 갖는다는 것입니다.
 
 
-- **See also:** [`nextTick()`](./general.html#nexttick)
+- **참고**: [`nextTick()`](./general.html#nexttick)

@@ -24,8 +24,7 @@ Takes an inner value and returns a reactive and mutable ref object, which has a 
 
 내부 값을 취하고 내부 값을 가리키는 단일 속성 '.value'를 갖는 반응성 및 변경 가능한 ref 객체를 반환합니다.
 
-- **Type**
-- **타입**
+- **타입**:
 
   ```ts
   function ref<T>(value: T): Ref<UnwrapRef<T>>
@@ -35,8 +34,7 @@ Takes an inner value and returns a reactive and mutable ref object, which has a 
   }
   ```
 
-- **Details**
-- **상세**
+- **세부 사항**:
 
   The ref object is mutable - i.e. you can assign new values to `.value`. It is also reactive - i.e. any read operations to `.value` is tracked, and write operations will trigger associated effects.
 
@@ -51,8 +49,7 @@ Takes an inner value and returns a reactive and mutable ref object, which has a 
   깊게 변환되는것을 방지하고 싶다면 [`shallowRef()`](./reactivity-advanced.html#shallowref) 를 사용하세요. 
 
 
-- **Example**
-- **예제**
+- **예제**:
 
   ```js
   const count = ref(0)
@@ -62,11 +59,8 @@ Takes an inner value and returns a reactive and mutable ref object, which has a 
   console.log(count.value) // 1
   ```
 
-- **See also:**
-- **참조:**
-  - [Guide - Reactive Variables with `ref()`](/guide/essentials/reactivity-fundamentals.html#reactive-variables-with-ref)
-  - [가이드 -  `ref()` 를 이용한 반응형 변수](/guide/essentials/reactivity-fundamentals.html#reactive-variables-with-ref)
-  - [Guide - Typing `ref()`](/guide/typescript/composition-api.html#typing-ref)
+- **참고**:
+  - [가이드 -  `ref()` 를 사용한 반응형 변수](/guide/essentials/reactivity-fundamentals.html#reactive-variables-with-ref)
   - [가이드 - `ref()`에 타입 지정하기](/guide/typescript/composition-api.html#typing-ref)
 
 ## computed()
@@ -75,8 +69,7 @@ Takes a getter function and returns a readonly reactive [ref](#ref) object for t
 
 getter 함수를 사용하고 getter에서 반환된 값에 대한 읽기 전용 반응 [ref](#ref) 개체를 반환합니다. 쓰기 가능한 ref 객체를 생성하기 위해 `get` 및 `set` 함수가 있는 객체를 사용할 수도 있습니다.
 
-- **Type**
-- **타입**
+- **타입**:
 
   ```ts
   // read-only
@@ -99,8 +92,7 @@ getter 함수를 사용하고 getter에서 반환된 값에 대한 읽기 전용
   ): Ref<T>
   ```
 
-- **Example**
-- **예제**
+- **예제**:
 
   Creating a readonly computed ref:
   
@@ -148,14 +140,10 @@ getter 함수를 사용하고 getter에서 반환된 값에 대한 읽기 전용
   })
   ```
 
-- **See also:**
-- **참조:**
-  - [Guide - Computed Properties](/guide/essentials/computed.html)
+- **참고**:
   - [가이드 - 계산된 속성](/guide/essentials/computed.html)
-  - [Guide - Computed Debugging](/guide/extras/reactivity-in-depth.html#computed-debugging)
-  - [Guide - Computed 디버깅](/guide/extras/reactivity-in-depth.html#computed-debugging)
-  - [Guide - Typing `computed()`](/guide/typescript/composition-api.html#typing-computed)
-  - [Guide - `computed()`에 타입 지정하기](/guide/typescript/composition-api.html#typing-computed)
+  - [가이드 - Computed 디버깅](/guide/extras/reactivity-in-depth.html#computed-debugging)
+  - [가이드 - `computed()`에 타입 지정하기](/guide/typescript/composition-api.html#typing-computed)
 
 ## reactive()
 
@@ -163,15 +151,13 @@ Returns a reactive proxy of the object.
 
 객체의 반응형 프록시를 반환합니다. 
 
-- **Type**
-- **타입**
+- **타입**:
 
   ```ts
   function reactive<T extends object>(target: T): UnwrapNestedRefs<T>
   ```
 
-- **Details**
-- **상세**  
+- **세부 사항**:
 
   The reactive conversion is "deep": it affects all nested properties. A reactive object also deeply unwraps any properties that are [refs](#ref) while maintaining reactivity.
 
@@ -192,8 +178,7 @@ Returns a reactive proxy of the object.
 
   반환된 객체와 중첩된 객체는 [ES Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)로 래핑되며 원래 개체왜  **같지 않습니다** . 반응 프록시로만 작업하고 원본 개체에 의존하지 않는 것이 좋습니다.
 
-- **Example**
-- **예제**
+- **예제**:
 
   Creating a reactive object:
 
@@ -257,11 +242,8 @@ Returns a reactive proxy of the object.
   console.log(obj.count === count.value) // true
   ```
 
-- **See also:**
-- **참조:**
-  - [Guide - Reactivity Fundamentals](/guide/essentials/reactivity-fundamentals.html)
+- **참고**:
   - [가이드 - 반은형 기초](/guide/essentials/reactivity-fundamentals.html)
-  - [Guide - Typing `reactive()`](/guide/typescript/composition-api.html#typing-reactive)
   - [가이드 - `reactive()`에 타입 적용하기](/guide/typescript/composition-api.html#typing-reactive)
 
 ## readonly()
@@ -270,8 +252,7 @@ Takes an object (reactive or plain) or a [ref](#ref) and returns a readonly prox
 
 객체(반응형 또는 일반) 또는 [ref](#ref)를 가져와서 원본에 대한 읽기 전용 프록시를 반환합니다.
 
-- **Type**
-- **타입**
+- **타입**:
 
   ```ts
   function readonly<T extends object>(
@@ -279,8 +260,7 @@ Takes an object (reactive or plain) or a [ref](#ref) and returns a readonly prox
   ): DeepReadonly<UnwrapNestedRefs<T>>
   ```
 
-- **Details**
-- **상세**
+- **세부 사항**:
 
   A readonly proxy is deep: any nested property accessed will be readonly as well. It also has the same ref-unwrapping behavior as `reactive()`, except the unwrapped values will also be made readonly.
   
@@ -290,8 +270,7 @@ Takes an object (reactive or plain) or a [ref](#ref) and returns a readonly prox
 
   깊은 변환을 방지하고 싶다면 [shallowReadonly()](./reactivity-advanced.html#shallowreadonly)를 사용하세요. 
 
-- **Example**
-- **예제**
+- **예제**:
 
   ```js
   const original = reactive({ count: 0 })
@@ -319,8 +298,7 @@ Runs a function immediately while reactively tracking its dependencies and re-ru
 
 종속성을 반응적으로 추적하면서 즉시 함수를 실행하고 종속성이 변경될 때마다 다시 실행합니다.
 
-- **Type**
-- **타입**
+- **타입**:
 
   ```ts
   function watchEffect(
@@ -339,8 +317,7 @@ Runs a function immediately while reactively tracking its dependencies and re-ru
   type StopHandle = () => void
   ```
 
-- **Details**
-- **상세**
+- **세부 사항**:
 
   The first argument is the effect function to be run. The effect function receives a function that can be used to register a cleanup callback. The cleanup callback will be called right before the next time the effect is re-run, and can be used to clean up invalidated side effects, e.g. a pending async request (see example below).
 
@@ -354,8 +331,7 @@ Runs a function immediately while reactively tracking its dependencies and re-ru
 
   반환 값은 효과가 다시 실행되지 않도록 하기 위해 호출할 수 있는 핸들 함수입니다.
 
-- **Example**
-- **예제**
+- **예제**:
 
   ```js
   const count = ref(0)
@@ -413,8 +389,7 @@ Runs a function immediately while reactively tracking its dependencies and re-ru
   })
   ```
 
-- **See also**:
-- **참조**:
+- **참고**:
   - [가이드 - Watchers](/guide/essentials/watchers.html#watcheffect)
   - [가이드 - Watcher 디버깅](/guide/extras/reactivity-in-depth.html#watcher-debugging)
 
@@ -438,8 +413,7 @@ Watches one or more reactive data sources and invokes a callback function when t
 하나 이상의 반응형 데이터 소스를 감시하고 소스가 변경되면 콜백 함수를 호출합니다.
 
 
-- **Type**
-- **타입**
+- **타입**:
 
   ```ts
   // 단일 소스를 감시합니다. 
@@ -481,8 +455,7 @@ Watches one or more reactive data sources and invokes a callback function when t
   > Types are simplified for readability.
   > 읽기 쉽게 하기 위해 타입을 간략화 했습니다. 
 
-- **Details**
-- **상세**
+- **세부 사항**:
 
   `watch()` is lazy by default - i.e. the callback is only called when the watched source has changed.
 
@@ -533,8 +506,7 @@ Watches one or more reactive data sources and invokes a callback function when t
   - Access both the previous and current value of the watched state.
   - 감시하는 상태의 변경전 값과 변경된 값을 알수 있습니다. 
 
-- **Example**
-- **예제**
+- **예제**:
 
   Watching a getter:
   
@@ -611,10 +583,7 @@ Watches one or more reactive data sources and invokes a callback function when t
   })
   ```
 
-- **See also**:
-- **참조**
+- **참고**:
 
-  - [Guide - Watchers](/guide/essentials/watchers.html)
-  - [가이드 -  Watchers](/guide/essentials/watchers.html)
-  - [Guide - Watcher Debugging](/guide/extras/reactivity-in-depth.html#watcher-debugging)
+  - [가이드 - Watchers](/guide/essentials/watchers.html)
   - [가이드 - Watcher 디버깅](/guide/extras/reactivity-in-depth.html#watcher-debugging)
