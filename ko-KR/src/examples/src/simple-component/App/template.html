@@ -1,13 +1,13 @@
 <ol>
   <!--
-    We are providing each todo-item with the todo object
-    it's representing, so that its content can be dynamic.
-    We also need to provide each component with a "key",
-    which is explained in the guide section on v-for.
+    item 객체를 제공하여 list-item이
+    콘텐츠를 동적으로 나타낼 수 있도록 합니다.
+    그리고 컴포넌트에 "key"를 제공해야 하는데,
+     "리스트 렌더링" 가이드에 설명되어 있습니다.
   -->
-  <TodoItem
+  <ListItem
     v-for="item in groceryList"
     :todo="item"
     :key="item.id"
-  ></TodoItem>
+  ></ListItem>
 </ol>

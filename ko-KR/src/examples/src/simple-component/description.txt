@@ -1,2 +1,2 @@
-Here we show the simplest possible component which accepts a prop and renders it.
-Learn more about components in the guide!
+여기서는 prop을 전달받아 렌더링하는 가장 단순한 컴포넌트를 보여줍니다.
+가이드에서 컴포넌트에 대해 자세히 알아보세요!

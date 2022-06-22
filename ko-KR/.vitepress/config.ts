@@ -444,7 +444,7 @@ export const sidebar = {
           link: '/examples/#form-bindings'
         },
         {
-          text: 'Simple Component',
+          text: '단순한 컴포넌트',
           link: '/examples/#simple-component'
         }
       ]
