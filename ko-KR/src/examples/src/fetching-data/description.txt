@@ -1,2 +1,2 @@
-This example fetches latest Vue.js commits data from GitHub’s API and displays them as a list.
-You can switch between the two branches.
+이 예제는 GitHub의 API에서 최신 Vue.js 커밋 데이터를 가져와 목록으로 표시합니다.
+두 개의 브런치 간에 전환할 수 있습니다.

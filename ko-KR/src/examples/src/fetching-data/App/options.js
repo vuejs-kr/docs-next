@@ -8,12 +8,12 @@ export default {
   }),
 
   created() {
-    // fetch on init
+    // 초기화 시 가져오기
     this.fetchData()
   },
 
   watch: {
-    // re-fetch whenever currentBranch changes
+    // currentBranch가 변경될 때마다 데이터 다시 가져오기
     currentBranch: 'fetchData'
   },
 
