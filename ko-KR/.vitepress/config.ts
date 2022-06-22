@@ -461,7 +461,7 @@ export const sidebar = {
           link: '/examples/#fetching-data'
         },
         {
-          text: 'Grid with Sort and Filter',
+          text: '정렬과 필터가 있는 그리드',
           link: '/examples/#grid'
         },
         {
