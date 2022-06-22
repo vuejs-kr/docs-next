@@ -30,7 +30,7 @@ export default {
       if (stats.length > 3) {
         stats.splice(stats.indexOf(stat), 1)
       } else {
-        alert("Can't delete more!")
+        alert("더 이상 삭제할 수 없습니다!")
       }
     }
 

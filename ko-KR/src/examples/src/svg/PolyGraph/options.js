@@ -9,7 +9,7 @@ export default {
     stats: Array
   },
   computed: {
-    // a computed property for the polygon's points
+    // polygon 태그의 points 속성에 적용할 계산된 속성
     points() {
       const total = this.stats.length
       return this.stats
