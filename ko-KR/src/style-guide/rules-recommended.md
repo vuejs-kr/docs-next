@@ -1,3 +1,6 @@
+:::warning 현재 이 문서는 번역 작업이 진행중입니다
+:::
+
 # Priority C Rules: Recommended
 
 Where multiple, equally good options exist, an arbitrary choice can be made to ensure consistency. In these rules, we describe each acceptable option and suggest a default choice. That means you can feel free to make a different choice in your own codebase, as long as you're consistent and have a good reason. Please do have a good reason though! By adapting to the community standard, you will:

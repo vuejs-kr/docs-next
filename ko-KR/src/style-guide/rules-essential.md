@@ -1,3 +1,6 @@
+:::warning 현재 이 문서는 번역 작업이 진행중입니다
+:::
+
 # Priority A Rules: Essential
 # 우선순쉬 A 등급 규칙: 필수 
 

@@ -1,7 +1,8 @@
 ---
 outline: deep
 ---
-
+:::warning 현재 이 문서는 번역 작업이 진행중입니다
+:::
 # Community Guide
 
 Vue's community is growing incredibly fast and if you're reading this, there's a good chance you're ready to join it. So... welcome!

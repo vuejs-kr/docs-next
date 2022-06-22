@@ -14,6 +14,8 @@ onMounted(async () => {
 </script>
 
 # Releases
+:::warning 현재 이 문서는 번역 작업이 진행중입니다
+:::
 
 <p v-if="version">
 The current latest stable version of Vue is <strong>{{ version }}</strong>.
