@@ -1,18 +1,18 @@
 ---
-title: 'Mount API changes'
+title: 'Mount API 변경'
 badges:
   - breaking
 ---
 
-# Mounted application does not replace the element <MigrationBadges :badges="$frontmatter.badges" />
+# 마운트된 앱은 요소를 대체하지 않음 <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 개요
 
-In Vue 2.x, when mounting an application that has a `template`, the rendered content replaces the element we mount to. In Vue 3.x, the rendered application is appended as a child of such an element, replacing element's `innerHTML`.
+Vue 2.x에서 `template`을 가진 앱이 마운트될 때 렌더링된 컨텐츠는 우리가 마운트할 요소를 대체 하였습니다. Vue 3.x에서 렌더링된 어플리케이션은 이러한 요소의 자식으로 추가되어, 요소의 `innerHTML`을 대체합니다.
 
-## 2.x Syntax
+## 2.x 문법
 
-In Vue 2.x, we pass an HTML element selector to `new Vue()` or `$mount`:
+Vue 2.x에서, `new Vue()`나 `$mount`로 HTML 요소 선택자를 전달하였습니다:
 
 ```js
 new Vue({
@@ -27,7 +27,7 @@ new Vue({
   `
 })
 
-// or
+// 또는
 const app = new Vue({
   data() {
     return {
@@ -42,7 +42,7 @@ const app = new Vue({
 app.$mount('#app')
 ```
 
-When we mount this application to the page that has a `div` with the passed selector (in our case, it's `id="app"`):
+이 어플리케이션을 전달된 선택자와 `div`를 가지고 있는 페이지로 마운트할 때(여기서는 `id="app"`):
 
 ```html
 <body>
@@ -52,7 +52,7 @@ When we mount this application to the page that has a `div` with the passed sele
 </body>
 ```
 
-in the rendered result, the mentioned `div` will be replaced with the rendered application content:
+렌더링 된 결과에서, 언급된 `div`는 렌더링된 어플리케이션 내용으로 대체될 것:
 
 ```html
 <body>
@@ -60,9 +60,9 @@ in the rendered result, the mentioned `div` will be replaced with the rendered a
 </body>
 ```
 
-## 3.x Syntax
+## 3.x 문법
 
-In Vue 3.x, when we mount an application, its rendered content will replace the `innerHTML` of the element we pass to `mount`:
+Vue 3.x에서 어플리케이션을 마운트할 때, 렌더링된 내용은 `mount`로 전달한 요소의 `innerHTML`을 대체한다:
 
 ```js
 const app = Vue.createApp({
@@ -79,7 +79,7 @@ const app = Vue.createApp({
 app.mount('#app')
 ```
 
-When this app is mounted to the page that has a `div` with `id="app"`, this will result in:
+이 앱이 `div`와 `id="app"`을 가진 페이지로 마운트될 때, 결과는 이렇게 될 것:
 
 ```html
 <body>
@@ -89,6 +89,6 @@ When this app is mounted to the page that has a `div` with `id="app"`, this will
 </body>
 ```
 
-## See also
+## 더 보기
 
 - [`mount` API](/api/application-api.html#mount)
