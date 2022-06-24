@@ -6,7 +6,7 @@ footer: false
 
 :::info 당신은 현재 Vue 3에 대한 문서를 읽고 있습니다!
 
-- Vue 2 문서가 [v2.vuejs.org](https://v2.vuejs.org/)로 이동되었습니다.
+- Vue 2 문서가 [v2.vuejs.org](https://kr.vuejs.org/index.html)로 이동되었습니다.
 - Vue 2에서 업그레이드 하시려면 [마이그레이션 가이드](https://v3-migration.vuejs.org/)를 확인하십시오.
   :::
 
