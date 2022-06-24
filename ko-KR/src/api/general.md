@@ -1,11 +1,12 @@
-:::warning 현재 이 문서는 번역 작업이 진행중입니다
-:::
+<script setup>
+import CustomPreferenceSwitch from './CustomPreferenceSwitch.vue'
+</script>
 
 # Global API: General
 
 ## version
 
-Exposes the current version of Vue.
+Vue의 현재 버전(문자열)을 반환합니다.
 
 - **타입**: `string`
 
@@ -21,6 +22,8 @@ Exposes the current version of Vue.
 
 A utility for waiting for the next DOM update flush.
 
+다음 DOM 업데이트 발생을 기다리는 유틸리티입니다.
+
 - **타입**:
 
   ```ts
@@ -28,12 +31,15 @@ A utility for waiting for the next DOM update flush.
   ```
 
 - **세부 사항**:
+  반응형 상태를 변경한 결과는 동기적으로 DOM에 업데이트되지 않습니다.
+  대신, 이것은 상태를 얼마나 많이 변경했는지에 관계없이 "다음 틱"까지 버퍼링하여, 각 컴포넌트가 한 번만 업데이트 되었음을 보장합니다.
 
-  When you mutate reactive state in Vue, the resulting DOM updates are not applied synchronously. Instead, Vue buffers them until the "next tick" to ensure that each component updates only once no matter how many state changes you have made.
-
-  `nextTick()` can be used immediately after a state change to wait for the DOM updates to complete. You can either pass a callback as an argument, or await the returned Promise.
+  `nextTick()`은 상태 변경 직후에 DOM 업데이트가 완료될 때까지 대기하는 데 사용할 수 있습니다.
+  콜백을 인자로 전달하거나, 프로미스(Promise) 반환을 기다릴 수 있습니다.
 
 - **예제**:
+
+  <CustomPreferenceSwitch />
 
   <div class="composition-api">
 
@@ -46,11 +52,11 @@ A utility for waiting for the next DOM update flush.
   async function increment() {
     count.value++
 
-    // DOM not yet updated
+    // 아직 DOM 업데이트되지 않음.
     console.log(document.getElementById('counter').textContent) // 0
 
     await nextTick()
-    // DOM is now updated
+    // 이제 DOM 업데이트됨.
     console.log(document.getElementById('counter').textContent) // 1
   }
   </script>
@@ -77,11 +83,11 @@ A utility for waiting for the next DOM update flush.
       async increment() {
         this.count++
 
-        // DOM not yet updated
+        // 아직 DOM 업데이트되지 않음.
         console.log(document.getElementById('counter').textContent) // 0
 
         await nextTick()
-        // DOM is now updated
+        // 이제 DOM 업데이트됨.
         console.log(document.getElementById('counter').textContent) // 1
       }
     }
@@ -99,7 +105,7 @@ A utility for waiting for the next DOM update flush.
 
 ## defineComponent()
 
-A type helper for defining a Vue component with type inference.
+타입 추론으로 Vue 컴포넌트를 정의하기 위한 타입 핼퍼입니다.
 
 - **타입**:
 
@@ -109,15 +115,17 @@ A type helper for defining a Vue component with type inference.
   ): ComponentConstructor
   ```
 
-  > Type is simplified for readability.
+  > 타입은 가독성을 위해 단순화되었습니다.
 
 - **세부 사항**:
 
-  The first argument expects a component options object. The return value will be the same options object, since the function is essentially a runtime no-op for type inference purposes only.
+  첫 번째 인자로 컴포넌트 옵션 객체가 필요합니다.
+  이 함수는 본질적으로 타입 추론 목적이므로, 동일한 옵션 객체를 반환하며, 런타임에 작동하지 않습니다.
 
-  Note that the return type is a bit special: it will be a constructor type whose instance type is the inferred component instance type based on the options. This is used for type inference when the returned type is used as a tag in TSX.
+  반환 타입은 약간 특별한데, 옵션을 기반으로 추론된 컴포넌트 인스턴스 타입인 생성자 타입이 됩니다.
+  이것은 반환된 타입이 TSX에서 태그로 사용될 때 타입 추론에 사용됩니다.
 
-  You can extract the instance type of a component (equivalent to the type of `this` in its options) from the return type of `defineComponent()` like this:
+  다음과 같이 `defineComponent()`의 반환 타입에서 컴포넌트의 인스턴스 타입(해당 옵션의 `this` 타입과 동일)을 추출할 수 있습니다:
 
   ```ts
   const Foo = defineComponent(/* ... */)
@@ -125,23 +133,12 @@ A type helper for defining a Vue component with type inference.
   type FooInstance = InstanceType<typeof Foo>
   ```
 
-  ### Note on webpack Treeshaking
-
-  Because `defineComponent()` is a function call, it could look like that it would produce side-effects to some build tools, e.g. webpack. This will prevent the component from being tree-shaken even when the component is never used.
-
-  To tell webpack that this function call is safe to be tree-shaken, you can add a `/*#__PURE__*/` comment notation before the function call:
-
-  ```js
-  export default /*#__PURE__*/ defineComponent(/* ... */)
-  ```
-
-  Note this is not necessary if you are using Vite, because Rollup (the underlying production bundler used by Vite) is smart enough to determine that `defineComponent()` is in fact side-effect-free without the need for manual annotations.
-
-- **참고**: [가이드 - Using Vue with TypeScript](/guide/typescript/overview.html#general-usage-notes)
+- **참고**: [가이드 - Vue에서 타입스크립트 사용하기](/guide/typescript/overview.html#general-usage-notes)
 
 ## defineAsyncComponent()
 
-Define an async component which is lazy loaded only when it is rendered. The argument can either be a loader function, or an options object for more advanced control of the loading behavior.
+렌더링될 때 지연 로드되는 비동기 컴포넌트를 정의합니다.
+인자는 로더 함수이거나 로드 동작의 고급 제어를 위한 옵션 객체일 수 있습니다.
 
 - **타입**:
 
@@ -168,11 +165,12 @@ Define an async component which is lazy loaded only when it is rendered. The arg
   }
   ```
 
-- **참고**: [가이드 - Async Components](/guide/components/async.html)
+- **참고**: [가이드 - 비동기 컴포넌트](/guide/components/async.html)
 
 ## defineCustomElement()
 
-This method accepts the same argument as [`defineComponent`](#definecomponent), but instead returns a native [Custom Element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) class constructor.
+이 메서드는 [`defineComponent`](#definecomponent)와 동일한 인자를 사용하지만,
+네이티브 [커스텀 엘리먼트](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) 클래스 생성자를 반환합니다.
 
 - **타입**:
 
@@ -186,13 +184,14 @@ This method accepts the same argument as [`defineComponent`](#definecomponent), 
   }
   ```
 
-  > Type is simplified for readability.
+  > 타입은 가독성을 위해 단순화되었습니다.
 
 - **세부 사항**:
 
-  In addition to normal component options, `defineCustomElement()` also supports a special option `styles`, which should be an array of inlined CSS strings, for providing CSS that should be injected into the element's shadow root.
+  `defineCustomElement()`는 일반 컴포넌트 옵션 외에도 추가로 엘리먼트의 [섀도우 루트](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot)에 삽입되어야 하는 CSS를 제공하기 위해,
+  인라인 CSS 문자열을 배열로 감싼 특수 옵션 `styles`도 지원합니다.
 
-  The return value is a custom element constructor that can be registered using [`customElements.define()`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define).
+  반환 값은 [`customElements.define()`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define)을 사용하여 등록할 수 있는 커스텀 엘리먼트 생성자입니다.
 
 - **예제**:
 
@@ -200,15 +199,15 @@ This method accepts the same argument as [`defineComponent`](#definecomponent), 
   import { defineCustomElement } from 'vue'
 
   const MyVueElement = defineCustomElement({
-    /* component options */
+    /* 컴포넌트 옵션 */
   })
 
-  // Register the custom element.
+  // 커스텀 엘리먼트를 등록함
   customElements.define('my-vue-element', MyVueElement)
   ```
 
 - **참고**:
 
-  - [가이드 - Building Custom Elements with Vue](/guide/extras/web-components.html#building-custom-elements-with-vue)
+  - [가이드 - Vue로 커스텀 엘리먼트 만들기](/guide/extras/web-components.html#building-custom-elements-with-vue)
 
-  - Also note that `defineCustomElement()` requires [special config](/guide/extras/web-components.html#sfc-as-custom-element) when used with Single-File Components.
+  - `defineCustomElement()`는 싱글 파일 컴포넌트와 함께 사용할 때, [특별한 설정](/guide/extras/web-components.html#sfc-as-custom-element)이 필요합니다.
