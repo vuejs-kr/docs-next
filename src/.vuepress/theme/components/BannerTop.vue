@@ -1,18 +1,13 @@
 <template>
-  <a id="vs" href="https://vueschool.io/the-vuejs-master-class/?friend=vuejs#plans" target="_blank" rel="noreferrer">
-    <div class="vs-iso">
-      <img src="/images/vueschool/vs-iso.svg" alt="Vue School logo">
-    </div>
-    <div class="vs-logo">
-      <img src="/images/vueschool/vs-logo.svg" alt="Vue School logo">
-    </div>
+  <a id="vs" href="https://v3-docs.vuejs-korea.org" target="_blank" rel="noreferrer">
+
     <div class="vs-core">
       <div class="vs-slogan">
         <div class="vs-slogan-up">
-          VUE SCHOOL에서 VUE를 학습하세요
+          새로운 Vue 3 문서가 번역중입니다.
         </div>
         <div class="vs-slogan-down">
-          오늘 등록하고 <strong>20% 할인</strong> 혜택을 받으세요
+          최신 문서 번역을 읽고, 번역에 참여하실수 있습니다.
         </div>
       </div>
       <div class="vs-button">
