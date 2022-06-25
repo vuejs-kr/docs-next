@@ -332,7 +332,7 @@ watchEffect(async () => {
 
 ## 콜백 실행 타이밍 {#callback-flush-timing}
 
-반응형 상태를 변경하면 Vue 컴포넌트 업데이트와 사용자가 만든 감시자 콜백이 모두 실행될 수 있습니다.
+반응형 상태를 변경하면 Vue 컴포넌트 업데이트와 사용자가 만든 감시자 콜백이 모두 실행됩니다.
 
 기본적으로 개발자가 생성한 감시자 콜백은 Vue 컴포넌트가 **업데이트되기 전**에 실행됩니다.
 따라서 감시자 콜백 내에서 DOM에 접근하면 DOM이 Vue에 의해 업데이트되기 전의 상태입니다.
@@ -375,6 +375,62 @@ import { watchPostEffect } from 'vue'
 watchPostEffect(() => {
   /* Vue가 업데이트 된 후 실행됩니다 */
 })
+```
+
+</div>
+
+기본적으로 `flush: 'pre'|'post'` 옵션은 콜백을 버퍼링하여,
+동일한 "틱(tick)"에서 여러 번 상태 변경이 되더라도,
+마지막에 한 번만 호출됩니다.
+
+동일한 틱 내에 여러 번 상태 변경 시 마다 동기적으로 콜백을 호출해야 하는 경우,
+`flush: 'sync'` 옵션을 사용해야 합니다.
+단, 일반적으로 이러한 동작은 비효율적이므로 사용하려는 경우,
+정말 필요한지 다시 한번 고민해봐야 합니다.
+
+<div class="options-api">
+
+```js
+export default {
+  data: () => ({ count: 0 }),
+  watch: {
+    count: {
+      handler(val, preVal) {
+        console.log('변경이 감지됨!', val, preVal)
+      },
+      flush: 'sync'
+    }
+  },
+  methods: {
+    increment() {
+      this.count++
+      // 이어서 callback이 실행됨
+      this.count++
+      // 역시 callback이 실행됨
+      this.count++
+      // 또 callback이 실행됨
+    }
+  }
+}
+```
+
+</div>
+
+<div class="composition-api">
+
+```js
+const count = ref(0)
+const callback = (val, preVal) => console.log('변경이 감지됨!', val, preVal)
+const options = { flush: 'sync' }
+
+watch(count, callback, options)
+
+count.value++
+// 이어서 callback이 실행됨
+count.value++
+// 역시 callback이 실행됨
+count.value++
+// 또 callback이 실행됨
 ```
 
 </div>
