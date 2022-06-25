@@ -272,7 +272,7 @@ export default {
 
 ### 깊은 반응형 {#deep-reactivity}
 
-Vue는 기본적으로 반응형 상태를 깊이 있게 추적하므로, 중첩된 객체나 배열을 변경할 때에도 변경 사항이 감지됩니다:
+Vue는 기본적으로 반응형 상태를 내부 깊숙이 추적하므로, 중첩된 객체나 배열을 변경할 때에도 변경 사항이 감지됩니다:
 
 <div class="options-api">
 
@@ -348,7 +348,7 @@ console.log(reactive(proxy) === proxy) // true
 ```
 
 이 규칙은 중첩된 객체에도 적용됩니다.
-깊은 반응형으로 인해 반응형 객체 내부의 중첩 객체도 프록시입니다:
+내부 깊숙이까지 반응형이므로 반응형 객체 내부의 중첩된 객체도 프록시입니다:
 
 ```js
 const proxy = reactive({})
@@ -452,9 +452,9 @@ const { foo, bar } = obj
 즉, `ref()`를 사용하면 모든 값에 대한 "참조"를 만들어 반응성을 잃지 않고 전달할 수 있습니다.
 이 기능은 [컴포저블 함수](/guide/reusability/composables.html)로 로직을 추출할 때 자주 사용되기 때문에 상당히 중요합니다.
 
-### 템플릿에서 ref 래핑 해제 \*\* {#ref-unwrapping-in-templates}
+### 템플릿에서 ref 언래핑 \*\* {#ref-unwrapping-in-templates}
 
-최상위 속성의 ref를 템플릿에서 접근하면 자동으로 "래핑 해제"되므로 `.value`를 사용할 필요가 없습니다.
+최상위 속성의 ref를 템플릿에서 접근하면 자동으로 "언래핑"되므로 `.value`를 사용할 필요가 없습니다.
 아래는 `ref()`를 사용한 카운터 예제입니다:
 
 ```vue{13}
@@ -505,7 +505,7 @@ const { foo } = object
 
 이제 렌더링 결과는 `2`가 됩니다.
 
-한 가지 주목해야 할 점은 ref가 <code v-pre>{{ }}</code> 또는 `v-text=" "`와 같은 텍스트 보간의 최종 평가 값인 경우에도 래핑 해제되므로 다음은 `1`이 랜더링 됩니다:
+한 가지 주목해야 할 점은 ref가 <code v-pre>{{ }}</code> 또는 `v-text=" "`와 같은 텍스트 보간의 최종 평가 값인 경우에도 언래핑되므로 다음은 `1`이 랜더링 됩니다:
 
 ```vue-html
 {{ object.foo }}
@@ -513,9 +513,9 @@ const { foo } = object
 
 이것은 텍스트 보간의 편의 기능일 뿐이며 <code v-pre>{{ object.foo.value }}</code>와 동일합니다.
 
-### 반응형 객체에서 ref 래핑 해제 \*\* {#ref-unwrapping-in-reactive-objects}
+### 반응형 객체에서 ref 언래핑 \*\* {#ref-unwrapping-in-reactive-objects}
 
-`ref`가 반응형 객체의 속성으로 접근하거나 변경되면 자동으로 래핑 해제되어 일반 속성처럼 작동합니다:
+`ref`가 반응형 객체의 속성으로 접근하거나 변경되면 자동으로 언래핑되어 일반 속성처럼 작동합니다:
 
 ```js
 const count = ref(0)
@@ -540,12 +540,12 @@ console.log(state.count) // 2
 console.log(count.value) // 1
 ```
 
-ref의 래핑 해제는 깊은 반응형 객체 내부에 중첩된 경우에만 발생합니다.
+ref의 언래핑은 깊은 반응형 객체 내부에 중첩된 경우에만 발생합니다.
 [얕은 반응형 객체](/api/reactivity-advanced.html#shallowreactive)의 속성으로 접근하는 경우에는 적용되지 않습니다.
 
-#### 배열 및 컬렉션에서 ref 래핑 해제 {#ref-unwrapping-in-arrays-and-collections}
+#### 배열 및 컬렉션에서 ref 언래핑 {#ref-unwrapping-in-arrays-and-collections}
 
-반응형 객체와 달리 ref를 반응형 배열의 요소로서 접근하거나 `Map`과 같은 기본 컬렉션 유형에서 접근할 때 래핑 해제가 실행되지 않습니다:
+반응형 객체와 달리 ref를 반응형 배열의 요소로서 접근하거나 `Map`과 같은 기본 컬렉션 유형에서 접근할 때 언래핑이 실행되지 않습니다:
 
 ```js
 const books = reactive([ref('Vue 3 Guide')])
