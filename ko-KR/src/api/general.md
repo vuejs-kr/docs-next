@@ -20,8 +20,6 @@ Vue의 현재 버전(문자열)을 반환합니다.
 
 ## nextTick()
 
-A utility for waiting for the next DOM update flush.
-
 다음 DOM 업데이트 발생을 기다리는 유틸리티입니다.
 
 - **타입**:
