@@ -1,13 +1,8 @@
-:::warning 현재 이 문서는 번역 작업이 진행중입니다
-:::
-
-
-
-# Reactivity API: Advanced
+# 반응형 API: 고급
 
 ## shallowRef()
 
-Shallow version of [`ref()`](./reactivity-core.html#ref).
+[`ref()`](./reactivity-core.html#ref)의 얕은 버전입니다.
 
 - **타입**:
 
@@ -21,29 +16,31 @@ Shallow version of [`ref()`](./reactivity-core.html#ref).
 
 - **세부 사항**:
 
-  Unlike `ref()`, the inner value of a shallow ref is stored and exposed as-is, and will not be made deeply reactive. Only the `.value` access is reactive.
+  `ref()`와 달리 `shallowRef()`의 내부 값은 있는 그대로 저장되고 노출되며 내부 깊숙이까지 반응형으로 동작하지는 않습니다.
+  `.value` 접근만 반응형입니다.
 
-  `shallowRef()` is typically used for performance optimizations of large data structures, or integration with external state management systems.
+  `shallowRef`는 일반적으로 대규모 데이터 구조의 성능 최적화 또는 외부 상태 관리 시스템과의 통합에 사용됩니다.
 
 - **예제**:
 
   ```js
   const state = shallowRef({ count: 1 })
 
-  // does NOT trigger change
+  // change(변경)을 트리거하지 않음
   state.value.count = 2
 
-  // does trigger change
+  // change를 트리거 함
   state.value = { count: 2 }
   ```
 
 - **참고**:
-  - [가이드 - Reduce Reactivity Overhead for Large Immutable Structures](/guide/best-practices/performance.html#reduce-reactivity-overhead-for-large-immutable-structures)
-  - [가이드 - Integration with External State Systems](/guide/extras/reactivity-in-depth.html#integration-with-external-state-systems)
+  - [가이드 - 큰 불변 구조에 대한 반응형 오버헤드 감소](/guide/best-practices/performance.html#reduce-reactivity-overhead-for-large-immutable-structures)
+  - [가이드 - 외부 상태 시스템과의 통합](/guide/extras/reactivity-in-depth.html#integration-with-external-state-systems)
 
 ## triggerRef()
 
-Force trigger effects that depends on a [shallow ref](#shallowref). This is typically used after making deep mutations to the inner value of a shallow ref.
+[`shallowRef()`](#shallowref)의 강제 트리거 이펙트.
+이것은 일반적으로 `shallowRef` 내부 깊숙한 곳의 값을 변경 후, 관련 이펙트를 강제로 트리거 하기위해 사용합니다.
 
 - **타입**:
 
@@ -55,24 +52,24 @@ Force trigger effects that depends on a [shallow ref](#shallowref). This is typi
 
   ```js
   const shallow = shallowRef({
-    greet: 'Hello, world'
+    greet: '안녕, Vue!'
   })
 
-  // Logs "Hello, world" once for the first run-through
+  // 첫 실행 시 로그: "안녕, Vue!"
   watchEffect(() => {
     console.log(shallow.value.greet)
   })
 
-  // This won't trigger the effect because the ref is shallow
-  shallow.value.greet = 'Hello, universe'
+  // ref가 얕기 때문에 이펙트가 트리거되지 않음
+  shallow.value.greet = '멋진 Vue!'
 
-  // Logs "Hello, universe"
-  triggerRef(shallow)
+  // 강제로 shallow와 관련된 이펙트 트리거
+  triggerRef(shallow) // 로그: "멋진 Vue!"
   ```
 
 ## customRef()
 
-Creates a customized ref with explicit control over its dependency tracking and updates triggering.
+종속성 추적 및 업데이트 트리거를 명시적으로 제어하기 위한 커스텀 ref를 만듭니다.
 
 - **타입**:
 
@@ -90,13 +87,17 @@ Creates a customized ref with explicit control over its dependency tracking and 
 
 - **세부 사항**:
 
-  `customRef()` expects a factory function, which receives `track` and `trigger` functions as arguments and should return an object with `get` and `set` methods.
+  `customRef()`는 인자로 펙토리 함수를 받습니다.
+  이 함수는 `track`와 `trigger`를 인자로 수신하며,
+  `get`과 `set` 메소드가 포함된 객체를 반환해야 합니다.
 
-  In general, `track()` should be called inside `get()`, and `trigger()` should be called inside `set()`. However, you have full control over when they should be called, or whether they should be called at all.
+  일반적으로 `track()`은 `get()` 내부에서 호출되어야 하고,
+  `trigger()`는 `set()` 내부에서 호출되어야 하지만,
+  호출 조건 및 타이밍은 완전히 커스텀 제어 가능합니다.
 
 - **예제**:
 
-  Creating a debounced ref that only updates the value after a certain timeout after the latest set call:
+  최신 set 호출 후, 특정 시간 초과 후에만 값을 업데이트하는 디바운스된 ref 생성:
 
   ```js
   import { customRef } from 'vue'
@@ -121,7 +122,7 @@ Creates a customized ref with explicit control over its dependency tracking and 
   }
   ```
 
-  Usage in component:
+  컴포넌트에서 사용법
 
   ```vue
   <script setup>
@@ -134,11 +135,11 @@ Creates a customized ref with explicit control over its dependency tracking and 
   </template>
   ```
 
-  [Try it in the Playground](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHVzZURlYm91bmNlZFJlZiB9IGZyb20gJy4vZGVib3VuY2VkUmVmLmpzJ1xuY29uc3QgdGV4dCA9IHVzZURlYm91bmNlZFJlZignaGVsbG8nLCAxMDAwKVxuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPHA+XG4gICAgVGhpcyB0ZXh0IG9ubHkgdXBkYXRlcyAxIHNlY29uZCBhZnRlciB5b3UndmUgc3RvcHBlZCB0eXBpbmc6XG4gIDwvcD5cbiAgPHA+e3sgdGV4dCB9fTwvcD5cbiAgPGlucHV0IHYtbW9kZWw9XCJ0ZXh0XCIgLz5cbjwvdGVtcGxhdGU+IiwiaW1wb3J0LW1hcC5qc29uIjoie1xuICBcImltcG9ydHNcIjoge1xuICAgIFwidnVlXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3Z1ZS5ydW50aW1lLmVzbS1icm93c2VyLmpzXCJcbiAgfVxufSIsImRlYm91bmNlZFJlZi5qcyI6ImltcG9ydCB7IGN1c3RvbVJlZiB9IGZyb20gJ3Z1ZSdcblxuZXhwb3J0IGZ1bmN0aW9uIHVzZURlYm91bmNlZFJlZih2YWx1ZSwgZGVsYXkgPSAyMDApIHtcbiAgbGV0IHRpbWVvdXRcbiAgcmV0dXJuIGN1c3RvbVJlZigodHJhY2ssIHRyaWdnZXIpID0+IHtcbiAgICByZXR1cm4ge1xuICAgICAgZ2V0KCkge1xuICAgICAgICB0cmFjaygpXG4gICAgICAgIHJldHVybiB2YWx1ZVxuICAgICAgfSxcbiAgICAgIHNldChuZXdWYWx1ZSkge1xuICAgICAgICBjbGVhclRpbWVvdXQodGltZW91dClcbiAgICAgICAgdGltZW91dCA9IHNldFRpbWVvdXQoKCkgPT4ge1xuICAgICAgICAgIHZhbHVlID0gbmV3VmFsdWVcbiAgICAgICAgICB0cmlnZ2VyKClcbiAgICAgICAgfSwgZGVsYXkpXG4gICAgICB9XG4gICAgfVxuICB9KVxufSJ9)
+  [온라인 연습장으로 실행하기](https://sfc.vuejs.org/#eNp9Us1q20AQfpXpXqyALTk9GjtQ6BOU0tNeFHnsKrV2xe7KSRGCHmIwNoEcGlIoKTmklNx6CKV9Jsnv0Fn9RXEge5Hmm5nvm7+UvYljd5kgG7GxDlQYG9BokviIizCKpTKQQqLxLR7LRAQ4fYczyGCmZAQ915t2YPdE97gIpNAGDJ4ZmOwnOr3iap2vrl71+nA4HA4PuBh7lSjJkWEwihe+QbIAxrYGoFfcPMBudVFs7nabv/nmK+Tbf8X21sKhiBNTXF9C8WOV3/4sbs4hv18Xf74Vv77AYfGwht3389J/vcovflMKUUB+eZ9v1/n2blTqeJUQ6aVpVXmWtWCpAMtBJKe4mHBm/ZyBR96x19bL+qya1iDyYxqEFDTP1BLw2qE5G0GJWIwGbm3OPhoT65Hn6Vlgt3CiXanmHv25KhEmjNBFHQ2OlTzVqIiYs36HwyNwiWqgUExRoXqJcy/0Ga+lzbjIqJW9rVIr7SkEiTYy6h4BKdDaucCzMmRGiSaU4tnul/4iwT7QFP3PdBqvaf3VPBZI90KdysRYU9H1KfEo5DhG+cGnPhgVzueoDmBy1Ayyjq0tgDkap2atXpnq0J01QJ1RFtOgWT1SsJfvCDz9YL1PeIIF+up9VaRTF9thrRFqixiaMKrksdLqlbIU1Wh0fXV73WKzelwtRPtpPxmhGcv+AwLzVi0=)
 
 ## shallowReactive()
 
-Shallow version of [`reactive()`](./reactivity-core.html#reactive).
+[`reactive()`](./reactivity-core.html#reactive)의 얕은 버전입니다.
 
 - **타입**:
 
@@ -148,10 +149,16 @@ Shallow version of [`reactive()`](./reactivity-core.html#reactive).
 
 - **세부 사항**:
 
-  Unlike `reactive()`, there is no deep conversion: only root-level properties are reactive for a shallow reactive object. Property values are stored and exposed as-is - this also means properties with ref values will **not** be automatically unwrapped.
+  `reactive()`와 달리 내부 깊숙한 곳의 변경이 반응형으로 작동하지 않고,
+  얕게 루트 수준의 속성 변경에 대해서만 반응형인 객체입니다.
+  속성 값은 있는 그대로 저장되고 노출되므로,
+  속성이 ref 값인 경우, 자동으로 **언래핑되지 않습니다**.
 
-  :::warning Use with Caution
-  Shallow data structures should only be used for root level state in a component. Avoid nesting it inside a deep reactive object as it creates a tree with inconsistent reactivity behavior which can be difficult to understand and debug.
+  :::warning 주의해서 사용
+  얕은 데이터 구조는 컴포넌트에서 루트 수준 상태로만 사용해야 합니다.
+  내부 깊숙이까지 반응형으로 동작하는 객체 내부에 중첩하는 경우,
+  반응형 동작에 일관성이 없는 트리가 생성되어 이해와 디버그가 어려울 수 있으니,
+  중첩하여 사용하면 안됩니다.
   :::
 
 - **예제**:
@@ -164,19 +171,19 @@ Shallow version of [`reactive()`](./reactivity-core.html#reactive).
     }
   })
 
-  // mutating state's own properties is reactive
+  // 상태의 자체 속성 변경은 방응형으로 동작함
   state.foo++
 
-  // ...but does not convert nested objects
+  // ...하지만 중첩된 객체는 그렇지 않음
   isReactive(state.nested) // false
 
-  // NOT reactive
+  // 반응형이 아님
   state.nested.bar++
   ```
 
 ## shallowReadonly()
 
-Shallow version of [`readonly()`](./reactivity-core.html#readonly).
+[`readonly()`](./reactivity-core.html#readonly)의 얕은 버전입니다.
 
 - **타입**:
 
@@ -186,10 +193,16 @@ Shallow version of [`readonly()`](./reactivity-core.html#readonly).
 
 - **세부 사항**:
 
-  Unlike `readonly()`, there is no deep conversion: only root-level properties are made readonly. Property values are stored and exposed as-is - this also means properties with ref values will **not** be automatically unwrapped.
+  `readonly()`와 달리 내부 깊숙이까지 변환하지 않고,
+  루트 수준 속성만 읽기 전용으로 만들어집니다.
+  속성 값은 있는 그대로 저장되고 노출되므로,
+  속성이 ref 값인 경우, 자동으로 **언래핑되지 않습니다**.
 
-  :::warning Use with Caution
-  Shallow data structures should only be used for root level state in a component. Avoid nesting it inside a deep reactive object as it creates a tree with inconsistent reactivity behavior which can be difficult to understand and debug.
+  :::warning 주의해서 사용
+  얕은 데이터 구조는 컴포넌트에서 루트 수준 상태로만 사용해야 합니다.
+  내부 깊숙이까지 반응형으로 동작하는 객체 내부에 중첩하는 경우,
+  반응형 동작에 일관성이 없는 트리가 생성되어 이해와 디버그가 어려울 수 있으니,
+  중첩하여 사용하면 안됩니다.
   :::
 
 - **예제**:
@@ -202,19 +215,19 @@ Shallow version of [`readonly()`](./reactivity-core.html#readonly).
     }
   })
 
-  // mutating state's own properties will fail
+  // 상태의 자체 속성을 변경하는 것은 실패 됨
   state.foo++
 
-  // ...but works on nested objects
+  // ...하지만 중첩된 객체는 그렇지 않음
   isReadonly(state.nested) // false
 
-  // works
+  // 변경 작업이 됨
   state.nested.bar++
   ```
 
 ## toRaw()
 
-Returns the raw, original object of a Vue-created proxy.
+Vue에서 만든 프락시의 원시 원본 객체를 반환합니다.
 
 - **타입**:
 
@@ -224,9 +237,11 @@ Returns the raw, original object of a Vue-created proxy.
 
 - **세부 사항**:
 
-  `toRaw()` can return the original object from proxies created by [`reactive()`](./reactivity-core.html#reactive), [`readonly()`](./reactivity-core.html#readonly), [`shallowReactive()`](#shallowreactive) or [`shallowReadonly()`](#shallowreadonly).
+  `toRaw()`는 [`reactive()`](./reactivity-core.html#reactive), [`readonly()`](./reactivity-core.html#readonly), [`shallowReactive()`](#shallowreactive), [`shallowReadonly()`](#shallowreadonly)로 생성된 프락시에서 원본 객체를 반환합니다.
 
-  This is an escape hatch that can be used to temporarily read without incurring proxy access / tracking overhead or write without triggering changes. It is **not** recommended to hold a persistent reference to the original object. Use with caution.
+  이것은 일시적으로 프락시의 접근/추적 오버헤드를 발생시키는 읽기/쓰기와 관련된 트리거 없이 사용하기 위한 용도입니다.
+  원본 객체의 영구 참조를 유지하는 것은 **권장되지 않습니다**.
+  주의해서 사용해야 합니다.
 
 - **예제**:
 
@@ -239,7 +254,8 @@ Returns the raw, original object of a Vue-created proxy.
 
 ## markRaw()
 
-Marks an object so that it will never be converted to a proxy. Returns the object itself.
+객체가 프락시로 변환되지 않도록 마크(mark)합니다.
+객체 자체를 반환합니다.
 
 - **타입**:
 
@@ -253,19 +269,29 @@ Marks an object so that it will never be converted to a proxy. Returns the objec
   const foo = markRaw({})
   console.log(isReactive(reactive(foo))) // false
 
-  // also works when nested inside other reactive objects
+  // 다른 반응형 객체 내부에 중첩될 때도 작동함
   const bar = reactive({ foo })
   console.log(isReactive(bar.foo)) // false
   ```
 
-  :::warning Use with Caution
-  `markRaw()` and shallow APIs such as `shallowReactive()` allow you to selectively opt-out of the default deep reactive/readonly conversion and embed raw, non-proxied objects in your state graph. They can be used for various reasons:
+  :::warning 주의해서 사용
+  `markRaw()`나 `shallowReactive()` 같이 얕은 API를 사용하면,
+  선택적으로 기본적인 내부 깊숙이까지의 "반응형"/"읽기 전용" 변환을 옵트아웃(opt-out)하여,
+  상태 그래프(선언/정의/사용하는 곳)에 프락시 되지 않은 원시 객체를 포함할 수 있습니다.
+  이것들은 다양한 이유로 사용될 수 있습니다:
 
-  - Some values simply should not be made reactive, for example a complex 3rd party class instance, or a Vue component object.
+  - 일부 값들은 함부로 반응형으로 만들면 안되는데,
+    그 예로 복잡한 타사의 클래스 인스턴스나 Vue 컴포넌트 객체가 있습니다.
 
-  - Skipping proxy conversion can provide performance improvements when rendering large lists with immutable data sources.
+  - 프락시 변경을 건너뛰면,
+    변경해서는 안되는 데이터 소스를 포함하고 있는 커다란 리스트를 렌더링할 때,
+    성능이 향상될 수 있습니다.
 
-  They are considered advanced because the raw opt-out is only at the root level, so if you set a nested, non-marked raw object into a reactive object and then access it again, you get the proxied version back. This can lead to **identity hazards** - i.e. performing an operation that relies on object identity but using both the raw and the proxied version of the same object:
+  원시(raw) 옵트아웃은 루트 레벨에만 있기 때문에 고급으로 간주되므로,
+  마크되지 않은 중첩된 원시 객체를 반응형 객체로 설정한 다음 다시 접근을 시도하면,
+  프락시 버전의 객체로 접근하게 됩니다.
+  이것은 동일한 객체에 참조했다고 예상했으나,
+  원시 버전과 프락시 버전을 혼용하여 사용하는 "**잘못된 ID 참조**(identity hazards)"로 이어질 수 있습니다.
 
   ```js
   const foo = markRaw({
@@ -273,20 +299,24 @@ Marks an object so that it will never be converted to a proxy. Returns the objec
   })
 
   const bar = reactive({
-    // although `foo` is marked as raw, foo.nested is not.
+    // `foo`는 원시 마크가 있지만, `foo.nested`는 그렇지 않음
     nested: foo.nested
   })
 
   console.log(foo.nested === bar.nested) // false
   ```
 
-  Identity hazards are in general rare. However, to properly utilize these APIs while safely avoiding identity hazards requires a solid understanding of how the reactivity system works.
-
+  잘못된 ID 참조 문제는 일반적으로 드뭅니다.
+  그러나 이 문제로부터 안전하게 이러한 API를 활용하려면,
+  반응형 시스템이 어떻게 작동하는지에 확실한 이해가 필요합니다.
   :::
 
 ## effectScope()
 
-Creates an effect scope object which can capture the reactive effects (i.e. computed and watchers) created within it so that these effects can be disposed together. For detailed use cases of this API, please consult its corresponding [RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0041-reactivity-effect-scope.md).
+범위 내 반응형 이펙트(계산된 속성, 감시자)들을 캡처하고,
+일괄적으로 처리하는 effectScope 객체를 반환합니다.
+
+이 API의 자세한 사용 사례 참고: [RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0041-reactivity-effect-scope.md)
 
 - **타입**:
 
@@ -312,13 +342,13 @@ Creates an effect scope object which can capture the reactive effects (i.e. comp
     watchEffect(() => console.log('Count: ', doubled.value))
   })
 
-  // to dispose all effects in the scope
+  // 범위 내 여러 이펙트 중지(폐기 됨)
   scope.stop()
   ```
 
 ## getCurrentScope()
 
-Returns the current active [effect scope](#effectscope) if there is one.
+현재 활성 [effectScope](#effectscope)가 있는 경우, 이를 반환합니다.
 
 - **타입**:
 
@@ -328,12 +358,28 @@ Returns the current active [effect scope](#effectscope) if there is one.
 
 ## onScopeDispose()
 
-Registers a dispose callback on the current active [effect scope](#effectscope). The callback will be invoked when the associated effect scope is stopped.
+현재 활성 [effectScope](#effectscope)에 중지(폐기) 콜백을 등록합니다.
+연결된 effectScope이 중지되면 콜백이 호출됩니다.
 
-This method can be used as a non-component-coupled replacement of `onUnmounted` in reusable composition functions, since each Vue component's `setup()` function is also invoked in an effect scope.
+각 Vue 컴포넌트의 `setup()` 함수도 effectScope에서 호출되기 때문에,
+비-컴포넌트-결합(non-component-coupled)에서 재사용 가능한 컴포지션 함수인 `onUnmounted`의 대체로 사용할 수 있습니다.
 
 - **타입**:
 
   ```ts
   function onScopeDispose(fn: () => void): void
+  ```
+
+- **예제**:
+
+  ```js
+  const scope = effectScope()
+
+  scope.run(() => {
+    onScopeDispose(() => {
+      console.log('effectScope가 중지됨!')
+    })
+  })
+
+  scope.stop() // 로그: 'effectScope가 중지됨!'
   ```
