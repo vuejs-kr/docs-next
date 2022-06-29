@@ -6,7 +6,6 @@
 보다 간결하고 인체공학적인 문법을 위해 [`<script setup>`](/api/sfc-script-setup.html) 사용을 권장합니다.
 :::
 
-
 `setup()` 훅은 다음과 같은 경우, 컴포넌트에서 컴포지션 API 사용을 위한 진입점 역할을 합니다:
 
 1. 빌드 과정 없이 컴포지션 API 사용.
@@ -149,8 +148,6 @@ export default {
 ```
 
 ## 렌더 함수와 함께 사용하기 {#usage-with-render-functions}
-
-`setup` can also return a [render function](/guide/extras/render-function.html) which can directly make use of the reactive state declared in the same scope:
 
 `setup`은 범위 내 선언된 반응형 상태에 직접 접근할 수 있는 [렌더 함수](/guide/extras/render-function.html)를 반환할 수도 있습니다:
 
