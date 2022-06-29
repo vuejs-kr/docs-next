@@ -234,8 +234,6 @@ export default {
 
 ### 객체로 여러 속성 바인딩하기 {#binding-multiple-properties-using-an-object}
 
-If you want to pass all the properties of an object as props, you can use [`v-bind` without an argument](/guide/essentials/template-syntax.html#dynamically-binding-multiple-attributes) (`v-bind` instead of `:prop-name`). For example, given a `post` object:
-
 객체의 모든 속성을 props로 전달하려면 [인자 없이 `v-bind`](/guide/essentials/template-syntax.html#dynamically-binding-multiple-attributes)를 사용할 수 있습니다.
 예를 들어, `post` 객체가 주어지면:
 
@@ -419,7 +417,7 @@ defineProps({
     type: Object,
     // 객체 또는 배열 기본값은 팩토리 함수에서 반환되어야 합니다.
     // 함수는 컴포넌트에서 받은 rawProps를 인수로 받습니다.
-    // (rawProps를: 부모 컴포넌트에게 받은 props 전체 객체)
+    // (rawProps: 부모 컴포넌트에게 받은 props 전체 객체)
     default(rawProps) {
       return { message: '안녕!' }
     }
@@ -474,7 +472,7 @@ export default {
       type: Object,
       // 객체 또는 배열 기본값은 팩토리 함수에서 반환되어야 합니다.
       // 함수는 컴포넌트에서 받은 rawProps를 인수로 받습니다.
-      // (rawProps를: 부모 컴포넌트에게 받은 props 전체 객체)
+      // (rawProps: 부모 컴포넌트에게 받은 props 전체 객체)
       default(rawProps) {
         return { message: '안녕!' }
       }
