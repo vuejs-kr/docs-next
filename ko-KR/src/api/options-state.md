@@ -1,4 +1,4 @@
-# 옵션: 상태
+# 옵션: 상태 {#options-state}
 
 ## data
 
