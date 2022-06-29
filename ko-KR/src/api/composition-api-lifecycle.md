@@ -1,4 +1,4 @@
-# 컴포지션 API: 수명주기 훅
+# 컴포지션 API: 수명주기 훅 {#composition-api-lifecycle-hooks}
 
 :::info 사용 참고 사항
 이 페이지에 나열된 모든 API는 컴포넌트의 `setup()` 단계에서 동기적으로 호출되어야 합니다.
