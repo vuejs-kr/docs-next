@@ -357,7 +357,7 @@ export const sidebar = {
           link: '/api/reactivity-advanced'
         },
         {
-          text: '생명주기 후크',
+          text: '수명주기 훅',
           link: '/api/composition-api-lifecycle'
         },
         {
