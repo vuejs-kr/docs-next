@@ -89,9 +89,9 @@ export default {
 
 </div>
 
-## 수명 주기 도표 {#lifecycle-diagram}
+## 수명 주기 표 {#lifecycle-diagram}
 
-다음은 인스턴스 수명 주기에 대한 도표입니다.
+다음은 인스턴스 수명 주기에 대한 표입니다.
 지금 진행 중인 모든 것을 완전히 이해할 필요는 없지만, 더 많이 배우고 구축함에 따라 유용한 참고 자료가 될 것입니다.
 
 ![Component lifecycle diagram](./images/lifecycle.png)

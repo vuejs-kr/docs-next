@@ -372,7 +372,7 @@ export const sidebar = {
         { text: '옵션: 상태', link: '/api/options-state' },
         { text: '옵션: 렌더링', link: '/api/options-rendering' },
         {
-          text: '옵션: 생명주기',
+          text: '옵션: 수명주기',
           link: '/api/options-lifecycle'
         },
         {
