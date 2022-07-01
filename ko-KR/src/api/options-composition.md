@@ -248,12 +248,6 @@
 
   B 컴포넌트 확장에 A 컴포넌트를 사용하면, A 컴포넌트의 옵션을 상속받을 수 있습니다.
 
-  From an implementation perspective, `extends` is almost identical to `mixins`. The component specified by `extends` will be treated as though it were the first mixin.
-
-  However, `extends` and `mixins` express different intents. The `mixins` option is primarily used to compose chunks of functionality, whereas `extends` is primarily concerned with inheritance.
-
-  As with `mixins`, any options will be merged using the relevant merge strategy.
-
   구현의 관점에서 `extens`는 `mixins`와 거의 동일합니다.
   `extens`로 지정된 컴포넌트는 첫 번째 믹스인인 것처럼 처리됩니다.
 
