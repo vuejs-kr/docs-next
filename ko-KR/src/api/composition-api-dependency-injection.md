@@ -44,7 +44,7 @@
 
 ## inject()
 
-상위 컴포넌트 또는 `app.provide()`를 통해 앱에서 제공(Provide)한 값을 주입(Inject)합니다.
+상위 컴포넌트 또는 [`app.provide()`](/api/application.html#app-provide)를 통해 앱에서 제공(Provide)된 값을 주입(Inject)합니다.
 
 - **타입**:
 
@@ -55,7 +55,7 @@
   // 기본 값 정의 있음
   function inject<T>(key: InjectionKey<T> | string, defaultValue: T): T
 
-  // with factory
+  // 팩토리 함수
   function inject<T>(
     key: InjectionKey<T> | string,
     defaultValue: () => T,
