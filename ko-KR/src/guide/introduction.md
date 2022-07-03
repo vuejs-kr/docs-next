@@ -25,10 +25,10 @@ footer: false
 
 ## Vue는 무엇입니까? {#what-is-vue}
 
-Vue는 사용자 인터페이스를 구축하기 위한 JavaScript 프레임 워크입니다.
-표준 HTML, CSS 및 JavaScript를 기반으로 구축되며, 단순하든 복잡하든 사용자 인터페이스를 효율적으로 개발할 수 있도록 컴포넌트 기반 프로그래밍 모델을 제공합니다.
+Vue( **view** 와 마찬가지로 /vjuː/ 라고 발음합니다 )는 사용자 인터페이스를 구축하기 위한 자바스크립트 프레임워크입니다.
+표준 HTML, CSS 및 자바스크립트를 기반으로 구축되며, 단순한 것 부터 복잡한 것 까지 사용자 인터페이스를 효율적으로 개발 할수 있는 컴포넌트 기반 프로그래밍 모델을 제공합니다.
 
-다음은 최소한의 예입니다:
+아주 단순한 예제를 한번 볼까요:
 
 ```js
 import { createApp } from 'vue'
@@ -65,9 +65,9 @@ const count = ref(0)
 
 위의 예는 Vue의 두 가지 핵심 기능을 보여줍니다:
 
-- **서술적 랜더링**: Vue는 표준 HTML을 템플릿 문법으로 확장하여 JavaScript 상태를 기반으로 화면에 출력될 HTML을 작성할 수 있습니다.
+- **선언적 랜더링(Declarative Rendering)**: Vue는 표준 HTML을 템플릿 문법으로 확장하여 자바스크립트 상태(State)를 기반으로 화면에 출력될 HTML을 선언적(declaratively)으로 작성할 수 있습니다.
 
-- **반응형**: Vue는 JavaScript 상태 변경을 자동으로 추적하고 변경이 발생하면 DOM을 효율적으로 업데이트합니다.
+- **반응성(Reactivity)**: Vue는 자바스크립트 상태(State) 변경을 추적하고, 변경이 발생하면 DOM을 효율적으로 업데이트하는 것을 자동으로 수행합니다. 
 
 이미 Vue에 대해 궁금한 점이 있을 수 있으나 조급해하지 마세요.
 이후 문서에서 모든 세부 사항을 다 다룰 것입니다.
@@ -108,7 +108,7 @@ Vue는 프론트엔드 개발에 필요한 대부분의 공통 기능을 다루�
 
 ## 싱글 파일 컴포넌트 {#single-file-components}
 
-빌드 도구를 지원하는 대부분의 Vue 프로젝트에서는 HTML과 유사한 **싱글 파일 컴포넌트**(Single-File Component: **SFC**, `*.vue` 파일이라고도 함)라는 파일 형식을 사용하여 Vue 컴포넌트를 작성합니다.
+빌드 도구를 사용하는 대부분의 Vue 프로젝트에서는 HTML과 유사한 **싱글 파일 컴포넌트**(Single-File Component: **SFC**, `*.vue` 파일이라고도 함)라는 파일 형식을 사용하여 Vue 컴포넌트를 작성합니다.
 Vue SFC는 이름에서 알 수 있듯이 컴포넌트의 논리(JavaScript), 템플릿(HTML) 및 스타일(CSS)을 하나의 파일에 캡슐화합니다.
 이전에 보았던 예제는 다음과 같이 SFC 형식으로 작성할 수 있습니다:
 
@@ -144,7 +144,7 @@ Vue 컴포넌트는 **옵션(Options) API**와 **컴포지션(Composition) API**
 
 ### 옵션 API {#options-api}
 
-옵션 API를 사용하여 `data`, `methods` 및 `mounted`와 같은 옵션의 객체를 사용하여 컴포넌트의 로직를 정의합니다.
+옵션 API를 사용하여 옵션의  `data`, `methods` 및 `mounted` 같은 객체를 사용하여 컴포넌트의 로직를 정의합니다.
 옵션으로 정의된 속성은 컴포넌트 인스턴스를 가리키는 함수 내부의 `this`에 노출됩니다:
 
 ```vue
@@ -165,7 +165,7 @@ export default {
     }
   },
 
-  // 수명주기 훅(Lifecycle hooks)은 컴포넌트 수명주기의 여러 단계에서 호출됩니다.
+  // 생명주기 훅(Lifecycle hooks)은 컴포넌트 생명주기의 여러 단계에서 호출됩니다.
   // 이 함수는 컴포넌트가 마운트 된 후 호출됩니다.
   mounted() {
     console.log(`숫자 세기의 초기값은 ${ this.count } 입니다.`)
@@ -182,11 +182,11 @@ export default {
 
 ### 컴포지션 API {#composition-api}
 
-컴포지션 API를 사용하는 경우, 가져온(`import`) API 함수들을 사용하여 컴포넌트의 로직를 정의합니다.
+컴포지션 API를 사용하는 경우, `import`해서 가져온 API 함수들을 사용하여 컴포넌트의 로직를 정의합니다.
 SFC에서 컴포지션 API는 일반적으로 [`<script setup>`](/api/sfc-script-setup)과 함께 사용됩니다.
 `setup` 속성은 Vue가 더 적은 코드 문맥으로 컴포지션 API를 사용하고,
 컴파일 시 의도한대로 올바르게 동작할 수 있게 코드를 변환하도록 하는 힌트입니다.
-예를 들어 `<script setup>`에 선언된 `import`와 최상위 변수 및 함수는 템플릿에서 직접 사용할 수 있습니다.
+예를 들어 `<script setup>`에 `import` 되어 가져온 객체들과 선언된 최상위 변수 및 함수는 템플릿에서 직접 사용할 수 있습니다.
 
 아래 예제는 위 예제와 완전히 동일한 템플릿을 사용하는 동일한 컴포넌트 이지만,
 Composition API와 `<script setup>`을 사용했습니다:
@@ -203,7 +203,7 @@ function increment() {
   count.value++
 }
 
-// 수명 주기 훅
+// 생명 주기 훅
 onMounted(() => {
   console.log(`숫자 세기의 초기값은 ${ count.value } 입니다.`)
 })
