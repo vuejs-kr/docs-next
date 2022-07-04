@@ -14,7 +14,7 @@ const nav = [
       { text: '튜토리얼', link: '/tutorial/' },
       { text: '예제', link: '/examples/' },
       { text: '시작하기', link: '/guide/quick-start' },
-      { text: 'Style Guide', link: '/style-guide/' },
+      // { text: 'Style Guide', link: '/style-guide/' },
       {
         text: 'Vue 2 문서',
         link: 'https://kr.vuejs.org'
