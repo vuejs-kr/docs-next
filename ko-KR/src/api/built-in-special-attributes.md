@@ -1,22 +1,20 @@
-:::warning 현재 이 문서는 번역 작업이 진행중입니다
-:::
-
-
-# Built-in Special Attributes
+# 빌트인 특수 속성 {#built-in-special-attributes}
 
 ## key
 
-The `key` special attribute is primarily used as a hint for Vue's virtual DOM algorithm to identify vnodes when diffing the new list of nodes against the old list.
+특수 속성 `key`는 Vue의 가상 DOM 알고리즘이 이전 목록과 새 노드 목록을 비교할 때 vnode를 식별하는 힌트로 주로 사용됩니다.
 
 - **요구되는 값**: `number | string | symbol`
 
 - **세부 사항**:
 
-  Without keys, Vue uses an algorithm that minimizes element movement and tries to patch/reuse elements of the same type in-place as much as possible. With keys, it will reorder elements based on the order change of keys, and elements with keys that are no longer present will always be removed / destroyed.
+  키가 없으면 Vue는 엘리먼트 이동을 최소화하고 동일한 유형의 엘리먼트를 가능한 한 제자리에서 패치/재사용하는 알고리즘을 사용합니다.
+  키를 사용하면 키의 순서 변경에 따라 엘리먼트를 재정렬하고 더 이상 존재하지 않는 키가 있는 엘리먼트는 항상 제거/파기됩니다.
 
-  Children of the same common parent must have **unique keys**. Duplicate keys will cause render errors.
+  동일한 공통 부모의 자식들은 **고유 키**가 있어야 합니다.
+  키가 중복되면 렌더링 오류가 발생합니다.
 
-  The most common use case is combined with `v-for`:
+  `v-for`에서 가장 일반적으로 사용 됩니다:
 
   ```vue-html
   <ul>
@@ -24,12 +22,13 @@ The `key` special attribute is primarily used as a hint for Vue's virtual DOM al
   </ul>
   ```
 
-  It can also be used to force replacement of an element/component instead of reusing it. This can be useful when you want to:
+  또는 엘리먼트/컴포넌트를 재사용하는 대신 강제로 교체하는 데 사용할 수도 있습니다.
+  다음과 같은 경우에 유용할 수 있습니다:
 
-  - Properly trigger lifecycle hooks of a component
-  - Trigger transitions
+  - 컴포넌트의 수명 주기 훅을 올바르게 트리거함.
+  - 트렌지션 트리거
 
-  For example:
+  예제:
 
   ```vue-html
   <transition>
@@ -37,13 +36,13 @@ The `key` special attribute is primarily used as a hint for Vue's virtual DOM al
   </transition>
   ```
 
-  When `text` changes, the `<span>` will always be replaced instead of patched, so a transition will be triggered.
+  `text`가 변경되면 `<span>`이 패치 대신 항상 교체되므로 트렌지션이 트리거됩니다.
 
-- **참고**: [가이드 - List Rendering - Maintaining State with `key`](/guide/essentials/list.html#maintaining-state-with-key)
+- **참고**: [가이드 - 리스트 렌더링: `key`를 통한 상태유지](/guide/essentials/list.html#maintaining-state-with-key)
 
 ## ref
 
-Denotes a [template ref](/guide/essentials/template-refs.html).
+[템플릿 참조](/guide/essentials/template-refs.html)를 의미합니다.
 
 - **요구되는 값**: `string | Function`
 
@@ -53,12 +52,16 @@ Denotes a [template ref](/guide/essentials/template-refs.html).
 
   In Options API, the reference will be registered under the component's `this.$refs` object:
 
+  `ref`는 엘리먼트 또는 자식 컴포넌트를 참조하기 위해 사용됩니다.
+
+  옵션 API에서 참조는 컴포넌트의 `this.$refs` 객체 내에 등록됩니다.
+
   ```vue-html
-  <!-- stored as this.$refs.p -->
-  <p ref="p">hello</p>
+  <!-- 저장됨: this.$refs.p -->
+  <p ref="p">안녕!</p>
   ```
 
-  In Composition API, the reference will be stored in a ref with matching name:
+  컴포지션 API에서 참조는 이름이 일치하는 `ref`에 저장됩니다.
 
   ```vue
   <script setup>
@@ -68,35 +71,41 @@ Denotes a [template ref](/guide/essentials/template-refs.html).
   </script>
 
   <template>
-    <p ref="p">hello</p>
+    <p ref="p">안녕!</p>
   </template>
   ```
 
-  If used on a plain DOM element, the reference will be that element; if used on a child component, the reference will be the child component instance.
+  일반 DOM 엘리먼트에서 사용되는 경우, 참조는 해당 엘리먼트가 됩니다.
+  자식 컴포넌트에 사용되는 경우, 참조는 자식 컴포넌트 인스턴스가 됩니다.
 
-  Alternatively `ref` can accept a function value which provides full control over where to store the reference:
+  `ref`는 함수를 사용하여 참조 저장을 완전히 제어할 수 있습니다:
 
   ```vue-html
   <ChildComponent :ref="(el) => child = el" />
   ```
 
-  An important note about the ref registration timing: because the refs themselves are created as a result of the render function, you must wait until the component is mounted before accessing them.
+  참조 등록 타이밍에 대한 중요한 참고 사항:
+  참조는 렌더 함수의 결과로 생성되므로,
+  접근하기 전에 컴포넌트가 마운트될 때까지 기다려야 합니다.
 
-  `this.$refs` is also non-reactive, therefore you should not attempt to use it in templates for data-binding.
+  `this.$refs`도 반응형이 아니므로 데이터 바인딩을 위한 템플릿에서 사용하면 안됩니다.
 
-- **참고**: [Template Refs](/guide/essentials/template-refs.html)
+- **참고**: [가이드 - 템플릿 참조](/guide/essentials/template-refs.html)
 
 ## is
 
-Used for binding [dynamic components](/guide/essentials/component-basics.html#dynamic-components).
+[동적 컴포넌트](/guide/essentials/component-basics.html#dynamic-components) 바인딩에 사용합니다.
 
 - **요구되는 값**: `string | Component`
 
-- **Usage on native elements** <sup class="vt-badge">3.1+</sup>
+- **네이티브 엘리먼트에 사용** <sup class="vt-badge">3.1+</sup>
 
-  When the `is` attribute is used on a native HTML element, it will be interpreted as a [Customized built-in element](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example), which is a native web platform feature.
+  `is` 속성이 네이티브 HTML 엘리먼트에 사용되면,
+  네이티브 웹 플랫폼 함수인 [커스터마이즈 빌트인 엘리먼트](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example)로 해석됩니다.
 
-  There is, however, a use case where you may need Vue to replace a native element with a Vue component, as explained in [DOM Template Parsing Caveats](/guide/essentials/component-basics.html#dom-template-parsing-caveats). You can prefix the value of the `is` attribute with `vue:` so that Vue will render the element as a Vue component instead:
+  그러나 [DOM 템플릿 파싱 주의 사항](/guide/essentials/component-basics.html#dom-template-parsing-caveats)에 설명된 대로,
+  기본 엘리먼트를 Vue 컴포넌트로 교체하기 위해 Vue가 필요할 수 있는 사용 사례가 있습니다.
+  Vue가 엘리먼트를 Vue 컴포넌트로 렌더링하도록 `is` 속성 값에 `vue:` 접두사를 붙일 수 있습니다:
 
   ```vue-html
   <table>
@@ -106,5 +115,5 @@ Used for binding [dynamic components](/guide/essentials/component-basics.html#dy
 
 - **참고**:
 
-  - [Built-in Special Element - `<component>`](/api/built-in-special-elements.html#component)
-  - [Dynamic Components](/guide/essentials/component-basics.html#dynamic-components)
+  - [API - 특수 엘리먼트: `<component>`](/api/built-in-special-elements.html#component)
+  - [가이드 - 컴포넌트 기초: 동적 컴포넌트](/guide/essentials/component-basics.html#dynamic-components)
