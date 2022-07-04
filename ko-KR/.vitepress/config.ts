@@ -406,7 +406,7 @@ export const sidebar = {
       items: [
         { text: '문법 규약', link: '/api/sfc-spec' },
         { text: '<script setup>', link: '/api/sfc-script-setup' },
-        { text: 'CSS Features', link: '/api/sfc-css-features' }
+        { text: 'CSS 기능', link: '/api/sfc-css-features' }
       ]
     },
     {
