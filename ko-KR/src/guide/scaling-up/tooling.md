@@ -138,20 +138,17 @@ Vue 팀은 SFC별 린팅 규칙을 지원하는 [ESLint](https://eslint.org/) �
 
 - 또는 [Prettier](https://prettier.io/)는 빌트인 Vue SFC 형식 지원을 제공합니다.
 
-## SFC Custom Block Integrations {#sfc-custom-block-integrations}
-
-Custom blocks are compiled into imports to the same Vue file with different request queries. It is up to the underlying build tool to handle these import requests.
-
-- If using Vite, a custom Vite plugin should be used to transform matched custom blocks into executable JavaScript. [Example](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#example-for-transforming-custom-blocks)
-
-- If using Vue CLI or plain webpack, a webpack loader should be configured to transform the matched blocks. [Example](https://vue-loader.vuejs.org/guide/custom-blocks.html)
+## SFC의 커스텀 블록 통합하기 {#sfc-custom-block-integrations}
 
 커스텀 블록은 다른 리퀘스트 쿼리로 가져온 동일한 Vue 파일로 컴파일 됩니다.
 이러한 가져오기 요청을 처리하는 것은 기본 빌드 도구에 달려 있습니다.
 
-- Vite를 사용하는 경우, 일치하는 커스텀 블록을 실행 가능한 JavaScript로 변환하려면 커스텀 Vite 플러그인을 사용해야 합니다. [예제](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#example-for-transforming-custom-blocks)
+- Vite를 사용하는 경우,
+  일치하는 커스텀 블록을 실행 가능한 JavaScript로 변환하려면,
+  커스텀 Vite 플러그인을 사용해야 합니다. [예제](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#example-for-transforming-custom-blocks)
 
-- Vue CLI 또는 일반 웹팩을 사용하는 경우, 일치하는 블록을 변환하도록 웹팩 로더를 구성해야 합니다. [예제](https://vue-loader.vuejs.org/guide/custom-blocks.html)
+- Vue CLI 또는 일반 웹팩을 사용하는 경우,
+  일치하는 블록을 변환하도록 웹팩 로더를 구성해야 합니다. [예제](https://vue-loader.vuejs.org/guide/custom-blocks.html)
 
 ## 저수준 패키지 {#lower-level-packages}
 

@@ -404,7 +404,7 @@ export const sidebar = {
     {
       text: '싱글 파일 컴포넌트',
       items: [
-        { text: '문법 규약', link: '/api/sfc-spec' },
+        { text: '문법 설명서', link: '/api/sfc-spec' },
         { text: '<script setup>', link: '/api/sfc-script-setup' },
         { text: 'CSS Features', link: '/api/sfc-css-features' }
       ]
