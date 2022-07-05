@@ -390,7 +390,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   // ...
   test: {
-    // jest와 같은 글로벌 테스트 API 사용
+    // jest와 같은 전역 테스트 API 사용
     globals: true,
     // happy-dom으로 DOM 시뮬레이션
     // (피어 종속성으로 happy-dom을 설치해야 함)
