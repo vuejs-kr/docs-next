@@ -41,8 +41,9 @@ const nav = [
       {
         text: 'Resources',
         items: [
-          { text: 'Partners', link: '/partners/' },
-          { text: 'Themes', link: '/ecosystem/themes' },
+          { text: 'Sponsor', link: 'https://vuejs.org/sponsor/' },
+          { text: 'Partners', link: 'https://vuejs.org/partners/' },
+          { text: 'Themes', link: 'https://vuejs.org/ecosystem/themes/' },
           { text: 'Jobs', link: 'https://vuejobs.com/?ref=vuejs' },
           { text: 'T-Shirt Shop', link: 'https://vue.threadless.com/' }
         ]
@@ -97,7 +98,7 @@ const nav = [
     text: 'About',
     activeMatch: `^/about/`,
     items: [
-      { text: 'FAQ', link: '/about/faq' },
+      { text: 'FAQ', link: 'https://vuejs.org/about/faq/' },
       { text: 'Team', link: 'https://vuejs.org/about/team' },
       { text: 'Releases', link: 'https://vuejs.org/about/releases' },
       {
@@ -110,15 +111,6 @@ const nav = [
         link: 'https://www.youtube.com/watch?v=OrxmtDw4pVI'
       }
     ]
-  },
-  {
-    text: 'Sponsor',
-    link: '/sponsor/'
-  },
-  {
-    text: 'Partners',
-    link: '/partners/',
-    activeMatch: `^/partners/`
   }
 ]
 
@@ -271,13 +263,13 @@ export const sidebar = {
     {
       text: '타입스크립트',
       items: [
-        { text: '개요', link: '/guide/typescript/overview' },
+        { text: '개요 (미완료)', link: '/guide/typescript/overview' },
         {
-          text: '컴포지션 API와 타입스크립트',
+          text: '⚠️컴포지션 API & TS (미완료)',
           link: '/guide/typescript/composition-api'
         },
         {
-          text: '옵션 API와 타입스크립트',
+          text: '⚠️옵션 API & TS (미완료)',
           link: '/guide/typescript/options-api'
         }
       ]
@@ -302,11 +294,11 @@ export const sidebar = {
           link: '/guide/extras/rendering-mechanism'
         },
         {
-          text: 'Render Functions & JSX',
+          text: '⚠️렌더 함수 & JSX (영문)',
           link: '/guide/extras/render-function'
         },
         {
-          text: 'Vue 와 웹 컴포넌트',
+          text: '⚠️Vue와 웹 컴포넌트 (영문)',
           link: '/guide/extras/web-components'
         },
         {
@@ -314,7 +306,7 @@ export const sidebar = {
           link: '/guide/extras/animation'
         },
         {
-          text: '반응형 변환',
+          text: '⚠️반응형 변환 (영문)',
           link: '/guide/extras/reactivity-transform'
         }
         // {
@@ -412,10 +404,10 @@ export const sidebar = {
     {
       text: '고급 APIs',
       items: [
-        { text: 'Render 함수', link: '/api/render-function' },
-        { text: 'Server-Side Rendering', link: '/api/ssr' },
-        { text: 'TypeScript Utility Types', link: '/api/utility-types' },
-        { text: 'Custom Renderer', link: '/api/custom-renderer' }
+        { text: '⚠️렌더 함수 (영문)', link: '/api/render-function' },
+        { text: '⚠️서버 사이드 렌더링 (영문)', link: '/api/ssr' },
+        { text: '⚠️TypeScript 유틸리티 타입 (영문)', link: '/api/utility-types' },
+        { text: '⚠️커스텀 렌더러 (영문)', link: '/api/custom-renderer' }
       ]
     }
   ],
@@ -555,7 +547,7 @@ export default defineConfigWithTheme<ThemeConfig>({
 
   lang: 'ko-KR',
   title: 'Vue.js',
-  description: 'Vue.js - The Progressive JavaScript Framework',
+  description: 'Vue.js - 프로그래시브 자바스크립트 프레임워크',
   srcDir: 'src',
   // base: '/docs-next/',
   srcExclude: ['tutorial/**/description.md'],
@@ -617,7 +609,7 @@ export default defineConfigWithTheme<ThemeConfig>({
 
     socialLinks: [
       { icon: 'languages', link: '/translations/' },
-      { icon: 'github', link: 'https://github.com/vuejs/' },
+      { icon: 'github', link: 'https://github.com/vuejs-kr/docs-next' },
       { icon: 'twitter', link: 'https://twitter.com/vuejs' },
       { icon: 'discord', link: 'https://discord.com/invite/HBherRA' }
     ],

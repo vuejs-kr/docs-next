@@ -247,7 +247,7 @@ Vue를 처음 사용하는 경우 일반적인 권장 사항은 다음과 같습
 
 ## 여전히 질문이 있나요? {#still-got-questions}
 
-[FAQ](/about/faq)를 확인하세요.
+[FAQ](https://vuejs.org/about/faq)를 확인하세요.
 
 ## 학습 방법 선택 {#pick-your-learning-path}
 
