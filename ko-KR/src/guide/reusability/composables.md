@@ -421,8 +421,6 @@ React에 대한 경험이 있다면 이것이 커스텀 React 훅과 매우 유�
 그러나 Vue 구성화는 Vue의 세분화된 반응성 시스템을 기반으로 하며, 이는 React 훅의 실행 모델과 근본적으로 다릅니다.
 이는 [컴포지션 API FAQ](/guide/extras/composition-api-faq#comparison-with-react-hooks)에서 자세히 설명합니다.
 
-[comment]: <> (/guide/extras/composition-api-faq.md 번역 후 링크 수정 필요)
-
 ## 추가적인 읽을거리 {#further-reading}
 
 - [반응형 심화](/guide/extras/reactivity-in-depth.html): Vue의 반응형 시스템이 어떻게 작동하는지에 대한 심화 수준의 이해를 위해.

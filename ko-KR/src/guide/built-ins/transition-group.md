@@ -84,8 +84,6 @@ import ListStagger from './transition-demos/ListStagger.vue'
 
 [전체 예제](/examples/#list-transition)
 
-[comment]: <> (/examples 문서 번역 후 링크 수정 필요)
-
 ## 시차가 있는 목록 트랜지션 {#staggering-list-transitions}
 
 데이터 속성을 통해 JavaScript 트랜지션과 통신함으로써 목록에서 트랜지션을 시차가 있게 할 수도 있습니다.
