@@ -15,7 +15,7 @@ HTML을 확장하는 템플릿 문법을 사용하여 JavaScript 상태를 기�
 
 변경 시, 업데이트를 트리거할 수 있는 상태는 **반응형**으로 간주됩니다.
 Vue의 `reactive()` API를 사용하여 반응형 상태를 선언할 수 있습니다.
-`reactive()`로 생성된 객체는 일반 객체처럼 작동하는 JavaScript [프록시](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)입니다:
+`reactive()`로 생성된 객체는 일반 객체처럼 작동하는 JavaScript [프락시](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)입니다:
 
 ```js
 import { reactive } from 'vue'
@@ -134,12 +134,12 @@ createApp({
 
 <div class="composition-api">
 
-이제 반응형 상태를 직접 만들고 이를 사용하여 템플릿의 `<h1>`에 동적 텍스트 콘텐츠를 렌더링해봅시다.
+이제 반응형 상태를 직접 만들고 이를 사용하여 템플릿의 `<h1>`에 동적 텍스트 컨텐츠를 렌더링해봅시다.
 
 </div>
 
 <div class="options-api">
 
-이제 직접 `data` 속성을 만들고 템플릿의 `<h1>`에 텍스트 콘텐츠로 사용해봅시다.
+이제 직접 `data` 속성을 만들고 템플릿의 `<h1>`에 텍스트 컨텐츠로 사용해봅시다.
 
 </div>

@@ -9,7 +9,7 @@
 - **세부 사항**:
 
   `v-text`는 엘리먼트의 [텍스트 컨텐츠](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) 속성을 설정하므로,
-  엘리먼트 내부의 기존 콘텐츠를 덮어씁니다.
+  엘리먼트 내부의 기존 컨텐츠를 덮어씁니다.
   `텍스트 컨텐츠`의 일부를 업데이트해야 하는 경우,
   [이중 중괄호](/guide/essentials/template-syntax.html#text-interpolation)를 사용해야 합니다.
 
@@ -37,13 +37,13 @@
 
   ::: warning 보안 참고 사항
   웹사이트에서 임의의 HTML을 동적으로 렌더링하는 것은 [XSS 공격](https://en.wikipedia.org/wiki/Cross-site_scripting)으로 쉽게 이어질 수 있기 때문에 매우 위험할 수 있습니다.
-  신뢰할 수 있는 콘텐츠에만 `v-html`을 사용하고,
-  사용자가 제공하는 콘텐츠에는 **절대** 사용하면 안됩니다.
+  신뢰할 수 있는 컨텐츠에만 `v-html`을 사용하고,
+  사용자가 제공하는 컨텐츠에는 **절대** 사용하면 안됩니다.
   :::
 
   [싱글 파일 컴포넌트(SFC)](/guide/scaling-up/sfc)에서 `scoped`(범위를 지정한) Style은 `v-html` 내부 컨텐츠에 적용되지 않습니다.
   왜냐하면 해당 HTML은 Vue의 템플릿 컴파일러에서 처리되지 않기 때문입니다.
-  범위를 지정한 CSS로 `v-html` 콘텐츠를 대상으로 지정하려는 경우,
+  범위를 지정한 CSS로 `v-html` 컨텐츠를 대상으로 지정하려는 경우,
   [CSS 모듈](./sfc-css-features.html#css-modules) 또는 BEM과 같은 수동 범위 지정 방법과 함께 전역 `<style>` 엘리먼트를 사용할 수 있습니다.
 
 - **예제**:
@@ -78,7 +78,7 @@
 
   `v-if` 엘리먼트가 토글되면, 엘리먼트와 여기에 포함된 디렉티브/컴포넌트가 파괴되고 재구성됩니다.
   초기 조건 값이 falsy이면,
-  내부 콘텐츠가 전혀 렌더링되지 않습니다.
+  내부 컨텐츠가 전혀 렌더링되지 않습니다.
 
   텍스트 또는 여러 엘리먼트를 포함하는 조건부 블록을 나타내기 위해 `<template>`에 사용할 수도 있습니다.
 
@@ -89,7 +89,7 @@
   하나의 엘리먼트에 이 두 디렉티브을 함께 사용하는 것은 권장되지 않습니다.
   자세한 내용은 [리스트 렌더링](/guide/essentials/list.html#v-for-with-v-if)을 참고하세요.
 
-- **참고**: [조건부 랜더링 - v-if](/guide/essentials/conditional.html#v-if)
+- **참고**: [조건부 렌더링 - v-if](/guide/essentials/conditional.html#v-if)
 
 ## v-else
 
@@ -114,7 +114,7 @@
   </div>
   ```
 
-- **참고**: [조건부 랜더링 - v-else](/guide/essentials/conditional.html#v-else)
+- **참고**: [조건부 렌더링 - v-else](/guide/essentials/conditional.html#v-else)
 
 ## v-else-if
 
@@ -146,7 +146,7 @@
   </div>
   ```
 
-- **참고**: [조건부 랜더링 - v-else-if](/guide/essentials/conditional.html#v-else-if)
+- **참고**: [조건부 렌더링 - v-else-if](/guide/essentials/conditional.html#v-else-if)
 
 ## v-for
 
@@ -222,7 +222,7 @@
   `v-on` also supports binding to an object of event / listener pairs without an argument. Note when using the object syntax, it does not support any modifiers.
 
   이벤트 타입은 인자로 표시됩니다.
-  표현식은 메소드 이름 또는 인라인 명령문이거나,
+  표현식은 메서드 이름 또는 인라인 명령문이거나,
   수식어가 있는 경우 생략될 수 있습니다.
 
   일반 엘리먼트에 사용되면 [**네이티브 DOM 이벤트**](https://developer.mozilla.org/en-US/docs/Web/Events)만 수신합니다.
@@ -240,7 +240,7 @@
 - **예제**:
 
   ```vue-html
-  <!-- 메소드 핸들러 -->
+  <!-- 메서드 핸들러 -->
   <button v-on:click="doThis"></button>
 
   <!-- 동적 이벤트 -->
@@ -381,7 +381,7 @@
   <svg :view-box.camel="viewBox"></svg>
   ```
 
-  문자열 템플릿을 사용하거나 템플릿을 빌드 단계로 미리 컴파일하는 경우에는 `.camel`이 필요하지 않습니다.
+  문자열 템플릿을 사용하거나 템플릿을 빌드 과정으로 미리 컴파일하는 경우에는 `.camel`이 필요하지 않습니다.
 
 - **참고**:
   - [가이드 - 클래스와 스타일 바인딩](/guide/essentials/class-and-style.html)
@@ -488,7 +488,7 @@
 
 - **세부 사항**:
 
-  이후 다시 렌더링할 때 엘리먼트/컴포넌트 및 모든 자식들은 정적 콘텐츠로 처리되어 생략됩니다.
+  이후 다시 렌더링할 때 엘리먼트/컴포넌트 및 모든 자식들은 정적 컨텐츠로 처리되어 생략됩니다.
   이것은 업데이트 성능을 최적화하는 데 사용할 수 있습니다.
 
   ```vue-html
@@ -580,11 +580,11 @@
 
 - **세부 사항**:
 
-  **이 디렉티브는 빌드 단계가 없는 설정에서만 필요합니다**.
+  **이 디렉티브는 빌드 과정이 없는 설정에서만 필요합니다**.
 
   DOM 내 템플릿을 사용할 때,
   "컴파일되지 않은 템플릿이 순간 보이는 현상"이 있을 수 있습니다.
-  이러면 사용자는 컴포넌트가 렌더링된 콘텐츠로 대체할 때까지 이중 중괄호 태그를 볼 수 있습니다.
+  이러면 사용자는 컴포넌트가 렌더링된 컨텐츠로 대체할 때까지 이중 중괄호 태그를 볼 수 있습니다.
 
   `v-cloak`은 연결된 컴포넌트 인스턴스가 마운트될 때까지 엘리먼트에 남아 있습니다.
   `[v-cloak] { display: none }`과 같은 CSS 규칙과 결합하여,

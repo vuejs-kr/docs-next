@@ -1,7 +1,7 @@
 # 클래스와 스타일 바인딩 {#class-and-style-bindings}
 
 일반적으로 엘리먼트에 데이터를 바인딩하는 이유는 클래스 목록과 해당 인라인 스타일을 조작하기 위함입니다.
-둘 다 속성이므로 `v-bind`를 사용하여 표현 식으로 처리할 경우, 최종적인 문자열만 산출을 위한 로직만 신경 쓰면 되지만, 이것은 성가시고 오류가 발생하기 쉽습니다.
+둘 다 속성이므로 `v-bind`를 사용하여 표현 식으로 처리할 경우, 최종적인 문자열만 산출을 위한 로직만 신경 쓰면 되지만, 이것은 성가시고 에러가 발생하기 쉽습니다.
 이러한 이유로 `class` 및 `style`에 `v-bind`를 사용할 경우, 표현 식 내에 문자열 외에도 객체 또는 배열을 평가할 수 있도록 개발 편의적인 능력을 제공합니다.
 
 ## HTML 클래스 바인딩 {#binding-html-classes}
@@ -51,7 +51,7 @@ data() {
 ></div>
 ```
 
-다음과 같이 랜더링 됩니다:
+다음과 같이 렌더링 됩니다:
 
 ```vue-html
 <div class="static active"></div>
@@ -165,7 +165,7 @@ data() {
 <div :class="[activeClass, errorClass]"></div>
 ```
 
-다음과 같이 랜더링 됩니다:
+다음과 같이 렌더링 됩니다:
 
 ```vue-html
 <div class="active text-danger"></div>
@@ -206,7 +206,7 @@ data() {
 <my-component class="baz boo"></my-component>
 ```
 
-다음과 같이 랜더링 됩니다:
+다음과 같이 렌더링 됩니다:
 
 ```vue-html
 <p class="foo bar baz boo">안녕!</p>
@@ -237,7 +237,7 @@ data() {
 <my-component class="baz"></my-component>
 ```
 
-다음과 같이 랜더링 됩니다:
+다음과 같이 렌더링 됩니다:
 
 ```html
 <p class="baz">Hi!</p>

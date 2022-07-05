@@ -110,29 +110,29 @@ methods: {
 
 </div>
 
-메소드 핸들러는 이를 트리거하는 네이티브 DOM 이벤트 객체를 자동으로 수신합니다.
+메서드 핸들러는 이를 트리거하는 네이티브 DOM 이벤트 객체를 자동으로 수신합니다.
 위의 예에서 `event.target.tagName`을 통해 이벤트를 전달하는 엘리먼트에 접근할 수 있습니다.
 
 <div class="composition-api">
 
-참조: [이벤트 핸들러 타입 지정하기](/guide/typescript/composition-api.html#typing-event-handlers) <sup class="vt-badge ts" />
+참고: [이벤트 핸들러 타입 지정하기](/guide/typescript/composition-api.html#typing-event-handlers) <sup class="vt-badge ts" />
 
 </div>
 <div class="options-api">
 
-참조: [이벤트 핸들러 타입 지정하기](/guide/typescript/options-api.html#typing-event-handlers) <sup class="vt-badge ts" />
+참고: [이벤트 핸들러 타입 지정하기](/guide/typescript/options-api.html#typing-event-handlers) <sup class="vt-badge ts" />
 
 </div>
 
 ### 메서드 vs 인라인 구분 {#method-vs-inline-detection}
 
-템플릿 컴파일러는 `v-on` 값인 문자열이 유효한 JavaScript 식별자 또는 속성에 접근 가능한 경로인지를 확인해 매서드 핸들러를 감지합니다.
+템플릿 컴파일러는 `v-on` 값인 문자열이 유효한 JavaScript 식별자 또는 속성에 접근 가능한 경로인지를 확인해 메서드 핸들러를 감지합니다.
 예를 들어 `foo`, `foo.bar` 및 `foo['bar']`는 메서드 핸들러로 처리되는 반면, `foo()` 및 `count++`는 인라인 핸들러로 처리됩니다.
 
 ## 인라인 핸들러에서 메서드 호출하기 {#calling-methods-in-inline-handlers}
 
 메서드 이름을 직접 바인딩하는 대신, 인라인 핸들러에서 메서드를 호출할 수도 있습니다.
-이를 통해 네이티브 이벤트 객체 대신 사용자 지정 인수를 메서드에 전달할 수 있습니다:
+이를 통해 네이티브 이벤트 객체 대신 사용자 지정 인자를 메서드에 전달할 수 있습니다:
 
 <div class="composition-api">
 

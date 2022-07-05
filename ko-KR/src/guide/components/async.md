@@ -54,9 +54,9 @@ export default {
 
 </div>
 
-## 로딩 및 애러 상태 {#loading-and-error-states}
+## 로딩 및 에러 상태 {#loading-and-error-states}
 
-비동기 작업에는 필연적으로 로드 및 애러 상태가 포함됩니다.
+비동기 작업에는 필연적으로 로드 및 에러 상태가 포함됩니다.
 `defineAsyncComponent()`는 고급 옵션을 통해 이러한 상태 처리를 지원합니다:
 
 ```js
@@ -69,9 +69,9 @@ const AsyncComp = defineAsyncComponent({
   // 로딩 컴포넌트를 표시하기 전에 지연할 시간. 기본값: 200ms
   delay: 200,
 
-  // 로드 실패 시 사용할 애러 컴포넌트
+  // 로드 실패 시 사용할 에러 컴포넌트
   errorComponent: ErrorComponent,
-  // 시간 초과 시, 애러 컴포넌트가 표시됩니다. 기본값: 무한대
+  // 시간 초과 시, 에러 컴포넌트가 표시됩니다. 기본값: 무한대
   timeout: 3000
 })
 ```
@@ -80,8 +80,8 @@ const AsyncComp = defineAsyncComponent({
 로딩 컴포넌트가 표시되기 전에 기본 200ms 지연시간이 있습니다.
 이는 빠른 네트워크에서 인스턴트 로딩 상태가 너무 빨리 교체되어 깜박임처럼 보일 수 있기 때문입니다.
 
-애러 컴포넌트가 제공되면 로더 함수의 Promise가 reject로 반환될 때 표시됩니다.
-요청이 너무 오래 걸릴 때 애러 컴포넌트를 표시하도록 시간 초과를 지정할 수도 있습니다.
+에러 컴포넌트가 제공되면 로더 함수의 Promise가 reject로 반환될 때 표시됩니다.
+요청이 너무 오래 걸릴 때 에러 컴포넌트를 표시하도록 시간 초과를 지정할 수도 있습니다.
 
 ## 지연(suspense) 사용하기 {#using-with-suspense}
 

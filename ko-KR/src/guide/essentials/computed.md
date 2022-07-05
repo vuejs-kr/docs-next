@@ -96,7 +96,7 @@ export default {
 Vue는 `publishedBooksMessage`의 값이 `author.books`에 의존한다는 것을 알고 있으므로,
 `author.books`가 변경되면 `publishedBooksMessage`를 바인딩해 의존하는 모든 것을 업데이트합니다.
 
-참조: [계산된 속성에 타입 지정하기](/guide/typescript/options-api.html#typing-computed-properties) <sup class="vt-badge ts" />
+참고: [계산된 속성에 타입 지정하기](/guide/typescript/options-api.html#typing-computed-properties) <sup class="vt-badge ts" />
 
 </div>
 
@@ -138,13 +138,13 @@ const publishedBooksMessage = computed(() => {
 Vue는 `publishedBooksMessage`의 값이 `author.books`에 의존한다는 것을 알고 있으므로,
 `author.books`가 변경되면 `publishedBooksMessage`를 바인딩해 의존하는 모든 것을 업데이트합니다.
 
-참조: [computed 타입 지정하기](/guide/typescript/composition-api.html#typing-computed) <sup class="vt-badge ts" />
+참고: [computed 타입 지정하기](/guide/typescript/composition-api.html#typing-computed) <sup class="vt-badge ts" />
 
 </div>
 
 ## 계산된 캐싱 vs 메서드 {#computed-caching-vs-methods}
 
-표현식에서 메소드를 호출하여 동일한 결과를 얻을 수도 있습니다:
+표현식에서 메서드를 호출하여 동일한 결과를 얻을 수도 있습니다:
 
 ```vue-html
 <p>{{ calculateBooksMessage() }}</p>
@@ -213,7 +213,7 @@ const now = computed(() => Date.now())
 ## 수정 가능한 계산된 속성 {#writable-computed}
 
 계산된 속성은 기본적으로 getter 전용입니다.
-계산된 속성에 새 값을 할당하려고 하면 런타임 애러가 발생합니다.
+계산된 속성에 새 값을 할당하려고 하면 런타임 에러가 발생합니다.
 드물게 "수정 가능한" 계산된 속성이 필요한 경우, getter와 setter를 모두 제공하여 속성을 만들 수 있습니다.
 
 <div class="options-api">

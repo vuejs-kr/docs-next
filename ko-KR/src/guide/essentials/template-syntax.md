@@ -50,7 +50,7 @@ Vue는 문자열 기반 템플릿 엔진이 아니기 때문에 `v-html`을 사�
 
 :::warning 보안 경고
 웹사이트에서 임의의 HTML을 동적으로 렌더링하면 [XSS 취약점](https://en.wikipedia.org/wiki/Cross-site_scripting)이 쉽게 발생할 수 있으므로 매우 위험할 수 있습니다.
-신뢰할 수 있는 콘텐츠에만 `v-html`을 사용하고 사용자가 제공한 콘텐츠에는 **절대** 사용하지 마세요.
+신뢰할 수 있는 컨텐츠에만 `v-html`을 사용하고 사용자가 제공한 컨텐츠에는 **절대** 사용하지 마세요.
 :::
 
 ## 속성 바인딩 {#attribute-bindings}
@@ -63,7 +63,7 @@ Vue는 문자열 기반 템플릿 엔진이 아니기 때문에 `v-html`을 사�
 ```
 
 `v-bind` 디렉티브는 엘리먼트의 `id` 속성을 컴포넌트의 `dynamicId` 속성과 동기화된 상태로 유지하도록 Vue에 지시합니다.
-바인딩된 값이 `null` 또는 `undefined`이면 엘리먼트의 속성이 제거된 상태로 랜더링 됩니다.
+바인딩된 값이 `null` 또는 `undefined`이면 엘리먼트의 속성이 제거된 상태로 렌더링 됩니다.
 
 ### 단축 문법 {#shorthand}
 
@@ -123,7 +123,7 @@ data() {
 
 </div>
 
-인수 없이 `v-bind`를 사용하여 단일 엘리먼트에에 바인딩할 수 있습니다:
+인자 없이 `v-bind`를 사용하여 단일 엘리먼트에에 바인딩할 수 있습니다:
 
 ```vue-html
 <div v-bind="objectOfAttrs"></div>
@@ -177,13 +177,13 @@ Vue 템플릿에서 JavaScript 표현식은 다음과 같은 위치에 사용할
 바인딩 표현식 내부에서 호출되는 함수는 컴포넌트가 업데이트될 때마다 호출되므로, 데이터를 변경 또는 비동기 작업을 트리거하는 등의 **부작용이 없어야 합니다**.
 :::
 
-### 제한된 전역 액세스 {#restricted-globals-access}
+### 제한된 전역 접근 {#restricted-globals-access}
 
-템플릿 표현식은 샌드박스 처리되어 [제한된 전역 리스트](https://github.com/vuejs/core/blob/main/packages/shared/src/globalsWhitelist.ts#L3)에만 액세스할 수 있습니다.
+템플릿 표현식은 샌드박스 처리되어 [제한된 전역 리스트](https://github.com/vuejs/core/blob/main/packages/shared/src/globalsWhitelist.ts#L3)에만 접근할 수 있습니다.
 이 목록은 `Math` 및 `Date` 등 일반적으로 사용되는 기본 제공 전역 객체를 표시합니다.
 
-리스트에 명시적으로 포함되지 않은 `window`와 같은 전역 속성은 템플릿 표현식에서 액세스할 수 없습니다.
-그러나 [`app.config.globalProperties`](/api/application.html#app-config-globalproperties)에 추가하여, Vue 내부의 모든 표현식에서 전역 속성에 액세스 할 수 있도록 명시적으로 정의할 수 있습니다.
+리스트에 명시적으로 포함되지 않은 `window`와 같은 전역 속성은 템플릿 표현식에서 접근할 수 없습니다.
+그러나 [`app.config.globalProperties`](/api/application.html#app-config-globalproperties)에 추가하여, Vue 내부의 모든 표현식에서 전역 속성에 접근 할 수 있도록 명시적으로 정의할 수 있습니다.
 
 ## 디렉티브 {#directives}
 
@@ -200,9 +200,9 @@ Vue는 위에서 소개한 `v-html`과 `v-bind`를 포함하여 [빌트인 디�
 
 여기서 `v-if` 디렉티브는 `seen`의 불리언(truthy/falsy) 값을 기반으로 `<p>` 엘리먼트를 삽입 또는 제거합니다.
 
-### 인수 {#arguments}
+### 인자 {#arguments}
 
-일부 디렉티브는 디렉티브 뒤에 콜론(`:`)으로 표시되는 "인수"를 사용할 수 있습니다.
+일부 디렉티브는 디렉티브 뒤에 콜론(`:`)으로 표시되는 "인자"를 사용할 수 있습니다.
 예를 들어 `v-bind` 디렉티브는 HTML 속성을 반응적으로 업데이트하는 데 사용됩니다:
 
 ```vue-html
@@ -212,8 +212,8 @@ Vue는 위에서 소개한 `v-html`과 `v-bind`를 포함하여 [빌트인 디�
 <a :href="url"> ... </a>
 ```
 
-여기서 `href`는 `v-bind` 디렉티브의 인수로서, 엘리먼트의 속성인 `href`에 `url`의 값을 바인딩한 것입니다.
-간단하게 인수 앞의 `v-bind:`는 `:`로 줄여 쓸 수 있습니다.
+여기서 `href`는 `v-bind` 디렉티브의 인자로서, 엘리먼트의 속성인 `href`에 `url`의 값을 바인딩한 것입니다.
+간단하게 인자 앞의 `v-bind:`는 `:`로 줄여 쓸 수 있습니다.
 
 또 다른 예로는 DOM 이벤트를 수신하는 `v-on` 디렉티브입니다:
 
@@ -225,17 +225,17 @@ Vue는 위에서 소개한 `v-html`과 `v-bind`를 포함하여 [빌트인 디�
 ```
 
 `v-on`은 단축 문법이 있는 몇 안 되는 디렉티브 중 하나이며 `@`로 줄여 쓸 수 있습니다.
-여기서 `click`은 인수로서 수신할 이벤트 이름입니다.
+여기서 `click`은 인자로서 수신할 이벤트 이름입니다.
 이벤트 처리에 대해서는 나중에 더 자세히 설명하겠습니다.
 
-### 동적인 인수 {#dynamic-arguments}
+### 동적인 인자 {#dynamic-arguments}
 
-디렉티브의 인수를 대괄호로 감싸서 JavaScript 표현식으로 사용할 수도 있습니다:
+디렉티브의 인자를 대괄호로 감싸서 JavaScript 표현식으로 사용할 수도 있습니다:
 
 ```vue-html
 <!--
-아래의 "동적인 인수 값 제약 조건" 및 "동적인 인수 문법 제약 조건" 섹션에 설명된 대로,
-인수 표현식에는 몇 가지 제약 사항이 있음에 유의하십시오.
+아래의 "동적인 인자 값 제약 조건" 및 "동적인 인자 문법 제약 조건" 섹션에 설명된 대로,
+인자 표현식에는 몇 가지 제약 사항이 있음에 유의하십시오.
 -->
 <a v-bind:[attributeName]="url"> ... </a>
 
@@ -243,10 +243,10 @@ Vue는 위에서 소개한 `v-html`과 `v-bind`를 포함하여 [빌트인 디�
 <a :[attributeName]="url"> ... </a>
 ```
 
-여기서 `attributeName`은 JavaScript 표현식으로 동적으로 평가되며, 평가된 값은 인수의 최종값으로 사용됩니다.
+여기서 `attributeName`은 JavaScript 표현식으로 동적으로 평가되며, 평가된 값은 인자의 최종값으로 사용됩니다.
 예를 들어 컴포넌트 인스턴스의 데이터에 `attributeName` 속성값이 `"href"`인 경우, 이 바인딩은 `v-bind:href`와 같습니다.
 
-마찬가지로 동적인 인수를 사용하여, 핸들러에 이벤트 이름을 동적으로 바인딩할 수 있습니다:
+마찬가지로 동적인 인자를 사용하여, 핸들러에 이벤트 이름을 동적으로 바인딩할 수 있습니다:
 
 ```vue-html
 <a v-on:[eventName]="doSomething"> ... </a>
@@ -257,15 +257,15 @@ Vue는 위에서 소개한 `v-html`과 `v-bind`를 포함하여 [빌트인 디�
 
 이 예에서 `eventName`의 값이 `"focus"`인 경우, `v-on:[eventName]`은 `v-on:focus`와 같습니다.
 
-#### 동적인 인수 값 제약 조건 {#dynamic-argument-value-constraints}
+#### 동적인 인자 값 제약 조건 {#dynamic-argument-value-constraints}
 
-동적인 인수는 `null` 또는 문자열로 평가되어야 합니다.
+동적인 인자는 `null` 또는 문자열로 평가되어야 합니다.
 값이 `null`일 경우, 바인딩을 명시적으로 제거합니다.
-문자열이 아닌 다른 값은 애러를 트리거합니다.
+문자열이 아닌 다른 값은 에러를 트리거합니다.
 
-#### 동적인 인수 문법 제약 조건 {#dynamic-argument-syntax-constraints}
+#### 동적인 인자 문법 제약 조건 {#dynamic-argument-syntax-constraints}
 
-동적인 인수 표현식에는 공백 및 따옴표와 같은 특정 문자가 HTML 속성 이름 내에서 유효하지 않기 때문에 문법에 일부 제약 조건이 있습니다.
+동적인 인자 표현식에는 공백 및 따옴표와 같은 특정 문자가 HTML 속성 이름 내에서 유효하지 않기 때문에 문법에 일부 제약 조건이 있습니다.
 예를 들어 다음은 유효하지 않습니다:
 
 ```vue-html
@@ -273,7 +273,7 @@ Vue는 위에서 소개한 `v-html`과 `v-bind`를 포함하여 [빌트인 디�
 <a :['foo' + bar]="value"> ... </a>
 ```
 
-복잡한 동적인 인수를 전달해야 하는 경우 [computed 속성](./computed.html)을 사용하는 것이 더 나을 것입니다.
+복잡한 동적인 인자를 전달해야 하는 경우 [computed 속성](./computed.html)을 사용하는 것이 더 나을 것입니다.
 이에 대해서는 곧 다룰 것입니다.
 
 DOM 내 템플릿(HTML 파일에 직접 작성된 템플릿)을 사용할 때, 브라우저가 속성 이름을 소문자로 강제 변환하므로 대문자로 키 이름을 지정하는 것도 피해야 합니다:

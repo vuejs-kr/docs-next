@@ -104,7 +104,7 @@
   props 변경에 대한 일반적인 제한 사항이 계속 적용됩니다.
   ref에 새 값을 할당하려는 시도는 prop을 직접 수정하려는 것과 동일하며 허용되지 않습니다.
   이런 경우에는 [`computed()`](./reactivity-core.html#computed)에 `get`과 `set`을 선언하여 사용하는 것으로 구현할 수 있습니다.
-  자세한 내용은 [컴포넌트를 `v-model`과 함께 사용하기](/guide/components/events.html#usage-with-v-model) 가이드 참조.
+  자세한 내용은 [컴포넌트를 `v-model`과 함께 사용하기](/guide/components/events.html#usage-with-v-model) 가이드 참고.
 
   `toRef()`는 소스 속성이 현재 존재하지 않더라도 사용 가능한 ref를 반환합니다.
   이렇게 하면 [`toRefs`](#torefs)에서 선택하지 않는 선택적 속성으로 작업할 수 있습니다.

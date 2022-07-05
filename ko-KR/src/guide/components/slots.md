@@ -98,7 +98,7 @@ Vue 컴포넌트의 슬롯 메커니즘은 [네이티브 웹 컴포넌트 `<slot
 
 ## 렌더링 범위 {#render-scope}
 
-슬롯 컨텐츠는 부모 컴포넌트에 정의되어 있으므로 부모 컴포넌트의 데이터 범위에 액세스할 수 있습니다.
+슬롯 컨텐츠는 부모 컴포넌트에 정의되어 있으므로 부모 컴포넌트의 데이터 범위에 접근할 수 있습니다.
 예를 들어:
 
 ```vue-html
@@ -210,7 +210,7 @@ Vue 컴포넌트의 슬롯 메커니즘은 [네이티브 웹 컴포넌트 `<slot
 `<BaseLayout>`을 사용하는 부모 컴포넌트에서 각각 다른 슬롯 아울렛를 대상으로 하는 여러 슬롯 컨텐츠 조각을 전달하는 방법이 필요합니다.
 이럴 때 **이름이 있는 슬롯**이 사용됩니다.
 
-이름이 있는 슬롯을 전달하려면, `<template>` 엘리먼트와 함께 `v-slot` 디렉티브를 사용하고, 슬롯 이름을 `v-slot`에 인수로 전달해야 합니다:
+이름이 있는 슬롯을 전달하려면, `<template>` 엘리먼트와 함께 `v-slot` 디렉티브를 사용하고, 슬롯 이름을 `v-slot`에 인자로 전달해야 합니다:
 
 ```vue-html
 <BaseLayout>
@@ -247,7 +247,7 @@ Vue 컴포넌트의 슬롯 메커니즘은 [네이티브 웹 컴포넌트 `<slot
 </BaseLayout>
 ```
 
-컴포넌트가 기본 슬롯과 이름이 있는 슬롯을 모두 허용하는 경우, 모든 최상위 비`<template>` 노드는 기본 슬롯의 콘텐츠로 암시적으로 처리됩니다.
+컴포넌트가 기본 슬롯과 이름이 있는 슬롯을 모두 허용하는 경우, 모든 최상위 비`<template>` 노드는 기본 슬롯의 컨텐츠로 암시적으로 처리됩니다.
 따라서 위의 내용은 다음과 같이 쓸 수도 있습니다:
 
 ```vue-html
@@ -319,7 +319,7 @@ function BaseLayout(slots) {
 
 ## 동적인 슬롯 이름 {#dynamic-slot-names}
 
-[동적인 디렉티브의 인수](/guide/essentials/template-syntax.html#dynamic-arguments)는 `v-slot`에서도 작동하므로 동적 슬롯 이름을 정의할 수 있습니다:
+[동적인 디렉티브의 인자](/guide/essentials/template-syntax.html#dynamic-arguments)는 `v-slot`에서도 작동하므로 동적 슬롯 이름을 정의할 수 있습니다:
 
 ```vue-html
 <base-layout>
@@ -334,13 +334,13 @@ function BaseLayout(slots) {
 </base-layout>
 ```
 
-표현식에는 디렉티브의 [동적인 인수 문법 제약 조건](/guide/essentials/template-syntax.html#dynamic-argument-syntax-constraints)이 적용됩니다.
+표현식에는 디렉티브의 [동적인 인자 문법 제약 조건](/guide/essentials/template-syntax.html#dynamic-argument-syntax-constraints)이 적용됩니다.
 
 ## 범위가 지정된 슬롯 {#scoped-slots}
 
-[렌더링 범위](#render-scope)에서 논의한 바와 같이 슬롯 콘텐츠는 자식 컴포넌트의 상태에 접근할 수 없습니다.
+[렌더링 범위](#render-scope)에서 논의한 바와 같이 슬롯 컨텐츠는 자식 컴포넌트의 상태에 접근할 수 없습니다.
 
-그러나 슬롯의 콘텐츠가 상위 범위와 하위 범위의 데이터를 모두 사용할 수 있는 경우, 유용할 수 있습니다.
+그러나 슬롯의 컨텐츠가 상위 범위와 하위 범위의 데이터를 모두 사용할 수 있는 경우, 유용할 수 있습니다.
 이를 구현하려면 자식이 데이터를 렌더링할 때 슬롯에 데이터를 전달할 수 있는 방법이 필요합니다.
 
 사실, 우리는 정확히 그렇게 할 수 있습니다.
@@ -381,7 +381,7 @@ props를 컴포넌트에 전달하는 것처럼 속성을 슬롯 아울렛에 �
 자식이 슬롯에 전달한 props는 해당 '`v-slot'` 디렉티브의 값으로 사용할 수 있으며 슬롯 내부의 표현식에서 접근할 수 있습니다.
 
 범위가 지정된 슬롯은 자식 컴포넌트에 전달되는 함수로 생각할 수 있습니다.
-그런 다음 자식 컴포넌트가 이를 호출하고 props를 인수로 전달합니다:
+그런 다음 자식 컴포넌트가 이를 호출하고 props를 인자로 전달합니다:
 
 ```js
 MyComponent({
@@ -407,7 +407,7 @@ function MyComponent(slots) {
 [comment]: <> (/guide/extras/render-function.md 번역 후 링크 수정 필요)
 
 `v-slot="slotProps"`가 슬롯 함수 특징과 어떻게 일치하는지 주목하십시오.
-함수의 인수와 마찬가지로 `v-slot`에서 분해 할당을 사용할 수 있습니다:
+함수의 인자와 마찬가지로 `v-slot`에서 분해 할당을 사용할 수 있습니다:
 
 ```vue-html
 <MyComponent v-slot="{ text, count }">

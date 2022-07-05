@@ -15,7 +15,7 @@ app.use(myPlugin, {
 })
 ```
 
-플러그인은 `install()` 메소드를 노출하는 객체 또는 단순히 install 함수 자체로 작동하는 함수로 정의됩니다.
+플러그인은 `install()` 메서드를 노출하는 객체 또는 단순히 install 함수 자체로 작동하는 함수로 정의됩니다.
 install 함수는 `app.use()`에 전달된 추가 옵션과 함께 [앱 인스턴스](/api/application.html)를 받습니다(있는 경우):
 
 ```js
@@ -59,7 +59,7 @@ export default {
 // plugins/i18n.js
 export default {
   install: (app, options) => {
-    // 전역적으로 사용 가능한 $translate() 메소드 주입
+    // 전역적으로 사용 가능한 $translate() 메서드 주입
     app.config.globalProperties.$translate = (key) => {
       // `key`를 경로로 사용하여
       // `options`에서 중첩 속성을 검색합니다.
@@ -90,7 +90,7 @@ app.use(i18nPlugin, {
 <h1>{{ $translate('greetings.hello') }}</h1>
 ```
 
-참조: [전역 속성 타입 보완하기](/guide/typescript/options-api.html#augmenting-global-properties) <sup class="vt-badge ts" />
+참고: [전역 속성 타입 보완하기](/guide/typescript/options-api.html#augmenting-global-properties) <sup class="vt-badge ts" />
 
 :::tip
 왠만하면 전역 속성은 사용하지 마십시오.

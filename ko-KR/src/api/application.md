@@ -249,7 +249,7 @@ import CustomPreferenceSwitch from './CustomPreferenceSwitch.vue'
   첫 번째 인자는 플러그인입니다.
   선택적인 두 번째 인자는 플러그인 옵션입니다.
 
-  플러그인은 `install()` 메소드가 있는 객체이거나, `install()` 메소드로 사용될 함수입니다.
+  플러그인은 `install()` 메서드가 있는 객체이거나, `install()` 메서드로 사용될 함수입니다.
   `app.use()`의 두 번째 인자인 옵션은 플러그인의 `install()` 메서드에 전달됩니다.
 
   동일한 플러그인을 여러 번 `app.use()`로 호출하는 경우, 플러그인은 한 번만 설치됩니다.
@@ -362,7 +362,7 @@ console.log(app.config)
   - `setup()` 함수
   - 감시자
   - 커스텀 디렉티브 훅
-  - 트렌지션 훅
+  - 트랜지션 훅
 
 - **예제**:
 

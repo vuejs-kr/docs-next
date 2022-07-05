@@ -38,7 +38,7 @@ export default {
     }
   },
 
-  // 데이터 로직을 구현하는 메소드.
+  // 데이터 로직을 구현하는 메서드.
   // 여기에는 DOM 조작이 전혀 없습니다.
   methods: {
     toggleAll(e) {

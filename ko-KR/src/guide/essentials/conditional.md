@@ -1,4 +1,4 @@
-# 조건부 랜더링 {#conditional-rendering}
+# 조건부 렌더링 {#conditional-rendering}
 
 <script setup>
 import { ref } from 'vue'

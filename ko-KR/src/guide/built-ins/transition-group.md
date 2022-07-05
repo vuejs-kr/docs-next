@@ -113,7 +113,7 @@ import ListStagger from './transition-demos/ListStagger.vue'
 그런 다음 JavaScript 훅에서 `data-` 속성을 기반으로 딜레이를 사용하여 엘리먼트에 애니메이션을 적용합니다:
 
 ```js{5}
-// 참고: gsap는 외부 자바스크립트 애니메이션 라이브러리 입니다.
+// 참고: gsap는 외부 JavaScript 애니메이션 라이브러리 입니다.
 function onEnter(el, done) {
   gsap.to(el, {
     opacity: 1,

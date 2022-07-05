@@ -32,7 +32,7 @@ data() {
 </li>
 ```
 
-`v-for` 범위 내 템플릿 표현식은 모든 상위 범위 속성에 액세스할 수 있습니다.
+`v-for` 범위 내 템플릿 표현식은 모든 상위 범위 속성에 접근할 수 있습니다.
 또한 `v-for`는 현재 아이템의 인덱스를 가리키는 선택적 두 번째 에일리어스도 지원합니다.
 
 <div class="composition-api">
@@ -99,7 +99,7 @@ items.forEach((item, index) => {
 ```
 
 `v-for`에 주어진 값이 `forEach`의 콜백 함수의 특징과 유사하다는 것을 눈치챘나요?
-실제로 콜백 함수 인수를 분해 할당해 사용할 수 있는 것처럼, `v-for`의 아이템도 분해 할당해 사용할 수 있습니다:
+실제로 콜백 함수 인자를 분해 할당해 사용할 수 있는 것처럼, `v-for`의 아이템도 분해 할당해 사용할 수 있습니다:
 
 ```vue-html
 <li v-for="{ message } in items">
@@ -231,11 +231,11 @@ data() {
 [comment]: <> (자세한 내용은 [스타일 가이드]&#40;/style-guide/rules-essential.html#avoid-v-if-with-v-for&#41;를 참조하세요.)
 :::
 
-이것들이 같은 노드에 존재할 때 `v-if`가 `v-for`보다 우선순위가 높기 때문에 `v-if` 조건문에서 `v-for` 변수에 액세스할 수 없습니다:
+이것들이 같은 노드에 존재할 때 `v-if`가 `v-for`보다 우선순위가 높기 때문에 `v-if` 조건문에서 `v-for` 변수에 접근할 수 없습니다:
 
 ```vue-html
 <!--
-"todo" 속성이 인스턴스에 정의되어 있지 않기 때문에 오류가 발생합니다.
+"todo" 속성이 인스턴스에 정의되어 있지 않기 때문에 에러가 발생합니다.
 -->
 <li v-for="todo in todos" v-if="!todo.isComplete">
   {{ todo.name }}
@@ -291,7 +291,7 @@ DOM Node의 위치가 변경되면 DOM Tree구조가 변경 되었기 때문에 
 [객체에 `v-for` 사용하기](#v-for-with-an-object)에서 언급하는 두 번째 에일리어스인 key와 혼동해서는 안 됩니다.
 :::
 
-반복되는 DOM 콘텐츠가 단순하거나(컴포넌트도 없고, 상태를 가지는 DOM 앨리먼트도 없을때), 의도적으로 기본 리스트 렌더링 동작을 통해 성능 향샹을 꾀하는 경우가 아니라면, 가능한 한 언제나 `v-for`는 `key` 속성과 함께 사용하는 것을 [권장합니다](/style-guide/rules-essential.html#use-keyed-v-for). 
+반복되는 DOM 컨텐츠가 단순하거나(컴포넌트도 없고, 상태를 가지는 DOM 앨리먼트도 없을때), 의도적으로 기본 리스트 렌더링 동작을 통해 성능 향샹을 꾀하는 경우가 아니라면, 가능한 한 언제나 `v-for`는 `key` 속성과 함께 사용하는 것을 [권장합니다](/style-guide/rules-essential.html#use-keyed-v-for). 
 
 `key`에는 문자열, 숫자, 심볼 형식의 값만 바인딩해야 합니다.
 `key` 속성의 자세한 사용법은 [`key` API 문서](/api/built-in-special-attributes.html#key)를 참조하세요.
@@ -336,7 +336,7 @@ DOM Node의 위치가 변경되면 DOM Tree구조가 변경 되었기 때문에 
 
 ### 수정 메서드 {#mutation-methods}
 
-Vue는 배열을 수정하는 메서드를 래핑하고 관찰하며 뷰(view) 업데이트를 트리거합니다. 래핑된 메서드는 다음과 같습니다:
+Vue는 배열을 수정하는 메서드를 래핑하고 감시하며 뷰(view) 업데이트를 트리거합니다. 래핑된 메서드는 다음과 같습니다:
 
 - `push()`
 - `pop()`

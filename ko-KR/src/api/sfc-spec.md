@@ -39,7 +39,7 @@ export default {
 
 - `*.vue` 파일은 최상위 `<template>` 블록은 하나만 포함할 수 있습니다.
 
-- 콘텐츠는 추출되어 `@vue/compiler-dom`으로 전달되고,
+- 컨텐츠는 추출되어 `@vue/compiler-dom`으로 전달되고,
   JavaScript 렌더 함수로 사전 컴파일되며,
   내보낸 컴포넌트에 `render` 옵션으로 첨부됩니다.
 
@@ -58,7 +58,7 @@ export default {
 - 스크립트는 전처리되어 컴포넌트의 `setup()` 함수로 사용됩니다.
   즉, **컴포넌트의 각 인스턴스**에 대해 실행됩니다.
   `<script setup>` 내에 최상위 바인딩은 템플릿에 자동으로 노출됩니다.
-  자세한 내용은 [`<script setup>` 전용 문서](/api/sfc-script-setup)를 참조하십시오.
+  자세한 내용은 [`<script setup>` 전용 문서](/api/sfc-script-setup)를 참고하십시오.
 
 ### `<style>`
 

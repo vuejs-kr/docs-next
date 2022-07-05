@@ -25,13 +25,13 @@ console.log(props.foo)
 export default {
   props: ['foo'],
   setup(props) {
-    // setup()은 첫 번째 인수로 props를 받습니다.
+    // setup()은 첫 번째 인자로 props를 받습니다.
     console.log(props.foo)
   }
 }
 ```
 
-`defineProps()`에 전달하는 인수는 `props` 옵션에 제공하는 값과 동일합니다.
+`defineProps()`에 전달하는 인자는 `props` 옵션에 제공하는 값과 동일합니다.
 두 선언 스타일은 동일한 props 옵션을 사용합니다.
 
 </div>
@@ -95,7 +95,7 @@ export default {
 
 <div class="options-api">
 
-참조: [컴포넌트 props에 타입 지정하기](/guide/typescript/options-api.html#typing-component-props) <sup class="vt-badge ts" />
+참고: [컴포넌트 props에 타입 지정하기](/guide/typescript/options-api.html#typing-component-props) <sup class="vt-badge ts" />
 
 </div>
 
@@ -112,7 +112,7 @@ defineProps<{
 </script>
 ```
 
-참조: [컴포넌트 props에 타입 지정하기](/guide/typescript/composition-api.html#typing-component-props) <sup class="vt-badge ts" />
+참고: [컴포넌트 props에 타입 지정하기](/guide/typescript/composition-api.html#typing-component-props) <sup class="vt-badge ts" />
 
 </div>
 
@@ -376,7 +376,7 @@ export default {
 ### 객체/배열 props 변경에 관하여 {#mutating-object-array-props}
 
 객체와 배열이 props로 전달되면, 자식 컴포넌트는 바인딩된 prop을 변경할 수는 없지만, **객체 또는 배열의 중첩 속성을 변경할 수는 있습니다.**
-이것은 자바스크립트에서 객체와 배열이 참조로 전달되고, Vue가 이런 변경까지 방지하는 것은 너무 큰 비용이 들기 때문에 수행 하지 않습니다.
+이것은 JavaScript에서 객체와 배열이 참조로 전달되고, Vue가 이런 변경까지 방지하는 것은 너무 큰 비용이 들기 때문에 수행 하지 않습니다.
 
 이러한 구현의 주요 단점은 자식 컴포넌트가 명확하지 않은 방식으로 부모 컴포넌트의 상태에 영향을 미쳐 잠재적으로 향후 데이터 흐름에 대한 추론을 어렵게 만든다는 것입니다.
 가장 좋은 방법은 부모와 자식이 의도적으로 밀접하게 연결되어 있지 않는 한 이러한 변경을 피하는 것이며,
@@ -416,7 +416,7 @@ defineProps({
   propE: {
     type: Object,
     // 객체 또는 배열 기본값은 팩토리 함수에서 반환되어야 합니다.
-    // 함수는 컴포넌트에서 받은 rawProps를 인수로 받습니다.
+    // 함수는 컴포넌트에서 받은 rawProps를 인자로 받습니다.
     // (rawProps: 부모 컴포넌트에게 받은 props 전체 객체)
     default(rawProps) {
       return { message: '안녕!' }
@@ -442,7 +442,7 @@ defineProps({
 ```
 
 :::tip
-`defineProps()` 인수 내부의 코드는 **`<script setup>`에서 선언된 다른 변수에 액세스할 수 없습니다**.
+`defineProps()` 인자 내부의 코드는 **`<script setup>`에서 선언된 다른 변수에 접근할 수 없습니다**.
 컴파일할 때 전체 표현식이 외부 함수 범위로 이동되기 때문입니다.
 :::
 
@@ -471,7 +471,7 @@ export default {
     propE: {
       type: Object,
       // 객체 또는 배열 기본값은 팩토리 함수에서 반환되어야 합니다.
-      // 함수는 컴포넌트에서 받은 rawProps를 인수로 받습니다.
+      // 함수는 컴포넌트에서 받은 rawProps를 인자로 받습니다.
       // (rawProps: 부모 컴포넌트에게 받은 props 전체 객체)
       default(rawProps) {
         return { message: '안녕!' }

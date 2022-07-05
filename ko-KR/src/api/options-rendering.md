@@ -30,7 +30,7 @@
 
   :::warning 보안 참고 사항
   신뢰할 수 있는 템플릿 소스만 사용해야 합니다.
-  사용자가 제공한 콘텐츠를 템플릿으로 사용하면 안됩니다.
+  사용자가 제공한 컨텐츠를 템플릿으로 사용하면 안됩니다.
   자세한 내용은 [가이드 - 보안](/guide/best-practices/security.html#rule-no-1-never-use-non-trusted-templates) 참고.
   :::
 

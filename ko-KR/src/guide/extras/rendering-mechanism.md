@@ -50,7 +50,7 @@ const vnode = {
 고수준에서 이것은 Vue 컴포넌트가 마운트될 때 발생합니다:
 
 1. **컴파일**:
-   Vue 템플릿은 **렌더 함수**로 컴파일 됨: 가상 DOM 트리를 반환하는 함수. 이 단계는 빌드 단계를 통해 미리 실행하거나 런타임 컴파일러를 사용하여 즉석에서 실행할 수 있습니다.
+   Vue 템플릿은 **렌더 함수**로 컴파일 됨: 가상 DOM 트리를 반환하는 함수. 이 단계는 빌드 과정을 통해 미리 실행하거나 런타임 컴파일러를 사용하여 즉석에서 실행할 수 있습니다.
 
 2. **마운트**:
    런타임 렌더러는 렌더 함수를 호출하고, 반환된 가상 DOM 트리를 탐색하고, 이를 기반으로 실제 DOM 노드를 생성합니다.
@@ -125,7 +125,7 @@ Vue 컴파일러는 vnode 생성 함수 호출 시 자동으로 호이스트하�
 또한 정적 엘리먼트가 충분히 연속적으로 존재하면, 이러한 모든 노드에 대한 일반 HTML 문자열을 포함하는 단일 "정적 vnode"로 압축됩니다([예제](https://vue-next-template-explorer.netlify.app/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImZvb1wiPmZvbzwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj4iLCJzc3IiOmZhbHNlLCJvcHRpb25zIjp7ImhvaXN0U3RhdGljIjp0cnVlfX0=)).
 이러한 정적 vnode는 `innerHTML`을 직접 설정하여 마운트됩니다.
 또한 초기 마운트 시 해당 DOM 노드를 캐시합니다.
-동일한 콘텐츠가 앱의 다른 곳에서 재사용되는 경우 기본 `cloneNode()`를 사용하여 새 DOM 노드가 생성되며 이는 매우 효율적입니다.
+동일한 컨텐츠가 앱의 다른 곳에서 재사용되는 경우 기본 `cloneNode()`를 사용하여 새 DOM 노드가 생성되며 이는 매우 효율적입니다.
 
 ### 패치 플래그
 

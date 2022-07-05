@@ -8,7 +8,7 @@
 <!-- https://www.figma.com/file/qa7WHDQRWuEZNRs7iZRZSI/components -->
 
 이것은 기본 HTML 엘리먼트를 중첩하는 방법과 매우 유사하지만,
-Vue는 각 컴포넌트에 사용자 정의 콘텐츠와 논리를 캡슐화할 수 있는 자체 컴포넌트 모델을 구현합니다.
+Vue는 각 컴포넌트에 사용자 정의 컨텐츠와 논리를 캡슐화할 수 있는 자체 컴포넌트 모델을 구현합니다.
 Vue는 기본 웹 컴포넌트와도 잘 작동합니다.
 Vue 컴포넌트와 기본 웹 컴포넌트 간의 관계가 궁금하시다면 [여기에서 자세히 읽어보세요](/guide/extras/web-components.html).
 
@@ -92,7 +92,7 @@ export default {
 
 JavaScript 문자열로 정의한 템플릿은 Vue가 즉석에서 컴파일합니다.
 엘리먼트(보통 기본 `<template>` 엘리먼트)를 가리키는 ID 셀렉터를 사용할 수도 있습니다.
-Vue는 해당 콘텐츠를 템플릿 소스로 사용합니다.
+Vue는 해당 컨텐츠를 템플릿 소스로 사용합니다.
 
 위의 예는 싱글 컴포넌트를 정의하고 이를 `.js` 파일의 내보내기 기본 값으로 내보냅니다.
 그러나 명명된 내보내기를 사용하여 한 파일에서 여러 개의 컴포넌트로 내보낼 수 있습니다.
@@ -179,7 +179,7 @@ SFC에서는 네이티브 HTML 엘리먼트와 구별하기 위해 자식 컴포
 기본 HTML 태그 이름은 대소문자를 구분하지 않지만, Vue의 SFC는 컴파일된 포멧으로 대소문자를 구분하여 태그 이름을 사용할 수 있습니다.
 또한 `/>`를 사용하여 태그를 닫을 수 있습니다.
 
-템플릿을 DOM에서 직접 작성하는 경우(예: 기본 `<template>` 엘리먼트의 콘텐츠로),
+템플릿을 DOM에서 직접 작성하는 경우(예: 기본 `<template>` 엘리먼트의 컨텐츠로),
 템플릿은 브라우저의 기본 HTML 구문 분석 동작을 따릅니다.
 이러한 경우 컴포는트는 `kebab-case` 및 명시적 닫는 태그를 사용해야 합니다:
 
@@ -195,8 +195,8 @@ SFC에서는 네이티브 HTML 엘리먼트와 구별하기 위해 자식 컴포
 ## Props 전달하기 {#passing-props}
 
 블로그를 구축하는 경우 블로그 게시물을 나타내는 컴포넌트가 필요할 수 있습니다.
-우리는 모든 블로그 게시물이 동일한 시각적 레이아웃을 공유하기를 원하지만 콘텐츠는 다릅니다.
-이러한 곳에 사용할 컴포넌트는 표시하려는 특정 게시물의 제목 및 콘텐츠와 같은 데이터를 전달할 수 없으면 유용하지 않습니다.
+우리는 모든 블로그 게시물이 동일한 시각적 레이아웃을 공유하기를 원하지만 컨텐츠는 다릅니다.
+이러한 곳에 사용할 컴포넌트는 표시하려는 특정 게시물의 제목 및 컨텐츠와 같은 데이터를 전달할 수 없으면 유용하지 않습니다.
 `props`가 필요한 건 바로 이때입니다.
 
 `props`은 컴포넌트에 등록할 수 있는 사용자 정의 속성입니다.
@@ -218,7 +218,7 @@ export default {
 ```
 
 `props` 속성에 값이 전달되면, 해당 컴포넌트 인스턴스의 속성이 됩니다.
-해당 속성의 값은 컴포넌트의 다른 속성과 마찬가지로 템플릿 내에서 그리고 컴포넌트의 `this` 컨텍스트에서 액세스할 수 있습니다:
+해당 속성의 값은 컴포넌트의 다른 속성과 마찬가지로 템플릿 내에서 그리고 컴포넌트의 `this` 컨텍스트에서 접근할 수 있습니다:
 
 </div>
 <div class="composition-api">
@@ -234,7 +234,7 @@ defineProps(['title'])
 </template>
 ```
 
-`defineProps`는 `<script setup>` 내에서만 사용할 수 있는 컴파일 타임 매크로이며, 템플릿에 선언된 `props`는 자동으로 노출됩니다. (역자주: 컴파일러 매크로이기 때문에 개발 환경 설정에 따라 lint 오류나 경고가 나올수 있습니다)
+`defineProps`는 `<script setup>` 내에서만 사용할 수 있는 컴파일 타임 매크로이며, 템플릿에 선언된 `props`는 자동으로 노출됩니다. (역자주: 컴파일러 매크로이기 때문에 개발 환경 설정에 따라 lint 에러나 경고가 나올수 있습니다)
 그리고 `defineProps`는 컴포넌트에 전달된 모든 `props`를 객체로 반환하므로, 필요한 경우 JavaScript에서 접근할 수 있습니다:
 
 ```js
@@ -243,9 +243,9 @@ const props = defineProps(['title'])
 console.log(props.title)
 ```
 
-참조: [컴포넌트 Props 타입 지정하기](/guide/typescript/composition-api.html#typing-component-props) <sup class="vt-badge ts" />
+참고: [컴포넌트 Props 타입 지정하기](/guide/typescript/composition-api.html#typing-component-props) <sup class="vt-badge ts" />
 
-`<script setup>`을 사용하지 않는 경우, `props` 옵션을 선언해서 사용해야 하며, `props` 객체는 `setup()`에 첫 번째 인수로 전달됩니다:
+`<script setup>`을 사용하지 않는 경우, `props` 옵션을 선언해서 사용해야 하며, `props` 객체는 `setup()`에 첫 번째 인자로 전달됩니다:
 
 ```js
 export default {
@@ -322,7 +322,7 @@ const posts = ref([
 </div>
 
 동적 `props`를 전달하기 위해 `v-bind`를 사용하는 방법에 주목하세요.
-이것은 미리 렌더링할 정확한 콘텐츠를 모를 때 특히 유용합니다.
+이것은 미리 렌더링할 정확한 컨텐츠를 모를 때 특히 유용합니다.
 
 지금은 이것이 `props`에 대해 알아야 할 전부입니다.
 하지만 이 페이지를 다 읽고 내용에 익숙해지면 나중에 다시 돌아와 [Props](/guide/components/props.html)의 전체 가이드를 읽는 것이 좋습니다.
@@ -470,10 +470,10 @@ const emit = defineEmits(['enlarge-text'])
 </template>
 ```
 
-참조: [컴포넌트 emit 타입 지정하기](/guide/typescript/composition-api.html#typing-component-emits) <sup class="vt-badge ts" />
+참고: [컴포넌트 emit 타입 지정하기](/guide/typescript/composition-api.html#typing-component-emits) <sup class="vt-badge ts" />
 
 `<script setup>`을 사용하지 않는 경우, `emits` 옵션을 사용하여 내보낼 이벤트를 선언할 수 있습니다.
-setup 컨텍스트의 속성으로 `emit` 함수에 액세스할 수 있습니다(`setup()`의 두 번째 인수로 전달됨):
+setup 컨텍스트의 속성으로 `emit` 함수에 접근할 수 있습니다(`setup()`의 두 번째 인자로 전달됨):
 
 ```js
 export default {
@@ -489,9 +489,9 @@ export default {
 지금은 이것이 사용자 정의 컴포넌트 이벤트에 대해 알아야 할 전부입니다.
 그러나 이 페이지를 다 읽고 내용에 익숙해지면 나중에 다시 돌아와 [사용자 정의 이벤트](/guide/components/events)의 전체 가이드를 읽는 것이 좋습니다.
 
-## 슬롯이 있는 콘텐츠 배포 {#content-distribution-with-slots}
+## 슬롯이 있는 컨텐츠 배포 {#content-distribution-with-slots}
 
-HTML 엘리먼트와 마찬가지로 다음과 같이 컴포넌트에 콘텐츠를 전달할 수 있으면 종종 유용합니다:
+HTML 엘리먼트와 마찬가지로 다음과 같이 컴포넌트에 컨텐츠를 전달할 수 있으면 종종 유용합니다:
 
 ```vue-html
 <AlertBox>
@@ -501,7 +501,7 @@ HTML 엘리먼트와 마찬가지로 다음과 같이 컴포넌트에 콘텐츠�
 
 다음과 같이 렌더링할 수 있습니다:
 
-:::danger 이것은 데모용 오류입니다.
+:::danger 이것은 데모용 에러입니다.
 나쁜 일이 일어났습니다.
 :::
 
@@ -510,7 +510,7 @@ HTML 엘리먼트와 마찬가지로 다음과 같이 컴포넌트에 콘텐츠�
 ```vue{4}
 <template>
   <div class="alert-box">
-    <strong>이것은 데모용 오류입니다.</strong>
+    <strong>이것은 데모용 에러입니다.</strong>
     <slot />
   </div>
 </template>
@@ -522,7 +522,7 @@ HTML 엘리먼트와 마찬가지로 다음과 같이 컴포넌트에 콘텐츠�
 </style>
 ```
 
-위에서 볼 수 있듯이 콘텐츠를 이동하려는 자리 표시자로 `<slot>`을 사용합니다.
+위에서 볼 수 있듯이 컨텐츠를 이동하려는 자리 표시자로 `<slot>`을 사용합니다.
 우리가 할 일은 이게 끝입니다!
 
 <div class="options-api">
@@ -666,7 +666,7 @@ Vue의 템플릿 파서는 유형에 관계없이 모든 태그를 닫으라는 
 </table>
 ```
 
-사용자 정의 컴포넌트 `<blog-post-row>`는 잘못된 콘텐츠로 호이스트(hoisted)되어 최종적으로 렌더링된 출력에서 오류가 발생합니다.
+사용자 정의 컴포넌트 `<blog-post-row>`는 잘못된 컨텐츠로 호이스트(hoisted)되어 최종적으로 렌더링된 출력에서 에러가 발생합니다.
 특별한 [`is` 속성](/api/built-in-special-attributes.html#is)을 해결 방법으로 사용할 수 있습니다:
 
 ```vue-html

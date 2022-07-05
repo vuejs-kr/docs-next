@@ -11,7 +11,7 @@
   box-sizing: border-box;
 }
 
-/* 1. 트렌지션 선언 */
+/* 1. 트랜지션 선언 */
 .fade-move,
 .fade-enter-active,
 .fade-leave-active {

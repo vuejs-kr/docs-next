@@ -32,7 +32,7 @@ export default {
         const res = await fetch('https://yesno.wtf/api')
         this.answer = (await res.json()).answer === 'yes' ? '네' : '아니오'
       } catch (error) {
-        this.answer = '오류! API에 연결할 수 없습니다. ' + error
+        this.answer = '에러! API에 연결할 수 없습니다. ' + error
       }
     }
   }
@@ -83,7 +83,7 @@ watch(question, async (newQuestion, oldQuestion) => {
       const res = await fetch('https://yesno.wtf/api')
       answer.value = (await res.json()).answer === 'yes' ? '네' : '아니오'
     } catch (error) {
-      answer.value = '오류! API에 연결할 수 없습니다. ' + error
+      answer.value = '에러! API에 연결할 수 없습니다. ' + error
     }
   }
 })
@@ -102,7 +102,7 @@ watch(question, async (newQuestion, oldQuestion) => {
 
 ### 감시 대상 타입 {https://vuejs.org/guide/essentials/watchers.html#watch-source-types}
 
-`watch`의 첫 번째 인수는 다양한 유형의 반응형 "소스"가 될 수 있습니다.
+`watch`의 첫 번째 인자는 다양한 유형의 반응형 "소스"가 될 수 있습니다.
 ref(계산된 ref 포함), 반응형 객체, getter 함수 또는 여러 소스의 배열이 될 수 있습니다:
 
 ```js
@@ -213,7 +213,7 @@ watch(
 )
 ```
 
-그러나 `deep` 옵션을 명시적으로 사용하여 두 번째 경우(위 예시)를 깊은 감시자로 강제할 수 있습니다:
+그러나 `deep` 옵션을 명시적으로 사용하여 두 번째 경우(위 예제)를 깊은 감시자로 강제할 수 있습니다:
 
 ```js
 watch(
@@ -460,7 +460,7 @@ export default {
 
 <div class="options-api">
 
-`watch` 옵션이나 `$watch()` 인스턴스 메소드를 사용하여 선언된 감시자는 해당 컴포넌트가 마운트 해제될 때 자동으로 중지되므로 대부분의 경우 감시자를 직접 중지하는 것에 대해 고민할 필요가 없습니다.
+`watch` 옵션이나 `$watch()` 인스턴스 메서드를 사용하여 선언된 감시자는 해당 컴포넌트가 마운트 해제될 때 자동으로 중지되므로 대부분의 경우 감시자를 직접 중지하는 것에 대해 고민할 필요가 없습니다.
 
 드물게 해당 컴포넌트가 마운트 해제되기 전에 감시자를 중지해야 하는 경우를 위해 `$watch()` API는 이 기능을 수행할 수 있게 함수를 반환합니다:
 

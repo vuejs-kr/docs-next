@@ -80,13 +80,13 @@ whenDepsChange(update)
 
 ## Vue에서 반응형 작동 방식
 
-우리는 예제처럼 지역 변수의 읽기 및 쓰기를 실제로 추적할 수 없습니다.
+우리는 예제처럼 로컬 변수의 읽기 및 쓰기를 실제로 추적할 수 없습니다.
 바닐라 JavaScript에서는 그렇게 하는 메커니즘이 없습니다.
 하지만 **객체 속성**의 읽기 및 쓰기를 가로채는 일은 할 수 있습니다.
 
-JavaScript에서 속성 접근을 가로채는 방법에는 [getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get)/[setters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set) 및 [프록시](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)의 두 가지가 있습니다.
+JavaScript에서 속성 접근을 가로채는 방법에는 [getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get)/[setters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set) 및 [프락시](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)의 두 가지가 있습니다.
 Vue 2는 브라우저 지원 제한으로 인해 단독으로 getter/setter를 사용했습니다.
-Vue 3에서 프록시는 반응형 객체에 사용되며 getter/setter는 참조에 사용됩니다.
+Vue 3에서 프락시는 반응형 객체에 사용되며 getter/setter는 참조에 사용됩니다.
 다음은 작동 방식을 보여주는 유사 코드입니다:
 
 ```js{4,8,17,21}
@@ -124,9 +124,9 @@ function ref(value) {
 
 아래는 우리가 기초 섹션에서 논의한 몇 가지 [반응형의 제한 사항](/guide/essentials/reactivity-fundamentals.html#limitations-of-reactive)입니다:
 
-- 반응형 객체의 속성을 로컬 변수에 할당하거나 분해 할당하면 로컬 변수에 접근이 더 이상 get/set 프록시 트랩을 트리거하지 않기 때문에 반응형이 "연결 해제"됩니다.
+- 반응형 객체의 속성을 로컬 변수에 할당하거나 분해 할당하면 로컬 변수에 접근이 더 이상 get/set 프락시 트랩을 트리거하지 않기 때문에 반응형이 "연결 해제"됩니다.
 
-- `reactive()`에서 반환된 프록시는 원본과 동일하게 동작하지만 `===` 연산자를 사용하여 원본과 비교하면 다른 ID를 갖습니다.
+- `reactive()`에서 반환된 프락시는 원본과 동일하게 동작하지만 `===` 연산자를 사용하여 원본과 비교하면 다른 ID를 갖습니다.
 
 `track()` 내부에서 현재 실행 중인 이팩트가 있는지 확인합니다.
 존재하는 경우, 추적 중인 속성에 대한 구독자 이팩트(Set에 저장됨)를 조회하고 이팩트를 Set에 추가합니다.
@@ -248,11 +248,11 @@ count.value++
 
 Vue의 반응형 시스템은 주로 런타임 기반입니다.
 추적 및 트리거링은 모두 코드가 브라우저에서 직접 실행되는 동안 수행됩니다.
-런타임 반응형의 장점은 빌드 단계 없이 작동할 수 있고 엣지 케이스가 적다는 것입니다.
+런타임 반응형의 장점은 빌드 과정 없이 작동할 수 있고 엣지 케이스가 적다는 것입니다.
 반면에 이것은 JavaScript의 문법 제한에 의해 제약을 받습니다.
 
 이전 예제에서 이미 한계에 부딪쳤습니다.
-JavaScript는 지역 변수의 읽기 및 쓰기를 가로챌 수 있는 방법을 제공하지 않으므로,
+JavaScript는 로컬 변수의 읽기 및 쓰기를 가로챌 수 있는 방법을 제공하지 않으므로,
 항상 반응형 객체나 참조를 사용하여 반응형 상태에 객체 속성으로 접근해야 합니다.
 
 코드의 장황함을 줄이기 위해 [Reactivity Transform](/guide/extras/reactivity-transform.html) 기능을 실험하고 있습니다:
@@ -402,8 +402,8 @@ watchEffect(callback, {
 
 ## 외부 상태 시스템과의 통합
 
-Vue의 반응형 시스템은 일반 JavaScript 객체를 반응형 프록시로 깊이 변환하여 작동합니다.
-깊은 변환은 외부 상태 관리 시스템과 통합할 때 필요하지 않거나 때때로 원하지 않을 수 있습니다(예: 외부 솔루션도 프록시를 사용하는 경우).
+Vue의 반응형 시스템은 일반 JavaScript 객체를 반응형 프락시로 깊이 변환하여 작동합니다.
+깊은 변환은 외부 상태 관리 시스템과 통합할 때 필요하지 않거나 때때로 원하지 않을 수 있습니다(예: 외부 솔루션도 프락시를 사용하는 경우).
 
 Vue의 반응형 시스템을 외부 상태 관리 솔루션과 통합하는 일반적인 아이디어는 외부 상태를 [`shallowRef`](/api/reactivity-advanced.html#shallowref)에 유지하는 것입니다.
 얕은 참조는 `.value` 속성에 접근할 때만 반응합니다.

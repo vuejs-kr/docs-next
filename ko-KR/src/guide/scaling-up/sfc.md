@@ -49,7 +49,7 @@ SFC 사용을 위해서는 빌드 방식을 따라야 하지만 다음과 같은
 
 SFC는 Vue를 프레임워크로 정의하며, 다음과 같이 Vue를 사용하는 데 권장되는 접근 방식입니다.
 
-- 싱글 페이지 애플리케이션(Single Page Application: SPA)
+- 싱글 페이지 앱(Single Page Application: SPA)
 - 정적 사이트 생성(Static-Site Generator: SSG)
 - 더 나은 개발 경험(DX)을 위해 프론트엔드 개발 방식에 합리적으로 빌드 방식 도입.
 
