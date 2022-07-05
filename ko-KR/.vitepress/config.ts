@@ -602,9 +602,9 @@ export default defineConfigWithTheme<ThemeConfig>({
     sidebar,
 
     algolia: {
-      indexName: 'vuejs',
-      appId: 'ML0LEBN7FQ',
-      apiKey: 'f49cbd92a74532cc55cfbffa5e5a7d01',
+      indexName: 'vuejs-korea',
+      appId: 'MEIERGO63D',
+      apiKey: '736f8ceee537a06dcd6ecea297cb7942',
       searchParameters: {
         facetFilters: ['version:v3']
       }
