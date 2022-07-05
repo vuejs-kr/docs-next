@@ -605,9 +605,9 @@ export default defineConfigWithTheme<ThemeConfig>({
       indexName: 'vuejs-korea',
       appId: 'MEIERGO63D',
       apiKey: '736f8ceee537a06dcd6ecea297cb7942',
-      searchParameters: {
-        facetFilters: ['version:v3']
-      }
+//       searchParameters: {
+//         facetFilters: ['version:v3']
+//       }
     },
 
     // carbonAds: {
