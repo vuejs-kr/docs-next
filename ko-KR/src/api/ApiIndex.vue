@@ -68,12 +68,12 @@ function slugify(text: string): string {
 <template>
   <div id="api-index">
     <div class="header">
-      <h1>API Reference</h1>
+      <h1>API 레퍼런스</h1>
       <div class="api-filter">
-        <label for="api-filter">Filter</label>
+        <label for="api-filter">필터</label>
         <input
           type="search"
-          placeholder="Enter keyword"
+          placeholder="키워드를 입력하세요"
           id="api-filter"
           v-model="query"
         />
@@ -103,7 +103,7 @@ function slugify(text: string): string {
     </div>
 
     <div v-if="!filtered.length" class="no-match">
-      No API matching "{{ query }}" found.
+      "{{ query }}"와 매칭되는 API를 찾지 못했습니다.
     </div>
   </div>
 </template>
