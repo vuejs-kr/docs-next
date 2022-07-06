@@ -65,9 +65,6 @@ Vue를 컴포지션 API와 함께 사용하는 방법을 배우고 싶다면 왼
 컴포지션 API의 로직 재사용 기능은 구성화 유틸리티의 계속 성장하는 컬렉션인 [VueUse](https://vueuse.org/)와 같은 인상적인 커뮤니티 프로젝트를 탄생시켰습니다.
 또한 상태 저장 타사 서비스 또는 라이브러리를 [불변 데이터](/guide/extras/reactivity-in-depth.html#immutable-data), [상태 머신](/guide/extras/reactivity-in-depth.html#state-machines) 및 [RxJS](https://vueuse.org/rxjs/readme.html#vueuse-rxjs)와 같은 Vue의 반응형 시스템에 쉽게 통합하기 위한 깔끔한 메커니즘 역할을 합니다.
 
-[comment]: <> (/guide/extras/reactivity-in-depth.md 번역 후 링크 수정 필요)
-[comment]: <> (/guide/extras/reactivity-in-depth.md 번역 후 링크 수정 필요)
-
 ### 보다 유연한 코드 구성
 
 많은 사용자는 기본적으로 옵션 API를 사용하여 조직화된 코드를 작성하는 것을 좋아합니다.

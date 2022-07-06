@@ -27,8 +27,6 @@ Vue는 수동 최적화가 크게 필요하지 않은 가장 일반적인 사용
 
 - Vue를 다양한 방식으로 활용하는 방법을 보려면 [Vue 사용 방법](/guide/extras/ways-of-using-vue.html)을 참조하세요.
 
-[comment]: <> (/guide/extras/ways-of-using-vue.md 번역 후 링크 수정 필요)
-
 - Jason Miller의 블로그 [Application Holotypes](https://jasonformat.com/application-holotypes/)(앱 유형)에서 웹 앱의 유형과 이상적인 구현 및 제공에 대해 논의합니다.
 
 ## 프로파일링 옵션 (profiling options) {#profiling-options}

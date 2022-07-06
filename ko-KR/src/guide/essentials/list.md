@@ -227,8 +227,6 @@ data() {
 
 :::warning 참고
 `v-if`와 `v-for`를 함께 사용하는 것은 **권장되지 않습니다**.
-
-[comment]: <> (자세한 내용은 [스타일 가이드]&#40;/style-guide/rules-essential.html#avoid-v-if-with-v-for&#41;를 참조하세요.)
 :::
 
 이것들이 같은 노드에 존재할 때 `v-if`가 `v-for`보다 우선순위가 높기 때문에 `v-if` 조건문에서 `v-for` 변수에 액세스할 수 없습니다:

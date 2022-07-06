@@ -517,8 +517,6 @@ prop 유효성 검사에 실패하면 Vue는 콘솔에 경고를 출력합니다
 [타입 기반 props 선언](/api/sfc-script-setup.html#typescript-only-features) 시, Vue는 타입 문법을 적절한 prop 선언으로 컴파일하기 위해 최선을 다할 것입니다.
 예를 들어 `defineProps<{ msg: string }>`는 `{ msg: { type: String, required: true }}`로 컴파일됩니다.
 
-[comment]: <> (api 문서 번역 후 링크 확인 필요)
-
 </div>
 <div class="options-api">
 
