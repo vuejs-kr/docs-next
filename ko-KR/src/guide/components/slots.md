@@ -404,8 +404,6 @@ function MyComponent(slots) {
 
 사실 이것은 범위가 지정된 슬롯이 컴파일되는 방법과 수동 [렌더 함수](/guide/extras/render-function.html)에서 범위가 지정된 슬롯을 사용하는 방법에 매우 유사합니다.
 
-[comment]: <> (/guide/extras/render-function.md 번역 후 링크 수정 필요)
-
 `v-slot="slotProps"`가 슬롯 함수 특징과 어떻게 일치하는지 주목하십시오.
 함수의 인자와 마찬가지로 `v-slot`에서 분해 할당을 사용할 수 있습니다:
 

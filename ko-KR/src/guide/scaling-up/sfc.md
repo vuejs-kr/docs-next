@@ -45,8 +45,6 @@ SFC 사용을 위해서는 빌드 방식을 따라야 하지만 다음과 같은
 - 템플릿 표현식을 [지원하는 IDE](/guide/scaling-up/tooling.html#ide-support)의 자동 완성 및 유형 검사
 - 즉시 사용 가능한 핫 모듈 교체(Hot-Module Replacement: HMR) 지원
 
-[comment]: <> (/guide/extras/composition-api-faq.md 번역 후 링크 수정 필요)
-
 SFC는 Vue를 프레임워크로 정의하며, 다음과 같이 Vue를 사용하는 데 권장되는 접근 방식입니다.
 
 - 싱글 페이지 앱(Single Page Application: SPA)
