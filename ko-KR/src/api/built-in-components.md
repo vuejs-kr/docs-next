@@ -9,7 +9,7 @@ pageClass: api
 빌트인 컴포넌트는 등록할 필요 없이 템플릿에서 직접 사용할 수 있습니다.
 이것은 트리 쉐이킹되므로 사용되는 경우에만 빌드에 포함됩니다.
 
-[랜더 함수](/guide/extras/render-function.html)에서 사용할 때는 명시적으로 `import` 해야합니다.
+[렌더 함수](/guide/extras/render-function.html)에서 사용할 때는 명시적으로 `import` 해야합니다.
 예를 들어:
 
 ```js
@@ -24,49 +24,49 @@ h(Transition, {
 
 ## `<Transition>`
 
-**싱글** 엘리먼트 또는 컴포넌트에 애니메이션 트렌지션 효과를 제공합니다.
+**싱글** 엘리먼트 또는 컴포넌트에 애니메이션 트랜지션 효과를 제공합니다.
 
 - **Props**
 
   ```ts
   interface TransitionProps {
     /**
-     * 트렌지션 CSS 클래스 이름 자동 생성에 사용.
+     * 트랜지션 CSS 클래스 이름 자동 생성에 사용.
      * 예를 들어 `name: 'fade'`는 `.fade-enter`,
      * `.fade-enter-active` 등으로 자동 확장됨.
      */
     name?: string
     /**
-     * CSS 트렌지션 클래스를 적용할지 여부입니다.
+     * CSS 트랜지션 클래스를 적용할지 여부입니다.
      * 기본 값: true
      */
     css?: boolean
     /**
-     * 트렌지션 종료 타이밍을 결정하기 위해,
-     * 대기할 트렌지션 이벤트의 유형을 지정.
+     * 트랜지션 종료 타이밍을 결정하기 위해,
+     * 대기할 트랜지션 이벤트의 유형을 지정.
      * 기본 동작은 지속 시간이 더 긴 유형을
      * 자동으로 감지.
      */
     type?: 'transition' | 'animation'
     /**
-     * 명시적으로 트렌지션의 지속 시간을 지정.
-     * 기본 동작은 루트 트렌지션 엘리먼트의 첫 번째
+     * 명시적으로 트랜지션의 지속 시간을 지정.
+     * 기본 동작은 루트 트랜지션 엘리먼트의 첫 번째
      * `transitionend` 또는 `animationend` 이벤트를 기다리는 것.
      */
     duration?: number | { enter: number; leave: number }
     /**
-     * 진입/진출 트렌지션의 타이밍 순서를 제어.
+     * 진입/진출 트랜지션의 타이밍 순서를 제어.
      * 기본 동작은 동시.
      */
     mode?: 'in-out' | 'out-in' | 'default'
     /**
-     * 최초 렌더링에 트렌지션을 적용할지 여부.
+     * 최초 렌더링에 트랜지션을 적용할지 여부.
      * 기본 값: false
      */
     appear?: boolean
 
     /**
-     * 트렌지션 클래스를 커스텀하기 위한 props.
+     * 트랜지션 클래스를 커스텀하기 위한 props.
      * 템플릿에서 kebab-case를 사용해야 함.
      * 예: enter-from-class="xxx"
      */
@@ -106,7 +106,7 @@ h(Transition, {
   </Transition>
   ```
 
-  트렌지션 모드 + 등장 애니메이션을 가진 동적 컴포넌트:
+  트랜지션 모드 + 등장 애니메이션을 가진 동적 컴포넌트:
 
   ```vue-html
   <Transition name="fade" mode="out-in" appear>
@@ -114,7 +114,7 @@ h(Transition, {
   </Transition>
   ```
 
-  트렌지션 이벤트 수신:
+  트랜지션 이벤트 수신:
 
   ```vue-html
   <Transition @after-enter="onTransitionComplete">
@@ -126,7 +126,7 @@ h(Transition, {
 
 ## `<TransitionGroup>`
 
-리스트의 **여러** 엘리먼트 또는 컴포넌트에 트렌지션 효과를 제공합니다.
+리스트의 **여러** 엘리먼트 또는 컴포넌트에 트랜지션 효과를 제공합니다.
 
 - **Props**
 
@@ -135,11 +135,11 @@ h(Transition, {
   ```ts
   interface TransitionGroupProps extends Omit<TransitionProps, 'mode'> {
     /**
-     * 정의하지 않으면, 랜더는 프래그먼트처럼 취급함.
+     * 정의하지 않으면, 렌더는 프래그먼트처럼 취급함.
      */
     tag?: string
     /**
-     * 이동중 트렌지션에 적용될 CSS 클래스를 커스텀.
+     * 이동중 트랜지션에 적용될 CSS 클래스를 커스텀.
      * 템플릿에서 kebab-case를 사용해야 함.
      * 예: enter-from-class="xxx"
      */
@@ -157,10 +157,10 @@ h(Transition, {
 
   애니메이션이 제대로 작동하려면 `<transition-group>`의 모든 자식이 [**고유 키**](/guide/essentials/list.html#maintaining-state-with-key)를 가져야 합니다.
 
-  `<TransitionGroup>`은 CSS `transform`으로 이동 트렌지션을 지원합니다.
+  `<TransitionGroup>`은 CSS `transform`으로 이동 트랜지션을 지원합니다.
   업데이트 후 화면에서 자식의 위치가 변경되면,
   움직이는 CSS 클래스가 적용됩니다(`name` 속성에서 자동 생성되거나 `move-class` prop으로 구성됨).
-  이동 클래스가 적용될 때 CSS의 `transform` 속성이 "트렌지션 가능"이면,
+  이동 클래스가 적용될 때 CSS의 `transform` 속성이 "트랜지션 가능"이면,
   [FLIP 기술](https://aerotwist.com/blog/flip-your-animations/)을 사용하여 엘리먼트가 목적지까지 부드럽게 애니메이션됩니다.
 
 - **예제**:
@@ -272,7 +272,7 @@ h(Transition, {
 
 ## `<Teleport>`
 
-슬롯 콘텐츠를 DOM 내 다른 위치에서 렌더링합니다.
+슬롯 컨텐츠를 DOM 내 다른 위치에서 렌더링합니다.
 
 - **Props**
 
@@ -284,7 +284,7 @@ h(Transition, {
      */
     to: string | HTMLElement
     /**
-     * `true`이면 콘텐츠가 대상이 될 컨테이너로
+     * `true`이면 컨텐츠가 대상이 될 컨테이너로
      * 이동하지 않고 원래 위치에 남아 있음.
      * 동적으로 변경할 수 있음.
      */

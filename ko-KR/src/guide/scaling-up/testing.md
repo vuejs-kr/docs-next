@@ -260,7 +260,7 @@ cy.get(valueSelector).should('be.visible').and('contain.text', '0')
   스냅샷 테스트에만 의존하지 마십시오.
   HTML 문자열을 검증하는 것이 정확성을 의미하지 않으므로 명확한 목적이 있는 테스트를 작성하십시오.
 
-  메소드를 철저히 테스트해야 하는 경우, 독립 실행형 유틸리티 기능으로 추출하는 것을 고려하고, 전용 단위 테스트를 작성하십시오.
+  메서드를 철저히 테스트해야 하는 경우, 독립 실행형 유틸리티 기능으로 추출하는 것을 고려하고, 전용 단위 테스트를 작성하십시오.
   깔끔하게 추출할 수 없는 경우, 컴포넌트나 통합 또는 이를 포괄하는 E2E 테스트의 일부로 테스트할 수 있습니다.
 
 ### 추천 {#recommendation-1}
@@ -272,7 +272,7 @@ cy.get(valueSelector).should('be.visible').and('contain.text', '0')
   [@testing-library/cypress](https://testing-library.com/docs/cypress-testing-library/intro) 테스팅 라이브러리로 사용할 수 있습니다.
 
 Vitest와 브라우저 기반 러너의 주요 차이점은 속도와 실행 컨텍스트입니다.
-간단히 말해서, Cypress와 같은 브라우저 기반 러너는 Vitest와 같은 노드 기반 러너가 포착할 수 없는 문제(예: 스타일 문제, 실제 네이티브 DOM 이벤트, 쿠키, 로컬 스토리지 및 네트워크 오류)를 포착할 수 있지만,
+간단히 말해서, Cypress와 같은 브라우저 기반 러너는 Vitest와 같은 노드 기반 러너가 포착할 수 없는 문제(예: 스타일 문제, 실제 네이티브 DOM 이벤트, 쿠키, 로컬 스토리지 및 네트워크 에러)를 포착할 수 있지만,
 브라우저 기반 러너는 브라우저를 열고 스타일시트를 컴파일하는 등의 작업을 수행하기 때문에 *Vitest보다 훨씬 느립니다*.
 Cypress는 컴포넌트 테스트를 지원하는 브라우저 기반 러너입니다.
 Vitest와 Cypress를 비교한 최신 정보는 [비교 페이지](https://vitest.dev/guide/comparisons.html#cypress)를 참조하십시오.
@@ -297,7 +297,7 @@ Vue 전용 내부 테스트가 필요한 고급 컴포넌트를 빌드하는 경
 ### 다른 선택지 {#other-options-1}
 
 - [Nightwatch](https://v2.nightwatchjs.org/)는 Vue 컴포넌트 테스트를 지원하는 E2E 테스트 러너입니다.
-  (Nightwatch v2의 [예시 프로젝트](https://github.com/nightwatchjs-community/todo-vue))
+  (Nightwatch v2의 [예제 프로젝트](https://github.com/nightwatchjs-community/todo-vue))
 
 ## E2E 테스트 {#e2e-testing}
 
@@ -351,7 +351,7 @@ E2E 테스트 및 개발의 주요 문제 중 하나는, 제품군 전체를 실
 #### 헤드리스 모드의 가시성 {#visibility-in-headless-mode}
 
 E2E 테스트가 지속적인 CI/CD 파이프라인에서 실행될 때, 종종 헤드리스 브라우저에서 실행됩니다.
-최신 E2E 테스트 프레임워크의 중요한 기능은 테스트 중에 앱의 스냅샷 또는 비디오를 보고 오류가 발생하는 이유를 파악할 수 있는 기능입니다.
+최신 E2E 테스트 프레임워크의 중요한 기능은 테스트 중에 앱의 스냅샷 또는 비디오를 보고 에러가 발생하는 이유를 파악할 수 있는 기능입니다.
 역사적으로 이러한 통합을 유지하는 것은 지루했습니다.
 
 ### 추천 {#recommendation-2}
@@ -390,7 +390,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   // ...
   test: {
-    // jest와 같은 글로벌 테스트 API 사용
+    // jest와 같은 전역 테스트 API 사용
     globals: true,
     // happy-dom으로 DOM 시뮬레이션
     // (피어 종속성으로 happy-dom을 설치해야 함)
@@ -460,7 +460,7 @@ test('it should work', () => {
 - 수명 주기 훅
 - Provide(제공) / Inject(주입)
 
-구성화가 반응형 API만 사용하는 경우 직접 호출하고, 반환된 상태/메소드를 검증하여 테스트할 수 있습니다:
+구성화가 반응형 API만 사용하는 경우 직접 호출하고, 반환된 상태/메서드를 검증하여 테스트할 수 있습니다:
 
 ```js
 // counter.js

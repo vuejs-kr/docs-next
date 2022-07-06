@@ -65,7 +65,7 @@
 <MyButton @increase-by="increaseCount" />
 ```
 
-그러면 인자 값이 해당 메소드의 첫 번째 파라미터로 전달됩니다:
+그러면 인자 값이 해당 메서드의 첫 번째 파라미터로 전달됩니다:
 
 <div class="options-api">
 
@@ -160,7 +160,7 @@ const emit = defineEmits<{
 </script>
 ```
 
-참조: [컴포넌트 Emits에 타입 지정하기](/guide/typescript/composition-api.html#typing-component-emits) <sup class="vt-badge ts" />
+참고: [컴포넌트 Emits에 타입 지정하기](/guide/typescript/composition-api.html#typing-component-emits) <sup class="vt-badge ts" />
 
 </div>
 <div class="options-api">
@@ -181,7 +181,7 @@ export default {
 }
 ```
 
-참조: [컴포넌트 Emits에 타입 지정하기](/guide/typescript/options-api.html#typing-component-emits) <sup class="vt-badge ts" />
+참고: [컴포넌트 Emits에 타입 지정하기](/guide/typescript/options-api.html#typing-component-emits) <sup class="vt-badge ts" />
 
 </div>
 

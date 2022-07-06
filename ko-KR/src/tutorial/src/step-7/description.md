@@ -10,7 +10,7 @@
 </ul>
 ```
 
-여기서 `todo`는 현재 배열 엘리먼트에서 반복되는 지역 변수입니다.
+여기서 `todo`는 현재 배열 엘리먼트에서 반복되는 로컬 변수입니다.
 이것은 `v-for` 엘리먼트 또는 그 내부에서만 접근할 수 있습니다.
 
 각 todo 객체에 고유한 `id`를 부여하고, 각 `<li>`에 <a target="_blank" href="/api/built-in-special-attributes.html#key">특별한 속성인 `key`</a>를 바인딩했습니다.
@@ -18,7 +18,7 @@
 
 목록을 업데이트하는 방법에는 두 가지가 있습니다:
 
-1. 자료 배열에서 [변경 메소드(mutating methods)](https://stackoverflow.com/questions/9009879/which-javascript-array-functions-are-mutating)를 호출합니다:
+1. 자료 배열에서 [변경 메서드(mutating methods)](https://stackoverflow.com/questions/9009879/which-javascript-array-functions-are-mutating)를 호출합니다:
 
    <div class="composition-api">
 

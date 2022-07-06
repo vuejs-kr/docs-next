@@ -19,14 +19,14 @@ import CodepenSnippet from './accessibility-demos/CodepenSnippet.vue'
 
 ## 건너뛰기 링크 {#skip-link}
 
-사용자가 여러 웹 페이지에서 반복되는 콘텐츠를 건너뛸 수 있도록 각 페이지 상단에 기본 콘텐츠 영역으로 직접 연결되는 링크를 추가해야 합니다.
+사용자가 여러 웹 페이지에서 반복되는 컨텐츠를 건너뛸 수 있도록 각 페이지 상단에 기본 컨텐츠 영역으로 직접 연결되는 링크를 추가해야 합니다.
 
 일반적으로 이것은 모든 페이지의 첫 번째 포커스 가능한 엘리먼트가 되기 때문에 `App.vue` 상단에서 수행됩니다:
 
 ```vue-html
 <ul class="skip-links">
   <li>
-    <a href="#main" ref="skipLink">주요 콘텐츠로 건너뛰기</a>
+    <a href="#main" ref="skipLink">주요 컨텐츠로 건너뛰기</a>
   </li>
 </ul>
 ```
@@ -90,12 +90,12 @@ watch(
 
 </div>
 
-[주요 콘텐츠로 건너뛰기 링크에 대한 설명서 읽기](https://www.w3.org/WAI/WCAG21/Techniques/general/G1.html)
+[주요 컨텐츠로 건너뛰기 링크에 대한 설명서 읽기](https://www.w3.org/WAI/WCAG21/Techniques/general/G1.html)
 
-## 콘텐츠 구조 {#content-structure}
+## 컨텐츠 구조 {#content-structure}
 
 접근성의 가장 중요한 부분 중 하나는 디자인이 접근성 구현을 지원할 수 있는지 확인하는 것입니다.
-디자인은 색상 대비, 글꼴 선택, 텍스트 크기 및 언어뿐만 아니라 앱에서 콘텐츠가 구성되는 방식도 고려해야 합니다.
+디자인은 색상 대비, 글꼴 선택, 텍스트 크기 및 언어뿐만 아니라 앱에서 컨텐츠가 구성되는 방식도 고려해야 합니다.
 
 ### 제목 {#headings}
 
@@ -115,14 +115,14 @@ watch(
   <section aria-labelledby="section-title">
     <h2 id="section-title"> 섹션 제목 </h2>
     <h3>섹션 부 제목</h3>
-    <!-- 콘텐츠 -->
+    <!-- 컨텐츠 -->
   </section>
   <section aria-labelledby="section-title">
     <h2 id="section-title"> 섹션 제목 </h2>
     <h3>섹션 부 제목</h3>
-    <!-- 콘텐츠 -->
+    <!-- 컨텐츠 -->
     <h3>섹션 부 제목</h3>
-    <!-- 콘텐츠 -->
+    <!-- 컨텐츠 -->
   </section>
 </main>
 ```
@@ -130,7 +130,7 @@ watch(
 ### 랜드마크 {#landmarks}
 
 [랜드마크](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/landmark_role)는 앱 내의 섹션에 대한 프로그래밍 방식 접근을 제공합니다.
-보조 기술에 의존하는 사용자는 앱의 각 섹션으로 이동하여 콘텐츠를 건너뛸 수 있습니다.
+보조 기술에 의존하는 사용자는 앱의 각 섹션으로 이동하여 컨텐츠를 건너뛸 수 있습니다.
 [ARIA roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles)를 사용하여 이를 달성할 수 있습니다.
 
 | HTML            | ARIA Role            | 랜드마크 용도                                                               |
@@ -142,7 +142,7 @@ watch(
 | aside           | role="complementary" | 메인 컨텐츠를 보조하지만, 분리되어 있고, 그 내용 자체로 독립된 의미가 있음                           |
 | _Not available_ | role="search"        | 검색 기능을 구현하기 위해 결합된 모든 엘리먼트를 감싸는 컨테이너 엘리먼트                             |
 | form            | role="form"          | 양식에 관련된 엘리먼트를 감싸고 있음                                                  |
-| section         | role="region"        | 관련성이 있고 사용자가 탐색하고 싶어할 것 같은 콘텐츠. 이것을 사용한 엘리먼트에는 반드시 `aria-label` 제공 필요 |
+| section         | role="region"        | 관련성이 있고 사용자가 탐색하고 싶어할 것 같은 컨텐츠. 이것을 사용한 엘리먼트에는 반드시 `aria-label` 제공 필요 |
 
 :::tip 팁:
 [HTML5 시맨틱 엘리먼트를 지원하지 않는 오래된 브라우저](https://caniuse.com/#feat=html5semantic)와 최대한 호환되도록,
@@ -368,10 +368,10 @@ form 엘리먼트에 `autocomplete='on'`을 포함하면 form의 모든 input에
 <CodepenSnippet title="Form Instructions" slug="JjpxwwP" :height="460"/>
 <!-- <common-codepen-snippet title="Form Instructions" slug="WNREEqv" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-### 콘텐츠 숨기기 {#hiding-content}
+### 컨텐츠 숨기기 {#hiding-content}
 
 일반적으로 input에 접근 가능한 이름이 있더라도 레이블을 시각적으로 숨기는 것은 권장되지 않습니다.
-그러나 input의 역할을 주변 콘텐츠로 이해할 수 있다면 레이블을 시각적으로 숨길 수 있습니다.
+그러나 input의 역할을 주변 컨텐츠로 이해할 수 있다면 레이블을 시각적으로 숨길 수 있습니다.
 
 이 검색 필드를 살펴보겠습니다:
 
@@ -407,7 +407,7 @@ CSS를 사용하여 시각적으로 엘리먼트를 숨길 수 있지만, 보조
 #### `aria-hidden="true"` {#aria-hidden-true}
 
 `aria-hidden="true"`를 추가하면 보조 기술에서 엘리먼트가 숨겨지지만, 다른 사용자는 시각적으로 사용할 수 있습니다.
-초점을 맞출 수 있는 엘리먼트, 오직 꾸미기 위한 용도, 복제 또는 화면에 나오지 않는 콘텐츠에 사용하지 마십시오.
+초점을 맞출 수 있는 엘리먼트, 오직 꾸미기 위한 용도, 복제 또는 화면에 나오지 않는 컨텐츠에 사용하지 마십시오.
 
 ```vue-html
 <p>이것은 스크린 리더에서 숨겨지지 않습니다.</p>
@@ -479,10 +479,10 @@ W3C(World Wide Web Consortium) WAI(Web Accessibility Initiative)는 다양한 �
   - 보조 기술의 일부 측면을 포함한 웹 브라우저 및 미디어 플레이어
 - [저작 도구 접근성 지침 (ATAG: Authoring Tool Accessibility Guidelines)](https://www.w3.org/WAI/standards-guidelines/atag/)
   - 저작 도구
-- [웹 콘텐츠 접근성 지침 (WCAG: Web Content Accessibility Guidelines)](https://www.w3.org/WAI/standards-guidelines/wcag/)
-  - 웹 콘텐츠 - 개발자, 저작 도구 및 접근성 평가 도구에서 사용
+- [웹 컨텐츠 접근성 지침 (WCAG: Web Content Accessibility Guidelines)](https://www.w3.org/WAI/standards-guidelines/wcag/)
+  - 웹 컨텐츠 - 개발자, 저작 도구 및 접근성 평가 도구에서 사용
 
-### 웹 콘텐츠 접근성 지침 (WCAG: Web Content Accessibility Guidelines) {#web-content-accessibility-guidelines-wcag}
+### 웹 컨텐츠 접근성 지침 (WCAG: Web Content Accessibility Guidelines) {#web-content-accessibility-guidelines-wcag}
 
 [WCAG 2.1](https://www.w3.org/TR/WCAG21/)은 [WCAG 2.0](https://www.w3.org/TR/WCAG20/)을 확장하고 웹의 변경 사항을 처리하여 새로운 기술을 구현할 수 있습니다.
 W3C는 웹 접근성 정책을 개발하거나 업데이트할 때 최신 버전의 WCAG를 사용하도록 권장합니다.
@@ -496,11 +496,11 @@ W3C는 웹 접근성 정책을 개발하거나 업데이트할 때 최신 버전
 - [Understandable(이해가능)](https://www.w3.org/TR/WCAG21/#understandable)
   - 사용자 인터페이스의 정보 및 작동은 모든 사용자가 이해할 수 있어야 합니다.
 - [Robust](https://www.w3.org/TR/WCAG21/#robust)
-  - 기술이 발전함에 따라 사용자가 콘텐츠에 액세스할 수 있어야 합니다.
+  - 기술이 발전함에 따라 사용자가 컨텐츠에 접근할 수 있어야 합니다.
 
 #### Web Accessibility Initiative – Accessible Rich Internet Applications (WAI-ARIA: 웹 접근성 계획 - 접근 가능한 풍부한 인터넷 앱) {#web-accessibility-initiative-–-accessible-rich-internet-applications-wai-aria}
 
-W3C의 WAI-ARIA는 동적 콘텐츠 및 고급 사용자 인터페이스 제어를 구축하는 방법에 대한 지침을 제공합니다.
+W3C의 WAI-ARIA는 동적 컨텐츠 및 고급 사용자 인터페이스 제어를 구축하는 방법에 대한 지침을 제공합니다.
 
 - [Accessible Rich Internet Applications (WAI-ARIA) 1.2](https://www.w3.org/TR/wai-aria-1.2/)
 - [WAI-ARIA Authoring Practices 1.2](https://www.w3.org/TR/wai-aria-practices-1.2/)
@@ -551,8 +551,8 @@ W3C의 WAI-ARIA는 동적 콘텐츠 및 고급 사용자 인터페이스 제어�
 
 - _[시각](https://webaim.org/articles/visual/)_ - 화면 판독기, 화면 확대, 화면 대비 제어 또는 점자 디스플레이를 사용합니다.
 - _[청각](https://webaim.org/articles/auditory/)_ - 캡션, 스크립트 또는 수화 비디오를 사용합니다.
-- _[운동](https://webaim.org/articles/motor/)_ - 음성 인식 소프트웨어, 시선 추적, 단일 스위치 액세스, 헤드완드, SIP 및 퍼프 스위치, 대형 트랙볼 마우스, 적응형 키보드 또는 기타 보조 기술 등 다양한 [운동 장애 지원 기술](https://webaim.org/articles/motor/assistive)을 사용합니다.
-- _[인지](https://webaim.org/articles/cognitive/)_ - 보충 미디어, 콘텐츠의 구조적 구성, 명확하고 간단한 작성된 것에 의존합니다.
+- _[운동](https://webaim.org/articles/motor/)_ - 음성 인식 소프트웨어, 시선 추적, 단일 스위치 접근, 헤드완드, SIP 및 퍼프 스위치, 대형 트랙볼 마우스, 적응형 키보드 또는 기타 보조 기술 등 다양한 [운동 장애 지원 기술](https://webaim.org/articles/motor/assistive)을 사용합니다.
+- _[인지](https://webaim.org/articles/cognitive/)_ - 보충 미디어, 컨텐츠의 구조적 구성, 명확하고 간단한 작성된 것에 의존합니다.
 
 WebAim에서 다음 링크를 확인하여 사용자를 이해 해보십시오:
 

@@ -112,5 +112,5 @@ setup() {
 수식어를 사용하여 일반적인 작업을 단순화할 수 있습니다.
 이러한 세부 사항은 <a target="_blank" href="/guide/essentials/event-handling.html">가이드 - 이벤트 핸들링</a>에서 다룹니다.
 
-이제 `increment` <span class="options-api">메소드</span><span class="composition-api">함수</span>를 직접 구현하고,
+이제 `increment` <span class="options-api">메서드</span><span class="composition-api">함수</span>를 직접 구현하고,
 `v-on`을 사용하여 버튼에 바인딩 해봅시다.

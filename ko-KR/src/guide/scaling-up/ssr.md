@@ -117,7 +117,7 @@ renderToString(app).then((html) => {
 
 [`renderToString()`](/api/ssr.html#rendertostring)은 Vue 앱 인스턴스를 사용하여 앱의 렌더링된 HTML로 해결되는 Promise를 반환합니다.
 [Node.js Stream API](https://nodejs.org/api/stream.html) 또는 [Web Streams API](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)를 사용하여 스트리밍 렌더링도 가능합니다.
-자세한 내용은 [SSR API 참조](/api/ssr.html)를 확인하세요.
+자세한 내용은 [SSR API](/api/ssr.html)를 확인하세요.
 
 그런 다음 앱이 전체 페이지 HTML로 마크업 된 Vue SSR 코드를 서버 리퀘스트 핸들러로 이동시킬 수 있습니다.
 다음 단계에서는 [`express`](https://expressjs.com/)를 사용할 것입니다:
@@ -255,7 +255,7 @@ server.get('/', (req, res) => {
 예제에서 프로덕션 준비 SSR 앱으로 이동하려면 훨씬 더 많은 작업이 필요합니다.
 다음을 수행해야 합니다:
 
-- Vue SFC 및 기타 빌드 단계 요구 사항을 지원합니다.
+- Vue SFC 및 기타 빌드 과정 요구 사항을 지원합니다.
   사실, 동일한 앱에 대해 두 개의 빌드를 조정해야 합니다.
   하나는 클라이언트용이고 다른 하나는 서버용입니다.
 
@@ -315,11 +315,11 @@ SSR 동안 각 리퀘스트 URL은 앱이 원하는 상태로 매핑됩니다.
 그러나 마운트 해제 훅은 SSR 중에 호출되지 않기 때문에 타이머는 영원히 유지됩니다.
 이를 피하려면 사이드 이팩트 코드를 <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span>로 이동하십시오.
 
-### 플랫폼별 API에 대한 액세스 {#access-to-platform-specific-apis}
+### 플랫폼별 API에 대한 접근 {#access-to-platform-specific-apis}
 
-범용 코드는 플랫폼별 API에 대한 액세스를 가정할 수 없으므로,
+범용 코드는 플랫폼별 API에 대한 접근을 가정할 수 없으므로,
 코드가 `window` 또는 `document`와 같은 브라우저 전용 전역을 직접 사용하는 경우,
-Node.js에서 실행할 때 오류가 발생하고,
+Node.js에서 실행할 때 에러가 발생하고,
 그 반대의 경우도 마찬가지입니다.
 
 서버와 클라이언트 간에 공유되지만 플랫폼 API가 다른 작업의 경우,
@@ -327,7 +327,7 @@ Node.js에서 실행할 때 오류가 발생하고,
 예를 들어, [`node-fetch`](https://github.com/node-fetch/node-fetch)를 사용하여 서버와 클라이언트 모두에서 동일한 가져오기 API를 사용할 수 있습니다.
 
 브라우저 전용 API의 경우,
-일반적인 접근 방식은 한 탬포 느리게 <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span>와 같은 클라이언트 전용 수명 주기 훅 내에서 액세스하는 것입니다.
+일반적인 접근 방식은 한 탬포 느리게 <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span>와 같은 클라이언트 전용 수명 주기 훅 내에서 접근하는 것입니다.
 
 타사 라이브러리가 보편적 사용을 염두에 두고 작성되지 않은 경우,
 서버에서 렌더링된 앱에 통합하기가 까다로울 수 있습니다.
@@ -352,7 +352,7 @@ SSR 컨텍스트에서 이 패턴은 몇 가지 추가 조정이 필요합니다
 브라우저에서 하는 것처럼 각 요청에 대해 모든 JavaScript 모듈을 기술적으로 다시 초기화할 수 있습니다.
 그러나 JavaScript 모듈을 초기화하는 것은 비용이 많이 들 수 있으므로 서버 성능에 상당한 영향을 미칠 수 있습니다.
 
-권장되는 솔루션은 각 요청에 대해 라우터 및 글로벌 저장소를 포함한 전체 앱의 새 인스턴스를 만드는 것입니다.
+권장되는 솔루션은 각 요청에 대해 라우터 및 전역 저장소를 포함한 전체 앱의 새 인스턴스를 만드는 것입니다.
 그런 다음 컴포넌트에서 직접 가져오는 대신 [앱 수준 provide](/guide/components/provide-inject.html#app-level-provide)를 사용하여 공유 상태를 제공하고,
 이를 필요로 하는 컴포넌트에 주입합니다.
 
@@ -378,7 +378,7 @@ Pinia와 같은 상태 관리 라이브러리는 이를 염두에 두고 설계�
 
 ### 하이드레이션 불일치(Hydration Mismatch) {#hydration-mismatch}
 
-미리 렌더링된 HTML의 DOM 구조가 클라이언트 측 앱의 예상 출력과 일치하지 않으면 하이드레이션 불일치 오류가 발생합니다.
+미리 렌더링된 HTML의 DOM 구조가 클라이언트 측 앱의 예상 출력과 일치하지 않으면 하이드레이션 불일치 에러가 발생합니다.
 대부분의 경우 이는 HTML 문자열에서 잘못된 구조를 수정하려는 브라우저의 기본 HTML 구문 분석 동작으로 인해 발생합니다.
 예를 들어 일반적인 문제는 [`<div>`를 `<p>`](https://stackoverflow.com/questions/8397852/why-cant-the-p-tag-contain-a-div-tag-inside-it) 안에 넣을 수 없다는 것입니다:
 

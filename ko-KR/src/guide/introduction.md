@@ -8,25 +8,12 @@ footer: false
 
 - Vue 2 문서가 [v2.vuejs.org](https://kr.vuejs.org/index.html)로 이동되었습니다.
 - Vue 2에서 업그레이드 하시려면 [마이그레이션 가이드](https://v3-migration.vuejs.org/)를 확인하십시오.
-  :::
-
-<style src="/@theme/styles/vue-mastery.css"></style>
-<div class="vue-mastery-link">
-  <a href="https://www.vuemastery.com/courses-path/beginner" target="_blank">
-    <div class="banner-wrapper">
-      <img class="banner" alt="Vue Mastery banner" width="96px" height="56px" src="https://storage.googleapis.com/vue-mastery.appspot.com/flamelink/media/vuemastery-graphical-link-96x56.png" />
-    </div>
-    <p class="description">Learn Vue with video tutorials on <span>VueMastery.com</span></p>
-    <div class="logo-wrapper">
-        <img alt="Vue Mastery Logo" width="25px" src="https://storage.googleapis.com/vue-mastery.appspot.com/flamelink/media/vue-mastery-logo.png" />
-    </div>
-  </a>
-</div>  
+:::
 
 ## Vue는 무엇입니까? {#what-is-vue}
 
-Vue( **view** 와 마찬가지로 /vjuː/ 라고 발음합니다 )는 사용자 인터페이스를 구축하기 위한 자바스크립트 프레임워크입니다.
-표준 HTML, CSS 및 자바스크립트를 기반으로 구축되며, 단순한 것 부터 복잡한 것 까지 사용자 인터페이스를 효율적으로 개발 할수 있는 컴포넌트 기반 프로그래밍 모델을 제공합니다.
+Vue( **view** 와 마찬가지로 /vjuː/ 라고 발음합니다 )는 사용자 인터페이스를 구축하기 위한 JavaScript 프레임워크입니다.
+표준 HTML, CSS 및 JavaScript를 기반으로 구축되며, 단순한 것 부터 복잡한 것 까지 사용자 인터페이스를 효율적으로 개발 할수 있는 컴포넌트 기반 프로그래밍 모델을 제공합니다.
 
 아주 단순한 예제를 한번 볼까요:
 
@@ -65,9 +52,9 @@ const count = ref(0)
 
 위의 예는 Vue의 두 가지 핵심 기능을 보여줍니다:
 
-- **선언적 랜더링(Declarative Rendering)**: Vue는 표준 HTML을 템플릿 문법으로 확장하여 자바스크립트 상태(State)를 기반으로 화면에 출력될 HTML을 선언적(declaratively)으로 작성할 수 있습니다.
+- **선언적 렌더링(Declarative Rendering)**: Vue는 표준 HTML을 템플릿 문법으로 확장하여 JavaScript 상태(State)를 기반으로 화면에 출력될 HTML을 선언적(declaratively)으로 작성할 수 있습니다.
 
-- **반응성(Reactivity)**: Vue는 자바스크립트 상태(State) 변경을 추적하고, 변경이 발생하면 DOM을 효율적으로 업데이트하는 것을 자동으로 수행합니다. 
+- **반응성(Reactivity)**: Vue는 JavaScript 상태(State) 변경을 추적하고, 변경이 발생하면 DOM을 효율적으로 업데이트하는 것을 자동으로 수행합니다. 
 
 이미 Vue에 대해 궁금한 점이 있을 수 있으나 조급해하지 마세요.
 이후 문서에서 모든 세부 사항을 다 다룰 것입니다.
@@ -87,7 +74,7 @@ Vue는 프론트엔드 개발에 필요한 대부분의 공통 기능을 다루�
 이를 염두에 두고 Vue는 유연하고 점진적으로 채택할 수 있도록 설계되었습니다.
 사용 사례에 따라 Vue를 다양한 방식으로 사용할 수 있습니다:
 
-- 빌드 단계 없이 정적 HTML에 적용
+- 빌드 과정 없이 정적 HTML에 적용
 - 모든 페이지에 웹 컴포넌트로 추가
 - 싱글 페이지 어플리케이션 (SPA: Single-Page Application)
 - Fullstack / 서버 사이드 렌더링 (SSR: Server-Side-Rendering)
@@ -240,12 +227,12 @@ Vue를 처음 사용하는 경우 일반적인 권장 사항은 다음과 같습
 
   - 빌드 도구를 사용하지 않거나 Vue를 주로 복잡성이 낮은 시나리오에서 사용할 계획이라면 옵션 API를 사용하세요.
 
-  - Vue로 규모가 있는 애플리케이션의 전체를 구축하려는 경우 컴포넌트 API + 단일파일 컴포넌트(SFC)를 사용하십시오.
+  - Vue로 규모가 있는 앱의 전체를 구축하려는 경우 컴포넌트 API + 단일파일 컴포넌트(SFC)를 사용하십시오.
 
 학습 단계에서 한 가지 스타일만 고집할 필요는 없습니다.
 이후 문서에서는 두 가지 스타일의 코드 샘플을 제공하며, 왼쪽 사이드바의 상단에 있는 **API 스타일 설정**을 사용하여 언제든지 두 스타일 사이를 전환할 수 있습니다.
 
-## 여전히 질문이 있나요? {#still-got-questions}
+## 여전히 궁금한 것이 있나요? {#still-got-questions}
 
 [FAQ](https://vuejs.org/about/faq)를 확인하세요.
 
@@ -253,7 +240,7 @@ Vue를 처음 사용하는 경우 일반적인 권장 사항은 다음과 같습
 
 개발자마다 학습 스타일이 다릅니다.
 선호하는 학습 방법을 자유롭게 선택하세요.
-가능하면 모든 콘텐츠를 살펴보는 것이 좋습니다.
+가능하면 모든 컨텐츠를 살펴보는 것이 좋습니다.
 
 <div class="vt-box-container next-steps">
   <a class="vt-box" href="/tutorial/">

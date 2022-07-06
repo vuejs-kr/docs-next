@@ -4,7 +4,7 @@
 
 개발하는 동안 Vue는 개발 경험을 개선하기 위해 다음과 같은 여러 기능을 제공합니다:
 
-- 일반적인 오류 및 위험에 대한 경고
+- 일반적인 에러 및 위험에 대한 경고
 - props/이벤트 유효성 검사
 - 반응성 디버깅 훅
 - Devtools 통합
@@ -18,10 +18,10 @@
 CDN 또는 자체 호스팅 스크립트에서 로드하여 빌드 도구 없이 Vue를 사용하는 경우, 프로덕션에 배포할 때 프로덕션 빌드(`.prod.js`로 끝나는 dist 파일)를 사용해야 합니다.
 프로덕션 빌드는 모든 개발 전용 코드 분기가 제거된 상태로 미리 최소화됩니다.
 
-- 글로벌 빌드를 사용하는 경우(`Vue` 글로벌을 통해 액세스): `vue.global.prod.js`를 사용합니다.
-- ESM 빌드를 사용하는 경우(네이티브 ESM 가져오기를 통해 액세스): `vue.esm-browser.prod.js`를 사용합니다.
+- 전역 빌드를 사용하는 경우(`Vue` 전역을 통해 접근): `vue.global.prod.js`를 사용합니다.
+- ESM 빌드를 사용하는 경우(네이티브 ESM 가져오기를 통해 접근): `vue.esm-browser.prod.js`를 사용합니다.
 
-자세한 내용은 [dist 파일 가이드](https://github.com/vuejs/core/tree/main/packages/vue#which-dist-file-to-use)를 참조하세요.
+자세한 내용은 [dist 파일 가이드](https://github.com/vuejs/core/tree/main/packages/vue#which-dist-file-to-use)를 참고하세요.
 
 ## 빌드 툴 사용 {#with-build-tools}
 
@@ -33,15 +33,15 @@ CDN 또는 자체 호스팅 스크립트에서 로드하여 빌드 도구 없이
 2. [컴파일 시간 기능 플래그](https://github.com/vuejs/core/tree/main/packages/vue#bundler-build-feature-flags)가 올바르게 구성됨.
 3. <code>process.env<wbr>.NODE_ENV</code>는 빌드 중에 `"production"`으로 대체.
 
-추가 참조:
+참고:
 
 - [Vite 프로덕션 빌드 가이드](https://vitejs.dev/guide/build.html)
 - [Vite 배포 가이드](https://vitejs.dev/guide/static-deploy.html)
 - [Vue CLI 배포 가이드](https://cli.vuejs.org/guide/deployment.html)
 
-## 런타임 오류 추적 {#tracking-runtime-errors}
+## 런타임 에러 추적 {#tracking-runtime-errors}
 
-[앱 수준 애러 핸들러](/api/application.html#app-config-errorhandler)를 사용하여 애러 보고를 추적 제공할 수 있습니다:
+[앱 수준 에러 핸들러](/api/application.html#app-config-errorhandler)를 사용하여 에러 보고를 추적 제공할 수 있습니다:
 
 ```js
 import { createApp } from 'vue'
@@ -49,7 +49,7 @@ import { createApp } from 'vue'
 const app = createApp(...)
 
 app.config.errorHandler = (err, instance, info) => {
-  // 애러 보고를 추적 제공
+  // 에러 보고를 추적 제공
 }
 ```
 

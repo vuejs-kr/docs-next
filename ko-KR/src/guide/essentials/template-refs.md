@@ -76,7 +76,7 @@ export default {
 
 <div class="composition-api">
 
-템플릿 ref의 변경 사항을 관찰하려는 경우 ref에 `null` 값이 있는 경우를 고려해야 합니다:
+템플릿 ref의 변경 사항을 감시하려는 경우 ref에 `null` 값이 있는 경우를 고려해야 합니다:
 
 ```js
 watchEffect(() => {
@@ -88,7 +88,7 @@ watchEffect(() => {
 })
 ```
 
-참조: [템플릿 ref에 타입 지정하기](/guide/typescript/composition-api.html#typing-template-refs) <sup class="vt-badge ts" />
+참고: [템플릿 ref에 타입 지정하기](/guide/typescript/composition-api.html#typing-template-refs) <sup class="vt-badge ts" />
 
 </div>
 
@@ -164,14 +164,14 @@ ref 배열은 소스 배열과 **동일한 순서를 보장하지 않습니다**
 
 문자열 키 대신 `ref` 속성을 함수에 바인딩할 수도 있습니다.
 이 함수는 각 컴포넌트 업데이트 시 호출되며, 엘리먼트 참조를 저장할 위치에 대한 완전한 유연성을 제공합니다.
-이 함수는 첫 번째 인수로 엘리먼트 참조를 받습니다:
+이 함수는 첫 번째 인자로 엘리먼트 참조를 받습니다:
 
 ```vue-html
 <input :ref="(el) => { /* el을 속성이나 ref에 할당 */ }">
 ```
 
 `:ref`와 같이 동적 바인딩으로 사용하는 경우에는 ref의 이름 대신 함수를 전달할 수 있습니다
-엘리먼트가 마운트 해제되는 경우 인수는 `null`입니다.
+엘리먼트가 마운트 해제되는 경우 인자는 `null`입니다.
 물론 인라인 함수 대신 메서드를 사용할 수 있습니다.
 
 ## 컴포넌트에 ref 사용하기 {#ref-on-component}
@@ -234,7 +234,7 @@ export default {
 
 여기서 예외는 `<script setup>`을 사용하는 컴포넌트가 **기본적으로 비공개**라는 점입니다.
 `<script setup>`을 사용하는 자식 컴포넌트를 부모 컴포넌트에서 참조하려는 경우,
-자식 컴포넌트가 `defineExpose` 컴파일러 매크로를 사용하여 선택한 인터페이스를 노출하지 않는 한 그 무엇에도 접근할 수 없습니다. (역자주: 컴파일러 매크로이기 때문에 개발 환경 설정에 따라 lint 오류나 경고가 나올수 있습니다)
+자식 컴포넌트가 `defineExpose` 컴파일러 매크로를 사용하여 선택한 인터페이스를 노출하지 않는 한 그 무엇에도 접근할 수 없습니다. (역자주: 컴파일러 매크로이기 때문에 개발 환경 설정에 따라 lint 에러나 경고가 나올수 있습니다)
 
 ```vue
 <script setup>
@@ -252,7 +252,7 @@ defineExpose({
 
 상위에서 템플릿 참조를 통해 이 컴포넌트의 인스턴스를 가져오면, 검색된 인스턴스는 `{ a: number, b: number }` 와 같습니다(일반 인스턴스에서처럼 ref는 자동으로 래핑 해제됨).
 
-참조: [컴포넌트 템플릿 ref에 타입 지정하기](/guide/typescript/composition-api.html#typing-component-template-refs) <sup class="vt-badge ts" />
+참고: [컴포넌트 템플릿 ref에 타입 지정하기](/guide/typescript/composition-api.html#typing-component-template-refs) <sup class="vt-badge ts" />
 
 </div>
 <div class="options-api">

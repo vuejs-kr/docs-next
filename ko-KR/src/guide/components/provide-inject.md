@@ -95,7 +95,7 @@ export default {
     }
   },
   provide() {
-    // 함수 구문을 사용하여 `this`에 액세스할 수 있습니다.
+    // 함수 구문을 사용하여 `this`에 접근할 수 있습니다.
     return {
       message: this.message
     }
@@ -379,7 +379,7 @@ import { myInjectionKey } from './keys.js'
 const injected = inject(myInjectionKey)
 ```
 
-참조: [Provide / Inject 타입 지정하기](/guide/typescript/composition-api.html#typing-provide-inject) <sup class="vt-badge ts" />
+참고: [Provide / Inject 타입 지정하기](/guide/typescript/composition-api.html#typing-provide-inject) <sup class="vt-badge ts" />
 
 </div>
 

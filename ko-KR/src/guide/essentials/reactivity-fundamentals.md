@@ -5,7 +5,7 @@ outline: deep
 # 반응형 기초 {#reactivity-fundamentals}
 
 :::tip API 기본설정
-이 페이지와 이후 다른 가이드의 많은 챕터에는 옵션과 컴포지션 API에 대한 다양한 콘텐츠가 포함되어 있습니다.
+이 페이지와 이후 다른 가이드의 많은 챕터에는 옵션과 컴포지션 API에 대한 다양한 컨텐츠가 포함되어 있습니다.
 현재 기본 설정은 <span class="options-api">옵션 API</span><span class="composition-api">컴포지션 API</span>입니다.
 좌측 사이드바 상단에 있는 "API 스타일 설정" 스위치를 사용하여 API 스타일을 전환할 수 있습니다.
 :::
@@ -17,7 +17,7 @@ outline: deep
 옵션 API에서는 `data` 옵션을 사용하여 컴포넌트의 반응형 상태를 선언합니다.
 옵션 값은 객체를 반환하는 함수여야 합니다.
 Vue는 새 컴포넌트 인스턴스를 만들 때 함수를 호출하고, 반환된 객체를 반응형 시스템에 래핑합니다.
-이 객체 내 모든 속성은 해당 컴포넌트 인스턴스(메서드 및 수명 주기 훅에서 `this`)에서 최상위에 프록시(proxy)되어 노출됩니다.
+이 객체 내 모든 속성은 해당 컴포넌트 인스턴스(메서드 및 수명 주기 훅에서 `this`)에서 최상위에 프락시(proxy)되어 노출됩니다.
 
 ```js{2-6}
 export default {
@@ -71,7 +71,7 @@ export default {
 }
 ```
 
-`newObject` 객체를 `this.someObject`에 할당 후 접근할 경우, 이 값은 원본을 반응형으로 재정의한 프록시 객체입니다.
+`newObject` 객체를 `this.someObject`에 할당 후 접근할 경우, 이 값은 원본을 반응형으로 재정의한 프락시 객체입니다.
 **Vue 2와 달리 원본 `newObject` 객체는 그대로 유지되며, 반응형으로 변하지 않습니다.
 항상 `this`를 통해 반응형 상태의 속성에 접근해야 합니다.**
 
@@ -91,7 +91,7 @@ const state = reactive({ count: 0 })
 일반 객체와 차이점은 Vue가 속성에 접근 및 반응형 객체의 변경사항을 감지할 수 있다는 것입니다.
 자세한 내용이 궁금하시다면 [반응형 심화](/guide/extras/reactivity-in-depth.html)에서 Vue의 반응형 시스템이 어떻게 작동하는지 설명하지만, 메인 가이드를 마친 후 읽는 것을 권장합니다.
 
-참조: [반응형에 타입 지정하기](/guide/typescript/composition-api.html#typing-reactive) <sup class="vt-badge ts" />
+참고: [반응형에 타입 지정하기](/guide/typescript/composition-api.html#typing-reactive) <sup class="vt-badge ts" />
 
 컴포넌트의 템플릿에서 반응형 상태를 사용하려면, 컴포넌트의 `setup()'` 함수에서 반응형 상태를 선언하고 반환해야 합니다:
 
@@ -323,7 +323,7 @@ function mutateDeeply() {
 
 ### 반응형 재정의 vs. 원본 \*\* {#reactive-proxy-vs-original-1}
 
-`reactive()`의 반환 값은 원본 객체와 같지 않고 원본 객체를 재정의한 [프록시](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)(Proxy)라는 점을 유의하는 것이 중요합니다.
+`reactive()`의 반환 값은 원본 객체와 같지 않고 원본 객체를 재정의한 [프락시](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)(Proxy)라는 점을 유의하는 것이 중요합니다.
 
 ```js
 const raw = {}
@@ -333,22 +333,22 @@ const proxy = reactive(raw)
 console.log(proxy === raw) // false
 ```
 
-프록시만 반응형입니다.
+프락시만 반응형입니다.
 원본 객체를 변경해도 업데이트가 트리거되지 않습니다.
-따라서 객체를 Vue의 반응형 시스템으로 작업할 때 가장 좋은 방법은 **상태를 재정의한 프록시만 사용**하는 것입니다.
+따라서 객체를 Vue의 반응형 시스템으로 작업할 때 가장 좋은 방법은 **상태를 재정의한 프락시만 사용**하는 것입니다.
 
-프록시에 대한 일관된 접근을 보장하기 위해, 원본 객체를 `reactive()` 한 프록시와 프록시를 `reactive()` 한 프록시는 동일한 프록시를 반환하도록 동작합니다.
+프락시에 대한 일관된 접근을 보장하기 위해, 원본 객체를 `reactive()` 한 프락시와 프락시를 `reactive()` 한 프락시는 동일한 프락시를 반환하도록 동작합니다.
 
 ```js
-// 객체를 reactive() 한 반환 값과 proxy는 동일합니다.
+// 객체를 reactive() 한 반환 값과 프락시는 동일합니다.
 console.log(reactive(raw) === proxy) // true
 
-// proxy를 reactive() 한 반환 값과 proxy는 동일합니다.
+// 프락시를 reactive()한 반환 값과 프락시는 동일합니다.
 console.log(reactive(proxy) === proxy) // true
 ```
 
 이 규칙은 중첩된 객체에도 적용됩니다.
-내부 깊숙이까지 반응형이므로 반응형 객체 내부의 중첩된 객체도 프록시입니다:
+내부 깊숙이까지 반응형이므로 반응형 객체 내부의 중첩된 객체도 프락시입니다:
 
 ```js
 const proxy = reactive({})
@@ -376,17 +376,17 @@ console.log(proxy.nested === raw) // false
    state = reactive({ count: 1 })
    ```
 
-   또한 반응형 객체의 속성을 지역 변수에 할당하거나 분해 할당 또는 함수에 전달할 때 반응형 연결이 끊어짐을 의미합니다:
+   또한 반응형 객체의 속성을 로컬 변수에 할당하거나 분해 할당 또는 함수에 전달할 때 반응형 연결이 끊어짐을 의미합니다:
 
    ```js
    const state = reactive({ count: 0 })
 
-   // n은 state.count에서 연결이 끊긴 지역 변수입니다.
+   // n은 state.count에서 연결이 끊긴 로컬 변수입니다.
    let n = state.count
    // 원본의 상태(state.count)에 영향을 미치지 않습니다.
    n++
 
-   // 지역 변수 count는 state.count로부터 연결이 끊깁니다.
+   // 로컬 변수 count는 state.count로부터 연결이 끊깁니다.
    let { count } = state
    // 원본의 상태(state.count)에 영향을 미치지 않습니다.
    count++
@@ -406,7 +406,7 @@ import { ref } from 'vue'
 const count = ref(0)
 ```
 
-`ref()`는 받은 인수를 `.value` 속성을 포함하는 **ref** 객체에 래핑 후 반환합니다:
+`ref()`는 받은 인자를 `.value` 속성을 포함하는 **ref** 객체에 래핑 후 반환합니다:
 
 ```js
 const count = ref(0)
@@ -418,7 +418,7 @@ count.value++
 console.log(count.value) // 1
 ```
 
-참조: [Refs에 타입 지정하기](/guide/typescript/composition-api.html#typing-ref) <sup class="vt-badge ts" />
+참고: [Refs에 타입 지정하기](/guide/typescript/composition-api.html#typing-ref) <sup class="vt-badge ts" />
 
 반응형 객체의 속성과 유사하게 ref의 `.value` 속성은 반응형입니다.
 또한 객체 유형을 가지고 있는 경우, ref는 자동으로 `.value`를 `reactive()`로 변환합니다.
@@ -505,7 +505,7 @@ const { foo } = object
 
 이제 렌더링 결과는 `2`가 됩니다.
 
-한 가지 주목해야 할 점은 ref가 <code v-pre>{{ }}</code> 또는 `v-text=" "`와 같은 텍스트 보간의 최종 평가 값인 경우에도 언래핑되므로 다음은 `1`이 랜더링 됩니다:
+한 가지 주목해야 할 점은 ref가 <code v-pre>{{ }}</code> 또는 `v-text=" "`와 같은 텍스트 보간의 최종 평가 값인 경우에도 언래핑되므로 다음은 `1`이 렌더링 됩니다:
 
 ```vue-html
 {{ object.foo }}
@@ -587,7 +587,7 @@ export default {
 ```js
 export default {
   created() {
-    // 이제 각 인스턴스는 자체적인 디바운스된 헨들러를 가집니다.
+    // 이제 각 인스턴스는 자체적인 디바운스된 핸들러를 가집니다.
     this.debouncedClick = _.debounce(this.click, 500)
   },
   unmounted() {

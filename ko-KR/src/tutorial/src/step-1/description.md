@@ -33,8 +33,8 @@ Vue 2 또는 다른 프레임워크에서 온 숙련된 개발자라면 이 튜�
   <a target="_blank" href="/guide/introduction.html#api-styles">API 스타일에 대해 자세히 알아보기</a>
 
 - SFC 또는 HTML 모드로 전환할 수도 있습니다.
-  전자는 대부분의 개발자가 빌드 단계에서 Vue를 사용할 때 사용하는 <a target="_blank" href="/guide/introduction.html#single-file-components">싱글 파일 컴포넌트</a>(SFC) 형식의 코드 예제를 보여줍니다.
-  HTML 모드는 빌드 단계 없이 사용법을 보여줍니다.
+  전자는 대부분의 개발자가 빌드 과정에서 Vue를 사용할 때 사용하는 <a target="_blank" href="/guide/introduction.html#single-file-components">싱글 파일 컴포넌트</a>(SFC) 형식의 코드 예제를 보여줍니다.
+  HTML 모드는 빌드 과정 없이 사용법을 보여줍니다.
 
 </details>
 

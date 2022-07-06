@@ -369,7 +369,7 @@ function handleChange(event) {
 
 Without type annotation, the `event` argument will implicitly have a type of `any`. This will also result in a TS error if `"strict": true` or `"noImplicitAny": true` are used in `tsconfig.json`. It is therefore recommended to explicitly annotate the argument of event handlers. In addition, you may need to explicitly cast properties on `event`:
 
-타입 어노테이션이 없으면 `event` 전달인자는 암묵적으로 `any` 타입을 갖습니다. `"strict": true` 또는 `"noImplicitAny": true` 가 `tsconfig.json` 에서 사용되는 경우에는 TS 오류가 발생합니다. 따라서 이벤트 핸들러의 전달에 어노테이팅 하는 것을 권장합니다. 또한 `event` 에 대한 타입을 명시적으로 캐스팅해야 할 수도 있습니다:
+타입 어노테이션이 없으면 `event` 전달인자는 암묵적으로 `any` 타입을 갖습니다. `"strict": true` 또는 `"noImplicitAny": true` 가 `tsconfig.json` 에서 사용되는 경우에는 TS 에러가 발생합니다. 따라서 이벤트 핸들러의 전달에 어노테이팅 하는 것을 권장합니다. 또한 `event` 에 대한 타입을 명시적으로 캐스팅해야 할 수도 있습니다:
 
 ```ts
 function handleChange(event: Event) {
@@ -468,7 +468,7 @@ Note that for strict type safety, it is necessary to use optional chaining or ty
 
 Sometimes you might need to annotate a template ref for a child component in order to call its public method. For example, we have a `MyModal` child component with a method that opens the modal:
 
-때로는 public 메소드를 호출하기 위해 자식 컴포넌트에 대한 템플릿 ref에 어노테이션이 필요 할 수 있습니다. 예를 들어, 모달을 여는 메소드가 있는 `MyModal` 자식 컴포넌트가 있습니다:
+때로는 public 메서드를 호출하기 위해 자식 컴포넌트에 대한 템플릿 ref에 어노테이션이 필요 할 수 있습니다. 예를 들어, 모달을 여는 메서드가 있는 `MyModal` 자식 컴포넌트가 있습니다:
 
 ```vue
 <!-- MyModal.vue -->

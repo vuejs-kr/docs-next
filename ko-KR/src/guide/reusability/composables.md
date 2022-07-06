@@ -160,7 +160,7 @@ export function useMouse() {
 ## 비동기 상태 예제 {#async-state-example}
 
 구성화 함수 `useMouse()`는 인자를 사용하지 않으므로, 인자를 사용하는 다른 예를 살펴보겠습니다.
-비동기 데이터 가져오기를 수행할 때 로드, 성공 및 애러와 같은 다양한 상태를 처리해야 하는 경우가 많습니다:
+비동기 데이터 가져오기를 수행할 때 로드, 성공 및 에러와 같은 다양한 상태를 처리해야 하는 경우가 많습니다:
 
 ```vue
 <script setup>
@@ -176,7 +176,7 @@ fetch('...')
 </script>
 
 <template>
-  <div v-if="error">앗! 오류 발생: {{ error.message }}</div>
+  <div v-if="error">앗! 에러 발생: {{ error.message }}</div>
   <div v-else-if="data">
     로드된 데이터:
     <pre>{{ data }}</pre>
@@ -243,7 +243,7 @@ export function useFetch(url) {
     watchEffect(doFetch)
   } else {
     // 그렇지 않으면 한 번만 가져 와서
-    // 관찰자의 오버 헤드를 피하합니다.
+    // 감시자의 오버 헤드를 피하합니다.
     doFetch()
   }
 
@@ -254,11 +254,11 @@ export function useFetch(url) {
 이 버전의 `useFetch()`는 이제 정적 URL 문자열과 ref된 URL 문자열 모두 허용합니다.
 URL이 [`isRef()`](/api/reactivity-utilities.html#isref)를 사용하여 동적 참조임을 감지하면,
 [`watchEffect()`](/api/reactivity-core.html#watcheffect)를 사용하여 반응형 이팩트를 설정합니다.
-이팩트는 즉시 실행되고 프로세스의 종속성으로 URL ref를 관찰합니다.
+이팩트는 즉시 실행되고 프로세스의 종속성으로 URL ref를 감시합니다.
 URL ref가 변경될 때마다 데이터가 재설정되고 다시 가져옵니다.
 
 여기 [`useFetch()`의 업데이트된 버전](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiwgY29tcHV0ZWQgfSBmcm9tICd2dWUnXG5pbXBvcnQgeyB1c2VGZXRjaCB9IGZyb20gJy4vdXNlRmV0Y2guanMnXG5cbmNvbnN0IGJhc2VVcmwgPSAnaHR0cHM6Ly9qc29ucGxhY2Vob2xkZXIudHlwaWNvZGUuY29tL3RvZG9zLydcbmNvbnN0IGlkID0gcmVmKCcxJylcbmNvbnN0IHVybCA9IGNvbXB1dGVkKCgpID0+IGJhc2VVcmwgKyBpZC52YWx1ZSlcblxuY29uc3QgeyBkYXRhLCBlcnJvciwgcmV0cnkgfSA9IHVzZUZldGNoKHVybClcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIExvYWQgcG9zdCBpZDpcbiAgPGJ1dHRvbiB2LWZvcj1cImkgaW4gNVwiIEBjbGljaz1cImlkID0gaVwiPnt7IGkgfX08L2J1dHRvbj5cblxuXHQ8ZGl2IHYtaWY9XCJlcnJvclwiPlxuICAgIDxwPuyVlyEg7Jik66WYIOuwnOyDnToge3sgZXJyb3IubWVzc2FnZSB9fTwvcD5cbiAgICA8YnV0dG9uIEBjbGljaz1cInJldHJ5XCI+7J6s7Iuc64+EPC9idXR0b24+XG4gIDwvZGl2PlxuICA8ZGl2IHYtZWxzZS1pZj1cImRhdGFcIj7roZzrk5zrkJwg642w7J207YSwOiA8cHJlPnt7IGRhdGEgfX08L3ByZT48L2Rpdj5cbiAgPGRpdiB2LWVsc2U+66Gc65SpLi4uPC9kaXY+XG48L3RlbXBsYXRlPiIsImltcG9ydC1tYXAuanNvbiI6IntcbiAgXCJpbXBvcnRzXCI6IHtcbiAgICBcInZ1ZVwiOiBcImh0dHBzOi8vc2ZjLnZ1ZWpzLm9yZy92dWUucnVudGltZS5lc20tYnJvd3Nlci5qc1wiLFxuICAgIFwidnVlL3NlcnZlci1yZW5kZXJlclwiOiBcImh0dHBzOi8vc2ZjLnZ1ZWpzLm9yZy9zZXJ2ZXItcmVuZGVyZXIuZXNtLWJyb3dzZXIuanNcIlxuICB9XG59IiwidXNlRmV0Y2guanMiOiJpbXBvcnQgeyByZWYsIGlzUmVmLCB1bnJlZiwgd2F0Y2hFZmZlY3QgfSBmcm9tICd2dWUnXG5cbmV4cG9ydCBmdW5jdGlvbiB1c2VGZXRjaCh1cmwpIHtcbiAgY29uc3QgZGF0YSA9IHJlZihudWxsKVxuICBjb25zdCBlcnJvciA9IHJlZihudWxsKVxuXG4gIGFzeW5jIGZ1bmN0aW9uIGRvRmV0Y2goKSB7XG4gICAgLy8g6rCA7KC47Jik6riwIOyghOyXkCDsg4Htg5wg7J6s7ISk7KCVLi5cbiAgICBkYXRhLnZhbHVlID0gbnVsbFxuICAgIGVycm9yLnZhbHVlID0gbnVsbFxuICAgIFxuICAgIC8vIHdhdGNoRWZmZWN0KCnsl5Ag7J2Y7ZW0IOyiheyGjeyEseycvOuhnCDstpTsoIHrkJjrj4TroZ1cbiAgICAvLyBVUkwg6rCS7J2EIOuPmeq4sOyLneycvOuhnCByZXNvbHZl7ZWp64uI64ukLlxuICAgIGNvbnN0IHVybFZhbHVlID0gdW5yZWYodXJsKVxuICAgIFxuICAgIHRyeSB7XG4gICAgICAvLyDsnbjsnITsoIHsnbgg65Sc66CI7J20IC8g66y07J6R7JyEIOyVoOufrFxuICBcdCAgYXdhaXQgdGltZW91dCgpXG4gIFx0ICAvLyB1bnJlZigp64qUIHJlZuydtOuptCByZWYg6rCS7J2EIOuwmO2ZmO2VqeuLiOuLpC5cbiAgICAgIC8vIOq3uOugh+yngCDslYrsnLzrqbQg6rCS7J2EIOyeiOuKlCDqt7jrjIDroZwg67CY7ZmY7ZWp64uI64ukLlxuICAgIFx0Y29uc3QgcmVzID0gYXdhaXQgZmV0Y2godXJsVmFsdWUpXG5cdCAgICBkYXRhLnZhbHVlID0gYXdhaXQgcmVzLmpzb24oKVxuICAgIH0gY2F0Y2ggKGUpIHtcbiAgICAgIGVycm9yLnZhbHVlID0gZVxuICAgIH1cbiAgfVxuXG4gIGlmIChpc1JlZih1cmwpKSB7XG4gICAgLy8g7ISk7KCV7ZWY6riwOiDsnoXroKUgVVJM7J20IHJlZuyduCDqsr3smrAg67CY7J2R7KCBIOuLpOyLnCDqsIDsoLjsmKTquLBcbiAgICB3YXRjaEVmZmVjdChkb0ZldGNoKVxuICB9IGVsc2Uge1xuICAgIC8vIOq3uOugh+yngCDslYrsnLzrqbQg7ZWcIOuyiOunjCDqsIDsoLjsmKTquLBcbiAgICBkb0ZldGNoKClcbiAgfVxuXG4gIHJldHVybiB7IGRhdGEsIGVycm9yLCByZXRyeTogZG9GZXRjaCB9XG59XG5cbi8vIOyduOychOyggeyduCDrlJzroIjsnbRcbmZ1bmN0aW9uIHRpbWVvdXQoKSB7XG4gIHJldHVybiBuZXcgUHJvbWlzZSgocmVzb2x2ZSwgcmVqZWN0KSA9PiB7XG4gICAgc2V0VGltZW91dCgoKSA9PiB7XG4gICAgICBpZiAoTWF0aC5yYW5kb20oKSA+IDAuMykge1xuICAgICAgICByZXNvbHZlKClcbiAgICAgIH0gZWxzZSB7XG4gICAgICAgIHJlamVjdChuZXcgRXJyb3IoJ+ustOyekeychCDslaDrn6wnKSlcbiAgICAgIH1cbiAgICB9LCAzMDApXG4gIH0pXG59In0=)이 있습니다.
-데모용이므로 인위적인 지연과 무작위 애러가 있습니다.
+데모용이므로 인위적인 지연과 무작위 에러가 있습니다.
 
 ## 관례와 모범 사례 {#conventions-and-best-practices}
 
@@ -283,7 +283,7 @@ function useFeature(maybeRef) {
 }
 ```
 
-입력이 ref일 때 구성화가 반응 효과를 생성하는 경우, `watch()`를 사용하여 ref를 명시적으로 관찰하거나, `watchEffect()` 내부에서 `unref()`를 호출하여 올바르게 추적되도록 하십시오.
+입력이 ref일 때 구성화가 반응 효과를 생성하는 경우, `watch()`를 사용하여 ref를 명시적으로 감시하거나, `watchEffect()` 내부에서 `unref()`를 호출하여 올바르게 추적되도록 하십시오.
 
 ### 반환 값 {#return-values}
 
@@ -399,7 +399,7 @@ mixins에는 세 가지 주요 단점이 있습니다:
 
 3. **암시적 mixins 간 통신**:
    서로 상호 작용해야 하는 여러 mixins은 공유 속성 키에 의존해야 하므로 암시적으로 결합됩니다.
-   구성화를 사용하면 일반 함수와 마찬가지로 한 구성화에서 반환된 값을 다른 구성화에 인수로 전달할 수 있습니다.
+   구성화를 사용하면 일반 함수와 마찬가지로 한 구성화에서 반환된 값을 다른 구성화에 인자로 전달할 수 있습니다.
 
 위의 이유로 Vue 3에서는 더 이상 mixins를 사용하지 않는 것이 좋습니다.
 이 기능은 마이그레이션 및 익숙함을 위해서만 유지됩니다.

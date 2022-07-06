@@ -4,7 +4,7 @@ footer: false
 
 # 빠른 시작 {#quick-start}
 
-사용 사례 및 기본 설정에 따라 빌드 단계를 포함하거나 포함하지 않고 Vue를 사용할 수 있습니다.
+사용 사례 및 기본 설정에 따라 빌드 과정을 포함하거나 포함하지 않고 Vue를 사용할 수 있습니다.
 
 ## 빌드 도구 사용 {#with-build-tools}
 
@@ -38,7 +38,7 @@ TypeScript 및 테스트 지원과 같은 여러 선택적 기능에 대한 프�
 <span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add JSX Support? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
 <span style="color:#888;"># JSX를 추가하시겠습니까?</span>
 <span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add Vue Router for Single Page Application development? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
-<span style="color:#888;"># 싱글 페이지 애플리케이션 개발을 위해 Vue 라우터를 추가하시겠습니까?</span>
+<span style="color:#888;"># 싱글 페이지 앱 개발을 위해 Vue 라우터를 추가하시겠습니까?</span>
 <span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add Pinia for state management? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
 <span style="color:#888;"># 상태 관리를 위해 Pinia를 추가하시겠습니까?</span>
 <span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add Vitest for Unit testing? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
@@ -91,7 +91,7 @@ TypeScript 및 테스트 지원과 같은 여러 선택적 기능에 대한 프�
 
 ## 빌드 도구 사용 안 함 {#without-build-tools}
 
-빌드 단계 없이 Vue를 시작하려면 다음 코드를 HTML 파일에 복사하고 브라우저에서 엽니다:
+빌드 과정 없이 Vue를 시작하려면 다음 코드를 HTML 파일에 복사하고 브라우저에서 엽니다:
 
 ```html
 <script src="https://unpkg.com/vue@3"></script>
