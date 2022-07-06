@@ -329,7 +329,7 @@
     참고: [깊은 감시자](/guide/essentials/watchers.html#deep-watchers).
   - **`flush`**: 콜백 실행 타이밍을 조정합니다.
     참고: [콜백 실행 타이밍](/guide/essentials/watchers.html#callback-flush-timing).
-  - **`onTrack / onTrigger`**: 감시자의 종속성을 디버그합니다.
+  - **`onTrack / onTrigger`**: 감시자의 의존성을 디버그합니다.
     참고: [감시자 디버깅](/guide/extras/reactivity-in-depth.html#watcher-debugging).
 
   감시 콜백을 선언할 때 화살표 함수를 사용해선 안 되는데,

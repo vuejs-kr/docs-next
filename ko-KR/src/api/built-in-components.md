@@ -314,7 +314,7 @@ h(Transition, {
 
 ## `<Suspense>` <sup class="vt-badge experimental" />
 
-컴포넌트 트리에서 중첩된 비동기 종속성을 조정하는 데 사용됩니다.
+컴포넌트 트리에서 중첩된 비동기 의존성을 조정하는 데 사용됩니다.
 
 - **Props**
 
@@ -336,7 +336,7 @@ h(Transition, {
   메모리에서 기본 슬롯을 렌더링하는 동안,
   폴백 슬롯의 대체 컨텐츠를 노출합니다.
 
-  기본 슬롯을 렌더링하는 동안 비동기 종속성([비동기 컴포넌트](/guide/components/async.html) 및 [`async setup()`](/guide/built-ins/suspense.html#async-setup)이 있는 컴포넌트)을 만나면,
+  기본 슬롯을 렌더링하는 동안 비동기 의존성([비동기 컴포넌트](/guide/components/async.html) 및 [`async setup()`](/guide/built-ins/suspense.html#async-setup)이 있는 컴포넌트)을 만나면,
   기본 슬롯을 표시하기 전에 모든 것이 해결될 때까지 대기합니다.
 
 - **참고**: [가이드 - Suspense](/guide/built-ins/suspense.html)

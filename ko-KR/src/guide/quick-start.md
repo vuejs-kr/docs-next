@@ -60,7 +60,7 @@ TypeScript 및 테스트 지원과 같은 여러 선택적 기능에 대한 프�
 :::
 
 옵션을 잘 모를 경우, 일단 Enter 키를 눌러 `No`를 선택하세요.
-프로젝트가 생성되면 지침에 따라 종속성을 설치하고 개발 서버를 시작합니다:
+프로젝트가 생성되면 지침에 따라 의존성을 설치하고 개발 서버를 시작합니다:
 
 <div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">&gt; </span><span style="color:#A6ACCD;">cd</span><span style="color:#A6ACCD;"> </span><span style="color:#89DDFF;">&lt;</span><span style="color:#888;">your-project-name</span><span style="color:#89DDFF;">&gt;</span></span>
 <span class="line"><span style="color:var(--vt-c-green);">&gt; </span><span style="color:#A6ACCD;">npm install</span></span>
@@ -148,7 +148,7 @@ const { createApp, ref } = Vue
 코드를 `import { createApp } from 'vue'`로 작성하는 방법에 주목하세요.
 이는 브라우저의 기본 기능인 [Import Maps](https://caniuse.com/import-maps)를 활용하여 `<script type="importmap">` 블록을 통해 가능합니다.
 
-다른 종속성에 대한 항목을 import map에 추가할 수 있습니다.
+다른 의존성에 대한 항목을 import map에 추가할 수 있습니다.
 사용하려는 라이브러리의 ES 모듈 버전을 가리키는지 확인하기만 하면 됩니다.
 
 :::tip Import Maps 브라우저 지원

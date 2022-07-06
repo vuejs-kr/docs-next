@@ -234,7 +234,7 @@ getter 함수를 사용하며, getter로부터 반환된 값을 읽기 전용 �
     console.log(copy.count)
   })
 
-  // original을 변경하면 copy를 종속하는 감시자가 트리거됨
+  // original을 변경하면 copy를 의존하는 감시자가 트리거됨
   original.count++
 
   // copy를 변경하려 해도 변경되지 않으며, 경고가 발생함
@@ -243,7 +243,7 @@ getter 함수를 사용하며, getter로부터 반환된 값을 읽기 전용 �
 
 ## watchEffect()
 
-즉시 함수를 실행하고 종속성을 반응적으로 추적하며, 종속성이 변경될 때마다 다시 실행합니다.
+즉시 함수를 실행하고 의존성을 반응적으로 추적하며, 의존성이 변경될 때마다 다시 실행합니다.
 
 - **타입**:
 
@@ -273,7 +273,7 @@ getter 함수를 사용하며, getter로부터 반환된 값을 읽기 전용 �
   예를들어 비동기 요청의 결과 대기중(pending)에 사용할 수 있습니다.(아래 예제 참고)
 
   두 번째 인자는 이펙트의 발생(flush) 타이밍을 조정하거나,
-  이펙트의 종속성을 디버그하는 데 사용할 수 있는 선택적 옵션 객체입니다.
+  이펙트의 의존성을 디버그하는 데 사용할 수 있는 선택적 옵션 객체입니다.
 
   반환 값은 이펙트가 다시 실행되지 않도록 호출할 수 있는 핸들 함수입니다.
 
@@ -411,7 +411,7 @@ getter 함수를 사용하며, getter로부터 반환된 값을 읽기 전용 �
     참고: [깊은 감시자](/guide/essentials/watchers.html#deep-watchers).
   - **`flush`**: 콜백의 발생(flush) 타이밍을 조정합니다.
     참고: [콜백 실행 타이밍](/guide/essentials/watchers.html#callback-flush-timing).
-  - **`onTrack / onTrigger`**: 감시자의 종속성을 디버그합니다.
+  - **`onTrack / onTrigger`**: 감시자의 의존성을 디버그합니다.
     참고: [감시자 디버깅](/guide/extras/reactivity-in-depth.html#watcher-debugging).
 
   [`watchEffect()`](#watcheffect)와 비교하여 `watch()`를 사용하면 다음을 수행할 수 있습니다:

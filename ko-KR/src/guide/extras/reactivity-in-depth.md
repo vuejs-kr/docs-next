@@ -56,10 +56,10 @@ function update() {
 
 - `update()` 함수는 프로그램의 상태를 수정하기 때문에 "**사이드 이팩트**" 줄여서 "**이팩트**"를 생성합니다.
 
-- `A0` 및 `A1`은 해당 값이 이팩트를 수행하는 데 사용되므로 이팩트의 "**종속성**"(dependency)으로 간주됩니다.
-  그 이팩트는 종속성에 대한 "**구독자**"(subscriber)라고 합니다.
+- `A0` 및 `A1`은 해당 값이 이팩트를 수행하는 데 사용되므로 이팩트의 "**의존성**"(dependency)으로 간주됩니다.
+  그 이팩트는 의존성에 대한 "**구독자**"(subscriber)라고 합니다.
 
-우리에게 필요한 것은 `A0` 또는 `A1`(**종속성**)이 변경될 때마다 `update()`(**이팩트**)를 호출할 수 있는 함수입니다:
+우리에게 필요한 것은 `A0` 또는 `A1`(**의존성**)이 변경될 때마다 `update()`(**이팩트**)를 호출할 수 있는 함수입니다:
 
 ```js
 whenDepsChange(update)
@@ -175,7 +175,7 @@ function whenDepsChange(update) {
 실제 업데이트를 실행하기 전에 자신을 현재 활성 이팩트로 설정하는 이팩트에 로우(raw) `업데이트` 함수를 래핑합니다.
 이것은 현재 활성 이팩트를 찾기 위해 업데이트 동안 `track()` 호출을 활성화합니다.
 
-이 시점에서 종속성을 자동으로 추적하고 종속성이 변경될 때마다 다시 실행하는 이팩트를 만들었습니다.
+이 시점에서 의존성을 자동으로 추적하고 의존성이 변경될 때마다 다시 실행하는 이팩트를 만들었습니다.
 우리는 이것을 **반응 이팩트**(Reactive Effect)라고 부릅니다.
 
 Vue는 반응 이팩트를 생성할 수 있는 [`watchEffect()`](/api/reactivity-core.html#watcheffect) API를 제공합니다.
@@ -273,14 +273,14 @@ Reactivity Transform을 사용하면 Vue의 반응형 시스템이 하이브리�
 
 ## 반응형 디버깅
 
-Vue의 반응형 시스템이 종속성을 자동으로 추적하는 것은 훌륭하지만,
+Vue의 반응형 시스템이 의존성을 자동으로 추적하는 것은 훌륭하지만,
 어떤 경우에는 추적 중인 항목 또는 컴포넌트를 다시 렌더링하는 원인을 정확히 파악해야 할 수 있습니다.
 
 ### 컴포넌트 디버깅 훅
 
-컴포넌트의 렌더링 중에 사용되는 종속성과 <span class="options-api">`renderTracked`</span><span class="composition-api">`onRenderTracked`</span> 및 <span class="options-api">`renderTriggered`</span><span class="composition-api">`onRenderTriggered`</span> 수명 주기 훅을 사용하여 업데이트를 트리거하는 종속성을 디버그할 수 있습니다.
-두 훅 모두 해당 종속성에 대한 정보가 포함된 디버거 이벤트를 수신합니다.
-종속성을 대화식으로 검사하기 위해 콜백에 `debugger` 문을 배치하는 것이 좋습니다:
+컴포넌트의 렌더링 중에 사용되는 의존성과 <span class="options-api">`renderTracked`</span><span class="composition-api">`onRenderTracked`</span> 및 <span class="options-api">`renderTriggered`</span><span class="composition-api">`onRenderTriggered`</span> 수명 주기 훅을 사용하여 업데이트를 트리거하는 의존성을 디버그할 수 있습니다.
+두 훅 모두 해당 의존성에 대한 정보가 포함된 디버거 이벤트를 수신합니다.
+의존성을 대화식으로 검사하기 위해 콜백에 `debugger` 문을 배치하는 것이 좋습니다:
 
 <div class="composition-api">
 
@@ -342,15 +342,15 @@ type DebuggerEvent = {
 
 `onTrack` 및 `onTrigger` 콜백이 있는 두 번째 옵션 객체를 `computed()`에 전달하여 계산된 속성을 디버그할 수 있습니다:
 
-- `onTrack`은 반응 속성 또는 ref가 종속성으로 추적될 때 호출됩니다.
-- `onTrigger`는 종속성의 변경에 의해 감시자 콜백이 트리거될 때 호출됩니다.
+- `onTrack`은 반응 속성 또는 ref가 의존성으로 추적될 때 호출됩니다.
+- `onTrigger`는 의존성의 변경에 의해 감시자 콜백이 트리거될 때 호출됩니다.
 
 두 콜백 모두 컴포넌트 디버그 훅과 [동일한 형식](#debugger-event)의 디버거 이벤트를 수신합니다:
 
 ```js
 const plusOne = computed(() => count.value + 1, {
   onTrack(e) {
-    // count.value가 종속성으로 추적될 때 트리거됩니다.
+    // count.value가 의존성으로 추적될 때 트리거됩니다.
     debugger
   },
   onTrigger(e) {

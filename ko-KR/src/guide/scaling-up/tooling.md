@@ -157,7 +157,7 @@ Vue 팀은 SFC별 린팅 규칙을 지원하는 [ESLint](https://eslint.org/) �
 - [Docs](https://github.com/vuejs/core/tree/main/packages/compiler-sfc)
 
 이 패키지는 Vue 핵심 모노레포의 일부이며 항상 기본 `vue` 패키지와 동일한 버전으로 게시됩니다.
-기본 `vue` 패키지의 종속성으로 포함되며 `vue/compiler-sfc` 아래에 프락시되므로 개별적으로 설치할 필요가 없습니다.
+기본 `vue` 패키지의 의존성으로 포함되며 `vue/compiler-sfc` 아래에 프락시되므로 개별적으로 설치할 필요가 없습니다.
 
 패키지 자체는 Vue SFC 처리를 위한 저수준 유틸리티를 제공하며, 커스텀 툴에서 Vue SFC를 지원해야 하는 툴 개발자를 위한 것입니다.
 

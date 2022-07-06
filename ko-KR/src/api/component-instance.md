@@ -245,7 +245,7 @@ DOM 엘리먼트 및 컴포넌트 인스턴스 객체입니다.
     참고: [깊은 감시자](/guide/essentials/watchers.html#deep-watchers).
   - **`flush`**: 콜백의 발생(flush) 타이밍을 조정합니다.
     참고: [콜백 실행 타이밍](/guide/essentials/watchers.html#callback-flush-timing).
-  - **`onTrack / onTrigger`**: 감시자의 종속성을 디버그합니다.
+  - **`onTrack / onTrigger`**: 감시자의 의존성을 디버그합니다.
     참고: [감시자 디버깅](/guide/extras/reactivity-in-depth.html#watcher-debugging).
 
 - **예제**:
