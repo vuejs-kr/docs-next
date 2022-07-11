@@ -20,7 +20,7 @@ outline: deep
 
 - [수명주기 훅](/api/composition-api-lifecycle.html): 예를 들어 `onMounted()` 및 `onUnmounted()`를 사용하여 컴포넌트 수명주기에 프로그래밍 방식으로 연결할 수 있습니다.
 
-- [종속성 주입(Dependency Injection)](/api/composition-api-dependency-injection.html): `provide()` 및 `inject()`를 사용하면 반응형 API를 사용하는 동안 Vue의 종속성 주입 시스템을 활용할 수 있습니다.
+- [의존성 주입(Dependency Injection)](/api/composition-api-dependency-injection.html): `provide()` 및 `inject()`를 사용하면 반응형 API를 사용하는 동안 Vue의 의존성 주입 시스템을 활용할 수 있습니다.
 
 컴포지션 API는 Vue 3의 빌트인 기능이며,
 현재 공식적으로 유지 관리되는 [`@vue/composition-api`](https://github.com/vuejs/composition-api) 플러그인을 통해 Vue 2에서 사용할 수 있습니다.
@@ -107,7 +107,7 @@ Vue CLI의 GUI에서 폴더 탐색기 컴포넌트를 예로 들어 보겠습니
 이는 우리가 보다 강력한 코드를 작성하고, 보다 자신 있게 변경하고, IDE 지원을 통해 뛰어난 개발 경험을 제공하는 데 도움이 되기 때문입니다.
 그러나 원래 2013년에 구상된 옵션 API는 유형 추론을 염두에 두지 않고 설계되었습니다.
 유형 추론이 옵션 API와 함께 작동하도록 하기 위해 일부 [터무니없이 복잡한 유형 구조](https://github.com/vuejs/core/blob/44b95276f5c086e1d88fa3c686a5f39eb5bb7821/packages/runtime-core/src/componentPublicInstance.ts#L132-L165)를 구현해야 했습니다.
-이 모든 노력에도 불구하고 옵션 API에 대한 유형 추론은 여전히 믹스인 및 종속성 주입에 대해 분해될 수 있습니다.
+이 모든 노력에도 불구하고 옵션 API에 대한 유형 추론은 여전히 믹스인 및 의존성 주입에 대해 분해될 수 있습니다.
 
 이로 인해 TS와 함께 Vue를 사용하려는 많은 개발자가 `vue-class-component`로 구동되는 클래스 API에 의존하게 되었습니다.
 그러나 클래스 기반 API는 2019년 Vue 3가 개발될 때 2단계 제안에 불과했던 언어 기능인 ES 데코레이터에 크게 의존합니다.
@@ -137,7 +137,7 @@ Vue CLI의 GUI에서 폴더 탐색기 컴포넌트를 예로 들어 보겠습니
 
 위에 나열된 옵션과 함께 컴포지션 API를 독점적으로 사용하려는 경우,
 Vue에서 옵션 API 관련 코드를 삭제하는 [컴파일 타임 플래그](https://github.com/vuejs/core/tree/main/packages/vue#bundler-build-feature-flags)를 통해 프로덕션 번들에서 몇 kb를 줄일 수 있습니다.
-이것은 종속성의 Vue 컴포넌트에도 영향을 미칩니다.
+이것은 의존성의 Vue 컴포넌트에도 영향을 미칩니다.
 
 ### 두 API를 함께 사용할 수 있습니까?
 

@@ -1,4 +1,4 @@
-# 컴포지션 API: <br>종속성 주입 {#composition-api-dependency-injection}
+# 컴포지션 API: <br>의존성 주입 {#composition-api-dependency-injection}
 
 ## provide()
 
