@@ -602,7 +602,7 @@ export default {
 
 </div>
 
-컴포넌트를 다음처럼 사용할수 있습니다:
+컴포넌트를 다음처럼 사용할 수 있습니다:
 
 ```vue-html
 <!-- :disabled="true" 같음 -->
