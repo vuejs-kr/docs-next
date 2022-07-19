@@ -88,7 +88,7 @@ function useToggleFn(
         <a
           class="switch-link"
           title="API 스타일에 대하여"
-          href="/guide/introduction.html#api-스타일"
+          href="/guide/introduction.html#api-styles"
           @click="closeSideBar"
         >?</a>
       </div>
