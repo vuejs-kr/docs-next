@@ -374,7 +374,7 @@ export function createApp() {
 ```
 
 Pinia와 같은 상태 관리 라이브러리는 이를 염두에 두고 설계되었습니다.
-자세한 내용은 [Pinia의 SSR 가이드](https://pinia.vuejs.org/ssr/)를 참고하세요.
+자세한 내용은 [Pinia의 SSR 가이드](https://pinia.vuejs.kr/ssr/)를 참고하세요.
 
 ### 하이드레이션 불일치(Hydration Mismatch) {#hydration-mismatch}
 

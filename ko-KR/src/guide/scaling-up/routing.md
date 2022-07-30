@@ -3,7 +3,7 @@
 ## 공식 라우터 {#official-router}
 
 대부분의 싱글 페이지 앱(SPA)의 경우 공식적으로 지원되는 [vue-router 라이브러리](https://github.com/vuejs/router)를 사용하는 것이 좋습니다.
-자세한 내용은 vue-router의 [문서](https://router.vuejs.org/)를 참조하십시오.
+자세한 내용은 vue-router의 [문서](https://router.vuejs.kr/)를 참조하십시오.
 
 ## 간단한 라우팅 구성하기 {#simple-routing-from-scratch}
 

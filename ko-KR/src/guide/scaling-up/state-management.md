@@ -246,7 +246,7 @@ Vue의 반응형 시스템이 컴포넌트 모델과 분리되어 있다는 사�
 - 핫 모듈 교체(HMR)
 - 서버 사이드 렌더링 지원
 
-[Pinia](https://pinia.vuejs.org)는 위의 모든 것을 구현하는 상태 관리 라이브러리입니다.
+[Pinia](https://pinia.vuejs.kr)는 위의 모든 것을 구현하는 상태 관리 라이브러리입니다.
 Vue 핵심 팀이 유지 관리하며 Vue 2 및 Vue 3에서 모두 작동합니다.
 
 기존 Vue 사용자는 이전 공식 상태 관리 라이브러리인 [Vuex](https://vuex.vuejs.org/)에 익숙할 수 있습니다.

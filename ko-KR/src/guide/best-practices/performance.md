@@ -106,7 +106,7 @@ const Foo = defineAsyncComponent(() => import('./Foo.vue'))
 ```
 
 Vue 라우터를 통해 클라이언트 측 라우팅을 사용하는 경우, 라우트 컴포넌트를 비동기 컴포넌트로 사용하는 것이 좋습니다.
-자세한 내용은 [라우트 지연 로드](https://router.vuejs.org/guide/advanced/lazy-loading.html)를 참고하십시오.
+자세한 내용은 [라우트 지연 로드](https://router.vuejs.kr/guide/advanced/lazy-loading.html)를 참고하십시오.
 
 ### SSR / SSG {#ssr-ssg}
 
