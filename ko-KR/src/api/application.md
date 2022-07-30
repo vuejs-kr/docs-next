@@ -278,7 +278,7 @@ import CustomPreferenceSwitch from './CustomPreferenceSwitch.vue'
 믹스인은 라이브러리 생태계에서 널리 사용되고 있기 때문에, 하위 호환성을 위해 Vue 3에서 지원됩니다.
 하지만 앱 내 코드에서 믹스인(특히 전역 믹스인)의 사용은 피해야 합니다.
 
-로직 재상용은 [구성화](/guide/reusability/composables.html)를 추천합니다.
+로직 재상용은 [컴포저블](/guide/reusability/composables.html)을 추천합니다.
 :::
 
 - **타입**:

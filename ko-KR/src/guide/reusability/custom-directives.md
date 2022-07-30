@@ -12,8 +12,8 @@ const vFocus = {
 
 코어에 포함된 기본 디렉티브 세트(예: `v-model` 또는 `v-show`) 외에도 Vue를 사용하면 커스텀 디렉티브를 정의할 수 있습니다.
 
-우리는 Vue에서 [컴포넌트 기초](/guide/essentials/component-basics.html)와 [구성화](./composables)라는 두 가지 형태의 코드 재사용을 도입했습니다.
-컴포넌트는 주요 구성-요소(building-block)이고, 구성화는 상태 저장 로직을 재사용하는 데 중점을 둡니다.
+우리는 Vue에서 [컴포넌트 기초](/guide/essentials/component-basics.html)와 [컴포저블](./composables)이라는 두 가지 형태의 코드 재사용을 도입했습니다.
+컴포넌트는 주요 구성-요소(building-block)이고, 컴포저블은 상태 저장 로직을 재사용하는 데 중점을 둡니다.
 반면에 커스텀 디렉티브는 주로 일반 엘리먼트에 대한 저수준(low-level) DOM 접근과 관련된 로직을 재사용하기 위한 것입니다.
 
 커스텀 디렉티브는 컴포넌트의 수명주기 훅을 포함하는 객체처럼 정의됩니다.

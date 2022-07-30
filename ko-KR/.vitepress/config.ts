@@ -199,7 +199,7 @@ export const sidebar = {
       text: '재사용성',
       items: [
         {
-          text: '구성화',
+          text: '컴포저블',
           link: '/guide/reusability/composables'
         },
         {
