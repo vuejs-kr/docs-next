@@ -321,7 +321,7 @@ const posts = ref([
 
 </div>
 
-동적 `props`를 전달하기 위해 `v-bind`를 사용하는 방법에 주목하세요.
+동적 `props` 값을  전달하기 위해 `v-bind`를 사용하는 방법에 주목하세요.
 이것은 미리 렌더링할 정확한 컨텐츠를 모를 때 특히 유용합니다.
 
 지금은 이것이 `props`에 대해 알아야 할 전부입니다.
@@ -386,7 +386,7 @@ const postFontSize = ref(1)
 
 버튼은 현재 아무 작업도 수행하지 않습니다.
 버튼을 클릭하여 모든 게시물의 텍스트를 확대해야 한다는 사실을 상위에 알리고 싶습니다.
-이 문제를 해결하기 위해 컴포넌트 인스턴스는 사용자 지정 이벤트 시스템을 제공합니다.
+이 문제를 해결하기 위해 컴포넌트 인스턴스들은  사용자 지정 이벤트 시스템을 제공합니다.
 부모 컴포넌트는 네이티브 DOM 이벤트와 마찬가지로 `v-on` 또는 `@`을 사용하여 자식 컴포넌트 인스턴스의 모든 이벤트를 수신하도록 선택할 수 있습니다:
 
 ```vue-html{3}
@@ -457,17 +457,9 @@ defineEmits(['enlarge-text'])
 또한, 이벤트를 내보내는 데 사용할 수 있는 `emit` 함수를 반환합니다:
 
 ```vue
-<!-- BlogPost.vue -->
 <script setup>
 const emit = defineEmits(['enlarge-text'])
 </script>
-
-<template>
-  <div class="blog-post">
-    <h4>{{ title }}</h4>
-    <button @click="emit('enlarge-text')">텍스트 확대</button>
-  </div>
-</template>
 ```
 
 참고: [컴포넌트 emit 타입 지정하기](/guide/typescript/composition-api.html#typing-component-emits) <sup class="vt-badge ts" />

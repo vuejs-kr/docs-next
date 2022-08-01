@@ -212,7 +212,7 @@ form 엘리먼트에 `autocomplete='on'`을 포함하면 form의 모든 input에
 
 #### `aria-label` {#aria-label}
 
-[`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute)을 사용하여 input에 접근 가능한 이름을 지정할 수도 있습니다.
+[`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) 을 사용하여 input에 접근 가능한 이름을 지정할 수도 있습니다.
 
 ```vue-html
 <label for="name">이름</label>
@@ -234,7 +234,7 @@ form 엘리먼트에 `autocomplete='on'`을 포함하면 form의 모든 input에
 
 #### `aria-labelledby` {#aria-labelledby}
 
-[`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-labelledby_attribute)를 사용하는 것은 화면에 레이블 텍스트가 표시되는 경우를 제외하고는 `aria-label`과 유사하다.
+[`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby) 를 사용하는 것은 화면에 레이블 텍스트가 표시되는 경우를 제외하고는 `aria-label`과 유사하다.
 이는 다른 엘리먼트들과 `id`로 쌍을 이루며, 여러 개의 `id`를 연결할 수 있다:
 
 ```vue-html
@@ -266,7 +266,7 @@ form 엘리먼트에 `autocomplete='on'`을 포함하면 form의 모든 input에
 
 #### `aria-describedby` {#aria-describedby}
 
-[aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute)는 사용자에게 필요할 수 있는 설명에 대한 추가 정보를 제공한다는 점을 제외하고는 `aria-labelledby`와 같은 방식으로 사용됩니다.
+[aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) 는 사용자에게 필요할 수 있는 설명에 대한 추가 정보를 제공한다는 점을 제외하고는 `aria-labelledby`와 같은 방식으로 사용됩니다.
 이것은 input의 특징을 설명하는 데 사용할 수 있습니다:
 
 ```vue-html
@@ -308,6 +308,8 @@ form 엘리먼트에 `autocomplete='on'`을 포함하면 form의 모든 input에
 색상 대비를 수정하면 플레이스홀더가 입력 필드에 미리 채워진 데이터처럼 보입니다.
 다음 예제를 보면 색상 대비 기준을 충족하는 성 플레이스홀더가 미리 채워진 데이터처럼 보입니다:
 
+![Accessible placeholder](./images/AccessiblePlaceholder.png)
+
 ```vue-html
 <form
   class="demo"
@@ -329,6 +331,26 @@ form 엘리먼트에 `autocomplete='on'`을 포함하면 form의 모든 input에
 </form>
 ```
 
+```css
+/* https://www.w3schools.com/howto/howto_css_placeholder.asp */
+
+#lastName::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: black;
+  opacity: 1; /* Firefox */
+}
+
+#lastName:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: black;
+}
+
+#lastName::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: black;
+}
+```
+
 <CodepenSnippet title="Form Placeholder" slug="mdXvazr" :height="345"/>
 <!-- <common-codepen-snippet title="Form Placeholder" slug="ExZvvMw" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
@@ -337,7 +359,7 @@ form 엘리먼트에 `autocomplete='on'`을 포함하면 form의 모든 input에
 ### 지침 {#instructions}
 
 입력 필드에 대한 지침을 추가할 때 input에 올바르게 연결해야 합니다.
-추가 지침을 제공하고 [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-labelledby_attribute) 내부에 여러 ID를 바인딩할 수 있습니다.
+추가 지침을 제공하고 [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby)  내부에 여러 ID를 바인딩할 수 있습니다.
 이를 통해 보다 유연한 설계가 가능합니다.
 
 ```vue-html
@@ -354,7 +376,7 @@ form 엘리먼트에 `autocomplete='on'`을 포함하면 form의 모든 input에
 </fieldset>
 ```
 
-또는 [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute)를 사용하여 입력에 지침을 첨부할 수 있습니다.
+또는 [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) 를 사용하여 입력에 지침을 첨부할 수 있습니다.
 
 ```vue-html
 <fieldset>

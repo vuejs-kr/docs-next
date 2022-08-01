@@ -378,7 +378,7 @@ E2E 테스트가 지속적인 CI/CD 파이프라인에서 실행될 때, 종종 
 Vite 기반 Vue 프로젝트에서 다음을 실행:
 
 ```sh
-> npm install -D vitest happy-dom @testing-library/vue@next
+> npm install -D vitest happy-dom @testing-library/vue
 ```
 
 다음으로 `test` 옵션 블록을 추가하도록 Vite 구성을 업데이트:

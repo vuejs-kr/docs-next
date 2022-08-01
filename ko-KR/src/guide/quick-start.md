@@ -21,7 +21,7 @@ StackBlitz는 브라우저에서 직접 Vite 기반 빌드 설정을 실행하�
 :::tip 전제 조건
 
 - 명령줄(command line) 사용에 익숙함
-- [Node.js](https://nodejs.org/) 설치
+- [Node.js](https://nodejs.org/) 버전 15.0 이상 설치
   :::
 
 기기에서 빌드 도구가 활성화된 Vue 프로젝트를 생성하려면, 명령줄에서 다음 명령을 실행합니다(`>` 기호 제외):
@@ -68,6 +68,9 @@ TypeScript 및 테스트 지원과 같은 여러 선택적 기능에 대한 프�
 <span class="line"></span></code></pre></div>
 
 이제 첫 번째 Vue 프로젝트가 실행 중이어야 합니다!
+생성된 샘플 컴포넌트가 [컴포시젼 API](/guide/introduction.html#composition-api) 와 `<script setup>` 로 구성되어 있습니다. ([Options API](/guide/introduction.html#options-api) 대신에요)
+
+
 다음은 몇 가지 추가 팁입니다:
 
 - 권장되는 IDE는 [Visual Studio Code](https://code.visualstudio.com/) + [Volar extension](https://marketplace.visualstudio.com/items?itemName=Vue.volar)입니다.

@@ -311,6 +311,7 @@ Vue는 트랜지션이 종료된 시점을 알기 위해 이벤트 리스너를 
   transform: translateX(30px);
   opacity: 0;
 }
+/* ... 다른 필요한 CSS들은 생략합니다... */
 ```
 
 진입 시 중첩된 엘리먼트에 트랜지션 딜레이를 추가하여, 시차가 있는 진입 애니메이션 순서를 생성할 수도 있습니다:
@@ -410,7 +411,7 @@ function onLeave(el, done) {
 function onAfterLeave(el) {}
 
 // v-show 트랜지션에서만 사용 가능합니다.
-function leaveCancelled(el) {}
+function onLeaveCancelled(el) {}
 ```
 
 </div>
@@ -453,7 +454,7 @@ export default {
     onAfterLeave(el) {},
 
     // v-show 트랜지션에서만 사용 가능합니다.
-    leaveCancelled(el) {}
+    onLeaveCancelled(el) {}
   }
 }
 ```

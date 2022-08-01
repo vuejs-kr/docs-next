@@ -1,23 +1,30 @@
 <script setup lang="ts">
+import { onMounted } from 'vue';
 import NewsLetter from './NewsLetter.vue'
+import { load, data, base } from './sponsors';
 import SponsorsGroup from './SponsorsGroup.vue';
 import VueMasteryModal from './VueMasteryModal.vue';
+
+onMounted(async () => {
+  await load()
+})
 </script>
 
 <template>
   <section id="hero">
     <h1 class="tagline">
-
-      <span class="accent">프로그래시브</span>
-      <br />자바스크립트 프레임워크
+      The
+      <span class="accent">Progressive</span>
+      <br />JavaScript Framework
     </h1>
     <p class="description">
-      웹 유저 인터페이스를 구축하기 위한 접근하기 쉽고 성능이 뛰어나며 다재다능한 프레임워크
+      An approachable, performant and versatile framework for building web
+      user interfaces.
     </p>
     <p class="actions">
       <vue-mastery-modal />
       <a class="get-started" href="/guide/introduction.html">
-        시작하기
+        Get Started
         <svg
           class="icon"
           xmlns="http://www.w3.org/2000/svg"
@@ -30,52 +37,54 @@ import VueMasteryModal from './VueMasteryModal.vue';
           />
         </svg>
       </a>
-      <a class="setup" href="/guide/quick-start.html">설치</a>
+      <a class="setup" href="/guide/quick-start.html">Install</a>
     </p>
   </section>
 
-  <!-- TODO make dynamic based on data -->
   <section id="special-sponsor">
     <span>Special Sponsor</span>
-    <a href="https://www.dcloud.io/hbuilderx.html?hmsr=vue-en&hmpl=&hmcu=&hmkw=&hmci=">
-      <picture>
-        <source type="image/avif" srcset="/images/sponsors/hbuilder.avif" />
-        <img
-          alt="hbuilder logo"
-          width="97"
-          height="36"
-          src="/images/sponsors/hbuilder.png"
-        />
-      </picture>
-    </a>
-    <span>Vue를 위한 IDE</span>
+    <template v-if="data && data.special">
+      <template v-for="{ url, img, name, description } of data.special">
+        <a :href="url" target="_blank" rel="sponsored noopener">
+          <picture v-if="img.endsWith('png')">
+            <source type="image/avif" :srcset="`${base}/images/${img.replace(/\.png$/, '.avif')}`" />
+            <img :src="`${base}/images/${img}`" :alt="name" />
+          </picture>
+          <img v-else :src="`${base}/images/${img}`" :alt="name" />
+        </a>
+        <span v-if="description">{{ description }}</span>
+      </template>
+    </template>
   </section>
 
   <section id="highlights" class="vt-box-container">
     <div class="vt-box">
-      <h2>접근하기 쉬운</h2>
+      <h2>Approachable</h2>
       <p>
-        직관적인 API 및 세계적 수준의 문서를 제공하며 표준 HTML, CSS 및 자바스크립트이 기반입니다.
+        Builds on top of standard HTML, CSS and JavaScript with intuitive
+        API and world-class documentation.
       </p>
     </div>
     <div class="vt-box">
-      <h2>성능이 뛰어난</h2>
+      <h2>Performant</h2>
       <p>
-        완전히 반응형이며, 컴파일러를 통해 최적화된 렌더링 시스템은 수동 최적화를 거의 할 필요가 없습니다.
+        Truly reactive, compiler-optimized rendering system that rarely
+        requires manual optimization.
       </p>
     </div>
     <div class="vt-box">
-      <h2>다재다능한</h2>
+      <h2>Versatile</h2>
       <p>
-        풍부한 기능을 점증적으로 적용할수 있는 생태계를 제공하여 단순히 라이브러리로도 사용할수 있고 모든 기능을 가진 프레임워크로도 사용할수 있습니다.
+        A rich, incrementally adoptable ecosystem that scales between a
+        library and a full-featured framework.
       </p>
     </div>
   </section>
 
   <section id="sponsors">
-    <h2>플래티넘 스폰서</h2>
+    <h2>Platinum Sponsors</h2>
     <SponsorsGroup tier="platinum" placement="landing" />
-    <h2>골드 스폰서</h2>
+    <h2>Gold Sponsors</h2>
     <SponsorsGroup tier="gold" placement="landing" />
   </section>
 
@@ -177,13 +186,14 @@ html:not(.dark) .accent,
   font-weight: 500;
   font-size: 13px;
   vertical-align: middle;
-  margin: 0 24px;
+  margin-right: 24px;
 }
 
 #special-sponsor img {
   display: inline-block;
   vertical-align: middle;
   height: 36px;
+  margin-right: 24px;
 }
 
 .dark #special-sponsor img {

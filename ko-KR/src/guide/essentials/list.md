@@ -131,7 +131,7 @@ items.forEach((item, index) => {
 
 ## 객체에 `v-for` 사용하기 {#v-for-with-an-object}
 
-`v-for`를 객체의 속성을 반복하는 데 사용할 수 있습니다:
+`v-for`를 객체의 속성을 반복하는 데 사용할 수 있습니다. 순회 순서는 해당 객체를 `Object.keys()`를 호출한 결과에 기반합니다: 
 
 <div class="composition-api">
 
@@ -195,9 +195,6 @@ data() {
 
 </div>
 
-:::tip 참고
-객체 속성을 순회할 때의 순서는 `Object.keys()`의 키 나열 순서를 따르며, 구현된 JavaScript 엔진에 따라 순서는 다를 수 있습니다.
-:::
 
 ## 숫자 범위에 `v-for` 사용하기 {#v-for-with-a-range}
 
@@ -301,19 +298,19 @@ DOM Node의 위치가 변경되면 DOM Tree구조가 변경 되었기 때문에 
 컴포넌트에 `v-for`를 직접 사용할 수 있습니다(`key` 사용을 잊지 마세요):
 
 ```vue-html
-<my-component v-for="item in items" :key="item.id"></my-component>
+<MyComponent v-for="item in items" :key="item.id"></MyComponent>
 ```
 
 그러나 컴포넌트에는 자체적으로 구분된 범위가 있기 때문에 컴포넌트에 데이터를 자동으로 전달하지 않습니다.
 반복된 데이터를 컴포넌트에 전달하려면 props를 사용해야 합니다.
 
 ```vue-html
-<my-component
+<MyComponent
   v-for="(item, index) in items"
   :item="item"
   :index="index"
   :key="item.id"
-></my-component>
+></MyComponent>
 ```
 
 컴포넌트에 `item`이 자동으로 전달되지 않는 이유는, 그렇지 않으면`v-for`를 사용해야만 컴포넌트 사용이 가능하도록 의존관계가 되기 때문입니다.
@@ -334,7 +331,7 @@ DOM Node의 위치가 변경되면 DOM Tree구조가 변경 되었기 때문에 
 
 ### 수정 메서드 {#mutation-methods}
 
-Vue는 배열을 수정하는 메서드를 래핑하고 감시하며 뷰(view) 업데이트를 트리거합니다. 래핑된 메서드는 다음과 같습니다:
+Vue는 반응형 배열의 변경 메소드가 호출 되는것을 감지하여, 필요한 업데이트를 발생시킵니다. 지원하는 변경 메소드 목록든 다음과 같습니다:
 
 - `push()`
 - `pop()`

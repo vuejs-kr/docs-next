@@ -14,7 +14,17 @@
 
 <div class="options-api">
 
-`$emit()` 함수는 컴포넌트 인스턴스에서 `this.$emit()`로도 사용할 수 있습니다:
+`$emit()` 메소드는 컴포넌트 인스턴스에서 `this.$emit()`로도 사용할 수 있습니다:
+
+```js
+export default {
+  methods: {
+    submit() {
+      this.$emit('submit')
+    }
+  }
+}
+```
 
 </div>
 
@@ -95,17 +105,21 @@ function increaseCount(n) {
 
 ## 발신되는 이벤트 선언하기 {#declaring-emitted-events}
 
-발신되는 이벤트는 <span class="composition-api">[`defineEmits()`](/api/sfc-script-setup.html#defineprops-defineemits) 메크로를</span><span class="options-api">[`emits`](/api/options-state.html#emits) 옵션을</span> 통해 컴포넌트에서 명시적으로 선언될 수 있습니다.
+발신되는 이벤트는 <span class="composition-api">[`defineEmits()`](/api/sfc-script-setup.html#defineprops-defineemits) 메크로를</span><span class="options-api">[`emits`](/api/options-state.html#emits) 옵션을</span> 통해 컴포넌트에서 명시적으로 선언될 수 있습니다:
 
 <div class="composition-api">
 
 ```vue
 <script setup>
 const emit = defineEmits(['inFocus', 'submit'])
+function buttonClick() {
+  emit('submit')
+}
 </script>
 ```
 
-함수에서 반환된 `emit`은 JavaScript에서 이벤트를 내보내는 데 사용할 수 있습니다.
+`defineEmits()` 매크로는 함수 안에서 사용될수 **없습니다**. 반드시 위의 예처럼 `<script setup>` 내에 바로 위치해야 합니다. 
+
 
 `<script setup>`을 사용하지 않는 경우, 이벤트는 [`emits`](/api/options-state.html#emits) 옵션을 사용하여 선언되어야 하며 `emit` 함수는 `setup()` 컨텍스트에 노출됩니다:
 
@@ -124,6 +138,19 @@ export default {
 ```js
 export default {
   emits: ['inFocus', 'submit']
+}
+```
+
+
+
+다른 `setup()` 컨텍스트의 속성들 처럼, `emit` 역시 구조분해가 가능합니다. 
+
+```js
+export default {
+  emits: ['inFocus', 'submit'],
+  setup(props, { emit }) {
+    emit('submit')
+  }
 }
 ```
 
@@ -465,8 +492,8 @@ export default {
 
 ```vue-html
 <UserName
-  v-model:first-name="firstName"
-  v-model:last-name="lastName"
+  v-model:first-name="first"
+  v-model:last-name="last"
 />
 ```
 
@@ -496,7 +523,7 @@ defineEmits(['update:firstName', 'update:lastName'])
 </template>
 ```
 
-[온라인 연습장으로 실행하기](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcbmltcG9ydCBVc2VyTmFtZSBmcm9tICcuL1VzZXJOYW1lLnZ1ZSdcblxuY29uc3QgZmlyc3ROYW1lID0gcmVmKCdKb2huJylcbmNvbnN0IGxhc3ROYW1lID1yZWYoJ0RvZScpXG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8aDE+e3sgZmlyc3ROYW1lIH19IHt7IGxhc3ROYW1lIH19PC9oMT5cbiAgPFVzZXJOYW1lXG4gICAgdi1tb2RlbDpmaXJzdC1uYW1lPVwiZmlyc3ROYW1lXCJcbiAgICB2LW1vZGVsOmxhc3QtbmFtZT1cImxhc3ROYW1lXCJcbiAgLz5cbjwvdGVtcGxhdGU+IiwiaW1wb3J0LW1hcC5qc29uIjoie1xuICBcImltcG9ydHNcIjoge1xuICAgIFwidnVlXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3Z1ZS5ydW50aW1lLmVzbS1icm93c2VyLmpzXCJcbiAgfVxufSIsIlVzZXJOYW1lLnZ1ZSI6IjxzY3JpcHQgc2V0dXA+XG5kZWZpbmVQcm9wcyh7XG4gIGZpcnN0TmFtZTogU3RyaW5nLFxuICBsYXN0TmFtZTogU3RyaW5nXG59KVxuXG5kZWZpbmVFbWl0cyhbJ3VwZGF0ZTpmaXJzdE5hbWUnLCAndXBkYXRlOmxhc3ROYW1lJ10pXG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8aW5wdXRcbiAgICB0eXBlPVwidGV4dFwiXG4gICAgOnZhbHVlPVwiZmlyc3ROYW1lXCJcbiAgICBAaW5wdXQ9XCIkZW1pdCgndXBkYXRlOmZpcnN0TmFtZScsICRldmVudC50YXJnZXQudmFsdWUpXCJcbiAgLz5cbiAgPGlucHV0XG4gICAgdHlwZT1cInRleHRcIlxuICAgIDp2YWx1ZT1cImxhc3ROYW1lXCJcbiAgICBAaW5wdXQ9XCIkZW1pdCgndXBkYXRlOmxhc3ROYW1lJywgJGV2ZW50LnRhcmdldC52YWx1ZSlcIlxuICAvPlxuPC90ZW1wbGF0ZT4ifQ==)
+[온라인 연습장으로 실행하기](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcbmltcG9ydCBVc2VyTmFtZSBmcm9tICcuL1VzZXJOYW1lLnZ1ZSdcblxuY29uc3QgZmlyc3QgPSByZWYoJ0pvaG4nKVxuY29uc3QgbGFzdCA9IHJlZignRG9lJylcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDxoMT57eyBmaXJzdCB9fSB7eyBsYXN0IH19PC9oMT5cbiAgPFVzZXJOYW1lXG4gICAgdi1tb2RlbDpmaXJzdC1uYW1lPVwiZmlyc3RcIlxuICAgIHYtbW9kZWw6bGFzdC1uYW1lPVwibGFzdFwiXG4gIC8+XG48L3RlbXBsYXRlPiIsImltcG9ydC1tYXAuanNvbiI6IntcbiAgXCJpbXBvcnRzXCI6IHtcbiAgICBcInZ1ZVwiOiBcImh0dHBzOi8vc2ZjLnZ1ZWpzLm9yZy92dWUucnVudGltZS5lc20tYnJvd3Nlci5qc1wiLFxuICAgIFwidnVlL3NlcnZlci1yZW5kZXJlclwiOiBcImh0dHBzOi8vc2ZjLnZ1ZWpzLm9yZy9zZXJ2ZXItcmVuZGVyZXIuZXNtLWJyb3dzZXIuanNcIlxuICB9XG59IiwiVXNlck5hbWUudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmRlZmluZVByb3BzKHtcbiAgZmlyc3ROYW1lOiBTdHJpbmcsXG4gIGxhc3ROYW1lOiBTdHJpbmdcbn0pXG5cbmRlZmluZUVtaXRzKFsndXBkYXRlOmZpcnN0TmFtZScsICd1cGRhdGU6bGFzdE5hbWUnXSlcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDxpbnB1dFxuICAgIHR5cGU9XCJ0ZXh0XCJcbiAgICA6dmFsdWU9XCJmaXJzdE5hbWVcIlxuICAgIEBpbnB1dD1cIiRlbWl0KCd1cGRhdGU6Zmlyc3ROYW1lJywgJGV2ZW50LnRhcmdldC52YWx1ZSlcIlxuICAvPlxuICA8aW5wdXRcbiAgICB0eXBlPVwidGV4dFwiXG4gICAgOnZhbHVlPVwibGFzdE5hbWVcIlxuICAgIEBpbnB1dD1cIiRlbWl0KCd1cGRhdGU6bGFzdE5hbWUnLCAkZXZlbnQudGFyZ2V0LnZhbHVlKVwiXG4gIC8+XG48L3RlbXBsYXRlPiJ9)
 
 </div>
 <div class="options-api">

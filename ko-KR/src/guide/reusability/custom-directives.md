@@ -123,19 +123,19 @@ const myDirective = {
     // 인자에 대한 자세한 내용은 아래를 참고.
   },
   // 엘리먼트가 DOM에 삽입되기 직전에 호출됩니다.
-  beforeMount() {},
+  beforeMount(el, binding, vnode, prevVnode) {},
   // 바인딩된 엘리먼트의 부모 컴포넌트 및
   // 모든 자식 컴포넌트의 mounted 이후에 호출됩니다.
-  mounted() {},
+  mounted(el, binding, vnode, prevVnode) {},
   // 부모 컴포넌트의 updated 전에 호출됩니다.
-  beforeUpdate() {},
+  beforeUpdate(el, binding, vnode, prevVnode) {},
   // 바인딩된 엘리먼트의 부모 컴포넌트 및
   // 모든 자식 컴포넌트의 updated 이후에 호출됩니다.
-  updated() {},
+  updated(el, binding, vnode, prevVnode) {},
   // 부모 컴포넌트의 beforeUnmount 이후에 호출됩니다.
-  beforeUnmount() {},
+  beforeUnmount(el, binding, vnode, prevVnode) {},
   // 부모 컴포넌트의 unmounted 전에 호출됩니다.
-  unmounted() {}
+  unmounted(el, binding, vnode, prevVnode) {}
 }
 ```
 

@@ -89,7 +89,7 @@ Vue 2는 브라우저 지원 제한으로 인해 단독으로 getter/setter를 �
 Vue 3에서 프락시는 반응형 객체에 사용되며 getter/setter는 참조에 사용됩니다.
 다음은 작동 방식을 보여주는 유사 코드입니다:
 
-```js{4,8,17,21}
+```js{4,9,17,22}
 function reactive(obj) {
   return new Proxy(obj, {
     get(target, key) {
@@ -97,8 +97,8 @@ function reactive(obj) {
       return target[key]
     },
     set(target, key, value) {
-      trigger(target, key)
       target[key] = value
+      trigger(target, key)
     }
   })
 }
@@ -110,8 +110,8 @@ function ref(value) {
       return value
     },
     set value(newValue) {
-      trigger(refObject, 'value')
       value = newValue
+      trigger(refObject, 'value')
     }
   }
   return refObject

@@ -35,21 +35,54 @@ const AsyncComp = defineAsyncComponent(() =>
 반환된 `AsyncComp`는 페이지에서 실제로 렌더링될 때만 로더 함수를 호출하는 래퍼 컴포넌트입니다.
 또한 모든 props를 내부 컴포넌트에 전달하므로, 기존 구현된 컴포넌트를 비동기 래퍼 컴포넌트로 문제없이 교체하여 지연(lazy) 로드를 구현할 수 있습니다.
 
+일반 컴포넌트 처럼, 비동기 컴포넌트도  `app.component()`를 통해  [전역 등록이 가능합니다](/guide/components/registration.html#global-registration):
+
+```js
+app.component('MyComponent', defineAsyncComponent(() =>
+  import('./components/MyComponent.vue')
+))
+```
+
 <div class="options-api">
 
 [컴포넌트를 로컬로 등록](/guide/components/registration.html#local-registration)할 때 `defineAsyncComponent`를 사용할 수도 있습니다:
 
-```js
+```vue
+<script>
 import { defineAsyncComponent } from 'vue'
 
 export default {
-  // ...
   components: {
-    AsyncComponent: defineAsyncComponent(() =>
-      import('./components/AsyncComponent.vue')
+    AdminPage: defineAsyncComponent(() =>
+      import('./components/AdminPageComponent.vue')
     )
   }
 }
+</script>
+
+<template>
+  <AdminPage />
+</template>
+```
+
+</div>
+
+<div class="composition-api">
+
+부모 컴포넌트 안에서 직접 선언될수 있습니다.  
+
+```vue
+<script setup>
+import { defineAsyncComponent } from 'vue'
+
+const AdminPage = defineAsyncComponent(() =>
+  import('./components/AdminPageComponent.vue')
+)
+</script>
+
+<template>
+  <AdminPage />
+</template>
 ```
 
 </div>

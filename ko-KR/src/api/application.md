@@ -417,7 +417,7 @@ Vue에서 런타임 경고 발생 시, 트리거 될 커스텀 핸들러를 정�
 
 - **참고**: [가이드 - 성능](/guide/best-practices/performance.html)
 
-## app.config.compilerOptions
+### app.config.compilerOptions.isCustomElement
 
 런타임 컴파일러 옵션을 설정합니다.
 이 객체에 설정된 값은 브라우저 내 템플릿 컴파일러에 전달되고, 설정된 앱의 모든 컴포넌트에 영향을 미칩니다.
@@ -432,7 +432,7 @@ Vue에서 런타임 경고 발생 시, 트리거 될 커스텀 핸들러를 정�
 - `vite`의 경우: [`@vitejs/plugin-vue` 옵션을 통해 전달](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#options).
   :::
 
-### app.compilerOptions.isCustomElement
+### app.config.compilerOptions.isCustomElement
 
 네이티브(native) 커스텀 엘리먼트를 인식하기 위한 검사 방법을 지정합니다.
 
@@ -456,7 +456,7 @@ Vue에서 런타임 경고 발생 시, 트리거 될 커스텀 핸들러를 정�
 
 - **참고**: [Vue와 웹 컴포넌트](/guide/extras/web-components.html)
 
-### app.compilerOptions.whitespace
+### app.config.compilerOptions.whitespace
 
 템플릿 내 공백 처리 방식을 설정합니다.
 
@@ -481,7 +481,7 @@ Vue에서 런타임 경고 발생 시, 트리거 될 커스텀 핸들러를 정�
   app.config.compilerOptions.whitespace = 'preserve'
   ```
 
-### app.compilerOptions.delimiters
+### app.config.compilerOptions.delimiters
 
 템플릿 내 텍스트 보간에 사용되는 구분 기호를 설정합니다.
 

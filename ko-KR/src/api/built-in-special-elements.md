@@ -97,6 +97,26 @@
   이름이 아닌 컴포넌트 자체를 `is`에 전달하는 경우,
   등록이 필요하지 않습니다(예를 들어 `<script setup>`에서).
 
+
+  If `v-model` is used on a `<component>` tag, the template compiler will expand it to a `modelValue` prop and `update:modelValue` event listener, much like it would for any other component. However, this won't be compatible with native HTML elements, such as `<input>` or `<select>`. As a result, using `v-model` with a dynamically created native element won't work: 
+
+  ```vue
+  <script setup>
+  import { ref } from 'vue'
+  
+  const tag = ref('input')
+  const username = ref('')
+  </script>
+
+  <template>
+    <!-- This won't work as 'input' is a native HTML element -->
+    <component :is="tag" v-model="username" />
+  </template>
+  ```
+
+  In practice, this edge case isn't common as native form fields are typically wrapped in components in real applications. If you do need to use a native element directly then you can split the `v-model` into an attribute and event manually.
+
+
 - **참고**: [가이드 - 컴포넌트 기초: 동적 컴포넌트](/guide/essentials/component-basics.html#dynamic-components)
 
 ## `<slot>`

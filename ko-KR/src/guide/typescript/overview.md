@@ -23,8 +23,6 @@ Vite 기반 설정을 사용하면 개발 서버와 번들러가 트랜스파일
 
 - SFC를 사용하는 경우 command line 타입 확인 및 타입 선언 생성을 위해 [`vue-tsc`](https://github.com/johnsoncodehk/volar/tree/master/packages/vue-tsc) 유틸리티를 사용하십시오. `vue-tsc` 는 타입스크립트의 자체 command line 인터페이스인 `tsc`를 포함하고 있습니다. 타입스크립트 파일 외에도 Vue SFC를 지원한다는 점을 제외하면 `tsc` 와 거의 동일하게 작동합니다.
 
-- `vue-tsc` 는 현재 감시 모드를 지원하지 않지만 로드맵에 있습니다. 그동안, dev 명령으로 타입 검사를 사용하고 싶다면 [vite-plugin-checker](https://github.com/fi3ework/vite-plugin-checker)를 확인해주세요.
-
 - Vue CLI는 타입스크립트를 지원 하지만 더 이상 권장되지 않습니다. 아래 사항을 [참고](#note-on-vue-cli-and-ts-loader) 하십시오.
 
 ### IDE 지원 {#ide-support}
