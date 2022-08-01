@@ -107,7 +107,7 @@ resolved 상태에서 `<Suspense>` 는 `#default` 슬롯의 루트 노드가 교
 
 [`<Transition>`](./transition) 및 [`<KeepAlive>`](./keep-alive) 컴포넌트와 함께 `<Suspense>` 를 사용하려는 경우가 일반적입니다. 이러한 컴포넌트의 중첩 순서는 모든 컴포넌트가 올바르게 작동하도록 하는 것에 큰 영향을 줍니다.
 
-또한 이러한 컴포넌트는 [Vue Router](https://router.vuejs.org/) 의 `<RouterView>` 컴포넌트와 함께 사용되는 경우가 많습니다.
+또한 이러한 컴포넌트는 [Vue Router](https://router.vuejs.kr/) 의 `<RouterView>` 컴포넌트와 함께 사용되는 경우가 많습니다.
 
 다음 예제에서는 이러한 컴포넌트가 모두 예상한 대로 작동하도록 중첩시키는 방법을 보여줍니다. 더 간단하게 할 경우 필요하지 않은 컴포넌트를 제거할 수 있습니다.
 
@@ -131,4 +131,4 @@ resolved 상태에서 `<Suspense>` 는 `#default` 슬롯의 루트 노드가 교
 </RouterView>
 ```
 
-Vue 라우터에는 동적 import를 사용하여 [컴포넌트를 lazy load하는](https://router.vuejs.org/guide/advanced/lazy-loading.html) 기능이 내장되어 있습니다. 이들은 비동기 컴포넌트와 구분되며 현재 `<Suspense>` 를 트리거하지 않습니다. 그러나 여전히 비동기 컴포넌트를 하위 항목으로 가질 수 있으며 일반적인 방식으로 `<Suspense>` 를 트리거할 수 있습니다.
+Vue 라우터에는 동적 import를 사용하여 [컴포넌트를 lazy load하는](https://router.vuejs.kr/guide/advanced/lazy-loading.html) 기능이 내장되어 있습니다. 이들은 비동기 컴포넌트와 구분되며 현재 `<Suspense>` 를 트리거하지 않습니다. 그러나 여전히 비동기 컴포넌트를 하위 항목으로 가질 수 있으며 일반적인 방식으로 `<Suspense>` 를 트리거할 수 있습니다.

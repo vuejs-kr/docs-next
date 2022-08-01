@@ -51,8 +51,8 @@ const nav = [
       {
         text: '핵심 라이브러리',
         items: [
-          { text: 'Vue 라우터', link: 'https://router.vuejs.org/' },
-          { text: '피니아 (상태 관리)', link: 'https://pinia.vuejs.org/' }
+          { text: 'Vue 라우터', link: 'https://router.vuejs.kr/' },
+          { text: '피니아 (상태 관리)', link: 'https://pinia.vuejs.kr/' }
         ]
       },
 
