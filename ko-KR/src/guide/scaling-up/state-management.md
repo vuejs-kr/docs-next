@@ -211,7 +211,7 @@ export const store = reactive({
 이것은 컴포넌트 메서드가 아니기 때문에, 적절히 `this` 컨텍스트를 사용하여 메서드를 호출할 필요가 있습니다.
 :::
 
-여기에서는 단일 반응형 객체를 `store`로 사용하고 있지만, `ref()` 또는 `computed()`와 같은 다른 [반응형 API](/api/reactivity-core.html)를 사용하여 생성된 반응형 상태를 공유하거나 [구성화](/guide/reusability/composables.html)를 통해 전역 상태를 반환할 수도 있습니다:
+여기에서는 단일 반응형 객체를 `store`로 사용하고 있지만, `ref()` 또는 `computed()`와 같은 다른 [반응형 API](/api/reactivity-core.html)를 사용하여 생성된 반응형 상태를 공유하거나 [컴포저블](/guide/reusability/composables.html)을 통해 전역 상태를 반환할 수도 있습니다:
 
 ```js
 import { ref } from 'vue'

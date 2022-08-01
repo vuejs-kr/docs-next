@@ -87,7 +87,7 @@
   위의 ref는 `state.foo`와 **동기화되지 않습니다**.
   `ref()`가 일반 숫자 값을 수신하기 때문입니다.
 
-  `toRef()`는 구성화 함수에 prop을 ref로 전달하려는 경우에 유용합니다:
+  `toRef()`는 컴포저블 함수에 prop을 ref로 전달하려는 경우에 유용합니다:
 
   ```vue
   <script setup>
@@ -95,7 +95,7 @@
   
   const props = defineProps(/* ... */)
 
-  // `props.foo`를 ref로 변환한 다음 구성화 함수에 전달
+  // `props.foo`를 ref로 변환한 다음 컴포저블 함수에 전달
   useSomeFeature(toRef(props, 'foo'))
   </script>
   ```
@@ -151,7 +151,7 @@
   console.log(state.foo) // 3
   ```
 
-  `toRefs`는 구성화 함수에서 반응형 객체를 반환하면,
+  `toRefs`는 컴포저블 함수에서 반응형 객체를 반환하면,
   이것을 사용하는 컴포넌트가 반응형을 잃지 않고 분해 할당 및 확장 할 수 있어 유용합니다.
 
   ```js

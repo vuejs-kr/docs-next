@@ -59,10 +59,10 @@ Vue를 컴포지션 API와 함께 사용하는 방법을 배우고 싶다면 왼
 
 ### 더 나은 로직 재사용성
 
-컴포지션 API의 가장 큰 장점은 [구성화 함수](/guide/reusability/composables.html)의 형태로 깔끔하고 효율적인 로직 재사용이 가능하다는 것입니다.
+컴포지션 API의 가장 큰 장점은 [컴포저블 함수](/guide/reusability/composables.html)의 형태로 깔끔하고 효율적인 로직 재사용이 가능하다는 것입니다.
 옵션 API의 기본 로직 재사용 메커니즘인 [믹스인의 모든 단점](/guide/reusability/composables.html#vs-mixins)을 해결합니다.
 
-컴포지션 API의 로직 재사용 기능은 구성화 유틸리티의 계속 성장하는 컬렉션인 [VueUse](https://vueuse.org/)와 같은 인상적인 커뮤니티 프로젝트를 탄생시켰습니다.
+컴포지션 API의 로직 재사용 기능은 컴포저블 유틸리티의 계속 성장하는 컬렉션인 [VueUse](https://vueuse.org/)와 같은 인상적인 커뮤니티 프로젝트를 탄생시켰습니다.
 또한 상태 저장 타사 서비스 또는 라이브러리를 [불변 데이터](/guide/extras/reactivity-in-depth.html#immutable-data), [상태 머신](/guide/extras/reactivity-in-depth.html#state-machines) 및 [RxJS](https://vueuse.org/rxjs/readme.html#vueuse-rxjs)와 같은 Vue의 반응형 시스템에 쉽게 통합하기 위한 깔끔한 메커니즘 역할을 합니다.
 
 ### 보다 유연한 코드 구성

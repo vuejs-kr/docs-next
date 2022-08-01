@@ -446,7 +446,7 @@ export function useImmer(baseState) {
 단순한 컴포넌트에는 과도할 수 있지만, 복잡한 상태 흐름을 보다 강력하고 관리하기 쉽게 만드는 데 도움이 될 수 있습니다.
 
 JavaScript에서 가장 널리 사용되는 상태 머신 구현 중 하나는 [XState](https://xstate.js.org/)입니다.
-다음은 이를 통합하는 구성화입니다:
+다음은 이를 통합하는 컴포저블입니다:
 
 ```js
 import { createMachine, interpret } from 'xstate'
