@@ -401,7 +401,7 @@ export const sidebar = {
       ]
     },
     {
-      text: 'Single File Component',
+      text: 'Single-File Component',
       items: [
         { text: 'Syntax Specification', link: '/api/sfc-spec' },
         { text: '<script setup>', link: '/api/sfc-script-setup' },
@@ -560,6 +560,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   scrollOffset: 'header',
 
   head: [
+    ['meta', { name: 'theme-color', content: "#3c8772" }],
     ['meta', { name: 'twitter:site', content: '@vuejs' }],
     ['meta', { name: 'twitter:card', content: 'summary' }],
     [

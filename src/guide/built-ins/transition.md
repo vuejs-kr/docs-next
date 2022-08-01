@@ -284,6 +284,8 @@ Although the transition classes are only applied to the direct child element in 
   transform: translateX(30px);
   opacity: 0;
 }
+
+/* ... other necessary CSS omitted */
 ```
 
 We can even add a transition delay to the nested element on enter, which creates a staggered enter animation sequence:
@@ -347,7 +349,7 @@ You can hook into the transition process with JavaScript by listening to events 
 ```js
 // called before the element is inserted into the DOM.
 // use this to set the "enter-from" state of the element
-function onBeforeEnter(el) {},
+function onBeforeEnter(el) {}
 
 // called one frame after the element is inserted.
 // use this to start the entering animation.
@@ -378,7 +380,7 @@ function onLeave(el, done) {
 function onAfterLeave(el) {}
 
 // only available with v-show transitions
-function leaveCancelled(el) {}
+function onLeaveCancelled(el) {}
 ```
 
 </div>
@@ -421,7 +423,7 @@ export default {
     onAfterLeave(el) {},
 
     // only available with v-show transitions
-    leaveCancelled(el) {}
+    onLeaveCancelled(el) {}
   }
 }
 ```
