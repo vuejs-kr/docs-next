@@ -7,10 +7,10 @@ footer: false
 :::info 당신은 현재 Vue 3에 대한 문서를 읽고 있습니다!
 
 - Vue 2 문서가 [v2.vuejs.org](https://kr.vuejs.org/index.html)로 이동되었습니다.
-- Vue 2에서 업그레이드 하시려면 [마이그레이션 가이드](https://v3-migration.vuejs.org/)를 확인하십시오.
+- Vue 2에서 업그레이드 하시려면 [마이그레이션 가이드](https://v3-migration.vuejs.org/)를 확인하십시오. 
 :::
 
-## Vue는 무엇입니까? {#what-is-vue}
+## Vue는 무엇일까요? {#what-is-vue}
 
 Vue( **view** 와 마찬가지로 /vjuː/ 라고 발음합니다 )는 사용자 인터페이스를 구축하기 위한 JavaScript 프레임워크입니다.
 표준 HTML, CSS 및 JavaScript를 기반으로 구축되며, 단순한 것 부터 복잡한 것 까지 사용자 인터페이스를 효율적으로 개발 할수 있는 컴포넌트 기반 프로그래밍 모델을 제공합니다.
