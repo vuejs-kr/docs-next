@@ -64,6 +64,7 @@ const count = ref(0)
 나머지 문서에서는 HTML, CSS 및 JavaScript에 대한 기본적인 지식이 있다고 가정합니다.
 프론트엔드 개발이 처음이면 첫 번째 단계로 프레임워크에 바로 뛰어드는 것은 좋은 생각이 아닙니다.
 기본 지식을 갖추고 난 다음 다시 돌아오세요!
+MDN의 [JavaScript 개요](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)에서 지식 수준을 확인할 수 있습니다.
 다른 프레임워크를 사용했던 경험이 도움이 되지만 필수는 아닙니다.
 :::
 
@@ -203,9 +204,9 @@ onMounted(() => {
 
 [온라인 연습장으로 실행하기](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiwgb25Nb3VudGVkIH0gZnJvbSAndnVlJ1xuXG4vLyDrsJjsnZHsoIHsnbgg7IOB7YOc7J2YIOyGjeyEsVxuY29uc3QgY291bnQgPSByZWYoMClcblxuLy8g7IaN7ISxIOqwkuydhCDrs4Dqsr3tlZjqs6Ag7JeF642w7J207Yq4IO2VoCDsiJgg7J6I64qUIO2VqOyImC5cbmZ1bmN0aW9uIGluY3JlbWVudCgpIHtcbiAgY291bnQudmFsdWUrK1xufVxuXG4vLyDsiJjrqoUg7KO86riwIO2bhVxub25Nb3VudGVkKCgpID0+IHtcbiAgY29uc29sZS5sb2coYOyIq+yekCDshLjquLDsnZgg7LSI6riw6rCS7J2AICR7IGNvdW50LnZhbHVlIH0g7J6F64uI64ukLmApXG59KVxuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPGJ1dHRvbiBAY2xpY2s9XCJpbmNyZW1lbnRcIj7siKvsnpAg7IS46riwOiB7eyBjb3VudCB9fTwvYnV0dG9uPlxuPC90ZW1wbGF0ZT4iLCJpbXBvcnQtbWFwLmpzb24iOiJ7XG4gIFwiaW1wb3J0c1wiOiB7XG4gICAgXCJ2dWVcIjogXCJodHRwczovL3NmYy52dWVqcy5vcmcvdnVlLnJ1bnRpbWUuZXNtLWJyb3dzZXIuanNcIlxuICB9XG59In0=)
 
-### 무엇을 선택해야 할까요? {#whichi-to-choose}
+### 무엇을 선택해야 할까요? {#which-to-choose}
 
-우선 두 API 스타일 모두 일반적인 사용 사례를 완벽하게 다룰 수 있습니다.
+두 API 스타일 모두 일반적인 사용 사례를 완벽하게 다룰 수 있습니다.
 이것들은 정확히 동일한 기본 시스템에 의해 구동되는 서로 다른 인터페이스입니다.
 사실, 옵션 API는 컴포지션 API 위에 구현됩니다!
 Vue에 대한 기본 개념과 지식은 두 스타일과 상관없이 동일합니다.
@@ -221,7 +222,7 @@ Vue에 대한 기본 개념과 지식은 두 스타일과 상관없이 동일합
 
 Vue를 처음 사용하는 경우 일반적인 권장 사항은 다음과 같습니다:
 
-- 학습을 목적으로 하는 경우, 당신이 쉽게 이해할 수 있어보이는 스타일로 가십시오. 다시 말하지만, 대부분의 핵심 개념은 두 스타일 간에 공유됩니다. 나중에 언제든지 다른 하나를 선택할 수 있습니다.
+- 학습을 목적으로 하는 경우, 당신이 쉽게 이해할 수 있어보이는 스타일로 가십시오. 다시 말하지만, 대부분의 핵심 개념은 두 스타일 간에 공유됩니다.나중에 언제든지 다른 스타일을 선택할 수 있습니다.
 
 - 제품용(production)으로 사용하는 경우:
 
