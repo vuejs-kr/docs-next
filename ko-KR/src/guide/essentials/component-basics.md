@@ -321,8 +321,8 @@ const posts = ref([
 
 </div>
 
-동적 `props` 값을  전달하기 위해 `v-bind`를 사용하는 방법에 주목하세요.
-이것은 미리 렌더링할 정확한 컨텐츠를 모를 때 특히 유용합니다.
+`v-bind`가 동적 prop 값을 전달하는 데 어떻게 사용되는지 주목하세요.
+이것은 미리 렌더링할 정확한 콘텐츠를 모를 때 특히 유용합니다.
 
 지금은 이것이 `props`에 대해 알아야 할 전부입니다.
 하지만 이 페이지를 다 읽고 내용에 익숙해지면 나중에 다시 돌아와 [Props](/guide/components/props.html)의 전체 가이드를 읽는 것이 좋습니다.
@@ -384,10 +384,10 @@ const postFontSize = ref(1)
 </template>
 ```
 
-버튼은 현재 아무 작업도 수행하지 않습니다.
-버튼을 클릭하여 모든 게시물의 텍스트를 확대해야 한다는 사실을 상위에 알리고 싶습니다.
-이 문제를 해결하기 위해 컴포넌트 인스턴스들은  사용자 지정 이벤트 시스템을 제공합니다.
-부모 컴포넌트는 네이티브 DOM 이벤트와 마찬가지로 `v-on` 또는 `@`을 사용하여 자식 컴포넌트 인스턴스의 모든 이벤트를 수신하도록 선택할 수 있습니다:
+버튼은 아직 아무것도 하지 않습니다
+버튼을 클릭하여 모든 게시물의 텍스트를 확대해야 한다고 부모에게 알리고 싶습니다.
+이 문제를 해결하기 위해 컴포넌트는 커스텀 이벤트 시스템을 제공합니다.
+부모 컴포넌트는 네이티브 DOM 이벤트와 마찬가지로 `v-on` 또는 `@`를 사용하여 자식 컴포넌트 인스턴스의 모든 이벤트를 수신하도록 선택할 수 있습니다:
 
 ```vue-html{3}
 <BlogPost
@@ -453,12 +453,15 @@ defineEmits(['enlarge-text'])
 
 <div class="composition-api">
 
-`defineProps`와 마찬가지로 `defineEmits`도 `<script setup>`에서만 사용할 수 있습니다.
-또한, 이벤트를 내보내는 데 사용할 수 있는 `emit` 함수를 반환합니다:
+`defineProps`와 마찬가지로 `defineEmits`도 `<script setup>`에서만 사용할 수 있으며 `import`할 필요가 없습니다.
+`$emit` 메서드와 동일한 `emit` 함수를 반환하므로,
+컴포넌트의 `<script setup>` 섹션에서 이벤트를 내보내는 데 사용할 수 있습니다.
 
 ```vue
 <script setup>
 const emit = defineEmits(['enlarge-text'])
+
+emit('enlarge-text')
 </script>
 ```
 
