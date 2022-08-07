@@ -298,7 +298,7 @@ DOM Node의 위치가 변경되면 DOM Tree구조가 변경 되었기 때문에 
 컴포넌트에 `v-for`를 직접 사용할 수 있습니다(`key` 사용을 잊지 마세요):
 
 ```vue-html
-<MyComponent v-for="item in items" :key="item.id"></MyComponent>
+<MyComponent v-for="item in items" :key="item.id" />
 ```
 
 그러나 컴포넌트에는 자체적으로 구분된 범위가 있기 때문에 컴포넌트에 데이터를 자동으로 전달하지 않습니다.
@@ -310,7 +310,7 @@ DOM Node의 위치가 변경되면 DOM Tree구조가 변경 되었기 때문에 
   :item="item"
   :index="index"
   :key="item.id"
-></MyComponent>
+/>
 ```
 
 컴포넌트에 `item`이 자동으로 전달되지 않는 이유는, 그렇지 않으면`v-for`를 사용해야만 컴포넌트 사용이 가능하도록 의존관계가 되기 때문입니다.
