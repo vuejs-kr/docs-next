@@ -341,7 +341,7 @@ const emit = defineEmits<{
 이 문제를 해결하기 위해 `withDefaults` 컴파일러 매크로를 제공합니다:
 
 ```ts
-interface Props {
+export interface Props {
   msg?: string
   labels?: string[]
 }
