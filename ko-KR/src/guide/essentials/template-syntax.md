@@ -153,11 +153,9 @@ Vue 템플릿에서 JavaScript 표현식은 다음과 같은 위치에 사용할
 
 ### 하나의 표현식만 가능 {#expressions-only}
 
-Each binding can only contain **one single expression**. An expression is a piece of code that can evaluate to a value. A simple check is whether it can be used after `return`.
-
-Therefore, the following will **NOT** work:
-
-각 바인딩에는 **하나의 단일 표현식**만 포함될 수 있습니다.표현식은 값을 만들어내는 코드입니다. 간단하게 설명하자면 `return` 다음에 올수 있는 코드입니다.  
+각 바인딩에는 **하나의 단일 표현식**만 포함될 수 있습니다.
+표현식은 값으로 평가할 수 있어야 하는 코드 조각입니다.
+쉽게 말해 `return` 뒤에 사용할 수 있는 코드여야 하는 것입니다.  
 
 따라서 다음 코드들은 **작동하지 않습니다**:
 
@@ -230,8 +228,8 @@ Vue는 위에서 소개한 `v-html`과 `v-bind`를 포함하여 [빌트인 디�
 <a @click="doSomething"> ... </a>
 ```
 
-`v-on`은 `@` 문자열을 단축형으로 가집니다. 
-여기서 `click`은 인자로서 수신할 이벤트 이름입니다.
+여기서 `click`의 인자는 수신할 이벤트 이름입니다.
+`v-on`은 단축형으로 `@`를 대신 사용할 수 있습니다.
 이벤트 처리에 대해서는 나중에 더 자세히 설명하겠습니다.
 
 ### 동적인 인자 {#dynamic-arguments}
@@ -289,8 +287,8 @@ DOM 내 템플릿(HTML 파일에 직접 작성된 템플릿)을 사용할 때, �
 ```
 
 위의 내용은 DOM 내 템플릿에서 `:[someattr]`로 변환됩니다.
-컴포넌트에 `someAttr` 속성을 정의했다면, `someattr` 속성은 없으므로 코드가 작동하지 않습니다. 싱글파일 컴포넌트안에 선언된 템플릿은 이 제약에 해당되지 않습니다. 
-
+컴포넌트에 `someattr` 대신 `someAttr` 속성을 사용했다면 코드가 작동하지 않습니다.
+싱글 파일 컴포넌트 내의 템플릿은 이 제약 조건에 해당하지 않습니다.
 
 ### 수식어 {#modifiers}
 
