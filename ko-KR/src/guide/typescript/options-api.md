@@ -84,12 +84,10 @@ export default defineComponent({
 })
 ```
 
-### Caveats
-### 주의사항 {#caveats2}
+### 주의사항 {#caveats}
 
-Because of a [design limitation](https://github.com/microsoft/TypeScript/issues/38845) in TypeScript, you have to be careful when using function values for `validator` and `default` prop options - make sure to use arrow functions:
-
-타입스크립트의 4.7 버전 이하를 사용하신다면  `validator` 및 `default` prop 옵션에 대한 함수 값을 사용할 때 주의해야 합니다. 화살표 함수를 사용 하세요.
+타입스크립트의 4.7 버전 미만을 사용하신다면  `validator` 및 `default` prop 옵션에 함수 값을 사용할 때 주의해야 합니다.
+화살표 함수를 사용해야 합니다:
 
 ```ts
 import { defineComponent } from 'vue'
@@ -104,7 +102,7 @@ export default defineComponent({
   props: {
     bookA: {
       type: Object as PropType<Book>,
-      // Make sure to use arrow functions if your TypeScript version is less than 4.7
+      // 타입스크립트 4.7 버전 미만인 경우 반드시 화살표 함수를 사용해야 함.
       default: () => ({
         title: 'Arrow Function Expression'
       }),
@@ -114,9 +112,9 @@ export default defineComponent({
 })
 ```
 
-This prevents TypeScript from having to infer the type of `this` inside these functions, which, unfortunately, can cause the type inference to fail.
-
-이렇게 하면 타입스크립트가 함수 내에서 `this` 형식을 유추할 필요가 없으므로 타입 추론에 실패할 수 있습니다. 이것은 과거의 [설계 제약](https://github.com/microsoft/TypeScript/issues/38845) 때문에 발생한 일이고, [4.7버전](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-7.html#improved-function-inference-in-objects-and-methods) 에서 개선 되었습니다. 
+이렇게 하면 타입스크립트가 이러한 함수 내에서 `this` 유형 유추에 실패하는 것을 방지할 수 있습니다.
+이것은 과거의 [설계적 한계](https://github.com/microsoft/TypeScript/issues/38845) 때문에 발생한 현상으로,
+[4.7버전](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-7.html#improved-function-inference-in-objects-and-methods)에서 개선 되었습니다.
 
 ## Typing Component Emits
 ## 컴포넌트 Emits 작성 {#typing-component-emits2}
