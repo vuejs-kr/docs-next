@@ -128,19 +128,21 @@ Vue CLI의 GUI에서 폴더 탐색기 컴포넌트를 예로 들어 보겠습니
 이것은 모든 변수 이름을 안전하게 단축할 수 있기 때문에 더 나은 축소로 이어집니다.
 
 ## 옵션 API와의 관계
+
 ### Trade-offs
 
-Some users moving from Options API found their Composition API code less organized, and concluded that Composition API is "worse" in terms of code organization. We recommend users with such opinions to look at that problem from a different perspective.
+옵션 API에서 넘어온 일부 사용자들는 그들의 컴포지션 API 코드가 덜 구성적이라 생각하고,
+컴포지션 API가 코드 구성 측면에서 "더 나쁘다"고 결론짓습니다.
+이러한 의견을 가진 사용자라면 해당 문제를 다른 관점에서 볼 것을 권장합니다.
 
-어떤 사용자들은 옵션 API에서 컴포지션 API로 넘어오는 것을, 덜 조직화 되기 때문에 더 나빠진 코드가 나온다고 생각합니다. 우리는 그런 사용자에게 다른 관점을 가져 보기를 추천합니다. 
+컴포지션 API가 더 이상 코드를 해당 버킷에 넣도록 안내하는 "가드 레일"(`export default {}`)을 제공하지 않는다는 것입니다.
+따라서 일반적인 JavaScript를 작성하는 것처럼 컴포넌트 코드를 작성할 수 있습니다.
+그러므로 **일반적인 JavaScript를 작성할 때와 마찬가지로 모든 코드 구성 모범 사례를 컴포지션 API 코드에 적용할 수 있고 적용해야 합니다**.
+잘 구성된 자바스크립트를 작성할 수 있다면 잘 구성된 컴포지션 API 코드도 작성할 수 있어야 합니다.
 
-It is true that Composition API no longer provides the "guard rails" that guide you to put your code into respective buckets. In return, you get to author component code like how you would write normal JavaScript. This means **you can and should apply any code organization best practices to your Composition API code as you would when writing normal JavaScript**. If you can write well-organized JavaScript, you should also be able to write well-organized Composition API code.
-
-컴포지션 API가 괄호로 된 가드레일을 제공하지 않는것은 사실입니다. 대신, 컴포지션 API은 로직을 보통의 JS 코드처럼 다룰수 있는 능력을 줍니다. 보통의 JS 코드를 잘 조직화해서 관리하는 베스트 프랙티스를 가지고 있다면, 그것은 컴포지션 API를 통해 적용할수 있게 됩니다. 
-
-Options API does allow you to "think less" when writing component code, which is why many users love it. However, in reducing the mental overhead, it also locks you into the prescribed code organization pattern with no escape hatch, which can make it difficult to refactor or improve code quality in larger scale projects. In this regard, Composition API provides better long term scalability.
-
-옵션 API는 조금 더 생각없이 컴포넌트 코드를 작성할수 있게 해주기 때문에, 많은 사용자가 좋아해주셨습니다. 하지만, 이런 멘탈 모델을 조금 줄여주긴 하지만, 더 큰 프로젝트에서는 일반적인인 프로그래밍에서 사용할수 있는 여러 개선 방법들을 적용할수 없기 때문에 벗어날수 없는 작은 울타리에 갖혀 있는 상태가 됩니다. 그런 것 때문에 컴포지션 API가 더 긴 안목에 더 아는 확장성을 제공해줍니다. 
+옵션 API를 사용하면 컴포넌트 코드를 작성할 때 "생각을 덜"할 수 있으므로 많은 사용자가 이 API를 좋아합니다.
+정신적 피로도는 줄어들지만, 다양성 없이 규정된 코드 구성 패턴에 갇히게 되므로 대규모 프로젝트에서 코드 품질을 리팩토링하거나 개선하기 어려울 수 있습니다.
+이와 관련하여 컴포지션 API는 더 나은 장기적인(거시적인) 확장성을 제공합니다.
 
 
 ### 컴포지션 API는 모든 사용 사례를 포괄합니까?
