@@ -139,7 +139,7 @@ const myDirective = {
 }
 ```
 
-### 훅 인자
+### 훅 인자 {#hook-arguments}
 
 디렉티브 훅에는 다음 인자가 전달됩니다:
 
