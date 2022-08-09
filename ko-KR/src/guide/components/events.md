@@ -5,7 +5,7 @@
 
 ## 이벤트 발신 및 수신하기 {#emitting-and-listening-to-events}
 
-컴포넌트는 내장 함수 `$emit`을 사용하여 템플릿 표현식(예: `v-on` 핸들러에서)에서 직접 사용자 정의 이벤트를 발신할 수 있습니다:
+컴포넌트는 내장 메서드 `$emit`을 사용하여 템플릿 표현식(예: `v-on` 핸들러에서)에서 직접 사용자 정의 이벤트를 발신할 수 있습니다:
 
 ```vue-html
 <!-- MyComponent -->
@@ -111,23 +111,45 @@ function increaseCount(n) {
 
 ```vue
 <script setup>
+defineEmits(['inFocus', 'submit'])
+</script>
+```
+
+`<template>`에서 사용한 `$emit` 메서드는 컴포넌트의 `<script setup>` 섹션 내에서 접근할 수 없지만,
+`defineEmits()`는 `$emit` 대신에 사용할 수 있는 동등한 함수를 반환합니다.
+
+```vue
+<script setup>
 const emit = defineEmits(['inFocus', 'submit'])
+
 function buttonClick() {
   emit('submit')
 }
 </script>
 ```
 
-`defineEmits()` 매크로는 함수 안에서 사용될수 **없습니다**. 반드시 위의 예처럼 `<script setup>` 내에 바로 위치해야 합니다. 
+`defineEmits()` 매크로는 **함수 내에서 사용할 수 없으므로**,
+위의 예제처럼 `<script setup>` 내에 직접 배치해야 합니다.
 
-
-`<script setup>`을 사용하지 않는 경우, 이벤트는 [`emits`](/api/options-state.html#emits) 옵션을 사용하여 선언되어야 하며 `emit` 함수는 `setup()` 컨텍스트에 노출됩니다:
+`<script setup>` 대신 명시적으로 `setup` 함수를 사용하는 경우,
+이벤트는 [`emits`](/api/options-state.html#emits) 옵션을 사용하여 선언되어야 하며 `emit` 함수는 `setup()` 컨텍스트에 노출되어야 합니다:
 
 ```js
 export default {
   emits: ['inFocus', 'submit'],
   setup(props, ctx) {
     ctx.emit('submit')
+  }
+}
+```
+
+`setup()` 컨텍스트의 다른 속성과 마찬가지로 `emit`는 안전하게 분해할당할 수 있습니다:
+
+```js
+export default {
+  emits: ['inFocus', 'submit'],
+  setup(props, { emit }) {
+    emit('submit')
   }
 }
 ```
@@ -143,7 +165,7 @@ export default {
 
 
 
-다른 `setup()` 컨텍스트의 속성들 처럼, `emit` 역시 구조분해가 가능합니다. 
+다른 `setup()` 컨텍스트의 속성들 처럼, `emit` 역시 구조분해가 가능합니다.
 
 ```js
 export default {
@@ -166,7 +188,7 @@ const emit = defineEmits({
   submit(payload) {
     // `true` 또는 `false` 값을 반환하여
     // 유효성 검사 통과/실패 여부를 알려줌
-    
+
     // 페이로드는 전달되는 인자를 나타내는 것으로
     // `emit('submit', 'a', 'b', 'c')`와 같이 3개의 인자를 전달하는 경우,
     // `submit(pl1, pl2, pl3) { /* 유효성 검사 반환 로직 */ }`과 같이
