@@ -200,26 +200,18 @@
 
 - **수식어:**
 
-  - `.stop` - call `event.stopPropagation()`.
-  - `.prevent` - call `event.preventDefault()`.
-  - `.capture` - add event listener in capture mode.
-  - `.self` - only trigger handler if event was dispatched from this element.
-  - `.{keyAlias}` - only trigger handler on certain keys.
-  - `.once` - trigger handler at most once.
-  - `.left` - only trigger handler for left button mouse events.
-  - `.right` - only trigger handler for right button mouse events.
-  - `.middle` - only trigger handler for middle button mouse events.
-  - `.passive` - attaches a DOM event with `{ passive: true }`.
+  - `.stop` - `event.stopPropagation()` 호출.
+  - `.prevent` - `event.preventDefault()` 호출.
+  - `.capture` - 캡처 모드로 이벤트 등록.
+  - `.self` - 이벤트가 이 엘리먼트에서 전달된 경우에만 트리거 됨.
+  - `.{keyAlias}` - 이벤트가 특정 키에 대해서만 트리거 됨.
+  - `.once` - 이벤트가 한 번만 트리거 됨(일회용처럼).
+  - `.left` - 마우스 왼쪽 버튼으로만 이벤트가 트리거 됨.
+  - `.right` - 마우스 오른쪽 버튼으로만 이벤트가 트리거 됨.
+  - `.middle` - 마우스 중앙(힐 클릭) 버튼으로만 이벤트가 트리거 됨.
+  - `.passive` - `{ passive: true }` 옵션으로 DOM 이벤트를 등록.
 
 - **세부 사항**:
-
-  The event type is denoted by the argument. The expression can be a method name, an inline statement, or omitted if there are modifiers present.
-
-  When used on a normal element, it listens to [**native DOM events**](https://developer.mozilla.org/en-US/docs/Web/Events) only. When used on a custom element component, it listens to **custom events** emitted on that child component.
-
-  When listening to native DOM events, the method receives the native event as the only argument. If using inline statement, the statement has access to the special `$event` property: `v-on:click="handle('ok', $event)"`.
-
-  `v-on` also supports binding to an object of event / listener pairs without an argument. Note when using the object syntax, it does not support any modifiers.
 
   이벤트 타입은 인자로 표시됩니다.
   표현식은 메서드 이름 또는 인라인 명령문이거나,
@@ -419,7 +411,7 @@
 
 - **요구되는 값**: JavaScript expression that is valid in a function argument position, including support for destructuring. Optional - only needed if expecting props to be passed to the slot.
 
-- **인자:** slot name (optional, defaults to `default`)
+- **인자:** 슬롯 이름 (선택적, 기본값은 `default`)
 
 - **다음으로 제한됨**:
 
@@ -500,7 +492,7 @@
     <p>{{msg}}</p>
   </div>
   <!-- 컴포넌트 -->
-  <my-component v-once :comment="msg"></my-component>
+  <MyComponent v-once :comment="msg"></MyComponent>
   <!-- `v-for` 디렉티브 -->
   <ul>
     <li v-for="i in list" v-once>{{i}}</li>
