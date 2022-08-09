@@ -1,8 +1,10 @@
 # 클래스와 스타일 바인딩 {#class-and-style-bindings}
 
 일반적으로 엘리먼트에 데이터를 바인딩하는 이유는 클래스 목록과 해당 인라인 스타일을 조작하기 위함입니다.
-`class`,  `style`  둘 다 속성이므로 `v-bind`를 사용하여 표현 식으로 처리할 경우, 최종적인 문자열만 산출을 위한 로직만 신경 쓰면 되지만, 이것은 성가시고 에러가 발생하기 쉽습니다.
-이러한 이유로 `class` 및 `style`에 `v-bind`를 사용할 경우, 표현 식 내에 문자열 외에도 객체 또는 배열을 평가할 수 있도록 개발 편의적인 능력을 제공합니다.
+`class`, `style` 둘 다 속성이므로 다른 속성과 마찬가지로 `v-bind`를 사용하여 문자열 값을 동적으로 할당할 수 있습니다.
+그러나 연결된 문자열을 사용하여 이러한 값을 생성하려고 하면 성가시고 오류가 발생하기 쉽습니다.
+이러한 이유로 Vue는 `v-bind`가 `class` 및 `style`과 함께 사용될 때 특별한 향상을 제공합니다.
+문자열 외에도 표현식은 객체 또는 배열로 평가될 수 있습니다.
 
 ## HTML 클래스 바인딩 {#binding-html-classes}
 
@@ -195,7 +197,7 @@ data() {
 `MyComponent`라는 컴포넌트의 템플릿이 아래와 같이 구성되어 있다고 가정:
 
 ```vue-html
-<!-- my-component 컴포넌트의 템플릿 -->
+<!-- 자식 컴포넌트의 템플릿 -->
 <p class="foo bar">안녕!</p>
 ```
 
@@ -203,7 +205,7 @@ data() {
 
 ```vue-html
 <!-- 컴포넌트가 사용될 때 -->
-<MyComponent class="baz boo"></MyComponent>
+<MyComponent class="baz boo" />
 ```
 
 다음과 같이 렌더링 됩니다:
@@ -215,7 +217,7 @@ data() {
 클래스 바인딩도 마찬가지입니다:
 
 ```vue-html
-<MyComponent :class="{ active: isActive }"></MyComponent>
+<MyComponent :class="{ active: isActive }" />
 ```
 
 `isActive`가 truthy이면 렌더링된 HTML은 다음과 같습니다:
@@ -228,13 +230,13 @@ data() {
 `$attrs` 컴포넌트 속성을 사용하여 이 작업을 수행할 수 있습니다.
 
 ```vue-html
-<!-- my-component 템플릿에서 $attrs 속성을 사용 -->
+<!-- MyComponent 템플릿에서 $attrs 속성을 사용 -->
 <p :class="$attrs.class">안녕!</p>
 <span>반가워!</span>
 ```
 
 ```vue-html
-<MyComponent class="baz"></MyComponent>
+<MyComponent class="baz" />
 ```
 
 다음과 같이 렌더링 됩니다:
