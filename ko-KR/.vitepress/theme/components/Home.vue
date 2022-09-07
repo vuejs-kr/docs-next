@@ -13,18 +13,16 @@ onMounted(async () => {
 <template>
   <section id="hero">
     <h1 class="tagline">
-      The
-      <span class="accent">Progressive</span>
-      <br />JavaScript Framework
+      <span class="accent">프로그레시브</span>
+      <br />자바스크립트 프레임워크
     </h1>
     <p class="description">
-      An approachable, performant and versatile framework for building web
-      user interfaces.
+      웹 사용자 인터페이스를 만들기 위한 쉽고 강력하며 다재다능한 프레임워크
     </p>
     <p class="actions">
       <vue-mastery-modal />
       <a class="get-started" href="/guide/introduction.html">
-        Get Started
+        시작하기
         <svg
           class="icon"
           xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +40,7 @@ onMounted(async () => {
   </section>
 
   <section id="special-sponsor">
-    <span>Special Sponsor</span>
+    <span>스페셜 스폰서</span>
     <template v-if="data && data.special">
       <template v-for="{ url, img, name, description } of data.special">
         <a :href="url" target="_blank" rel="sponsored noopener">
@@ -59,24 +57,21 @@ onMounted(async () => {
 
   <section id="highlights" class="vt-box-container">
     <div class="vt-box">
-      <h2>Approachable</h2>
+      <h2>접근성</h2>
       <p>
-        Builds on top of standard HTML, CSS and JavaScript with intuitive
-        API and world-class documentation.
+        HTML,CSS, 자바스크립트 표준을 기반으로, 쓰기 편한 API와 최고 수준의 문서를 제공합니다.
       </p>
     </div>
     <div class="vt-box">
-      <h2>Performant</h2>
+      <h2>성능</h2>
       <p>
-        Truly reactive, compiler-optimized rendering system that rarely
-        requires manual optimization.
+        제대로된 반응성, 컴파일러 수준에서 최적화된 렌더링 시스템은 대부분의 경우 개발자가 직접 최적화를 수행할 필요가 없습니다.
       </p>
     </div>
     <div class="vt-box">
-      <h2>Versatile</h2>
+      <h2>유용성</h2>
       <p>
-        A rich, incrementally adoptable ecosystem that scales between a
-        library and a full-featured framework.
+        라이브러리에서 부터 모든 기능을 갖춘 프레임워크 까지 확장되는 풍부하고 점진적으로 채택 가능한 에코시스템을 제공합니다.
       </p>
     </div>
   </section>
