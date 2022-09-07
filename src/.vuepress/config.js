@@ -581,6 +581,9 @@ module.exports = {
 
   },
   plugins: [
+    ['@vuepress/html-redirect', {
+      duration: 0
+    }],
     [
       '@vuepress/last-updated',
       {
