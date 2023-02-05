@@ -1,10 +1,10 @@
-# Composition API: Lifecycle Hooks
+# Composition API: Lifecycle Hooks {#composition-api-lifecycle-hooks}
 
 :::info Usage Note
 All APIs listed on this page must be called synchronously during the `setup()` phase of a component. See [Guide - Lifecycle Hooks](/guide/essentials/lifecycle.html) for more details.
 :::
 
-## onMounted()
+## onMounted() {#onmounted}
 
 Registers a callback to be called after the component has been mounted.
 
@@ -46,7 +46,7 @@ Registers a callback to be called after the component has been mounted.
   </template>
   ```
 
-## onUpdated()
+## onUpdated() {#onupdated}
 
 Registers a callback to be called after the component has updated its DOM tree due to a reactive state change.
 
@@ -89,7 +89,7 @@ Registers a callback to be called after the component has updated its DOM tree d
   </template>
   ```
 
-## onUnmounted()
+## onUnmounted() {#onunmounted}
 
 Registers a callback to be called after the component has been unmounted.
 
@@ -128,7 +128,7 @@ Registers a callback to be called after the component has been unmounted.
   </script>
   ```
 
-## onBeforeMount()
+## onBeforeMount() {#onbeforemount}
 
 Registers a hook to be called right before the component is to be mounted.
 
@@ -144,7 +144,7 @@ Registers a hook to be called right before the component is to be mounted.
 
   **This hook is not called during server-side rendering.**
 
-## onBeforeUpdate()
+## onBeforeUpdate() {#onbeforeupdate}
 
 Registers a hook to be called right before the component is about to update its DOM tree due to a reactive state change.
 
@@ -160,7 +160,7 @@ Registers a hook to be called right before the component is about to update its 
 
   **This hook is not called during server-side rendering.**
 
-## onBeforeUnmount()
+## onBeforeUnmount() {#onbeforeunmount}
 
 Registers a hook to be called right before a component instance is to be unmounted.
 
@@ -176,9 +176,9 @@ Registers a hook to be called right before a component instance is to be unmount
 
   **This hook is not called during server-side rendering.**
 
-## onErrorCaptured()
+## onErrorCaptured() {#onerrorcaptured}
 
-Registers a hook to be called when an error propagating from a descendent component has been captured.
+Registers a hook to be called when an error propagating from a descendant component has been captured.
 
 - **Type**
 
@@ -214,13 +214,13 @@ Registers a hook to be called when an error propagating from a descendent compon
 
   - By default, all errors are still sent to the application-level [`app.config.errorHandler`](/api/application.html#app-config-errorhandler) if it is defined, so that these errors can still be reported to an analytics service in a single place.
 
-  - If multiple `errorCaptured` hooks exist on a component's inheritance chain or parent chain, all of them will be invoked on the same error.
+  - If multiple `errorCaptured` hooks exist on a component's inheritance chain or parent chain, all of them will be invoked on the same error, in the order of bottom to top. This is similar to the bubbling mechanism of native DOM events.
 
   - If the `errorCaptured` hook itself throws an error, both this error and the original captured error are sent to `app.config.errorHandler`.
 
   - An `errorCaptured` hook can return `false` to prevent the error from propagating further. This is essentially saying "this error has been handled and should be ignored." It will prevent any additional `errorCaptured` hooks or `app.config.errorHandler` from being invoked for this error.
 
-## onRenderTracked() <sup class="vt-badge dev-only" />
+## onRenderTracked() <sup class="vt-badge dev-only" /> {#onrendertracked}
 
 Registers a debug hook to be called when a reactive dependency has been tracked by the component's render effect.
 
@@ -243,7 +243,7 @@ Registers a debug hook to be called when a reactive dependency has been tracked 
 
 - **See also:** [Reactivity in Depth](/guide/extras/reactivity-in-depth.html)
 
-## onRenderTriggered() <sup class="vt-badge dev-only" />
+## onRenderTriggered() <sup class="vt-badge dev-only" /> {#onrendertriggered}
 
 Registers a debug hook to be called when a reactive dependency triggers the component's render effect to be re-run.
 
@@ -269,7 +269,7 @@ Registers a debug hook to be called when a reactive dependency triggers the comp
 
 - **See also:** [Reactivity in Depth](/guide/extras/reactivity-in-depth.html)
 
-## onActivated()
+## onActivated() {#onactivated}
 
 Registers a callback to be called after the component instance is inserted into the DOM as part of a tree cached by [`<KeepAlive>`](/api/built-in-components.html#keepalive).
 
@@ -283,7 +283,7 @@ Registers a callback to be called after the component instance is inserted into 
 
 - **See also:** [Guide - Lifecycle of Cached Instance](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
 
-## onDeactivated()
+## onDeactivated() {#ondeactivated}
 
 Registers a callback to be called after the component instance is removed from the DOM as part of a tree cached by [`<KeepAlive>`](/api/built-in-components.html#keepalive).
 
@@ -297,9 +297,9 @@ Registers a callback to be called after the component instance is removed from t
 
 - **See also:** [Guide - Lifecycle of Cached Instance](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
 
-## onServerPrefetch() <sup class="vt-badge" data-text="SSR only" />
+## onServerPrefetch() <sup class="vt-badge" data-text="SSR only" /> {#onserverprefetch}
 
-Registers a async function to be resolved before the component instance is to be rendered on the server.
+Registers an async function to be resolved before the component instance is to be rendered on the server.
 
 - **Type**
 

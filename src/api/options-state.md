@@ -1,6 +1,6 @@
-# Options: State
+# Options: State {#options-state}
 
-## data
+## data {#data}
 
 A function that returns the initial reactive state for the component instance.
 
@@ -23,7 +23,7 @@ A function that returns the initial reactive state for the component instance.
 
   Properties that start with `_` or `$` will **not** be proxied on the component instance because they may conflict with Vue's internal properties and API methods. You will have to access them as `this.$data._property`.
 
-  It is **not** recommend to return objects with their own stateful behavior like browser API objects and prototype properties. The returned object should ideally be a plain object that only represents the state of the component.
+  It is **not** recommended to return objects with their own stateful behavior like browser API objects and prototype properties. The returned object should ideally be a plain object that only represents the state of the component.
 
 - **Example**
 
@@ -47,7 +47,7 @@ A function that returns the initial reactive state for the component instance.
 
 - **See also:** [Reactivity in Depth](/guide/extras/reactivity-in-depth.html)
 
-## props
+## props {#props}
 
 Declare the props of a component.
 
@@ -125,9 +125,11 @@ Declare the props of a component.
   }
   ```
 
-- **See also:** [Props](/guide/components/props.html)
+- **See also:**
+  - [Guide - Props](/guide/components/props.html)
+  - [Guide - Typing Component Props](/guide/typescript/options-api.html#typing-component-props) <sup class="vt-badge ts" />
 
-## computed
+## computed {#computed}
 
 Declare computed properties to be exposed on the component instance.
 
@@ -205,9 +207,11 @@ Declare computed properties to be exposed on the component instance.
   }
   ```
 
-- **See also:** [Computed Properties](/guide/essentials/computed.html)
+- **See also:**
+  - [Guide - Computed Properties](/guide/essentials/computed.html)
+  - [Guide - Typing Computed Properties](/guide/typescript/options-api.html#typing-computed-properties) <sup class="vt-badge ts" />
 
-## methods
+## methods {#methods}
 
 Declare methods to be mixed into the component instance.
 
@@ -248,7 +252,7 @@ Declare methods to be mixed into the component instance.
 
 - **See also:** [Event Handling](/guide/essentials/event-handling.html)
 
-## watch
+## watch {#watch}
 
 Declare watch callbacks to be invoked on data change.
 
@@ -291,7 +295,7 @@ Declare watch callbacks to be invoked on data change.
 
   - **`immediate`**: trigger the callback immediately on watcher creation. Old value will be `undefined` on the first call.
   - **`deep`**: force deep traversal of the source if it is an object or an array, so that the callback fires on deep mutations. See [Deep Watchers](/guide/essentials/watchers.html#deep-watchers).
-  - **`flush`**: adjust the callback's flush timing. See [Callback Flush Timing](/guide/essentials/watchers.html#callback-flush-timing).
+  - **`flush`**: adjust the callback's flush timing. See [Callback Flush Timing](/guide/essentials/watchers.html#callback-flush-timing) and [`watchEffect()`](/api/reactivity-core.html#watcheffect).
   - **`onTrack / onTrigger`**: debug the watcher's dependencies. See [Watcher Debugging](/guide/extras/reactivity-in-depth.html#watcher-debugging).
 
   Avoid using arrow functions when declaring watch callbacks as they will not have access to the component instance via `this`.
@@ -366,7 +370,7 @@ Declare watch callbacks to be invoked on data change.
 
 - **See also:** [Watchers](/guide/essentials/watchers.html)
 
-## emits
+## emits {#emits}
 
 Declare the custom events emitted by the component.
 
@@ -429,9 +433,11 @@ Declare the custom events emitted by the component.
   }
   ```
 
-* **See also:** [Fallthrough Attributes](/guide/components/attrs.html)
+- **See also:**
+  - [Guide - Fallthrough Attributes](/guide/components/attrs.html)
+  - [Guide - Typing Component Emits](/guide/typescript/options-api.html#typing-component-emits) <sup class="vt-badge ts" />
 
-## expose
+## expose {#expose}
 
 Declare exposed public properties when the component instance is accessed by a parent via template refs.
 

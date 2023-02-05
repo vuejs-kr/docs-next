@@ -1,6 +1,6 @@
-﻿# Plugins
+﻿# Plugins {#plugins}
 
-## Introduction
+## Introduction {#introduction}
 
 Plugins are self-contained code that usually add app-level functionality to Vue. This is how we install a plugin:
 
@@ -34,7 +34,7 @@ There is no strictly defined scope for a plugin, but common scenarios where plug
 
 4. A library that needs to perform some combination of the above (e.g. [vue-router](https://github.com/vuejs/vue-router-next)).
 
-## Writing a Plugin
+## Writing a Plugin {#writing-a-plugin}
 
 In order to better understand how to create your own Vue.js plugins, we will create a very simplified version of a plugin that displays `i18n` (short for [Internationalization](https://en.wikipedia.org/wiki/Internationalization_and_localization)) strings.
 
@@ -49,7 +49,13 @@ export default {
 }
 ```
 
-We want to make a function to translate keys available to the whole application, so we will expose it using `app.config.globalProperties`. This function will receive a dot-delimited `key` string, which we will use to look up the translated string in the user-provided options.
+We want to create a translation function. This function will receive a dot-delimited `key` string, which we will use to look up the translated string in the user-provided options. This is the intended usage in templates:
+
+```vue-html
+<h1>{{ $translate('greetings.hello') }}</h1>
+```
+
+Since this function should be globally available in all templates, we will make it so by attaching it to `app.config.globalProperties` in our plugin:
 
 ```js{4-11}
 // plugins/i18n.js
@@ -67,7 +73,9 @@ export default {
 }
 ```
 
-The plugin expects users to pass in an object containing the translated keys via the options when they use the plugin, so it should be used like this:
+Our `$translate` function will take a string such as `greetings.hello`, look inside the user provided configuration and return the translated value.
+
+The object containing the translated keys should be passed to the plugin during installation via additional parameters to `app.use()`:
 
 ```js
 import i18nPlugin from './plugins/i18n'
@@ -79,11 +87,7 @@ app.use(i18nPlugin, {
 })
 ```
 
-Our `$translate` function will take a string such as `greetings.hello`, look inside the user provided configuration and return the translated value - in this case, `Bonjour!`:
-
-```vue-html
-<h1>{{ $translate('greetings.hello') }}</h1>
-```
+Now, our initial expression `$translate('greetings.hello')` will be replaced by `Bonjour!` at runtime.
 
 See also: [Augmenting Global Properties](/guide/typescript/options-api.html#augmenting-global-properties) <sup class="vt-badge ts" />
 
@@ -91,7 +95,7 @@ See also: [Augmenting Global Properties](/guide/typescript/options-api.html#augm
 Use global properties scarcely, since it can quickly become confusing if too many global properties injected by different plugins are used throughout an app.
 :::
 
-### Provide / Inject with Plugins
+### Provide / Inject with Plugins {#provide-inject-with-plugins}
 
 Plugins also allow us to use `inject` to provide a function or attribute to the plugin's users. For example, we can allow the application to have access to the `options` parameter to be able to use the translations object.
 

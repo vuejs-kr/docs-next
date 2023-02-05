@@ -1,9 +1,13 @@
+export function track() {
+  fathom.trackGoal('TTDUIE6G', 0)
+}
+
 export function normalizeName(name: string) {
   return name.toLowerCase().replace(/\s+/g, '')
 }
 
-export function getHero(name: string) {
-  return `/images/partners/${normalizeName(name)}-hero.jpg`
+export function getHero(img: string | undefined, name: string) {
+  return `/images/partners/${img || `${normalizeName(name)}-hero.jpg`}`
 }
 
 export function getLogo(img: string, flip = false) {

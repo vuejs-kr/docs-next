@@ -5,7 +5,7 @@ import type { Config as ThemeConfig } from '@vue/theme'
 import baseConfig from '@vue/theme/config'
 import { headerPlugin } from './headerMdPlugin'
 
-const nav = [
+const nav: ThemeConfig['nav'] = [
   {
     text: 'Docs',
     activeMatch: `^/(guide|style-guide|cookbook|examples)/`,
@@ -48,10 +48,11 @@ const nav = [
         ]
       },
       {
-        text: 'Core Libraries',
+        text: 'Official Libraries',
         items: [
           { text: 'Vue Router', link: 'https://router.vuejs.org/' },
-          { text: 'Pinia', link: 'https://pinia.vuejs.org/' }
+          { text: 'Pinia', link: 'https://pinia.vuejs.org/' },
+          { text: 'Tooling Guide', link: '/guide/scaling-up/tooling.html' }
         ]
       },
       {
@@ -86,8 +87,8 @@ const nav = [
         items: [
           { text: 'Blog', link: 'https://blog.vuejs.org/' },
           { text: 'Twitter', link: 'https://twitter.com/vuejs' },
-          { text: 'Newsletter', link: 'https://news.vuejs.org/' },
-          { text: 'Events', link: 'https://events.vuejs.org/' }
+          { text: 'Events', link: 'https://events.vuejs.org/' },
+          { text: 'Newsletters', link: '/ecosystem/newsletters' }
         ]
       }
     ]
@@ -121,7 +122,7 @@ const nav = [
   }
 ]
 
-export const sidebar = {
+export const sidebar: ThemeConfig['sidebar'] = {
   '/guide/': [
     {
       text: 'Getting Started',
@@ -187,6 +188,7 @@ export const sidebar = {
         },
         { text: 'Props', link: '/guide/components/props' },
         { text: 'Events', link: '/guide/components/events' },
+        { text: 'Component v-model', link: '/guide/components/v-model' },
         {
           text: 'Fallthrough Attributes',
           link: '/guide/components/attrs'
@@ -549,6 +551,10 @@ export const sidebar = {
   ]
 }
 
+// Placeholder of the i18n config for @vuejs-translations.
+// const i18n: ThemeConfig['i18n'] = {
+// }
+
 export default defineConfigWithTheme<ThemeConfig>({
   extends: baseConfig,
 
@@ -560,7 +566,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   scrollOffset: 'header',
 
   head: [
-    ['meta', { name: 'theme-color', content: "#3c8772" }],
+    ['meta', { name: 'theme-color', content: '#3c8772' }],
     ['meta', { name: 'twitter:site', content: '@vuejs' }],
     ['meta', { name: 'twitter:card', content: 'summary' }],
     [
@@ -599,6 +605,26 @@ export default defineConfigWithTheme<ThemeConfig>({
   themeConfig: {
     nav,
     sidebar,
+    // Placeholder of the i18n config for @vuejs-translations.
+    // i18n,
+
+    localeLinks: [
+      {
+        link: 'https://cn.vuejs.org',
+        text: '简体中文',
+        repo: 'https://github.com/vuejs-translations/docs-zh-cn'
+      },
+      {
+        link: 'https://ja.vuejs.org',
+        text: '日本語',
+        repo: 'https://github.com/vuejs-translations/docs-ja'
+      },
+      {
+        link: '/translations/',
+        text: 'Help Us Translate!',
+        isTranslationsDesc: true
+      }
+    ],
 
     algolia: {
       indexName: 'vuejs',
@@ -615,7 +641,6 @@ export default defineConfigWithTheme<ThemeConfig>({
     },
 
     socialLinks: [
-      { icon: 'languages', link: '/translations/' },
       { icon: 'github', link: 'https://github.com/vuejs/' },
       { icon: 'twitter', link: 'https://twitter.com/vuejs' },
       { icon: 'discord', link: 'https://discord.com/invite/HBherRA' }

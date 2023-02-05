@@ -1,4 +1,4 @@
-# Reactivity API: Core
+# Reactivity API: Core {#reactivity-api-core}
 
 :::info See also
 To better understand the Reactivity APIs, it is recommended to read the following chapters in the guide:
@@ -7,7 +7,7 @@ To better understand the Reactivity APIs, it is recommended to read the followin
 - [Reactivity in Depth](/guide/extras/reactivity-in-depth.html)
   :::
 
-## ref()
+## ref() {#ref}
 
 Takes an inner value and returns a reactive and mutable ref object, which has a single property `.value` that points to the inner value.
 
@@ -23,7 +23,7 @@ Takes an inner value and returns a reactive and mutable ref object, which has a 
 
 - **Details**
 
-  The ref object is mutable - i.e. you can assign new values to `.value`. It is also reactive - i.e. any read operations to `.value` is tracked, and write operations will trigger associated effects.
+  The ref object is mutable - i.e. you can assign new values to `.value`. It is also reactive - i.e. any read operations to `.value` are tracked, and write operations will trigger associated effects.
 
   If an object is assigned as a ref's value, the object is made deeply reactive with [reactive()](#reactive). This also means if the object contains nested refs, they will be deeply unwrapped.
 
@@ -41,9 +41,9 @@ Takes an inner value and returns a reactive and mutable ref object, which has a 
 
 - **See also:**
   - [Guide - Reactive Variables with `ref()`](/guide/essentials/reactivity-fundamentals.html#reactive-variables-with-ref)
-  - [Guide - Typing `ref()`](/guide/typescript/composition-api.html#typing-ref)
+  - [Guide - Typing `ref()`](/guide/typescript/composition-api.html#typing-ref) <sup class="vt-badge ts" />
 
-## computed()
+## computed() {#computed}
 
 Takes a getter function and returns a readonly reactive [ref](#ref) object for the returned value from the getter. It can also take an object with `get` and `set` functions to create a writable ref object.
 
@@ -111,9 +111,9 @@ Takes a getter function and returns a readonly reactive [ref](#ref) object for t
 - **See also:**
   - [Guide - Computed Properties](/guide/essentials/computed.html)
   - [Guide - Computed Debugging](/guide/extras/reactivity-in-depth.html#computed-debugging)
-  - [Guide - Typing `computed()`](/guide/typescript/composition-api.html#typing-computed)
+  - [Guide - Typing `computed()`](/guide/typescript/composition-api.html#typing-computed) <sup class="vt-badge ts" />
 
-## reactive()
+## reactive() {#reactive}
 
 Returns a reactive proxy of the object.
 
@@ -188,9 +188,9 @@ Returns a reactive proxy of the object.
 
 - **See also:**
   - [Guide - Reactivity Fundamentals](/guide/essentials/reactivity-fundamentals.html)
-  - [Guide - Typing `reactive()`](/guide/typescript/composition-api.html#typing-reactive)
+  - [Guide - Typing `reactive()`](/guide/typescript/composition-api.html#typing-reactive) <sup class="vt-badge ts" />
 
-## readonly()
+## readonly() {#readonly}
 
 Takes an object (reactive or plain) or a [ref](#ref) and returns a readonly proxy to the original.
 
@@ -227,7 +227,7 @@ Takes an object (reactive or plain) or a [ref](#ref) and returns a readonly prox
   copy.count++ // warning!
   ```
 
-## watchEffect()
+## watchEffect() {#watcheffect}
 
 Runs a function immediately while reactively tracking its dependencies and re-runs it whenever the dependencies are changed.
 
@@ -255,6 +255,8 @@ Runs a function immediately while reactively tracking its dependencies and re-ru
   The first argument is the effect function to be run. The effect function receives a function that can be used to register a cleanup callback. The cleanup callback will be called right before the next time the effect is re-run, and can be used to clean up invalidated side effects, e.g. a pending async request (see example below).
 
   The second argument is an optional options object that can be used to adjust the effect's flush timing or to debug the effect's dependencies.
+
+  By default, watchers will run just prior to component rendering. Setting `flush: 'post'` will defer the watcher until after component rendering. See [Callback Flush Timing](/guide/essentials/watchers.html#callback-flush-timing) for more information. In rare cases, it might be necessary to trigger a watcher immediately when a reactive dependency changes, e.g. to invalidate a cache. This can be achieved using `flush: 'sync'`. However, this setting should be used with caution, as it can lead to problems with performance and data consistency if multiple properties are being updated at the same time.
 
   The return value is a handle function that can be called to stop the effect from running again.
 
@@ -310,15 +312,15 @@ Runs a function immediately while reactively tracking its dependencies and re-ru
   - [Guide - Watchers](/guide/essentials/watchers.html#watcheffect)
   - [Guide - Watcher Debugging](/guide/extras/reactivity-in-depth.html#watcher-debugging)
 
-## watchPostEffect()
+## watchPostEffect() {#watchposteffect}
 
 Alias of [`watchEffect()`](#watcheffect) with `flush: 'post'` option.
 
-## watchSyncEffect()
+## watchSyncEffect() {#watchsynceffect}
 
 Alias of [`watchEffect()`](#watcheffect) with `flush: 'sync'` option.
 
-## watch()
+## watch() {#watch}
 
 Watches one or more reactive data sources and invokes a callback function when the sources change.
 
@@ -382,7 +384,7 @@ Watches one or more reactive data sources and invokes a callback function when t
 
   - **`immediate`**: trigger the callback immediately on watcher creation. Old value will be `undefined` on the first call.
   - **`deep`**: force deep traversal of the source if it is an object, so that the callback fires on deep mutations. See [Deep Watchers](/guide/essentials/watchers.html#deep-watchers).
-  - **`flush`**: adjust the callback's flush timing. See [Callback Flush Timing](/guide/essentials/watchers.html#callback-flush-timing).
+  - **`flush`**: adjust the callback's flush timing. See [Callback Flush Timing](/guide/essentials/watchers.html#callback-flush-timing) and [`watchEffect()`](/api/reactivity-core.html#watcheffect).
   - **`onTrack / onTrigger`**: debug the watcher's dependencies. See [Watcher Debugging](/guide/extras/reactivity-in-depth.html#watcher-debugging).
 
   Compared to [`watchEffect()`](#watcheffect), `watch()` allows us to:
@@ -451,7 +453,31 @@ Watches one or more reactive data sources and invokes a callback function when t
     flush: 'post',
     onTrack(e) {
       debugger
+    },
+    onTrigger(e) {
+      debugger
     }
+  })
+  ```
+
+  Stopping the watcher:
+
+  ```js
+  const stop = watch(source, callback)
+
+  // when the watcher is no longer needed:
+  stop()
+  ```
+
+  Side effect cleanup:
+
+  ```js
+  watch(id, async (newId, oldId, onCleanup) => {
+    const { response, cancel } = doAsyncWork(newId)
+    // `cancel` will be called if `id` changes, cancelling
+    // the previous request if it hasn't completed yet
+    onCleanup(cancel)
+    data.value = await response
   })
   ```
 

@@ -1,10 +1,10 @@
-# Slots
+# Slots {#slots}
 
 > This page assumes you've already read the [Components Basics](/guide/essentials/component-basics). Read that first if you are new to components.
 
 <VueSchoolLink href="https://vueschool.io/lessons/vue-3-component-slots" title="Free Vue.js Slots Lesson"/>
 
-## Slot Content and Outlet
+## Slot Content and Outlet {#slot-content-and-outlet}
 
 We have learned that components can accept props, which can be JavaScript values of any type. But how about template content? In some cases, we may want to pass a template fragment to a child component, and let the child component render the fragment within its own template.
 
@@ -33,9 +33,7 @@ The `<slot>` element is a **slot outlet** that indicates where the parent-provid
 And the final rendered DOM:
 
 ```html
-<button class="fancy-btn">
-  Click me!
-</button>
+<button class="fancy-btn">Click me!</button>
 ```
 
 <div class="composition-api">
@@ -59,11 +57,9 @@ FancyButton('Click me!')
 
 // FancyButton renders slot content in its own template
 function FancyButton(slotContent) {
-  return (
-    `<button class="fancy-btn">
+  return `<button class="fancy-btn">
       ${slotContent}
     </button>`
-  )
 }
 ```
 
@@ -91,7 +87,7 @@ By using slots, our `<FancyButton>` is more flexible and reusable. We can now us
 
 Vue components' slot mechanism is inspired by the [native Web Component `<slot>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot), but with additional capabilities that we will see later.
 
-## Render Scope
+## Render Scope {#render-scope}
 
 Slot content has access to the data scope of the parent component, because it is defined in the parent. For example:
 
@@ -102,11 +98,11 @@ Slot content has access to the data scope of the parent component, because it is
 
 Here both <span v-pre>`{{ message }}`</span> interpolations will render the same content.
 
-Slot content does **not** have access to the child component's data. As a rule, remember that:
+Slot content does **not** have access to the child component's data. Expressions in Vue templates can only access the scope it is defined in, consistent with JavaScript's lexical scoping. In other words:
 
-> Everything in the parent template is compiled in parent scope; everything in the child template is compiled in the child scope.
+> Expressions in the parent template only have access to the parent scope; expressions in the child template only have access to the child scope.
 
-## Fallback Content
+## Fallback Content {#fallback-content}
 
 There are cases when it's useful to specify fallback (i.e. default) content for a slot, to be rendered only when no content is provided. For example, in a `<SubmitButton>` component:
 
@@ -161,7 +157,7 @@ Then the provided content will be rendered instead:
 
 </div>
 
-## Named Slots
+## Named Slots {#named-slots}
 
 There are times when it's useful to have multiple slot outlets in a single component. For example, in a `<BaseLayout>` component with the following template:
 
@@ -292,17 +288,15 @@ BaseLayout({
 
 // <BaseLayout> renders them in different places
 function BaseLayout(slots) {
-  return (
-    `<div class="container">
+  return `<div class="container">
       <header>${slots.header}</header>
       <main>${slots.default}</main>
       <footer>${slots.footer}</footer>
     </div>`
-  )
 }
 ```
 
-## Dynamic Slot Names
+## Dynamic Slot Names {#dynamic-slot-names}
 
 [Dynamic directive arguments](/guide/essentials/template-syntax.md#dynamic-arguments) also work on `v-slot`, allowing the definition of dynamic slot names:
 
@@ -321,7 +315,7 @@ function BaseLayout(slots) {
 
 Do note the expression is subject to the [syntax constraints](/guide/essentials/template-syntax.html#directives) of dynamic directive arguments.
 
-## Scoped Slots
+## Scoped Slots {#scoped-slots}
 
 As discussed in [Render Scope](#render-scope), slot content does not have access to state in the child component.
 
@@ -373,12 +367,10 @@ MyComponent({
 
 function MyComponent(slots) {
   const greetingMessage = 'hello'
-  return (
-    `<div>${
-      // call the slot function with props!
-      slots.default({ text: greetingMessage, count: 1 })
-    }</div>`
-  )
+  return `<div>${
+    // call the slot function with props!
+    slots.default({ text: greetingMessage, count: 1 })
+  }</div>`
 }
 ```
 
@@ -392,7 +384,7 @@ Notice how `v-slot="slotProps"` matches the slot function signature. Just like w
 </MyComponent>
 ```
 
-### Named Scoped Slots
+### Named Scoped Slots {#named-scoped-slots}
 
 Named scoped slots work similarly - slot props are accessible as the value of the `v-slot` directive: `v-slot:name="slotProps"`. When using the shorthand, it looks like this:
 
@@ -420,8 +412,39 @@ Passing props to a named slot:
 
 Note the `name` of a slot won't be included in the props because it is reserved - so the resulting `headerProps` would be `{ message: 'hello' }`.
 
+If you are mixing named slots with the default scoped slot, you need to use an explicit `<template>` tag for the default slot. Attempting to place the `v-slot` directive directly on the component will result in a compilation error. This is to avoid any ambiguity about the scope of the props of the default slot. For example:
 
-### Fancy List Example
+```vue-html
+<!-- This template won't compile -->
+<template>
+  <MyComponent v-slot="{ message }">
+    <p>{{ message }}</p>
+    <template #footer>
+      <!-- message belongs to the default slot, and is not available here -->
+      <p>{{ message }}</p>
+    </template>
+  </MyComponent>
+</template>
+```
+
+Using an explicit `<template>` tag for the default slot helps to make it clear that the `message` prop is not available inside the other slot:
+
+```vue-html
+<template>
+  <MyComponent>
+    <!-- Use explicit default slot -->
+    <template #default="{ message }">
+      <p>{{ message }}</p>
+    </template>
+
+    <template #footer>
+      <p>Here's some contact info</p>
+    </template>
+  </MyComponent>
+</template>
+```
+
+### Fancy List Example {#fancy-list-example}
 
 You may be wondering what would be a good use case for scoped slots. Here's an example: imagine a `<FancyList>` component that renders a list of items - it may encapsulate the logic for loading remote data, using the data to display a list, or even advanced features like pagination or infinite scrolling. However, we want it to be flexible with how each item looks and leave the styling of each item to the parent component consuming it. So the desired usage may look like this:
 
@@ -457,7 +480,7 @@ Inside `<FancyList>`, we can render the same `<slot>` multiple times with differ
 
 </div>
 
-### Renderless Components
+### Renderless Components {#renderless-components}
 
 The `<FancyList>` use case we discussed above encapsulates both reusable logic (data fetching, pagination etc.) and visual output, while delegating part of the visual output to the consumer component via scoped slots.
 

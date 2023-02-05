@@ -1,4 +1,4 @@
-# Event Handling
+# Event Handling {#event-handling}
 
 <div class="options-api">
   <VueSchoolLink href="https://vueschool.io/lessons/user-events-in-vue-3" title="Free Vue.js Events Lesson"/>
@@ -8,7 +8,7 @@
   <VueSchoolLink href="https://vueschool.io/lessons/vue-fundamentals-capi-user-events-in-vue-3" title="Free Vue.js Events Lesson"/>
 </div>
 
-## Listening to Events
+## Listening to Events {#listening-to-events}
 
 We can use the `v-on` directive, which we typically shorten to the `@` symbol, to listen to DOM events and run some JavaScript when they're triggered. The usage would be `v-on:click="handler"` or with the shortcut, `@click="handler"`.
 
@@ -18,7 +18,7 @@ The handler value can be one of the following:
 
 2. **Method handlers:** A property name or path that points to a method defined on the component.
 
-## Inline Handlers
+## Inline Handlers {#inline-handlers}
 
 Inline handlers are typically used in simple cases, for example:
 
@@ -57,7 +57,7 @@ data() {
 
 </div>
 
-## Method Handlers
+## Method Handlers {#method-handlers}
 
 The logic for many event handlers will be more complex though, and likely isn't feasible with inline handlers. That's why `v-on` can also accept the name or path of a component method you'd like to call.
 
@@ -129,11 +129,11 @@ See also: [Typing Event Handlers](/guide/typescript/options-api.html#typing-even
 
 </div>
 
-### Method vs. Inline Detection
+### Method vs. Inline Detection {#method-vs-inline-detection}
 
 The template compiler detects method handlers by checking whether the `v-on` value string is a valid JavaScript identifier or property access path. For example, `foo`, `foo.bar` and `foo['bar']` are treated as method handlers, while `foo()` and `count++` are treated as inline handlers.
 
-## Calling Methods in Inline Handlers
+## Calling Methods in Inline Handlers {#calling-methods-in-inline-handlers}
 
 Instead of binding directly to a method name, we can also call methods in an inline handler. This allows us to pass the method custom arguments instead of the native event:
 
@@ -165,7 +165,7 @@ methods: {
 
 <div class="composition-api">
 
-[Try it in the Playground](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmZ1bmN0aW9uIHNheShtZXNzYWdlKSB7XG4gIGFsZXJ0KG1lc3NhZ2UpXG59XG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuXHQ8YnV0dG9uIEBjbGljaz1cInNheSgnaGknKVwiPlNheSBoaTwvYnV0dG9uPlxuICA8YnV0dG9uIEBjbGljaz1cInNheSgnd2hhdCcpXCI+U2F5IHdoYXQ8L2J1dHRvbj5cbjwvdGVtcGxhdGU+IiwiaW1wb3J0LW1hcC5qc29uIjoie1xuICBcImltcG9ydHNcIjoge1xuICAgIFwidnVlXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3Z1ZS5ydW50aW1lLmVzbS1icm93c2VyLmpzXCJcbiAgfVxufSJ9)
+[Try it in the Playground](https://sfc.vuejs.org/#eNp9kN1uwjAMhV8l8g1Dos191aHtGXabm7QzUNb8yHaYKtR3X0KnCoHEnY/j88XHV/iMsb4khAZa7mmIohglxb3xh+R7GYJXbKc3h8z2iFt1NV4pOyLJ2jN+Nr7Viz0bsxB0cbSCRUnbJZHM+ejHof95N1CAmxOOY9hsDey/7KRuqtXL5AtXN+HqyfWdo9Xrp7CDwcVAUjkb6zMHn+PdFjf/D2ygWaKUXs5ftIGTSORGaz705ShnrgMdda5qSl4GhzWyqzoKv4yUwQZ2dwydmxekitB/IyG9Yj6MPnELNl91hvkPugmTrw==)
 
 </div>
 <div class="options-api">
@@ -174,7 +174,7 @@ methods: {
 
 </div>
 
-## Accessing Event Argument in Inline Handlers
+## Accessing Event Argument in Inline Handlers {#accessing-event-argument-in-inline-handlers}
 
 Sometimes we also need to access the original DOM event in an inline handler. You can pass it into a method using the special `$event` variable, or use an inline arrow function:
 
@@ -219,7 +219,7 @@ methods: {
 
 </div>
 
-## Event Modifiers
+## Event Modifiers {#event-modifiers}
 
 It is a very common need to call `event.preventDefault()` or `event.stopPropagation()` inside event handlers. Although we can do this easily inside methods, it would be better if the methods can be purely about data logic rather than having to deal with DOM event details.
 
@@ -251,7 +251,7 @@ To address this problem, Vue provides **event modifiers** for `v-on`. Recall tha
 ```
 
 ::: tip
-Order matters when using modifiers because the relevant code is generated in the same order. Therefore using `@click.prevent.self` will prevent **clicks default action on the element itself and its children** while `@click.self.prevent` will only prevent clicks default action on the element itself.
+Order matters when using modifiers because the relevant code is generated in the same order. Therefore using `@click.prevent.self` will prevent **click's default action on the element itself and its children**, while `@click.self.prevent` will only prevent click's default action on the element itself.
 :::
 
 The `.capture`, `.once`, and `.passive` modifiers mirror the [options of the native `addEventListener` method](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#options):
@@ -276,12 +276,12 @@ The `.passive` modifier is typically used with touch event listeners for [improv
 Do not use `.passive` and `.prevent` together, because `.passive` already indicates to the browser that you _do not_ intend to prevent the event's default behavior, and you will likely see a warning from the browser if you do so.
 :::
 
-## Key Modifiers
+## Key Modifiers {#key-modifiers}
 
 When listening for keyboard events, we often need to check for specific keys. Vue allows adding key modifiers for `v-on` or `@` when listening for key events:
 
 ```vue-html
-<!-- only call `vm.submit()` when the `key` is `Enter` -->
+<!-- only call `submit` when the `key` is `Enter` -->
 <input @keyup.enter="submit" />
 ```
 
@@ -293,7 +293,7 @@ You can directly use any valid key names exposed via [`KeyboardEvent.key`](https
 
 In the above example, the handler will only be called if `$event.key` is equal to `'PageDown'`.
 
-### Key Aliases
+### Key Aliases {#key-aliases}
 
 Vue provides aliases for the most commonly used keys:
 
@@ -307,7 +307,7 @@ Vue provides aliases for the most commonly used keys:
 - `.left`
 - `.right`
 
-### System Modifier Keys
+### System Modifier Keys {#system-modifier-keys}
 
 You can use the following modifiers to trigger mouse or keyboard event listeners only when the corresponding modifier key is pressed:
 
@@ -334,7 +334,7 @@ For example:
 Note that modifier keys are different from regular keys and when used with `keyup` events, they have to be pressed when the event is emitted. In other words, `keyup.ctrl` will only trigger if you release a key while holding down `ctrl`. It won't trigger if you release the `ctrl` key alone.
 :::
 
-### `.exact` Modifier
+### `.exact` Modifier {#exact-modifier}
 
 The `.exact` modifier allows control of the exact combination of system modifiers needed to trigger an event.
 
@@ -349,7 +349,7 @@ The `.exact` modifier allows control of the exact combination of system modifier
 <button @click.exact="onClick">A</button>
 ```
 
-## Mouse Button Modifiers
+## Mouse Button Modifiers {#mouse-button-modifiers}
 
 - `.left`
 - `.right`

@@ -1,6 +1,6 @@
-# Options: Misc
+# Options: Misc {#options-misc}
 
-## name
+## name {#name}
 
 Explicitly declare a display name for the component.
 
@@ -28,7 +28,13 @@ Explicitly declare a display name for the component.
 
   There is one case where `name` is explicitly necessary: when matching against cacheable components in [`<KeepAlive>`](/guide/built-ins/keep-alive.html) via its `include / exclude` props.
 
-## inheritAttrs
+  :::tip
+  Since version 3.2.34, a single-file component using `<script setup>` will automatically infer its `name` option based on the filename, removing the need to manually declare the name even when used with `<KeepAlive>`.
+  :::
+
+## inheritAttrs {#inheritattrs}
+
+Controls whether the default component attribute fallthrough behavior should be enabled.
 
 - **Type**
 
@@ -100,7 +106,7 @@ Explicitly declare a display name for the component.
 
 - **See also:** [Fallthrough Attributes](/guide/components/attrs.html)
 
-## components
+## components {#components}
 
 An object that registers components to be made available to the component instance.
 
@@ -130,7 +136,7 @@ An object that registers components to be made available to the component instan
 
 - **See also:** [Component Registration](/guide/components/registration.html)
 
-## directives
+## directives {#directives}
 
 An object that registers directives to be made available to the component instance.
 
