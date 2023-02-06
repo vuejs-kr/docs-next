@@ -7,7 +7,6 @@
  */
 
 let open = $ref(true)
-
 /**
  * Call this if the banner is dismissible
  */
@@ -19,27 +18,7 @@ function dismiss() {
 </script>
 
 <template>
-  <div class="banner banner-vuejsconf" v-if="open">
-    <a href="https://conf.vuejs.de" target="_blank">
-      <picture>
-        <source
-          media="(min-width:1200px)"
-          srcset="/images/vuejsde-conf/vuejsdeconf_banner_large.png"
-        />
-        <source
-          media="(min-width:920px)"
-          srcset="/images/vuejsde-conf/vuejsdeconf_banner_medium.png"
-        />
-        <img
-          src="/images/vuejsde-conf/vuejsdeconf_banner_small.png"
-          alt=""
-        />
-      </picture>
-    </a>
-    <div class="close-btn" @click.stop.prevent="dismiss">
-      <img src="/images/vuejsde-conf/close.svg" alt="Close" />
-    </div>
-  </div>
+  <div class="banner" v-if="open"></div>
 </template>
 
 <style>
@@ -67,28 +46,5 @@ html:not(.banner-dismissed) {
 
 .banner-dismissed .banner {
   display: none;
-}
-
-a {
-  text-decoration: underline;
-}
-
-.banner-vuejsconf {
-  background: linear-gradient(90deg, #fff 50%, var(--vt-c-green) 50%);
-}
-
-.banner-vuejsconf a {
-  display: inline-block;
-  margin: 0 auto;
-}
-
-.banner-vuejsconf .close-btn {
-  top: 26%;
-  right: 10px;
-  z-index: 99;
-  position: absolute;
-  border-radius: 50%;
-  background-color: var(--vt-c-brand-dark);
-  padding: 8px;
 }
 </style>

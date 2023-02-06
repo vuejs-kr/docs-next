@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
-import NewsLetter from './NewsLetter.vue'
-import { load, data, base } from './sponsors';
-import SponsorsGroup from './SponsorsGroup.vue';
-import VueMasteryModal from './VueMasteryModal.vue';
+import { onMounted } from 'vue'
+import SiteMap from './SiteMap.vue';
+// import NewsLetter from './NewsLetter.vue'
+import { load, data, base } from './sponsors'
+import SponsorsGroup from './SponsorsGroup.vue'
+import VueMasteryModal from './VueMasteryModal.vue'
 
 onMounted(async () => {
   await load()
@@ -83,7 +84,8 @@ onMounted(async () => {
     <SponsorsGroup tier="gold" placement="landing" />
   </section>
 
-  <NewsLetter />
+  <SiteMap />
+  <!-- <NewsLetter /> -->
 </template>
 
 <style scoped>
@@ -173,7 +175,8 @@ html:not(.dark) .accent,
   border-top: 1px solid var(--vt-c-divider-light);
   border-bottom: 1px solid var(--vt-c-divider-light);
   padding: 12px 24px;
-  text-align: center;
+  display: flex;
+  align-items: center;
 }
 
 #special-sponsor span {
@@ -181,14 +184,22 @@ html:not(.dark) .accent,
   font-weight: 500;
   font-size: 13px;
   vertical-align: middle;
-  margin-right: 24px;
+  flex: 1;
+}
+
+#special-sponsor span:first-child {
+  text-align: right;
+}
+
+#special-sponsor a {
+  display: flex;
+  justify-content: center;
+  padding: 0 24px;
 }
 
 #special-sponsor img {
-  display: inline-block;
-  vertical-align: middle;
-  height: 36px;
-  margin-right: 24px;
+  height: 42px;
+  margin: -6px 0;
 }
 
 .dark #special-sponsor img {
@@ -260,9 +271,15 @@ html:not(.dark) .accent,
     font-size: 16px;
     margin: 18px 0 30px;
   }
+  #special-sponsor {
+    flex-direction: column;
+  }
   #special-sponsor img {
-    display: block;
-    margin: 2px auto 1px;
+    height: 36px;
+    margin: 8px 0;
+  }
+  #special-sponsor span {
+    text-align: center !important;
   }
   #highlights h3 {
     margin-bottom: 0.6em;

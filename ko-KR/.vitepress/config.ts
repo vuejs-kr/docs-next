@@ -5,7 +5,7 @@ import type { Config as ThemeConfig } from '@vue/theme'
 import baseConfig from '@vue/theme/config'
 import { headerPlugin } from './headerMdPlugin'
 
-const nav = [
+const nav: ThemeConfig['nav'] = [
   {
     text: '문서',
     activeMatch: `^/(guide|style-guide|cookbook|examples)/`,
@@ -35,15 +35,14 @@ const nav = [
     link: 'https://sfc.vuejs.org'
   },
   {
-    text: '생태계',
+    text: 'Ecosystem',
     activeMatch: `^/ecosystem/`,
     items: [
       {
         text: 'Resources',
         items: [
-          { text: 'Sponsor', link: 'https://vuejs.org/sponsor/' },
-          { text: 'Partners', link: 'https://vuejs.org/partners/' },
-          { text: 'Themes', link: 'https://vuejs.org/ecosystem/themes/' },
+          { text: 'Partners', link: '/partners/' },
+          { text: 'Themes', link: '/ecosystem/themes' },
           { text: 'Jobs', link: 'https://vuejobs.com/?ref=vuejs' },
           { text: 'T-Shirt Shop', link: 'https://vue.threadless.com/' }
         ]
@@ -52,10 +51,10 @@ const nav = [
         text: '핵심 라이브러리',
         items: [
           { text: 'Vue 라우터', link: 'https://router.vuejs.kr/' },
-          { text: '피니아 (상태 관리)', link: 'https://pinia.vuejs.kr/' }
+          { text: '피니아 (상태 관리)', link: 'https://pinia.vuejs.kr/' },
+          { text: '도구 가이드', link: '/guide/scaling-up/tooling.html' }
         ]
       },
-
       {
         text: '비디오 코스',
         items: [
@@ -88,8 +87,8 @@ const nav = [
         items: [
           { text: '블로그', link: 'https://blog.vuejs.org/' },
           { text: '트위터', link: 'https://twitter.com/vuejs' },
-          { text: '뉴스레터', link: 'https://news.vuejs.org/' },
-          { text: '이벤트', link: 'https://events.vuejs.org/' }
+          { text: '이벤트', link: 'https://events.vuejs.org/' },
+          { text: '뉴스레터', link: '/ecosystem/newsletters' }
         ]
       }
     ]
@@ -98,23 +97,32 @@ const nav = [
     text: 'About',
     activeMatch: `^/about/`,
     items: [
-      { text: 'FAQ', link: 'https://vuejs.org/about/faq/' },
-      { text: 'Team', link: 'https://vuejs.org/about/team' },
-      { text: 'Releases', link: 'https://vuejs.org/about/releases' },
+      { text: 'FAQ', link: '/about/faq' },
+      { text: 'Team', link: '/about/team' },
+      { text: 'Releases', link: '/about/releases' },
       {
         text: 'Community Guide',
-        link: 'https://vuejs.org/about/community-guide'
+        link: '/about/community-guide'
       },
-      { text: 'Code of Conduct', link: 'https://vuejs.org/about/coc' },
+      { text: 'Code of Conduct', link: '/about/coc' },
       {
         text: 'The Documentary',
         link: 'https://www.youtube.com/watch?v=OrxmtDw4pVI'
       }
     ]
+  },
+  {
+    text: 'Sponsor',
+    link: '/sponsor/'
+  },
+  {
+    text: 'Partners',
+    link: '/partners/',
+    activeMatch: `^/partners/`
   }
 ]
 
-export const sidebar = {
+export const sidebar: ThemeConfig['sidebar'] = {
   '/guide/': [
     {
       text: '시작하기',
@@ -180,6 +188,7 @@ export const sidebar = {
         },
         { text: 'Props', link: '/guide/components/props' },
         { text: '이벤트', link: '/guide/components/events' },
+        { text: 'Component v-model', link: '/guide/components/v-model' },
         {
           text: '폴스루 속성',
           link: '/guide/components/attrs'
@@ -542,6 +551,10 @@ export const sidebar = {
   ]
 }
 
+// Placeholder of the i18n config for @vuejs-translations.
+// const i18n: ThemeConfig['i18n'] = {
+// }
+
 export default defineConfigWithTheme<ThemeConfig>({
   extends: baseConfig,
 
@@ -554,7 +567,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   scrollOffset: 'header',
 
   head: [
-    ['meta', { name: 'theme-color', content: "#3c8772" }],
+    ['meta', { name: 'theme-color', content: '#3c8772' }],
     ['meta', { name: 'twitter:site', content: '@vuejs' }],
     ['meta', { name: 'twitter:card', content: 'summary' }],
     [
@@ -593,6 +606,31 @@ export default defineConfigWithTheme<ThemeConfig>({
   themeConfig: {
     nav,
     sidebar,
+    // Placeholder of the i18n config for @vuejs-translations.
+    // i18n,
+
+    localeLinks: [
+      {
+        link: 'https://cn.vuejs.org',
+        text: '简体中文',
+        repo: 'https://github.com/vuejs-translations/docs-zh-cn'
+      },
+      {
+        link: 'https://ja.vuejs.org',
+        text: '日本語',
+        repo: 'https://github.com/vuejs-translations/docs-ja'
+      },
+      {
+        link: 'https://ko.vuejs.org',
+        text: '한국어',
+        repo: 'https://github.com/vuejs-translations/docs-ko'
+      },
+      {
+        link: '/translations/',
+        text: 'Help Us Translate!',
+        isTranslationsDesc: true
+      }
+    ],
 
     algolia: {
 
@@ -610,7 +648,6 @@ export default defineConfigWithTheme<ThemeConfig>({
     // },
 
     socialLinks: [
-      { icon: 'languages', link: '/translations/' },
       { icon: 'github', link: 'https://github.com/vuejs-kr/docs-next' },
       { icon: 'twitter', link: 'https://twitter.com/vuejs' },
       { icon: 'discord', link: 'https://discord.com/invite/HBherRA' }

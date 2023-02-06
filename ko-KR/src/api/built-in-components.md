@@ -22,7 +22,7 @@ h(Transition, {
 
 :::
 
-## `<Transition>`
+## `<Transition>` {#transition}
 
 **싱글** 엘리먼트 또는 컴포넌트에 애니메이션 트랜지션 효과를 제공합니다.
 
@@ -124,7 +124,7 @@ h(Transition, {
 
 - **참고**: [가이드 - `<Transition>`](/guide/built-ins/transition.html)
 
-## `<TransitionGroup>`
+## `<TransitionGroup>` {#transitiongroup}
 
 리스트의 **여러** 엘리먼트 또는 컴포넌트에 트랜지션 효과를 제공합니다.
 
@@ -175,7 +175,7 @@ h(Transition, {
 
 - **참고**: [가이드 - TransitionGroup](/guide/built-ins/transition-group.html)
 
-## `<KeepAlive>`
+## `<KeepAlive>` {#keepalive}
 
 내부에 래핑된 동적으로 토글되는 컴포넌트를 캐시합니다.
 
@@ -270,7 +270,7 @@ h(Transition, {
 
 - **참고**: [가이드 - KeepAlive](/guide/built-ins/keep-alive.html)
 
-## `<Teleport>`
+## `<Teleport>` {#teleport}
 
 슬롯 컨텐츠를 DOM 내 다른 위치에서 렌더링합니다.
 
@@ -312,7 +312,7 @@ h(Transition, {
 
 - **참고**: [가이드 - Teleport](/guide/built-ins/teleport.html)
 
-## `<Suspense>` <sup class="vt-badge experimental" />
+## `<Suspense>` <sup class="vt-badge experimental" /> {#suspense}
 
 컴포넌트 트리에서 중첩된 비동기 의존성을 조정하는 데 사용됩니다.
 

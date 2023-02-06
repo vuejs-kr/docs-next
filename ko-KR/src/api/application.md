@@ -1,10 +1,6 @@
-<script setup>
-import CustomPreferenceSwitch from './CustomPreferenceSwitch.vue'
-</script>
+# Application API {#application-api}
 
-# Application API
-
-## createApp()
+## createApp() {#createapp}
 
 앱 인스턴스를 생성합니다.
 
@@ -16,8 +12,7 @@ import CustomPreferenceSwitch from './CustomPreferenceSwitch.vue'
 
 - **세부 사항**:
 
-  첫 번째 인자는 루트 컴포넌트입니다.
-  선택적인 두 번째 인자는 루트 컴포넌트에 전달할 props입니다.
+  첫 번째 인자는 루트 컴포넌트입니다.  선택적인 두 번째 인자는 루트 컴포넌트에 전달할 props입니다.
 
 - **예제**:
 
@@ -42,12 +37,12 @@ import CustomPreferenceSwitch from './CustomPreferenceSwitch.vue'
 
 - **참고**: [가이드 - 앱 생성](/guide/essentials/application.html)
 
-## createSSRApp()
+## createSSRApp() {#createssrapp}
 
 [SSR 하이드레이션](/guide/scaling-up/ssr.html#client-hydration) 모드에서 앱 인스턴스를 생성합니다.
 사용법은 `createApp()`과 완전히 동일합니다.
 
-## app.mount()
+## app.mount() {#app-mount}
 
 컨테이너 엘리먼트에 앱 인스턴스를 마운트합니다.
 
@@ -87,7 +82,7 @@ import CustomPreferenceSwitch from './CustomPreferenceSwitch.vue'
   app.mount(document.body.firstChild)
   ```
 
-## app.unmount()
+## app.unmount() {#app-unmount}
 
 마운트된 앱 인스턴스를 마운트 해제하여,
 앱의 컴포넌트 트리에 있는 모든 컴포넌트에 마운트 해제 수명 주기 훅을 트리거합니다.
@@ -100,7 +95,7 @@ import CustomPreferenceSwitch from './CustomPreferenceSwitch.vue'
   }
   ```
 
-## app.provide()
+## app.provide() {#app-provide}
 
 앱 내의 모든 하위 컴포넌트에 주입할 수 있는 값을 제공합니다.
 
@@ -161,7 +156,7 @@ import CustomPreferenceSwitch from './CustomPreferenceSwitch.vue'
   - [Provide / Inject](/guide/components/provide-inject.html)
   - [앱 수준의 Provide](/guide/components/provide-inject.html#app-level-provide)
 
-## app.component()
+## app.component() {#app-component}
 
 이름(문자열)과 컴포넌트정의를 모두 전달하는 경우, 전역 컴포넌트를 등록합니다.
 이름만 전달되는 경우, 이미 등록된 것을 찾습니다.
@@ -193,7 +188,7 @@ import CustomPreferenceSwitch from './CustomPreferenceSwitch.vue'
 
 - **참고**: [컴포넌트 등록](/guide/components/registration.html)
 
-## app.directive()
+## app.directive() {#app-directive}
 
 이름(문자열)과 디렉티브 정의를 모두 전달하는 경우, 전역 커스텀 디렉티브를 등록합니다.
 이름만 전달되는 경우, 이미 등록된 것을 찾습니다.
@@ -232,7 +227,7 @@ import CustomPreferenceSwitch from './CustomPreferenceSwitch.vue'
 
 - **참고**: [커스텀 디렉티브](/guide/reusability/custom-directives.html)
 
-## app.use()
+## app.use() {#app-use}
 
 [플러그인](/guide/reusability/plugins.html) 설치.
 
@@ -269,7 +264,7 @@ import CustomPreferenceSwitch from './CustomPreferenceSwitch.vue'
 
 - **참고**: [플러그인](/guide/reusability/plugins.html)
 
-## app.mixin()
+## app.mixin() {#app-mixin}
 
 앱 범위 전역에 믹스인을 적용합니다.
 전역 믹스인에 포함된 옵션은 앱 내에 모든 컴포넌트 인스턴스에 적용됩니다.
@@ -289,7 +284,7 @@ import CustomPreferenceSwitch from './CustomPreferenceSwitch.vue'
   }
   ```
 
-## app.version
+## app.version {#app-version}
 
 앱을 생성한 Vue 버전을 제공합니다.
 이것은 Vue 버전에 기반한 [플러그인](/guide/reusability/plugins.html) 내부에서 조건부 로직이 필요한 경우에 유용합니다.
@@ -319,7 +314,7 @@ import CustomPreferenceSwitch from './CustomPreferenceSwitch.vue'
 
 - **참고**: [전역 API - version](/api/general.html#version)
 
-## app.config
+## app.config {#app-config}
 
 모든 앱 인스턴스는 해당 앱의 환경 설정이 포함된 `config` 객체를 노출합니다.
 앱을 마운트하기 전에 속성을 수정할 수 있습니다(아래 문서 참조).
@@ -332,7 +327,7 @@ const app = createApp(/* ... */)
 console.log(app.config)
 ```
 
-## app.config.errorHandler
+## app.config.errorHandler {#app-config-errorhandler}
 
 앱 내에서 예외 처리 되지 않은 에러 발생 시, 트리거 될 전역 핸들러를 정의합니다.
 
@@ -372,7 +367,7 @@ console.log(app.config)
   }
   ```
 
-## app.config.warnHandler
+## app.config.warnHandler {#app-config-warnhandler}
 
 Vue에서 런타임 경고 발생 시, 트리거 될 커스텀 핸들러를 정의합니다.
 
@@ -408,7 +403,7 @@ Vue에서 런타임 경고 발생 시, 트리거 될 커스텀 핸들러를 정�
   }
   ```
 
-## app.config.performance
+## app.config.performance {#app-config-performance}
 
 이것을 `true`로 설정하면 (크롬 기준) 브라우저 개발자 도구의 "성능(Performance) 탭 → 소요시간(Timings) 패널"에 컴포넌트 초기화, 컴파일, 렌더링, 패치 성능 추적 기록이 활성화 됩니다.
 브라우저가 [performance.mark](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark) API를 지원하고 개발 모드일 경우에만 작동(기록)합니다.
@@ -417,7 +412,7 @@ Vue에서 런타임 경고 발생 시, 트리거 될 커스텀 핸들러를 정�
 
 - **참고**: [가이드 - 성능](/guide/best-practices/performance.html)
 
-### app.config.compilerOptions.isCustomElement
+### app.config.compilerOptions.isCustomElement {#app-config-compileroptions}
 
 런타임 컴파일러 옵션을 설정합니다.
 이 객체에 설정된 값은 브라우저 내 템플릿 컴파일러에 전달되고, 설정된 앱의 모든 컴포넌트에 영향을 미칩니다.
@@ -429,10 +424,10 @@ Vue에서 런타임 경고 발생 시, 트리거 될 커스텀 핸들러를 정�
 
 - `vue-loader`의 경우: [`compilerOptions` 로더 옵션을 통해 전달](https://vue-loader.vuejs.org/options.html#compileroptions). [`vue-cli`에서 환경설정 하는 방법](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader)도 참고하세요.
 
-- `vite`의 경우: [`@vitejs/plugin-vue` 옵션을 통해 전달](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#options).
+- `vite`의 경우: [`@vitejs/plugin-vue` 옵션을 통해 전달](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#options).
   :::
 
-### app.config.compilerOptions.isCustomElement
+### app.config.compilerOptions.isCustomElement {#app-config-compileroptions-iscustomelement}
 
 네이티브(native) 커스텀 엘리먼트를 인식하기 위한 검사 방법을 지정합니다.
 
@@ -456,7 +451,7 @@ Vue에서 런타임 경고 발생 시, 트리거 될 커스텀 핸들러를 정�
 
 - **참고**: [Vue와 웹 컴포넌트](/guide/extras/web-components.html)
 
-### app.config.compilerOptions.whitespace
+### app.config.compilerOptions.whitespace {#app-config-compileroptions-whitespace}
 
 템플릿 내 공백 처리 방식을 설정합니다.
 
@@ -481,7 +476,7 @@ Vue에서 런타임 경고 발생 시, 트리거 될 커스텀 핸들러를 정�
   app.config.compilerOptions.whitespace = 'preserve'
   ```
 
-### app.config.compilerOptions.delimiters
+### app.config.compilerOptions.delimiters {#app-config-compileroptions-delimiters}
 
 템플릿 내 텍스트 보간에 사용되는 구분 기호를 설정합니다.
 
@@ -500,7 +495,7 @@ Vue에서 런타임 경고 발생 시, 트리거 될 커스텀 핸들러를 정�
   app.config.compilerOptions.delimiters = ['${', '}']
   ```
 
-### app.compilerOptions.comments
+### app.compilerOptions.comments {#app-config-compileroptions-comments}
 
 템플릿에서 HTML 주석 보존 여부를 설정합니다.
 
@@ -520,7 +515,7 @@ Vue에서 런타임 경고 발생 시, 트리거 될 커스텀 핸들러를 정�
   app.config.compilerOptions.comments = true
   ```
 
-## app.config.globalProperties
+## app.config.globalProperties {#app-config-globalproperties}
 
 앱 내부의 모든 컴포넌트 인스턴스에서 접근할 수 있는 전역 속성을 등록하는 데 사용되는 객체입니다.
 
@@ -554,7 +549,9 @@ Vue에서 런타임 경고 발생 시, 트리거 될 커스텀 핸들러를 정�
   }
   ```
 
-## app.config.optionMergeStrategies
+ - **참고:** [가이드 - 전역 속성 전달하기s](/guide/typescript/options-api.html#augmenting-global-properties) <sup class="vt-badge ts" />
+
+## app.config.optionMergeStrategies {#app-config-optionmergestrategies}
 
 컴포넌트 옵션의 커스텀 병합 함수를 정의하기 위한 객체입니다.
 

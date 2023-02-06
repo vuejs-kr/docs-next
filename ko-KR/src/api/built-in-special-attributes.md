@@ -1,6 +1,6 @@
 # 빌트인 특수 속성 {#built-in-special-attributes}
 
-## key
+## key {#key}
 
 특수 속성 `key`는 Vue의 가상 DOM 알고리즘이 이전 목록과 새 노드 목록을 비교할 때 vnode를 식별하는 힌트로 주로 사용됩니다.
 
@@ -40,7 +40,7 @@
 
 - **참고**: [가이드 - 리스트 렌더링: `key`를 통한 상태유지](/guide/essentials/list.html#maintaining-state-with-key)
 
-## ref
+## ref {#ref}
 
 [템플릿 참조](/guide/essentials/template-refs.html)를 의미합니다.
 
@@ -90,9 +90,12 @@
 
   `this.$refs`도 반응형이 아니므로 데이터 바인딩을 위한 템플릿에서 사용하면 안됩니다.
 
-- **참고**: [가이드 - 템플릿 참조](/guide/essentials/template-refs.html)
+- **참고**: 
+  - [가이드 - 템플릿 refs](/guide/essentials/template-refs.html)
+  - [Guide - 템플릿 Refs에 타입 적용하기Typing Template Refs](/guide/typescript/composition-api.html#typing-template-refs) <sup class="vt-badge ts" />
+  - [Guide - 컴포넌트 템플릿 Refs에 타입 적용하기](/guide/typescript/composition-api.html#typing-component-template-refs) <sup class="vt-badge ts" />
 
-## is
+## is {#is}
 
 [동적 컴포넌트](/guide/essentials/component-basics.html#dynamic-components) 바인딩에 사용합니다.
 

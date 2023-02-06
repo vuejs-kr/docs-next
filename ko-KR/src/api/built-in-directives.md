@@ -1,6 +1,6 @@
 # 빌트인 디렉티브 {#built-in-directives}
 
-## v-text
+## v-text {#v-text}
 
 엘리먼트의 텍스트 컨텐츠를 업데이트합니다.
 
@@ -23,7 +23,7 @@
 
 - **참고**: [템플릿 문법 - 텍스트 보간법](/guide/essentials/template-syntax.html#text-interpolation)
 
-## v-html
+## v-html {#v-html}
 
 엘리먼트의 [innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML)을 업데이트합니다.
 
@@ -54,7 +54,7 @@
 
 - **참고**: [템플릿 문법 - HTML 출력](/guide/essentials/template-syntax.html#raw-html)
 
-## v-show
+## v-show {#v-show}
 
 표현식의 [truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy) 값을 기반으로 엘리먼트의 가시성을 전환합니다.
 
@@ -68,7 +68,7 @@
 
 - **참고**: [조건부 렌더링 - v-show](/guide/essentials/conditional.html#v-show)
 
-## v-if
+## v-if {#v-if}
 
 표현식의 truthy 값을 기반으로 엘리먼트 또는 템플릿 일부를 조건부로 렌더링합니다.
 
@@ -91,7 +91,7 @@
 
 - **참고**: [조건부 렌더링 - v-if](/guide/essentials/conditional.html#v-if)
 
-## v-else
+## v-else {#v-else}
 
 `v-if` 또는 `v-else-if` 체인에 대한 `else`입니다.
 
@@ -116,7 +116,7 @@
 
 - **참고**: [조건부 렌더링 - v-else](/guide/essentials/conditional.html#v-else)
 
-## v-else-if
+## v-else-if {#v-else-if}
 
 `v-if`에 대한 `else if` 블록을 나타냅니다.
 `v-else-if`는 계속 이어서 사용할 수 있습니다.
@@ -148,7 +148,7 @@
 
 - **참고**: [조건부 렌더링 - v-else-if](/guide/essentials/conditional.html#v-else-if)
 
-## v-for
+## v-for {#v-for}
 
 소스 데이터를 기반으로 엘리먼트 또는 템플릿 블록을 여러 번 렌더링합니다.
 
@@ -188,7 +188,7 @@
 - **참고**:
   - [가이드 - 리스트 렌더링](/guide/essentials/list.html)
 
-## v-on
+## v-on {#v-on}
 
 엘리먼트에 이벤트 리스너를 연결합니다.
 
@@ -282,7 +282,7 @@
   - [이벤트 핸들링](/guide/essentials/event-handling.html)
   - [컴포넌트 - 이벤트 청취하기](/guide/essentials/component-basics.html#listening-to-events)
 
-## v-bind
+## v-bind {#v-bind}
 
 하나 이상의 속성 또는 컴포넌트 prop을 표현식에 동적으로 바인딩합니다.
 
@@ -379,7 +379,7 @@
   - [가이드 - 클래스와 스타일 바인딩](/guide/essentials/class-and-style.html)
   - [가이드 - Props: Props 전달에 관한 심화](/guide/components/props.html#prop-passing-details)
 
-## v-model
+## v-model {#v-model}
 
 사용자 입력을 받는 폼(form) 엘리먼트 또는 컴포넌트에 양방향 바인딩을 만듭니다.
 
@@ -401,11 +401,11 @@
 - **참고**:
 
   - [가이드 - Form 입력 바인딩](/guide/essentials/forms.html)
-  - [가이드 - 이벤트: `v-model`과 함께 사용하기](/guide/components/events.html#usage-with-v-model)
+  - [가이드 - 이벤트: `v-model`과 함께 사용하기](/guide/components/v-model.html)
 
-## v-slot
+## v-slot {#v-slot}
 
-이름이 있는 슬롯 또는 props를 받을 것으로 예상되는 슬롯을 나타냅니다.
+이름이 있는 슬롯 또는 props를 받을 것으로 예상되는 범위형 (Scoped) 슬롯을 나타냅니다.
 
 - **단축 문법:** `#`
 
@@ -454,7 +454,7 @@
 - **참고**:
   - [가이드 - 슬롯](/guide/components/slots.html)
 
-## v-pre
+## v-pre {#v-pre}
 
 이 엘리먼트와 모든 자식 엘리먼트의 컴파일을 생략합니다.
 
@@ -471,7 +471,7 @@
   <span v-pre>{{ 이곳은 컴파일되지 않습니다. }}</span>
   ```
 
-## v-once
+## v-once {#v-once}
 
 엘리먼트와 컴포넌트를 한 번만 렌더링하고,
 향후 업데이트를 생략합니다.
@@ -505,7 +505,7 @@
   - [가이드 - 템플릿 문법: 텍스트 보간법](/guide/essentials/template-syntax.html#text-interpolation)
   - [v-memo](#v-memo)
 
-## v-memo <sup class="vt-badge" data-text="3.2+" />
+## v-memo <sup class="vt-badge" data-text="3.2+" /> {#v-memo}
 
 - **요구되는 값**: `any[]`
 
@@ -564,7 +564,7 @@
 - **참고**:
   - [v-once](#v-once)
 
-## v-cloak
+## v-cloak {#v-cloak}
 
 준비될 때까지 컴파일되지 않은 템플릿을 숨기는 데 사용됩니다.
 
