@@ -1,5 +1,3 @@
-:::warning 현재 이 문서는 번역 작업이 진행중입니다
-:::
 # Component v-model {#component-v-model}
 
 
@@ -7,18 +5,11 @@
 
 먼저 네이티브 엘리먼트에서 v-model이 어떻게 사용되는지 다시 살펴봅시다:
 
-
-`v-model` can be used on a component to implement a two-way binding.
-
-First let's revisit how `v-model` is used on a native element:
-
 ```vue-html
 <input v-model="searchText" />
 ```
 
 내부적으로 템플릿 컴파일러는 `v-model`을 좀 더 자세한 표현으로 확장합니다. 따라서 위의 코드는 다음과 같은 작업을 수행합니다:
-
-Under the hood, the template compiler expands `v-model` to the more verbose equivalent for us. So the above code does the same as the following:
 
 ```vue-html
 <input
@@ -29,8 +20,6 @@ Under the hood, the template compiler expands `v-model` to the more verbose equi
 
 컴포넌트에 사용하면 `v-model`이 대신 이렇게 확장됩니다:
 
-When used on a component, `v-model` instead expands to this:
-
 ```vue-html
 <CustomInput
   :modelValue="searchText"
@@ -40,19 +29,10 @@ When used on a component, `v-model` instead expands to this:
 
 하지만 이 기능이 실제로 작동하려면 `<CustomInput>` 컴포넌트가 두 가지 작업을 수행해야 합니다:
 
-For this to actually work though, the `<CustomInput>` component must do two things:
-
 1. 네이티브 `<input>` 요소의 `value` 속성을 `modelValue` 프로퍼티에 바인딩합니다.
 2. 네이티브 `input` 이벤트가 트리거되면 새 값으로 `update:modelValue` 사용자 지정 이벤트를 내보냅니다.
 
-1. Bind the `value` attribute of a native `<input>` element to the `modelValue` prop
-2. When a native `input` event is triggered, emit an `update:modelValue` custom event with the new value
-
-
 실제로 작동하는 모습은 다음과 같습니다:
-
-Here's that in action:
-
 
 <div class="options-api">
 
@@ -95,8 +75,6 @@ defineEmits(['update:modelValue'])
 
 이제 `v-model`이 이 컴포넌트와 완벽하게 작동합니다:
 
-Now `v-model` should work perfectly with this component:
-
 ```vue-html
 <CustomInput v-model="searchText" />
 ```
@@ -113,8 +91,6 @@ Now `v-model` should work perfectly with this component:
 </div>
 
 이 컴포넌트 내에서 `v-model`을 구현하는 또 다른 방법은 getter와 setter가 모두 있는 쓰기 가능한 `computed` 프로퍼티를 사용하는 것입니다. `get` 메서드는 `modelValue` 프로퍼티를 반환하고 `set` 메서드는 해당 이벤트를 발생시켜야 합니다:
-
-Another way of implementing `v-model` within this component is to use a writable `computed` property with both a getter and a setter. The `get` method should return the `modelValue` property and the `set` method should emit the corresponding event:
 
 <div class="options-api">
 
@@ -174,15 +150,11 @@ const value = computed({
 
 기본적으로 컴포넌트의 `v-model`은 `modelValue`를 프로퍼티로, `update:modelValue`를 이벤트로 사용합니다. `v-model`에 인자를 전달하여 이러한 이름을 수정할 수 있습니다:
 
-By default, `v-model` on a component uses `modelValue` as the prop and `update:modelValue` as the event. We can modify these names passing an argument to `v-model`:
-
 ```vue-html
 <MyComponent v-model:title="bookTitle" />
 ```
 
 이 경우 자식 컴포넌트는 `title` 프로퍼티를 예상하고 부모 값을 업데이트하는 `update:title` 이벤트를 발생시켜야 합니다:
-
-In this case, the child component should expect a `title` prop and emit an `update:title` event to update the parent value:
 
 <div class="composition-api">
 
@@ -231,14 +203,9 @@ export default {
 
 ## Multiple `v-model` bindings {#multiple-v-model-bindings}
 
-앞서 배운 것처럼 특정 소품과 이벤트를 타깃팅하는 기능을 [`v-model` 인수](#v-model-arguments)로 활용하면 이제 단일 컴포넌트 인스턴스에 여러 개의 `v-model` 바인딩을 생성할 수 있습니다.
+앞서 배운 것처럼 특정 prop과 이벤트를 타깃팅하는 기능을 [`v-model` 인수](#v-model-arguments)로 활용하면 이제 단일 컴포넌트 인스턴스에 여러 개의 `v-model` 바인딩을 생성할 수 있습니다.
 
-By leveraging the ability to target a particular prop and event as we learned before with [`v-model` arguments](#v-model-arguments), we can now create multiple `v-model` bindings on a single component instance.
-
-
-각 `v-model`은 컴포넌트에서 추가 옵션 없이도 다른 소품에 동기화됩니다:
-
-Each `v-model` will sync to a different prop, without the need for extra options in the component:
+각 `v-model`은 컴포넌트에서 추가 옵션 없이도 다른 prop에 동기화됩니다:
 
 ```vue-html
 <UserName
@@ -308,17 +275,10 @@ export default {
 </div>
 
 ## `v-model` 수정자 처리하기 {#handling-v-model-modifiers}
-## Handling `v-model` modifiers {#handling-v-model-modifiers}
-
 
 Form 양식 입력 바인딩에 대해 배울 때 `v-model`에 `.trim`, `.number` 및 `.lazy`와 같은 [내장 수정자](/guide/essentials/forms.html#modifiers)가 있다는 것을 알았습니다. 경우에 따라 사용자 정의 입력 컴포넌트에서 `v-model`이 사용자 정의 수정자를 지원하도록 할 수도 있습니다.
 
-When we were learning about form input bindings, we saw that `v-model` has [built-in modifiers](/guide/essentials/forms.html#modifiers) - `.trim`, `.number` and `.lazy`. In some cases, you might also want the `v-model` on your custom input component to support custom modifiers.
-
-
 `v-model` 바인딩에서 제공하는 문자열의 첫 글자를 대문자로 표시하는 사용자 지정 수정자 예제인 `capitalize`를 만들어 보겠습니다:
-
-Let's create an example custom modifier, `capitalize`, that capitalizes the first letter of the string provided by the `v-model` binding:
 
 ```vue-html
 <MyComponent v-model.capitalize="myText" />
@@ -326,8 +286,6 @@ Let's create an example custom modifier, `capitalize`, that capitalizes the firs
 
 
 `v-model` 컴포넌트에 추가되는 수정자는 `modelModifiers` 프로퍼티를 통해 컴포넌트에 제공됩니다. 아래 예시에서는 기본적으로 빈 객체로 설정된 `modelModifiers` 프로퍼티를 포함하는 컴포넌트를 생성했습니다:
-
-Modifiers added to a component `v-model` will be provided to the component via the `modelModifiers` prop. In the below example, we have created a component that contains a `modelModifiers` prop that defaults to an empty object:
 
 <div class="composition-api">
 
@@ -384,12 +342,8 @@ export default {
 
 컴포넌트의 `modelModifiers` 프로퍼티에 `capitalize`가 포함되어 있고 그 값은 `v-model` 바인딩 `v-model.capitalize="myText"`에 설정되어 있기 때문에 `true`인 것을 알 수 있습니다.
 
-Notice the component's `modelModifiers` prop contains `capitalize` and its value is `true` - due to it being set on the `v-model` binding `v-model.capitalize="myText"`.
-
 
 이제 prop이  설정되었으므로 `modelModifiers` 객체 키를 확인하고 방출된 값을 변경하는 핸들러를 작성할 수 있습니다. 아래 코드에서는 `<input />` 요소가 `input` 이벤트를 실행할 때마다 문자열을 대문자로 표시합니다.
-
-Now that we have our prop set up, we can check the `modelModifiers` object keys and write a handler to change the emitted value. In the code below we will capitalize the string whenever the `<input />` element fires an `input` event.
 
 <div class="composition-api">
 
@@ -455,15 +409,11 @@ export default {
 
 인자와 수정자가 모두 있는 `v-model` 바인딩의 경우, 생성된 prop 이름은 `arg + "수정자"`가 됩니다. 예를 들어
 
-For `v-model` bindings with both argument and modifiers, the generated prop name will be `arg + "Modifiers"`. For example:
-
 ```vue-html
 <MyComponent v-model:title.capitalize="myText">
 ```
 
 해당 선언은 다음과 같아야 합니다:
-
-The corresponding declarations should be:
 
 <div class="composition-api">
 
@@ -486,5 +436,4 @@ export default {
   }
 }
 ```
-
 </div>

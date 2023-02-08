@@ -95,7 +95,7 @@ Used to augment the component options type to support custom options.
 
 ## ComponentCustomProps {#componentcustomprops}
 
-TSX 요소에 신고되지 않은 소품을 사용하기 위해 허용된 TSX 소품을 보강하는 데 사용됩니다.
+TSX 요소에 신고되지 않은 prop을 사용하기 위해 허용된 TSX prop을 보강하는 데 사용됩니다.
 
 Used to augment allowed TSX props in order to use non-declared props on TSX elements.
 

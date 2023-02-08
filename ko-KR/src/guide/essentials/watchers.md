@@ -98,12 +98,12 @@ watch(question, async (newQuestion, oldQuestion) => {
 </template>
 ```
 
-[온라인 연습장으로 실행하기](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiwgd2F0Y2ggfSBmcm9tICd2dWUnXG5cbmNvbnN0IHF1ZXN0aW9uID0gcmVmKCcnKVxuY29uc3QgYW5zd2VyID0gcmVmKCfsp4jrrLjsl5DripQg7J2867CY7KCB7Jy866GcIOusvOydjO2RnOqwgCDtj6ztlajrkKnri4jri6QuJylcblxuLy8gd2F0Y2jripQgcmVm7JeQ7IScIOyngeygkSDsnpHrj5ntlanri4jri6RcbndhdGNoKHF1ZXN0aW9uLCBhc3luYyAobmV3UXVlc3Rpb24sIG9sZFF1ZXN0aW9uKSA9PiB7XG4gIGlmIChuZXdRdWVzdGlvbi5pbmRleE9mKCc/JykgPiAtMSkge1xuICAgIGFuc3dlci52YWx1ZSA9ICfsg53qsIEg7KSRLi4uJ1xuICAgIHRyeSB7XG4gICAgICBjb25zdCByZXMgPSBhd2FpdCBmZXRjaCgnaHR0cHM6Ly95ZXNuby53dGYvYXBpJylcbiAgICAgIGFuc3dlci52YWx1ZSA9IChhd2FpdCByZXMuanNvbigpKS5hbnN3ZXIgPT09ICd5ZXMnID8gJ+uEpCcgOiAn7JWE64uI7JikJ1xuICAgIH0gY2F0Y2ggKGVycm9yKSB7XG4gICAgICBhbnN3ZXIudmFsdWUgPSAn7Jik66WYISBBUEnsl5Ag7Jew6rKw7ZWgIOyImCDsl4bsirXri4jri6QuICcgKyBlcnJvclxuICAgIH1cbiAgfVxufSlcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDxwPlxuICAgIOyYiC/slYTri4jsmKQg7KeI66y4OlxuICAgIDxpbnB1dCB2LW1vZGVsPVwicXVlc3Rpb25cIiAvPlxuICA8L3A+XG4gIDxwPnt7IGFuc3dlciB9fTwvcD5cbjwvdGVtcGxhdGU+IiwiaW1wb3J0LW1hcC5qc29uIjoie1xuICBcImltcG9ydHNcIjoge1xuICAgIFwidnVlXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3Z1ZS5ydW50aW1lLmVzbS1icm93c2VyLmpzXCIsXG4gICAgXCJ2dWUvc2VydmVyLXJlbmRlcmVyXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3NlcnZlci1yZW5kZXJlci5lc20tYnJvd3Nlci5qc1wiXG4gIH1cbn0ifQ==)
+[온라인 연습장으로 실행하기](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiwgd2F0Y2ggfSBmcm9tICd2dWUnXG5cbmNvbnN0IHF1ZXN0aW9uID0gcmVmKCcnKVxuY29uc3QgYW5zd2VyID0gcmVmKCdRdWVzdGlvbnMgdXN1YWxseSBjb250YWluIGEgcXVlc3Rpb24gbWFyay4gOy0pJylcblxud2F0Y2gocXVlc3Rpb24sIGFzeW5jIChuZXdRdWVzdGlvbikgPT4ge1xuICBpZiAobmV3UXVlc3Rpb24uaW5kZXhPZignPycpID4gLTEpIHtcbiAgICBhbnN3ZXIudmFsdWUgPSAnVGhpbmtpbmcuLi4nXG4gICAgdHJ5IHtcbiAgICAgIGNvbnN0IHJlcyA9IGF3YWl0IGZldGNoKCdodHRwczovL3llc25vLnd0Zi9hcGknKVxuICAgICAgYW5zd2VyLnZhbHVlID0gKGF3YWl0IHJlcy5qc29uKCkpLmFuc3dlclxuICAgIH0gY2F0Y2ggKGVycm9yKSB7XG4gICAgICBhbnN3ZXIudmFsdWUgPSAnRXJyb3IhIENvdWxkIG5vdCByZWFjaCB0aGUgQVBJLiAnICsgZXJyb3JcbiAgICB9XG4gIH1cbn0pXG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8cD5cbiAgICBBc2sgYSB5ZXMvbm8gcXVlc3Rpb246XG4gICAgPGlucHV0IHYtbW9kZWw9XCJxdWVzdGlvblwiIC8+XG4gIDwvcD5cbiAgPHA+e3sgYW5zd2VyIH19PC9wPlxuPC90ZW1wbGF0ZT4iLCJpbXBvcnQtbWFwLmpzb24iOiJ7XG4gIFwiaW1wb3J0c1wiOiB7XG4gICAgXCJ2dWVcIjogXCJodHRwczovL3NmYy52dWVqcy5vcmcvdnVlLnJ1bnRpbWUuZXNtLWJyb3dzZXIuanNcIlxuICB9XG59In0=)
 
-### 감시 대상 타입 {https://vuejs.org/guide/essentials/watchers.html#watch-source-types}
+### 감시 대상 타입 {#watch-source-types}
 
-`watch`의 첫 번째 인자는 다양한 유형의 반응형 "소스"가 될 수 있습니다.
-ref(계산된 ref 포함), 반응형 객체, getter 함수 또는 여러 소스의 배열이 될 수 있습니다:
+`watch`의 첫 번째 인수는 다양한 유형의 반응형 "소스"일 수 있습니다. 참조(계산된 참조 포함), 반응형 객체, 게터 함수 또는 여러 소스의 배열이 될 수 있습니다:
+
 
 ```js
 const x = ref(0)
@@ -156,10 +156,7 @@ watch(
 
 <div class="options-api">
 
-`watch`는 기본적으로 얕습니다.
-콜백은 감시된 속성에 새 값이 할당되었을 때만 트리거됩니다.
-중첩된 속성 변경에는 트리거되지 않습니다.
-중첩된 모든 변경사항에 대해 콜백을 실행하려면 깊은 감시자를 사용해야 합니다:
+`watch`는 기본적으로 얕습니다. 콜백은 감시되는 프로퍼티에 새 값이 할당되었을 때만 트리거되며 중첩된 프로퍼티 변경에는 트리거되지 않습니다. 중첩된 모든 변경에 대해 콜백이 실행되도록 하려면 심층 감시자를 사용해야 합니다:
 
 ```js
 export default {
@@ -181,8 +178,7 @@ export default {
 
 <div class="composition-api">
 
-`watch()`로 반응형 객체를 직접 호출하면 암시적으로 깊은 감시자가 생성됩니다.
-콜백은 중첩된 모든 변경사항에 대해 실행됩니다.
+반응형 객체에서 `watch()`를 직접 호출하면 암시적으로 심층 감시자가 생성되며, 콜백은 중첩된 모든 변경에서 트리거됩니다:
 
 ```js
 const someObject = reactive({ count: 0 })
@@ -196,9 +192,7 @@ watch(someObject, (newValue, oldValue) => {
 
 someObject.count++
 ```
-
-위 예제는 반응형 객체를 반환하는 getter 입니다.
-아래의 경우 getter가 다른 객체를 반환하는 경우에만 콜백이 실행됩니다:
+반응형 객체를 반환하는 게터와 구별해야 합니다. 후자의 경우 콜백은 게터가 다른 객체를 반환하는 경우에만 실행됩니다:
 
 ```js
 const state = reactive({
@@ -234,14 +228,13 @@ watch(
 성능에 영향을 주는지 고려해서 필요한 경우에만 사용하십시오.
 :::
 
-<div class="options-api">
-
 ## 열성적인 감시자 \* {#eager-watchers}
 
 `watch`는 기본적으로 게으릅니다(lazy).
 콜백은 감시된 소스가 변경되기 전까지 호출되지 않습니다.
 그러나 어떤 경우에는 동일한 콜백 로직이 열성적으로 실행되기를 원할 수 있습니다.
 예를 들어 최초 데이터가 구성된 후 콜백이 실행되기를 원할 수 있습니다.
+
 <div class="options-api">
 `handler` 함수와 `immediate: true` 옵션으로 구성된 객체를 사용해 감시자를 선언함으로써 콜백이 즉시 실행되도록 할 수 있습니다:
 

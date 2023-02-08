@@ -3,44 +3,45 @@ outline: deep
 ---
 :::warning 현재 이 문서는 번역 작업이 진행중입니다
 :::
-# Style Guide
+# 스타일 가이드 {#style-guide}
 
 :::warning Status Notice
-The style guide is currently a bit outdated. Most examples are in Options API only, and there are no rules regarding `<script setup>` and Composition API. We are planning to improve it in the future.
+스타일 가이드는 현재 약간 구식입니다. 대부분의 예제는 옵션 API에만 있으며, `<script setup>` 및 컴포지션 API에 관한 규칙이 없습니다. 향후 개선할 계획입니다.
 :::
 
-This is the official style guide for Vue-specific code. If you use Vue in a project, it's a great reference to avoid errors, bikeshedding, and anti-patterns. However, we don't believe that any style guide is ideal for all teams or projects, so mindful deviations are encouraged based on past experience, the surrounding tech stack, and personal values.
+Vue 관련 코드에 대한 공식 스타일 가이드입니다. 프로젝트에서 Vue를 사용하는 경우 오류, 바이크셰딩 및 안티패턴을 피하기 위한 훌륭한 참고 자료입니다. 하지만 어떤 스타일 가이드도 모든 팀이나 프로젝트에 이상적이라고 생각하지 않으므로 과거 경험, 주변 기술 스택, 개인적 가치관에 따라 신중한 편차를 두는 것이 좋습니다.
 
-For the most part, we also avoid suggestions about JavaScript or HTML in general. We don't mind whether you use semicolons or trailing commas. We don't mind whether your HTML uses single-quotes or double-quotes for attribute values. Some exceptions will exist however, where we've found that a particular pattern is helpful in the context of Vue.
+또한 일반적으로 JavaScript나 HTML에 대한 제안은 피하는 것이 좋습니다. 세미콜론이나 후행 쉼표를 사용하든 상관하지 않습니다. HTML에서 속성 값에 작은따옴표를 사용하든 큰따옴표를 사용하든 상관하지 않습니다. 그러나 특정 패턴이 Vue의 컨텍스트에서 유용하다고 판단되는 경우 몇 가지 예외가 있을 수 있습니다.
 
-Finally, we've split rules into four categories:
+마지막으로 규칙을 네 가지 범주로 나누었습니다:
 
-## Rule Categories
+## 규칙 범주 {#rule-categories}
 
-### Priority A: Essential (Error Prevention)
+### 우선순위 A: 필수(오류 예방)  {#priority-a-essential-error-prevention}
 
-These rules help prevent errors, so learn and abide by them at all costs. Exceptions may exist, but should be very rare and only be made by those with expert knowledge of both JavaScript and Vue.
+이러한 규칙은 오류를 방지하는 데 도움이 되므로 반드시 숙지하고 준수하세요. 예외가 있을 수 있지만 매우 드물게 발생하며 JavaScript와 Vue에 대한 전문 지식이 있는 사람만 예외를 만들어야 합니다.
 
 - [See all priority A rules](./rules-essential)
 
-### Priority B: Strongly Recommended
+### 우선순위 B: 적극 권장 {#priority-b-strongly-recommended}
 
-These rules have been found to improve readability and/or developer experience in most projects. Your code will still run if you violate them, but violations should be rare and well-justified.
+이러한 규칙은 대부분의 프로젝트에서 가독성 및/또는 개발자 경험을 개선하는 것으로 밝혀졌습니다. 이 규칙을 위반해도 코드는 계속 실행되지만, 규칙을 위반하는 경우는 드물고 정당한 사유가 있어야 합니다.
 
 - [See all priority B rules](./rules-strongly-recommended)
 
-### Priority C: Recommended
+### 우선순위 C: 권장 {#priority-c-recommended}
 
-Where multiple, equally good options exist, an arbitrary choice can be made to ensure consistency. In these rules, we describe each acceptable option and suggest a default choice. That means you can feel free to make a different choice in your own codebase, as long as you're consistent and have a good reason. Please do have a good reason though! By adapting to the community standard, you will:
 
-1. Train your brain to more easily parse most of the community code you encounter
-2. Be able to copy and paste most community code examples without modification
-3. Often find new hires are already accustomed to your preferred coding style, at least in regards to Vue
+똑같이 좋은 옵션이 여러 개 있는 경우 일관성을 유지하기 위해 임의로 선택할 수 있습니다. 이 규칙에서는 허용되는 각 옵션을 설명하고 기본 선택을 제안합니다. 즉, 일관성이 있고 타당한 이유만 있다면 코드베이스에서 자유롭게 다른 선택을 할 수 있습니다. 하지만 정당한 이유가 있어야 합니다! 커뮤니티 표준에 적응하면 다음과 같은 이점이 있습니다:
+
+1. 여러분이 접하는 대부분의 커뮤니티 코드를 더 쉽게 파싱할 수 있도록 두뇌를 훈련할 수 있습니다.
+2. 대부분의 커뮤니티 코드 예제를 수정하지 않고 복사하여 붙여넣을 수 있습니다.
+3. 적어도 Vue와 관련하여 선호하는 코딩 스타일에 이미 익숙한 신입 사원을 종종 찾을 수 있습니다.
 
 - [See all priority C rules](./rules-recommended)
 
-### Priority D: Use with Caution
+### 우선순위 D: 주의해서 사용 {#priority-d-use-with-caution}
 
-Some features of Vue exist to accommodate rare edge cases or smoother migrations from a legacy code base. When overused however, they can make your code more difficult to maintain or even become a source of bugs. These rules shine a light on potentially risky features, describing when and why they should be avoided.
+Vue의 일부 기능은 드문 에지 케이스 또는 레거시 코드 기반으로부터의 원활한 마이그레이션을 수용하기 위해 존재합니다. 그러나 과도하게 사용하면 코드 유지 관리가 더 어려워지거나 버그의 원인이 될 수 있습니다. 이 규칙은 잠재적으로 위험한 기능을 조명하여 언제, 왜 피해야 하는지 설명합니다.
 
 - [See all priority D rules](./rules-use-with-caution)

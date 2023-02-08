@@ -93,7 +93,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 </KeepAlive>
 ```
 
-## 캐시된 인스턴스의 수명주기 {#lifecycle-of-cached-instance}
+## 캐시된 인스턴스의 생명주기 {#lifecycle-of-cached-instance}
 
 컴포넌트 인스턴스가 DOM에서 제거되었지만 `<KeepAlive>`에 의해 캐시된 컴포넌트 트리의 일부인 경우,
 마운트 해제되는 대신 **비활성화됨** 상태가 됩니다.

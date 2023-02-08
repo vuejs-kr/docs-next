@@ -7,7 +7,7 @@ const { x, y } = useMouse()
 
 :::tip
 이 섹션에서는 `컴포지션 API`에 대한 기본 지식이 있다고 가정합니다.
-`옵션 API`만 배웠다면 왼쪽 사이드바 상단의 `API 스타일 설정`을 `컴포지션 API`로 설정하고 [반응형 기초](/guide/essentials/reactivity-fundamentals.html) 및 [수명주기 훅](/guide/essentials/lifecycle.html) 장을 다시 읽을 수 있습니다.
+`옵션 API`만 배웠다면 왼쪽 사이드바 상단의 `API 스타일 설정`을 `컴포지션 API`로 설정하고 [반응형 기초](/guide/essentials/reactivity-fundamentals.html) 및 [생명주기 훅](/guide/essentials/lifecycle.html) 장을 다시 읽을 수 있습니다.
 :::
 
 ## 컴포저블이란? {#what-is-a-composable}
@@ -67,7 +67,7 @@ export function useMouse() {
     y.value = event.pageY
   }
 
-  // 컴포저블은 또한 이것을 사용하는 컴포넌트의 수명주기에 연결되어
+  // 컴포저블은 또한 이것을 사용하는 컴포넌트의 생명주기에 연결되어
   // 사이드 이펙트를 설정 및 해제할 수 있습니다.
   onMounted(() => window.addEventListener('mousemove', update))
   onUnmounted(() => window.removeEventListener('mousemove', update))
@@ -300,7 +300,7 @@ console.log(mouse.x)
 컴포저블에서 사이드 에픽트(예: DOM 이벤트 리스너 추가 또는 데이터 가져오기)를 수행하는 것은 괜찮지만 다음 규칙에 주의하십시오:
 
 - [서버 사이드 렌더링](/guide/scaling-up/ssr.html)(SSR)을 사용하는 앱에서 작업하는 경우,
-  마운트 후 수명주기 훅인 `onMounted()`에서 DOM 관련 사이드 이펙트를 수행해야 합니다.
+  마운트 후 생명주기 훅인 `onMounted()`에서 DOM 관련 사이드 이펙트를 수행해야 합니다.
   이 훅은 브라우저에서만 호출되므로 내부 코드가 DOM에 접근할 수 있는지 알 수 있습니다.
 
 - `onUnmounted()`에서 사이드 이펙트를 마무리 지었는지 확인하십시오.
@@ -310,12 +310,12 @@ console.log(mouse.x)
 ### 제한사항 {#usage-restrictions}
 
 컴포저블은 `<script setup>` 또는 `setup()` 훅에서만 **동기적으로** 호출되어야 합니다.
-어떤 경우에는 `onMounted()`와 같은 수명주기 훅에서 호출할 수도 있습니다.
+어떤 경우에는 `onMounted()`와 같은 생명주기 훅에서 호출할 수도 있습니다.
 
 이것들은 Vue가 현재 활성 컴포넌트 인스턴스가 무엇인지 알 수 있는 컨텍스트입니다.
 활성 컴포넌트 인스턴스에 대한 접근은 다음과 같은 작업을 위해 필요합니다:
 
-1. 수명주기 훅을 등록할 수 있다.
+1. 생명주기 훅을 등록할 수 있다.
 
 2. 계산된 속성과 감시자는 컴포넌트 마운트 해제 시, 관련 작업을 처리하기 위해 연결될 수 있다.
 

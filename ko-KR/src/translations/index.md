@@ -2,13 +2,22 @@
 aside: false
 ---
 
-# 번역 <sup class="vt-badge wip" />
+# 번역 {#translations}
 
-Vue 문서는 최근에 주요 개정을 거쳐 아직 한국어 번역이 완성되지 않았습니다.
+## 번역 완료된 언어 {#available-languages}
 
-번역 작업은 [vuejs-kr/docs-next](https://github.com/vuejs-kr/docs-next)에서 관리됩니다.
-기여하고 싶다면 슬랙의 워크스페이스 [Vue.js Korea](https://vuejs-korea.slack.com)에 참여하여 관심을 표할 수 있습니다.
+- [English](https://vuejs.org/) [[source](https://github.com/vuejs/docs)]
+- [简体中文 / Simplified Chinese](https://cn.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-zh-cn)]
+- [日本語 / Japanese](https://ja.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-ja)]
 
-## 번역에 기여하기 전에
+## 번역 진행중인 언어 {#work-in-progress-languages}
 
-번역 기여를 시작하기 전에 작업에 효율과 통일성을 위해 [번역 가이드](https://github.com/vuejs-kr/docs-next/wiki) 문서를 확인하십시오.
+- [Українська / Ukrainian](https://ua.vuejs.org) [[source](https://github.com/vuejs-translations/docs-ua)]
+- [Français / French](https://vuejs-docs-fr.netlify.app) [[source](https://github.com/vuejs-translations/docs-fr)]
+- [한국어 / Korean](http://v3-docs.vuejs-korea.org) [[source](https://github.com/vuejs-kr/docs-next)]
+
+## 번역 시작하기 {#starting-a-new-translation}
+
+Vue 문서는 최근 대대적인 개정 작업을 거쳤기 때문에 다른 언어의 번역이 아직 누락되었거나 작업 중입니다.
+
+더 많은 번역을 제공하기 위한 커뮤니티의 노력을 환영합니다. 번역 작업은 [vuejs-translations](https://github.com/vuejs-translations/) GitHub 조직에서 관리됩니다. 기여에 관심이 있으시면 [번역 가이드라인](https://github.com/vuejs-translations/guidelines/blob/main/README.md)을 확인하여 시작하세요.

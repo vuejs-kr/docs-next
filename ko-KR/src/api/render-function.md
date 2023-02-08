@@ -1,13 +1,8 @@
-:::warning 현재 이 문서는 번역 작업이 진행중입니다
-:::
-
 # 렌더 함수 APIs {#render-function-apis}
 
 ## h() {#h}
 
 가상 DOM 노드(vnode)를 생성합니다.
-
-Creates virtual DOM nodes (vnodes).
 
 - **타입**:
 
@@ -30,20 +25,14 @@ Creates virtual DOM nodes (vnodes).
   ```
 
   > 가독성을 위해 유형이 단순화되었습니다.
-  > Types are simplified for readability.
 
 - **세부 사항**:
 
   첫 번째 인수는 문자열(네이티브 엘리먼트의 경우) 또는 Vue 컴포넌트 정의일 수 있습니다. 두 번째 인수는 전달할 소품이고, 세 번째 인수는 자식입니다.
 
-  The first argument can either be a string (for native elements) or a Vue component definition. The second argument is the props to be passed, and the third argument is the children.
-
   컴포넌트 vnode를 생성할 때, 자식은 슬롯 함수로 전달되어야 합니다. 컴포넌트가 기본 슬롯만 기대하는 경우 단일 슬롯 함수를 전달할 수 있습니다. 그렇지 않으면 슬롯을 슬롯 함수의 객체로 전달해야 합니다.
 
-  When creating a component vnode, the children must be passed as slot functions. A single slot function can be passed if the component expects only the default slot. Otherwise, the slots must be passed as an object of slot functions.
-
   편의상 자식이 슬롯 객체가 아닌 경우 props 인수를 생략할 수 있습니다.
-  For convenience, the props argument can be omitted when the children is not a slots object.
 
 - **예제**:
 
@@ -118,8 +107,6 @@ Creates virtual DOM nodes (vnodes).
 
 특정 소품에 대한 특수 처리를 사용하여 여러 소품 개체를 병합합니다.
 
-Merge multiple props objects with special handling for certain props.
-
 - **타입**:
 
   ```ts
@@ -130,16 +117,12 @@ Merge multiple props objects with special handling for certain props.
 
   `mergeProps()`는 다음 프로퍼티에 대한 특수 처리를 통해 여러 프로퍼티 객체를 병합하는 것을 지원합니다:
 
-  `mergeProps()` supports merging multiple props objects with special handling for the following props:
-
   - `class`
   - `style`
   - `onXxx` 이벤트 리스너 - 같은 이름을 가진 여러 리스너가 배열로 병합됩니다.
   - `onXxx` event listeners - multiple listeners with the same name will be merged into an array.
 
   병합 동작이 필요하지 않고 간단한 덮어쓰기를 원하는 경우 네이티브 객체 스프레드를 대신 사용할 수 있습니다.
-
-  If you do not need the merge behavior and want simple overwrites, native object spread can be used instead.
 
 - **예제**:
 
@@ -185,12 +168,6 @@ Clones a vnode.
 
   V노드에는 특별한 내부 속성이 있으므로 복제하는 것은 객체 스프레드만큼 간단하지 않습니다. cloneVNode()`는 대부분의 내부 로직을 처리합니다.
 
-  Returns a cloned vnode, optionally with extra props to merge with the original.
-
-  Vnodes should be considered immutable once created, and you should not mutate the props of an existing vnode. Instead, clone it with different / extra props.
-
-  Vnodes have special internal properties, so cloning them is not as simple as an object spread. `cloneVNode()` handles most of the internal logic.
-
 - **예제**:
 
   ```js
@@ -204,19 +181,15 @@ Clones a vnode.
 
 값이 v노드인지 확인합니다.
 
-Checks if a value is a vnode.
-
 - **타입**:
 
   ```ts
   function isVNode(value: unknown): boolean
   ```
-
 ## resolveComponent() {#resolvecomponent}
 
-등록된 컴포넌트를 이름으로 수동으로 확인합니다.
 
-For manually resolving a registered component by name.
+등록된 컴포넌트를 이름으로 수동으로 확인합니다.
 
 - **타입**:
 
@@ -227,15 +200,10 @@ For manually resolving a registered component by name.
 - **세부 사항**:
 
   **참고: 컴포넌트를 직접 임포트할 수 있는 경우에는 이 작업이 필요하지 않습니다.**
-  **Note: you do not need this if you can import the component directly.**
 
-  올바른 컴포넌트 컨텍스트에서 확인하려면 `setup()` 또는 렌더 함수 내부에서 `resolveComponent()`를 <span class="composition-api"> 호출해야 합니다.
+  올바른 컴포넌트 컨텍스트에서 확인하려면 <span class="composition-api">`setup()`  또는 </span> 렌더 함수 내부에서 `resolveComponent()`를  호출해야 합니다.
 
   컴포넌트를 찾을 수 없는 경우 런타임 경고가 발생하고 이름 문자열이 반환됩니다.
-
-  `resolveComponent()` must be called inside<span class="composition-api"> either `setup()` or</span> the render function in order to resolve from the correct component context.
-
-  If the component is not found, a runtime warning will be emitted, and the name string is returned.
 
 - **예제**:
 
@@ -268,7 +236,6 @@ For manually resolving a registered component by name.
     }
   }
   ```
-
   </div>
 
 - **참고**: [가이드 - Render Functions - Components](/guide/extras/render-function.html#components)

@@ -18,7 +18,7 @@ outline: deep
 
 - [반응형(Reactivity) API](/api/reactivity-core.html): 예를 들어 `ref()` 및 `reactive()`를 사용하여 반응형 상태, 계산된 상태 및 감시자를 직접 생성할 수 있습니다.
 
-- [수명주기 훅](/api/composition-api-lifecycle.html): 예를 들어 `onMounted()` 및 `onUnmounted()`를 사용하여 컴포넌트 수명주기에 프로그래밍 방식으로 연결할 수 있습니다.
+- [생명주기 훅](/api/composition-api-lifecycle.html): 예를 들어 `onMounted()` 및 `onUnmounted()`를 사용하여 컴포넌트 생명주기에 프로그래밍 방식으로 연결할 수 있습니다.
 
 - [의존성 주입(Dependency Injection)](/api/composition-api-dependency-injection.html): `provide()` 및 `inject()`를 사용하면 반응형 API를 사용하는 동안 Vue의 의존성 주입 시스템을 활용할 수 있습니다.
 
@@ -37,7 +37,7 @@ function increment() {
   count.value++
 }
 
-// 수명주기 훅
+// 생명주기 훅
 onMounted(() => {
   console.log(`숫자를 세기 위한 초기값은 ${count.value} 입니다.`)
 })

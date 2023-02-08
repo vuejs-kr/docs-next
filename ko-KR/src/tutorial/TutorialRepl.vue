@@ -8,7 +8,7 @@ import {
   onHashChange
 } from '../examples/utils'
 import '@vue/repl/style.css'
-import PreferenceSwitch from '/@theme/components/PreferenceSwitch.vue'
+import PreferenceSwitch from '@theme/components/PreferenceSwitch.vue'
 import {
   VTFlyout,
   VTIconChevronLeft,
@@ -70,7 +70,7 @@ function updateExample(scroll = false) {
   let hash = location.hash.slice(1)
   if (!data.hasOwnProperty(hash)) {
     hash = 'step-1'
-    location.hash = `#${hash}`
+    location.replace(`/tutorial/#${hash}`)
   }
   currentStep.value = hash
 
@@ -121,12 +121,17 @@ updateExample()
       <div class="vt-doc" v-html="currentDescription"></div>
       <div class="hint" v-if="data[currentStep]?._hint">
         <button @click="toggleResult">
-          {{ showingHint ? '초기화' : '보여줘!' }}
+          {{ showingHint ? 'Reset' : 'Show me!' }}
         </button>
       </div>
       <footer>
-        <a v-if="prevStep" :href="`#${prevStep}`"><VTIconChevronLeft class="vt-link-icon" style="margin: 0" /> 이전</a>
-        <a class="next-step" v-if="nextStep" :href="`#${nextStep}`">다음 <VTIconChevronRight class="vt-link-icon"/></a>
+        <a v-if="prevStep" :href="`#${prevStep}`"
+          ><VTIconChevronLeft class="vt-link-icon" style="margin: 0" />
+          Prev</a
+        >
+        <a class="next-step" v-if="nextStep" :href="`#${nextStep}`"
+          >Next <VTIconChevronRight class="vt-link-icon"
+        /></a>
       </footer>
     </article>
     <Repl

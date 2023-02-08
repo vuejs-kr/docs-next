@@ -1,19 +1,14 @@
 :::warning 현재 이 문서는 번역 작업이 진행중입니다
 :::
 
-# Priority A Rules: Essential
-# 우선순쉬 A 등급 규칙: 필수 
+# 우선순위 A: 필수(오류 예방)  {#priority-a-rules-essential}
 
 
-These rules help prevent errors, so learn and abide by them at all costs. Exceptions may exist, but should be very rare and only be made by those with expert knowledge of both JavaScript and Vue.
+이러한 규칙은 오류를 방지하는 데 도움이 되므로 반드시 숙지하고 준수하세요. 예외가 있을 수 있지만 매우 드물게 발생하며 JavaScript와 Vue에 대한 전문 지식이 있는 사람만 예외를 만들어야 합니다.
 
-## Use multi-word component names
+## 여러 단어로 된 컴포넌트명을 사용하세요 {#use-multi-word-component-names}
 
-## 여러 단어로 된 컴포넌트명을 사용하세요
-
-User component names should always be multi-word, except for root `App` components. This [prevents conflicts](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name) with existing and future HTML elements, since all HTML elements are a single word.
-
-사용자 컴포넌트의 이름은 항상 여러 단어되어 있어야 합니다. (단 루트 컴포넌트인 `App`은 제외) 이 규칙을 지키게 되면 HTML의 표준에서는 모든 앨리먼트가 단일 단어로 정의 되기 때문에 HTML 엘리먼트와 [충돌이 방지됩니다.](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name)
+사용자 컴포넌트 이름은 루트 `App` 컴포넌트를 제외하고 항상 다중 단어여야 합니다. 이렇게 하면 모든 HTML 요소가 단일 단어이므로 기존 및 향후 HTML 요소와의 [충돌을 방지](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name)할 수 있습니다.
 
 <div class="style-example style-example-bad">
 <h3>나쁨</h3>
@@ -41,18 +36,15 @@ User component names should always be multi-word, except for root `App` componen
 
 </div>
 
-## Use detailed prop definitions
-## prop 정의를 상세하게 하세요. 
+## 자세한 Prop 정의 사용 {#use-detailed-prop-definitions}
 
-In committed code, prop definitions should always be as detailed as possible, specifying at least type(s).
+커밋된 코드에서 프로퍼티 정의는 항상 최소한 유형을 지정하여 가능한 한 상세하게 작성해야 합니다.
 
-코드를 커밋할때, prop을 가능한한 디테일하게 정의하세요. 최소한 타입이라도 기술하세요. 
+::: details 상세설명
+자세한 [prop 정의](/guide/components/props.html#prop-validation)에는 두 가지 장점이 있습니다:
 
-::: details Detailed Explanation
-Detailed [prop definitions](/guide/components/props.html#prop-validation) have two advantages:
-
-- They document the API of the component, so that it's easy to see how the component is meant to be used.
-- In development, Vue will warn you if a component is ever provided incorrectly formatted props, helping you catch potential sources of error.
+- 컴포넌트의 API를 문서화하므로 컴포넌트가 어떻게 사용되는지 쉽게 확인할 수 있습니다.
+- 개발 과정에서 컴포넌트에 잘못된 형식의 프로퍼티가 제공되면 Vue에서 경고를 표시하여 잠재적인 오류 원인을 파악할 수 있도록 도와줍니다.
   :::
 
 <div class="style-example style-example-bad">
@@ -95,12 +87,15 @@ props: {
 
 </div>
 
-## Use keyed `v-for`
+## `v-for`에 key 사용하기 {#use-keyed-v-for}
 
-`key` with `v-for` is _always_ required on components, in order to maintain internal component state down the subtree. Even for elements though, it's a good practice to maintain predictable behavior, such as [object constancy](https://bost.ocks.org/mike/constancy/) in animations.
+하위 트리에서 내부 컴포넌트 상태를 유지하기 위해 컴포넌트에는 `v-for`와 함께 `key`가 `항상` 필요합니다. 하지만 엘리먼트의 경우에도 애니메이션의 [객체 불변성](https://bost.ocks.org/mike/constancy/)과 같이 예측 가능한 동작을 유지하는 것이 좋습니다.
 
-::: details Detailed Explanation
-Let's say you have a list of todos:
+
+
+::: details 상세설명
+할 일 목록이 있다고 가정해 봅시다:
+
 
 ```js
 data() {
@@ -119,11 +114,13 @@ data() {
 }
 ```
 
-Then you sort them alphabetically. When updating the DOM, Vue will optimize rendering to perform the cheapest DOM mutations possible. That might mean deleting the first todo element, then adding it again at the end of the list.
+그런 다음 알파벳순으로 정렬합니다. DOM을 업데이트할 때 Vue는 렌더링을 최적화하여 가능한 한 가장 저렴한 DOM 변형을 수행합니다. 이는 첫 번째 할 일 요소를 삭제한 다음 목록 끝에 다시 추가하는 것을 의미할 수 있습니다.
 
-The problem is, there are cases where it's important not to delete elements that will remain in the DOM. For example, you may want to use `<transition-group>` to animate list sorting, or maintain focus if the rendered element is an `<input>`. In these cases, adding a unique key for each item (e.g. `:key="todo.id"`) will tell Vue how to behave more predictably.
 
-In our experience, it's better to _always_ add a unique key, so that you and your team simply never have to worry about these edge cases. Then in the rare, performance-critical scenarios where object constancy isn't necessary, you can make a conscious exception.
+
+문제는 DOM에 남을 요소를 삭제하지 않는 것이 중요한 경우가 있다는 것입니다. 예를 들어 `<transition-group>`을 사용하여 목록 정렬에 애니메이션을 적용하거나 렌더링된 요소가 `<input>`인 경우 포커스를 유지하려고 할 수 있습니다. 이러한 경우 각 항목에 고유 키(예: `:key="todo.id"`)를 추가하면 Vue가 보다 예측 가능한 방식으로 작동하는 방법을 알 수 있습니다.
+
+저희 경험상 고유 키를 _항상_ 추가하는 것이 좋습니다. 그래야 여러분과 여러분의 팀이 이러한 에지 케이스에 대해 걱정할 필요가 없습니다. 그런 다음 객체 불변성이 필요하지 않은 드물고 성능에 중요한 시나리오에서는 의도적으로 예외를 만들 수 있습니다.
 :::
 
 <div class="style-example style-example-bad">
@@ -155,18 +152,19 @@ In our experience, it's better to _always_ add a unique key, so that you and you
 
 </div>
 
-## Avoid `v-if` with `v-for`
+## `v-if`와  `v-for`를 같이 사용하지 않기 {#avoid-v-if-with-v-for}
 
-**Never use `v-if` on the same element as `v-for`.**
+**v-for`와 같은 요소에 `v-if`를 사용하지 마세요.**
 
-There are two common cases where this can be tempting:
+두 가지 일반적인 경우가 있습니다:
 
-- To filter items in a list (e.g. `v-for="user in users" v-if="user.isActive"`). In these cases, replace `users` with a new computed property that returns your filtered list (e.g. `activeUsers`).
+- 목록의 항목을 필터링하는 경우(예: `v-for="user in users" v-if="user.isActive"`). 이러한 경우 `users`를 필터링된 목록을 반환하는 새로운 계산된 속성(예: `activeUsers`)으로 대체하세요.
 
-- To avoid rendering a list if it should be hidden (e.g. `v-for="user in users" v-if="shouldShowUsers"`). In these cases, move the `v-if` to a container element (e.g. `ul`, `ol`).
+- 숨겨야 하는 경우 목록을 렌더링하지 않으려면(예: `v-for="user in users" v-if="shouldShowUsers"`). 이 경우 `v-if`를 컨테이너 요소(예: `ul`, `ol`)로 이동합니다.
 
-::: details Detailed Explanation
-When Vue processes directives, `v-if` has a higher priority than `v-for`, so that this template:
+
+::: details 상세 설명
+Vue가 지시문을 처리할 때 `v-if`는 `v-for`보다 우선순위가 높으므로 이 템플릿이 적용됩니다:
 
 ```vue-html
 <ul>
@@ -180,9 +178,10 @@ When Vue processes directives, `v-if` has a higher priority than `v-for`, so tha
 </ul>
 ```
 
-Will throw an error, because the `v-if` directive will be evaluated first and the iteration variable `user` does not exist at this moment.
+`v-if` 지시어가 먼저 평가되고 현재 반복 변수 `user`가 존재하지 않기 때문에 오류가 발생합니다.
 
-This could be fixed by iterating over a computed property instead, like this:
+이 문제는 다음과 같이 계산된 프로퍼티를 반복하여 해결할 수 있습니다:
+
 
 ```js
 computed: {
@@ -203,7 +202,7 @@ computed: {
 </ul>
 ```
 
-Alternatively, we can use a `<template>` tag with `v-for` to wrap the `<li>` element:
+또는 `v-for`와 함께 `<템플template릿>` 태그를 사용하여 `<li>` 요소를 래핑할 수 있습니다:
 
 ```vue-html
 <ul>
@@ -260,20 +259,20 @@ Alternatively, we can use a `<template>` tag with `v-for` to wrap the `<li>` ele
 
 </div>
 
-## Use component-scoped styling
+## 컴포넌트 범위 스타일링 사용 {#use-component-scoped-styling}
 
-For applications, styles in a top-level `App` component and in layout components may be global, but all other components should always be scoped.
+애플리케이션의 경우 최상위 `App` 컴포넌트와 레이아웃 컴포넌트의 스타일은 전역적일 수 있지만 다른 모든 컴포넌트는 항상 범위가 지정되어야 합니다.
 
-This is only relevant for [Single-File Components](/guide/scaling-up/sfc.html). It does _not_ require that the [`scoped` attribute](https://vue-loader.vuejs.org/en/features/scoped-css.html) be used. Scoping could be through [CSS modules](https://vue-loader.vuejs.org/en/features/css-modules.html), a class-based strategy such as [BEM](http://getbem.com/), or another library/convention.
+이는 [단일 파일 컴포넌트](/guide/scaling-up/sfc.html)에만 해당됩니다. 반드시 [`scoped` 속성](https://vue-loader.vuejs.org/en/features/scoped-css.html)을 사용할 필요는 없습니다. 범위 지정은 [CSS 모듈](https://vue-loader.vuejs.org/en/features/css-modules.html), [BEM](http://getbem.com/)과 같은 클래스 기반 전략 또는 다른 라이브러리/규약을 통해 이루어질 수 있습니다.
 
-**Component libraries, however, should prefer a class-based strategy instead of using the `scoped` attribute.**
+**그러나 컴포넌트 라이브러리는 `scoped` 속성을 사용하는 대신 클래스 기반 전략을 선호해야 합니다.**
 
-This makes overriding internal styles easier, with human-readable class names that don't have too high specificity, but are still very unlikely to result in a conflict.
+이렇게 하면 내부 스타일을 재정의하기가 더 쉬워지며, 사람이 읽을 수 있는 클래스 이름은 너무 구체적이지는 않지만 충돌이 발생할 가능성은 매우 낮습니다.
 
 ::: details Detailed Explanation
-If you are developing a large project, working with other developers, or sometimes include 3rd-party HTML/CSS (e.g. from Auth0), consistent scoping will ensure that your styles only apply to the components they are meant for.
+대규모 프로젝트를 개발 중이거나 다른 개발자와 함께 작업하거나 때로는 타사 HTML/CSS(예: Auth0)를 포함하는 경우 일관된 범위를 지정하면 스타일이 해당 컴포넌트에만 적용되도록 할 수 있습니다.
 
-Beyond the `scoped` attribute, using unique class names can help ensure that 3rd-party CSS does not apply to your own HTML. For example, many projects use the `button`, `btn`, or `icon` class names, so even if not using a strategy such as BEM, adding an app-specific and/or component-specific prefix (e.g. `ButtonClose-icon`) can provide some protection.
+`scoped` 속성 외에도 고유한 클래스 이름을 사용하면 타사 CSS가 자신의 HTML에 적용되지 않도록 할 수 있습니다. 예를 들어, 많은 프로젝트에서 `button`, `btn` 또는 `icon` 클래스 이름을 사용하므로 BEM과 같은 전략을 사용하지 않더라도 앱별 및/또는 컴포넌트별 접두사(예: `ButtonClose-icon`)를 추가하면 어느 정도 보호 기능을 제공할 수 있습니다.
 :::
 
 <div class="style-example style-example-bad">
@@ -348,102 +347,6 @@ Beyond the `scoped` attribute, using unique class names can help ensure that 3rd
   background-color: red;
 }
 </style>
-```
-
-</div>
-
-## Avoid exposing private functions in mixins
-
-Always use the `$_` prefix for custom private properties in a plugin, mixin, etc that should not be considered public API. Then to avoid conflicts with code by other authors, also include a named scope (e.g. `$_yourPluginName_`).
-
-::: details Detailed Explanation
-Vue uses the `_` prefix to define its own private properties, so using the same prefix (e.g. `_update`) risks overwriting an instance property. Even if you check and Vue is not currently using a particular property name, there is no guarantee a conflict won't arise in a later version.
-
-As for the `$` prefix, its purpose within the Vue ecosystem is special instance properties that are exposed to the user, so using it for _private_ properties would not be appropriate.
-
-Instead, we recommend combining the two prefixes into `$_`, as a convention for user-defined private properties that guarantee no conflicts with Vue.
-:::
-
-<div class="style-example style-example-bad">
-<h3>Bad</h3>
-
-```js
-const myGreatMixin = {
-  // ...
-  methods: {
-    update() {
-      // ...
-    }
-  }
-}
-```
-
-```js
-const myGreatMixin = {
-  // ...
-  methods: {
-    _update() {
-      // ...
-    }
-  }
-}
-```
-
-```js
-const myGreatMixin = {
-  // ...
-  methods: {
-    $update() {
-      // ...
-    }
-  }
-}
-```
-
-```js
-const myGreatMixin = {
-  // ...
-  methods: {
-    $_update() {
-      // ...
-    }
-  }
-}
-```
-
-</div>
-
-<div class="style-example style-example-good">
-<h3>Good</h3>
-
-```js
-const myGreatMixin = {
-  // ...
-  methods: {
-    $_myGreatMixin_update() {
-      // ...
-    }
-  }
-}
-```
-
-```js
-// Even better!
-const myGreatMixin = {
-  // ...
-  methods: {
-    publicMethod() {
-      // ...
-      myPrivateFunction()
-    }
-  }
-}
-
-function myPrivateFunction() {
-  // ...
-}
-
-export default myGreatMixin
 ```
 
 </div>

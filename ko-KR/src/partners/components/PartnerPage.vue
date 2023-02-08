@@ -5,6 +5,7 @@ import { normalizeName, track } from './utils'
 import PartnerCard from './PartnerCard.vue'
 import { VTIconChevronLeft } from '@vue/theme'
 
+console.log("Parners", data);
 const { partner } = defineProps<{
   partner: string
 }>()
@@ -24,32 +25,32 @@ function genMailLink(email: string) {
   <div class="partner-page">
     <div class="back">
       <a href="/partners/all.html"
-        ><VTIconChevronLeft class="icon" />모든 파트너로 돌아가기</a
+        ><VTIconChevronLeft class="icon" />Back to all partners</a
       >
     </div>
 
     <PartnerCard hero page :data="p" />
 
     <div class="description">
-      <h2>{{ name }}에 대하셔 </h2>
+      <h2>About {{ name }}</h2>
       <p v-for="desc in description" v-html="desc"></p>
     </div>
 
     <div class="actions">
       <a :href="website.url" target="_blank" @click="track"
-        >웹사이트 방문하기</a
+        >Visit Website</a
       >
       <a
         class="contact"
         :href="genMailLink(contact)"
         target="_blank"
         @click="track"
-        >연락</a
+        >Contact</a
       >
     </div>
 
     <div class="hiring" v-if="hiring">
-      <a :href="hiring" @click="track">{{ name }}은 현재 구인중입니다!</a>
+      <a :href="hiring" @click="track">{{ name }} is hiring!</a>
     </div>
   </div>
 </template>

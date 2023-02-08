@@ -1,7 +1,7 @@
-# 옵션: 수명주기 {#options-lifecycle}
+# 옵션: 생명주기 {#options-lifecycle}
 
 :::info 참고
-수명주기 훅의 여러 사용법에 대해서는 [가이드 - 수명주기 훅](/guide/essentials/lifecycle.html)을 참고하십시오.
+생명주기 훅의 여러 사용법에 대해서는 [가이드 - 생명주기 훅](/guide/essentials/lifecycle.html)을 참고하십시오.
 :::
 
 ## beforeCreate {#beforecreate}
@@ -197,7 +197,7 @@
 
   - 컴포넌트 렌더
   - 이벤트 핸들러
-  - 수명주기 훅
+  - 생명주기 훅
   - `setup()` 함수
   - 감시자
   - 커스텀 디렉티브 훅
@@ -291,7 +291,7 @@
   }
   ```
 
-- **참고**: [가이드 - 캐시된 인스턴스의 수명주기](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
+- **참고**: [가이드 - 캐시된 인스턴스의 생명주기](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
 
 ## deactivated {#deactivated}
 
@@ -307,7 +307,7 @@
   }
   ```
 
-- **참고**: [가이드 - 캐시된 인스턴스의 수명주기](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
+- **참고**: [가이드 - 캐시된 인스턴스의 생명주기](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
 
 ## serverPrefetch <sup class="vt-badge" data-text="SSR 전용" /> {#serverprefetch}
 

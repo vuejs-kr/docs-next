@@ -123,7 +123,7 @@ function increaseCount(n) {
 
 ## 발신되는 이벤트 선언하기 {#declaring-emitted-events}
 
-컴포넌트는 <span class="composition-api">[`defineEmits()`](/api/sfc-script-setup.html#defineprops-defineemits) 매크로</span><span class="options-api">[`emits`](/api/options-state.html#emits) 옵션을 사용하여 명시적으로 방출할 이벤트를 선언할 수 있습니다:
+컴포넌트는 <span class="composition-api">[`defineEmits()`](/api/sfc-script-setup.html#defineprops-defineemits) 매크로를</span><span class="options-api">[`emits`](/api/options-state.html#emits) 옵션을</span> 사용하여 명시적으로 방출할 이벤트를 선언할 수 있습니다:
 
 
 <div class="composition-api">

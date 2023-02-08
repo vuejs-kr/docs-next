@@ -1,8 +1,8 @@
-# 컴포지션 API: 수명주기 훅 {#composition-api-lifecycle-hooks}
+# 컴포지션 API: 생명주기 훅 {#composition-api-lifecycle-hooks}
 
 :::info 사용 참고 사항
 이 페이지에 나열된 모든 API는 컴포넌트의 `setup()` 단계에서 동기적으로 호출되어야 합니다.
-자세한 내용은 [가이드 - 수명주기 훅](/guide/essentials/lifecycle.html)을 참고하세요.
+자세한 내용은 [가이드 - 생명주기 훅](/guide/essentials/lifecycle.html)을 참고하세요.
 :::
 
 ## onMounted() {#onmounted}
@@ -133,7 +133,7 @@
   </script>
   ```
 
-## onBeforeMount() {#onbeforeupdate}
+## onBeforeMount() {#onbeforemount}
 
 컴포넌트가 마운트되기 직전에 호출될 훅을 등록합니다.
 
@@ -205,7 +205,7 @@
 
   - 컴포넌트 렌더
   - 이벤트 핸들러
-  - 수명주기 훅
+  - 생명주기 훅
   - `setup()` 함수
   - 감시자
   - 커스텀 디렉티브 훅

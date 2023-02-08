@@ -168,7 +168,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
         },
         { text: 'Form 입력 바인딩', link: '/guide/essentials/forms' },
         {
-          text: '수명주기 훅',
+          text: '생명주기 훅',
           link: '/guide/essentials/lifecycle'
         },
         { text: '감시자', link: '/guide/essentials/watchers' },
@@ -358,7 +358,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/api/reactivity-advanced'
         },
         {
-          text: '수명주기 훅',
+          text: '생명주기 훅',
           link: '/api/composition-api-lifecycle'
         },
         {
@@ -373,7 +373,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
         { text: '옵션: 상태', link: '/api/options-state' },
         { text: '옵션: 렌더링', link: '/api/options-rendering' },
         {
-          text: '옵션: 수명주기',
+          text: '옵션: 생명주기',
           link: '/api/options-lifecycle'
         },
         {

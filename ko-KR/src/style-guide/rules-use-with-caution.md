@@ -1,11 +1,11 @@
 :::warning 현재 이 문서는 번역 작업이 진행중입니다
 :::
 
-# Priority D Rules: Use with Caution
+# Priority D Rules: Use with Caution {#priority-d-rules-use-with-caution}
 
 Some features of Vue exist to accommodate rare edge cases or smoother migrations from a legacy code base. When overused however, they can make your code more difficult to maintain or even become a source of bugs. These rules shine a light on potentially risky features, describing when and why they should be avoided.
 
-## Element selectors with `scoped`
+## Element selectors with `scoped` {#element-selectors-with-scoped}
 
 **Element selectors should be avoided with `scoped`.**
 
@@ -51,7 +51,7 @@ button {
 
 </div>
 
-## Implicit parent-child communication
+## Implicit parent-child communication {#implicit-parent-child-communication}
 
 **Props and events should be preferred for parent-child component communication, instead of `this.$parent` or mutating props.**
 

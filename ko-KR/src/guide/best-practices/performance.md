@@ -53,7 +53,7 @@ Vue는 수동 최적화가 크게 필요하지 않은 가장 일반적인 사용
 
 ### 올바른 아키텍처 선택 {#choosing-the-right-architecture}
 
-사용 사례가 페이지 로드 성능에 민감한 경우 순수한 클라이언트 측 SPA로 전송하지 마세요. 사용자가 보고자 하는 콘텐츠가 포함된 HTML을 서버가 직접 전송해야 합니다. 순수 클라이언트 측 렌더링은 콘텐츠에 도달하는 시간이 느립니다. 서버 측 렌더링(SSR)](/guide/extras/ways-of-use-vue.html#fullstack-ssr) 또는 [정적 사이트 생성(SSG)](/guide/extras/ways-of-use-vue.html#jamstack-ssg)을 사용하면 이를 완화할 수 있습니다. SSR 가이드](/guide/scaling-up/ssr.html)를 확인하여 Vue로 SSR을 수행하는 방법에 대해 알아보세요. 앱에 풍부한 인터랙티브 요구 사항이 없는 경우 기존 백엔드 서버를 사용하여 HTML을 렌더링하고 클라이언트에서 Vue를 사용하여 향상시킬 수도 있습니다.
+사용 사례가 페이지 로드 성능에 민감한 경우 순수한 클라이언트 측 SPA로 전송하지 마세요. 사용자가 보고자 하는 콘텐츠가 포함된 HTML을 서버가 직접 전송해야 합니다. 순수 클라이언트 측 렌더링은 콘텐츠에 도달하는 시간이 느립니다. 서버 측 렌더링(SSR)](/guide/extras/ways-of-using-vue.html#fullstack-ssr) 또는 [정적 사이트 생성(SSG)](/guide/extras/ways-of-using-vue.html#jamstack-ssg)을 사용하면 이를 완화할 수 있습니다. SSR 가이드](/guide/scaling-up/ssr.html)를 확인하여 Vue로 SSR을 수행하는 방법에 대해 알아보세요. 앱에 풍부한 인터랙티브 요구 사항이 없는 경우 기존 백엔드 서버를 사용하여 HTML을 렌더링하고 클라이언트에서 Vue를 사용하여 향상시킬 수도 있습니다.
 
 기본 애플리케이션이 SPA여야 하지만 마케팅 페이지(랜딩, 정보, 블로그)가 있는 경우 마케팅 페이지를 별도로 제공하세요! 마케팅 페이지는 SSG를 사용하여 최소한의 JS가 포함된 정적 HTML로 배포하는 것이 이상적입니다.
 

@@ -1,4 +1,4 @@
-# 선언적 렌더링
+# 선언적 렌더링 {#declarative-rendering}
 
 <div class="sfc">
 

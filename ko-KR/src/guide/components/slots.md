@@ -436,7 +436,7 @@ function MyComponent(slots) {
 따라서 `headerProps`의 결과는 `{ message: '안녕' }`이 됩니다.
 
 
-명명된 슬롯과 기본 범위 슬롯을 혼합하는 경우, 기본 슬롯에 명시적인 `<template>` 태그를 사용해야 합니다. 컴포넌트에 `v-slot` 지시어를 직접 배치하려고 하면 컴파일 오류가 발생합니다. 이는 기본 슬롯의 소품 범위에 대한 모호함을 피하기 위한 것입니다. 예를 들어
+명명된 슬롯과 기본 범위 슬롯을 혼합하는 경우, 기본 슬롯에 명시적인 `<template>` 태그를 사용해야 합니다. 컴포넌트에 `v-slot` 지시어를 직접 배치하려고 하면 컴파일 오류가 발생합니다. 이는 기본 슬롯의 prop 범위에 대한 모호함을 피하기 위한 것입니다. 예를 들어
 
 ```vue-html
 <!-- This template won't compile -->
@@ -451,7 +451,7 @@ function MyComponent(slots) {
 </template>
 ```
 
-기본 슬롯에 명시적인 `<template>` 태그를 사용하면 다른 슬롯에서 `message` 소품을 사용할 수 없음을 명확히 알 수 있습니다:
+기본 슬롯에 명시적인 `<template>` 태그를 사용하면 다른 슬롯에서 `message` prop을 사용할 수 없음을 명확히 알 수 있습니다:
 
 ```vue-html
 <template>
