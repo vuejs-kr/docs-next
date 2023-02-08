@@ -188,7 +188,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
         },
         { text: 'Props', link: '/guide/components/props' },
         { text: '이벤트', link: '/guide/components/events' },
-        { text: 'Component v-model', link: '/guide/components/v-model' },
+        { text: '컴포넌트 v-model', link: '/guide/components/v-model' },
         {
           text: '폴스루 속성',
           link: '/guide/components/attrs'
@@ -272,13 +272,13 @@ export const sidebar: ThemeConfig['sidebar'] = {
     {
       text: '타입스크립트',
       items: [
-        { text: '개요 (미완료)', link: '/guide/typescript/overview' },
+        { text: '개요', link: '/guide/typescript/overview' },
         {
-          text: '⚠️컴포지션 API & TS (미완료)',
+          text: '컴포지션 API & TS',
           link: '/guide/typescript/composition-api'
         },
         {
-          text: '⚠️옵션 API & TS (미완료)',
+          text: '옵션 API & TS',
           link: '/guide/typescript/options-api'
         }
       ]
@@ -303,11 +303,11 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/extras/rendering-mechanism'
         },
         {
-          text: '⚠️렌더 함수 & JSX (영문)',
+          text: '렌더 함수 & JSX',
           link: '/guide/extras/render-function'
         },
         {
-          text: '⚠️Vue와 웹 컴포넌트 (영문)',
+          text: 'Vue와 웹 컴포넌트',
           link: '/guide/extras/web-components'
         },
         {
@@ -315,7 +315,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/extras/animation'
         },
         {
-          text: '⚠️반응형 변환 (영문)',
+          text: '반응형 변환',
           link: '/guide/extras/reactivity-transform'
         }
         // {
@@ -413,10 +413,10 @@ export const sidebar: ThemeConfig['sidebar'] = {
     {
       text: '고급 APIs',
       items: [
-        { text: '⚠️렌더 함수 (영문)', link: '/api/render-function' },
-        { text: '⚠️서버 사이드 렌더링 (영문)', link: '/api/ssr' },
-        { text: '⚠️TypeScript 유틸리티 타입 (영문)', link: '/api/utility-types' },
-        { text: '⚠️커스텀 렌더러 (영문)', link: '/api/custom-renderer' }
+        { text: '렌더 함수', link: '/api/render-function' },
+        { text: '서버 사이드 렌더링', link: '/api/ssr' },
+        { text: 'TypeScript 유틸리티 타입', link: '/api/utility-types' },
+        { text: '커스텀 렌더러', link: '/api/custom-renderer' }
       ]
     }
   ],
@@ -621,9 +621,9 @@ export default defineConfigWithTheme<ThemeConfig>({
         repo: 'https://github.com/vuejs-translations/docs-ja'
       },
       {
-        link: 'https://ko.vuejs.org',
+        link: 'http://v3-docs.vuejs-korea.org',
         text: '한국어',
-        repo: 'https://github.com/vuejs-translations/docs-ko'
+        repo: 'https://github.com/vuejs-kr/docs-next'
       },
       {
         link: '/translations/',
