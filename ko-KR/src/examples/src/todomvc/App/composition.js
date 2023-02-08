@@ -10,20 +10,20 @@ const filters = {
 
 export default {
   setup() {
-    // 상태
+    // state
     const todos = ref(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'))
     const visibility = ref('all')
     const editedTodo = ref()
 
-    // 파생된 상태(계산된 속성)
+    // derived state
     const filteredTodos = computed(() => filters[visibility.value](todos.value))
     const remaining = computed(() => filters.active(todos.value).length)
 
-    // 라우팅 핸들링
+    // handle routing
     window.addEventListener('hashchange', onHashChange)
     onHashChange()
 
-    // 상태 저장
+    // persist state
     watchEffect(() => {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(todos.value))
     })

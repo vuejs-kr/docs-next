@@ -4,7 +4,7 @@ import CustomPreferenceSwitch from './CustomPreferenceSwitch.vue'
 
 # 옵션: 기타 {#options-misc}
 
-## name
+## name {#name}
 
 표시될 컴포넌트 이름을 명시적으로 선언합니다.
 
@@ -39,7 +39,16 @@ import CustomPreferenceSwitch from './CustomPreferenceSwitch.vue'
   `name`이 명시적으로 필요한 경우는 단 하나로,
   [`<KeepAlive>`](/guide/built-ins/keep-alive.html)의 `include / exclude` props를 통해 캐시 가능한 컴포넌트를 정의하는 경우입니다.
 
-## inheritAttrs
+  :::tip
+
+  버전 3.2.34부터 `<script setup>`을 사용하는 단일 파일 컴포넌트는 파일명을 기반으로 `name` 옵션을 자동으로 추론하므로 `<KeepAlive>`와 함께 사용할 때도 이름을 수동으로 선언할 필요가 없습니다.
+
+  Since version 3.2.34, a single-file component using `<script setup>` will automatically infer its `name` option based on the filename, removing the need to manually declare the name even when used with `<KeepAlive>`.
+  :::
+
+## inheritAttrs {#inheritattrs}
+
+기본 컴포넌트 속성 폴쓰루 동작을 활성화할지 여부를 제어합니다.
 
 - **타입**:
 
@@ -126,7 +135,7 @@ import CustomPreferenceSwitch from './CustomPreferenceSwitch.vue'
 
 - **참고**: [가이드 - 폴스루 속성](/guide/components/attrs.html)
 
-## components
+## components {#components}
 
 컴포넌트 인스턴스에서 다른 컴포넌트를 사용할 수 있도록 등록하는 객체입니다.
 
@@ -156,7 +165,7 @@ import CustomPreferenceSwitch from './CustomPreferenceSwitch.vue'
 
 - **참고**: [가이드 - 컴포넌트 등록](/guide/components/registration.html)
 
-## directives
+## directives {#directives}
 
 컴포넌트 인스턴스에서 사용할 수 있도록 커스텀 디렉티브를 등록하는 객체입니다.
 

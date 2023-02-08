@@ -3,7 +3,7 @@ import { debounce } from 'lodash-es'
 
 export default {
   data: () => ({
-    input: '# 반가워요!'
+    input: '# hello'
   }),
   computed: {
     output() {

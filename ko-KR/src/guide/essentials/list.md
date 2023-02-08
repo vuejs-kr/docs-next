@@ -1,6 +1,6 @@
 # 리스트 렌더링 {#list-rendering}
 
-## `v-for`
+## `v-for` {#v-for}
 
 `v-for` 디렉티브를 사용하여 배열을 리스트로 렌더링할 수 있습니다.
 `v-for` 디렉티브는 `item in items` 형식의 특별한 문법이 필요합니다.

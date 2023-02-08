@@ -6,19 +6,13 @@ outline: deep
 import SpreadSheet from './demos/SpreadSheet.vue'
 </script>
 
-# 반응형 심화
+# 반응형 심화 {#reactivity-in-depth}
 
-Vue의 가장 뚜렷한 기능 중 하나는 눈에 거슬리지 않는 반응형 시스템입니다.
-컴포넌트의 상태는 반응형 JavaScript 객체입니다.
-수정하면 view가 업데이트됩니다.
-상태 관리를 간단하고 직관적으로 만들지만 몇 가지 일반적인 문제를 피하기 위해 작동 방식을 이해하는 것도 중요합니다.
-이 섹션에서는 Vue의 반응형 시스템의 저수준 세부 정보를 파헤칠 것입니다.
+Vue의 가장 독특한 기능 중 하나는 눈에 거슬리지 않는 반응성 시스템입니다. 컴포넌트 상태는 반응형 자바스크립트 객체로 구성됩니다. 이를 수정하면 뷰가 업데이트됩니다. 상태 관리를 간단하고 직관적으로 만들지만 몇 가지 일반적인 문제를 피하려면 작동 방식을 이해하는 것도 중요합니다. 이 섹션에서는 Vue의 반응성 시스템에 대한 몇 가지 하위 수준의 세부 사항을 살펴보겠습니다.
 
-## 반응형이란?
+## 반응형이란? {#what-is-reactivity}
 
-요즘 프로그래밍에서 꽤 많이 등장하는 이 용어는 무엇을 의미할까요?
-반응형은 선언적 방식으로 변화에 적응할 수 있게 해주는 프로그래밍 패러다임입니다.
-일반적으로 보여주는 표준 예는 Excel 스프레드시트입니다:
+요즘 프로그래밍에서 이 용어가 자주 등장하는데, 사람들이 이 말을 할 때 무슨 뜻일까요? 반응성은 선언적인 방식으로 변화에 적응할 수 있는 프로그래밍 패러다임입니다. 반응형 프로그래밍이 훌륭하기 때문에 사람들이 일반적으로 보여주는 대표적인 예는 Excel 스프레드시트입니다:
 
 <SpreadSheet />
 
@@ -78,13 +72,11 @@ whenDepsChange(update)
    예를 들어 `A0`에 새 값이 할당되면,
    모든 구독자 이팩트에 다시 실행하도록 알립니다.
 
-## Vue에서 반응형 작동 방식
+## Vue에서 반응형 작동 방식 {#how-reactivity-works-in-vue}
 
-우리는 예제처럼 로컬 변수의 읽기 및 쓰기를 실제로 추적할 수 없습니다.
-바닐라 JavaScript에서는 그렇게 하는 메커니즘이 없습니다.
-하지만 **객체 속성**의 읽기 및 쓰기를 가로채는 일은 할 수 있습니다.
+예제에서처럼 로컬 변수의 읽기 및 쓰기를 추적할 수는 없습니다. 바닐라 자바스크립트에는 이를 수행할 수 있는 메커니즘이 없기 때문입니다. 하지만 우리가 할 수 있는 것은 **객체 속성**의 읽기 및 쓰기를 가로채는 것입니다.
 
-JavaScript에서 속성 접근을 가로채는 방법에는 [getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get)/[setters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set) 및 [프락시](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)의 두 가지가 있습니다.
+JavaScript에서 속성 접근을 가로채는 방법에는 [getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get) / [setters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set) 및 [프락시](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)의 두 가지가 있습니다.
 Vue 2는 브라우저 지원 제한으로 인해 단독으로 getter/setter를 사용했습니다.
 Vue 3에서 프락시는 반응형 객체에 사용되며 getter/setter는 참조에 사용됩니다.
 다음은 작동 방식을 보여주는 유사 코드입니다:
@@ -244,7 +236,7 @@ count.value++
 
 </div>
 
-## 런타임 (실행 시) vs. 컴파일 타임 (컴파일 시) 반응형
+## 런타임 (실행 시) vs. 컴파일 타임 (컴파일 시) 반응형 {#runtime-vs-compile-time-reactivity}
 
 Vue의 반응형 시스템은 주로 런타임 기반입니다.
 추적 및 트리거링은 모두 코드가 브라우저에서 직접 실행되는 동안 수행됩니다.
@@ -271,12 +263,11 @@ A0 = 2
 이 스니펫은 변수에 대한 참조 뒤에 `.value`를 자동으로 추가하여 변환 없이 작성한 것과 정확히 일치합니다.
 Reactivity Transform을 사용하면 Vue의 반응형 시스템이 하이브리드 시스템이 됩니다.
 
-## 반응형 디버깅
+## 반응형 디버깅 {#reactivity-debugging}
 
-Vue의 반응형 시스템이 의존성을 자동으로 추적하는 것은 훌륭하지만,
-어떤 경우에는 추적 중인 항목 또는 컴포넌트를 다시 렌더링하는 원인을 정확히 파악해야 할 수 있습니다.
+Vue의 반응성 시스템이 종속성을 자동으로 추적하는 것은 훌륭하지만, 어떤 경우에는 추적 대상 또는 컴포넌트가 다시 렌더링되는 원인을 정확히 파악하고 싶을 수 있습니다.
 
-### 컴포넌트 디버깅 훅
+### 컴포넌트 디버깅 훅 {#component-debugging-hooks}
 
 컴포넌트의 렌더링 중에 사용되는 의존성과 <span class="options-api">`renderTracked`</span><span class="composition-api">`onRenderTracked`</span> 및 <span class="options-api">`renderTriggered`</span><span class="composition-api">`onRenderTriggered`</span> 수명 주기 훅을 사용하여 업데이트를 트리거하는 의존성을 디버그할 수 있습니다.
 두 훅 모두 해당 의존성에 대한 정보가 포함된 디버거 이벤트를 수신합니다.
@@ -336,7 +327,7 @@ type DebuggerEvent = {
 }
 ```
 
-### 계산된 속성 디버깅
+### 계산된 속성 디버깅 {#computed-debugging}
 
 <!-- TODO options API equivalent -->
 
@@ -370,7 +361,7 @@ count.value++
 계산된 속성의 `onTrack` 및 `onTrigger` 옵션은 개발 모드에서만 작동합니다.
 :::
 
-### 감시자 디버깅
+### 감시자 디버깅 {#watcher-debugging}
 
 <!-- TODO options API equivalent -->
 
@@ -400,7 +391,7 @@ watchEffect(callback, {
 감시자의 `onTrack` 및 `onTrigger` 옵션은 개발 모드에서만 작동합니다.
 :::
 
-## 외부 상태 시스템과의 통합
+## 외부 상태 시스템과의 통합 {#integration-with-external-state-systems}
 
 Vue의 반응형 시스템은 일반 JavaScript 객체를 반응형 프락시로 깊이 변환하여 작동합니다.
 깊은 변환은 외부 상태 관리 시스템과 통합할 때 필요하지 않거나 때때로 원하지 않을 수 있습니다(예: 외부 솔루션도 프락시를 사용하는 경우).
@@ -410,7 +401,7 @@ Vue의 반응형 시스템을 외부 상태 관리 솔루션과 통합하는 일
 내부 값은 그대로 유지됩니다.
 외부 상태가 변경되면 ref 값을 교체하여 업데이트를 트리거합니다.
 
-### 불변 데이터
+### 불변 데이터 {#immutable-data}
 
 실행 취소/다시 실행 기능을 구현하는 경우, 사용자가 편집할 때마다 앱 상태의 스냅샷을 찍고 싶을 것입니다.
 그러나 Vue의 변경 가능한 반응형 시스템은 상태 트리가 큰 경우 적합하지 않습니다.
@@ -440,7 +431,7 @@ export function useImmer(baseState) {
 
 [온라인 연습장으로 실행하기](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHVzZUltbWVyIH0gZnJvbSAnLi9pbW1lci5qcydcbiAgXG5jb25zdCBbaXRlbXMsIHVwZGF0ZUl0ZW1zXSA9IHVzZUltbWVyKFtcbiAge1xuICAgICB0aXRsZTogXCJMZWFybiBWdWVcIixcbiAgICAgZG9uZTogdHJ1ZVxuICB9LFxuICB7XG4gICAgIHRpdGxlOiBcIlVzZSBWdWUgd2l0aCBJbW1lclwiLFxuICAgICBkb25lOiBmYWxzZVxuICB9XG5dKVxuXG5mdW5jdGlvbiB0b2dnbGVJdGVtKGluZGV4KSB7XG4gIHVwZGF0ZUl0ZW1zKGl0ZW1zID0+IHtcbiAgICBpdGVtc1tpbmRleF0uZG9uZSA9ICFpdGVtc1tpbmRleF0uZG9uZVxuICB9KVxufVxuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPHVsPlxuICAgIDxsaSB2LWZvcj1cIih7IHRpdGxlLCBkb25lIH0sIGluZGV4KSBpbiBpdGVtc1wiXG4gICAgICAgIDpjbGFzcz1cInsgZG9uZSB9XCJcbiAgICAgICAgQGNsaWNrPVwidG9nZ2xlSXRlbShpbmRleClcIj5cbiAgICAgICAge3sgdGl0bGUgfX1cbiAgICA8L2xpPlxuICA8L3VsPlxuPC90ZW1wbGF0ZT5cblxuPHN0eWxlPlxuLmRvbmUge1xuICB0ZXh0LWRlY29yYXRpb246IGxpbmUtdGhyb3VnaDtcbn1cbjwvc3R5bGU+IiwiaW1wb3J0LW1hcC5qc29uIjoie1xuICBcImltcG9ydHNcIjoge1xuICAgIFwidnVlXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3Z1ZS5ydW50aW1lLmVzbS1icm93c2VyLmpzXCIsXG4gICAgXCJpbW1lclwiOiBcImh0dHBzOi8vdW5wa2cuY29tL2ltbWVyQDkuMC43L2Rpc3QvaW1tZXIuZXNtLmpzP21vZHVsZVwiXG4gIH1cbn0iLCJpbW1lci5qcyI6ImltcG9ydCBwcm9kdWNlIGZyb20gJ2ltbWVyJ1xuaW1wb3J0IHsgc2hhbGxvd1JlZiB9IGZyb20gJ3Z1ZSdcblxuZXhwb3J0IGZ1bmN0aW9uIHVzZUltbWVyKGJhc2VTdGF0ZSkge1xuICBjb25zdCBzdGF0ZSA9IHNoYWxsb3dSZWYoYmFzZVN0YXRlKVxuICBjb25zdCB1cGRhdGUgPSAodXBkYXRlcikgPT4ge1xuICAgIHN0YXRlLnZhbHVlID0gcHJvZHVjZShzdGF0ZS52YWx1ZSwgdXBkYXRlcilcbiAgfVxuXG4gIHJldHVybiBbc3RhdGUsIHVwZGF0ZV1cbn0ifQ==)
 
-### 상태 머신 (State Machine)
+### 상태 머신 (State Machine) {#state-machines}
 
 [상태 머신](https://en.wikipedia.org/wiki/Finite-state_machine)은 앱이 어떤 상태에 있을 수 있는 모든 가능한 상태와 한 상태에서 다른 상태로 전환할 수 있는 모든 가능한 방법을 설명하기 위한 모델입니다.
 단순한 컴포넌트에는 과도할 수 있지만, 복잡한 상태 흐름을 보다 강력하고 관리하기 쉽게 만드는 데 도움이 될 수 있습니다.
@@ -466,7 +457,7 @@ export function useMachine(options) {
 
 [온라인 연습장으로 실행하기](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHVzZU1hY2hpbmUgfSBmcm9tICcuL21hY2hpbmUuanMnXG4gIFxuY29uc3QgW3N0YXRlLCBzZW5kXSA9IHVzZU1hY2hpbmUoe1xuICBpZDogJ3RvZ2dsZScsXG4gIGluaXRpYWw6ICdpbmFjdGl2ZScsXG4gIHN0YXRlczoge1xuICAgIGluYWN0aXZlOiB7IG9uOiB7IFRPR0dMRTogJ2FjdGl2ZScgfSB9LFxuICAgIGFjdGl2ZTogeyBvbjogeyBUT0dHTEU6ICdpbmFjdGl2ZScgfSB9XG4gIH1cbn0pXG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8YnV0dG9uIEBjbGljaz1cInNlbmQoJ1RPR0dMRScpXCI+XG4gICAge3sgc3RhdGUubWF0Y2hlcyhcImluYWN0aXZlXCIpID8gXCJPZmZcIiA6IFwiT25cIiB9fVxuICA8L2J1dHRvbj5cbjwvdGVtcGxhdGU+IiwiaW1wb3J0LW1hcC5qc29uIjoie1xuICBcImltcG9ydHNcIjoge1xuICAgIFwidnVlXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3Z1ZS5ydW50aW1lLmVzbS1icm93c2VyLmpzXCIsXG4gICAgXCJ4c3RhdGVcIjogXCJodHRwczovL3VucGtnLmNvbS94c3RhdGVANC4yNy4wL2VzL2luZGV4LmpzP21vZHVsZVwiXG4gIH1cbn0iLCJtYWNoaW5lLmpzIjoiaW1wb3J0IHsgY3JlYXRlTWFjaGluZSwgaW50ZXJwcmV0IH0gZnJvbSAneHN0YXRlJ1xuaW1wb3J0IHsgc2hhbGxvd1JlZiB9IGZyb20gJ3Z1ZSdcblxuZXhwb3J0IGZ1bmN0aW9uIHVzZU1hY2hpbmUob3B0aW9ucykge1xuICBjb25zdCBtYWNoaW5lID0gY3JlYXRlTWFjaGluZShvcHRpb25zKVxuICBjb25zdCBzdGF0ZSA9IHNoYWxsb3dSZWYobWFjaGluZS5pbml0aWFsU3RhdGUpXG4gIGNvbnN0IHNlcnZpY2UgPSBpbnRlcnByZXQobWFjaGluZSlcbiAgICAub25UcmFuc2l0aW9uKChuZXdTdGF0ZSkgPT4gKHN0YXRlLnZhbHVlID0gbmV3U3RhdGUpKVxuICAgIC5zdGFydCgpXG4gIGNvbnN0IHNlbmQgPSAoZXZlbnQpID0+IHNlcnZpY2Uuc2VuZChldmVudClcblxuICByZXR1cm4gW3N0YXRlLCBzZW5kXVxufSJ9)
 
-### RxJS
+### RxJS {#rxjs}
 
 [RxJS](https://rxjs.dev/)는 비동기 이벤트 스트림 작업을 위한 라이브러리입니다.
 [VueUse](https://vueuse.org/) 라이브러리는 RxJS 스트림을 Vue의 반응형 시스템과 연결하기 위한 [`@vueuse/rxjs`](https://vueuse.org/rxjs/readme.html) 추가 기능을 제공합니다.

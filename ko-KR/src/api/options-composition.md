@@ -1,6 +1,6 @@
 # 옵션: 컴포지션 {#options-composition}
 
-## provide
+## provide {#provide}
 
 하위 컴포넌트에 주입(Inject)할 수 있도록 값을 제공(Provide)합니다.
 
@@ -59,7 +59,7 @@
 
 - **참고**: [Provide / Inject](/guide/components/provide-inject.html)
 
-## inject
+## inject {#inject}
 
 상위 컴포넌트 또는 [`app.provide()`](/api/application.html#app-provide)를 통해 앱에서 제공(Provide)된 값 중,
 주입(Inject)할 속성을 선언합니다.
@@ -182,7 +182,7 @@
 
 - **참고**: [Provide / Inject](/guide/components/provide-inject.html)
 
-## mixins
+## mixins {#mixins}
 
 현재 컴포넌트에 혼합할 옵션 객체의 배열입니다.
 
@@ -232,7 +232,7 @@
   // => 2
   ```
 
-## extends
+## extends {#extends}
 
 현재 컴포넌트를 확장(extend)할 "클래스 기반" 컴포넌트입니다.
 

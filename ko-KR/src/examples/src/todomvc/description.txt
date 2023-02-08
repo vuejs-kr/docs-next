@@ -1,2 +1,2 @@
-완벽히 구현된 TodoMVC
+A fully spec-compliant TodoMVC implementation
 https://todomvc.com/

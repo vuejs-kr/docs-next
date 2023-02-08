@@ -1,6 +1,6 @@
 # 컴포지션 API: <br>의존성 주입 {#composition-api-dependency-injection}
 
-## provide()
+## provide()  {#provide}
 
 하위 컴포넌트에 주입(Inject)할 수 있도록 값을 제공(Provide)합니다.
 
@@ -40,9 +40,9 @@
 
 - **참고**:
   - [가이드 - Provide/Inject](/guide/components/provide-inject.html)
-  - [가이드 - Provide/Inject에 타입 지정하기](/guide/typescript/composition-api.html#typing-provide-inject)
+  - [가이드 - Provide/Inject에 타입 지정하기](/guide/typescript/composition-api.html#typing-provide-inject) <sup class="vt-badge ts" />
 
-## inject()
+## inject() {#inject}
 
 상위 컴포넌트 또는 [`app.provide()`](/api/application.html#app-provide)를 통해 앱에서 제공(Provide)된 값을 주입(Inject)합니다.
 
@@ -128,4 +128,4 @@
 
 - **참고**:
   - [가이드 - Provide/Inject](/guide/components/provide-inject.html)
-  - [가이드 - Provide/Inject에 타입 지정하기](/guide/typescript/composition-api.html#typing-provide-inject)
+  - [가이드 - Provide/Inject에 타입 지정하기](/guide/typescript/composition-api.html#typing-provide-inject) <sup class="vt-badge ts" />

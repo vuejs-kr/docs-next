@@ -2,15 +2,16 @@ import { ref } from 'vue'
 
 export default {
   setup() {
-    const message = ref('안녕 Vue!')
+    const message = ref('Hello World!')
 
     function reverseMessage() {
-      // .value 속성을 통해 ref 값에 접근/변경합니다.
+      // Access/mutate the value of a ref via
+      // its .value property.
       message.value = message.value.split('').reverse().join('')
     }
 
     function notify() {
-      alert('탐색이 금지되었습니다.')
+      alert('navigation was prevented.')
     }
 
     return {

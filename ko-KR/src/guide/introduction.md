@@ -5,10 +5,23 @@ footer: false
 # 소개 {#introduction}
 
 :::info 당신은 현재 Vue 3에 대한 문서를 읽고 있습니다!
-
+- Vue 2 지원이 2023년 12월 31일에 종료됩니다. 자세한 내용은 [Vue 2 Extended LTS](https://v2.vuejs.org/lts/)에서 확인하세요. 
 - Vue 2 문서가 [v2.vuejs.org](https://kr.vuejs.org/index.html)로 이동되었습니다.
 - Vue 2에서 업그레이드 하시려면 [마이그레이션 가이드](https://v3-migration.vuejs.org/)를 확인하십시오. 
 :::
+
+<style src="@theme/styles/vue-mastery.css"></style>
+<div class="vue-mastery-link">
+  <a href="https://www.vuemastery.com/courses/" target="_blank">
+    <div class="banner-wrapper">
+      <img class="banner" alt="Vue Mastery banner" width="96px" height="56px" src="https://storage.googleapis.com/vue-mastery.appspot.com/flamelink/media/vuemastery-graphical-link-96x56.png" />
+    </div>
+    <p class="description">Learn Vue with video tutorials on <span>VueMastery.com</span></p>
+    <div class="logo-wrapper">
+        <img alt="Vue Mastery Logo" width="25px" src="https://storage.googleapis.com/vue-mastery.appspot.com/flamelink/media/vue-mastery-logo.png" />
+    </div>
+  </a>
+</div>
 
 ## Vue는 무엇일까요? {#what-is-vue}
 

@@ -6,15 +6,15 @@ outline: deep
 :::warning 현재 이 문서는 번역 작업이 진행중입니다
 :::
 
-# Render Functions & JSX
+# Render Functions & JSX {#render-functions-jsx}
 
 Vue recommends using templates to build applications in the vast majority of cases. However, there are situations where we need the full programmatic power of JavaScript. That's where we can use the **render function**.
 
 > If you are new to the concept of virtual DOM and render functions, make sure to read the [Rendering Mechanism](/guide/extras/rendering-mechanism.html) chapter first.
 
-## Basic Usage
+## Basic Usage {#basic-usage}
 
-### Creating Vnodes
+### Creating Vnodes {#creating-vnodes}
 
 Vue provides an `h()` function for creating vnodes:
 
@@ -80,7 +80,7 @@ vnode.key // null
 The full `VNode` interface contains many other internal properties, but it is strongly recommended to avoid relying on any properties other than the ones listed here. This avoids unintended breakage in case the internal properties are changed.
 :::
 
-### Declaring Render Functions
+### Declaring Render Functions {#declaring-render-functions}
 
 <div class="composition-api">
 
@@ -192,7 +192,7 @@ function Hello() {
 
 That's right, this is a valid Vue component! See [Functional Components](#functional-components) for more details on this syntax.
 
-### Vnodes Must Be Unique
+### Vnodes Must Be Unique {#vnodes-must-be-unique}
 
 All vnodes in the component tree must be unique. That means the following render function is invalid:
 
@@ -220,7 +220,7 @@ function render() {
 }
 ```
 
-## JSX / TSX
+## JSX / TSX {#jsx-tsx}
 
 [JSX](https://facebook.github.io/jsx/) is an XML-like extension to JavaScript that allows us to write code like this:
 
@@ -243,11 +243,11 @@ Although first introduced by React, JSX actually has no defined runtime semantic
 
 Vue's type definition also provides type inference for TSX usage. When using TSX, make sure to specify `"jsx": "preserve"` in `tsconfig.json` so that TypeScript leaves the JSX syntax intact for Vue JSX transform to process.
 
-## Render Function Recipes
+## Render Function Recipes {#render-function-recipes}
 
 Below we will provide some common recipes for implementing template features as their equivalent render functions / JSX.
 
-### `v-if`
+### `v-if` {#v-if}
 
 Template:
 
@@ -283,7 +283,7 @@ h('div', [this.ok ? h('div', 'yes') : h('span', 'no')])
 
 </div>
 
-### `v-for`
+### `v-for` {#v-for}
 
 Template:
 
@@ -339,7 +339,7 @@ h(
 
 </div>
 
-### `v-on`
+### `v-on` {#v-on}
 
 Props with names that start with `on` followed by an uppercase letter are treated as event listeners. For example, `onClick` is the equivalent of `@click` in templates.
 
@@ -365,7 +365,7 @@ h(
 </button>
 ```
 
-#### Event Modifiers
+#### Event Modifiers {#event-modifiers}
 
 For the `.passive`, `.capture`, and `.once` event modifiers, they can be concatenated after the event name using camelCase.
 
@@ -407,7 +407,7 @@ h('div', {
 <div onClick={withModifiers(() => {}, ['self'])} />
 ```
 
-### Components
+### Components {#components}
 
 To create a vnode for a component, the first argument passed to `h()` should be the component definition. This means when using render functions, it is unnecessary to register components - you can just use the imported components directly:
 
@@ -452,7 +452,7 @@ function render() {
 
 If a component is registered by name and cannot be imported directly (for example, globally registered by a library), it can be programmatically resolved by using the [`resolveComponent()`](/api/render-function.html#resolvecomponent) helper.
 
-### Rendering Slots
+### Rendering Slots {#rendering-slots}
 
 <div class="composition-api">
 
@@ -527,7 +527,7 @@ JSX equivalent:
 
 </div>
 
-### Passing Slots
+### Passing Slots {#passing-slots}
 
 Passing children to components works a bit differently from passing children to elements. Instead of an array, we need to pass either a slot function, or an object of slot functions. Slot functions can return anything a normal render function can return - which will always be normalized to arrays of vnodes when accessed in the child component.
 
@@ -561,7 +561,7 @@ JSX equivalent:
 
 Passing slots as functions allows them to be invoked lazily by the child component. This leads to the slot's dependencies being tracked by the child instead of the parent, which results in more accurate and efficient updates.
 
-### Built-in Components
+### Built-in Components {#built-in-components}
 
 [Built-in components](/api/built-in-components.html) such as `<KeepAlive>`, `<Transition>`, `<TransitionGroup>`, `<Teleport>` and `<Suspense>` must be imported for use in render functions:
 
@@ -592,7 +592,7 @@ export default {
 
 </div>
 
-### `v-model`
+### `v-model` {#v-model}
 
 The `v-model` directive is expanded to `modelValue` and `onUpdate:modelValue` props during template compilation—we will have to provide these props ourselves:
 
@@ -630,7 +630,7 @@ export default {
 
 </div>
 
-### Custom Directives
+### Custom Directives {#custom-directives}
 
 Custom directives can be applied to a vnode using [`withDirectives`](/api/render-function.html#withdirectives):
 
@@ -651,9 +651,9 @@ const vnode = withDirectives(h('div'), [
 
 If the directive is registered by name and cannot be imported directly, it can be resolved using the [`resolveDirective`](/api/render-function.html#resolvedirective) helper.
 
-## Functional Components
+## Functional Components {#functional-components}
 
-Functional components are an alternative form of component that don't have any state of their own. They are rendered without creating a component instance, bypassing the usual component lifecycle.
+Functional components are an alternative form of component that don't have any state of their own. They act like pure functions: props in, vnodes out. They are rendered without creating a component instance (i.e. no `this`), and without the usual component lifecycle hooks.
 
 To create a functional component we use a plain function, rather than an options object. The function is effectively the `render` function for the component.
 
@@ -690,5 +690,11 @@ MyComponent.emits = ['click']
 ```
 
 If the `props` option is not specified, then the `props` object passed to the function will contain all attributes, the same as `attrs`. The prop names will not be normalized to camelCase unless the `props` option is specified.
+
+For functional components with explicit `props`, [attribute fallthrough](/guide/components/attrs.html) works much the same as with normal components. However, for functional components that don't explicitly specify their `props`, only the `class`, `style`, and `onXxx` event listeners will be inherited from the `attrs` by default. In either case, `inheritAttrs` can be set to `false` to disable attribute inheritance:
+
+```js
+MyComponent.inheritAttrs = false
+```
 
 Functional components can be registered and consumed just like normal components. If you pass a function as the first argument to `h()`, it will be treated as a functional component.

@@ -21,7 +21,7 @@ const AsyncComp = defineAsyncComponent(() => {
 Promise의 `resolve` 콜백을 호출해 서버에서 가져온 정의되어 있는 컴포넌트를 반환합니다.
 로드가 실패했음을 나타내기 위해 `reject(reason)`를 호출할 수도 있습니다.
 
-[ES 모듈 동적으로 가져오기](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#dynamic-imports)도 Promise를 반환하므로, 대부분의 경우 `defineAsyncComponent`와 함께 사용합니다.
+[ES 모듈 동적으로 가져오기](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import)도 Promise를 반환하므로, 대부분의 경우 `defineAsyncComponent`와 함께 사용합니다.
 Vite 및 webpack과 같은 번들러에서도 이 문법을 지원하므로 Vue SFC를 가져오는 데 사용할 수 있습니다.
 
 ```js

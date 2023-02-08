@@ -1,4 +1,4 @@
-# \<script setup>
+# \<script setup> {#script-setup}
 
 `<script setup>`은 싱글 파일 컴포넌트(SFC) 내에서 컴포지션 API를 더 쉽게 읽거나 사용하기 위한 컴파일 타임 문법입니다.
 SFC에서 컴포지션 API를 사용하는 경우, 권장되는 문법입니다.
@@ -273,6 +273,13 @@ export default {
 // setup() 범위에서 실행(각 인스턴스에 대해)
 </script>
 ```
+
+동일한 컴포넌트에서 `<script setup>`과 `<script>`를 결합하는 지원은 위에서 설명한 시나리오로 제한됩니다. 구체적으로
+
+- `prop` 및 `emits`와 같이 `<script setup>`을 사용하여 이미 정의할 수 있는 옵션에 대해서는 별도의 `<script>` 섹션을 사용하지 마세요.
+- `<script setup>` 내에서 생성된 변수는 컴포넌트 인스턴스에 프로퍼티로 추가되지 않으므로 옵션 API에서 액세스할 수 없습니다. 이런 식으로 API를 혼합하는 것은 강력히 권장하지 않습니다.
+
+지원되지 않는 시나리오 중 하나에 해당하는 경우 `<script setup>`을 사용하는 대신 명시적인 [`setup()`](/api/composition-api-setup.html) 함수로 전환하는 것을 고려해야 합니다.
 
 ## 최상위 `await` {#top-level-await}
 

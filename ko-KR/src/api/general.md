@@ -2,9 +2,9 @@
 import CustomPreferenceSwitch from './CustomPreferenceSwitch.vue'
 </script>
 
-# Global API: General
+# Global API: General {#global-api-general}
 
-## version
+## version {#version}
 
 Vue의 현재 버전(문자열)을 반환합니다.
 
@@ -18,7 +18,7 @@ Vue의 현재 버전(문자열)을 반환합니다.
   console.log(version)
   ```
 
-## nextTick()
+## nextTick() {#nexttick}
 
 다음 DOM 업데이트 발생을 기다리는 유틸리티입니다.
 
@@ -101,7 +101,7 @@ Vue의 현재 버전(문자열)을 반환합니다.
 
 - **참고**: [`this.$nextTick()`](/api/component-instance.html#nexttick)
 
-## defineComponent()
+## defineComponent() {#definecomponent}
 
 타입 추론으로 Vue 컴포넌트를 정의하기 위한 타입 핼퍼입니다.
 
@@ -131,9 +131,27 @@ Vue의 현재 버전(문자열)을 반환합니다.
   type FooInstance = InstanceType<typeof Foo>
   ```
 
+  ### Note on webpack Treeshaking {#note-on-webpack-treeshaking}
+
+  `defineComponent()`는 함수 호출이기 때문에 웹팩과 같은 일부 빌드 도구에 부작용(Side-effect)을 일으키는 것처럼 보일 수 있습니다. 이렇게 하면 컴포넌트가 전혀 사용되지 않는 경우에도 트리가 흔들리는 것을 방지할 수 있습니다.
+
+  Because `defineComponent()` is a function call, it could look like that it would produce side-effects to some build tools, e.g. webpack. This will prevent the component from being tree-shaken even when the component is never used.
+
+  이 함수 호출이 트리 셰이크해도 안전하다는 것을 웹팩에 알리려면 함수 호출 앞에 `/*#__PURE__*/` 주석 표기법을 추가하면 됩니다:
+
+  To tell webpack that this function call is safe to be tree-shaken, you can add a `/*#__PURE__*/` comment notation before the function call:
+
+  ```js
+  export default /*#__PURE__*/ defineComponent(/* ... */)
+  ```
+
+  롤업(Vite에서 사용하는 기본 프로덕션 번들러)은 수동 어노테이션 없이도 `defineComponent()`가 실제로 부작용이 없는지 판단할 수 있을 만큼 똑똑하기 때문에 Vite를 사용하는 경우 이 작업이 필요하지 않습니다.
+
+  Note this is not necessary if you are using Vite, because Rollup (the underlying production bundler used by Vite) is smart enough to determine that `defineComponent()` is in fact side-effect-free without the need for manual annotations.
+
 - **참고**: [가이드 - Vue에서 타입스크립트 사용하기](/guide/typescript/overview.html#general-usage-notes)
 
-## defineAsyncComponent()
+## defineAsyncComponent() {#defineasynccomponent}
 
 렌더링될 때 지연 로드되는 비동기 컴포넌트를 정의합니다.
 인자는 로더 함수이거나 로드 동작의 고급 제어를 위한 옵션 객체일 수 있습니다.
@@ -165,7 +183,7 @@ Vue의 현재 버전(문자열)을 반환합니다.
 
 - **참고**: [가이드 - 비동기 컴포넌트](/guide/components/async.html)
 
-## defineCustomElement()
+## defineCustomElement() {#definecustomelement}
 
 이 메서드는 [`defineComponent`](#definecomponent)와 동일한 인자를 사용하지만,
 네이티브 [커스텀 엘리먼트](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) 클래스 생성자를 반환합니다.

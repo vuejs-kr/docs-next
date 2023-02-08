@@ -162,7 +162,7 @@ methods: {
 
 <div class="composition-api">
 
-[온라인 연습장으로 실행하기](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmZ1bmN0aW9uIHNheShtZXNzYWdlKSB7XG4gIGFsZXJ0KG1lc3NhZ2UpXG59XG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8YnV0dG9uIEBjbGljaz1cInNheSgn7JWI64WVJylcIj7slYjrhZXsnbTrnbzqs6Ag66eQ7ZWY6riwPC9idXR0b24+XG4gIDxidXR0b24gQGNsaWNrPVwic2F5KCfsnpjqsIAnKVwiPuyemOqwgOudvOqzoCDrp5DtlZjquLA8L2J1dHRvbj5cbjwvdGVtcGxhdGU+IiwiaW1wb3J0LW1hcC5qc29uIjoie1xuICBcImltcG9ydHNcIjoge1xuICAgIFwidnVlXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3Z1ZS5ydW50aW1lLmVzbS1icm93c2VyLmpzXCIsXG4gICAgXCJ2dWUvc2VydmVyLXJlbmRlcmVyXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3NlcnZlci1yZW5kZXJlci5lc20tYnJvd3Nlci5qc1wiXG4gIH1cbn0ifQ==)
+[온라인 연습장으로 실행하기](https://sfc.vuejs.org/#eNp9kN1uwjAMhV8l8g1Dos191aHtGXabm7QzUNb8yHaYKtR3X0KnCoHEnY/j88XHV/iMsb4khAZa7mmIohglxb3xh+R7GYJXbKc3h8z2iFt1NV4pOyLJ2jN+Nr7Viz0bsxB0cbSCRUnbJZHM+ejHof95N1CAmxOOY9hsDey/7KRuqtXL5AtXN+HqyfWdo9Xrp7CDwcVAUjkb6zMHn+PdFjf/D2ygWaKUXs5ftIGTSORGaz705ShnrgMdda5qSl4GhzWyqzoKv4yUwQZ2dwydmxekitB/IyG9Yj6MPnELNl91hvkPugmTrw==)
 
 </div>
 <div class="options-api">
@@ -250,9 +250,7 @@ methods: {
 ```
 
 ::: tip
-수식어를 명시한 순서대로 관련 코드가 생성되기 때문에 수식어를 사용할 때 순서가 중요합니다.
-따라서 `@click.prevent.self`를 사용하면 **해당 엘리먼트 및 자식 엘리먼트가 클릭 되는 경우 실행되는 기본 동작을 방지**합니다.
-반면, `@click.self.prevent`는 **해당 엘리먼트가 클릭 되는 경우에만 실행되는 기본 동작을 방지**합니다.
+수정자를 사용할 때는 관련 코드가 동일한 순서로 생성되므로 순서가 중요합니다. 따라서 `@click.prevent.self`를 사용하면 **요소 자체와 그 자식에 대한 클릭의 기본 동작**을 방지하는 반면, `@click.self.prevent`는 요소 자체에 대한 클릭의 기본 동작만 방지합니다.
 :::
 
 `.capture`, `.once` 및 `.passive` 수식어는 [네이티브 `addEventListener` 메서드의 옵션](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#options)을 반영합니다:
@@ -282,7 +280,7 @@ methods: {
 키보드 이벤트를 수신할 때, 특정 키를 확인해야 하는 경우가 많기 때문에, 키 수식어를 지원합니다:
 
 ```vue-html
-<!-- `key`가 `Enter`일 때만 `vm.submit()`을 호출합니다 -->
+<!-- `key`가 `Enter`일 때만 `submit`을 호출합니다 -->
 <input @keyup.enter="submit" />
 ```
 

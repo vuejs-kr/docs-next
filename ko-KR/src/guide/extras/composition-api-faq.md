@@ -5,13 +5,13 @@ outline: deep
 :::warning 현재 이 문서는 번역 작업이 진행중입니다
 :::
 
-# 컴포지션 API FAQ
+# 컴포지션 API FAQ {#composition-api-faq}
 
 :::tip
 이 FAQ는 Vue 2를 사용해본 경험이 있거나, 주로 옵션 API를 사용하고 있다는 것을 전제로 합니다.
 :::
 
-## 컴포지션 API란?
+## 컴포지션 API란? {#what-is-composition-api}
 
 컴포지션(Composition) API는 옵션을 선언하는 대신 `import`한 함수를 사용하여 Vue 컴포넌트를 작성할 수 있는 API 세트입니다.
 이것은 아래 API를 다루는 포괄적인 용어입니다:
@@ -22,10 +22,8 @@ outline: deep
 
 - [의존성 주입(Dependency Injection)](/api/composition-api-dependency-injection.html): `provide()` 및 `inject()`를 사용하면 반응형 API를 사용하는 동안 Vue의 의존성 주입 시스템을 활용할 수 있습니다.
 
-컴포지션 API는 Vue 3의 빌트인 기능이며,
-현재 공식적으로 유지 관리되는 [`@vue/composition-api`](https://github.com/vuejs/composition-api) 플러그인을 통해 Vue 2에서 사용할 수 있습니다.
-Vue 3는 싱글 파일 컴포넌트에서 [`<script setup>`](/api/sfc-script-setup.html) 문법과 함께 주로 사용됩니다.
-다음은 컴포지션 API를 사용하는 컴포넌트의 기본 예입니다:
+
+컴포지션 API는 Vue 3 및 [Vue 2.7](https://blog.vuejs.org/posts/vue-2-7-naruto.html)에 내장된 기능입니다. 이전 Vue 2 버전의 경우 공식적으로 유지 관리되는 [`@vue/composition-api`](https://github.com/vuejs/composition-api) 플러그인을 사용하십시오. Vue 3에서는 주로 단일 파일 컴포넌트에서 [`<스크립트 설정>`](/api/sfc-script-setup.html) 구문과 함께 사용되기도 합니다. 다음은 컴포지션 API를 사용하는 컴포넌트의 기본 예시입니다:
 
 ```vue
 <script setup>
@@ -55,9 +53,9 @@ onMounted(() => {
 
 Vue를 컴포지션 API와 함께 사용하는 방법을 배우고 싶다면 왼쪽 사이드바 상단의 토글을 사용하여 사이트 전체 API 환경 설정을 컴포지션 API로 설정한 다음 처음부터 가이드를 살펴보세요.
 
-## 왜 컴포지션 API인가요?
+## 왜 컴포지션 API인가요? {#why-composition-api}
 
-### 더 나은 로직 재사용성
+### 더 나은 로직 재사용성 {#better-logic-reuse}
 
 컴포지션 API의 가장 큰 장점은 [컴포저블 함수](/guide/reusability/composables.html)의 형태로 깔끔하고 효율적인 로직 재사용이 가능하다는 것입니다.
 옵션 API의 기본 로직 재사용 메커니즘인 [믹스인의 모든 단점](/guide/reusability/composables.html#vs-mixins)을 해결합니다.
@@ -65,7 +63,7 @@ Vue를 컴포지션 API와 함께 사용하는 방법을 배우고 싶다면 왼
 컴포지션 API의 로직 재사용 기능은 컴포저블 유틸리티의 계속 성장하는 컬렉션인 [VueUse](https://vueuse.org/)와 같은 인상적인 커뮤니티 프로젝트를 탄생시켰습니다.
 또한 상태 저장 타사 서비스 또는 라이브러리를 [불변 데이터](/guide/extras/reactivity-in-depth.html#immutable-data), [상태 머신](/guide/extras/reactivity-in-depth.html#state-machines) 및 [RxJS](https://vueuse.org/rxjs/readme.html#vueuse-rxjs)와 같은 Vue의 반응형 시스템에 쉽게 통합하기 위한 깔끔한 메커니즘 역할을 합니다.
 
-### 보다 유연한 코드 구성
+### 보다 유연한 코드 구성 {#more-flexible-code-organization}
 
 많은 사용자는 기본적으로 옵션 API를 사용하여 조직화된 코드를 작성하는 것을 좋아합니다.
 그러나 옵션 API는 단일 컴포넌트의 논리가 특정 복잡성 임계값을 초과하는 경우 심각한 제한을 가집니다.
@@ -101,7 +99,7 @@ Vue CLI의 GUI에서 폴더 탐색기 컴포넌트를 예로 들어 보겠습니
 또한, 추출을 위해 더 이상 코드를 섞을 필요가 없기 때문에 최소한의 노력으로 코드 그룹을 외부 파일로 이동할 수 있습니다.
 리팩토링을 위한 소모 시간 감소는 대규모 코드베이스에서 장기적인 유지 관리의 핵심입니다.
 
-### 더 나은 타입 추론
+### 더 나은 타입 추론 {#better-type-inference}
 
 최근 몇 년 동안 점점 더 많은 프론트엔드 개발자들이 [TypeScript](https://www.typescriptlang.org/)를 채택하고 있습니다.
 이는 우리가 보다 강력한 코드를 작성하고, 보다 자신 있게 변경하고, IDE 지원을 통해 뛰어난 개발 경험을 제공하는 데 도움이 되기 때문입니다.
@@ -109,27 +107,24 @@ Vue CLI의 GUI에서 폴더 탐색기 컴포넌트를 예로 들어 보겠습니
 유형 추론이 옵션 API와 함께 작동하도록 하기 위해 일부 [터무니없이 복잡한 유형 구조](https://github.com/vuejs/core/blob/44b95276f5c086e1d88fa3c686a5f39eb5bb7821/packages/runtime-core/src/componentPublicInstance.ts#L132-L165)를 구현해야 했습니다.
 이 모든 노력에도 불구하고 옵션 API에 대한 유형 추론은 여전히 믹스인 및 의존성 주입에 대해 분해될 수 있습니다.
 
-이로 인해 TS와 함께 Vue를 사용하려는 많은 개발자가 `vue-class-component`로 구동되는 클래스 API에 의존하게 되었습니다.
-그러나 클래스 기반 API는 2019년 Vue 3가 개발될 때 2단계 제안에 불과했던 언어 기능인 ES 데코레이터에 크게 의존합니다.
-불안정한 제안에 공식 API를 기반으로 하는 것은 너무 위험하다고 느꼈습니다.
-그 이후로 데코레이터 제안은 또 다른 완전한 점검을 거쳤으며 이 글을 쓰는 시점에서 아직 3단계에 도달하지 않았습니다.
-또한 클래스 기반 API는 옵션 API와 유사한 로직 재사용 및 구성 제한이 있습니다.
+이로 인해 TS와 함께 Vue를 사용하고자 하는 많은 개발자가 `vue-class-component`로 구동되는 클래스 API에 의존하게 되었습니다. 그러나 클래스 기반 API는 2019년 Vue 3 개발 당시 2단계 제안에 불과했던 언어 기능인 ES 데코레이터에 크게 의존합니다. 저희는 불안정한 제안을 기반으로 공식 API를 만드는 것은 너무 위험하다고 생각했습니다. 그 이후로 데코레이터 제안은 또 한 번의 전면적인 개편을 거쳐 2022년에 마침내 3단계에 도달했습니다. 또한 클래스 기반 API는 옵션 API와 마찬가지로 로직 재사용 및 구성 제한이 있습니다.
+
 
 이에 비해 컴포지션 API는 기본적으로 유형 친화적인 일반 변수와 함수를 주로 사용합니다.
 컴포지션 API로 작성된 코드는 수동 유형 힌트가 거의 필요 없이 전체 유형 추론을 즐길 수 있습니다.
 대부분의 경우 컴포지션 API 코드는 TypeScript와 일반 JavaScript에서 거의 동일하게 보입니다.
 이것은 또한 일반 JavaScript 사용자가 부분적인 유형 추론의 이점을 누릴 수 있도록 합니다.
 
-### 더 작은 프로덕션 번들 및 더 적은 오버헤드
+### 더 작은 프로덕션 번들 및 더 적은 오버헤드 {#smaller-production-bundle-and-less-overhead}
 
 컴포지션 API와 `<script setup>`으로 작성된 코드는 옵션 API에 비해 더 효율적이고 축소하기 쉽습니다.
 이는 `<script setup>` 컴포넌트의 템플릿이 `<script setup>` 코드의 동일한 범위에 인라인된 함수로 컴파일되기 때문입니다.
 `this`의 속성 접근과 달리 컴파일된 템플릿 코드는 인스턴스 프락시 없이 `<script setup>` 내부에 선언된 변수에 직접 접근할 수 있습니다.
 이것은 모든 변수 이름을 안전하게 단축할 수 있기 때문에 더 나은 축소로 이어집니다.
 
-## 옵션 API와의 관계
+## 옵션 API와의 관계 {#relationship-with-options-api}
 
-### Trade-offs
+### Trade-offs {#trade-offs}
 
 옵션 API에서 넘어온 일부 사용자들는 그들의 컴포지션 API 코드가 덜 구성적이라 생각하고,
 컴포지션 API가 코드 구성 측면에서 "더 나쁘다"고 결론짓습니다.
@@ -145,7 +140,7 @@ Vue CLI의 GUI에서 폴더 탐색기 컴포넌트를 예로 들어 보겠습니
 이와 관련하여 컴포지션 API는 더 나은 장기적인(거시적인) 확장성을 제공합니다.
 
 
-### 컴포지션 API는 모든 사용 사례를 포괄합니까?
+### 컴포지션 API는 모든 사용 사례를 포괄합니까? {#does-composition-api-cover-all-use-cases}
 
 상태 저장 로직 측면에서 그렇습니다.
 컴포지션 API를 사용할 때 여전히 필요할 수 있는 옵션은 `props`, `emit`, `name` 및 `inheritAttrs`뿐입니다.
@@ -155,23 +150,23 @@ Vue CLI의 GUI에서 폴더 탐색기 컴포넌트를 예로 들어 보겠습니
 Vue에서 옵션 API 관련 코드를 삭제하는 [컴파일 타임 플래그](https://github.com/vuejs/core/tree/main/packages/vue#bundler-build-feature-flags)를 통해 프로덕션 번들에서 몇 kb를 줄일 수 있습니다.
 이것은 의존성의 Vue 컴포넌트에도 영향을 미칩니다.
 
-### 두 API를 함께 사용할 수 있습니까?
+### 두 API를 함께 사용할 수 있습니까? {#can-i-use-both-apis-together}
 
 예. 옵션 API 컴포넌트에서 [`setup()`](/api/composition-api-setup.html) 옵션을 통해 컴포지션 API를 사용할 수 있습니다.
 
 그러나 컴포지션 API로 작성된 새 기능 또는 외부 라이브러리와 통합해야 하는 기존 옵션 API 코드베이스가 있는 경우에만 그렇게 하는 것이 좋습니다.
 
-### 옵션 API가 더 이상 사용되지 않습니까?
+### 옵션 API가 더 이상 사용되지 않습니까? {#will-options-api-be-deprecated}
 
 아니요, 그렇게 할 계획이 없습니다.
 옵션 API는 Vue의 필수적인 부분이며 많은 개발자들이 Vue를 좋아하는 이유입니다.
 또한 컴포지션 API의 많은 이점은 대규모 프로젝트에서만 나타나고, 옵션 API는 복잡성이 낮은 여러 시나리오에서 여전히 확실한 선택이라는 것을 알고 있습니다.
 
-## 클래스 API와의 관계
+## 클래스 API와의 관계 {#relationship-with-class-api}
 
 컴포지션 API가 추가 로직 재사용 및 코드 구성 이점과 함께 뛰어난 TypeScript 통합을 제공한다는 점을 감안할 때 Vue 3에서 Class API를 더 이상 사용하지 않는 것이 좋습니다.
 
-## React 훅과의 비교
+## React 훅과의 비교 {#comparison-with-react-hooks}
 
 컴포지션 API는 React 훅과 동일한 수준의 로직 구성 기능을 제공하지만 몇 가지 중요한 차이점이 있습니다.
 

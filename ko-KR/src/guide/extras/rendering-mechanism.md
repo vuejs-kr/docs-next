@@ -2,13 +2,13 @@
 outline: deep
 ---
 
-# 렌더링 메커니즘
+# 렌더링 메커니즘 {#rendering-mechanism}
 
 Vue는 템플릿을 어떻게 가져와 실제 DOM 노드로 변환합니까?
 Vue는 이러한 DOM 노드를 어떻게 효율적으로 업데이트합니까?
 Vue의 내부 렌더링 메커니즘에 대해 자세히 살펴봄으로써 이 질문들에 대해 설명하고자 합니다.
 
-## 가상 DOM
+## 가상 DOM {#virtual-dom}
 
 Vue의 렌더링 시스템이 기반으로 하는 "가상 DOM(VDOM)"이라는 용어에 대해 들어본 적이 있을 것입니다.
 
@@ -45,7 +45,7 @@ const vnode = {
 
 가상 DOM의 주요 장점은 개발자가 직접 DOM 조작을 렌더러에 맡기고 선언적 방식으로 원하는 UI 구조를 프로그래밍 방식으로 생성, 검사 및 구성할 수 있는 기능을 제공한다는 것입니다.
 
-## 렌더 파이프라인
+## 렌더 파이프라인 {#render-pipeline}
 
 고수준에서 이것은 Vue 컴포넌트가 마운트될 때 발생합니다:
 
@@ -66,7 +66,7 @@ const vnode = {
 <!-- https://www.figma.com/file/elViLsnxGJ9lsQVsuhwqxM/Rendering-Mechanism -->
 <!-- https://www.figma.com/file/MqOcrlmGfjZHttSOG8T7lP/Rendering-Mechanism-(ko-kr) -->
 
-## 템플릿 vs. 렌더 함수
+## 템플릿 vs. 렌더 함수 {#templates-vs-render-functions}
 
 Vue 템플릿은 가상 DOM 렌더 함수로 컴파일됩니다.
 Vue는 또한 템플릿 컴파일 단계를 건너뛰고 렌더 함수를 직접 작성할 수 있는 API를 제공합니다.
@@ -85,7 +85,7 @@ Vue는 또한 템플릿 컴파일 단계를 건너뛰고 렌더 함수를 직접
 렌더링 함수는 일반적으로 매우 동적인 렌더링 로직을 처리해야 하는 재사용 가능한 컴포넌트에서만 사용됩니다.
 렌더 함수 사용법은 [렌더 함수 & JSX](./render-function)에서 자세히 설명합니다.
 
-## Compiler-Informed Virtual DOM
+## Compiler-Informed Virtual DOM {#compiler-informed-virtual-dom}
 
 React와 대부분의 다른 가상 DOM 구현은 순전히 런타임입니다.
 조정(reconciliation) 알고리즘에 할당되는 가상 DOM 트리에 대해 어떠한 가정할 수 없으므로,
@@ -104,7 +104,7 @@ Vue에서 프레임워크는 컴파일러와 런타임을 모두 제어합니다
 아래에서는 가상 DOM의 런타임 성능을 향상시키기 위해,
 Vue 템플릿 컴파일러가 수행하는 몇 가지 주요 최적화에 대해 설명합니다.
 
-### 정적 호이스팅 (Static Hoisting)
+### 정적 호이스팅 (Static Hoisting) {#static-hoisting}
 
 템플릿에는 동적 바인딩이 포함되지 않은 부분이 있는 경우가 많습니다:
 
@@ -127,7 +127,7 @@ Vue 컴파일러는 vnode 생성 함수 호출 시 자동으로 호이스트하�
 또한 초기 마운트 시 해당 DOM 노드를 캐시합니다.
 동일한 컨텐츠가 앱의 다른 곳에서 재사용되는 경우 기본 `cloneNode()`를 사용하여 새 DOM 노드가 생성되며 이는 매우 효율적입니다.
 
-### 패치 플래그
+### 패치 플래그 {#patch-flags}
 
 동적 바인딩이 있는 단일 엘리먼트의 경우 컴파일 시 많은 정보를 추론할 수도 있습니다:
 
@@ -181,7 +181,7 @@ export function render() {
 
 따라서 런타임은 루트 프래그먼트에 대한 자식 순서 조정을 완전히 건너뛸 수 있습니다:
 
-### Tree Flattening
+### Tree Flattening {#tree-flattening}
 
 이전 예제에서 생성된 코드를 다시 살펴보면,
 반환된 가상 DOM 트리의 루트가 `createElementBlock()` 호출로 생성되었음을 알 수 있습니다:
@@ -238,7 +238,7 @@ div (block root)
 자식 블록은 부모 블록의 동적 자손 배열 내에서 추적됩니다.
 이것은 상위 블록에 대한 안정적인 구조를 유지합니다.
 
-### SSR 하이드레이션(hydration)에서의 영향
+### SSR 하이드레이션(hydration)에서의 영향 {#impact-on-ssr-hydration}
 
 패치 플래그와 트리 병합은 Vue의 [SSR 하이드레이션](/guide/scaling-up/ssr.html#client-hydration) 성능도 크게 향상시킵니다.
 

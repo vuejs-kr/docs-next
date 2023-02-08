@@ -29,7 +29,7 @@ export default {
       if (this.stats.length > 3) {
         this.stats.splice(this.stats.indexOf(stat), 1)
       } else {
-        alert("더 이상 삭제할 수 없습니다!")
+        alert("Can't delete more!")
       }
     }
   }

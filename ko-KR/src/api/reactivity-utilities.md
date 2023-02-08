@@ -1,6 +1,6 @@
 # 반응형 API: 유틸리티 {#reactivity-api-utilities}
 
-## isRef()
+## isRef() {#isref}
 
 값이 ref 객체인지 확인합니다.
 
@@ -21,7 +21,7 @@
   }
   ```
 
-## unref()
+## unref() {#unref}
 
 인자가 ref이면 내부 값을 반환하고, 그렇지 않으면 인자 자체를 반환합니다.
 이것은 `val = isRef(val) ? val.value : val`과 같습니다.
@@ -41,7 +41,7 @@
   }
   ```
 
-## toRef()
+## toRef() {#toref}
 
 반응형 객체의 속성에 대한 ref를 만드는 데 사용할 수 있습니다.
 생성된 ref는 소스 속성과 동기화됩니다.
@@ -104,12 +104,12 @@
   props 변경에 대한 일반적인 제한 사항이 계속 적용됩니다.
   ref에 새 값을 할당하려는 시도는 prop을 직접 수정하려는 것과 동일하며 허용되지 않습니다.
   이런 경우에는 [`computed()`](./reactivity-core.html#computed)에 `get`과 `set`을 선언하여 사용하는 것으로 구현할 수 있습니다.
-  자세한 내용은 [컴포넌트를 `v-model`과 함께 사용하기](/guide/components/events.html#usage-with-v-model) 가이드 참고.
+  자세한 내용은 [컴포넌트를 `v-model`과 함께 사용하기](/guide/components/v-model.html) 가이드 참고.
 
   `toRef()`는 소스 속성이 현재 존재하지 않더라도 사용 가능한 ref를 반환합니다.
   이렇게 하면 [`toRefs`](#torefs)에서 선택하지 않는 선택적 속성으로 작업할 수 있습니다.
 
-## toRefs()
+## toRefs() {#torefs}
 
 반응형 객체를 일반 객체로 변환하고,
 변환된 일반 객체의 각 속성은 원본 객체(반응형 객체)의 속성이 ref된 것 입니다.
@@ -174,7 +174,7 @@
   `toRefs`는 호출 시 소스 객체에서 열거 가능한 속성만 참조로 생성합니다.
   아직 존재하지 않을 수 있는 속성에 대한 참조를 생성하려면 [`toRef`](#toref)를 사용해야 합니다.
 
-## isProxy()
+## isProxy() {#isproxy}
 
 객체가 [`reactive()`](./reactivity-core.html#reactive), [`readonly()`](./reactivity-core.html#readonly), [`shallowReactive()`](./reactivity-advanced.html#shallowreactive) 또는 [`shallowReadonly()`](./reactivity-advanced.html#shallowreadonly)에 의해 생성된 프락시인지 확인합니다.
 
@@ -184,7 +184,7 @@
   function isProxy(value: unknown): boolean
   ```
 
-## isReactive()
+## isReactive() {#isreactive}
 
 객체가 [`reactive()`](./reactivity-core.html#reactive) 또는 [`shallowReactive()`](./reactivity-advanced.html#shallowreactive)에 의해 생성된 프락시인지 확인합니다.
 
@@ -194,9 +194,12 @@
   function isReactive(value: unknown): boolean
   ```
 
-## isReadonly()
+## isReadonly() {#isreadonly}
 
-객체가 [`readonly()`](./reactivity-core.html#readonly) 또는 [`shallowReadonly()`](./reactivity-advanced.html#shallowreadonly)에 의해 생성된 프락시인지 확인합니다.
+전달된 값이 읽기 전용 객체인지 확인합니다. 읽기 전용 객체의 속성은 변경할 수 있지만 전달된 객체를 통해 직접 할당할 수는 없습니다.
+
+[`readonly()`](./reactivity-core.html#readonly) 및 [`shallowReadonly()`](./reactivity-advanced.html#shallowreadonly)로 생성된 프록시는 모두 읽기 전용으로 간주되며, `set` 함수가 없는 [`computed()`](./reactivity-core.html#computed) 참조와 마찬가지로 마찬가지입니다.
+
 
 - **타입**:
 

@@ -514,7 +514,7 @@ prop 유효성 검사에 실패하면 Vue는 콘솔에 경고를 출력합니다
 
 <div class="composition-api">
 
-[타입 기반 props 선언](/api/sfc-script-setup.html#typescript-only-features) 시, Vue는 타입 문법을 적절한 prop 선언으로 컴파일하기 위해 최선을 다할 것입니다.
+[타입 기반 props 선언](/api/sfc-script-setup.html#typescript-only-features) <sup class="vt-badge ts" /> 시, Vue는 타입 문법을 적절한 prop 선언으로 컴파일하기 위해 최선을 다할 것입니다.
 예를 들어 `defineProps<{ msg: string }>`는 `{ msg: { type: String, required: true }}`로 컴파일됩니다.
 
 </div>
@@ -574,7 +574,7 @@ export default {
 
 </div>
 
-`author` prop 값이 `new Person`으로 생성되었는지 확인합니다.
+Vue는 ``instanceof Person`를 사용하여 `author` prop의 값이 실제로 `Person` 클래스의 인스턴스인지 확인합니다.
 
 ## 불리언 캐스팅 {#boolean-casting}
 

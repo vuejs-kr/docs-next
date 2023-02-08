@@ -5,13 +5,13 @@ import Colors from './demos/Colors.vue'
 import AnimateWatcher from './demos/AnimateWatcher.vue'
 </script>
 
-# 애니메이션 기법
+# 애니메이션 기법  {#animation-techniques}
 
 Vue는 진입(enter)/진출(leave) 및 목록 전환 처리를 위해 [`<Transition>`](/guide/built-ins/transition.html) 및 [`<TransitionGroup>`](/guide/built-ins/transition-group.html) 컴포넌트를 제공합니다.
 그러나 Vue 앱에서도 웹에서 애니메이션을 사용하는 다른 방법이 많이 있습니다.
 여기에서는 몇 가지 추가적인 기법에 대해 설명합니다.
 
-## 클래스 기반 애니메이션
+## 클래스 기반 애니메이션 {#class-based-animations}
 
 DOM에 진입/진출하지 않는 엘리먼트의 경우, CSS 클래스를 동적으로 추가하여 애니메이션을 트리거할 수 있습니다:
 
@@ -90,7 +90,7 @@ export default {
 
 <DisabledButton />
 
-## 상태 기반 애니메이션
+## 상태 기반 애니메이션 {#state-driven-animations}
 
 예를 들어 상호 작용이 발생하는 동안 엘리먼트에 스타일을 바인딩하여 값을 보간하여 일부 트랜지션 효과를 적용할 수 있습니다.
 예를 들면 다음과 같습니다:
@@ -150,7 +150,7 @@ export default {
 
 <ElasticHeader />
 
-## 감시자로 애니메이션 만들기
+## 감시자로 애니메이션 만들기 {#animating-with-watchers}
 
 약간의 창의성으로 우리는 감시자를 사용하여 수치 상태를 기반으로 무엇이든 애니메이션할 수 있습니다.
 예를 들어 숫자 자체에 애니메이션을 적용할 수 있습니다:
@@ -169,6 +169,11 @@ const tweened = reactive({
 watch(number, (n) => {
   gsap.to(tweened, { duration: 0.5, number: Number(n) || 0 })
 })
+```
+
+```vue-html
+Type a number: <input v-model.number="number" />
+<p>{{ tweened.number.toFixed(0) }}</p>
 ```
 
 </div>
@@ -192,12 +197,11 @@ export default {
 }
 ```
 
-</div>
-
 ```vue-html
-숫자 입력: <input v-model.number="number" />
-<p>{{ tweened.number.toFixed(0) }}</p>
-```
+Type a number: <input v-model.number="number" />
+<p>{{ tweened.toFixed(0) }}</p>
+
+</div>
 
 <AnimateWatcher />
 

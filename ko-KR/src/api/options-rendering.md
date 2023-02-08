@@ -1,6 +1,6 @@
 # 옵션: 렌더링 {#options-rendering}
 
-## template
+## template {#template}
 
 컴포넌트의 문자열 템플릿입니다.
 
@@ -34,7 +34,7 @@
   자세한 내용은 [가이드 - 보안](/guide/best-practices/security.html#rule-no-1-never-use-non-trusted-templates) 참고.
   :::
 
-## render
+## render {#render}
 
 컴포넌트의 가상 DOM 트리를 프로그래밍 방식으로 반환하는 함수입니다.
 
@@ -74,7 +74,7 @@
   - [가이드 - 렌더링 메커니즘](/guide/extras/rendering-mechanism.html)
   - [가이드 - Render Functions](/guide/extras/render-function.html)
 
-## compilerOptions
+## compilerOptions {#compileroptions}
 
 컴포넌트의 템플릿의 런타임 컴파일러 옵션을 구성합니다.
 

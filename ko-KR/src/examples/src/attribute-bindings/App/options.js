@@ -1,7 +1,7 @@
 export default {
   data() {
     return {
-      message: '안녕 Vue!',
+      message: 'Hello World!',
       isRed: true,
       color: 'green'
     }

@@ -5,7 +5,7 @@ import { ref } from 'vue'
 const awesome = ref(true)
 </script>
 
-## `v-if`
+## `v-if` {#v-if}
 
 `v-if` 디렉티브는 조건부로 블록을 렌더링하는 데 사용됩니다.
 블록은 디렉티브 표현식이 truthy 값을 반환하는 경우에만 렌더링됩니다.
@@ -14,7 +14,7 @@ const awesome = ref(true)
 <h1 v-if="awesome">Vue는 정말 멋지죠!</h1>
 ```
 
-## `v-else`
+## `v-else` {#v-else}
 
 `v-else` 디렉티브를 사용하여 `v-if`에 대한 "else 블록"을 나타낼 수 있습니다:
 
@@ -45,7 +45,7 @@ const awesome = ref(true)
 `v-else` 엘리먼트는 `v-if` 또는 `v-else-if` 엘리먼트 바로 다음에 와야 합니다.
 그렇지 않으면 인식되지 않습니다.
 
-## `v-else-if`
+## `v-else-if` {#v-else-if}
 
 `v-else-if`는 이름에서 알 수 있듯이 `v-if`에 대한 "else if 블록" 역할을 합니다.
 여러 번 연결될 수도 있습니다:
@@ -84,7 +84,7 @@ const awesome = ref(true)
 
 `v-else` 및 `v-else-if`는 `<template>`에서도 사용할 수 있습니다.
 
-## `v-show`
+## `v-show` {#v-show}
 
 엘리먼트를 조건부로 표시하는 다른 옵션은 `v-show` 디렉티브입니다.
 사용법은 대체로 동일합니다:
@@ -98,7 +98,7 @@ const awesome = ref(true)
 
 `v-show`는 `<template>` 엘리먼트를 지원하지 않으며 `v-else`와 상호작용하지 않습니다.
 
-## `v-if` vs `v-show`
+## `v-if` vs `v-show` {#v-if-vs-v-show}
 
 `v-if`는 "실제" 조건부 렌더링입니다.
 왜냐하면 조건부 블록이 전환될 경우, 블록 내 이벤트 리스너와 자식 컴포넌트가 제대로 제거되거나 재생성되기 때문입니다.
@@ -112,7 +112,7 @@ const awesome = ref(true)
 일반적으로 `v-if`는 전환 비용이 더 높고, `v-show`는 초기 렌더링 비용이 더 높습니다.
 따라서 매우 자주 전환해야 하는 경우 `v-show`를, 실행 중에 조건이 변경되지 않는 경우 `v-if`를 사용하는 것이 좋습니다.
 
-## `v-if` with `v-for`
+## `v-if` with `v-for` {#v-if-with-v-for}
 
 :::warning 참고
 `v-if`와 `v-for`를 함께 사용하는 것은 **권장되지 않습니다**.

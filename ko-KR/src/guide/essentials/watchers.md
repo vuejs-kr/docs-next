@@ -20,7 +20,7 @@ export default {
   watch: {
     // 질문이 변경될 때마다 이 함수가 실행됩니다
     question(newQuestion, oldQuestion) {
-      if (newQuestion.indexOf('?') > -1) {
+      if (newQuestion.includes('?')) {
         this.getAnswer()
       }
     }
@@ -242,7 +242,7 @@ watch(
 콜백은 감시된 소스가 변경되기 전까지 호출되지 않습니다.
 그러나 어떤 경우에는 동일한 콜백 로직이 열성적으로 실행되기를 원할 수 있습니다.
 예를 들어 최초 데이터가 구성된 후 콜백이 실행되기를 원할 수 있습니다.
-
+<div class="options-api">
 `handler` 함수와 `immediate: true` 옵션으로 구성된 객체를 사용해 감시자를 선언함으로써 콜백이 즉시 실행되도록 할 수 있습니다:
 
 ```js
@@ -263,7 +263,23 @@ export default {
 }
 ```
 
+
+핸들러 함수의 초기 실행은  `created` 훅 직전에 발생합니다. Vue는 이미 `data`, `computed`, `method` 옵션을 처리했을 것이므로 첫 번째 호출에서 해당 속성을 사용할 수 있습니다.
+
 </div>
+
+<div class="composition-api">
+
+`immediate: true` 옵션을 전달하여 워처의 콜백이 즉시 실행되도록 강제할 수 있습니다:
+
+```js
+watch(source, (newValue, oldValue) => {
+  // 즉시 실행된 다음 `source`가 변경되면 다시 실행됩니다.
+}, { immediate: true })
+```
+
+</div>
+
 
 <div class="composition-api">
 

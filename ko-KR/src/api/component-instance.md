@@ -6,7 +6,7 @@
 이 페이지에 나열된 모든 속성은 읽기 전용입니다(`$data`의 중첩 속성 제외).
 :::
 
-## $data
+## $data {#data}
 
 [`data`](./options-state.html#data) 옵션에서 반환된 객체로 컴포넌트에 의해 반응형이 됩니다.
 컴포넌트 인스턴스는 데이터 객체의 속성 접근을 프락시합니다.
@@ -22,7 +22,7 @@
   }
   ```
 
-## $props
+## $props {#props}
 
 현재 컴포넌트의 처리(선언, 할당 및 초기화)된 props를 나타내는 객체입니다.
 
@@ -39,7 +39,7 @@
   [`props`](./options-state.html#props) 옵션을 통해 선언된 props만 포함됩니다.
   컴포넌트 인스턴스는 props 객체의 속성 접근을 프락시합니다.
 
-## $el
+## $el {#el}
 
 컴포넌트 인스턴스가 관리하는 루트 DOM 노드입니다.
 
@@ -67,7 +67,7 @@
   `$el`보다 [템플릿 참조](/guide/essentials/template-refs.html)를 사용하는 것이 권장됩니다.
   :::
 
-## $options
+## $options {#options}
 
 현재 컴포넌트 인스턴스를 인스턴스화하는 데 사용된, 처리된 컴포넌트 옵션입니다.
 
@@ -101,7 +101,7 @@
 
 - **참고**: [`app.config.optionMergeStrategies`](/api/application.html#app-config-optionmergestrategies)
 
-## $parent
+## $parent {#parent}
 
 현재 인스턴스에 부모 인스턴스가 있는 경우,
 부모 인스턴스를 나타냅니다.
@@ -115,7 +115,7 @@
   }
   ```
 
-## $root
+## $root {#root}
 
 현재 컴포넌트 트리의 루트 컴포넌트 인스턴스입니다.
 현재 인스턴스에 부모가 없으면, 값은 현재 인스턴스 자체가 됩니다.
@@ -128,7 +128,7 @@
   }
   ```
 
-## $slots
+## $slots {#slots}
 
 부모 컴포넌트로부터 전달된 [slots](/guide/components/slots.html)을 나타내는 객체입니다.
 
@@ -156,7 +156,7 @@
 
 - **참고**: [Render Functions - Rendering Slots](/guide/extras/render-function.html#rendering-slots)
 
-## $refs
+## $refs {#refs}
 
 [템플릿 참조](/guide/essentials/template-refs.html)를 통해 등록된,
 DOM 엘리먼트 및 컴포넌트 인스턴스 객체입니다.
@@ -174,7 +174,7 @@ DOM 엘리먼트 및 컴포넌트 인스턴스 객체입니다.
   - [가이드 - 템플릿 참조](/guide/essentials/template-refs.html)
   - [특수 속성 - ref](./built-in-special-attributes.md#ref)
 
-## $attrs
+## $attrs {#attrs}
 
 컴포넌트의 폴스루 속성이 포함된 객체입니다.
 
@@ -200,7 +200,7 @@ DOM 엘리먼트 및 컴포넌트 인스턴스 객체입니다.
 
   - [가이드 - 폴스루 속성](/guide/components/attrs.html)
 
-## $watch()
+## $watch() {#watch}
 
 감시자를 생성하기 위한 명령형 API.
 
@@ -244,7 +244,7 @@ DOM 엘리먼트 및 컴포넌트 인스턴스 객체입니다.
   - **`deep`**: 소스가 객체인 경우, 깊은 변경사항에서도 콜백이 실행되도록 합니다.
     참고: [깊은 감시자](/guide/essentials/watchers.html#deep-watchers).
   - **`flush`**: 콜백의 발생(flush) 타이밍을 조정합니다.
-    참고: [콜백 실행 타이밍](/guide/essentials/watchers.html#callback-flush-timing).
+    참고: [콜백 실행 타이밍](/guide/essentials/watchers.html#callback-flush-timing),  [`watchEffect()`](/api/reactivity-core.html#watcheffect).
   - **`onTrack / onTrigger`**: 감시자의 의존성을 디버그합니다.
     참고: [감시자 디버깅](/guide/extras/reactivity-in-depth.html#watcher-debugging).
 
@@ -288,7 +288,7 @@ DOM 엘리먼트 및 컴포넌트 인스턴스 객체입니다.
   - [옵션 - `watch`](/api/options-state.html#watch)
   - [가이드 - 감시자](/guide/essentials/watchers.html)
 
-## $emit()
+## $emit() {#emit}
 
 현재 인스턴스에서 커스텀 이벤트를 트리거합니다.
 추가적인 인자는 리스너의 콜백 함수로 전달됩니다.
@@ -319,7 +319,7 @@ DOM 엘리먼트 및 컴포넌트 인스턴스 객체입니다.
   - [가이드 - 컴포넌트 이벤트](/guide/components/events.html)
   - [옵션 - `emits`](./options-state.html#emits)
 
-## $forceUpdate()
+## $forceUpdate() {#forceupdate}
 
 컴포넌트 인스턴스를 강제로 다시 렌더링합니다.
 
@@ -338,7 +338,7 @@ DOM 엘리먼트 및 컴포넌트 인스턴스 객체입니다.
   필요할 수 있는 유일한 경우는 고급 반응형 API를 사용하여,
   비반응형 컴포넌트 상태를 명시적으로 생성하는 경우입니다.
 
-## $nextTick()
+## $nextTick() {#nexttick}
 
 전역 [`nextTick()`](./general.html#nexttick)가 인스턴스에 바인딩된 버전.
 

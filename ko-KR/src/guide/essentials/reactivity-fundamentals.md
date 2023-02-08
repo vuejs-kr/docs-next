@@ -114,8 +114,7 @@ export default {
 ```vue-html
 <div>{{ state.count }}</div>
 ```
-
-마찬가지로 동일한 범위에서 반응형 상태를 변경하는 함수를 선언하고 상태와 함께 메서드로 노출할 수 있습니다:
+마찬가지로 반응형 상태를 변경하는 함수를 같은 범위에서 선언하고 상태와 함께 메서드로 노출할 수 있습니다:
 
 ```js{7-9,14}
 import { reactive } from 'vue'
@@ -229,11 +228,9 @@ export default {
 
 </div>
 
-### DOM 업데이트 시기 {#dom-update-timing}
+### DOM 업데이트 타이밍 {#dom-update-timing}
 
-반응형 상태를 변경하면 DOM이 자동으로 업데이트됩니다.
-그러나 DOM 업데이트는 동기적으로 적용되지 않는다는 점에 유의해야 합니다.
-대신 Vue는 업데이트 주기의 "다음 틱(tick)"까지 버퍼링하여 상태 변경을 여러 번 수행했어도 각 컴포넌트가 한 번만 업데이트되도록 합니다.
+반응 상태를 변경하면 DOM이 자동으로 업데이트됩니다. 하지만 DOM 업데이트는 동기적으로 적용되지 않는다는 점에 유의해야 합니다. 대신 Vue는 업데이트 주기의 "다음 틱"까지 버퍼링하여 얼마나 많은 상태 변경을 수행하든 각 컴포넌트가 한 번만 업데이트되도록 합니다.
 
 상태 변경 후, DOM 업데이트가 완료될 때까지 기다리려면 [nextTick()](/api/general.html#nexttick) 전역 API를 사용할 수 있습니다:
 
@@ -317,7 +314,7 @@ function mutateDeeply() {
 
 </div>
 
-반응형이 루트 수준에서만 추적되는 [얕은 반응형 객체](/api/reactivity-advanced.html#shallowreactive)를 명시적으로 생성하는 것도 가능하지만, 일반적으로 고급 사용 사례에서만 필요합니다.
+루트 수준에서만 반응성을 추적하는 [얕은 반응형 객체](/api/reactivity-advanced.html#shallowreactive)를 명시적으로 생성할 수도 있지만, 이는 일반적으로 고급 사용 사례에서만 필요한 경우입니다.
 
 <div class="composition-api">
 
@@ -477,8 +474,7 @@ function increment() {
 
 [온라인 연습장으로 실행하기](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcblxuY29uc3QgY291bnQgPSByZWYoMClcblxuZnVuY3Rpb24gaW5jcmVtZW50KCkge1xuICBjb3VudC52YWx1ZSsrXG59XG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8YnV0dG9uIEBjbGljaz1cImluY3JlbWVudFwiPnt7IGNvdW50IH19PC9idXR0b24+XG48L3RlbXBsYXRlPiIsImltcG9ydC1tYXAuanNvbiI6IntcbiAgXCJpbXBvcnRzXCI6IHtcbiAgICBcInZ1ZVwiOiBcImh0dHBzOi8vc2ZjLnZ1ZWpzLm9yZy92dWUucnVudGltZS5lc20tYnJvd3Nlci5qc1wiXG4gIH1cbn0ifQ==)
 
-언래핑은 ref가 템플릿 렌더 컨텍스트의 최상위 속성인 경우에만 적용됩니다.
-예를 들어 `foo`는 최상위 속성이지만 `object.foo`는 그렇지 않습니다.
+언래핑은 참조가 템플릿 렌더링 컨텍스트에서 최상위 프로퍼티인 경우에만 적용됩니다. 예를 들어 `foo`는 최상위 프로퍼티이지만 `object.foo`는 최상위 프로퍼티가 아닙니다.
 
 따라서 아래와 같은 객체가 주어졌을 때:
 

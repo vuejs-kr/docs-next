@@ -102,7 +102,7 @@ export default {
 ```
 
 `lang`은 모든 블록에 적용할 수 있습니다.
-예를 들어 `<style>`에서는 [SASS](https://sass-lang.com/)를, `<template>`에서는 [Pug](https://pugjs.org/api/getting-started.html)를 사용할 수 있습니다:
+예를 들어 `<style>`에서는 [Sass](https://sass-lang.com/)를, `<template>`에서는 [Pug](https://pugjs.org/api/getting-started.html)를 사용할 수 있습니다:
 
 ```vue-html
 <template lang="pug">

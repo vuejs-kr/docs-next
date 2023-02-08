@@ -4,7 +4,7 @@
 수명주기 훅의 여러 사용법에 대해서는 [가이드 - 수명주기 훅](/guide/essentials/lifecycle.html)을 참고하십시오.
 :::
 
-## beforeCreate
+## beforeCreate {#beforecreate}
 
 인스턴스가 초기화된 후 호출됩니다.
 
@@ -22,7 +22,7 @@
 
   컴포지션 API의 `setup()` 훅은 옵션 API의 어떤 훅보다 먼저 (`beforeCreate()` 훅보다 빨리) 호출됩니다.
 
-## created
+## created {#created}
 
 인스턴스가 모든 상태 관련 옵션 처리를 완료한 후 호출됩니다.
 
@@ -39,7 +39,7 @@
   반응형 데이터, 계산된 속성, 메서드 및 감시자가 설정된 후, 이 훅이 호출되면 됩니다.
   그러나 마운팅 단계가 시작되지 않았으므로, `$el` 속성을 아직 사용할 수 없습니다.
 
-## beforeMount
+## beforeMount {#beforemount}
 
 컴포넌트가 마운트되기 직전 호출됩니다.
 
@@ -59,7 +59,7 @@
 
   **이 훅은 서버 사이드 렌더링 중에 호출되지 않습니다**.
 
-## mounted
+## mounted {#mounted}
 
 컴포넌트가 마운트된 후 호출됩니다.
 
@@ -85,7 +85,7 @@
 
   **이 훅은 서버 사이드 렌더링 중에 호출되지 않습니다**.
 
-## beforeUpdate
+## beforeUpdate {#beforeupdate}
 
 반응형 상태 변경에 의한 컴포넌트 DOM 트리 업데이트 직전 호출됩니다.
 
@@ -105,7 +105,7 @@
 
   **이 훅은 서버 사이드 렌더링 중에 호출되지 않습니다**.
 
-## updated
+## updated {#updated}
 
 반응형 상태 변경에 의한 컴포넌트 DOM 트리 업데이트 후 호출됩니다.
 
@@ -132,7 +132,7 @@
   `updated` 훅에서 컴포넌트 상태를 변경하면, 무한 업데이트 루프가 발생할 수 있습니다.
   :::
 
-## beforeUnmount
+## beforeUnmount {#beforeunmount}
 
 컴포넌트 인스턴스가 마운트 해제되기 직전 호출됩니다.
 
@@ -150,7 +150,7 @@
 
   **이 훅은 서버 사이드 렌더링 중에 호출되지 않습니다**.
 
-## unmounted
+## unmounted {#unmounted}
 
 컴포넌트가 마운트 해제된 후 호출됩니다.
 
@@ -174,7 +174,7 @@
 
   **이 훅은 서버 사이드 렌더링 중에 호출되지 않습니다**.
 
-## errorCaptured
+## errorCaptured {#errorcaptured}
 
 자식 컴포넌트에서 전파된 에러가 캡쳐되었을 때 호출됩니다.
 
@@ -218,8 +218,7 @@
     [`app.config.errorHandler`](/api/application.html#app-config-errorhandler)가 정의된 경우,
     최종적으로 이곳으로 전파되므로 한 곳에서 서비스 분석 및 보고 작업을 할 수 있습니다.
 
-  - 컴포넌트의 상속 또는 부모 체인에 `errorCaptured` 훅이 여러 개 있는 경우,
-    모두 동일한 에러를 호출합니다.
+  - 컴포넌트의 상속 체인 또는 부모 체인에 여러 개의 `errorCaptured` 후크가 존재하는 경우, 모든 후크는 동일한 오류에 대해 아래에서 위로 순서대로 호출됩니다. 이는 네이티브 DOM 이벤트의 버블링 메커니즘과 유사합니다.
 
   - `errorCaptured` 훅 자체에서 에러가 발생하면,
     이 에러와 원래 캡처된 에러가 모두 `app.config.errorHandler`로 전송됩니다.
@@ -228,9 +227,13 @@
     이것은 본질적으로 "이 에러는 처리되었으므로 무시되어야 합니다."를 의미합니다.
     따라서 이후 단계적으로 전파되어야 할 `errorCaptured` 훅 또는 `app.config.errorHandler`에 이 에러로 인한 호출 동작은 없습니다.
 
-## renderTracked <sup class="vt-badge dev-only" />
+## renderTracked <sup class="vt-badge dev-only" /> {#rendertracked}
 
 컴포넌트의 렌더 이펙트에 의해 반응형 의존성이 추적됐을 때, 호출됩니다.
+
+**이 훅은 개발 모드 전용이며 서버 측 렌더링 중에는 호출되지 않습니다.**
+
+**This hook is development-mode-only and not called during server-side rendering.**
 
 - **타입**:
 
@@ -249,7 +252,7 @@
 
 - **참고**: [가이드 - 반응형 심화](/guide/extras/reactivity-in-depth.html)
 
-## renderTriggered <sup class="vt-badge dev-only" />
+## renderTriggered <sup class="vt-badge dev-only" /> {#rendertriggered}
 
 컴포넌트의 렌더 이펙트가 반응형 의존성에 의해 다시 실행되도록 트리거된 경우, 호출됩니다.
 
@@ -273,7 +276,7 @@
 
 - **참고**: [가이드 - 반응형 심화](/guide/extras/reactivity-in-depth.html)
 
-## activated
+## activated {#activated}
 
 [`<KeepAlive>`](/api/built-in-components.html#keepalive)로 캐시된 컴포넌트 인스턴스가 DOM 트리의 일부로 삽입된 후 호출됩니다.
 
@@ -290,7 +293,7 @@
 
 - **참고**: [가이드 - 캐시된 인스턴스의 수명주기](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
 
-## deactivated
+## deactivated {#deactivated}
 
 [`<KeepAlive>`](/api/built-in-components.html#keepalive)로 캐시된 컴포넌트 인스턴스가 DOM 트리에서 제거된 후 호출됩니다.
 
@@ -306,7 +309,7 @@
 
 - **참고**: [가이드 - 캐시된 인스턴스의 수명주기](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
 
-## serverPrefetch <sup class="vt-badge" data-text="SSR 전용" />
+## serverPrefetch <sup class="vt-badge" data-text="SSR 전용" /> {#serverprefetch}
 
 컴포넌트 인스턴스가 서버에서 렌더링 되기 전에 완료(resolve)되어야 하는 비동기 함수입니다.
 

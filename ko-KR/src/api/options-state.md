@@ -1,6 +1,6 @@
 # 옵션: 상태 {#options-state}
 
-## data
+## data {#data}
 
 컴포넌트 인스턴스의 초기 반응형 상태를 반환하는 함수입니다.
 
@@ -56,7 +56,7 @@
 
 - **참고**: [반응형 심화](/guide/extras/reactivity-in-depth.html)
 
-## props
+## props {#props}
 
 컴포넌트의 props를 선언합니다.
 
@@ -143,9 +143,11 @@
   }
   ```
 
-- **참고**: [Props](/guide/components/props.html)
+- **참고**: 
+  - [가이드 - Props](/guide/components/props.html)
+  - [가이드 - 컴포넌트 Props에 타입 적용하기](/guide/typescript/options-api.html#typing-component-props) <sup class="vt-badge ts" />
 
-## computed
+## computed {#computed}
 
 컴포넌트 인스턴스에 노출될 계산된 속성을 선언합니다.
 
@@ -225,9 +227,11 @@
   }
   ```
 
-- **참고**: [계산된 속성](/guide/essentials/computed.html)
+- **참고**: 
+  - [가이드  - 계산된 속성](/guide/essentials/computed.html)
+  - [가이드  - 계산된 속성에 타입 적용하기](/guide/typescript/options-api.html#typing-computed-properties) <sup class="vt-badge ts" />
 
-## methods
+## methods {#methods}
 
 컴포넌트 인스턴스에서 사용할 메서드를 선언합니다.
 
@@ -272,7 +276,7 @@
 
 - **참고**: [이벤트 핸들링](/guide/essentials/event-handling.html)
 
-## watch
+## watch {#watch}
 
 데이터 변경 시 호출될 감시 콜백을 선언합니다.
 
@@ -328,7 +332,7 @@
   - **`deep`**: 객체 또는 배열인 경우 내부 깊숙한 곳에서 변경 사항 발생 시에도 콜백이 실행되도록 합니다.
     참고: [깊은 감시자](/guide/essentials/watchers.html#deep-watchers).
   - **`flush`**: 콜백 실행 타이밍을 조정합니다.
-    참고: [콜백 실행 타이밍](/guide/essentials/watchers.html#callback-flush-timing).
+    참고: [콜백 실행 타이밍](/guide/essentials/watchers.html#callback-flush-timing), [`watchEffect()`](/api/reactivity-core.html#watcheffect).
   - **`onTrack / onTrigger`**: 감시자의 의존성을 디버그합니다.
     참고: [감시자 디버깅](/guide/extras/reactivity-in-depth.html#watcher-debugging).
 
@@ -405,7 +409,7 @@
 
 - **참고**: [감시자](/guide/essentials/watchers.html)
 
-## emits
+## emits {#emits}
 
 컴포넌트에서 내보낼 커스텀 이벤트를 선언합니다.
 
@@ -474,9 +478,11 @@
   }
   ```
 
-- **참고:** [폴스루 속성](/guide/components/attrs.html)
+- **참고:**
+  - [가이드 - 폴스루 속성](/guide/components/attrs.html)
+  - [가이드 - 컴포넌트 Emits에 타입 적용하기](/guide/typescript/options-api.html#typing-component-emits) <sup class="vt-badge ts" />
 
-## expose
+## expose {#expose}
 
 부모 컴포넌트 인스턴스에서 템플릿 참조로 접근할 때,
 노출될 공용 속성을 선언합니다.

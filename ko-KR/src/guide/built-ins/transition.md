@@ -536,7 +536,7 @@ Vue의 컴포넌트 시스템을 통해 트랜지션을 재사용할 수 있습�
 
 ## 등장 트랜지션 {#transition-on-appear}
 
-노드의 초기 렌더링에도 트랜지션을 적용하려면 `appear` 속성을 추가할 수 있습니다:
+노드의 초기 렌더링에도 트랜지션을 적용하려면 `appear` prop을 추가할 수 있습니다:
 
 ```vue-html
 <Transition appear>
@@ -546,7 +546,7 @@ Vue의 컴포넌트 시스템을 통해 트랜지션을 재사용할 수 있습�
 
 ## 엘리먼트 간 트랜지션 {#transition-between-elements}
 
-`v-if`/`v-show`로 엘리먼트를 전환하는 것 외에도 `v-if`/`v-else`/`v-else-if`를 사용하여 두 엘리먼트 사이를 전환할 수도 있습니다.
+`v-if` / `v-show`로 요소를 토글하는 것 외에도, 특정 순간에 표시되는 요소가 하나만 있는지 확인하는 한 `v-if`/`v-else`/`v-else-if`를 사용하여 두 요소 사이를 전환할 수도 있습니다:
 
 ```vue-html
 <Transition>

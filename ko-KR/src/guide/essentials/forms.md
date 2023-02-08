@@ -84,8 +84,8 @@ const multiSelected = ref([])
 
 <div class="demo">
   <span>여러 줄 메세지:</span>
-  <p style="white-space: pre-line;">{{ message }}</p>
-  <textarea v-model="message" placeholder="여러 줄을 추가해보세요"></textarea>
+  <p style="white-space: pre-line;">{{ multilineText }}</p>
+  <textarea v-model="multilineText" placeholder="여러 줄을 추가해보세요"></textarea>
 </div>
 
 <div class="composition-api">
@@ -465,7 +465,4 @@ export default {
 
 > Vue의 컴포넌트에 아직 익숙하지 않은 경우, 지금은 건너뛰어도 됩니다.
 
-HTML의 기본 제공되는 인풋 유형이 항상 요구 사항을 충족하는 것은 아닙니다.
-다행히 Vue 컴포넌트를 사용하면 완전히 사용자 정의된 동작으로 재사용 가능한 인풋을 빌드할 수 있습니다.
-`v-model`은 이러한 인풋에서도 작동합니다!
-자세한 내용은 컴포넌트 가이드에서 [`v-model`과 함께 사용](/guide/components/events.html#usage-with-v-model)에 대해 읽어보세요.
+HTML의 기본 입력 유형이 항상 사용자의 요구를 충족하는 것은 아닙니다. 다행히도 Vue 컴포넌트를 사용하면 완전히 사용자 정의된 동작으로 재사용 가능한 입력을 구축할 수 있습니다. 이러한 입력은 `v-model`에서도 작동합니다! 자세한 내용은 컴포넌트 가이드의 [`v-model`과 함께 사용하기](/guide/components/v-model.html)를 참조하세요.

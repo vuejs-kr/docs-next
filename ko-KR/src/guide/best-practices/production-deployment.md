@@ -6,7 +6,7 @@
 
 - 일반적인 에러 및 위험에 대한 경고
 - props/이벤트 유효성 검사
-- 반응성 디버깅 훅
+- [반응성 디버깅 훅](/guide/extras/reactivity-in-depth.html#reactivity-debugging)
 - Devtools 통합
 
 그러나 이러한 기능은 프로덕션에선 필요 없습니다.

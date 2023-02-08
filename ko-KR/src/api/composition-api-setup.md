@@ -45,11 +45,7 @@ export default {
 [자동으로 얕은 언래핑](/guide/essentials/reactivity-fundamentals.html#deep-reactivity)되므로, 접근할 때 `.value`를 사용할 필요가 없습니다.
 또한 `this`에서 접근할 때, 같은 방식으로 언래핑 됩니다.
 
-:::tip
-`setup()` 자체에는 컴포넌트 인스턴스에 대한 접근 권한이 없습니다.
-`setup()` 내부에서 `this`의 값은 `undefined`입니다.
-Composition API에서 노출한 값은 Options API에서 접근할 수 있지만, 그 반대는 불가능합니다.
-:::
+`setup()`은 객체를 _동기적으로_ 반환해야 합니다. `async setup()`을 사용할 수 있는 유일한 경우는 컴포넌트가 [Suspense](../guide/built-in/suspense.html) 컴포넌트의 자손인 경우입니다.
 
 ## Props에 접근하기 {#accessing-props}
 
@@ -89,7 +85,7 @@ export default {
 }
 ```
 
-## Setup Context
+## Setup Context {#setup-context}
 
 `setup` 함수에 전달되는 두 번째 인자는 **Setup Context** 객체입니다.
 컨텍스트 객체는 `setup` 내부에서 유용할 수 있는 다른 값을 노출합니다:

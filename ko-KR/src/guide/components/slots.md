@@ -35,9 +35,7 @@
 최종적으로 렌더링된 DOM은:
 
 ```html
-<button class="fancy-btn">
-  클릭하기!
-</button>
+<button class="fancy-btn">클릭하기!</button>
 ```
 
 <div class="composition-api">
@@ -61,11 +59,9 @@ FancyButton('클릭하기!')
 
 // FancyButton은 자체 템플릿에서 슬롯 컨텐츠를 렌더링합니다.
 function FancyButton(slotContent) {
-  return (
-    `<button class="fancy-btn">
+  return `<button class="fancy-btn">
       ${slotContent}
-    </button>`
-  )
+    </button>`  
 }
 ```
 
@@ -108,10 +104,9 @@ Vue 컴포넌트의 슬롯 메커니즘은 [네이티브 웹 컴포넌트 `<slot
 
 여기서 두 <span v-pre>`{{ message }}`</span> 이중 중괄호 문법은 동일한 컨텐츠를 렌더링합니다.
 
-슬롯 컨텐츠는 자식 컴포넌트의 데이터에 접근할 수 **없습니다**.
-일반적으로 다음을 기억하십시오:
+슬롯 콘텐츠에는 하위 컴포넌트의 데이터에 대한 액세스 권한이 **없습니다**. Vue 템플릿의 표현식은 JavaScript의 어휘 범위와 일치하도록 정의된 범위에만 액세스할 수 있습니다. 다시 말해
 
-> 상위 템플릿의 모든 항목은 상위 범위에서 컴파일됩니다. 자식 템플릿의 모든 것은 자식 범위에서 컴파일됩니다.
+> 상위 템플릿의 표현식은 상위 범위에만 액세스할 수 있고 하위 템플릿의 표현식은 하위 범위에만 액세스할 수 있습니다.
 
 ## 대체 컨텐츠 {#fallback-content}
 
@@ -307,13 +302,11 @@ BaseLayout({
 
 // <BaseLayout>은 그것들을 각자 해당하는 위치에 렌더링합니다.
 function BaseLayout(slots) {
-  return (
-    `<div class="container">
+  return `<div class="container">
       <header>${slots.header}</header>
       <main>${slots.default}</main>
       <footer>${slots.footer}</footer>
     </div>`
-  )
 }
 ```
 
@@ -393,12 +386,10 @@ MyComponent({
 
 function MyComponent(slots) {
   const greetingMessage = '안녕'
-  return (
-    `<div>${
-      // props로 슬롯 함수를 호출합니다!
-      slots.default({ text: greetingMessage, count: 1 })
-    }</div>`
-  )
+    return `<div>${
+    // call the slot function with props!
+    slots.default({ text: greetingMessage, count: 1 })
+  }</div>`
 }
 ```
 
@@ -443,6 +434,39 @@ function MyComponent(slots) {
 
 슬롯의 `name`은 예약되어 있기 때문에 props에 포함되지 않습니다.
 따라서 `headerProps`의 결과는 `{ message: '안녕' }`이 됩니다.
+
+
+명명된 슬롯과 기본 범위 슬롯을 혼합하는 경우, 기본 슬롯에 명시적인 `<template>` 태그를 사용해야 합니다. 컴포넌트에 `v-slot` 지시어를 직접 배치하려고 하면 컴파일 오류가 발생합니다. 이는 기본 슬롯의 소품 범위에 대한 모호함을 피하기 위한 것입니다. 예를 들어
+
+```vue-html
+<!-- This template won't compile -->
+<template>
+  <MyComponent v-slot="{ message }">
+    <p>{{ message }}</p>
+    <template #footer>
+      <!-- message belongs to the default slot, and is not available here -->
+      <p>{{ message }}</p>
+    </template>
+  </MyComponent>
+</template>
+```
+
+기본 슬롯에 명시적인 `<template>` 태그를 사용하면 다른 슬롯에서 `message` 소품을 사용할 수 없음을 명확히 알 수 있습니다:
+
+```vue-html
+<template>
+  <MyComponent>
+    <!-- Use explicit default slot -->
+    <template #default="{ message }">
+      <p>{{ message }}</p>
+    </template>
+
+    <template #footer>
+      <p>Here's some contact info</p>
+    </template>
+  </MyComponent>
+</template>
+```
 
 
 ### 멋진 목록 예제 {#fancy-list-example}

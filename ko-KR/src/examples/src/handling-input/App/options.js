@@ -1,7 +1,7 @@
 export default {
   data() {
     return {
-      message: '안녕 Vue!'
+      message: 'Hello World!'
     }
   },
   methods: {
@@ -9,7 +9,7 @@ export default {
       this.message = this.message.split('').reverse().join('')
     },
     notify() {
-      alert('탐색이 금지되었습니다.')
+      alert('navigation was prevented.')
     }
   }
 }

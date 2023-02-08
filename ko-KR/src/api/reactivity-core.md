@@ -7,7 +7,7 @@
 - [반응형 심화](/guide/extras/reactivity-in-depth.html)
   :::
 
-## ref()
+## ref() {#ref}
 
 전달된 값을 갖게 되고, 이것을 가리키는 단일 속성 `.value`가 있는 변경 가능한 반응형 ref 객체를 반환합니다.
 
@@ -50,9 +50,9 @@
 
 - **참고**:
   - [가이드 - `ref()`를 사용한 반응형 변수](/guide/essentials/reactivity-fundamentals.html#reactive-variables-with-ref)
-  - [가이드 - `ref()`에 타입 지정하기](/guide/typescript/composition-api.html#typing-ref)
+  - [가이드 - `ref()`에 타입 지정하기](/guide/typescript/composition-api.html#typing-ref) <sup class="vt-badge ts" />
 
-## computed()
+## computed() {#computed}
 
 getter 함수를 사용하며, getter로부터 반환된 값을 읽기 전용 반응형 [ref](#ref) 객체로 반환합니다.
 `get`과 `set` 함수가 있는 객체를 사용하면, 쓰기 가능한 ref 객체를 반환합니다.
@@ -121,9 +121,9 @@ getter 함수를 사용하며, getter로부터 반환된 값을 읽기 전용 �
 - **참고**:
   - [가이드 - 계산된 속성](/guide/essentials/computed.html)
   - [가이드 - 계산된 속성 디버깅](/guide/extras/reactivity-in-depth.html#computed-debugging)
-  - [가이드 - `computed()`에 타입 지정하기](/guide/typescript/composition-api.html#typing-computed)
+  - [가이드 - `computed()`에 타입 지정하기](/guide/typescript/composition-api.html#typing-computed) <sup class="vt-badge ts" />
 
-## reactive()
+## reactive() {#reactive}
 
 객체의 반응형 프락시(proxy)를 반환합니다.
 
@@ -201,9 +201,9 @@ getter 함수를 사용하며, getter로부터 반환된 값을 읽기 전용 �
 
 - **참고**:
   - [가이드 - 반응형 기초](/guide/essentials/reactivity-fundamentals.html)
-  - [가이드 - `reactive()`에 타입 지정하기](/guide/typescript/composition-api.html#typing-reactive)
+  - [가이드 - `reactive()`에 타입 지정하기](/guide/typescript/composition-api.html#typing-reactive) <sup class="vt-badge ts" />
 
-## readonly()
+## readonly() {#readonly}
 
 객체(반응형 또는 일반) 또는 [ref](#ref)를 가져와서 원본에 대한 읽기 전용 프락시를 반환합니다.
 
@@ -241,7 +241,7 @@ getter 함수를 사용하며, getter로부터 반환된 값을 읽기 전용 �
   copy.count++ // 경고!
   ```
 
-## watchEffect()
+## watchEffect() {#watcheffect}
 
 즉시 함수를 실행하고 의존성을 반응적으로 추적하며, 의존성이 변경될 때마다 다시 실행합니다.
 
@@ -274,6 +274,8 @@ getter 함수를 사용하며, getter로부터 반환된 값을 읽기 전용 �
 
   두 번째 인자는 이펙트의 발생(flush) 타이밍을 조정하거나,
   이펙트의 의존성을 디버그하는 데 사용할 수 있는 선택적 옵션 객체입니다.
+
+  기본적으로 와처는 컴포넌트 렌더링 직전에 실행됩니다. `flush: 'post'`를 설정하면 컴포넌트 렌더링 이후까지 와처가 지연됩니다. 자세한 내용은 [콜백 플러시 타이밍](/guide/essentials/watchers.html#callback-flush-timing)을 참조하세요. 드물지만 캐시 무효화와 같이 반응형 의존성이 변경될 때 즉시 와처를 트리거해야 하는 경우가 있을 수 있습니다. 이는 `flush: 'sync'`를 사용하여 수행할 수 있습니다. 그러나 이 설정은 여러 프로퍼티가 동시에 업데이트되는 경우 성능 및 데이터 일관성 문제를 일으킬 수 있으므로 주의해서 사용해야 합니다.
 
   반환 값은 이펙트가 다시 실행되지 않도록 호출할 수 있는 핸들 함수입니다.
 
@@ -329,15 +331,15 @@ getter 함수를 사용하며, getter로부터 반환된 값을 읽기 전용 �
   - [가이드 - 감시자](/guide/essentials/watchers.html#watcheffect)
   - [가이드 - 감시자 디버깅](/guide/extras/reactivity-in-depth.html#watcher-debugging)
 
-## watchPostEffect()
+## watchPostEffect() {#watchposteffect}
 
 `flush: 'post'` 옵션 값을 사용하는 [`watchEffect()`](#watcheffect)의 별칭.
 
-## watchSyncEffect()
+## watchSyncEffect() {#watchsynceffect}
 
 `flush: 'sync'` 옵션 값을 사용하는 [`watchEffect()`](#watcheffect)의 별칭.
 
-## watch()
+## watch() {#watch}
 
 하나 이상의 반응형 데이터 소스를 감시하고, 소스가 변경되면 콜백 함수를 호출합니다.
 
@@ -410,7 +412,7 @@ getter 함수를 사용하며, getter로부터 반환된 값을 읽기 전용 �
   - **`deep`**: 소스가 객체인 경우, 깊은 변경사항에서도 콜백이 실행되도록 합니다.
     참고: [깊은 감시자](/guide/essentials/watchers.html#deep-watchers).
   - **`flush`**: 콜백의 발생(flush) 타이밍을 조정합니다.
-    참고: [콜백 실행 타이밍](/guide/essentials/watchers.html#callback-flush-timing).
+    참고: [콜백 실행 타이밍](/guide/essentials/watchers.html#callback-flush-timing), [`watchEffect()`](/api/reactivity-core.html#watcheffect).
   - **`onTrack / onTrigger`**: 감시자의 의존성을 디버그합니다.
     참고: [감시자 디버깅](/guide/extras/reactivity-in-depth.html#watcher-debugging).
 
@@ -482,9 +484,33 @@ getter 함수를 사용하며, getter로부터 반환된 값을 읽기 전용 �
     flush: 'post',
     onTrack(e) {
       debugger
+    },
+    onTrigger(e) {
+      debugger
     }
   })
   ```
+
+  와처 종료하기:
+
+  ```js
+  const stop = watch(source, callback)
+
+  // 더이상 필요하지 않을때:
+  stop()
+  ```
+
+  부작용(Side effect) 제거:
+
+  ```js
+  watch(id, async (newId, oldId, onCleanup) => {
+    const { response, cancel } = doAsyncWork(newId)
+    //`id`가 변경되면 `cancel`이 호출되어 이전 요청이 아직 완료되지 않은 경우 취소합니다.    
+    onCleanup(cancel)
+    data.value = await response
+  })
+  ```
+
 
 - **참고**:
 

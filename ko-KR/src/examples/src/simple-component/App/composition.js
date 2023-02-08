@@ -1,15 +1,15 @@
 import { ref } from 'vue'
-import ListItem from './ListItem.vue'
+import TodoItem from './TodoItem.vue'
 
 export default {
   components: {
-    ListItem
+    TodoItem
   },
   setup() {
     const groceryList = ref([
-      { id: 0, text: '채소' },
-      { id: 1, text: '치즈' },
-      { id: 2, text: '인간이 먹을 수 있는 모든 것' }
+      { id: 0, text: 'Vegetables' },
+      { id: 1, text: 'Cheese' },
+      { id: 2, text: 'Whatever else humans are supposed to eat' }
     ])
 
     return {

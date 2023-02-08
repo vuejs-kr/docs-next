@@ -51,6 +51,13 @@ Vue는 수동 최적화가 크게 필요하지 않은 가장 일반적인 사용
 포괄적인 정리 내용은 [web.dev 가이드](https://web.dev/fast/)를 확인하세요.
 여기서는 주로 Vue에 특화된 기술에 초점을 맞출 것입니다.
 
+### 올바른 아키텍처 선택 {#choosing-the-right-architecture}
+
+사용 사례가 페이지 로드 성능에 민감한 경우 순수한 클라이언트 측 SPA로 전송하지 마세요. 사용자가 보고자 하는 콘텐츠가 포함된 HTML을 서버가 직접 전송해야 합니다. 순수 클라이언트 측 렌더링은 콘텐츠에 도달하는 시간이 느립니다. 서버 측 렌더링(SSR)](/guide/extras/ways-of-use-vue.html#fullstack-ssr) 또는 [정적 사이트 생성(SSG)](/guide/extras/ways-of-use-vue.html#jamstack-ssg)을 사용하면 이를 완화할 수 있습니다. SSR 가이드](/guide/scaling-up/ssr.html)를 확인하여 Vue로 SSR을 수행하는 방법에 대해 알아보세요. 앱에 풍부한 인터랙티브 요구 사항이 없는 경우 기존 백엔드 서버를 사용하여 HTML을 렌더링하고 클라이언트에서 Vue를 사용하여 향상시킬 수도 있습니다.
+
+기본 애플리케이션이 SPA여야 하지만 마케팅 페이지(랜딩, 정보, 블로그)가 있는 경우 마케팅 페이지를 별도로 제공하세요! 마케팅 페이지는 SSG를 사용하여 최소한의 JS가 포함된 정적 HTML로 배포하는 것이 이상적입니다.
+
+
 ### 번들 크기 및 트리 쉐이킹 (tree-shaking) {#bundle-size-and-tree-shaking}
 
 페이지 로드 성능을 향상시키는 가장 효과적인 방법 중 하나는 더 작은 JavaScript 번들을 제공하는 것입니다.
@@ -94,8 +101,7 @@ function loadLazy() {
 }
 ```
 
-지연 로드는 초기 페이지 로드 후 바로 필요하지 않은 기능에 가장 적합합니다.
-Vue 앱에서 이는 일반적으로 Vue의 [비동기 컴포넌트](/guide/components/async.html) 기능과 함께 사용하여 컴포넌트 트리에 대한 분할 청크를 생성합니다:
+지연 로딩은 초기 페이지 로드 후 즉시 필요하지 않은 기능에 사용하는 것이 가장 좋습니다. Vue 애플리케이션에서는 Vue의 [비동기 컴포넌트](/guide/components/async.html) 기능과 함께 사용하여 컴포넌트 트리에 대한 분할 청크를 만들 수 있습니다:
 
 ```js
 import { defineAsyncComponent } from 'vue'
@@ -110,9 +116,8 @@ Vue 라우터를 통해 클라이언트 측 라우팅을 사용하는 경우, �
 
 ### SSR / SSG {#ssr-ssg}
 
-순수한 클라이언트 측 렌더링은 컨텐츠 생성 시간이 느립니다.
-이는 SSR(서버 사이드 렌더링) 또는 SSG(정적 사이트 생성)를 사용하여 완화할 수 있습니다.
-자세한 내용은 [SSR 가이드](/guide/scaling-up/ssr.html)를 확인하세요.
+Vue 라우터를 사용하는 애플리케이션의 경우 라우팅 구성 요소에 지연 로딩을 사용할 것을 강력히 권장합니다. Vue 라우터는 `defineAsyncComponent`와는 별도로 지연 로딩을 명시적으로 지원합니다. 자세한 내용은 [지연 로딩 라우트](https://router.vuejs.org/guide/advanced/lazy-loading.html)를 참고하세요.
+
 
 ## 업데이트 최적화 {#update-optimizations}
 
@@ -210,11 +215,7 @@ shallowArray.value = [
 
 ### 불필요한 컴포넌트 추상화 방지 {#avoid-unnecessary-component-abstractions}
 
-때때로 우리는 더 나은 추상화 또는 코드 구성을 위해,
-[렌더리스 컴포넌트](/guide/components/slots.html#renderless-components) 또는 고차 컴포넌트(예: 다른 컴포넌트를 추가 props로 렌더링하는 컴포넌트)를 만들 수 있습니다.
-여기에는 아무런 문제가 없지만,
-컴포넌트 인스턴스는 일반 DOM 노드보다 훨씬 비싸고,
-추상화 패턴으로 인해 컴포넌트 인스턴스를 너무 많이 생성하면 성능 비용이 발생한다는 점을 명심하십시오.
+때때로 더 나은 추상화 또는 코드 구성을 위해 [렌더링 없는 컴포넌트](/guide/components/slots.html#renderless-components) 또는 상위 컴포넌트(즉, 추가 프로퍼티가 있는 다른 컴포넌트를 렌더링하는 컴포넌트)를 만들 수 있습니다. 이것이 잘못된 것은 아니지만 컴포넌트 인스턴스는 일반 DOM 노드보다 훨씬 비싸고 추상화 패턴으로 인해 너무 많이 생성하면 성능 비용이 발생할 수 있다는 점을 명심하세요.
 
 몇 개의 인스턴스만 줄이는 것은 눈에 띄는 효과가 없으므로,
 컴포넌트가 앱에서 몇 번만 렌더링되는 경우,

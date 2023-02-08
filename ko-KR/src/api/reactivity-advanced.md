@@ -1,6 +1,6 @@
 # 반응형 API: 고급 {#reactivity-api-advanced}
 
-## shallowRef()
+## shallowRef() {#shallowref}
 
 [`ref()`](./reactivity-core.html#ref)의 얕은 버전입니다.
 
@@ -37,7 +37,7 @@
   - [가이드 - 큰 불변 구조에 대한 반응형 오버헤드 감소](/guide/best-practices/performance.html#reduce-reactivity-overhead-for-large-immutable-structures)
   - [가이드 - 외부 상태 시스템과의 통합](/guide/extras/reactivity-in-depth.html#integration-with-external-state-systems)
 
-## triggerRef()
+## triggerRef() {#triggerref}
 
 [`shallowRef()`](#shallowref)의 강제 트리거 이펙트.
 이것은 일반적으로 `shallowRef` 내부 깊숙한 곳의 값을 변경 후, 관련 이펙트를 강제로 트리거 하기위해 사용합니다.
@@ -67,7 +67,7 @@
   triggerRef(shallow) // 로그: "멋진 Vue!"
   ```
 
-## customRef()
+## customRef() {#customref}
 
 의존성 추적 및 업데이트 트리거를 명시적으로 제어하기 위한 커스텀 ref를 만듭니다.
 
@@ -137,7 +137,7 @@
 
   [온라인 연습장으로 실행하기](https://sfc.vuejs.org/#eNp9Us1q20AQfpXpXqyALTk9GjtQ6BOU0tNeFHnsKrV2xe7KSRGCHmIwNoEcGlIoKTmklNx6CKV9Jsnv0Fn9RXEge5Hmm5nvm7+UvYljd5kgG7GxDlQYG9BokviIizCKpTKQQqLxLR7LRAQ4fYczyGCmZAQ915t2YPdE97gIpNAGDJ4ZmOwnOr3iap2vrl71+nA4HA4PuBh7lSjJkWEwihe+QbIAxrYGoFfcPMBudVFs7nabv/nmK+Tbf8X21sKhiBNTXF9C8WOV3/4sbs4hv18Xf74Vv77AYfGwht3389J/vcovflMKUUB+eZ9v1/n2blTqeJUQ6aVpVXmWtWCpAMtBJKe4mHBm/ZyBR96x19bL+qya1iDyYxqEFDTP1BLw2qE5G0GJWIwGbm3OPhoT65Hn6Vlgt3CiXanmHv25KhEmjNBFHQ2OlTzVqIiYs36HwyNwiWqgUExRoXqJcy/0Ga+lzbjIqJW9rVIr7SkEiTYy6h4BKdDaucCzMmRGiSaU4tnul/4iwT7QFP3PdBqvaf3VPBZI90KdysRYU9H1KfEo5DhG+cGnPhgVzueoDmBy1Ayyjq0tgDkap2atXpnq0J01QJ1RFtOgWT1SsJfvCDz9YL1PeIIF+up9VaRTF9thrRFqixiaMKrksdLqlbIU1Wh0fXV73WKzelwtRPtpPxmhGcv+AwLzVi0=)
 
-## shallowReactive()
+## shallowReactive() {#shallowreactive}
 
 [`reactive()`](./reactivity-core.html#reactive)의 얕은 버전입니다.
 
@@ -181,7 +181,7 @@
   state.nested.bar++
   ```
 
-## shallowReadonly()
+## shallowReadonly() {#shallowreadonly}
 
 [`readonly()`](./reactivity-core.html#readonly)의 얕은 버전입니다.
 
@@ -225,7 +225,7 @@
   state.nested.bar++
   ```
 
-## toRaw()
+## toRaw() {#toraw}
 
 Vue에서 만든 프락시의 원시 원본 객체를 반환합니다.
 
@@ -252,7 +252,7 @@ Vue에서 만든 프락시의 원시 원본 객체를 반환합니다.
   console.log(toRaw(reactiveFoo) === foo) // true
   ```
 
-## markRaw()
+## markRaw() {#markraw}
 
 객체가 프락시로 변환되지 않도록 마크(mark)합니다.
 객체 자체를 반환합니다.
@@ -311,7 +311,7 @@ Vue에서 만든 프락시의 원시 원본 객체를 반환합니다.
   반응형 시스템이 어떻게 작동하는지에 확실한 이해가 필요합니다.
   :::
 
-## effectScope()
+## effectScope() {#effectscope}
 
 범위 내 반응형 이펙트(계산된 속성, 감시자)들을 캡처하고,
 일괄적으로 처리하는 effectScope 객체를 반환합니다.
@@ -346,7 +346,7 @@ Vue에서 만든 프락시의 원시 원본 객체를 반환합니다.
   scope.stop()
   ```
 
-## getCurrentScope()
+## getCurrentScope() {#getcurrentscope}
 
 현재 활성 [effectScope](#effectscope)가 있는 경우, 이를 반환합니다.
 
@@ -356,7 +356,7 @@ Vue에서 만든 프락시의 원시 원본 객체를 반환합니다.
   function getCurrentScope(): EffectScope | undefined
   ```
 
-## onScopeDispose()
+## onScopeDispose() {#onscopedispose}
 
 현재 활성 [effectScope](#effectscope)에 중지(폐기) 콜백을 등록합니다.
 연결된 effectScope이 중지되면 콜백이 호출됩니다.
