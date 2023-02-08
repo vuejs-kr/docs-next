@@ -1,31 +1,29 @@
-:::warning 현재 이 문서는 번역 작업이 진행중입니다
-:::
+# Vue 및 웹 컴포넌트 {#vue-and-web-components}
 
-# Vue and Web Components {#vue-and-web-components}
+[웹 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/Web_Components)는 개발자가 재사용 가능한 사용자 정의 요소를 만들 수 있는 웹 네이티브 API 집합을 포괄적으로 지칭하는 용어입니다.
 
-[Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) is an umbrella term for a set of web native APIs that allows developers to create reusable custom elements.
+워드프레스닷컴은 Vue와 웹 컴포넌트를 주로 상호 보완적인 기술로 간주합니다. Vue는 사용자 정의 요소의 사용과 생성을 모두 훌륭하게 지원합니다. 사용자 지정 요소를 기존 Vue 애플리케이션에 통합하든, 사용자 지정 요소를 빌드하고 배포하는 데 Vue를 사용하든 관계없이 좋은 회사에서 사용할 수 있습니다.
 
-We consider Vue and Web Components to be primarily complementary technologies. Vue has excellent support for both consuming and creating custom elements. Whether you are integrating custom elements into an existing Vue application, or using Vue to build and distribute custom elements, you are in good company.
+## Vue에서 사용자 정의 요소 사용 {#using-custom-elements-in-vue}
 
-## Using Custom Elements in Vue {#using-custom-elements-in-vue}
+Vue는 [사용자 정의 엘리먼트 에브리웨어 테스트에서 100% 만점을 받았습니다](https://custom-elements-everywhere.com/libraries/vue/results/results.html). Vue 애플리케이션 내에서 사용자 정의 요소를 사용하는 것은 기본 HTML 요소를 사용하는 것과 거의 동일하게 작동하지만 몇 가지 유의해야 할 사항이 있습니다:
 
-Vue [scores a perfect 100% in the Custom Elements Everywhere tests](https://custom-elements-everywhere.com/libraries/vue/results/results.html). Consuming custom elements inside a Vue application largely works the same as using native HTML elements, with a few things to keep in mind:
 
-### Skipping Component Resolution {#skipping-component-resolution}
+### 컴포넌트 리졸브 건너뛰기 {#skipping-component-resolution}
 
-By default, Vue will attempt to resolve a non-native HTML tag as a registered Vue component before falling back to rendering it as a custom element. This will cause Vue to emit a "failed to resolve component" warning during development. To let Vue know that certain elements should be treated as custom elements and skip component resolution, we can specify the [`compilerOptions.isCustomElement` option](/api/application.html#app-config-compileroptions).
+기본적으로 Vue는 네이티브가 아닌 HTML 태그를 사용자 정의 요소로 렌더링하기 전에 등록된 Vue 구성 요소로 확인하려고 시도합니다. 이로 인해 Vue는 개발 중에 "구성 요소를 확인하지 못했습니다"라는 경고를 표시합니다. 특정 요소를 사용자 정의 요소로 처리하고 컴포넌트 확인을 건너뛰어야 한다는 것을 Vue에 알리기 위해 [`compilerOptions.isCustomElement` 옵션](/api/application.html#app-config-compiler옵션)을 지정할 수 있습니다.
 
-If you are using Vue with a build setup, the option should be passed via build configs since it is a compile-time option.
+빌드 설정과 함께 Vue를 사용하는 경우 이 옵션은 컴파일 타임 옵션이므로 빌드 설정을 통해 전달해야 합니다.
 
-#### Example In-Browser Config {#example-in-browser-config}
+#### 브라우저 내 구성 예시 {#example-in-browser-config}
 
 ```js
-// Only works if using in-browser compilation.
-// If using build tools, see config examples below.
+// 브라우저 내 컴파일을 사용하는 경우에만 작동합니다.
+// 빌드 도구를 사용하는 경우 아래 구성 예제를 참조하세요.
 app.config.compilerOptions.isCustomElement = (tag) => tag.includes('-')
 ```
 
-#### Example Vite Config {#example-vite-config}
+#### Vite 구성 예시 {#example-vite-config}
 
 ```js
 // vite.config.js
@@ -36,7 +34,7 @@ export default {
     vue({
       template: {
         compilerOptions: {
-          // treat all tags with a dash as custom elements
+          // 대시가 있는 모든 태그를 사용자 지정 요소로 취급합니다.
           isCustomElement: (tag) => tag.includes('-')
         }
       }
@@ -45,7 +43,7 @@ export default {
 }
 ```
 
-#### Example Vue CLI Config {#example-vue-cli-config}
+#### Vue CLI 구성 예시 {#example-vue-cli-config}
 
 ```js
 // vue.config.js
@@ -57,7 +55,7 @@ module.exports = {
       .tap(options => ({
         ...options,
         compilerOptions: {
-          // treat any tag that starts with ion- as custom elements
+          // ion-으로 시작하는 모든 태그를 사용자 지정 요소로 취급합니다.
           isCustomElement: tag => tag.startsWith('ion-')
         }
       }))
@@ -65,11 +63,12 @@ module.exports = {
 }
 ```
 
-### Passing DOM Properties {#passing-dom-properties}
+### DOM 속성 전달 {#passing-dom-properties}
 
-Since DOM attributes can only be strings, we need to pass complex data to custom elements as DOM properties. When setting props on a custom element, Vue 3 automatically checks DOM-property presence using the `in` operator and will prefer setting the value as a DOM property if the key is present. This means that, in most cases, you won't need to think about this if the custom element follows the [recommended best practices](https://web.dev/custom-elements-best-practices/).
+DOM 속성은 문자열만 가능하므로 복잡한 데이터를 사용자 정의 요소에 DOM 속성으로 전달해야 합니다. 사용자 정의 요소에 프로퍼티를 설정할 때 Vue 3는 `in` 연산자를 사용하여 DOM 속성 존재 여부를 자동으로 확인하고 키가 있는 경우 값을 DOM 속성으로 설정하는 것을 선호합니다. 즉, 대부분의 경우 사용자 정의 요소가 [권장 모범 사례](https://web.dev/custom-elements-best-practices/)를 따르는 경우 이에 대해 생각할 필요가 없습니다.
 
-However, there could be rare cases where the data must be passed as a DOM property, but the custom element does not properly define/reflect the property (causing the `in` check to fail). In this case, you can force a `v-bind` binding to be set as a DOM property using the `.prop` modifier:
+그러나 드물게 데이터를 DOM 프로퍼티로 전달해야 하지만 사용자 정의 요소가 프로퍼티를 제대로 정의/반영하지 않는 경우(`in` 체크가 실패하는 경우)가 있을 수 있습니다. 이 경우 '.prop' 수정자를 사용하여 `v-bind` 바인딩이 DOM 속성으로 설정되도록 강제할 수 있습니다:
+
 
 ```vue-html
 <my-element :user.prop="{ name: 'jack' }"></my-element>
@@ -78,13 +77,14 @@ However, there could be rare cases where the data must be passed as a DOM proper
 <my-element .user="{ name: 'jack' }"></my-element>
 ```
 
-## Building Custom Elements with Vue {#building-custom-elements-with-vue}
+## Vue로 사용자 정의 요소 구축 {#building-custom-elements-with-vue}
 
-The primary benefit of custom elements is that they can be used with any framework, or even without a framework. This makes them ideal for distributing components where the end consumer may not be using the same frontend stack, or when you want to insulate the end application from the implementation details of the components it uses.
+사용자 정의 요소의 주요 이점은 프레임워크와 함께 사용하거나 프레임워크 없이도 사용할 수 있다는 것입니다. 따라서 최종 소비자가 동일한 프론트엔드 스택을 사용하지 않을 수 있는 컴포넌트를 배포하거나 최종 애플리케이션을 사용하는 컴포넌트의 구현 세부 사항으로부터 격리하려는 경우에 이상적입니다.
 
 ### defineCustomElement {#definecustomelement}
 
-Vue supports creating custom elements using exactly the same Vue component APIs via the [`defineCustomElement`](/api/general.html#definecustomelement) method. The method accepts the same argument as [`defineComponent`](/api/general.html#definecomponent), but instead returns a custom element constructor that extends `HTMLElement`:
+Vue는 [`defineCustomElement`](/api/general.html#definecustomelement) 메서드를 통해 정확히 동일한 Vue 컴포넌트 API를 사용하여 사용자 정의 요소를 생성할 수 있도록 지원합니다. 이 메서드는 [`defineComponent`](/api/general.html#definecomponent)와 동일한 인수를 허용하지만 대신 `HTMLElement`를 확장하는 사용자 정의 엘리먼트 생성자를 반환합니다:
+
 
 ```vue-html
 <my-vue-element></my-vue-element>
@@ -117,25 +117,27 @@ document.body.appendChild(
 )
 ```
 
-#### Lifecycle {#lifecycle}
+#### 생명주기 {#lifecycle}
 
-- A Vue custom element will mount an internal Vue component instance inside its shadow root when the element's [`connectedCallback`](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#using_the_lifecycle_callbacks) is called for the first time.
+- Vue 사용자 정의 요소는 요소의 [`connectedCallback`](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#using_the_lifecycle_callbacks)이 처음 호출될 때 섀도 루트 내부에 내부 Vue 컴포넌트 인스턴스를 마운트합니다.
 
-- When the element's `disconnectedCallback` is invoked, Vue will check whether the element is detached from the document after a microtask tick.
+- 요소의 `disconnectedCallback`이 호출되면 Vue는 마이크로태스크 틱 후 요소가 문서에서 분리되었는지 여부를 확인합니다.
 
-  - If the element is still in the document, it's a move and the component instance will be preserved;
+  - 요소가 여전히 문서에 있으면 이동으로 간주되며 컴포넌트 인스턴스가 보존됩니다;
 
-  - If the element is detached from the document, it's a removal and the component instance will be unmounted.
+  - 요소가 문서에서 분리되면 제거가 되고 컴포넌트 인스턴스가 마운트 해제됩니다.
+
 
 #### Props {#props}
 
-- All props declared using the `props` option will be defined on the custom element as properties. Vue will automatically handle the reflection between attributes / properties where appropriate.
+- `prop` 옵션을 사용하여 선언된 모든 소품은 사용자 정의 요소에 속성으로 정의됩니다. Vue는 적절한 경우 속성/프로퍼티 간의 반영을 자동으로 처리합니다.
 
-  - Attributes are always reflected to corresponding properties.
+  - 속성은 항상 해당 속성에 반영됩니다.
 
-  - Properties with primitive values (`string`, `boolean` or `number`) are reflected as attributes.
+  - 기본값(`string`, `boolean` 또는 `number`)이 있는 속성은 속성으로 반영됩니다.
 
-- Vue also automatically casts props declared with `Boolean` or `Number` types into the desired type when they are set as attributes (which are always strings). For example, given the following props declaration:
+- 또한 `부울` 또는 `숫자` 유형으로 선언된 프로퍼티는 속성으로 설정될 때(항상 문자열인) 원하는 유형으로 자동 형변환됩니다. 예를 들어 다음 props 선언이 있습니다:
+
 
   ```js
   props: {
@@ -144,25 +146,27 @@ document.body.appendChild(
   }
   ```
 
-  And the custom element usage:
+  그리고 사용자 정의 요소 사용법:
 
   ```vue-html
   <my-element selected index="1"></my-element>
   ```
 
-  In the component, `selected` will be cast to `true` (boolean) and `index` will be cast to `1` (number).
+  컴포넌트에서 `selected`는 `true`(부울)로 캐스팅되고 `index`는 `1`(숫자)로 캐스팅됩니다.
 
-#### Events {#events}
+#### 이벤트 {#events}
 
-Events emitted via `this.$emit` or setup `emit` are dispatched as native [CustomEvents](https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events#adding_custom_data_%E2%80%93_customevent) on the custom element. Additional event arguments (payload) will be exposed as an array on the CustomEvent object as its `detail` property.
+`this.$emit` 또는 설정 `emit`을 통해 전송된 이벤트는 사용자 정의 요소에서 기본 [CustomEvents](https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events#adding_custom_data_%E2%80%93_customevent)로 디스패치됩니다. 추가 이벤트 인수(페이로드)는 CustomEvent 객체의 `detail` 속성으로 배열로 노출됩니다.
 
-#### Slots {#slots}
 
-Inside the component, slots can be rendered using the `<slot/>` element as usual. However, when consuming the resulting element, it only accepts [native slots syntax](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots):
+#### 슬롯 {#slots}
 
-- [Scoped slots](/guide/components/slots.html#scoped-slots) are not supported.
 
-- When passing named slots, use the `slot` attribute instead of the `v-slot` directive:
+컴포넌트 내부에서 슬롯은 평소처럼 `<슬slot롯/>` 요소를 사용하여 렌더링할 수 있습니다. 하지만 결과 요소를 소비할 때는 [네이티브 슬롯 구문](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots)만 허용합니다:
+
+- [Scoped slots](/guide/components/slots.html#scoped-slots)는 지원하지 않습니다.
+
+- 명명된 슬롯을 전달할 때는 `v-slot` 지시어 대신 `슬롯` 속성을 사용하십시오:
 
   ```vue-html
   <my-element>
