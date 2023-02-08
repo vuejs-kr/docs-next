@@ -2,9 +2,6 @@
 outline: deep
 ---
 
-:::warning 현재 이 문서는 번역 작업이 진행중입니다
-:::
-
 # 타입스크립트와 함께 Vue 사용하기 {#using-vue-with-typescript}
 
 타입스크립트와 같은 타입 시스템은 빌드 시 정적 분석을 통해 많은 일반에러를 감지할 수 있습니다. 이렇게 하면 프로덕션에서 런타임 에러가 발생할 가능성이 줄어들고 대규모 앱에서 안정적으로 코드를 리팩토링할 수 있습니다. 또한 타입스크립트는 여러 IDE에서 제공하는 타입기반 자동완성 기능을 통해 개발 환경을 개선 할 수 있습니다.
@@ -21,7 +18,7 @@ Vite 기반 설정을 사용하면 개발 서버와 번들러가 트랜스파일
 
 - 개발하는 동안 타입 에러에 대한 즉각적인 피드백을 위해 좋은 [IDE 설정](#ide-support) 에 의존하는 것을 추천합니다.
 
-- SFC를 사용하는 경우 command line 타입 확인 및 타입 선언 생성을 위해 [`vue-tsc`](https://github.com/johnsoncodehk/volar/tree/master/packages/vue-tsc) 유틸리티를 사용하십시오. `vue-tsc` 는 타입스크립트의 자체 command line 인터페이스인 `tsc`를 포함하고 있습니다. 타입스크립트 파일 외에도 Vue SFC를 지원한다는 점을 제외하면 `tsc` 와 거의 동일하게 작동합니다.
+- SFC를 사용하는 경우 command line 타입 확인 및 타입 선언 생성을 위해 [`vue-tsc`](https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vue-tsc) 유틸리티를 사용하십시오. `vue-tsc` 는 타입스크립트의 자체 command line 인터페이스인 `tsc`를 포함하고 있습니다. 타입스크립트 파일 외에도 Vue SFC를 지원한다는 점을 제외하면 `tsc` 와 거의 동일하게 작동합니다.
 
 - Vue CLI는 타입스크립트를 지원 하지만 더 이상 권장되지 않습니다. 아래 사항을 [참고](#note-on-vue-cli-and-ts-loader) 하십시오.
 
@@ -41,7 +38,7 @@ Vite 기반 설정을 사용하면 개발 서버와 번들러가 트랜스파일
 
 ### `tsconfig.json` 설정 {#configuring-tsconfig-json}
 
-`create-vue` 를 통해 생성된 프로젝트에는 사전 설정된 `tsconfig.json`가 포함됩니다. 기본 설정은 [`@vue/tsconfig`](https://github.com/vuejs/tsconfig) 패키지에서 추상화됩니다. 프로젝트 내에서 [프로젝트 참조](https://www.typescriptlang.org/docs/handbook/project-references.html) 를 사용하여 다른 환경(예: app vs. test)에서 실행되는 코드에 대한 올바른 타입을 확인합니다.
+`create-vue` 를 통해 생성된 프로젝트에는 사전 설정된 `tsconfig.json`가 포함됩니다. 기본 설정은 [`@vue/tsconfig`](https://github.com/vuejs/tsconfig) 패키지에서 추상화됩니다. 프로젝트 내에서 [프로젝트 참조](https://www.typescriptlang.org/docs/handbook/project-references.html) 를 사용하여 다른 환경(예: 앱 코드와 테스트 코드에는 서로 다른 전역 변수가 있어야 합니다.)에서 실행되는 코드에 대한 올바른 타입을 확인합니다.
 
 `tsconfig.json` 을 수동으로 구성할 때 몇 가지 알고 있으면 좋은 옵션들은 다음과 같습니다.
 
@@ -56,7 +53,7 @@ Vite 기반 설정을 사용하면 개발 서버와 번들러가 트랜스파일
 - [공식 타입스크립트 컴파일러 옵션 문서](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
 - [esbuild 타입스크립트 컴파일 주의 사항](https://esbuild.github.io/content-types/#typescript-caveats)
 
-### Takeover 모드 {#takeover-mode}
+### Volar Takeover Mode {#volar-takeover-mode}
 
 > 이 섹션은 VSCode + Volar에만 적용됩니다.
 

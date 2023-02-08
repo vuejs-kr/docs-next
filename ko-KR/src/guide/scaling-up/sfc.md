@@ -5,6 +5,9 @@
 Vue 싱글 파일 컴포넌트(Single-File Components: **SFC**, 일명 `*.vue` 파일)는 컴포넌트의 템플릿, 로직 및 스타일을 하나의 파일로 묶어낸 특수한 파일 형식입니다.
 다음은 SFC 파일의 예입니다:
 
+
+<div class="options-api">
+
 ```vue
 <script>
 export default {
@@ -27,6 +30,31 @@ export default {
 }
 </style>
 ```
+``
+
+</div>
+
+<div class="composition-api">
+
+```vue
+<script setup>
+import { ref } from 'vue'
+const greeting = ref('Hello World!')
+</script>
+
+<template>
+  <p class="greeting">{{ greeting }}</p>
+</template>
+
+<style>
+.greeting {
+  color: red;
+  font-weight: bold;
+}
+</style>
+```
+
+</div>
 
 보시다시피 Vue SFC는 HTML, CSS 및 JavaScript 이 3개를 하나로 자연스럽게 합친 것입니다.
 `<template>`, `<script>` 및 `<style>` 블록은 하나의 파일에서 컴포넌트의 뷰, 로직 및 스타일을 캡슐화하고 배치합니다.
@@ -38,7 +66,7 @@ SFC 사용을 위해서는 빌드 방식을 따라야 하지만 다음과 같은
 
 - 친숙한 HTML, CSS 및 JavaScript 문법을 사용하여 모듈화된 컴포넌트 작성
 - [본질적으로 사용 목적에 따라 구성됨](#why-sfc)
-- 사전 컴파일된 템플릿
+- 런타임 컴파일 비용이 없는 사전 컴파일된 템플릿
 - [컴포넌트 범위 CSS](/api/sfc-css-features)
 - [컴포지션 API로 작업할 때 더욱 인체공학적인 문법](/api/sfc-script-setup)
 - 템플릿과 스크립트를 교차 분석하여 컴파일 시간을 더욱 더최적화

@@ -28,7 +28,7 @@ Vite + Vue를 시작하려면 다음을 실행하기만 하면 됩니다:
 이 명령은 공식 Vue 프로젝트 스캐폴딩 도구인 [create-vue](https://github.com/vuejs/create-vue)를 설치하고 실행합니다.
 
 - Vite에 대한 자세한 내용은 [Vite 문서](https://vitejs.dev)를 확인하세요.
-- Vite 프로젝트에서 Vue 관련 동작을 구성하려면(예: Vue 컴파일러에 옵션 전달) [@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#readme) 문서를 확인하세요.
+- Vite 프로젝트에서 Vue 관련 동작을 구성하려면(예: Vue 컴파일러에 옵션 전달) [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#readme) 문서를 확인하세요.
 
 위에서 언급한 두 온라인 연습장는 Vite 프로젝트 파일로 다운로드를 지원합니다.
 
@@ -100,7 +100,7 @@ Vue 브라우저 개발자 도구 확장 프로그램을 사용하면, Vue 앱�
 
 - [Volar](https://github.com/johnsoncodehk/volar)는 템플릿 표현식 및 교차 컴포넌트 props 유효성 검사를 포함하여 `<script lang="ts">` 블록을 사용하여 SFC에 대한 유형 검사를 제공합니다.
 
-- 명령줄에서 동일한 유형 검사를 수행하거나 SFC용 `d.ts` 파일을 생성하려면 [`vue-tsc`](https://github.com/johnsoncodehk/volar/tree/master/packages/vue-tsc)를 사용합니다.
+- 명령줄에서 동일한 유형 검사를 수행하거나 SFC용 `d.ts` 파일을 생성하려면 [`vue-tsc`](https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vue-tsc)를 사용합니다.
 
 ## 테스팅 {#testing}
 
@@ -145,7 +145,7 @@ Vue 팀은 SFC별 린팅 규칙을 지원하는 [ESLint](https://eslint.org/) �
 
 - Vite를 사용하는 경우,
   일치하는 커스텀 블록을 실행 가능한 JavaScript로 변환하려면,
-  커스텀 Vite 플러그인을 사용해야 합니다. [예제](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#example-for-transforming-custom-blocks)
+  커스텀 Vite 플러그인을 사용해야 합니다. [예제](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#example-for-transforming-custom-blocks)
 
 - Vue CLI 또는 일반 웹팩을 사용하는 경우,
   일치하는 블록을 변환하도록 웹팩 로더를 구성해야 합니다. [예제](https://vue-loader.vuejs.org/guide/custom-blocks.html)
@@ -167,7 +167,7 @@ Vue 팀은 SFC별 린팅 규칙을 지원하는 [ESLint](https://eslint.org/) �
 
 ### `@vitejs/plugin-vue` {#vitejs-plugin-vue}
 
-- [Docs](https://github.com/vitejs/vite/tree/main/packages/plugin-vue)
+- [Docs](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue)
 
 Vite에서 Vue SFC 지원을 제공하는 공식 플러그인입니다.
 

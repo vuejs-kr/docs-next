@@ -135,12 +135,6 @@ Vue 앱에 특별한 함수의 한 범주인 [컴포저블](/guide/reusability/c
   [Vitest](https://vitest.dev/)는 이러한 목적을 위해 특별히 설계된 단위 테스트 프레임워크로 Vue/Vite 팀이 만들고 유지 관리합니다.
   최소한의 노력으로 Vite 기반 프로젝트와 통합되며, 매우 빠릅니다.
 
-:::warning 현재 개발 중
-Vitest는 비교적 새롭고 여전히 빠른 개발을 진행 중입니다. 아직 안정적인 것으로 간주되지는 않지만 팀은 프로덕션 준비 상태로 만들기 위해 열심히 노력하고 있습니다.
-Vitest는 비교적 새로운 것이고 여전히 빠르게 발전하고 있습니다.
-아직 안정적이지 않다고 여겨지지만, 프로덕션 준비 상태로 만들기 위해 열심히 노력하고 있습니다.
-:::
-
 ### 다른 선택지 {#other-options}
 
 - [Peeky](https://peeky.dev/)는 최고의 Vite 통합 기능을 갖춘 또 다른 빠른 단위 테스트 러너입니다.
@@ -185,13 +179,11 @@ Vue 앱의 대부분은 컴포넌트 테스트로 다루어야 하며, 각 Vue �
 <div class="testing-library-api">
 
 ```js
-render(Stepper, {
+const { getByText } = render(Stepper, {
   props: {
     max: 1
   }
 })
-
-const { getByText } = render(Component)
 
 getByText('0') // "0"이 컴포넌트 내에 있어야 함
 

@@ -1,4 +1,11 @@
 # 라우팅 {#routing}
+## 클라이언트 측 라우팅과 서버 측 라우팅 비교 {#client-side-vs-server-side-routing}
+
+서버 측에서의 라우팅은 서버가 사용자가 방문한 URL 경로를 기반으로 응답을 전송하는 것을 의미합니다. 기존 서버 렌더링 웹 앱에서 링크를 클릭하면 브라우저는 서버로부터 HTML 응답을 수신하고 새 HTML로 전체 페이지를 다시 로드합니다.
+
+그러나 [싱글 페이지 애플리케이션](https://developer.mozilla.org/en-US/docs/Glossary/SPA)(SPA)에서는 클라이언트 측 자바스크립트가 탐색을 가로채고 새 데이터를 동적으로 가져와 전체 페이지를 다시 로드하지 않고 현재 페이지를 업데이트할 수 있습니다. 이는 일반적으로 사용자가 오랜 시간 동안 많은 상호 작용을 수행해야 하는 실제 "애플리케이션"과 유사한 사용 사례에서 보다 빠른 사용자 경험을 제공합니다.
+
+이러한 SPA에서 '라우팅'은 브라우저의 클라이언트 측에서 수행됩니다. 클라이언트 측 라우터는 [히스토리 API](https://developer.mozilla.org/en-US/docs/Web/API/History) 또는 [`hashchange` 이벤트](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event)와 같은 브라우저 API를 사용하여 애플리케이션의 렌더링된 View를 관리할 책임이 있습니다.
 
 ## 공식 라우터 {#official-router}
 

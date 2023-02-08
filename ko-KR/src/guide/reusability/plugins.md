@@ -55,6 +55,13 @@ export default {
 우리는 앱 전체에서 사용할 수 있는 키를 번역하는 기능을 만들고자 하므로 `app.config.globalProperties`를 사용하여 이를 노출할 것입니다.
 이 함수는 점으로 구분된 `key` 문자열을 수신하며, 커스텀 옵션에서 번역된 문자열을 찾는 데 사용할 것입니다.
 
+```vue-html
+<h1>{{ $translate('greetings.hello') }}</h1>
+```
+
+이 함수는 모든 템플릿에서 전역적으로 사용할 수 있어야 하므로 플러그인의 `app.config.globalProperties`에 이 함수를 첨부하여 그렇게 만들겠습니다:
+
+
 ```js{4-11}
 // plugins/i18n.js
 export default {
@@ -71,7 +78,9 @@ export default {
 }
 ```
 
-플러그인은 사용자가 플러그인을 사용할 때 옵션을 통해 번역된 키가 포함된 객체를 전달할 것으로 예상하므로 다음과 같이 사용해야 합니다:
+`$translate` 함수는 `greetings.hello`와 같은 문자열을 받아 사용자가 제공한 구성을 살펴본 후 번역된 값을 반환합니다.
+
+번역된 키가 포함된 객체는 설치 중에 `app.use()`에 대한 추가 매개 변수를 통해 플러그인에 전달되어야 합니다:
 
 ```js
 import i18nPlugin from './plugins/i18n'
@@ -83,8 +92,7 @@ app.use(i18nPlugin, {
 })
 ```
 
-우리의 `$translate` 함수는 `greetings.hello`와 같은 문자열을 사용하여 사용자가 제공한 구성을 살펴보고 번역된 값을 반환합니다.
-이 경우에는 `Bonjour!`입니다.
+이제 초기 표현식 `$translate('greetings.hello')`는 런타임에 `Bonjour!`로 대체됩니다.
 
 ```vue-html
 <h1>{{ $translate('greetings.hello') }}</h1>
