@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import data from '../partners.json'
 import { Partner } from './type'
-import { normalizeName } from './utils'
+import { normalizeName, track } from './utils'
 import PartnerCard from './PartnerCard.vue'
 import { VTIconChevronLeft } from '@vue/theme'
 
@@ -13,6 +13,8 @@ const p = (data as Partner[]).find(
   (p) => normalizeName(p.name) === partner
 )!
 
+const { name, description, hiring, contact, website } = p
+
 function genMailLink(email: string) {
   return `mailto:${email}?subject=Looking for a Vue.js Partner`
 }
@@ -22,26 +24,32 @@ function genMailLink(email: string) {
   <div class="partner-page">
     <div class="back">
       <a href="/partners/all.html"
-        ><VTIconChevronLeft class="icon" />Back to all partners</a
+        ><VTIconChevronLeft class="icon" />모든 파트너로 돌아가기</a
       >
     </div>
 
     <PartnerCard hero page :data="p" />
 
     <div class="description">
-      <h2>About {{ p.name }}</h2>
-      <p v-for="desc in p.description" v-html="desc"></p>
+      <h2>{{ name }}에 대하셔 </h2>
+      <p v-for="desc in description" v-html="desc"></p>
     </div>
 
     <div class="actions">
-      <a :href="p.website.url" target="_blank">Visit Website</a>
-      <a class="contact" :href="genMailLink(p.contact)" target="_blank"
-        >Contact</a
+      <a :href="website.url" target="_blank" @click="track"
+        >웹사이트 방문하기</a
+      >
+      <a
+        class="contact"
+        :href="genMailLink(contact)"
+        target="_blank"
+        @click="track"
+        >연락</a
       >
     </div>
 
-    <div class="hiring" v-if="p.hiring">
-      <a :href="p.hiring">{{ p.name }} is hiring!</a>
+    <div class="hiring" v-if="hiring">
+      <a :href="hiring" @click="track">{{ name }}은 현재 구인중입니다!</a>
     </div>
   </div>
 </template>
