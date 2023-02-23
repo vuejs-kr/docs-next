@@ -2,13 +2,14 @@
 
 공식 번역 사이트로 이전 되었습니다. 
 
-https://github.com/vuejs-translations/docs-kr
-
+https://github.com/vuejs-translations/docs-ko
 
 이후의 번역 작업은 위 본가쪽 저장소에서 진행됩니다. 
 
 이 저장소에 참여해 주신 분들에게 감사드립니다 :) 
 
+
+조만간 본 저장소는 archive 모드로 전환될 예정입니다 
 
 
 
